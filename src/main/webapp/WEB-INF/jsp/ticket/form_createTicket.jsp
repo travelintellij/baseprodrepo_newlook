@@ -1,0 +1,312 @@
+<jsp:include page="../menu/MenuBuilder.jsp" />
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
+	<script src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
+	<link href="<c:url value="/resources/core/main.css" />" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	
+	<link href="<c:url value="/resources/css/jquery.datetimepicker.min.css" />" rel="stylesheet">
+	<script src="<c:url value="/resources/js/jquery.datetimepicker.full.js" />"></script>
+	
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+  width: 170px;
+  position: relative;
+  z-index: 0;
+  top: 50px;
+  left: 10px;
+  background: #eee;
+  overflow-x: hidden;
+  padding: 8px 0;
+}
+
+.sidenav a {
+  padding: 10px 8px 10px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #2196F3;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #064579;
+}
+
+.main {
+  margin-left: 450px; /* Same width as the sidebar + left position in px */
+  font-size: 28px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+  position: absolute;
+  top: 160px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+a:hover, a:active {
+  background-color: lightblue;
+}
+#img table,th,tr, td {
+    border: 1px solid transparent;
+    border-spacing: 0px;
+    border-collapse: collapse;
+    text-align:left;
+    padding: 5px;
+}
+ th, td {
+    font-size: 18px;
+  }
+
+.search-slt{
+    display: block;
+    width: 50%;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: #55595c;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    height: 45px !important;
+    border-radius:0;
+}
+select {
+	appearance: none;
+	outline: 0;
+	background: lightgreen;
+	background-image: none;
+	width: 100%;
+	height: 100%;
+	color: black;
+	cursor: pointer;
+	border: 1px solid black;
+	border-radius: 3px;
+	text-indent: 2px;
+}
+
+.select {
+	position: relative;
+	display: block;
+	height: 2.5em;
+	line-height: 3;
+	overflow: hidden;
+	border-radius: .25em;
+	padding-bottom: 10px;
+	padding-top: 10px;
+}
+.select option.service-small {
+	font-size: 20px;
+	padding: 25px;
+	background: lightgreen;
+}
+input[type=button], input[type=submit], input[type=reset] {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+<div class="sidenav">
+  <a href="view_create_ticket_form_user" style="background-color: red;color:white;">Create Ticket</a>
+  <a href="view_open_ticket_form_user">Open Tickets</a>
+  <a href="view_open_ticket_form_user_filter_due_today">Due Today</a>
+  <a href="view_open_over_due_ticket_form_user">Over Due</a>
+  <a href="view_open_my_created_ticket_form_user">Created By Me</a>
+  <a href="view_open_my_assigned_ticket_form_user">Assigned to me</a>
+  <a href="view_completed_ticket_form_user">Completed</a>
+  
+</div>
+
+<div class="main">
+  <br><br>
+  <div align="center"><b><font color="green" > ${Success} </font><font color="red"> ${Error}</font> </b></div>
+  <form:form action="create_create_ticket_form_user" modelAttribute="TICKET_RECORDER">
+  <div align="center"><font color="red">
+	<b>
+		<form:errors path="dealName" /><br>
+	</b>
+	</font>
+ </div>
+  <table>
+	<tr>
+		<th colspan="2">Ticket Title*</th>
+	</tr>
+	<tr>
+  		<td colspan="2">
+			<input style="width:450px;" class="form-control search-slt" type="text" name="ticketTitle" id="ticketTitle" placeholder="Title" required /> 
+  		</td>
+	</tr>
+	<tr>
+	<th> Assigned To* </th><th>Priority*</th>
+	</tr>
+	<tr>
+	<td>
+			<div class="select">
+				<form:select path="ticketOwner" style="width: 150px;" min="1" required="required">  
+			       <option class="service-small" value=""> -----Select User----</option>
+			       <form:options items = "${ACTIVE_USERS_MAP}" class="service-small"/>
+		        </form:select>  
+			</div>
+	</td>
+	<td>
+		<div class="select">
+			<select id = "ticketPriority" name="ticketPriority" style="width: 180px;" required>
+			<option class="service-small" value=""> -----Select Priority----</option>
+			    <c:if test="${not empty TICKET_PRIORITY}">
+	        			<c:forEach items="${TICKET_PRIORITY}" var="ticketPriority">
+	      					<option class="service-small" value="${ticketPriority}">${ticketPriority}</option>
+	   					</c:forEach>
+	 			</c:if>
+			</select>
+		</div>
+	</td>
+	</tr>
+	<tr>
+		<th>Status*</th><th>Due Date*</th>
+	</tr>
+	<tr>
+		<td>
+			<div class="select">
+				<form:select path="ticketStatus" style="width: 150px;">  
+			       <form:options items = "${TICKET_STATUS}" class="service-small"/>
+		        </form:select>  
+			</div>
+	</td>
+	<td>
+		<!-- 
+		<input style="height: 30px; width: 180px;" type="datetime-local" name="ticketDueDate" required />
+		 -->
+		
+		<input style="height: 30px; width: 180px;" id="ticketDueDate" name="ticketDueDate" required />
+		
+	</td>
+	</tr>
+	<tr>
+		<th colspan="2">Link With Client*</th>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<form:input path="clientName" name="clientName" class="form-control search-slt" style="height:30px;width:450px;"/><br>
+			<form:hidden path = "clientId" />
+		<font color="red"> <form:errors path="clientName" cssClass="error" /></font>
+		</td>
+	</tr>
+
+
+	<tr>
+		<th colspan="2">Link With Deal*</th>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<form:input path="dealName" name="dealName" class="form-control search-slt" style="height:30px;width:450px;" placeholder="Deal Search - Enter Only numeric Deal # or Client Name "/><br>
+			<form:hidden path = "dealConfirmationId" />
+		</td>
+	</tr>
+	<tr>
+	<th colspan="2"> Description </th>
+	</tr>
+	<tr>
+	<td colspan="2"><textarea style="width: 450px;" rows="6" cols="250" name="ticketDescription"></textarea></td>
+	</tr>
+	<tr>
+		<th>Inform Client </th><td><input type="checkbox" name="notifyTicketOwner" checked />
+		<i><font size="2">(if checked email will be sent to client with Ticket Title only)</font></i>
+		</td>
+	</tr>
+	
+	
+	<tr>
+		<td style="text-align:right;">
+				<input style="width: 80px; background-color: green" type="submit" value="Create" />
+		</td>
+		<td style="text-align:left;">
+			<a href="view_open_ticket_form_user" ><input type="button" style="width: 80px;background-color: blue;" value="Cancel"></a>
+		</td>
+	</tr>
+	
+  </table>
+  </form:form>
+  
+</div>  
+<script>
+$('#dealName').autocomplete({
+	serviceUrl: '${pageContext.request.contextPath}/getDealInfo',
+	paramName: "dealKeyword",
+	delimiter: ",",
+	onSelect: function(suggestion) {
+        dealID = suggestion.data;
+        id=dealID;
+        jQuery("#dealConfirmationId").val(dealID);
+        $('input[name=dealName]').val(id);
+        return false;
+    },
+	transformResult: function(response) {
+        return {
+            suggestions: $.map($.parseJSON(response), function(item) {
+            	return { value: item.tagName, data: item.id };
+            })
+            
+        };
+    }
+});
+
+$('#clientName').autocomplete({
+	serviceUrl: '${pageContext.request.contextPath}/getClientList',
+	paramName: "tagName",
+	delimiter: ",",
+	onSelect: function(suggestion) {
+        cityID = suggestion.data;
+        id=cityID;
+        jQuery("#contactId").val(cityID);
+        $('input[name=clientId]').val(id);
+        return false;
+    },
+	transformResult: function(response) {
+        return {
+            suggestions: $.map($.parseJSON(response), function(item) {
+            	return { value: item.tagName, data: item.id };
+            })
+            
+        };
+    }
+});
+
+
+	
+
+</script>
+<script>
+
+$(document).ready(function(){
+	$("#create").on('click', function () {
+	   var getValue=$("#ticketDueDate").val();
+	   $('input[name=ticketDueDate]').val(getValue);
+	 });
+	});
+	
+$("#ticketDueDate").datetimepicker();
+
+</script>
+
+</body>
+</html> 
