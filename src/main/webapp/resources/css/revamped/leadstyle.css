@@ -1,0 +1,695 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    list-style: none;
+    user-select: none;
+    font-size: 17px;
+}
+
+html {
+    min-height: 100%;
+    overflow-y: scroll;
+}
+
+body {
+    min-height: 100%;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/*
+header {
+    height: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #FFCF53;
+    z-index: 999;
+}
+
+.navbar,
+.insideBottomHeader {
+    padding: 0 10px;
+}
+
+.bottomHeader {
+    position: fixed;
+    top: 92px;
+    left: 0;
+    right: 0;
+    background: #F8AF51;
+    z-index: 99;
+}
+
+
+.topHeaderLinks {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    margin-bottom: 5px;
+}
+
+.topHeaderLinks li,
+.topHeaderLinks p {
+    margin-left: 15px;
+}
+
+.tophHeaderMainLink p {
+    cursor: pointer;
+    background: #F8AF51;
+    padding: 4px 6px;
+    border-radius: 6px;
+}
+
+.topHeaderLinks li a {
+    color: black;
+    cursor: pointer;
+   
+}
+
+.leftSec img {
+    width: 190px;
+    display: block;
+}
+
+.headerCheckbox,
+.hamburgurLines {
+    display: none;
+}
+
+
+.topHeaderSubMenu {
+    position: absolute;
+    left: 0;
+    display: none;
+    width: 170px;
+    height: auto;
+    padding: 10px 5px;
+    background: black;
+    color: white;
+    padding-left: -20px;
+    border-radius: 10px;
+}
+
+.topHeaderSubMenu li {
+    margin: 0;
+    cursor: pointer;
+    margin-bottom: 4px;
+}
+
+.bottomSectionHeaderSubMenu li {
+    margin: 0;
+    cursor: pointer;
+    margin-bottom: 4px;
+}
+
+.topHeaderSubMenu li a {
+    color: white;
+}
+
+.topHeaderLinks li:hover .topHeaderSubMenu {
+    display: block;
+}
+
+.tophHeaderMainLink {
+    position: relative;
+}
+
+.signOut {
+    color: red;
+    font-weight: bold;
+}
+*/
+/* ####### bottom header styling ########## */
+
+/*
+.bottomHeader {
+   
+    height: auto;
+    padding: 7px 0
+}
+
+.linkPaddingBottom {
+    padding-bottom: 10px;
+}
+
+.insideBottomHeader {
+    display: flex;
+   
+    justify-content: space-between;
+}
+
+.bottomSectionHeader {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.bottomSectionHeader p {
+    background: #FFCF53;
+    padding: 4px 6px;
+    border-radius: 6px;
+}
+
+.bottomSectionHeader p:hover {
+    cursor: pointer;
+}
+
+a {
+    transition: color 0.2s ease-in-out;
+}
+
+.hoverOnLink:hover {
+    color: #F8AF51;
+}
+
+.bottomSectionHeader li {
+    margin-right: 19px;
+}
+
+.bottomHeaderLinks {
+    position: relative;
+}
+
+.bottomSectionHeaderSubMenu {
+    position: absolute;
+    left: 0;
+    display: none;
+    width: 180px;
+    height: auto;
+    padding: 10px 5px;
+    background: rgb(0, 0, 0);
+    color: white;
+    padding-left: -20px;
+    border-radius: 10px;
+    z-index: 10;
+}
+
+.bottomSectionHeader li:hover .bottomSectionHeaderSubMenu {
+    display: block;
+}
+
+.bottomSectionHeaderSubMenu li a {
+    color: white;
+}
+
+.signOut {
+    color: black;
+}
+
+.line1 {
+    transform-origin: 0% 0%;
+    transition: all 0.3s ease-in-out;
+}
+
+.line2 {
+    transform-origin: 0% 100%;
+
+    transition: all 0.3s ease-in-out;
+}
+
+.line3 {
+    transform-origin: 0% 100%;
+    transition: all 0.3s ease-in-out;
+}
+
+.rightSec input[type="checkbox"]:checked~.hamburgurLines .line1 {
+    transform: rotate(45deg);
+}
+
+.rightSec input[type="checkbox"]:checked~.hamburgurLines .line2 {
+
+    transform: scale(0);
+}
+
+.rightSec input[type="checkbox"]:checked~.hamburgurLines .line3 {
+    transform: rotate(-45deg);
+}
+*/
+/* ############### media queries for header ################ */
+/*
+@media screen and (max-width:1195px) {
+    .bottomSectionHeaderSubMenu {
+        top: 32px;
+    }
+
+    .bottomSectionHeader p {
+        background: #FFCF53;
+        padding: 4px 6px;
+        border-radius: 6px;
+        margin-bottom: 5px;
+    }
+
+    .leftSec img {
+        width: 300px;
+        display: block;
+        padding-bottom: 6px;
+    }
+
+    .bottomSectionHeaderSubMenu li {
+        margin-bottom: 5px;
+    }
+
+    .bottomSectionHeaderSubMenu {
+        width: 160px;
+    }
+
+    .topHeaderLinks {
+        width: 250px;
+        z-index: 1000;
+        background: #FFCF53;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 30px 20px 0 20px;
+        position: absolute;
+        top: 100px;
+        right: 0;
+        height: 100vh;
+        opacity: 0;
+        transform: translateX(100%);
+        transition: all 0.3s ease-in-out;
+    }
+
+    .insideBottomHeader {
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .headerCheckbox,
+    .hamburgurLines {
+        display: block;
+        width: 50px;
+        height: 40px;
+    }
+
+    .headerCheckbox {
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        opacity: 0;
+        z-index: 1002;
+    }
+
+    .hamburgurLines {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        z-index: 1001;
+    }
+
+    .hamburgurLines span {
+        display: inline-block;
+        background: black;
+        width: 100%;
+        height: 4px;
+        border-radius: 5px;
+    }
+
+    .rightSec input[type="checkbox"]:checked~.topHeaderLinks {
+        z-index: 1000;
+        background: #FFCF53;
+        ;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 30px 20px 0 20px;
+        position: absolute;
+        top: 92px;
+        right: 0;
+        height: 100vh;
+        opacity: 1;
+        transform: translateX(0);
+
+    }
+
+    .topHeaderLinks li {
+        margin: 10px;
+    }
+
+    .tophHeaderMainLink {
+        width: 200px;
+        text-align: start;
+    }
+
+    .topHeaderSubMenu {
+        position: absolute;
+        top: 0px;
+        left: -157px;
+
+    }
+
+    .topHeaderSubMenu li {
+        margin: 0;
+        cursor: pointer;
+        margin-bottom: 5px;
+    }
+
+
+
+    .topHeaderLinks li a {
+        color: white;
+        cursor: pointer;
+    }
+
+}
+
+.bottomSectionHeaderSubMenu li a {
+    padding-bottom: 10px;
+}
+
+
+.homeLinkTopMenu {
+    color: black;
+    background: #F8AF51;
+    display: block;
+    width: 90px;
+    border-radius: 6px;
+    padding: 4px 6px;
+    text-align: center;
+}
+
+@media screen and (max-width: 1195px) {
+    .homeLinkTopMenu {
+        text-align: start;
+        color: black;
+        background: #F8AF51;
+        display: block;
+        width: 185px;
+        border-radius: 6px;
+        padding: 4px 6px;
+    }
+
+    @media screen and (max-width:450px) {
+        .homeimg {
+            height: 170px;
+            position: absolute;
+        }
+
+        .bottomHeader {
+            position: fixed;
+            top: 90px;
+            left: 0;
+            right: 0;
+            background: #F8AF51;
+            z-index: 99;
+        }
+
+        .headerCheckbox,
+        .hamburgurLines {
+            display: block;
+            width: 38px;
+            height: 30px;
+        }
+
+        .headerCheckbox {
+            position: absolute;
+            top: 33px;
+            right: 30px;
+            opacity: 0;
+            z-index: 1002;
+        }
+
+        .hamburgurLines {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: absolute;
+            top: 33px;
+            right: 30px;
+            z-index: 1001;
+        }
+
+        .hamburgurLines span {
+            display: inline-block;
+            background: black;
+            width: 100%;
+            height: 4px;
+            border-radius: 5px;
+        }
+
+        .textSec p {
+            color: white;
+            font-size: 28px;
+        }
+
+        footer p {
+            font-size: 10px;
+        }
+    }
+
+    @media screen and (max-width:350px) {
+        .firstImg {
+            top: 0;
+            left: -10%;
+            z-index: 5;
+        }
+
+        .secImg {
+            top: 148px;
+            left: -10px;
+            transform: rotate(-15deg);
+            z-index: 4;
+        }
+
+        .thirdImg {
+            top: 295px;
+            left: -10px;
+            transform: rotate(15deg);
+            z-index: 4;
+        }
+    }
+
+    footer {
+        background: black;
+        color: white;
+        text-align: center;
+    }
+
+    .signOut {
+        color: red;
+        font-weight: bold;
+    }
+}
+
+.signOut {
+    color: red;
+    font-weight: bold;
+}
+*/
+/* #################### form page styling ################## */
+
+.searchLeads {
+    margin-top: 170px;
+}
+
+.heading {
+    text-align: center;
+    font-size: 25px;
+    color: #FABA08;
+}
+
+.upperPart,
+.lowerPart {
+    background: rgba(0, 0, 0, 0.689);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.firstL {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: -9px;
+}
+
+.secondL {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.thirdL {
+
+    display: flex;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+.inBtns {
+    margin-left: 40%;
+    display: inline-block;
+    width: auto;
+}
+
+label {
+    color: white;
+}
+
+.inf {
+    width: 200px;
+}
+
+.box {
+    margin-right: 30px;
+}
+
+.btn {
+    border: none;
+    outline: none;
+    display: inline-block;
+    color: white;
+    width: auto;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: #ffb908cf;
+    color: black;
+    transition: all 0.3s ease-in-out;
+}
+
+.chflex {
+    display: flex;
+    /* align-items: end; */
+    justify-content: center;
+    align-items: center;
+
+    width: 100px;
+}
+
+#quali,
+#flag {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+
+}
+
+.btn:hover {
+    cursor: pointer;
+    background: #FFBA08;
+}
+
+.fromBox {
+    margin-left: 29px;
+}
+
+.btns {
+    margin-top: 8px;
+}
+
+/* ############## tabel styling ############## */
+table {
+    width: 100%;
+    border: none;
+    border-collapse: collapse;
+}
+
+.lowerPart {
+    margin: 50px 0;
+    color: white;
+}
+
+th {
+    color: #FABA08;
+    border: none;
+    margin-bottom: 20px;
+    font-size: 19px;
+}
+
+td {
+    margin-top: 40px;
+    text-align: center;
+    border: none;
+}
+
+.leadId {
+    color: red;
+}
+
+.st i {
+    color: #FABA08;
+}
+
+.tick {
+    color: #32CD32;
+}
+
+.cross {
+    color: red;
+}
+
+.ul {
+    /* padding: 5px;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.885);
+    border-radius: 10px;
+    width: 160px;
+    right: -47px;
+    transition: all 0.3s ease-in-out;  */
+    display: none;
+    padding: 5px;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.885);
+    border-radius: 10px;
+    width: 160px;
+    right: -160px;
+    transition: all 0.3s ease-in-out;
+    top: -1px;
+    z-index: 1;
+    padding: 10px
+}
+
+.pop-up {
+    font-weight: normal;
+}
+
+
+.ul ul li a:hover {
+    color: #FABA08;
+    /* font-size: medium */
+    font-size: 18px;
+}
+
+.ul ul li {
+    border-bottom: 1px solid #FABA08;
+}
+
+i {
+    position: relative;
+}
+
+
+.fili i:hover {
+    color: red;
+    cursor: pointer;
+}
+
+i:hover .ul {
+    display: block;
+}
+
+.ul ul li {
+    list-style: none;
+}
+
+.ul ul li a {
+    text-decoration: none;
+    color: white;
+}
+
+.dsc {
+    width: 200px;
+}

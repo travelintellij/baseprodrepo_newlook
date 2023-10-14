@@ -62,7 +62,9 @@
 	});
      </script>
   </head>
-  <body>
+  
+  <!-- 
     <div id="chart_div" style="width: 700px; height: 300px;"></div>
-  </body>
+    -->
+  
 </html>

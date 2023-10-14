@@ -68,8 +68,8 @@
 </script>
 
 </head>
-<body>
 
+<!--  
 	<table class="columns">
 		<tr>
 			<td><div id="piechart_div" style="border: 1px solid #ccc"></div></td>
@@ -77,6 +77,24 @@
 			
 		</tr>
 	</table>
+-->
+ <main>
+        <div class="container mybox">
+            <div class="imgSide">
+                <img src="${pageContext.request.contextPath}/resources/images/revamped/girlMap.jpeg" alt="" class="firstImg homeimg">
+                <img src="${pageContext.request.contextPath}/resources/images/revamped/secMapImg.jpeg" alt="" class="secImg homeimg">
+                <img src="${pageContext.request.contextPath}/resources/images/revamped/thirdMapImg.jpeg" alt="" class="thirdImg homeimg">
+            </div>
+            <div class="textSec">
+                <p>"Back office brilliance: where dedication meets innovation, shaping our company's future with <span
+                        style="color:#FFCF53" class="textsecp">every
+                        task you tackle</span> ."</p>
+            </div>
+        </div>
+    </main>
 
-</body>
+    <footer>
+        <p>&copy; 2023 Travel IntelliJ. All rights reserved.</p>
+    </footer>
+
 </html>
