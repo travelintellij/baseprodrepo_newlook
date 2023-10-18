@@ -7,18 +7,35 @@
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <head>
+    <script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
+	<script src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Leads</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/leadstyle.css">
     <script src="https://kit.fontawesome.com/6f6addf9b0.js" crossorigin="anonymous"></script>
 </head>
+<style>
+  	<style>
+        .autocomplete-suggestions { border: 1px solid #999; background: #FFF; overflow: auto; }
+		.autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden; }
+		.autocomplete-selected { background: #F0F0F0; }
+		.autocomplete-suggestions strong { font-weight: normal; color: #3399FF; }
+		.autocomplete-group { padding: 2px 5px; }
+		.autocomplete-group strong { display: block; border-bottom: 1px solid #000; }
+	</style>
 
 <body style="background: url(${pageContext.request.contextPath}/resources/images/revamped/lens.jpg);background-size: cover; background-repeat: no-repeat; background-position: center center;background-attachment: fixed;">
    
-    
+<div class="autocomplete-suggestions">
+    <div class="autocomplete-group"><strong>NHL</strong></div>
+    <div class="autocomplete-suggestion autocomplete-selected">...</div>
+    <div class="autocomplete-suggestion">...</div>
+    <div class="autocomplete-suggestion">...</div>
+</div>
 
     <!-- ######################### Search leads ####################### -->
+
 
     <div class="form searchLeads container">
         
@@ -30,8 +47,8 @@
                 <div class="firstL">
                     <div class="box1 box">
                         <label for="tf">Traveling From</label><br>
-                        <input path="sourceName" name="sourceName" id="tf" class="inf" />
-                        <hidden path="source" />
+                        <form:input path="sourceName" name="sourceName" id="sourceName" class="inf" style="color:powderblue;" />
+						<form:hidden path = "source" />
                         <font color="red">
                             <form:errors path="sourceName" htmlEscape="false" />
                         </font>
@@ -210,6 +227,136 @@
             <!-- ############## end of lower part ############# -->
 	</form:form>
     </div>
+
+
+
+<script>
+	
+$(document).ready(function() {
+	$('#contactName').autocomplete({
+		serviceUrl: '${pageContext.request.contextPath}/getClientList',
+		paramName: "tagName",
+		delimiter: ",",
+		onSelect: function(suggestion) {
+            cityID = suggestion.data;
+            id=cityID;
+            jQuery("#contactId").val(cityID);
+            $('input[name=contactId]').val(id);
+            return false;
+        },
+		transformResult: function(response) {
+	        return {
+	            suggestions: $.map($.parseJSON(response), function(item) {
+	            	return { value: item.tagName, data: item.id };
+	            })
+	        };
+	    }
+	});
+
+
+$('#sourceName').autocomplete({
+	serviceUrl: '${pageContext.request.contextPath}/getCityList',
+	paramName: "cityName",
+	delimiter: ",",
+	onSelect: function(suggestion) {
+        cityID = suggestion.data;
+        id=cityID;
+        jQuery("#destinationId").val(cityID);
+        $('input[name=source]').val(id);
+        return false;
+    },
+  	transformResult: function(response) {
+        return {
+            suggestions: $.map($.parseJSON(response), function(item) {
+            	return { value: item.cityName, data: item.destinationId };
+            })
+            
+        };
+    }
+});
+
+$('#destinationName').autocomplete({
+	serviceUrl: '${pageContext.request.contextPath}/getCityList',
+	paramName: "cityName",
+	delimiter: ",",
+	onSelect: function(suggestion) {
+        cityID = suggestion.data;
+        id=cityID;
+        jQuery("#destinationId").val(cityID);
+        $('input[name=destination]').val(id);
+        return false;
+    },
+	transformResult: function(response) {
+        return {
+            suggestions: $.map($.parseJSON(response), function(item) {
+            	return { value: item.cityName, data: item.destinationId };
+            })
+            
+        };
+    }
+});
+
+});
+</script>
+
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+
+
+function myLeadDisplay(clicked) { 
+	//alert(clicked); 
+	$("#myModal .modal-body").load($(clicked).attr('data-load-url'));
+	modal.style.display = "block";
+}   
+// When the user clicks the button, open the modal 
+/*btn.onclick = function() {
+	//$("#myModal .modal-body").html('pass your html text here');
+	$("#myModal .modal-body").load($(this).attr('data-load-url'));
+	modal.style.display = "block";
+  
+}*/
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+<script>
+/* When the user clicks on the button, 
+toggle between hiding and showing the menudown content */
+function myFunction(clicked) {
+  document.getElementById($(clicked)).classList.toggle("show");
+}
+
+// Close the menudown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.menubtn')) {
+    var menudowns = document.getElementsByClassName("menudown-content");
+    var i;
+    for (i = 0; i < menudowns.length; i++) {
+      var openmenudown = menudowns[i];
+      if (openmenudown.classList.contains('show')) {
+        openmenudown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
 
 </body>
 
