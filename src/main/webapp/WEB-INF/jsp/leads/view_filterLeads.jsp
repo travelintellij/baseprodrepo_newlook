@@ -25,7 +25,77 @@
 		.autocomplete-selected:hover{
 		color:black
 		}
-	</style>
+
+.modal {
+	  display: none; /* Hidden by default */
+	  position: fixed; /* Stay in place */
+	  z-index: 1; /* Sit on top */
+	  padding-top: 50px; /* Location of the box */
+	  left: 0;
+	  top: 0;
+	  width: 100%; /* Full width */
+	  height: 100%; /* Full height */
+	  overflow: scroll; /* Enable scroll if needed */
+	  background-color: rgb(0,0,0); /* Fallback color */
+	  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+	}
+	
+	/* Modal Content */
+	.modal-content {
+	  position: relative;
+	  background-color: #fefefe;
+	  margin: auto;
+	  padding: 0;
+	  border: 1px solid #888;
+	  width: 80%;
+	  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+	  -webkit-animation-name: animatetop;
+	  -webkit-animation-duration: 0.4s;
+	  animation-name: animatetop;
+	  animation-duration: 0.4s
+	}
+	
+	/* Add Animation */
+	@-webkit-keyframes animatetop {
+	  from {top:-300px; opacity:0} 
+	  to {top:0; opacity:1}
+	}
+	
+	@keyframes animatetop {
+	  from {top:-300px; opacity:0}
+	  to {top:0; opacity:1}
+	}
+	
+	/* The Close Button */
+	.close {
+	  color: white;
+	  float: right;
+	  font-size: 28px;
+	  font-weight: bold;
+	}
+	
+	.close:hover,
+	.close:focus {
+	  color: #000;
+	  text-decoration: none;
+	  cursor: pointer;
+	}
+	
+	.modal-header {
+	  padding: 2px 16px;
+	  background-color: lightblue;
+	  color: white;
+	}
+	
+	.modal-body {padding: 2px 16px;}
+	
+	.modal-footer {
+	  padding: 2px 16px;
+	  background-color: lightblue;
+	  color: white;
+	}
+
+</style>
 
 <body style="background: url(${pageContext.request.contextPath}/resources/images/revamped/lens.jpg);background-size: cover; background-repeat: no-repeat; background-position: center center;background-attachment: fixed;">
    
@@ -76,40 +146,39 @@
                         </td>
                     </sec:authorize> -->
                     <div class="box3 box chflex">
-                        <input type="checkbox" id="quali" path="qualified">
+                        <form:checkbox path="qualified" id="quali" />
                         <label for="quali">Qualified</label>
                     </div>
                     <div class="box4 box chflex">
-                        <input type="checkbox" id="flag" path="flagged">
+                       <form:checkbox path="flagged" id="flag" />
                         <label for="flag">Flagged</label>
                     </div>
                     <div class="l2Box1 box">
                         <label for="id">Lead id</label> <br>
-                        <input id="id" class="inf" path="leadId" type="number" min="0" size="35" value=""
-                            placeholder="Lead Number">
+                        <form:input path="leadId" type="number" min="0" size="35" value="" id="id" class="inf" placeholder="Lead Number"/>
                     </div>
                     <div class="l2Box2 box">
                         <label for="cn">Contact Name</label> <br>
-                        <input id="cn" class="inf" path="contactName" id="contactName" name="contactName" size="35"
-                            style="width:200px;" placeholder="Contact Name">
+                        <form:input path="contactName"  id="contactName" name="contactName" size="35" style="width:200px;" placeholder="Contact Name" class="inf" />
                         <input type="hidden" name="contactId" value="0" />
                     </div>
                 </div>
                 <div class="secondL">
                     <div class="l3Box3 box">
                         <label for="all">Lead Source</label> <br>
-                        <select path="leadSource" id="all" class="inf">
-                            <options items="${PARTNERS_MAP}" class="service-small" />
-                        </select>
+                        <form:select path="leadSource" class="inf">  
+					      <form:option value="0" label="***ALL***" class="service-small"/>
+					      <form:options items = "${PARTNERS_MAP}" class="service-small"/>
+				        </form:select>  
                     </div>
                     <div class="l4Box4 box">
                         <label for="aol">All Open Leads</label> <br>
-                        <select path="leadStatus" id="aol" class="inf">
-                            <option value="0" label="All Leads" />
-                            <option value="200" label="All Open Leads" class="service-small" />
-                            <option value="100" label="All Closed" class="service-small" />
-                            <options items="${LEAD_STATUS_MAP}" />
-                        </select>
+                        <form:select path="leadStatus" class="inf">  
+				      		<form:option value="0" label="*** All Leads ***" class="service-small"/>
+				      		<form:option value="200" label="*** All Open Leads ***" class="service-small"/>
+				      		<form:option value="100" label="*** All Closed ***" class="service-small"/>
+				      		<form:options items = "${LEAD_STATUS_MAP}" class="service-small" />
+		        		</form:select>  
                         <!-- <select id="leadStatus" name="leadStatus" style="height:30px;width: 150px;">
                             <c:if test="${not empty LEAD_STATUS_LIST}">
                                 <c:forEach items="${LEAD_STATUS_LIST}" var="lead_statusObj">
@@ -121,22 +190,22 @@
                     </div>
                     <div class="l3Box1 box">
                         <label for="dsc">Date Search Criteria</label> <br>
-                        <select path="dateCriteria" class="dsc">
-                            <option value="0" label="Select Date Criteria" class="service-small" />
-                            <option value="1" label="Creation Date" class="service-small" />
-                            <option value="2" label="Travel Date" class="service-small" />
-                        </select>
+                       <form:select path="dateCriteria" class="dsc">  
+							<form:option value="0" label="Select Date Criteria" class="service-small"/>
+							<form:option value="1" label="Creation Date" class="service-small"/>
+							<form:option value="2" label="Travel Date" class="service-small"/>
+						</form:select>
                         <font color="red">
                             <form:errors path="dateCriteria" cssClass="error" htmlEscape="false" />
                         </font>
                     </div>
                     <div class="l3Box2 box fromBox">
                         <label for="">From</label> <br>
-                        <input type="date" class="inf" path="startDate">
+                        <form:input path="startDate" type="date" class="inf" />
                     </div>
                     <div class="l3Box3 box tobox">
                         <label for="">To</label> <br>
-                        <input type="date" class="inf" path="endDate">
+						<form:input path="endDate" type="date" class="inf" />
                     </div>
                 </div>
                 <div class="btns">
@@ -164,69 +233,105 @@
                         <th>Action</th>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td class="leadId">Q-0778-HCF</td>
-                            <td> False</td>
-                            <td class="tick"><i class="fa-solid fa-check"></i></td>
-                            <td>Hitesh Kumar</td>
-                            <td>Kathmandu</td>
-                            <td>Holidays Guide</td>
-                            <td>07-09-2023</td>
-                            <td>10-09-2023</td>
-                            <td>Open</td>
-                            <td>namita</td>
-                            <td class="st fili">
-                                <i class="fa-solid fa-sliders st1">
-                                    <div class="ul">
-                                        <ul>
-                                            <li><a href="form_view_lead_followup_details?leadId=${filteredLeads.leadId }"
-                                                    class="pop-up">FollowUp</a></li>
-                                            <li><a href="form_view_editlead?leadId=${filteredLeads.leadId }"
-                                                    class="pop-up">Edit</a></li>
-                                            <li><a href="view_form_search_supplier_quote?leadId=${filteredLeads.leadId }"
-                                                    class="pop-up">Request Quote</a></li>
-                                            <li><a href="view_lead_quotations_list?leadId=${filteredLeads.leadId }"
-                                                    class="pop-up">Quotations</a></li>
-                                            <li><a href="form_view_lead_reminder_details?leadId=${filteredLeads.leadId }&page=${page}"
-                                                    class="pop-up">Reminder</a></li>
-                                        </ul>
-                                    </div>
-                                </i>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="leadId">Q-0778-HCF</td>
-                            <td> False</td>
-                            <td class="cross"><i class="fa-solid fa-xmark"></i></td>
-                            <td>Hitesh Kumar</td>
-                            <td>Kathmandu</td>
-                            <td>Holidays Guide</td>
-                            <td>07-09-2023</td>
-                            <td>10-09-2023</td>
-                            <td>Open</td>
-                            <td>namita</td>
-                            <td class="st fili">
-                                <i class="fa-solid fa-sliders st1">
-                                    <div class="ul">
-                                        <ul>
-                                            <li><a href="form_view_lead_followup_details?leadId=${filteredLeads.leadId }"
-                                                    class="pop-up">FollowUp</a></li>
-                                            <li><a href="form_view_editlead?leadId=${filteredLeads.leadId }"
-                                                    class="pop-up">Edit</a></li>
-                                            <li><a href="view_form_search_supplier_quote?leadId=${filteredLeads.leadId }"
-                                                    class="pop-up">Request Quote</a></li>
-                                            <li><a href="view_lead_quotations_list?leadId=${filteredLeads.leadId }"
-                                                    class="pop-up">Quotations</a></li>
-                                            <li><a href="form_view_lead_reminder_details?leadId=${filteredLeads.leadId }&page=${page}"
-                                                    class="pop-up">Reminder</a></li>
-                                        </ul>
-                                    </div>
-                                </i>
-                            </td>
-                        </tr>
+                  	<c:forEach items="${FILTERED_LEADS_RECORDS}" var="filteredLeads">
+						<tr>
+							<td class="leadId">
+								<a style="cursor: pointer;" id="myBtn[${filteredLeads.leadId}]" onclick="myLeadDisplay(this)" data-load-url="view_lead_details_modal?leadId=${filteredLeads.leadId}" data-toggle="modal" data-target="#myModal" >
+									Q-${String.format("%04d",filteredLeads.leadId)}-${filteredLeads.leadSourceShortName }
+								</a>
+							</td>
+							<c:if test="${filteredLeads.flagged eq true}">
+								<td class="tick"><i class="fa-solid fa-check"></i></td>
+							</c:if>
+							<c:if test="${filteredLeads.flagged eq false}">
+								<td class="cross"><i class="fa-solid fa-xmark"></i></td>
+							</c:if>
+							<c:if test="${filteredLeads.qualified eq true}">
+								<td class="tick"><i class="fa-solid fa-check"></i></td>
+									</c:if>
+									<c:if test="${filteredLeads.qualified eq false}">
+								<td class="cross"><i class="fa-solid fa-xmark"></i></td>
+							</c:if>
+							<td>${filteredLeads.contactName}</td>
+							<td>${filteredLeads.destinationName}</td>
+							<td>${filteredLeads.leadSourceName}</td>
+							<td><fmt:formatDate value="${filteredLeads.travelStartDate}" pattern="dd-MM-yyyy" /></td>
+							<td><fmt:formatDate value="${filteredLeads.travelEndDate}" pattern="dd-MM-yyyy" /></td>
+							
+							<td>${filteredLeads.statusName}</td>
+							<td>${filteredLeads.leadOwnerName}</td>
+							    <td class="st fili">
+	                               <i class="fa-solid fa-sliders st1">
+	                                   <div class="ul">
+	                                       <ul>
+	                                           <li><a href="form_view_lead_followup_details?leadId=${filteredLeads.leadId }"
+	                                                   class="pop-up">FollowUp</a></li>
+	                                           <li><a href="form_view_editlead?leadId=${filteredLeads.leadId }"
+	                                                   class="pop-up">Edit</a></li>
+	                                           <li><a href="view_form_search_supplier_quote?leadId=${filteredLeads.leadId }"
+	                                                   class="pop-up">Request Quote</a></li>
+	                                           <li><a href="view_lead_quotations_list?leadId=${filteredLeads.leadId }"
+	                                                   class="pop-up">Quotations</a></li>
+	                                           <li><a href="form_view_lead_reminder_details?leadId=${filteredLeads.leadId }&page=${page}"
+	                                                   class="pop-up">Reminder</a></li>
+	                                       </ul>
+	                                   </div>
+	                               </i>
+	                           </td>
+						</tr>
+					</c:forEach>
                     </tbody>
                 </table>
             </div>
+            <div id="myModal" class="modal">
+						
+						  <!-- Modal content -->
+						  <div class="modal-content">
+						    <div class="modal-header">
+						      <span class="close">&times;</span>
+						      <br><h2 style="text-align:center;">View Lead Details</h2>
+						    </div>
+						    <div class="modal-body">
+						
+						
+						    </div>
+						    <div class="modal-footer">
+						      <h3>Powered by @TravelIntelliJ</h3>
+						    </div>
+						  </div>
+						
+						</div>
+            
+            
+            	<div id="pagination" align="right">
+				Page: 
+			    <c:url value="view_filter_leads" var="prev">
+			       <c:param name="page" value="${page-1}"/>
+			    </c:url>
+			    <c:if test="${page > 0}">
+			        <a href="<c:out value="${prev}&sortBy=${sortBy}&qualified=${FILTER_LEAD_WL.qualified}&flagged=${FILTER_LEAD_WL.flagged}&leadOwner=${FILTER_LEAD_WL.leadOwner}&leadSource=${FILTER_LEAD_WL.leadSource}&leadStatus=${FILTER_LEAD_WL.leadStatus}&source=${FILTER_LEAD_WL.source}&sourceName=${FILTER_LEAD_WL.sourceName}&destinationName=${FILTER_LEAD_WL.destinationName}&destination=${FILTER_LEAD_WL.destination}&contactId=${FILTER_LEAD_WL.contactId}&contactName=${FILTER_LEAD_WL.contactName}&dateCriteria=${FILTER_LEAD_WL.dateCriteria}&startDate=${FILTER_LEAD_WL.startDate}&endDate=${FILTER_LEAD_WL.endDate}" />" class="pn prev">Prev</a>
+			    </c:if>
+			
+			    <c:forEach begin="1" end="${maxPages}" step="1" varStatus="i">
+			        <c:choose>
+			            <c:when test="${(page+1) == i.index}">
+			                <span>${i.index}</span>
+			            </c:when>
+			            <c:otherwise>
+			                <c:url value="view_filter_leads" var="url">
+			                    <c:param name="page" value="${i.index-1}"/>
+			                </c:url>
+			                 <a href='<c:out value="${url}&sortBy=${sortBy}&qualified=${FILTER_LEAD_WL.qualified}&flagged=${FILTER_LEAD_WL.flagged}&leadOwner=${FILTER_LEAD_WL.leadOwner}&leadSource=${FILTER_LEAD_WL.leadSource}&leadStatus=${FILTER_LEAD_WL.leadStatus}&source=${FILTER_LEAD_WL.source}&sourceName=${FILTER_LEAD_WL.sourceName}&destinationName=${FILTER_LEAD_WL.destinationName}&destination=${FILTER_LEAD_WL.destination}&contactId=${FILTER_LEAD_WL.contactId}&contactName=${FILTER_LEAD_WL.contactName}&dateCriteria=${FILTER_LEAD_WL.dateCriteria}" />'>${i.index}</a>
+			            </c:otherwise>
+			        </c:choose>
+			    </c:forEach>
+			    <c:url value="view_filter_leads" var="next">
+			        <c:param name="page" value="${page + 1}"/>
+			    </c:url>
+			    <c:if test="${page + 1 < maxPages}">
+			       <a href='<c:out value="${next}&sortBy=${sortBy}&qualified=${FILTER_LEAD_WL.qualified}&flagged=${FILTER_LEAD_WL.flagged}&leadOwner=${FILTER_LEAD_WL.leadOwner}&leadSource=${FILTER_LEAD_WL.leadSource}&leadStatus=${leadStatus}&source=${FILTER_LEAD_WL.source}&sourceName=${FILTER_LEAD_WL.sourceName}&destinationName=${FILTER_LEAD_WL.destinationName}&destination=${FILTER_LEAD_WL.destination}&contactId=${FILTER_LEAD_WL.contactId}&contactName=${FILTER_LEAD_WL.contactName}&dateCriteria=${FILTER_LEAD_WL.dateCriteria}&startDate=${FILTER_LEAD_WL.startDate}&endDate=${FILTER_LEAD_WL.endDate}" />' class="pn next">Next</a>
+			    </c:if>
+			</div>
             <!-- ############## end of lower part ############# -->
 	</form:form>
     </div>
