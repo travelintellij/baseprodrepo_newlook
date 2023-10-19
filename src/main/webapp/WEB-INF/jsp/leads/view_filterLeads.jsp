@@ -16,20 +16,22 @@
     <script src="https://kit.fontawesome.com/6f6addf9b0.js" crossorigin="anonymous"></script>
 </head>
 <style>
-  	<style>
-        .autocomplete-suggestions { border: 1px solid #999; background: #FFF; overflow: auto; }
-		.autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden; }
-		.autocomplete-selected { background: #F0F0F0; }
-		.autocomplete-suggestions strong { font-weight: normal; color: #3399FF; }
-		.autocomplete-group { padding: 2px 5px; }
-		.autocomplete-group strong { display: block; border-bottom: 1px solid #000; }
+        .autocomplete-suggestions { border: 1px solid #999; background: red;overflow-y:auto}
+		.autocomplete-suggestion {padding: 2px 5px;color:white; background: black;overflow-y: auto;overflow-y:auto}
+		.autocomplete-selected { background: #F0F0F0;overflow-y:auto} 
+		.autocomplete-suggestions strong { font-weight: normal; color:#FABA08;overflow-y:auto}
+		.autocomplete-group { padding: 2px 5px;overflow-y:auto}
+		.autocomplete-group strong { display: block; border-bottom: 1px solid #000;  background: black ; color:black overflow-y:auto}
+		.autocomplete-selected:hover{
+		color:black
+		}
 	</style>
 
 <body style="background: url(${pageContext.request.contextPath}/resources/images/revamped/lens.jpg);background-size: cover; background-repeat: no-repeat; background-position: center center;background-attachment: fixed;">
    
-<div class="autocomplete-suggestions">
-    <div class="autocomplete-group"><strong>NHL</strong></div>
-    <div class="autocomplete-suggestion autocomplete-selected">...</div>
+<div class="autocomplete-suggestions" style="display:none">
+    <div class="autocomplete-group" ><strong>NHL</strong></div>
+    <div class="autocomplete-suggestion autocomplete-selected" >...</div>
     <div class="autocomplete-suggestion">...</div>
     <div class="autocomplete-suggestion">...</div>
 </div>
@@ -47,7 +49,7 @@
                 <div class="firstL">
                     <div class="box1 box">
                         <label for="tf">Traveling From</label><br>
-                        <form:input path="sourceName" name="sourceName" id="sourceName" class="inf" style="color:powderblue;" />
+                        <form:input path="sourceName" name="sourceName" id="sourceName" class="inf"  />
 						<form:hidden path = "source" />
                         <font color="red">
                             <form:errors path="sourceName" htmlEscape="false" />
@@ -55,10 +57,11 @@
                     </div>
                     <div class="box2 box">
                         <label for="tt">Traveling To</label><br>
-                        <input id="tt" class="inf" path="destinationName" name="sourceName" />
-                        <hidden path="destination" />
+                        
+                        <form:input path="destinationName" name="destinationName" id="destinationName" class="inf"  />
+                        <form:hidden path = "destination" />
                         <font color="red">
-                            <errors path="destinationName" cssClass="error" htmlEscape="false" />
+                            <form:errors path="destinationName" cssClass="error" htmlEscape="false" />
                         </font>
                     </div>
                     <!-- <sec:authorize access="hasAnyRole('ADMIN','LEAD_MANAGER')">
