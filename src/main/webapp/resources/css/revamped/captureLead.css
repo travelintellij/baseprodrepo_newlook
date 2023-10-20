@@ -1,0 +1,607 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    list-style: none;
+    user-select: none;
+    font-size: 17px;
+}
+
+html {
+    min-height: 100%;
+    overflow-y: scroll;
+}
+
+body {
+    min-height: 100%;
+}
+
+.container1 {
+    max-width: 1200px;
+    width: 1200px;
+    margin: 0 auto;
+}
+
+/* ##################### lead managment section styling ############### */
+.firstLineDiv2{
+
+	margin-left:-18px
+}
+
+.overlay {
+    
+    padding: 30px 10px;
+    width:1200px;
+    height: auto;
+    background: rgba(0, 0, 0, 0.716);
+    border-radius: 10px;
+}
+
+.heading h1 {
+    color: #FFCF53;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 30px;
+}
+
+.commonDiv1 {
+    /* border: 2px solid red; */
+    display: inline-block;
+}
+
+.div1 {
+
+    color: white;
+}
+
+.firstLineHeadings {
+    font-size: 21px;
+}
+
+.firLi {
+    width: 800px;
+}
+
+.services {
+    flex-wrap: wrap;
+}
+
+.firstLine {
+    width: 100%
+}
+
+.firstLine,
+.secondLine {
+    padding: 0 5px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 10px 0;
+
+    #Adults,
+    #Children,
+    #Age {
+        width: 80px;
+    }
+
+    .ForthLine {
+        padding: 0 5px;
+        display: flex;
+        justify-content: space-between;
+        margin: 10px 0;
+    }
+
+    .thirdLine {
+        padding: 0 5px;
+        display: flex;
+        width: 70%;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin: 10px 0;
+    }
+
+}
+
+.checkboxes {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    padding-left: 3px;
+}
+
+.sCheckBox {
+    width: 15px;
+    height: 15px;
+}
+
+.checkbox {
+    margin: 0 20px 0 0;
+}
+
+.clientRemarks p,
+.internalRemarks p {
+    font-size: 21px;
+    color: white;
+    padding-left: 2px;
+}
+
+.remarks {
+    width: 100%;
+}
+
+.clientRemarks textarea,
+.internalRemarks textarea {
+    padding: 5px;
+    margin-left: 2px;
+    border-radius: 10px;
+}
+
+.tent,
+.Ted {
+    margin: 0 20px;
+}
+
+.ser {
+    margin: 15px 0;
+}
+
+#TentativeAmount {
+    width: 100px;
+}
+
+.remarks {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.remark1 {
+
+    width: 580px;
+}
+
+.remark2 {
+    /* margin-right: 20px; */
+    width: 580px;
+}
+
+.confermation {
+    margin: 20px 10px;
+    display: flex;
+    /* border: 2px solid red; */
+    color: white;
+    justify-content: center;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+}
+
+/* .buttons a {
+    display: inline-block;
+    color: white;
+    width: auto;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: #ffb908cf;
+    color: black;
+    transition: all 0.3s ease-in-out;
+} */
+.submit1 {
+    border: none;
+    outline: none;
+    margin-right: 10px;
+}
+
+.submitbtns {
+    display: inline-block;
+    color: white;
+    width: auto;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: #ffb908cf;
+    color: black;
+    transition: all 0.3s ease-in-out
+}
+
+.firstBtn {
+    margin-right: 10px;
+}
+
+.buttons a:hover,
+.submit1:hover {
+    cursor: pointer;
+    background: #FFBA08;
+}
+
+.confermationCheckbox {
+    margin-right: 10px;
+}
+
+/* ################# testing ############### */
+
+.selectLeadSource,
+.statusSelect {
+
+    width: 249px;
+}
+
+/* ################ media queries for overlay ################ */
+
+@media screen and (max-width:1200px) {}
+
+@media screen and (max-width:1110px) {}
+
+@media screen and (max-width:860px) {
+    .overlay {
+        /* margin:50px 20px 0 20px */
+        width: 806px;
+    }
+}
+
+@media screen and (max-width:840px) {
+    .overlay {
+        /* margin:50px 20px 0 20px */
+        width: 800px;
+    }
+}
+
+@media screen and (max-width:830px) {
+    .overlay {
+        /* margin: 50px 40px 0 20px; */
+        width: 780px;
+    }
+}
+
+@media screen and (max-width:814px) {
+    .overlay {
+        /* margin: 50px 40px 0 20px; */
+        width: 760px;
+    }
+}
+
+@media screen and (max-width:794px) {
+    .overlay {
+        /* margin: 50px 40px 0 20px; */
+        width: 740px;
+    }
+}
+
+@media screen and (max-width:780px) {
+    .overlay {
+        /* margin: 50px 40px 0 20px; */
+        width: 720px;
+    }
+}
+
+@media screen and (max-width:756px) {
+    .overlay {
+        /* margin: 50px 40px 0 20px; */
+        width: 690px;
+    }
+}
+
+@media screen and (max-width:728px) {
+    .overlay {
+        /* margin: 50px 40px 0 20px; */
+        width: 675px;
+    }
+}
+
+@media screen and (max-width:704px) {
+    .overlay {
+        /* margin: 50px 40px 0 20px; */
+        width: 650px;
+    }
+}
+
+@media screen and (max-width:684px) {
+    .overlay {
+        /* margin: 50px 40px 0 20px; */
+        width: 630px;
+    }
+}
+
+@media screen and (max-width:668px) {
+    .overlay {
+        /* margin: 50px 40px 0 20px; */
+        width: 617px;
+    }
+}
+
+@media screen and (max-width:660px) {
+    .overlay {
+        margin: 240px 40px 0 20px;
+        width: 617px;
+    }
+}
+
+@media screen and (max-width:650px) {
+    .overlay {
+        /* margin: 70px 40px 0 20px; */
+        width: 600px;
+    }
+}
+
+@media screen and (max-width:635px) {
+    .firstLine {
+        flex-wrap: wrap;
+    }
+
+    .overlay {
+        /* margin: 70px 40px 0 20px; */
+        width: 600px;
+    }
+}
+
+@media screen and (max-width:633px) {
+    .overlay {
+        /* margin: 70px 40px 0 20px; */
+        width: 580px;
+    }
+}
+
+@media screen and (max-width:620px) {
+    .overlay {
+        /* margin: 70px 40px 0 20px; */
+        width: 570px;
+    }
+}
+
+@media screen and (max-width:610px) {
+    .overlay {
+        /* margin: 90px 40px 0 20px; */
+        width: 570px;
+    }
+}
+
+@media screen and (max-width:610px) {
+    .overlay {
+        /* margin: 90px 40px 0 20px; */
+        width: 560px;
+    }
+
+    /* .firstLine,
+    .secondLine,
+    .thirdLine,
+    .ForthLine {
+        flex-direction: column; 
+         text-align: center; 
+        flex-grow:4; 
+        border: 2px solid red;
+    } */
+}
+
+@media screen and (max-width:582px) {
+    .overlay {
+        /* margin: 90px 40px 0 20px; */
+        width: 520px;
+    }
+
+    /* .firstLine,.secondLine,.thirdLine,.ForthLine{
+        flex-direction: column;
+        text-align: center;
+    } */
+}
+
+@media screen and (max-width:552px) {
+    .overlay {
+        /* margin: 90px 40px 0 20px; */
+        width: 495px;
+    }
+
+    /* .firstLine,.secondLine,.thirdLine,.ForthLine{
+        flex-direction: column;
+        text-align: center;
+    } */
+}
+
+@media screen and (max-width:532px) {
+    .overlay {
+        /* margin: 90px 40px 0 20px; */
+        width: 495px;
+    }
+
+    /* .firstLine,.secondLine,.thirdLine,.ForthLine{
+        flex-direction: column;
+        text-align: center;
+    } */
+}
+
+@media screen and (max-width:520px) {
+    .overlay {
+        margin: 250px 40px 0 20px;
+        width: 495px;
+    }
+
+}
+
+@media screen and (max-width:560px) {
+    .overlay {
+        margin: 250px 40px 0 20px;
+        width: 495px;
+    }
+
+    .remark1 {
+        width: 451px;
+    }
+
+    .remark2 {
+        width: 451px;
+    }
+
+}
+
+@media screen and (max-width:500px) {
+    .overlay {
+        /* margin: 90px 40px 0 20px; */
+        width: 495px;
+    }
+}
+
+
+
+
+
+@media screen and (max-width:760px) {
+    .inputSmall {
+        width: 140px;
+    }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2.75) {}
+
+/*  
+.flagged {
+    margin-left: 5px;
+}  */
+.qualified {
+    margin-right: 15px;
+}
+
+.selectLeadSource {
+    width: 170px;
+}
+
+footer {
+    margin-top: 20px;
+    background: black;
+    text-align: center;
+    color: white;
+}
+
+/* ########### for mobile screen ########### */
+@media screen and (max-width:395px) {
+    .overlay {
+        margin: 290px 45px 0 20px;
+        width: 360px;
+    }
+
+    .remark1,
+    .remark2 {
+        width: 335px
+    }
+
+    footer {
+        margin-top: 20px;
+        background: black;
+        text-align: center;
+        color: white;
+        font-size: 10px;
+    }
+
+    #Age,
+    #Children,
+    #Adults {
+        width: 100px
+    }
+
+    #TravelDate,
+    #TravelEndDate {
+        width: 100px;
+        display: inline-block;
+    }
+
+    .Ted {
+        margin: 0;
+    }
+
+    .firstLine p,
+    .firstLine label {
+        font-size: 19px;
+    }
+
+    .secondLine label {
+        font-size: 18px;
+        /* margin-bottom: 10px; */
+    }
+
+    .thirdLine label {
+        font-size: 18px;
+    }
+
+    .firstLine,
+    .secondLine {
+        padding: 0;
+    }
+
+    #Source,
+    #Destination {
+        width: 158px;
+        margin-bottom: 20px;
+    }
+
+    #TravelDate,
+    #TravelEndDate {
+        width: 155px;
+        margin-bottom: 20px;
+    }
+
+    .tent {
+        margin: 0;
+        margin-bottom: 20px;
+    }
+
+    #TravelDate {
+        margin-right: 13px;
+    }
+
+    #quali {
+        margin-right: 60px;
+    }
+
+    .sts,
+    .slectser,
+    .rmks {
+        font-size: 18px !important;
+    }
+
+    .fs {
+        font-size: 15px;
+    }
+
+    .leadId,
+    .leadMarks {
+        margin-bottom: 20px;
+    }
+
+    .contact,
+    .ldown {
+        margin-top: 20px;
+    }
+
+    textarea:focus {
+        outline: none;
+    }
+}
+
+.mainHeadingLeadManagment {
+    border-bottom: #FFCF53;
+}
+
+#Age,
+#Children,
+#Adults {
+    width: 100px;
+    margin-bottom: 20px;
+}
+
+textarea:focus {
+    outline: none;
+    /* Remove the focus outline */
+}
+
+
+.firstLineHeadings,
+.rmks {
+    color: #FFBA08 !important;
+}
+
+.mainHeadingLeadManagment {
+    color: #FFBA08 !important;
+}

@@ -122,7 +122,7 @@
                         <form:input path="sourceName" name="sourceName" id="sourceName" class="inf"  />
 						<form:hidden path = "source" />
                         <font color="red">
-                            <form:errors path="sourceName" htmlEscape="false" />
+                            <form:errors cssClass = "error" path="sourceName" htmlEscape="false"  style="font-size:13px;font-weight:bold"/>
                         </font>
                     </div>
                     <div class="box2 box">
@@ -131,7 +131,7 @@
                         <form:input path="destinationName" name="destinationName" id="destinationName" class="inf"  />
                         <form:hidden path = "destination" />
                         <font color="red">
-                            <form:errors path="destinationName" cssClass="error" htmlEscape="false" />
+                            <form:errors path="destinationName" cssClass="error" htmlEscape="false" style="font-size: 13px;font-weight:bold"/>
                         </font>
                     </div>
                     <!-- <sec:authorize access="hasAnyRole('ADMIN','LEAD_MANAGER')">
@@ -153,11 +153,11 @@
                        <form:checkbox path="flagged" id="flag" />
                         <label for="flag">Flagged</label>
                     </div>
-                    <div class="l2Box1 box">
+                    <div class="l2Box1 box" style="margin-right:22px">
                         <label for="id">Lead id</label> <br>
-                        <form:input path="leadId" type="number" min="0" size="35" value="" id="id" class="inf" placeholder="Lead Number"/>
+                        <form:input path="leadId" type="number" min="0" size="35" value="" id="id" class="inf" placeholder="Lead Number" />
                     </div>
-                    <div class="l2Box2 box">
+                    <div class="l2Box2 box contactName">
                         <label for="cn">Contact Name</label> <br>
                         <form:input path="contactName"  id="contactName" name="contactName" size="35" style="width:200px;" placeholder="Contact Name" class="inf" />
                         <input type="hidden" name="contactId" value="0" />
@@ -194,9 +194,9 @@
 							<form:option value="0" label="Select Date Criteria" class="service-small"/>
 							<form:option value="1" label="Creation Date" class="service-small"/>
 							<form:option value="2" label="Travel Date" class="service-small"/>
-						</form:select>
+						</form:select> <br>
                         <font color="red">
-                            <form:errors path="dateCriteria" cssClass="error" htmlEscape="false" />
+                            <form:errors path="dateCriteria" cssClass="error" htmlEscape="false"  style="font-size: 13px;font-weight:bold"/>
                         </font>
                     </div>
                     <div class="l3Box2 box fromBox">

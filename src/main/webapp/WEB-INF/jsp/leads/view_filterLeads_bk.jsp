@@ -261,7 +261,7 @@
 					<form:option value="2" label="Travel Date" class="service-small"/>
 				</form:select>
 				 </div>
-				 <font color="red"> <form:errors path="dateCriteria" cssClass="error" htmlEscape="false" /></font>
+				 <font color="yellow"> <form:errors path="dateCriteria" cssClass="error" htmlEscape="false" /></font>
 	        </td>
 	        <td><form:input path="startDate" type="date"/></td>
 	        <td><form:input path="endDate" type="date" />
