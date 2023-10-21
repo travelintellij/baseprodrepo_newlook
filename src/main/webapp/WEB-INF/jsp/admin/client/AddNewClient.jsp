@@ -1,374 +1,348 @@
 <!DOCTYPE html>
-<jsp:include page="../../menu/MenuBuilder.jsp" />  
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<html lang="en">
+<jsp:include page="../../menu/MenuBuilder.jsp" />
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
-
-<html>
 <head>
-
-<script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
-<script	src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
-<link href="<c:url value="/resources/core/main.css" />" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
+	<script src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
+    <title>Add new client</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 
 <style>
-table {
-	  width: 100%;
-	  border-collapse: collapse;
-	  border: 1px solid #38678f;
-	  //margin: 5px auto;
-	  background: white;
-	}
-	
-	th {
-	  background: #D33F14;
-	  width: 50%;
-	  font-weight: heavy;
-	  text-shadow: 0 1px 0 #38678f;
-	  color: white;
-	  border: 1px solid #38678f;
-	  box-shadow: inset 0px 1px 2px #568ebd;
-	  transition: all 0.2s;
-	  
-	}
-	tr {
-	  border-bottom: 1px solid #cccccc;
-	}
-	
-	td {
-	  border-right: 1px solid #cccccc;
-	  padding: 5px;
-	  transition: all 0.2s;
-	  text-align: center;
-	}
-	
-	.heavyTable {
-	  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-	  animation: float 5s infinite;
-	}
-	input[type="radio"] {
-		display: inline-block;
-		opacity: 1;
-		width: 1em;
-		z-index: -1;
-	}
-
-select {
-	appearance: none;
-	outline: 0;
-	background: lightblue;
-	background-image: none;
-	width: 80%;
-	height: 100%;
-	color: black;
-	cursor: pointer;
-	border: 1px solid black;
-	border-radius: 3px;
-	text-indent: 2px;
-}
-
-.select {
-	position: relative;
-	display: block;
-	height: 2.5em;
-	line-height: 3;
-	overflow: hidden;
-	border-radius: .25em;
-	padding-bottom: 10px;
-	padding-top: 10px;
-}
-
-.select option.service-small {
-	font-size: 20px;
-	padding: 25px;
-	background: lightgreen;
-}
-
-
-input[type=button], input[type=submit], input[type=reset] {
-	background-color: #4CAF50;
-	border: none;
-	color: white;
-	padding: 16px 32px;
-	text-decoration: none;
-	margin: 4px 2px;
-	cursor: pointer;
-}
-	</style>
-</head>
-<br>
-<h2 align="center">Add New Client</h2>
-<div align="center"><b><font color="green" > ${Success} </font><font color="red"> ${Error}</font> </b></div>
-	<body style="background-color: creamwhite;">
-	<form:form method="post" action="create_create_admin_client"	modelAttribute="CLIENT_OBJ" >
-	<table>
-		<tr>
-			<td  style="width:40%;">
-				<table>
-				<tr>
-					<th>Client Name</th>
-					<td><input class="contact" type="text" name="clientName" value="${CLIENT_OBJ.clientName}" required/><br>
-					<font color="red"><form:errors path="clientName" cssClass="error" /></font></td>
-				</tr>
-				<tr>
-					<th>Client Address</th>
-					<td><textarea rows="3" cols="50" name="address" maxlength="250">${CLIENT_OBJ.address}</textarea><br>
-					<font color="red"><form:errors path="address" cssClass="error" /></font></td>
-				</tr>
-				<tr>
-					<th>City</th>
-					<td><input type="text" name="cityName" id="cityName" size="35" value="${CLIENT_OBJ.cityName}"/> 
-					<input type="hidden" name="cityId" value="${CLIENT_OBJ.cityId}" /></td>
-				</tr>
-				<tr>
-					<th>Country</th>
-					<td><input type="text" name="countryName" id="countryName" size="35" value="${CLIENT_OBJ.countryName}" /> 
-					<input type="hidden" name="countryId" value="${CLIENT_OBJ.countryId}" /></td>
-				</tr>
-				<tr>
-					<th>Email</th>
-					<td><input class="contact" type="text" name="email" value="${CLIENT_OBJ.email}" /><br>
-					<font color="red"><form:errors path="email" cssClass="error" /></font></td>
-				</tr>
-				<tr>
-					<th>Mobile</th>
-					<td><input class="contact" type="number" name="mobile" style="height:30px;" step="1" value="${CLIENT_OBJ.mobile}" /><br>
-					<font color="red"><form:errors path="mobile" cssClass="error" /></font></td>
-				</tr>
-				<tr>
-					<th>Phone</th>
-					<td><input class="contact" type="number" name="phone" style="height:30px;" step="1" value="${CLIENT_OBJ.phone}" /><br>
-					<font color="red"><form:errors path="phone" cssClass="error" /></font></td>
-				</tr>
-				<tr><td colspan="2">&nbsp;</td></tr>
-				</table>
-			</td>
-			<td  style="width:40%;">
-				<table>
-				<tr>
-					<th>Company Details</th>
-					<td><textarea rows="3" cols="50" name="companyDetails" maxlength="250">${CLIENT_OBJ.companyDetails}</textarea><br>
-					<font color="red"><form:errors path="companyDetails" cssClass="error" /></font></td>
-				</tr>
-				<tr>
-					<th>Referred By</th>
-					<td><input class="contact" type="text" name="referredBy" value="${CLIENT_OBJ.referredBy}"  /><br>
-					<font color="red"><form:errors path="referredBy" cssClass="error" /></font></td>
-				</tr>
-				<tr>
-					<th>GST Details</th>
-					<td><input class="contact" type="text" name="gstDetails" value="${CLIENT_OBJ.gstDetails}" /><br>
-					<font color="red"><form:errors path="gstDetails" cssClass="error" /></font></td>
-				</tr>
-				<tr>
-					<th>Bank Details</th>
-					<td><textarea rows="3" cols="50" name="bankDetails" maxlength="250">${CLIENT_OBJ.bankDetails}</textarea><br>
-					<font color="red"><form:errors path="bankDetails" cssClass="error" /></font></td>
-				</tr>
-				<tr>
-					<th>Passport Number</th>
-					<td><input class="contact" type="text" name="passportNumber" value="${CLIENT_OBJ.passportNumber}" /> </td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<table>
-						<tr>
-							<th>Passport Expiry</th>
-							<th>DOB</th>
-							<th>DOA</th>
-						</tr>
-						<tr>
-							<td><input type="date" name="passportExpiry" value="${CLIENT_OBJ.passportExpiry}" /></td>
-							<td><input type="date" name="birthDate" value="${CLIENT_OBJ.birthDate}"/></td>
-							<td><input type="date" name="anniversaryDate" value="${CLIENT_OBJ.anniversaryDate}"/></td>
-
-						</tr>
-						</table>
-					</td>
-				</tr>
-				<tr>
-					<th>Remarks</th>
-					<td><textarea rows="3" cols="50" name="remarks" maxlength="250">${CLIENT_OBJ.remarks}</textarea><br>
-					<font color="red"><form:errors path="remarks" cssClass="error" /></font></td>
-				</tr>
-				</table>
-				</td>
-				
-				<td  style="width:20%;"> 
-				<table>
-					<tr><th colspan="2" style="background-color:steelblue;">Personal Preferences</th></tr>
-					
-					<tr><th style="background-color:steelblue;">Hotel Preferences </th> 
-					<td>
-						<div class="select">
-							<select id = "type" name = "hotelPref" style="width:120px;">
-							   <option class="service-small" value = "0">  Please Select  </option>
-							   <c:forEach var = "i" begin = "1" end = "5">
-							   		<c:if test="${i != CLIENT_OBJ.hotelPref }">
-							   			<option class="service-small" value = "${i}"> <c:out value = "${i}"/> Star</option>
-							   		</c:if>
-							   		<c:if test="${i == CLIENT_OBJ.hotelPref }">
-    	     								<option class="service-small" value = "${i}" selected> <c:out value = "${i}"/> Star</option>
-    	     						</c:if>
-							   </c:forEach>
-							</select>
-						</div>
-					</td>
-					</tr>
-					
-					<tr>
-						<th style="background-color:steelblue;"> Cost Savy </th>
-						<td>
-							<div class="select">
-								<select id = "type" name = "costSavvy" style="width:120px;">
-									<option class="service-small" value = "0">  Please Select  </option>
-									<c:forEach var = "i" begin = "1" end = "10">
-    	     							<c:if test="${i != CLIENT_OBJ.costSavvy }">
-    	     								<option class="service-small" value = "${i}"> <c:out value = "${i}"/></option>
-    	     							</c:if>
-    	     							<c:if test="${i == CLIENT_OBJ.costSavvy }">
-    	     								<option class="service-small" value = "${i}" selected> <c:out value = "${i}"/></option>
-    	     							</c:if>
-      								</c:forEach>
-      							</select>
-      						</div>
-									(Scale 1 to 10) 
-						</td>
-						</tr>
-					
-					
-					<tr><th style="background-color:steelblue;"> Service Savvy</th>
-					 <td>
-							<div class="select">
-								<select id = "type" name = "serviceSavvy" style="width:120px;">
-									<option class="service-small" value = "0">  Please Select  </option>
-									<c:forEach var = "i" begin = "1" end = "5">
-    	     							<c:if test="${i != CLIENT_OBJ.serviceSavvy }">
-    	     								<option class="service-small" value = "${i}"> <c:out value = "${i}"/></option>
-    	     							</c:if>
-    	     							<c:if test="${i == CLIENT_OBJ.serviceSavvy }">
-    	     								<option class="service-small" value = "${i}" selected> <c:out value = "${i}"/></option>
-    	     							</c:if>
-      								</c:forEach>
-      							</select>
-      						</div>
-      						(Scale 1 to 5)
-					</td>
-					</tr>
-					<tr><th style="background-color:steelblue;"> Food Pref.</th>
-					<td>
-						<div class="select">
-							<select id = "type" name = "foodPref" style="width:120px;">
-							   	<c:if test="${CLIENT_OBJ.foodPref eq 'nveg'}">
-							   		<option class="service-small" value = "veg" > Veg</option>
-							   		<option class="service-small" value = "nveg" selected> Non-Veg</option>
-							   	</c:if>
-							   	<c:if test="${CLIENT_OBJ.foodPref ne 'nveg'}">
-							   		<option class="service-small" value = "veg" selected> Veg</option>
-							   		<option class="service-small" value = "nveg"> Non-Veg</option>
-							   	</c:if>
-							   	
-							</select>
-						</div>					
-					</td>
-					</tr>
-					<tr><th style="background-color:steelblue;"> Aggressiveness</th>
-					 <td>
-							<div class="select">
-								<select id = "type" name = "aggressiveness" style="width:120px;">
-									<option class="service-small" value = "0">  Please Select  </option>
-									<c:forEach var = "i" begin = "1" end = "5">
-    	     							<c:if test="${i != CLIENT_OBJ.aggressiveness }">
-    	     								<option class="service-small" value = "${i}"> <c:out value = "${i}"/></option>
-    	     							</c:if>
-    	     							<c:if test="${i == CLIENT_OBJ.aggressiveness }">
-    	     								<option class="service-small" value = "${i}" selected> <c:out value = "${i}"/></option>
-    	     							</c:if>
-      								</c:forEach>
-      							</select>
-      						</div>
-      						(Scale 1 to 5)
-					</td>
-					</tr>
-					
-					<tr><th style="background-color:steelblue;">Payment Record</th>
-					 <td>
-							<div class="select">
-								<select id = "type" name = "paymentRating" style="width:120px;">
-									<option class="service-small" value = "0">  Please Select  </option>
-									<c:forEach var = "i" begin = "1" end = "5">
-    	     							<c:if test="${i != CLIENT_OBJ.paymentRating }">
-    	     								<option class="service-small" value = "${i}"> <c:out value = "${i}"/></option>
-    	     							</c:if>
-    	     							<c:if test="${i == CLIENT_OBJ.paymentRating }">
-    	     								<option class="service-small" value = "${i}" selected> <c:out value = "${i}"/></option>
-    	     							</c:if>
-      								</c:forEach>
-      							</select>
-      						</div>
-      						(Scale 1 to 5)
-					</td>
-					</tr>
-				</table>
-				</td>
-			</tr>
-				 
-			<tr>
-					<td colspan="3" style="text-align: center;"><input type="submit" value="Add Client" style="background-color: green;">
-					<a href="view_form_admin_search_client"><input type="button" style="width: 140px;background-color: blue;" value="Client Listing"></a> 
-					 </td>
-			</tr>
-		</table>
-	</form:form>
-<script>
-	$('#cityName').autocomplete({
-		serviceUrl : '${pageContext.request.contextPath}/getCityList',
-		paramName : "cityName",
-		delimiter : ",",
-		onSelect : function(suggestion) {
-			cityID = suggestion.data;
-			id = cityID;
-			jQuery("#destinationId").val(cityID);
-			$('input[name=cityId]').val(id);
-			return false;
-		},
-		transformResult : function(response) {
-			return {
-				suggestions : $.map($.parseJSON(response), function(item) {
-					return {
-						value : item.cityName,
-						data : item.destinationId
-					};
-				})
-
-			};
+.autocomplete-suggestions { border: 1px solid #999; background: red;overflow-y:auto}
+		.autocomplete-suggestion {padding: 2px 5px;color:white; background: black;overflow-y: auto;overflow-y:auto}
+		.autocomplete-selected { background: #F0F0F0;overflow-y:auto} 
+		.autocomplete-suggestions strong { font-weight: normal; color:#FABA08;overflow-y:auto}
+		.autocomplete-group { padding: 2px 5px;overflow-y:auto}
+		.autocomplete-group strong { display: block; border-bottom: 1px solid #000;  background: black ; color:black overflow-y:auto}
+		.autocomplete-selected:hover{
+		color:black
 		}
-	});
-	
-	
-	$('#countryName').autocomplete({
-		serviceUrl: '${pageContext.request.contextPath}/getCountryList',
-		paramName: "countryName",
-		delimiter: ",",
-		onSelect: function(suggestion) {
-	        cityID = suggestion.data;
-	        id=cityID;
-	        jQuery("#countryId").val(cityID);
-	        $('input[name=countryId]').val(id);
-	        return false;
-	    },
-		transformResult: function(response) {
-	        return {
-	            suggestions: $.map($.parseJSON(response), function(item) {
-	            	return { value: item.countryName, data: item.destinationId };
-	            })
-	            
-	        };
-	    }
-	});
-</script>
+</style>
+
+<body
+    style="background: url(${pageContext.request.contextPath}/resources/images/revamped/add_new_client.jpg);background-size: cover; background-repeat: no-repeat; background-position: center center;background-attachment: fixed;">
+    <div class="autocomplete-suggestions" style="display:none">
+    <div class="autocomplete-group" ><strong>NHL</strong></div>
+    <div class="autocomplete-suggestion autocomplete-selected" >...</div>
+    <div class="autocomplete-suggestion">...</div>
+    <div class="autocomplete-suggestion">...</div>
+</div>
+    <div class="container">
+        <div align="center"><b>
+                <font color="green"> ${Success} </font>
+                <font color="red"> ${Error}</font>
+            </b></div>
+        <div class="anc-wrapper">
+            <h1 class="anc-heading">Add New Client</h1>
+            <form:form method="post" action="create_create_admin_client" modelAttribute="CLIENT_OBJ">
+                <div class="anc-fir-li">
+                    <div class="anc-cn anc-com">
+                        <label for="cn">Client Name</label>
+                        <input class="contact" type="text" name="clientName" value="${CLIENT_OBJ.clientName}" required
+                            id="cn" />
+                        <font color="red">
+                            <form:errors path="clientName" cssClass="error" />
+                        </font>
+                    </div>
+                     <div class="anc-cn anc-com">
+                        <label for="country">Country</label><br>
+                        <input type="text" name="countryName" id="countryName" size="35"
+                            value="${CLIENT_OBJ.countryName}" id="country" />
+                        <input type="hidden" name="countryId" value="${CLIENT_OBJ.countryId}" />
+                    </div>
+                   
+                    <div class="anc-city anc-com">
+                        <label for="cityName">City</label>
+                        <input type="text" name="cityName" id="cityName" size="35" value="${CLIENT_OBJ.cityName}" />
+                        <input type="hidden" name="cityId" value="${CLIENT_OBJ.cityId}" />
+                    </div>
+                    
+                      <div class="anc-rb anc-com">
+                        <label for="rb">Refered by</label>
+                        <input class="contact" type="text" name="referredBy" value="${CLIENT_OBJ.referredBy}" id="rb" />
+                        <font color="red">
+                            <form:errors path="referredBy" cssClass="error" />
+                        </font>
+                    </div>
+                   
+                </div>
+                <div class="anc-sec-li">
+                   <div class="anc-phone anc-com">
+                        <label for="phone">Phone</label><br>
+                        <input class="contact" type="number" name="phone" style="height:30px;" step="1"
+                            value="${CLIENT_OBJ.phone}" id="phone" />
+                        <font color="red">
+                            <form:errors path="phone" cssClass="error" />
+                        </font>
+                    </div>
+                    <div class="anc-mail anc-com">
+                        <label for="email">Email</label><br>
+                        <input class="contact" type="text" name="email" value="${CLIENT_OBJ.email}" id="email" />
+                        <font color="red">
+                            <form:errors path="email" cssClass="error" />
+                        </font>
+                    </div>
+                   
+                    <div class="anc-mobile anc-com">
+                        <label for="mobile">Mobile</label><br>
+                        <input class="contact" type="number" name="mobile" style="height:30px;" step="1"
+                            value="${CLIENT_OBJ.mobile}" id="mobile" />
+                        <font color="red">
+                            <form:errors path="mobile" cssClass="error" />
+                        </font>
+                    </div>
+                </div>
+                <div class="anc-third-li">
+                    <div class="anc-passport anc-com">
+                        <label for="Passport">Passport Number</label><br>
+                        <input class="contact" type="text" name="passportNumber" value="${CLIENT_OBJ.passportNumber}"
+                            id="Passport" />
+                    </div>
+                    <div class="anc-passex anc-com">
+                        <label for="passportexpiry">Passport Expiry</label><br>
+                        <input type="date" name="passportExpiry" value="${CLIENT_OBJ.passportExpiry}"
+                            id="passportexpiry" />
+                    </div>
+                    <div class="anc-DOB anc-com">
+                        <label for="DOB">DOB</label><br>
+                        <input type="date" name="birthDate" value="${CLIENT_OBJ.birthDate}" id="DOB" />
+                    </div>
+                    <div class="anc-DOA anc-com">
+                        <label for="DOA">DOA</label><br>
+                        <input type="date" name="anniversaryDate" value="${CLIENT_OBJ.anniversaryDate}" id="DOA" />
+                    </div>
+                </div>
+                <div class="anc-forth-li">
+                    <div class="anc-con-del anc-com-ta">
+                        <label for="company-des">Company Details</label><br>
+                        <textarea rows="1" cols="5" name="companyDetails"
+                            maxlength="250">${CLIENT_OBJ.companyDetails}</textarea>
+                        <font color="red">
+                            <form:errors path="companyDetails" cssClass="error" />
+                        </font>
+                    </div>
+                     <div class="anc-gst anc-com">
+                        <label for="gst">GST Details</label>
+                        <input class="contact" type="text" name="gstDetails" value="${CLIENT_OBJ.gstDetails}"
+                            id="gst" />
+                        <font color="red">
+                            <form:errors path="gstDetails" cssClass="error" />
+                        </font>
+                    </div>
+                    <div class="anc-bank-des anc-com-ta">
+                        <label for="bank-des">Bank Details</label><br>
+                        <textarea rows="2" cols="50" name="bankDetails"
+                            maxlength="250">${CLIENT_OBJ.bankDetails}</textarea>
+                        <font color="red">
+                            <form:errors path="bankDetails" cssClass="error" />
+                        </font>
+                    </div>
+                </div>
+                <div class="anc-fif-li">
+                    <div class="anc-con-ca anc-com-ta">
+                        <label for="cli-add">Client Address</label><br>
+                        <textarea rows="2" cols="50" name="address" maxlength="250">${CLIENT_OBJ.address}</textarea>
+                        <font color="red">
+                            <form:errors path="address" cssClass="error" />
+                        </font>
+                    </div>
+                    <div class="anc-bank-des anc-com-ta">
+                        <label for="remarks">Remarks</label><br>
+                        <textarea rows="2" cols="50" name="remarks" maxlength="250">${CLIENT_OBJ.remarks}</textarea>
+                        <font color="red">
+                            <form:errors path="remarks" cssClass="error" />
+                        </font>
+                    </div>
+                </div>
+        </div>
+        <div class="anc-personal-pref">
+            <h2 class="anc-pp">Personal Prefrences</h2>
+            <div class="pp-wrapper">
+                <div class="pp-d1">
+                    <label for="">Hotel Preferences</label><br>
+                    <div class="anc-pref">
+                        <select id="type" name="hotelPref" style="width:120px;">
+                            <option class="service-small" value="0"> Please Select </option>
+                            <c:forEach var="i" begin="1" end="5">
+                                <c:if test="${i != CLIENT_OBJ.hotelPref }">
+                                    <option class="service-small" value="${i}">
+                                        <c:out value="${i}" /> Star
+                                    </option>
+                                </c:if>
+                                <c:if test="${i == CLIENT_OBJ.hotelPref }">
+                                    <option class="service-small" value="${i}" selected>
+                                        <c:out value="${i}" /> Star
+                                    </option>
+                                </c:if>
+                            </c:forEach>
+                        </select>
+                    </div>
+                </div>
+                <div class="pp-d1">
+                    <label for="">Cost Savy</label><br>
+                    <div class="anc-pref">
+                        <select id="type" name="costSavvy" style="width:120px;">
+                            <option class="service-small" value="0"> Please Select </option>
+                            <c:forEach var="i" begin="1" end="10">
+                                <c:if test="${i != CLIENT_OBJ.costSavvy }">
+                                    <option class="service-small" value="${i}">
+                                        <c:out value="${i}" />
+                                    </option>
+                                </c:if>
+                                <c:if test="${i == CLIENT_OBJ.costSavvy }">
+                                    <option class="service-small" value="${i}" selected>
+                                        <c:out value="${i}" />
+                                    </option>
+                                </c:if>
+                            </c:forEach>
+                        </select>
+                    </div>
+                    <p style="margin-top: 5px;color:pink">(Scale 1 to 10)</p>
+                </div>
+                <div class="pp-d1">
+                    <label for="">Service Savvy</label><br>
+                    <div class="anc-pref">
+                        <select id="type" name="serviceSavvy" style="width:120px;">
+                            <option class="service-small" value="0"> Please Select </option>
+                            <c:forEach var="i" begin="1" end="5">
+                                <c:if test="${i != CLIENT_OBJ.serviceSavvy }">
+                                    <option class="service-small" value="${i}">
+                                        <c:out value="${i}" />
+                                    </option>
+                                </c:if>
+                                <c:if test="${i == CLIENT_OBJ.serviceSavvy }">
+                                    <option class="service-small" value="${i}" selected>
+                                        <c:out value="${i}" />
+                                    </option>
+                                </c:if>
+                            </c:forEach>
+                        </select>
+                    </div>
+                    <p style="margin-top: 5px;color:pink">(Scale 1 to 5)</p>
+                </div>
+                <div class="pp-d1">
+                    <label for="">Food Pref.</label><br>
+                    <div class="anc-pref">
+                        <select id="type" name="foodPref" style="width:120px;">
+                            <c:if test="${CLIENT_OBJ.foodPref eq 'nveg'}">
+                                <option class="service-small" value="veg"> Veg</option>
+                                <option class="service-small" value="nveg" selected> Non-Veg</option>
+                            </c:if>
+                            <c:if test="${CLIENT_OBJ.foodPref ne 'nveg'}">
+                                <option class="service-small" value="veg" selected> Veg</option>
+                                <option class="service-small" value="nveg"> Non-Veg</option>
+                            </c:if>
+                        </select>
+                    </div>
+                </div>
+                <div class="pp-d1">
+                    <label for="">Aggressiveness</label><br>
+                    <div class="anc-pref">
+                        <select id="type" name="aggressiveness" style="width:120px;">
+                            <option class="service-small" value="0"> Please Select </option>
+                            <c:forEach var="i" begin="1" end="5">
+                                <c:if test="${i != CLIENT_OBJ.aggressiveness }">
+                                    <option class="service-small" value="${i}">
+                                        <c:out value="${i}" />
+                                    </option>
+                                </c:if>
+                                <c:if test="${i == CLIENT_OBJ.aggressiveness }">
+                                    <option class="service-small" value="${i}" selected>
+                                        <c:out value="${i}" />
+                                    </option>
+                                </c:if>
+                            </c:forEach>
+                        </select>
+                    </div>
+                    <p style="margin-top: 5px;color:pink">(Scale 1 to 5)</p>
+                </div>
+                <div class="pp-d1">
+                    <label for="">Payment Record</label><br>
+                    <div class="anc-pref">
+                        <select id="type" name="paymentRating" style="width:120px;">
+                            <option class="service-small" value="0"> Please Select </option>
+                            <c:forEach var="i" begin="1" end="5">
+                                <c:if test="${i != CLIENT_OBJ.paymentRating }">
+                                    <option class="service-small" value="${i}">
+                                        <c:out value="${i}" />
+                                    </option>
+                                </c:if>
+                                <c:if test="${i == CLIENT_OBJ.paymentRating }">
+                                    <option class="service-small" value="${i}" selected>
+                                        <c:out value="${i}" />
+                                    </option>
+                                </c:if>
+                            </c:forEach>
+                        </select>
+                    </div>
+                    <p style="margin-top: 5px;color:pink">(Scale 1 to 10)</p>
+                </div>
+            </div>
+            <div class="anc-btns">
+                <input type="submit" value="Add Client" style="border: none;outline: none;
+                ">
+                <a href="view_form_admin_search_client">Client Listing</a>
+            </div>
+        </div>
+    </div>
+    </form:form>
+    <script>
+        $('#cityName').autocomplete({
+            serviceUrl: '${pageContext.request.contextPath}/getCityList',
+            paramName: "cityName",
+            delimiter: ",",
+            onSelect: function (suggestion) {
+                cityID = suggestion.data;
+                id = cityID;
+                jQuery("#destinationId").val(cityID);
+                $('input[name=cityId]').val(id);
+                return false;
+            },
+            transformResult: function (response) {
+                return {
+                    suggestions: $.map($.parseJSON(response), function (item) {
+                        return {
+                            value: item.cityName,
+                            data: item.destinationId
+                        };
+                    })
+
+                };
+            }
+        });
+
+
+        $('#countryName').autocomplete({
+            serviceUrl: '${pageContext.request.contextPath}/getCountryList',
+            paramName: "countryName",
+            delimiter: ",",
+            onSelect: function (suggestion) {
+                cityID = suggestion.data;
+                id = cityID;
+                jQuery("#countryId").val(cityID);
+                $('input[name=countryId]').val(id);
+                return false;
+            },
+            transformResult: function (response) {
+                return {
+                    suggestions: $.map($.parseJSON(response), function (item) {
+                        return { value: item.countryName, data: item.destinationId };
+                    })
+
+                };
+            }
+        });
+    </script>
 
 </body>
-</html>
 
+</html>

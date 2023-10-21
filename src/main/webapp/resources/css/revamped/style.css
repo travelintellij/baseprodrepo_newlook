@@ -841,3 +841,408 @@ footer {
     padding: 4px 6px;
     border-radius: 6px;
 }
+
+/* ########### add new Client #################### */
+
+.anc-wrapper {
+    color: white;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 0.689);
+    padding: 30px 10px 30px 30px;
+    border-radius: 10px;
+    margin-top: 170px;
+}
+
+.anc-personal-pref {
+    color: white;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 0.689);
+    padding: 30px 10px 30px 30px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.anc-heading {
+    font-size: 30px;
+    color: #FFBA08;
+    margin-bottom: 10px;
+}
+
+.anc-pp {
+    font-size: 17px;
+    color: #FFBA08;
+    margin-bottom: 10px;
+}
+
+.anc-fir-li,
+.anc-sec-li,
+.anc-third-li {
+    display: flex;
+    justify-content: flex-start;
+    text-align: start;
+    margin-bottom: 5px;
+}
+
+.anc-fir-li input,
+.anc-sec-li input,
+.anc-third-li input {
+    width: 90%;
+}
+
+.anc-com {
+    width: 307px;
+}
+
+.anc-forth-li,
+.anc-fif-li {
+    display: flex;
+    justify-content: space-between;
+}
+
+.anc-com-ta {
+    text-align: start;
+    width: 50%;
+}
+
+.anc-com-ta textarea {
+    width: 95%;
+}
+
+.pp-wrapper {
+    text-align: start;
+    display: flex;
+}
+
+.pp-wrapper input {
+    width: 90%;
+}
+
+.anc-btns a {
+    display: inline-block;
+    color: white;
+    width: auto;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: #ffb908cf;
+    color: black;
+    transition: all 0.3s ease-in-out;
+    margin-top: 20px;
+}
+
+.anc-btns input {
+    display: inline-block;
+    color: white;
+    width: auto;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: #ffb908cf;
+    color: black;
+    transition: all 0.3s ease-in-out;
+    margin-top: 20px;
+}
+
+.anc-btns input:hover {
+    background: #FFBA08;
+}
+
+.anc-btns a:hover {
+    cursor: pointer;
+    background: #FFBA08;
+}
+
+.anc-pref select {
+    width: 180px !important;
+    margin-right: 10px;
+}
+
+.anc-con-del{
+	width:275px
+}
+.anc-gst{
+	text-align: start;
+    padding-left: 16px;
+}
+.anc-gst input{
+width:261px
+}
+.anc-mail{
+	width: 290px;
+}
+.anc-phone,.anc-mobile{
+	width: 289px;
+}
+/* ###################### manage clients ########################## */
+
+
+.manage-client-wrapper {
+    color: white;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 0.689);
+    padding: 30px 10px 30px 30px;
+    border-radius: 10px;
+    margin-top: 170px;
+}
+
+.sc-first-li {
+    text-align: start;
+    display: flex;
+}
+
+.sc-first-li input {
+    width: 90%;
+}
+
+.sc-btns {
+    margin-left: 25px;
+}
+
+.sc-btns a {
+    display: inline-block;
+    color: white;
+    width: auto;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: #ffb908cf;
+    color: black;
+    transition: all 0.3s ease-in-out;
+    margin-top: 20px;
+    margin-left: 7px;
+}
+
+.sc-btns a:hover {
+    cursor: pointer;
+    background: #FFBA08;
+}
+
+.search-clients {
+    font-size: 30px;
+    color: #FFBA08;
+    margin-bottom: 10px;
+}
+
+.anc-active {
+    width: 263px !important;
+}
+
+.sc-table {
+    width: 100%;
+    text-align: center;
+
+}
+
+.sc-th {
+    width: 150px;
+}
+
+.search-clients-sec {
+    color: white;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 0.689);
+    padding: 30px 10px 30px 30px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.search-clients-sec th {
+    color: #FABA08;
+    border: none;
+    margin-bottom: 20px;
+    font-size: 19px;
+}
+
+.ul-anc {
+    display: none;
+    padding: 5px;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.885);
+    border-radius: 10px;
+    width: 160px;
+    right: -160px;
+    transition: all 0.3s ease-in-out;
+    top: -1px;
+    z-index: 1;
+    padding: 10px
+}
+
+.ul-anc a {
+    color: white;
+}
+
+.ul-anc li {
+    border-bottom: 1px solid #FABA08;
+}
+
+.anc-i {
+    position: relative;
+    color: #FABA08;
+}
+
+.anc-i:hover {
+    cursor: pointer;
+    color: red;
+}
+
+.anc-i:hover .ul-anc {
+    display: block;
+}
+
+.pop-up-anc {
+    font-weight: normal;
+}
+
+.ul-anc ul li a:hover {
+    color: #FABA08;
+    /* font-size: medium */
+    font-size: 18px;
+}
+
+
+/* #################### Add New Supplier ######################### */
+
+.add-new-supplier-wrapper {
+    color: white;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 0.689);
+    padding: 30px 10px 30px 10px;
+    border-radius: 10px;
+    margin-top: 170px;
+}
+
+.ans-fir-li,
+.ans-sc-li {
+    display: flex;
+    justify-content: flex-start;
+    text-align: start;
+    margin-bottom: 5px;
+}
+
+.ansd1 {
+    width: 295px;
+}
+
+.ansd1 input {
+    width: 90%;
+}
+
+.ans-thir-li,
+.ans-for-li {
+    display: flex;
+}
+
+.ansd1-rem {
+    width: 590px;
+    text-align: start;
+}
+
+.ansd1-rem textarea {
+    width: 95%;
+}
+
+.inside-services input[type=checkbox] {
+    width: 18px;
+    height: 18px;
+}
+
+.ansd1-ser input {
+    padding-top: 10px;
+}
+
+.ansd1-ser {
+    display: flex;
+    align-items: center;
+}
+
+.ansd1-ser label {
+    margin-right: 5px;
+}
+
+.supp-sec {
+    display: flex;
+    justify-content: center;
+}
+
+.ans-btns a {
+    display: inline-block;
+    color: white;
+    width: auto;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: #ffb908cf;
+    color: black;
+    transition: all 0.3s ease-in-out;
+    margin-top: 20px;
+    margin-left: 7px;
+}
+
+.ans-btns a:hover {
+    cursor: pointer;
+    background: #FFBA08;
+}
+
+.ans-btns input {
+    display: inline-block;
+    color: white;
+    width: auto;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: #ffb908cf;
+    color: black;
+    transition: all 0.3s ease-in-out;
+    margin-top: 20px;
+    margin-left: 7px;
+}
+
+.ans-btns input:hover {
+    cursor: pointer;
+    background: #FFBA08;
+}
+#supp-name{
+	width: 248px;
+}
+.ans-comDel{
+	width: 263px;
+}
+.ans-gst{
+	margin-left: 31px;
+	text-align: start;
+}
+.ans-5-li{
+	display: flex;
+	justify-content: space-evenly;
+
+}
+.ans-left-sec{
+	
+	width: 50%;
+}
+.ans-right-sec{
+	width: 50%;
+}
+.inside-services{
+	display: flex;
+	flex-wrap: wrap;
+	align
+}
+.ansd1-ser{
+	width: 20%;
+	margin-left: 10px;
+}
+
+.flight-lab{
+	margin-right: 50px;
+}
