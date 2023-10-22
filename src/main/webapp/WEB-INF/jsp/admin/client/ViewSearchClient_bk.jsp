@@ -135,8 +135,8 @@ input[type=button], input[type=submit], input[type=reset] {
 		<c:set value="${CLIENTS_LIST}" var="clientList" />
 		<table>
 			<tr>
-				<th style="width:10%;"><a href="search_search_filtered_clients?sortBy=clientId&clientName=${clientName}&cityId=${cityId}&cityName=${cityName}&email=${email}&active=${active}" style="color:blue;">Client Id</a></th>
-				<th style="width:18%;">Client Name</th>
+				<th style="width:10%;"><a href="search_search_filtered_clients?sortBy=clientId&clientName=${clientName}&cityId=${cityId}&cityName=${cityName}&email=${email}&active=${active}">Client Id</a></th>
+				<th style="width:30%;color:green" class="vsc-cn">Client Name</th>
 				<th style="width:10%;">City</th>
 				<th style="width:12%;">Country</th>
 				<th style="width:15%;">Email</th>
@@ -146,6 +146,7 @@ input[type=button], input[type=submit], input[type=reset] {
 			</tr>
 			<c:forEach items="${clientList}" var="client">
 				<tr>
+				
 					<td style="width:10%;">${client.clientId }</td>
 					<td style="width:18%;">${client.clientName }</td>
 					<td style="width:10%;">${client.cityName }</td>
@@ -153,7 +154,7 @@ input[type=button], input[type=submit], input[type=reset] {
 					<td style="width:15%;">${client.email }</td>
 					<td style="width:10%;">${client.mobile }</td>
 					<td style="width:8%;">${client.active }</td>
-				
+					
 				
 				<td style="width:15%;">
 					

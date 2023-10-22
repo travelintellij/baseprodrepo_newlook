@@ -11,7 +11,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lead Followup</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style2.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
     <script src="https://kit.fontawesome.com/6f6addf9b0.js" crossorigin="anonymous"></script>
 </head>
 
@@ -58,7 +58,7 @@
     </div>
     <!-- ################## followup lead ################ -->
 
-    <div class="follow-up-main-tabel container">
+    <div class="follow-up-main-tabel container" style="margin-top:50px">
         <table>
             <tr>
                 <th>User</th>

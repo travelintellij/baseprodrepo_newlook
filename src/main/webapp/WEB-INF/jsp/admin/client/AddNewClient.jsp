@@ -41,9 +41,10 @@
                 <font color="green"> ${Success} </font>
                 <font color="red"> ${Error}</font>
             </b></div>
+                <form:form method="post" action="create_create_admin_client" modelAttribute="CLIENT_OBJ">
         <div class="anc-wrapper">
             <h1 class="anc-heading">Add New Client</h1>
-            <form:form method="post" action="create_create_admin_client" modelAttribute="CLIENT_OBJ">
+          
                 <div class="anc-fir-li">
                     <div class="anc-cn anc-com">
                         <label for="cn">Client Name</label>
@@ -293,8 +294,9 @@
                 <a href="view_form_admin_search_client">Client Listing</a>
             </div>
         </div>
+          </form:form>
     </div>
-    </form:form>
+  
     <script>
         $('#cityName').autocomplete({
             serviceUrl: '${pageContext.request.contextPath}/getCityList',

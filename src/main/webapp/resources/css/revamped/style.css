@@ -1107,7 +1107,9 @@ width:261px
     /* font-size: medium */
     font-size: 18px;
 }
-
+.vsc-cn{
+	border: 2px solid red;
+}
 
 /* #################### Add New Supplier ######################### */
 
@@ -1246,3 +1248,263 @@ width:261px
 .flight-lab{
 	margin-right: 50px;
 }
+
+
+
+/* #################### floowup lead ######################### */
+
+
+
+
+.follow-up-wrapper {
+    margin-top: 200px;
+    /* border: 2px solid red; */
+    padding: 30px 10px;
+    background: rgba(0, 0, 0, 0.716);
+    color: white;
+    border-radius: 10px;
+}
+
+.follow-up-time {
+    /* border: 2px solid orange; */
+    display: flex;
+    justify-content: space-between;
+}
+
+.follow-up-main-response {
+    /* border: 2px solid orange; */
+    display: flex;
+    justify-content: space-between;
+}
+
+.fwaction-taken textarea,
+.fwnext-todo textarea {
+    height: 50px;
+    width: 580px;
+    border-radius: 10px;
+}
+
+.fwaction-taken p,
+.fwnext-todo p {
+    margin: 0;
+    font-size: 21px;
+}
+
+.follow-up-p {
+    margin: 0;
+}
+
+.follow-up-p {
+    font-size: 21px;
+}
+
+.follow-up-next-action-time {
+    width: 582px;
+}
+
+.follow-up-btn {
+    text-align: center;
+}
+
+.follow-up-heading {
+    text-align: center;
+}
+
+.follow-up-heading h1 {
+    font-size: 30px;
+    color: #FFBA08;
+}
+
+.follow-up-main-form label {
+    font-size: 21px;
+}
+
+.follow-up-btn a {
+    display: inline-block;
+    color: white;
+    width: auto;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: #ffb908cf;
+    color: black;
+    transition: all 0.3s ease-in-out;
+    margin-top: 20px;
+}
+
+.follow-up-btn a:hover {
+    cursor: pointer;
+    background: #FFBA08;
+}
+
+/* ################ follow up tabel stying########### */
+
+.follow-up-main-tabel table {
+    color: white;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 0.689);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.follow-up-main-tabel table th {
+    color: #FABA08;
+    border: none;
+    margin-bottom: 20px;
+    font-size: 19px;
+}
+
+/* ################ quick view lead ########### */
+.quick-lead-view i {
+    color: white;
+    color: #FFBA08;
+}
+
+.follow-up-icon p {
+    display: inline-block;
+    color: #FFBA08;
+    font-weight: bold;
+}
+
+.quick-lead-view {
+    position: absolute;
+    top: 177px;
+    left: 152px;
+}
+
+.inside-quick-lead-view {
+    position: absolute;
+    top: 20px;
+    left: 7px;
+    padding: 10px 10px;
+    background: rgb(0, 0, 0);
+    color: white;
+    border-radius: 10px;
+    transition: all .5s ease-in-out;
+}
+
+.quick-lead-view p,
+.quick-lead-view label,
+.quick-lead-view h3,
+.quick-lead-view h1,
+.quick-lead-view h2 {
+    color: white;
+}
+
+.quick-lead-view i:hover {
+    cursor: pointer;
+}
+
+.inside-quick-lead-view {
+    color: black;
+    /* background: lightgoldenrodyellow; */
+}
+
+.follow-up-fl,
+.follow-up-f2,
+.follow-up-reqs {
+    display: flex;
+    justify-content: space-between;
+}
+
+.fu-box {
+    /* border: 2px solid red; */
+    width: 300px;
+}
+
+.follow-up-c1 input {
+    width: 21px;
+    height: 18px;
+}
+
+.follow-up-c1 label {
+    padding-bottom: 20px;
+}
+
+.follow-up-reqs {
+    height: 30px;
+}
+
+.inside-quick-lead-view h1 {
+    font-size: 30px;
+    color: #FFBA08;
+    text-align: center;
+}
+
+.follow-up-f3 h2 {
+    color: #FFBA08;
+}
+
+.follow-ups-remarks-qv h3 {
+    color: #FFBA08;
+}
+
+.fu-box label {
+    color: #FFBA08;
+}
+
+.inside-quick-lead-view {
+    transform: translateX(-140%);
+    opacity: 0;
+}
+
+.follw-up-cross {
+    position: relative;
+}
+
+.follw-up-cross {
+    color: red !important;
+    /* position: absolute;
+    right: 0; */
+}
+
+.fwtb:active+.inside-quick-lead-view {
+    transform: translateX(0);
+}
+
+.iqvl-cross:active .inside-quick-lead-view {
+    transform: translateX(0);
+}
+
+.qlv-text {
+    display: inline-block;
+}
+
+#show-fu-cb {
+    width: 23px;
+    height: 22px;
+    position: absolute;
+    cursor: pointer;
+}
+
+#show-fu-cb:checked~.inside-quick-lead-view {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.hamburgur-i-follow-up {
+    position: absolute;
+}
+
+.ham {
+    top: 10px;
+    left: 10px;
+}
+
+.ham:hover {
+    cursor: pointer;
+}
+
+.hamCh {
+    left: 10px;
+    opacity: 0;
+}
+
+.qlv-text {
+    margin-left: 40px;
+    color: #FFBA08 !important;
+}
+
+
