@@ -13,11 +13,18 @@
     <title>Lead Followup</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
     <script src="https://kit.fontawesome.com/6f6addf9b0.js" crossorigin="anonymous"></script>
+    <script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
+	<script src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
+	<link href="<c:url value="/resources/css/jquery.datetimepicker.min.css" />" rel="stylesheet">
+	<script src="<c:url value="/resources/js/jquery.datetimepicker.full.js" />"></script>
 </head>
 
 <body
     style="background: url(${pageContext.request.contextPath}/resources/images/revamped/lead_follow_up_1.jpg);background-size: cover; background-repeat: no-repeat; background-position: center center;background-attachment: fixed;">
-    <div class="follow-up">
+	
+	<form:form modelAttribute="LEAD_FOLLOWUP_OBJ" action="create_create_lead_followup">
+	<input type="hidden" name= "leadId" value="${LEAD_OBJ.leadId}"/>
+	<div class="follow-up">
         <div class="follow-up-wrapper container">
             <div class="follow-up-heading">
                 <h1>Lead Followup</h1>
@@ -26,32 +33,32 @@
                 <div class="follow-up-main-upper-part">
                     <div class="follow-up-sub-uppper-part">
                         <h3 class="follow-up-p" style="color: #FFBA08;;">
-                            Sachin says
+                            ${pageContext.request.remoteUser} says
                         </h3>
                         <div class="follow-up-time">
                             <div class="follow-up-lead-action-time">
                                 <label for="fulat">Lead Action Time</label>
-                                <input type="text" id="fulat">
+                                <form:input path= "followuptime" required="required" id="followuptime"/>
                             </div>
                             <div class="follow-up-next-action-time">
                                 <label for="funat">Next Action Time</label>
-                                <input type="text" id="funat">
+                                <form:input path= "nextfollowuptime" required="required" id="nextfollowuptime"/>
                             </div>
                         </div>
                         <div class="follow-up-main-response">
                             <div class="fwaction-taken">
-                                <p>Action Taken / Client Response</p>
-                                <textarea name="" id="" cols="30" rows="2"></textarea>
+                                <p>Action Taken | Client Response</p>
+                                <form:textarea path = "response" rows = "5" cols = "40" />
                             </div>
                             <div class="fwnext-todo">
                                 <p>Next To do</p>
-                                <textarea name="" id="" cols="30" rows="2"></textarea>
+                                <form:textarea path = "nextactionplan" rows = "5" cols = "40" />
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="follow-up-btn">
-                    <a href="">Update Followup</a>
+                    <input type="submit" id="submitFollowup" name="submitFollowup" value="Update Follwup" class="submitbtns submit1" />
                 </div>
             </div>
         </div>
@@ -61,21 +68,86 @@
     <div class="follow-up-main-tabel container" style="margin-top:50px">
         <table>
             <tr>
-                <th>User</th>
-                <th>Lead Action Time</th>
-                <th>Action Taken / Client Response</th>
-                <th>Next Action Time</th>
-                <th>Next To Do</th>
+              <c:if test="${LEAD_FOLLOWUP_OBJ.sortOrder eq 'ASC'}">
+				<th><a href="form_view_lead_followup_details?leadId=${LEAD_OBJ.leadId}&sortBy=updatedBy&sortOrder=DESC">User</a></th>
+			</c:if>
+
+			<c:if test="${LEAD_FOLLOWUP_OBJ.sortOrder ne 'ASC'}">
+				<th><a href="form_view_lead_followup_details?leadId=${LEAD_OBJ.leadId}&sortBy=updatedBy&sortOrder=ASC">User</a></th>
+			</c:if>
+
+		
+			<c:if test="${LEAD_FOLLOWUP_OBJ.sortOrder eq 'ASC'}">
+				<th><a href="form_view_lead_followup_details?leadId=${LEAD_OBJ.leadId}&sortOrder=DESC">Lead Action Time</a></th>
+			</c:if>
+
+			<c:if test="${LEAD_FOLLOWUP_OBJ.sortOrder ne 'ASC'}">
+				<th><a href="form_view_lead_followup_details?leadId=${LEAD_OBJ.leadId}&sortOrder=ASC">Lead Action Time</a></th>
+			</c:if>
+			
+			<th>Action Taken | Client Response</th>
+			
+			
+			<c:if test="${LEAD_FOLLOWUP_OBJ.sortOrder eq 'ASC'}">
+				<th><a href="form_view_lead_followup_details?leadId=${LEAD_OBJ.leadId}&sortBy=nextfollowuptime&sortOrder=DESC">Next Action Time</a></th>
+			</c:if>
+
+			<c:if test="${LEAD_FOLLOWUP_OBJ.sortOrder ne 'ASC'}">
+				<th><a href="form_view_lead_followup_details?leadId=${LEAD_OBJ.leadId}&sortBy=nextfollowuptime&sortOrder=ASC">Next Action Time</a></th>
+			</c:if>
+			<th>Next To Do</th>
+              
             </tr>
-            <tr>
-                <td>---</td>
-                <td>----</td>
-                <td>Page:</td>
-                <td>----</td>
-                <td>----</td>
-            </tr>
+         <tr>
+         <c:forEach items="${LEADS_FOLLOWUP_LIST}" var="filteredFollowUpList">
+		 <tr>
+			 <td>${filteredFollowUpList.userName }</td>
+			 <td>${filteredFollowUpList.formattedFollowUpTime }</td>
+			 <td style="text-align:left;">${filteredFollowUpList.response}</td>
+			 <td>${filteredFollowUpList.formattedNextFollowUpTime}</td>
+			 <td style="text-align:left;">${filteredFollowUpList.nextactionplan}</td>
+		 </tr>
+		 </c:forEach>
+		<tr>
+  			<td colspan="5">
+  			 <div id="pagination" align="center">
+				Page: 
+			    <c:url value="form_view_lead_followup_details" var="prev">
+			       <c:param name="page" value="${page-1}"/>
+			    </c:url>
+			    <c:if test="${page > 0}">
+			        <a href="<c:out value="${prev}&leadId=${LEAD_OBJ.leadId}&sortBy=${LEAD_FOLLOWUP_OBJ.sortBy}&sortOrder=${LEAD_FOLLOWUP_OBJ.sortOrder}"/>" class="pn prev">Prev</a>
+			    </c:if>
+			
+			    <c:forEach begin="1" end="${maxPages}" step="1" varStatus="i">
+			        <c:choose>
+			            <c:when test="${(page+1) == i.index}">
+			                <span>${i.index}</span>
+			            </c:when>
+			            <c:otherwise>
+			                <c:url value="form_view_lead_followup_details" var="url">
+			                    <c:param name="page" value="${i.index-1}"/>
+			                </c:url>
+			                 <a href='<c:out value="${url}&leadId=${LEAD_OBJ.leadId}&sortBy=${LEAD_FOLLOWUP_OBJ.sortBy}&sortOrder=${LEAD_FOLLOWUP_OBJ.sortOrder}" />'>${i.index}</a>
+			            </c:otherwise>
+			        </c:choose>
+			    </c:forEach>
+			    <c:url value="form_view_lead_followup_details" var="next">
+			        <c:param name="page" value="${page + 1}"/>
+			    </c:url>
+			    <c:if test="${page + 1 < maxPages}">
+			       <a href='<c:out value="${next}&leadId=${LEAD_OBJ.leadId}&sortBy=${LEAD_FOLLOWUP_OBJ.sortBy}&sortOrder=${LEAD_FOLLOWUP_OBJ.sortOrder}" />' class="pn next">Next</a>
+			    </c:if>
+			</div>
+			</td>
+			</tr>
+         </tr>
         </table>
     </div>
+	</form:form>
+
+
+
 
     <div class="quick-lead-view">
         <div class="follow-up-icon">
@@ -190,6 +262,22 @@
         </div>
     </div>
 
+<script>
+$(document).ready(function(){
+	$("#UpdateFollowup").on('click', function () {
+		var fuValue=$("#followuptime").val();
+	   	var nfuValue=$("#nextfollowuptime").val();
+	   	$('input[name=followuptime]').val(fuValue);
+	   	$('input[name=nextfollowuptime]').val(nfuValue);
+	 });
+
+ });
+	$("#followuptime").datetimepicker();
+	$("#nextfollowuptime").datetimepicker();
+	
+
+	
+</script>
 </body>
 
 </html>
