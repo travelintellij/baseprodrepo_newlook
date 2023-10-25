@@ -86,16 +86,21 @@
                 </form:form>
             </div>
         </div>
+        
 
-        <div class="search-clients-sec">
+        
+         </div>
+        
+        
+           <div class="search-clients-sec">
             <c:set value="${CLIENTS_LIST}" var="clientList" />
             <table class="sc-table">
                 <thead>
                     <tr>
                         <th class="sc-th" style="width: 110px;"><a
-                                href="search_search_filtered_clients?sortBy=clientId&clientName=${clientName}&cityId=${cityId}&cityName=${cityName}&email=${email}&active=${active}">Client
+                                href="search_search_filtered_clients?sortBy=clientId&clientName=${clientName}&cityId=${cityId}&cityName=${cityName}&email=${email}&active=${active}" style="color:#FFBA08">Client
                                 Id</a></th>
-                        <th class="sc-th">Client Name</th>
+                        <th class="sc-th" style="width:300px">Client Name</th>
                         <th class="sc-th">City</th>
                         <th class="sc-th" style="width: 120px;">Country</th>
                         <th class="sc-th">Email</th>
@@ -161,6 +166,10 @@
                 </tbody>
             </table>
           </div>
+
+     
+
+
 	<div id="pagination" align="center">
 				<font size="3">Page: 
 			    <c:url value="view_form_admin_search_client" var="prev">

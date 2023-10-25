@@ -65,11 +65,11 @@
     </div>
     <!-- ################## followup lead ################ -->
 
-    <div class="follow-up-main-tabel container" style="margin-top:50px">
+    <div class="follow-up-main-tabel" style="margin-top:50px">
         <table>
             <tr>
               <c:if test="${LEAD_FOLLOWUP_OBJ.sortOrder eq 'ASC'}">
-				<th><a href="form_view_lead_followup_details?leadId=${LEAD_OBJ.leadId}&sortBy=updatedBy&sortOrder=DESC">User</a></th>
+				<th ><a href="form_view_lead_followup_details?leadId=${LEAD_OBJ.leadId}&sortBy=updatedBy&sortOrder=DESC" style=" color: #FFBA08 !important;">User</a></th>
 			</c:if>
 
 			<c:if test="${LEAD_FOLLOWUP_OBJ.sortOrder ne 'ASC'}">
@@ -78,39 +78,41 @@
 
 		
 			<c:if test="${LEAD_FOLLOWUP_OBJ.sortOrder eq 'ASC'}">
-				<th><a href="form_view_lead_followup_details?leadId=${LEAD_OBJ.leadId}&sortOrder=DESC">Lead Action Time</a></th>
+				<th><a href="form_view_lead_followup_details?leadId=${LEAD_OBJ.leadId}&sortOrder=DESC" style=" color: #FFBA08 !important;">Lead Action Time</a></th>
 			</c:if>
 
 			<c:if test="${LEAD_FOLLOWUP_OBJ.sortOrder ne 'ASC'}">
-				<th><a href="form_view_lead_followup_details?leadId=${LEAD_OBJ.leadId}&sortOrder=ASC">Lead Action Time</a></th>
+				<th ><a href="form_view_lead_followup_details?leadId=${LEAD_OBJ.leadId}&sortOrder=ASC" >Lead Action Time</a></th>
 			</c:if>
 			
-			<th>Action Taken | Client Response</th>
+			<th class="actionTaken">Action Taken | Client Response</th>
 			
 			
 			<c:if test="${LEAD_FOLLOWUP_OBJ.sortOrder eq 'ASC'}">
-				<th><a href="form_view_lead_followup_details?leadId=${LEAD_OBJ.leadId}&sortBy=nextfollowuptime&sortOrder=DESC">Next Action Time</a></th>
+				<th><a href="form_view_lead_followup_details?leadId=${LEAD_OBJ.leadId}&sortBy=nextfollowuptime&sortOrder=DESC" style=" color: #FFBA08 !important;"style=" color: #FFBA08 !important;">Next Action Time</a></th>
 			</c:if>
 
 			<c:if test="${LEAD_FOLLOWUP_OBJ.sortOrder ne 'ASC'}">
-				<th><a href="form_view_lead_followup_details?leadId=${LEAD_OBJ.leadId}&sortBy=nextfollowuptime&sortOrder=ASC">Next Action Time</a></th>
+				<th><a href="form_view_lead_followup_details?leadId=${LEAD_OBJ.leadId}&sortBy=nextfollowuptime&sortOrder=ASC" style=" color: #FFBA08 !important;"style=" color: #FFBA08 !important;">Next Action Time</a></th>
 			</c:if>
-			<th>Next To Do</th>
+			<th class="nextToDo">Next To Do</th>
               
             </tr>
          <tr>
          <c:forEach items="${LEADS_FOLLOWUP_LIST}" var="filteredFollowUpList">
-		 <tr>
-			 <td>${filteredFollowUpList.userName }</td>
-			 <td>${filteredFollowUpList.formattedFollowUpTime }</td>
-			 <td style="text-align:left;">${filteredFollowUpList.response}</td>
-			 <td>${filteredFollowUpList.formattedNextFollowUpTime}</td>
-			 <td style="text-align:left;">${filteredFollowUpList.nextactionplan}</td>
+		 <tr style="border-bottom:2px solid  #FABA08;;margin-bottom:20px">
+			 <td style="font-size:15px">${filteredFollowUpList.userName }</td>
+			 <td style="font-size:15px">${filteredFollowUpList.formattedFollowUpTime }</td>
+			 <td style="font-size:15px;text-align:start">${filteredFollowUpList.response}</td>
+			 <td style="font-size:15px">${filteredFollowUpList.formattedNextFollowUpTime}</td>
+			 <td style="font-size:15px;text-align:start"">${filteredFollowUpList.nextactionplan}</td>
 		 </tr>
 		 </c:forEach>
-		<tr>
-  			<td colspan="5">
-  			 <div id="pagination" align="center">
+        </table>
+    </div>
+    
+    
+     <div id="pagination" align="center">
 				Page: 
 			    <c:url value="form_view_lead_followup_details" var="prev">
 			       <c:param name="page" value="${page-1}"/>
@@ -139,128 +141,28 @@
 			       <a href='<c:out value="${next}&leadId=${LEAD_OBJ.leadId}&sortBy=${LEAD_FOLLOWUP_OBJ.sortBy}&sortOrder=${LEAD_FOLLOWUP_OBJ.sortOrder}" />' class="pn next">Next</a>
 			    </c:if>
 			</div>
-			</td>
-			</tr>
-         </tr>
-        </table>
-    </div>
 	</form:form>
-
-
+	
 
 
     <div class="quick-lead-view">
-        <div class="follow-up-icon">
-        </div>
         <p class="qlv-text">Quick Lead View</p>
         <i class="fa-solid fa-bars fa-xl hamburgur-i-follow-up ham"></i>
-        <input type="checkbox" name="" id="show-fu-cb" class="hamburgur-i-follow-up hamCh">
-        <!-- ############ hidden ############ -->
-        <div class="inside-quick-lead-view container">
-            <!-- <i><i class="fa-solid fa-xmark fa-2xl follw-up-cross"></i></i>
-            <input class= "iqvl-cross" type="checkbox" style="position: absolute;top: 11px;left: 13px;;width: 20px;height: 20px;"> -->
-
-
-            <input type="checkbox" id="show-fu-cb" class="hamburgur-i-follow-up hamCh">
-            <label for="show-fu-cb" class="iqvl-cross">
-                <i class="fa-solid fa-xmark fa-2xl follw-up-cross"></i>
-            </label>
-
-
-
-            <h1 style="margin-bottom: 5px;">Lead Details</h1>
-            <div class="follow-up-data">
-                <div class="follow-up-fl">
-                    <div class="follow-up-d1-l1 fu-box">
-                        <label for="">Lead id</label>
-                        <p>Q-0778-HCF</p>
-                    </div>
-                    <div class="follow-up-d2-l1 fu-box">
-                        <label for="">Client</label>
-                        <p>Hitesh Kumar</p>
-                    </div>
-                    <div class="follow-up-d3-l1 fu-box">
-                        <label for="">Source</label>
-                        <p>Delhi</p>
-                    </div>
-                    <div class="follow-up-d4-l1 fu-box">
-                        <label for="">Destination</label>
-                        <p>Kathmandu</p>
-                    </div>
-                    <div class="follow-up-d5-l1 fu-box">
-                        <label for="">Adults</label>
-                        <p>4</p>
-                    </div>
-                </div>
-                <div class="follow-up-f2">
-                    <div class="follow-up-d1-l2 fu-box">
-                        <label for="">Children</label>
-                        <p>0(Age)</p>
-                    </div>
-                    <div class="follow-up-d2-l2 fu-box">
-                        <label for="">Travel s date</label>
-                        <p>07-09-2023</p>
-                    </div>
-                    <div class="follow-up-d3-l2 fu-box">
-                        <label for="">Travel e date</label>
-                        <p>10-09-2023</p>
-                    </div>
-                    <div class="follow-up-d4-l2 fu-box">
-                        <label for="">Lead Source</label>
-                        <p>Holidays Guide</p>
-                    </div>
-                    <div class="follow-up-d5-l2 fu-box">
-                        <label for="">Status</label>
-                        <p>Open</p>
-                    </div>
-                </div>
-                <div class="follow-up-f3">
-                    <h2>Services Requested</h2>
-                    <div class="follow-up-reqs">
-                        <div class="follow-up-c1">
-                            <label for="">Package</label>
-                            <input type="checkbox" name="" id="">
-                        </div>
-                        <div class="follow-up-c1">
-                            <label for="">Flight</label>
-                            <input type="checkbox" name="" id="">
-                        </div>
-                        <div class="follow-up-c1">
-                            <label for="">Hotal</label>
-                            <input type="checkbox" name="" id="">
-                        </div>
-                        <div class="follow-up-c1">
-                            <label for="">Transfers</label>
-                            <input type="checkbox" name="" id="">
-                        </div>
-                        <div class="follow-up-c1">
-                            <label for="">Sightseeing</label>
-                            <input type="checkbox" name="" id="">
-                        </div>
-                        <div class="follow-up-c1">
-                            <label for="">Visa</label>
-                            <input type="checkbox" name="" id="">
-                        </div>
-                        <div class="follow-up-c1">
-                            <label for="">Insurence</label>
-                            <input type="checkbox" name="" id="">
-                        </div>
-                        <div class="follow-up-c1">
-                            <label for="">cruise</label>
-                            <input type="checkbox" name="" id="">
-                        </div>
-                        <div class="follow-up-c1">
-                            <label for="">others</label>
-                            <input type="checkbox" name="" id="">
-                        </div>
-                    </div>
-                </div>
-                <div class="follow-ups-remarks-qv">
-                    <h3>Remarks</h3>
-                </div>
-            </div>
+        <input type="checkbox" name="" id="show-fu-cb" class="hamburgur-i-follow-up hamCh fwtb">
+        <div  class="inside-quick-lead-view">
+        <form:form modelAttribute="LEAD_OBJ" action="create_create_lead_quotation">
+		<jsp:include page="../quotation/leadDetailsOpenNavView.jsp" />
+	    <form:hidden path = "leadId" />
+	    </form:form>
         </div>
     </div>
+
+
+  
+
+
+
+
 
 <script>
 $(document).ready(function(){

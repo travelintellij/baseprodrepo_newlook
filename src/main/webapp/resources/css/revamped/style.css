@@ -1045,14 +1045,14 @@ width:261px
 
 .search-clients-sec {
     color: white;
-    width: 100%;
+    width: 1300px;
     text-align: center;
     border-collapse: collapse;
     border: none;
     background: rgba(0, 0, 0, 0.689);
     padding: 30px 10px 30px 30px;
     border-radius: 10px;
-    margin-top: 20px;
+    margin:20px auto
 }
 
 .search-clients-sec th {
@@ -1238,19 +1238,29 @@ width:261px
 .inside-services{
 	display: flex;
 	flex-wrap: wrap;
-	align
 }
 .ansd1-ser{
-	width: 20%;
+	text-align: start;
+	width: 25%;
 	margin-left: 10px;
 }
+.ansd1-ser label{
+	margin-left: 5px;
+}
+
 
 .flight-lab{
 	margin-right: 50px;
 }
 
+.f,.h,.t,.s,.v,.i,.p,.o{
+	width: 250px;
+}
 
-
+.inside-services checkbox{
+	width: 20px;
+	height: 20px;
+}
 /* #################### floowup lead ######################### */
 
 
@@ -1259,7 +1269,7 @@ width:261px
 .follow-up-wrapper {
     margin-top: 200px;
     /* border: 2px solid red; */
-    padding: 30px 10px;
+    padding: 10px;
     background: rgba(0, 0, 0, 0.716);
     color: white;
     border-radius: 10px;
@@ -1339,14 +1349,16 @@ width:261px
 /* ################ follow up tabel stying########### */
 
 .follow-up-main-tabel table {
+	margin:20px auto;
     color: white;
-    width: 100%;
+    width: 1300px;
     text-align: center;
     border-collapse: collapse;
     border: none;
     background: rgba(0, 0, 0, 0.689);
     padding: 10px;
     border-radius: 10px;
+    font-size: 10px;
 }
 
 .follow-up-main-tabel table th {
@@ -1371,14 +1383,11 @@ width:261px
 .quick-lead-view {
     position: absolute;
     top: 177px;
-    left: 152px;
+    left: 0;
 }
 
 .inside-quick-lead-view {
     position: absolute;
-    top: 20px;
-    left: 7px;
-    padding: 10px 10px;
     background: rgb(0, 0, 0);
     color: white;
     border-radius: 10px;
@@ -1400,6 +1409,7 @@ width:261px
 .inside-quick-lead-view {
     color: black;
     /* background: lightgoldenrodyellow; */
+    padding: 10px;
 }
 
 .follow-up-fl,
@@ -1456,8 +1466,6 @@ width:261px
 
 .follw-up-cross {
     color: red !important;
-    /* position: absolute;
-    right: 0; */
 }
 
 .fwtb:active+.inside-quick-lead-view {
@@ -1507,4 +1515,92 @@ width:261px
     color: #FFBA08 !important;
 }
 
+.submitbtns{
+	display: inline-block;
+    color: white;
+    width: auto;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: #ffb908cf;
+    color: black;
+    transition: all 0.3s ease-in-out;
+    border:none;
+    outline:none
+}
+.submitbtns:hover{
+    cursor: pointer;
+    background: #FFBA08;
+}
+}
+/* ################ lead details open nav view ########### */
 
+.follow-up-pop-up {
+	padding:10px;
+    background: rgba(0, 0, 0, 0.716);
+    color: white;
+    border-radius: 10px;
+}
+
+.fupp-fir-line,
+.fupp-2nd-line {
+    display: flex;
+    justify-content: space-between;
+}
+
+.fupp-3nd-line {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.fupp-3nd-line .fupp-1-d {
+    width: 295px;
+}
+
+.fupp-1-d {
+    width: 400px;
+}
+
+.fupp-1-d h3 {
+    color:#FFBA08;
+}
+
+.fupp-4th-line {
+    display: flex;
+    justify-content: space-between;
+}
+
+.fupp-sr h3 {
+    display: inline-block;
+}
+.fupp-srh{
+	  color:#FFBA08 !important;
+}
+
+.fupp-5th-line h3{
+	 color:#FFBA08 !important;
+}
+.follow-up-pop-up{
+	position: relative;
+}
+.cross-red{
+	position: absolute;
+	top: 15px;
+	left:10px
+}
+.cross-ldonv{
+	position: absolute;
+	top: 5px;
+	left:10px
+}
+
+.actionTaken,.nextToDo{
+	width: 400px;
+	padding:10px 5px !important;
+	margin:0 20px
+}
+.leadActionTime{
+	border: 2px solid green !important;
+}
+.fupp-1-d,.fupp-2nd-line,.fupp-3nd-line,.fupp-4th-line,.fupp-5th-line{
+	margin-bottom:10px
+}

@@ -496,6 +496,7 @@ a {
 
 .searchLeads {
     margin-top: 170px;
+    margin-bottom: 20px;
 }
 
 .heading {
@@ -600,10 +601,7 @@ table {
     border-collapse: collapse;
 }
 
-.lowerPart {
-    margin: 50px 0;
-    color: white;
-}
+
 
 th {
     color: #FABA08;
@@ -635,20 +633,13 @@ td {
 }
 
 .ul {
-    /* padding: 5px;
-    position: absolute;
-    background: rgba(0, 0, 0, 0.885);
-    border-radius: 10px;
-    width: 160px;
-    right: -47px;
-    transition: all 0.3s ease-in-out;  */
     display: none;
     padding: 5px;
     position: absolute;
     background: rgba(0, 0, 0, 0.885);
     border-radius: 10px;
     width: 160px;
-    right: -160px;
+    right: 19px;
     transition: all 0.3s ease-in-out;
     top: -1px;
     z-index: 1;
@@ -693,6 +684,26 @@ i:hover .ul {
     color: white;
 }
 
+
 .dsc {
     width: 200px;
+}
+.lowerPart{color: white;
+    margin: 30px auto;
+    width: 1400px;
+    }
+    
+.full-names{
+	color: white;
+	display: flex;
+	background: black;
+	padding: 5px 10px;
+	border-radius: 5px;
+}
+.full-names p {
+	margin-right:10px;
+	font-weight:bold
+}
+.full-names span {
+	color:#FABA08;
 }

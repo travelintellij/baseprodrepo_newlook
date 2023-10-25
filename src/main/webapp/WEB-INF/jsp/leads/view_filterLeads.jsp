@@ -216,16 +216,59 @@
                 </div>
             </div>
             <!-- ############## end of upper part ############# -->
-            <!-- ############## start of lower part ############# -->
-            <div class="lowerPart container">
+
+            <div id="myModal" class="modal">
+						
+						  <!-- Modal content -->
+						  <div class="modal-content">
+						    <div class="modal-header">
+						      <span class="close">&times;</span>
+						      <br><h2 style="text-align:center;">View Lead Details</h2>
+						    </div>
+						    <div class="modal-body">
+						
+						
+						    </div>
+						    <div class="modal-footer">
+						      <h3>Powered by @TravelIntelliJ</h3>
+						    </div>
+						  </div>
+						
+						</div>
+      
+      
+      
+         
+      
+      
+            
+            
+            	
+            <!-- ############## end of lower part ############# -->
+	</form:form>
+    </div>
+    
+     <div class="full-names container">
+            <p><span>F</span> : Flagged</p>
+            <p><span>Q</span> : Qualified</p>
+            <p><span>Tsd</span> : Travel Start Date</p>
+            <p><span>Ted</span>: Travel End Date</p>
+            </div>
+    
+             <!-- ############## start of lower part ############# -->
+            <div class="lowerPart">
+            
+           
+            
+            
                 <table border="1">
                     <thead>
                         <th>Lead id</th>
-                        <th>Flagged</th>
-                        <th>Qualified</th>
-                        <th>Client Name</th>
+                        <th>F</th>
+                        <th>Q</th>
+                        <th style="width:350px">Client Name</th>
                         <th>Desti.</th>
-                        <th>Ref.</th>
+                        <th>Reference</th>
                         <th>Tsd</th>
                         <th>Ted</th>
                         <th>Status</th>
@@ -283,27 +326,8 @@
                     </tbody>
                 </table>
             </div>
-            <div id="myModal" class="modal">
-						
-						  <!-- Modal content -->
-						  <div class="modal-content">
-						    <div class="modal-header">
-						      <span class="close">&times;</span>
-						      <br><h2 style="text-align:center;">View Lead Details</h2>
-						    </div>
-						    <div class="modal-body">
-						
-						
-						    </div>
-						    <div class="modal-footer">
-						      <h3>Powered by @TravelIntelliJ</h3>
-						    </div>
-						  </div>
-						
-						</div>
-            
-            
-            	<div id="pagination" align="right">
+      
+<div id="pagination" align="right" class="container">
 				Page: 
 			    <c:url value="view_filter_leads" var="prev">
 			       <c:param name="page" value="${page-1}"/>
@@ -332,10 +356,6 @@
 			       <a href='<c:out value="${next}&sortBy=${sortBy}&qualified=${FILTER_LEAD_WL.qualified}&flagged=${FILTER_LEAD_WL.flagged}&leadOwner=${FILTER_LEAD_WL.leadOwner}&leadSource=${FILTER_LEAD_WL.leadSource}&leadStatus=${leadStatus}&source=${FILTER_LEAD_WL.source}&sourceName=${FILTER_LEAD_WL.sourceName}&destinationName=${FILTER_LEAD_WL.destinationName}&destination=${FILTER_LEAD_WL.destination}&contactId=${FILTER_LEAD_WL.contactId}&contactName=${FILTER_LEAD_WL.contactName}&dateCriteria=${FILTER_LEAD_WL.dateCriteria}&startDate=${FILTER_LEAD_WL.startDate}&endDate=${FILTER_LEAD_WL.endDate}" />' class="pn next">Next</a>
 			    </c:if>
 			</div>
-            <!-- ############## end of lower part ############# -->
-	</form:form>
-    </div>
-
 
 
 <script>

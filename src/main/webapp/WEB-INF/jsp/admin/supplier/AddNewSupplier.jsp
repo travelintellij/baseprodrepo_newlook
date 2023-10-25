@@ -52,6 +52,18 @@
                             <form:errors path="supplierName" cssClass="error" />
                         </font>
                     </div>
+                    
+                    
+                     <div class="ansd1">
+                        <label for="City">City</label><br>
+                        <form:input path="cityName" name="cityName" style="height:30px;width:250px;margin: auto;" id="cityName" />
+                        <form:hidden path="cityId" /><br>
+                        <font color="red">
+                            <form:errors path="cityName" cssClass="error" />
+                        </font>
+                    </div>
+                    
+                    
                      <div class="ansd1">
                         <label for="con">Country</label><br>
                         <form:input path="countryName" style="height:30px;width:250px;margin: auto;" id="countryName" />
@@ -61,14 +73,15 @@
                         </font>
                     </div>
                    
-                    <div class="ansd1">
-                        <label for="City">City</label><br>
-                        <form:input path="cityName" name="cityName" style="height:30px;width:250px;margin: auto;" id="cityName" />
-                        <form:hidden path="cityId" /><br>
+                     <div class="ansd1">
+                        <label for="mob">Mobile</label><br>
+                        <form:input type="number" path="mobile" style="height:30px;width:250px;margin: auto;"
+                            id="mob" />
                         <font color="red">
-                            <form:errors path="cityName" cssClass="error" />
+                            <form:errors path="mobile" cssClass="error" />
                         </font>
                     </div>
+                   
                     
                 </div>
                 <div class="ans-sc-li">
@@ -79,14 +92,7 @@
                             <form:errors path="referredBy" cssClass="error" />
                         </font>
                     </div>
-                     <div class="ansd1">
-                        <label for="mob">Mobile</label><br>
-                        <form:input type="number" path="mobile" style="height:30px;width:250px;margin: auto;"
-                            id="mob" />
-                        <font color="red">
-                            <form:errors path="mobile" cssClass="error" />
-                        </font>
-                    </div>
+                   
                     <div class="ansd1">
                         <label for="mail">Email</label><br>
                         <form:input type="email" path="email" style="height:30px;width:250px;margin: auto;" id="mail" />
@@ -103,6 +109,20 @@
                             <form:errors path="phone" cssClass="error" />
                         </font>
                     </div>
+                    
+                      <div class="ans-last-sec">
+                        <p class="ans-heading">Select destinations
+                           Services</p>
+                        <font color="red">
+                            <form:errors path="destinationNames" cssClass="error" />
+                        </font>
+                        <input style="background:pink;color:black;width:250px" type="text" id="destinationHandling" name="destinationHandling"
+                            placeholder="Select Destination Services" style="width: 250px;" />
+                        <form:hidden path="destinationNames" />
+                        <form:hidden path="operatingDestinations" />
+                    </div>
+                    
+                    
                 </div>
                 <div class="ans-thir-li">
                     <div class="ansd1-rem ans-comDel">
@@ -147,60 +167,51 @@
                 <div class="ans-5-li">
                 <div class="ans-left-sec"> <form:errors path="minOneserviceError" cssClass="error" />
                     </font>
-                    <h3 style="color: #FFBA08;font-weight: normal;margin-bottom: 5px;">Services Offered</h3>
+                    <h3 style="color: #FFBA08;font-weight: bold;margin-bottom: 5px;margin-top:10px">Services Offered</h3>
                     <div class="inside-services">
                         <div class="ansd1-ser">
-                            <label for="flight" class="flight-lab">Flight</label>
-                            <form:checkbox path="flight" id="flight" />
+                        <form:checkbox path="flight" id="flight" />
+                            <label for="flight" class="flight-lab f">Flight</label>
+                            
                         </div>
                         <div class="ansd1-ser">
-                            <label for="Hotal">Hotal</label>
-                            <form:checkbox path="hotel" id="Hotal" />
+                           <form:checkbox path="hotel" id="Hotal" />
+                            <label for="Hotal" class="h">Hotal</label>
+                         
                         </div>
                         <div class="ansd1-ser">
-                            <label for="Transfers">Transfers</label>
-                            <form:checkbox path="transfers" id="Transfers" />
+                        <form:checkbox path="transfers" id="Transfers" />
+                            <label for="Transfers" class="t">Transfers</label>
+                            
                         </div>
                         <div class="ansd1-ser">
-                            <label for="Signtseeing">Signtseeing</label>
-                            <form:checkbox path="sightseeing" id="Signtseeing" />
+                          <form:checkbox path="sightseeing" id="Signtseeing" />
+                            <label for="Signtseeing" class="s">Signtseeing</label>
+                          
                         </div>
                         <div class="ansd1-ser">
-                            <label for="Visa">Visa</label>
-                            <form:checkbox path="visa" id="Visa" />
+                        <form:checkbox path="visa" id="Visa" />
+                            <label for="Visa" class="v">Visa</label>
+                            
                         </div>
                         <div class="ansd1-ser">
-                            <label for="Insurence">Insurence</label>
-                            <form:checkbox path="insurance" id="Insurence" />
+                         <form:checkbox path="insurance" id="Insurence" />
+                            <label for="Insurence" class="i">Insurence</label>
+                           
                         </div>
                         <div class="ansd1-ser">
-                            <label for="Package">Package</label>
-                            <form:checkbox path="landPackage" id="Package" />
+                          <form:checkbox path="landPackage" id="Package" />
+                            <label for="Package" class="p">Package</label>
+                          
                         </div>
                         <div class="ansd1-ser">
-                            <label for="Others">Others</label>
-                            <form:checkbox path="others" id="Others" />
+                         <form:checkbox path="others" id="Others" />
+                            <label for="Others" class="o">Others</label>
+                           
                         </div>
 
                     </div>
-                    </div>
-                    <div class="ans-right-sec">
-                     <div class="ans-6-li">
-                    <div class="ans-last-sec" style="margin: 10px 0;">
-                        <h3 class="ans-heading" style="color: #FFBA08;font-weight:normal;margin-bottom: 5px;">Please
-                            mention
-                            all destinations
-                            taken care by
-                            supplier</h3>
-                        <font color="red">
-                            <form:errors path="destinationNames" cssClass="error" />
-                        </font>
-                        <input type="text" id="destinationHandling" name="destinationHandling"
-                            placeholder="Select Destination Services" style="width: 250px;" />
-                        <form:hidden path="destinationNames" />
-                        <form:hidden path="operatingDestinations" />
-                    </div>
-                    <div class="ans-last-sec" style="margin: 10px 0;">
+                     <div class="ans-last-sec" style="margin: 10px 0;">
                         <h3 class="ans-heading" style="color: #FFBA08;font-weight: normal;margin-bottom: 5px;"></h3>
                             <div class="ans-cons">
                              <label for="" style="margin-right:5px">Consolidator</label>
@@ -210,16 +221,21 @@
                         </div>
                        
                     </div>
+                    </div>
+                    <div class="ans-right-sec">
+                     <div class="ans-6-li">
+                  
+                   
                 </div>
                 <div class="ans-7-li">
-                    <h3 style="font-weight: normal;color: #FFBA08; margin-bottom: 5px;">Supplier Preferences</h3>
+                    <h3 style="font-weight: bold;color: #FFBA08; margin-top:20px;margin-bottom:9px">Supplier Preferences</h3>
                     <div class="supp-sec">
-                        <div class="supp-pre-sec" style="margin-right: 20px;">
+                        <div class="supp-pre-sec" style="margin-right: 30px;">
                             <label for="">Preferred Supplier</label>
                             <form:select path="supplierRating">
                                 <form:options items="${SUPPLIER_RATING_MAP}" />
                             </form:select>
-                            <p style="color: pink; margin-left: 60px;">(Scale 1 to 5)</p>
+                            <p style="color: pink; margin-left: -70px;">(Scale 1 to 5)</p>
                         </div>
                         <div class="supp-pre-sec">
                             <label for="">Negotiates</label>
