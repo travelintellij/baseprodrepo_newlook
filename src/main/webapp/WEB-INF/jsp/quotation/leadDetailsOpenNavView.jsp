@@ -1,11 +1,19 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+
+    
+    <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+      
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-  <script src="https://kit.fontawesome.com/6f6addf9b0.js" crossorigin="anonymous"></script> 
+<script src="https://kit.fontawesome.com/6f6addf9b0.js" crossorigin="anonymous"></script> 
  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
 </head>
 <body>
@@ -46,10 +54,10 @@
             </div>
             <div class="fupp-1-d">
                 <h3>Travel start date</h3>
-                <fmt:formatDate value="${LEAD_OBJ.travelStartDate}" pattern="dd-MM-yyyy" />
+                <fmt:formatDate value="${LEAD_OBJ.travelStartDate}" pattern="dd-MM-yyyy"/>
             </div>
             <div class="fupp-1-d">
-                <h3>travel end date</h3>
+                <h3>Travel end date</h3>
                 <fmt:formatDate value="${LEAD_OBJ.travelEndDate}" pattern="dd-MM-yyyy" />
             </div>
         </div>
@@ -67,7 +75,7 @@
             <h2 class="fupp-srh">Services Requested</h2>
             <div class="fupp-sr">
                 <h3>package</h3>
-                <form:checkbox path="landPackage" name="landPackage;" disabled="true" />
+                <form:checkbox path="landPackage" name="landPackage;" disabled="true" style="background-color: red;" />
             </div>
             <div class="fupp-sr">
                 <h3>flight</h3>
