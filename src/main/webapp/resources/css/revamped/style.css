@@ -961,22 +961,28 @@ footer {
     margin-right: 10px;
 }
 
-.anc-con-del{
-	width:275px
+.anc-con-del {
+    width: 275px
 }
-.anc-gst{
-	text-align: start;
+
+.anc-gst {
+    text-align: start;
     padding-left: 16px;
 }
-.anc-gst input{
-width:261px
+
+.anc-gst input {
+    width: 261px
 }
-.anc-mail{
-	width: 290px;
+
+.anc-mail {
+    width: 290px;
 }
-.anc-phone,.anc-mobile{
-	width: 289px;
+
+.anc-phone,
+.anc-mobile {
+    width: 289px;
 }
+
 /* ###################### manage clients ########################## */
 
 
@@ -1052,7 +1058,7 @@ width:261px
     background: rgba(0, 0, 0, 0.689);
     padding: 30px 10px 30px 30px;
     border-radius: 10px;
-    margin:20px auto
+    margin: 20px auto
 }
 
 .search-clients-sec th {
@@ -1107,8 +1113,9 @@ width:261px
     /* font-size: medium */
     font-size: 18px;
 }
-.vsc-cn{
-	border: 2px solid red;
+
+.vsc-cn {
+    border: 2px solid red;
 }
 
 /* #################### Add New Supplier ######################### */
@@ -1213,54 +1220,65 @@ width:261px
     cursor: pointer;
     background: #FFBA08;
 }
-#supp-name{
-	width: 248px;
-}
-.ans-comDel{
-	width: 263px;
-}
-.ans-gst{
-	margin-left: 31px;
-	text-align: start;
-}
-.ans-5-li{
-	display: flex;
-	justify-content: space-evenly;
 
-}
-.ans-left-sec{
-	
-	width: 50%;
-}
-.ans-right-sec{
-	width: 50%;
-}
-.inside-services{
-	display: flex;
-	flex-wrap: wrap;
-}
-.ansd1-ser{
-	text-align: start;
-	width: 25%;
-	margin-left: 10px;
-}
-.ansd1-ser label{
-	margin-left: 5px;
+#supp-name {
+    width: 248px;
 }
 
-
-.flight-lab{
-	margin-right: 50px;
+.ans-comDel {
+    width: 263px;
 }
 
-.f,.h,.t,.s,.v,.i,.p,.o{
-	width: 250px;
+.ans-gst {
+    margin-left: 31px;
+    text-align: start;
 }
 
-.inside-services checkbox{
-	width: 20px;
-	height: 20px;
+.ans-5-li {
+    display: flex;
+    justify-content: space-evenly;
+
 }
+
+.ans-left-sec {
+
+    width: 50%;
+}
+
+.ans-right-sec {
+    width: 50%;
+}
+
+.inside-services {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.ansd1-ser {
+    width: 20%;
+    margin-left: 10px;
+}
+
+.flight-lab {
+    margin-right: 50px;
+}
+
+.f,
+.h,
+.t,
+.s,
+.v,
+.i,
+.p,
+.o {
+    width: 250px;
+}
+
+.inside-services checkbox {
+    width: 20px;
+    height: 20px;
+}
+
 /* #################### floowup lead ######################### */
 
 
@@ -1349,16 +1367,14 @@ width:261px
 /* ################ follow up tabel stying########### */
 
 .follow-up-main-tabel table {
-	margin:20px auto;
     color: white;
-    width: 1300px;
+    width: 100%;
     text-align: center;
     border-collapse: collapse;
     border: none;
     background: rgba(0, 0, 0, 0.689);
     padding: 10px;
     border-radius: 10px;
-    font-size: 10px;
 }
 
 .follow-up-main-tabel table th {
@@ -1383,7 +1399,7 @@ width:261px
 .quick-lead-view {
     position: absolute;
     top: 177px;
-    left: 0;
+    left: 152px;
 }
 
 .inside-quick-lead-view {
@@ -1409,7 +1425,6 @@ width:261px
 .inside-quick-lead-view {
     color: black;
     /* background: lightgoldenrodyellow; */
-    padding: 10px;
 }
 
 .follow-up-fl,
@@ -1515,8 +1530,8 @@ width:261px
     color: #FFBA08 !important;
 }
 
-.submitbtns{
-	display: inline-block;
+.submitbtns {
+    display: inline-block;
     color: white;
     width: auto;
     padding: 10px 15px;
@@ -1524,18 +1539,20 @@ width:261px
     background: #ffb908cf;
     color: black;
     transition: all 0.3s ease-in-out;
-    border:none;
-    outline:none
+    border: none;
+    outline: none
 }
-.submitbtns:hover{
+
+.submitbtns:hover {
     cursor: pointer;
     background: #FFBA08;
 }
 }
+
 /* ################ lead details open nav view ########### */
 
 .follow-up-pop-up {
-	padding:10px;
+    padding: 10px;
     background: rgba(0, 0, 0, 0.716);
     color: white;
     border-radius: 10px;
@@ -1561,7 +1578,7 @@ width:261px
 }
 
 .fupp-1-d h3 {
-    color:#FFBA08;
+    color: #FFBA08;
 }
 
 .fupp-4th-line {
@@ -1572,35 +1589,548 @@ width:261px
 .fupp-sr h3 {
     display: inline-block;
 }
-.fupp-srh{
-	  color:#FFBA08 !important;
+
+.fupp-srh {
+    color: #FFBA08 !important;
 }
 
-.fupp-5th-line h3{
-	 color:#FFBA08 !important;
-}
-.follow-up-pop-up{
-	position: relative;
-}
-.cross-red{
-	position: absolute;
-	top: 15px;
-	left:10px
-}
-.cross-ldonv{
-	position: absolute;
-	top: 5px;
-	left:10px
+.fupp-5th-line h3 {
+    color: #FFBA08 !important;
 }
 
-.actionTaken,.nextToDo{
-	width: 400px;
-	padding:10px 5px !important;
-	margin:0 20px
+.follow-up-pop-up {
+    position: relative;
 }
-.leadActionTime{
-	border: 2px solid green !important;
+
+.cross-red {
+    position: absolute;
+    top: 15px;
+    left: 10px
 }
-.fupp-1-d,.fupp-2nd-line,.fupp-3nd-line,.fupp-4th-line,.fupp-5th-line{
-	margin-bottom:10px
+
+.cross-ldonv {
+    position: absolute;
+    top: 5px;
+    left: 10px
+}
+
+.actionTaken,
+.nextToDo {
+    width: 350px;
+    border: 2px solid pink !important;
+    padding: 10px 5px !important;
+    margin: 0 20px
+}
+
+.leadActionTime {
+    border: 2px solid green !important;
+}
+
+
+/* ###################### add Hotal styling #################### */
+
+.add-hotal-chain-wrapper {
+    margin-top: 200px;
+    padding: 20px 10px;
+    background: rgba(0, 0, 0, 0.716);
+    color: white;
+    border-radius: 10px;
+}
+
+.add-hotal-chain-wrapper h1 {
+    padding-bottom: 10px;
+    text-align: center;
+    font-size: 30px;
+    color: #FFBA08;
+}
+
+.add-hotal-chain-wrapper a {
+    display: inline-block;
+    color: white;
+    width: auto;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: #ffb908cf;
+    color: black;
+    transition: all 0.3s ease-in-out;
+    margin-top: 20px;
+}
+
+.add-hotal-chain-wrapper a:hover {
+    cursor: pointer;
+    background: #FFBA08;
+}
+
+.ahc-in-btn {
+    display: inline-block;
+    color: white;
+    width: auto;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: #ffb908cf;
+    color: black;
+    transition: all 0.3s ease-in-out;
+    margin-top: 20px;
+    outline: none;
+    border: none;
+}
+
+.ahc-in-btn:hover {
+    cursor: pointer;
+    background: #FFBA08;
+}
+
+.ahc-in {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.ahc-l1,
+.ahc-l2 {
+    width: 45%;
+}
+
+.ahc-l1 input,
+.ahc-l2 input {
+    width: 70%;
+}
+
+.Ahc-btns {
+    display: flex;
+    justify-content: center;
+}
+
+.ahc-btn {
+    margin-right: 5px;
+}
+
+/* ############### manage hotal chain styling ################# */
+
+.manage_hotal_chain_wrapper {
+    margin-top: 200px;
+    padding: 20px 10px;
+    background: rgba(0, 0, 0, 0.716);
+    color: white;
+    border-radius: 10px;
+}
+
+.manage_hotal_chain_wrapper h1 {
+    padding-bottom: 10px;
+    text-align: center;
+    font-size: 30px;
+    color: #FFBA08;
+}
+
+.mhc-in-l1 {
+    display: flex;
+    justify-content: space-around;
+}
+
+.mhc-in-l2 {
+    display: flex;
+    justify-content: center;
+}
+
+.mhc-in-l2 a {
+    display: inline-block;
+    color: white;
+    width: auto;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: #ffb908cf;
+    color: black;
+    transition: all 0.3s ease-in-out;
+    margin-top: 20px;
+}
+
+.mhc-in-l2 a:hover {
+    cursor: pointer;
+    background: #FFBA08;
+}
+
+.mhc-in-l2 input {
+    display: inline-block;
+    color: white;
+    width: auto;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: #ffb908cf;
+    color: black;
+    transition: all 0.3s ease-in-out;
+    margin-top: 20px;
+    border: none;
+    outline: none;
+}
+
+.mhc-in-l2 input:hover {
+    cursor: pointer;
+    background: #FFBA08;
+}
+
+.mhc-btn {
+    margin-right: 5px;
+}
+
+.manage-hotal-chain table {
+    background: rgba(0, 0, 0, 0.716);
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+.manage-hotal-chain-tabel thead tr th {
+    color: #FFBA08;
+}
+
+/* ################ add hotal styling ############### */
+
+.add_hotal_wrapper {
+    margin-top: 200px;
+    padding: 20px 10px;
+    background: rgba(0, 0, 0, 0.716);
+    color: white;
+    border-radius: 10px;
+}
+
+.add_hotal_wrapper h1 {
+    padding-bottom: 10px;
+    text-align: center;
+    font-size: 30px;
+    color: #FFBA08;
+}
+
+.add_hotal_fli {
+    display: flex;
+    justify-content: space-around;
+}
+
+.ah-d1 {
+    width: 360px;
+}
+
+.ah-d1 input {
+    width: 90%;
+}
+
+.ah-d1-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ah-d1-btn input {
+    display: inline-block;
+    color: white;
+    width: auto;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: #ffb908cf;
+    color: black;
+    transition: all 0.3s ease-in-out;
+    margin-top: 10px;
+    outline: none;
+    border: none;
+}
+
+.ah-d1-btn input:hover {
+    cursor: pointer;
+    background: #FFBA08;
+
+}
+
+/* ################# search hotal styling ################# */
+
+.search_hotal_wraper {
+    margin-top: 200px;
+    padding: 20px 10px;
+    background: rgba(0, 0, 0, 0.716);
+    color: white;
+    border-radius: 10px;
+}
+
+.search_hotal_wraper h1 {
+    padding-bottom: 10px;
+    text-align: center;
+    font-size: 30px;
+    color: #FFBA08;
+}
+
+.sh-f1 {
+    display: flex;
+}
+
+.sh-f1 .sh-fi-d,
+.sh-f2 .sh-fi-d,
+.sh-f3 .sh-fi-d {
+    width: 300px;
+}
+
+.sh-f1 .sh-fi-d input,
+.sh-f2 .sh-fi-d input,
+.sh-f3 .sh-fi-d input {
+    width: 95%;
+}
+
+.sh-f2 {
+    display: flex;
+}
+
+.sh-f2 .sh-fi-d-hn {
+    width: 590px;
+}
+
+.sh-f3 {
+    display: flex;
+}
+
+.sh-fi-d-hsc {
+    margin-right: 85px;
+}
+
+.sh-fi-d-btn {
+    display: flex;
+    justify-content: center;
+}
+
+.sh-fi-d-btn button {
+    display: inline-block;
+    color: white;
+    width: auto;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: #ffb908cf;
+    color: black;
+    transition: all 0.3s ease-in-out;
+    outline: none;
+    border: none;
+}
+
+.sh-fi-d-btn button:hover {
+    cursor: pointer;
+    background: #FFBA08;
+}
+
+.sh-f1,
+.sh-f2,
+.sh-f3 {
+    margin-bottom: 10px;
+}
+
+/* ########################## search supplier ###################### */
+
+.serach_supplier_wrapper {
+    margin-top: 200px;
+    padding: 20px 10px;
+    background: rgba(0, 0, 0, 0.716);
+    color: white;
+    border-radius: 10px;
+}
+
+.search_supplier_data_l1 {
+    display: flex;
+}
+
+.search_supplier_data_l1 .ssd1 {
+    width: 300px;
+}
+
+.search_supplier_data_l1 .ssd1 input {
+    width: 90%;
+}
+
+.inside_ss_ser {
+    display: flex;
+    justify-content: space-between;
+}
+
+.serach_supplier_wrapper h1 {
+    padding-bottom: 10px;
+    text-align: center;
+    font-size: 30px;
+    color: #FFBA08;
+}
+
+.ss-btn {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.ss-btn a {
+    display: inline-block;
+    color: white;
+    width: auto;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: #ffb908cf;
+    color: black;
+    transition: all 0.3s ease-in-out;
+}
+
+.ss-btn a:hover {
+    cursor: pointer;
+    background: #FFBA08;
+}
+
+.ss-btn input {
+    display: inline-block;
+    color: white;
+    width: auto;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: #ffb908cf;
+    color: black;
+    transition: all 0.3s ease-in-out;
+    outline: none;
+    border: none;
+    margin-right: 5px;
+}
+
+.ss-btn input:hover {
+    cursor: pointer;
+    background: #FFBA08;
+}
+
+.ss-btn-1 {
+    margin-right: 5px
+}
+
+.search_suppler_table {
+    width: 1450px;
+    margin: 10px auto;
+    background: rgba(0, 0, 0, 0.716);
+    color: white;
+    border-radius: 10px;
+}
+
+.search_suppler_table table {
+    width: 100%;
+    text-align: center;
+}
+
+.inside_ss_ser .ssd2 {
+    display: flex;
+    align-items: center;
+}
+
+.inside_ss_ser .ssd2 input {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+.search_supplier_ul a {
+    color: white;
+}
+
+.search_supplier_iicon {
+    position: relative;
+}
+
+.search_supplier_ul {
+    padding: 7px;
+    border-radius: 10px;
+    color: white;
+    background: black;
+    position: absolute;
+    display: none;
+    left: -108px;
+    top: 4px;
+}
+
+.search_supplier_ul ul li {
+    border-bottom: 2px solid #FFBA08;
+}
+
+.search_supplier_ul ul li a:hover {
+    color: #FFBA08;
+}
+
+.search_supplier_iicon i {
+    color: red;
+
+}
+
+.search_supplier_iicon i:hover .search_supplier_ul {
+    display: block;
+}
+
+.search_supplier_iicon i:hover {
+    color: #FFBA08;
+    cursor: pointer;
+}
+
+.search_supplier_ul input {
+    color: white;
+    outline: none;
+    border: none;
+    background: transparent;
+}
+
+.search_supplier_ul input:hover {
+    cursor: pointer;
+    color: #FFBA08;
+    ;
+}
+
+/* ######## view_supplier_Details_modal styling ######### */
+
+
+.view_supplier_details_wrapper {
+    margin-top: 200px;
+    padding: 20px 10px;
+    background: rgba(0, 0, 0, 0.716);
+    color: white;
+    border-radius: 10px;
+}
+
+.view_supplier_details_data1 {
+    display: flex;
+    /* justify-content: space-between; */
+}
+
+.view_supplier_details_data1 .view_supplier_details_li {
+    width: 266px;
+    margin-right: 100px;
+}
+
+.view_supplier_details_data1 .view_supplier_details_li input {
+    width: 300px;
+}
+
+.view_supplier_details_data1 .view_supplier_details_li_add input {
+    width: 530px;
+}
+
+.view_supplier_details_data2,
+.view_supplier_details_data3 {
+    display: flex;
+}
+
+.view_supplier_details_data2 .view_supplier_details_li {
+    width: 300px;
+}
+
+.view_supplier_details_data2 .view_supplier_details_li input {
+    width: 90%;
+}
+
+.view_supplier_details_data3 .view_supplier_details_li {
+    width: 300px;
+}
+
+.view_supplier_details_data3 .view_supplier_details_li input {
+    width: 90%;
+}
+
+.view_supplier_details_data4 {
+    display: flex;
+}
+
+.view_supplier_details_data4 .view_supplier_details_li {
+    width: 295px;
+}
+
+.view_supplier_details_data4 .view_supplier_details_li input {
+    width: 90%;
 }
