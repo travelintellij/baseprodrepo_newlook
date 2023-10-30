@@ -95,71 +95,36 @@
     </form:form>
 
     <div class="search_suppler_table">
-        <table>
+        <table style="padding:10px 5px">
             <thead>
-                <tr>
-                    <th style="width: 100px;">Supplier Id</th>
-                    <th>Supplier Name</th>
-                    <th style="width:170px;">City</th>
-                    <th style="width: 300px;">Email</th>
-                    <th style="width: 200px;">Mobile</th>
-                    <th style="width: 200px;">Destinations</th>
-                    <th style="width: 200px;">Services</th>
-                    <th>Action</th>
+                <tr >
+                    <th style="width:6.4% ;color:#FFBA08; ">Supplier Id</th>
+                    <th style="width:18.8%; color:#FFBA08 ">Supplier Name</th>
+                    <th style="width:10.2%;color:#FFBA08 ">City</th>
+                    <th style="width:23%; color:#FFBA08">Email</th>
+                    <th style="width:8.5%;color:#FFBA08 ">Mobile</th>
+                    <th style="width:14.5% ;color:#FFBA08">Destinations</th>
+                    <th style="width:10% ;color:#FFBA08">Services</th>
+                    <th  style="width:4% ;color:#FFBA08">Action</th>
                 </tr>
             </thead>
             <tbody>
-                <!-- <tr>
-                    <td>--</td>
-                    <td>--</td>
-                    <td>--</td>
-                    <td>--</td>
-                    <td>--</td>
-                    <td>--</td>
-                    <td>--</td>
-                    <td class="search_supplier_iicon">
-                        <i class="fa-solid fa-sliders st1">
-                            <div class="search_supplier_ul">
-                                <ul>
-                                    <li><a href="" class="ss-pop-up">FollowUp</a></li>
-                                    <li><a href="" class="ss-pop-up">Edit</a></li>
-                                    <li><a href="">Request
-                                            Quote</a></li>
-                                    <li><a href="" class="ss-pop-up">Quotations</a>
-                                    </li>
-                                    <li><a href="" class="ss-pop-up">Reminder</a></li>
-                                </ul>
-                            </div>
-                        </i>
-                    </td>
-                </tr> -->
-
                 <c:set value="${SUPPLIER_LIST}" var="supplierList" />
-                <table style="width:95%;">
-                    <!-- <tr>
-                        <th style="width:5%;background-color:steelblue;">Supplier Id</th>
-                        <th style="width:15%;background-color:steelblue;">Supplier Name</th>
-                        <th style="width:10%;background-color:steelblue;">City</th>
-                        <th style="width:15%;background-color:steelblue;">Email</th>
-                        <th style="width:8%;background-color:steelblue;">Mobile</th>
-                        <th style="width:15%;background-color:steelblue;">Destinations</th>
-                        <th style="width:15%;background-color:steelblue;">Services</th>
-                        <th style="width:17%;background-color:steelblue;">Action</th>
-                    </tr> -->
+             <!--   <table style="padding:25px 10px"> -->
                     <c:forEach items="${supplierList}" var="supplier">
-                        <tr>
+                        <tr style="border-bottom:2px solid green">
 
-                            <td style="width:5%;">${supplier.supplierId }</th>
-                            <td style="width:15%;">${supplier.supplierName }</th>
-                            <td style="width:10%;">${supplier.cityName }</th>
-                            <td style="width:15%;">${supplier.email }</th>
-                            <td style="width:8%;">${supplier.mobile }</th>
-                            <td style="width:15%;">
+                            <td style="width:6.4%;border-bottom:2px solid #FFBA08">${supplier.supplierId }</th>
+                            <td style="width:20.8%;border-bottom:2px solid #FFBA08">${supplier.supplierName }</th>
+                            <td style="width:11.2%;border-bottom:2px solid #FFBA08">${supplier.cityName }</th>
+                            <td style="width:23%x;border-bottom:2px solid #FFBA08">${supplier.email }</th>
+                            <td style="width:8.5%;border-bottom:2px solid #FFBA08">${supplier.mobile }</th>
+                            <td  style="width:13.5%;border-bottom:2px solid #FFBA08">
                                 <c:forEach items="${supplier.destinations}" var="destination">
                                     ${destination.cityName},
                                 </c:forEach>
 
-                            <td style="width:15%;">
+                            <td style="width:15%;border-bottom:2px solid #FFBA08">
                                 <c:if test="${supplier.flight eq true}">
                                     Flight,
                                 </c:if>
@@ -187,11 +152,11 @@
                             </td>
 
 
-                            <td class="search_supplier_iicon">
-                                <i class="fa-solid fa-sliders st1">
+                            <td class="search_supplier_iicon" style="border-bottom:2px solid #FFBA08">
+                              <i class="fa-solid fa-sliders st1">
                                     <div class="search_supplier_ul">
                                         <ul>
-                                            <li>
+                                            <li style="border-bottom: 1px solid #FFBA08;">
                                                 <sec:authorize
                                                     access="hasAnyRole('ADMIN','SUPPLIER_VIEW','SUPPLIER_EDIT','SUPPLIER_DELETE')">
                                                     <a id="myBtn[${supplier.supplierId}]" onclick="contactDisplay(this)"
@@ -203,7 +168,7 @@
 
 
 
-                                            <li>
+                                            <li style="border-bottom: 1px solid #FFBA08;" >
                                                 <sec:authorize access="hasAnyRole('ADMIN','SUPPLIER_EDIT')">
                                                      <a
                                                         href="form_view_editsupplier?supplierId=${supplier.supplierId }"><input
@@ -220,7 +185,7 @@
                                             </li>
 
 
-                                            <li>
+                                            <li style="border-bottom: 1px solid #FFBA08;">
                                                 <sec:authorize access="hasAnyRole('ADMIN','SUPPLIER_DELETE')">
                                                      <a id="myBtn[${supplier.supplierId }]"
                                                         onclick="contactDisplay(this)"

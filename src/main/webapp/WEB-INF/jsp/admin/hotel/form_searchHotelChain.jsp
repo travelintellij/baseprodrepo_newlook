@@ -40,10 +40,10 @@
                         <label for="hoatl_active">Active</label>
                         <select id="active" name="active" style="width:100px;">
                             <c:if test="${SEARCH_HOTEL_CHAIN.active eq true }">
-                                <option class="service-small" value="true" selected>
-                                    <c:out value="True" />
+                                <option class="service-small" value="true" selected style="background:black;color:white">
+                                    <c:out value="True"/>
                                 </option>
-                                <option class="service-small" value="false">
+                                <option class="service-small" value="false" style="background:black;color:white">
                                     <c:out value="False" />
                                 </option>
                             </c:if>
@@ -69,7 +69,7 @@
         <table class="manage-hotal-chain-tabel">
             <thead>
                 <tr>
-                    <th>Chain No</th>
+                    <th style="width:100px">Chain No</th>
                     <th>Hotel Chain Name</th>
                     <th>Hotel Chain Remarks</th>
                     <th>Active</th>
@@ -81,20 +81,20 @@
                     <c:if test="${not empty chainSearchList}">
                         <c:forEach var="chainObj" items="${chainSearchList}">
                 <tr>
-                    <td style="width:10%;">${chainObj.hotelChainId}</td>
-                    <td style="width:30%;">${chainObj.hotelChainName}</td>
-                    <td style="width:35%;">${chainObj.remarks}</td>
-                    <td style="width:10%;">${chainObj.active}</td>
+                    <td style="color:white;text-align:center">${chainObj.hotelChainId}</td>
+                    <td  style="color:white;text-align:center">${chainObj.hotelChainName}</td>
+                    <td  style="color:white;text-align:center">${chainObj.remarks}</td>
+                    <td  style="color:white;text-align:center">${chainObj.active}</td>
                     <td style="width:15%;text-align:center;">
 
-                        <table>
+                        <table style= "background:transparent;text-align:center">
                             <tr>
-                                <td>
+                                <td style=";width:50px;text-align:center">
                                     <sec:authorize access="hasAnyRole('ADMIN','HOTEL_CHAIN_EDIT')">
                                         <form:form id="form_update_FLT_SL" name="form_update_FLT_SL"
-                                            action="view_edit_hotel_chain_form" method="POST" style="display:inline;">
+                                            action="view_edit_hotel_chain_form" method="POST" >
                                             <input type="hidden" name="hotelChainId" value="${chainObj.hotelChainId}" />
-                                            <input type="submit" value="Edit" />
+                                            <input class="search-hotal-chain-actions" type="submit" value="Edit" style="border:none;outline:none;background:transparent;color:white;margin-right:-50px"/>
                                             <!-- <input type="image" src="${pageContext.request.contextPath}/resources/images/edit.jpg" height="20" width="20"/>  -->
                                         </form:form>
                                     </sec:authorize>
@@ -108,12 +108,12 @@
                                         </form:form>
                                     </sec:authorize>
                                 </td>
-                                <td>
+                                <td style="width:50px;text-align:center">
                                     <sec:authorize access="hasAnyRole('ADMIN','HOTEL_CHAIN_DELETE')">
                                         <form:form id="form_del_FLT_SL" name="form_del_FLT_SL"
                                             action="view_delete_hotel_chain_form" method="POST" style="display:inline;">
                                             <input type="hidden" name="hotelChainId" value="${chainObj.hotelChainId}" />
-                                            <input type="submit" value="Delete" />
+                                            <input class="search-hotal-chain-actions" type="submit" value="Delete"  style="border:none;outline:none;background:transparent;color:white;margin-right:20px"/>
                                         </form:form>
                                     </sec:authorize>
                                     <sec:authorize access="! hasAnyRole('ADMIN','HOTEL_CHAIN_DELETE')">

@@ -12,11 +12,31 @@
      <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
      
 <script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
-<script	src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
+<script	src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>a
 </head>
+
+<style>
+.autocomplete-suggestions { border: 1px solid #999; background: red;overflow-y:auto}
+		.autocomplete-suggestion {padding: 2px 5px;color:white; background: black;overflow-y: auto;overflow-y:auto}
+		.autocomplete-selected { background: #F0F0F0;overflow-y:auto} 
+		.autocomplete-suggestions strong { font-weight: normal; color:#FABA08;overflow-y:auto}
+		.autocomplete-group { padding: 2px 5px;overflow-y:auto}
+		.autocomplete-group strong { display: block; border-bottom: 1px solid #000;  background: black ; color:black overflow-y:auto}
+		.autocomplete-selected:hover{
+		color:black
+		}
+</style>
 
 <body
     style="background: url(${pageContext.request.contextPath}/resources/images/revamped/add_hotal.jpg);background-size: cover; background-repeat: no-repeat; background-position: center center;background-attachment: fixed;">
+    
+    <div class="autocomplete-suggestions" style="display:none">
+    <div class="autocomplete-group" ><strong>NHL</strong></div>
+    <div class="autocomplete-suggestion autocomplete-selected" >...</div>
+    <div class="autocomplete-suggestion">...</div>
+    <div class="autocomplete-suggestion">...</div>
+</div>
+    
     <div class="add_hotal container">
         <div class="add_hotal_wrapper">
             <h1>Add Hotel</h1>
@@ -25,16 +45,17 @@
                     <div class="add_hotal_fli">
                         <div class="ah-d1">
                             <label for="">Select Hotel Chain</label>
-                            <select name="hotelChainId">
+                            <select name="hotelChainId" style="width:90%;">
                                 <c:if test="${not empty HotelChainObjList}">
                                     <c:forEach items="${HotelChainObjList}" var="hotelChainObj">
                                         <c:if test="${hotelChainObj.hotelChainId eq 1 }">
-                                            <option class="service-small" value="${hotelChainObj.hotelChainId}" selected>
+                                            <option class="service-small" value="${hotelChainObj.hotelChainId}" selected
+                                            style="background:black;color:white">
                                                 ${hotelChainObj.hotelChainName}
                                             </option>
                                         </c:if>
                                         <c:if test="${hotelChainObj.hotelChainId ne 1 }">
-                                            <option class="service-small" value="${hotelChainObj.hotelChainId}">
+                                            <option class="service-small" value="${hotelChainObj.hotelChainId}"  style="background:black;color:white">
                                                 ${hotelChainObj.hotelChainName}
                                             </option>
                                         </c:if>
@@ -73,37 +94,37 @@
                         <input type="text"  name="locality" id="locality" />
                         </div>
                     </div>
-                    <div class="add_hotal_fli">
+                    <div class="add_hotal_fli" >
                         <div class="ah-d1">
                             <label for="">Star Category</label>
-                                <select name="starCategory">
-                                    <option value="2" class="service-small">
+                                <select name="starCategory" style="width:90%;">
+                                    <option value="2" class="service-small" style="background:black;color:white">
                                         2 Star</option>
-                                    <option value="3" class="service-small" selected>3 Star</option>
-                                    <option value="4" class="service-small">
+                                    <option value="3" class="service-small" selected style="background:black;color:white">3 Star</option>
+                                    <option value="4" class="service-small" style="background:black;color:white">
                                         4 Star</option>
-                                    <option value="5" class="service-small">
+                                    <option value="5" class="service-small" style="background:black;color:white">
                                         5 Star</option>
                                 
                                 </select>
                         </div>
                         <div class="ah-d1">
                             <label for="">Hotel Rating</label>
-                            <select name="udnServiceRating">
-                                <option value="2" class="service-small">
+                            <select name="udnServiceRating" style="width:90%">
+                                <option value="2" class="service-small" style="background:black;color:white">
                                     2 Star</option>
-                                <option value="3" class="service-small" selected>3 Star</option>
-                                <option value="4" class="service-small">
+                                <option value="3" class="service-small" selected style="background:black;color:white">3 Star</option>
+                                <option value="4" class="service-small" style="background:black;color:white">
                                     4 Star</option>
-                                <option value="5" class="service-small">
+                                <option value="5" class="service-small" style="background:black;color:white">
                                     5 Star</option>
                             </select>
                         </div>
                         <div class="ah-d1">
                             <label for="">Is Preferred</label>
-                            <select name="preferred">
-                                <option value="false" class="service-small">No</option>
-                                <option value="true" class="service-small" selected>Yes
+                            <select name="preferred" style="width:90%">
+                                <option value="false" class="service-small" style="background:black;color:white">No</option>
+                                <option value="true" class="service-small" selected style="background:black;color:white">Yes
                                 </option>
                             </select>
                         </div>

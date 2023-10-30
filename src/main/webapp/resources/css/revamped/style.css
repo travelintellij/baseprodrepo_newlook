@@ -1781,7 +1781,12 @@ footer {
 .manage-hotal-chain-tabel thead tr th {
     color: #FFBA08;
 }
-
+.search-hotal-chain-actions{
+	color: red !important;
+}
+.search-hotal-chain-actions:hover{
+	 cursor: pointer;
+}
 /* ################ add hotal styling ############### */
 
 .add_hotal_wrapper {
@@ -2034,12 +2039,12 @@ footer {
     background: black;
     position: absolute;
     display: none;
-    left: -108px;
+    left: -136px;
     top: 4px;
 }
 
 .search_supplier_ul ul li {
-    border-bottom: 2px solid #FFBA08;
+
 }
 
 .search_supplier_ul ul li a:hover {
