@@ -1,123 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
 <jsp:include page="../menu/MenuBuilder.jsp" />
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
-<script	src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
-<link href="<c:url value="/resources/core/main.css" />" rel="stylesheet">
-<style>
-input[type=button], input[type=submit], input[type=reset] {
-		  background-color: #4CAF50;
-		  border: none;
-		  color: white;
-		  padding: 10px 20px;
-		  text-decoration: none;
-		  margin: 4px 2px;
-		  cursor: pointer;
-		}
-</style>
-<div class="submenu-block">
-	
-		<h2 align="center">Search Deals</h2>
-	
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>search deals</title>
+     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/captureLead.css">
+</head>
 
-	<form:form modelAttribute="FILTER_DEAL_OBJ" action="view_filter_deals">
-		<table style="width:80%;" cellpadding="10px" border="1px" rules="none" frame="border" align="center">
-			<tr>
-				<td>
-					<table border="1px;"><caption>Search Criteria</caption>
-						<tr>
-							<th><b>Deal Confirmation No.</b></th>
-							<td style="vertical-align: top; margin: 0;line-height: 4em; ">
-							<form:input path="dealConfirmationId" type="number" min="0" style="height:30px;width:180px;" size="35" value="" placeholder="Deal Number"/>
-							
-						</tr> 
-						<tr>
-							<th>Client Name</th>
-							<td style="vertical-align: top; margin: 0;line-height: 4em; ">
-								<form:input path="clientName"  id="clientName" name="clientName" size="35" style="height:30px;width:165px;" placeholder="Client Name" />
-								<form:hidden path = "clientId" />
-							</td>	
-						</tr>
-						<tr>
-							<th>Query Id</th>
-							<td style="vertical-align: top; margin: 0;line-height: 4em; ">
-								<form:input path="queryId" type="number" min="0" style="height:30px;width:180px;" size="35" value="" placeholder="Query Id"/>
-							</td>
-							 
-						</tr>
-						</table>
-				</td>
-				<td>
-					<table style="width:100%;" cellpadding="0px" border="1px" rules="none" frame="border">
-						<tr>
-							<td><b>Status</b></td>
-							<td>
-								<div class="select">
-									<form:select path="dealStatus" style="height:30px;width: 150px;" required="required" >  
-										<option class="service-small" value="0" >Please Select</option>
-										<form:options items = "${DEAL_STATUS_MAP}" class="service-small"/>
-									</form:select>  
-								</div>
-							</td>
-						</tr>
-						<tr><td colspan="2" style="text-align:center;">
-							<table style="width:100%;" border="1" cellpadding="5px" border="1px" rules="none" frame="border" >
-								<tr><td>  <input type="radio" value="true" id="true" name="searchOnBookingDate" checked/> <label for="true" class="radio">Booking Date</label> <input type="radio" value="false" id="false" name="searchOnBookingDate" /> <label for="false" class="radio">Travel Date</label> </td></tr>
-								<tr><td></td></tr>
-								<tr>
-									<td>Start Date<form:input path= "startDate" type="date" required="required" style="height:30px;margin: auto;"/>
-									To:<form:input path= "endDate" type="date" required="required" style="height:30px;margin: auto;"/>
-								</td></tr>
-								
-							</table>
-							
-						</td>
-						</tr>
-						<tr style="border:1px;">
-							<td style="width:50%;border: 1px solid black;"><button type="submit" style="width:100px;">Search</button></td>
-							<td style="width:50%;border: 1px solid black;"><a href="view_deal_searchDealForm"><input type="button" value="Clear Filter" /></a></td>
-						</tr>
-						
-					</table>
-					
-				</td>
-			</tr>
-		</table>
-		<div align="center"><font color="red"> <form:errors path="endDate" cssClass="error" /></font></div>
-	</form:form>
-	<script>
-	
-	//document.getElementById('startDate').value = new Date().toISOString().substring(0, 10);
-	//document.getElementById('endDate').value = new Date().toISOString().substring(0, 10);
-	
-	$(document).ready(function() {
-		$('#clientName').autocomplete({
-			serviceUrl: '${pageContext.request.contextPath}/getClientList',
-			paramName: "tagName",
-			delimiter: ",",
-			onSelect: function(suggestion) {
-	            cityID = suggestion.data;
-	            id=cityID;
-	            jQuery("#clientId").val(cityID);
-	            $('input[name=clientId]').val(id);
-	            return false;
-	        },
-			transformResult: function(response) {
-		        return {
-		            suggestions: $.map($.parseJSON(response), function(item) {
-		            	return { value: item.tagName, data: item.id };
-		            })
-		            
-		        };
-		    }
-		});
-	});
-	</script>
- 
- </div> <!-- End of Main Block -->
-  <%--  <jsp:include page="_Workloadfooter.jsp" /> --%>
-  
-  </html>
-  
+<body
+    style="background: url(${pageContext.request.contextPath}/resources/images/revamped/search_deals.jpg);background-size: cover; background-repeat: no-repeat; background-position: center center;background-attachment: fixed;">
+
+    <div class="search_deal container">
+        <div class="search_deal_wrapper">
+            <h1 class="search_deal_h1">
+                Search Deals
+            </h1>
+            <form:form modelAttribute="FILTER_DEAL_OBJ" action="view_filter_deals">
+                <div class="search_deals_data">
+                    <div class="search_deals_data_l1">
+                        <label for="dcn">Deal Confirmation No.</label>
+                        <form:input path="dealConfirmationId" type="number" min="0" size="35" value=""
+                            placeholder="Deal Number" />
+                    </div>
+                    <div class="search_deals_data_l1">
+                        <label for="cn">Client Name</label>
+                        <form:input path="clientName" id="clientName" name="clientName" size="35"
+                            placeholder="Client Name" />
+                        <form:hidden path="clientId" />
+                    </div>
+                    <div class="search_deals_data_l1">
+                        <label for="qi">Query Id</label>
+                        <form:input path="queryId" type="number" min="0" value="" placeholder="Query Id" />
+                    </div>
+                    <div class="search_deals_data_l1">
+                        <label for="status">Status</label>
+                        <form:select path="dealStatus" required="required">
+                            <option class="service-small" value="0">Please Select</option>
+                            <form:options items="${DEAL_STATUS_MAP}" class="service-small" />
+                        </form:select>
+                    </div>
+                </div>
+                <div class="search_deals_data">
+                    <div class="search_deals_data_l1 search_deal_chs">
+                        <input type="radio" value="true" id="true" name="searchOnBookingDate" checked
+                            style="display: inline-block;width: 20px;height: 20px;margin-left: -25px;margin-right:10px">
+                        <label for="true" class="radio">Booking Date</label>
+                    </div>
+                    <div class="search_deals_data_l1 search_deal_chs">
+                        <input type="radio" value="false" id="false" name="searchOnBookingDate" name=""
+                            style="display: inline-block;width: 20px;height: 20px;margin-left: -25px;margin-right:10px">
+                        <label for="false" class="radio">Travel Date</label>
+                    </div>
+                    <div class="search_deals_data_l1">
+                        <label for="sd">Start Date</label>
+                        <form:input path="startDate" type="date" required="required" />
+                    </div>
+                    <div class="search_deals_data_l1">
+                        <label for="to">To</label> <br>
+                        <form:input path="endDate" type="date" required="required" />
+                    </div>
+                </div>
+                <div class="search_deals_btns">
+                    <button type="submit">Search</button>
+                    <a href="view_deal_searchDealForm">Clear Filter</a>
+                </div>
+                <div align="center">
+                    <font color="red">
+                        <form:errors path="endDate" cssClass="error" />
+                    </font>
+                </div>
+            </form:form>
+        </div>
+
+        <div class="search_deals_total">
+            <p>Total Deals Found : 0</p>
+        </div>
+
+        <div class="search_deals_tabel">
+
+            <table class="search_deals_tabel">
+                <tr>
+                    <th>Deal</th>
+                    <th>Query</th>
+                    <th>Booking Date</th>
+                    <th>Client Name</th>
+                    <th>Travel Date</th>
+                    <th>Services Booked</th>
+                    <th>Deal Status</th>
+                    <th>Deal Owner</th>
+                    <th>Action</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>12345</td>
+                    <td>2023-10-31</td>
+                    <td>John Doe</td>
+                    <td>2023-11-15</td>
+                    <td>Flight and Hotel</td>
+                    <td>Pending</td>
+                    <td>Jane Smith</td>
+                    <td style="color: red;">View</td>
+                </tr>
+            </table>
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+    <script>
+
+        //document.getElementById('startDate').value = new Date().toISOString().substring(0, 10);
+        //document.getElementById('endDate').value = new Date().toISOString().substring(0, 10);
+
+        $(document).ready(function () {
+            $('#clientName').autocomplete({
+                serviceUrl: '${pageContext.request.contextPath}/getClientList',
+                paramName: "tagName",
+                delimiter: ",",
+                onSelect: function (suggestion) {
+                    cityID = suggestion.data;
+                    id = cityID;
+                    jQuery("#clientId").val(cityID);
+                    $('input[name=clientId]').val(id);
+                    return false;
+                },
+                transformResult: function (response) {
+                    return {
+                        suggestions: $.map($.parseJSON(response), function (item) {
+                            return { value: item.tagName, data: item.id };
+                        })
+
+                    };
+                }
+            });
+        });
+    </script>
+
+
+
+</body>
+
+</html>
