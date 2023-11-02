@@ -114,17 +114,17 @@
                     <c:forEach items="${supplierList}" var="supplier">
                         <tr style="border-bottom:2px solid green">
 
-                            <td style="width:6.4%;border-bottom:2px solid #FFBA08">${supplier.supplierId }</th>
-                            <td style="width:20.8%;border-bottom:2px solid #FFBA08">${supplier.supplierName }</th>
-                            <td style="width:11.2%;border-bottom:2px solid #FFBA08">${supplier.cityName }</th>
-                            <td style="width:23%x;border-bottom:2px solid #FFBA08">${supplier.email }</th>
-                            <td style="width:8.5%;border-bottom:2px solid #FFBA08">${supplier.mobile }</th>
-                            <td  style="width:13.5%;border-bottom:2px solid #FFBA08">
+                            <td style="width:6.4%;border-bottom:2px solid #FFBA08;border-right:2px solid #FFBA08">${supplier.supplierId }</th>
+                            <td style="width:20.8%;border-bottom:2px solid #FFBA08;border-right:2px solid #FFBA08"">${supplier.supplierName }</th>
+                            <td style="width:11.2%;border-bottom:2px solid #FFBA08;border-right:2px solid #FFBA08"">${supplier.cityName }</th>
+                            <td style="width:23%x;border-bottom:2px solid #FFBA08;border-right:2px solid #FFBA08"">${supplier.email }</th>
+                            <td style="width:8.5%;border-bottom:2px solid #FFBA08;border-right:2px solid #FFBA08"">${supplier.mobile }</th>
+                            <td  style="width:13.5%;border-bottom:2px solid #FFBA08;border-right:2px solid #FFBA08"">
                                 <c:forEach items="${supplier.destinations}" var="destination">
                                     ${destination.cityName},
                                 </c:forEach>
 
-                            <td style="width:15%;border-bottom:2px solid #FFBA08">
+                            <td style="width:15%;border-bottom:2px solid #FFBA08;border-right:2px solid #FFBA08"">
                                 <c:if test="${supplier.flight eq true}">
                                     Flight,
                                 </c:if>

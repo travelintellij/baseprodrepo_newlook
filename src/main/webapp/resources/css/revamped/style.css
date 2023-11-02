@@ -1547,7 +1547,6 @@ footer {
     cursor: pointer;
     background: #FFBA08;
 }
-}
 
 /* ################ lead details open nav view ########### */
 
@@ -1781,12 +1780,15 @@ footer {
 .manage-hotal-chain-tabel thead tr th {
     color: #FFBA08;
 }
-.search-hotal-chain-actions{
-	color: red !important;
+
+.search-hotal-chain-actions {
+    color: red !important;
 }
-.search-hotal-chain-actions:hover{
-	 cursor: pointer;
+
+.search-hotal-chain-actions:hover {
+    cursor: pointer;
 }
+
 /* ################ add hotal styling ############### */
 
 .add_hotal_wrapper {
@@ -2039,13 +2041,10 @@ footer {
     background: black;
     position: absolute;
     display: none;
-    left: -136px;
-    top: 4px;
+    left: -120px;
+    top: 10px;
 }
 
-.search_supplier_ul ul li {
-
-}
 
 .search_supplier_ul ul li a:hover {
     color: #FFBA08;
@@ -2139,3 +2138,504 @@ footer {
 .view_supplier_details_data4 .view_supplier_details_li input {
     width: 90%;
 }
+
+
+/* ################### create new deal ############### */
+
+.create_new_deal_wrapper {
+    margin-top: 180px;
+    padding: 20px 10px;
+    background: rgba(0, 0, 0, 0.716);
+    color: white;
+    border-radius: 10px;
+}
+
+.create_new_win_li1 {
+    display: flex;
+}
+
+.create_new_win_li1 .create_new_win_li {
+    width: 300px;
+}
+
+.create_new_win_li1 .create_new_win_li input {
+    width: 90%;
+}
+
+.create_new_win_li2 .create_new_win_li {
+    width: 295px;
+}
+
+.create_new_win_li2 .create_new_win_li input {
+    width: 90%;
+}
+
+.create_new_win_li2 {
+    display: flex;
+}
+
+.new_deal_ser {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cr-new-deal_infor_client {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.create_new_deal_btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.create_new_deal_btn button {
+    display: inline-block;
+    color: white;
+    width: auto;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: #ffb908cf;
+    color: black;
+    transition: all 0.3s ease-in-out;
+    outline: none;
+    border: none;
+    margin-right: 5px;
+}
+
+.create_new_deal_btn button:hover {
+    cursor: pointer;
+    background: #FFBA08;
+}
+
+.create_new_deal_heading {
+    padding-bottom: 10px;
+    text-align: center;
+    font-size: 30px;
+    color: #FFBA08;
+}
+
+/* ################## search deal wrapper ############## */
+.search_deal_wrapper {
+    margin-top: 180px;
+    padding: 20px 10px;
+    background: rgba(0, 0, 0, 0.716);
+    color: white;
+    border-radius: 10px;
+}
+
+.search_deal_h1 {
+    padding-bottom: 10px;
+    text-align: center;
+    font-size: 30px;
+    color: #FFBA08;
+}
+
+.search_deals_data {
+    display: flex;
+}
+
+.search_deals_data .search_deals_data_l1 {
+    width: 300px;
+}
+
+.search_deals_data .search_deals_data_l1 input {
+    width: 90%;
+}
+
+.search_deal_chs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search_deals_btns {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.search_deals_btns a {
+    display: inline-block;
+    color: white;
+    width: auto;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: #ffb908cf;
+    color: black;
+    transition: all 0.3s ease-in-out;
+    outline: none;
+    border: none;
+    margin-right: 5px;
+}
+
+.search_deals_btns a:hover {
+    cursor: pointer;
+    background: #FFBA08;
+}
+
+.search_deals_btns button {
+    display: inline-block;
+    color: white;
+    width: auto;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: #ffb908cf;
+    color: black;
+    transition: all 0.3s ease-in-out;
+    outline: none;
+    border: none;
+    margin-right: 5px;
+}
+
+.search_deals_btns button:hover {
+    cursor: pointer;
+    background: #FFBA08;
+}
+
+.search_deals_total {
+    margin: 10px auto;
+    text-align: center;
+    width: 200px;
+    background: rgba(0, 0, 0, 0.716);
+    border-radius: 10px;
+    color: #98FF98;
+}
+
+.search_deals_tabel {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.46);
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.search_deals_tabel th {
+    color: #FFBA08
+}
+
+/* ################ view tasks ################ */
+
+.view_task_wrapper {
+    margin-top: 20px;
+    padding: 20px 10px;
+    background: rgba(0, 0, 0, 0.716);
+    color: white;
+    border-radius: 10px;
+}
+
+.view_task_data {
+    display: flex;
+}
+
+.view_task_data .view_task_data_li {
+    width: 300px;
+}
+
+.view_task_data .view_task_data_li input {
+    width: 90%;
+}
+
+.view_task_date {
+    width: 295px !important;
+}
+
+.view_task_data_btns {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.view_task_data_btns button {
+    display: inline-block;
+    color: white;
+    width: auto;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: #ffb908cf;
+    color: black;
+    transition: all 0.3s ease-in-out;
+    outline: none;
+    border: none;
+    margin-right: 5px;
+}
+
+.view_task_data_btns button:hover {
+    cursor: pointer;
+    background: #FFBA08;
+}
+
+
+.view_task_data_btns a {
+    display: inline-block;
+    color: white;
+    width: auto;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: #ffb908cf;
+    color: black;
+    transition: all 0.3s ease-in-out;
+    outline: none;
+    border: none;
+    margin-right: 5px;
+}
+
+.view_task_data_btns a:hover {
+    cursor: pointer;
+    background: #FFBA08;
+}
+
+
+
+
+.view_task_table {
+    text-align: center;
+    margin-top: 20px;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.716);
+    color: white;
+    border-radius: 10px;
+}
+.view_task_table th{
+color: #FFBA08
+}
+.view_task_td{
+    position: relative;
+}
+.view_task_ul{
+    display: none;
+    padding: 5px;
+    width: 150px;
+    background: rgba(0, 0, 0, 0.799);
+    position: absolute;
+    top: 0px;
+    left: 70px;
+    border-radius: 10px;
+}
+.view_task_ul a{
+    color:white;
+}
+.view_task_ul a:hover{
+    color:#dca00a
+
+}
+.view_task_ul li{
+    border-bottom:2px solid #dca00a;
+}
+.view_task_icon{
+    color:red
+}
+.view_task_icon:hover{
+    cursor: pointer;
+    color: #FFBA08
+}
+.view_task_icon:hover .view_task_ul{
+    display: block;
+    cursor: pointer;
+}
+
+/* ############################## create new ticket ##################### */
+
+.create-new-ticket-wrapper {
+    color: white;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 0.689);
+    padding:8px;
+    border-radius: 10px;
+    margin-top: 0px;
+}
+
+.create-new-ticket-wrapper-f-li {
+    /* border: 2px solid green; */
+    display: flex;
+    justify-content: space-between;
+    text-align: start;
+    margin-bottom: 5px;
+}
+
+.create-new-ticket-wrapper-f-li-2 {
+    display: flex;
+    justify-content: flex-start;
+    text-align: start;
+    margin-bottom: 5px;
+}
+
+.cntd {
+    width: 100%;
+}
+
+.cntd input {
+    width: 95%;
+}
+
+.cntd2 input {
+    width: 95.5%
+}
+
+.cntd-date input {
+    height: 27px;
+}
+
+.link-wid-cli {
+    width: 231px;
+}
+
+.link-wid-deal {
+    width: 473px;
+    margin-left: 5px;
+}
+
+.link-wid-deal input {
+    width: 97%;
+}
+
+.link-wid-deal input::placeholder {
+    font-size: 15px;
+}
+
+.cnt-des {
+
+    width: 473px;
+}
+
+.cnt-des input {
+    width: 98%;
+}
+
+.create-new-ticket-wrapper-f-li-3 {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.cnt-check {
+    margin: 0 10px;
+}
+
+.cnt-check input {
+    width: 15px;
+    height: 15px;
+}
+
+.cnt-heading {
+    font-size: 30px;
+    color: #FFBA08;
+    margin-bottom: 10px;
+}
+.cnt_options {
+	display: flex;
+	justify-content: space-between;
+	margin-top:200px;
+	margin-bottom:20px;	
+	    background: rgba(0, 0, 0, 0.689);
+	    border-radius:10px;
+	    padding: 5px;
+}
+.cnt_options a{
+	 color: #FFBA08;
+}
+.cnt_options a:hover{
+	 color: red
+}
+.cnt-btns{
+margin-top: 10px;	
+}
+.cnt-btns input{
+	 display: inline-block;
+    color: white;
+    width: auto;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: #ffb908cf;
+    color: black;
+    transition: all 0.3s ease-in-out;
+    outline: none;
+    border: none;
+    margin-right: 5px;
+}
+.cnt-btns input:hover {
+    cursor: pointer;
+    background: #FFBA08;
+}
+.cnt-btns a{
+	 display: inline-block;
+    color: white;
+    width: auto;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: #ffb908cf;
+    color: black;
+    transition: all 0.3s ease-in-out;
+    outline: none;
+    border: none;
+    margin-right: 5px;
+}
+.cnt-btns a:hover {
+    cursor: pointer;
+    background: #FFBA08;
+}
+.link-wid-cli input{
+	width:97% !important;
+}
+
+
+/* ################## create new task ######################## */
+
+.create-new-task-wrapper {
+    color: white;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 0.689);
+    padding: 30px 10px;
+    border-radius: 10px;
+    margin-top: 0px;
+}
+
+.cntb {
+    /* width:100px; */
+    width: 100%;
+    /* border: 2px solid red; */
+}
+
+.cntb2 {
+    /* border: 2px solid red; */
+    width: 297px
+}
+
+.cntb input,
+.cntb2 input {
+    width: 90%;
+}
+
+.cntb-des {
+    width: 556px;
+    height: 53px
+}
+
+.create-new-task-wrapper-f-li,
+.create-new-task-wrapper-f-li-2 {
+    /* border: 2px solid green; */
+    display: flex;
+    justify-content: flex-start;
+    text-align: start;
+    margin-bottom: 5px;
+}
+
+.cnt_des {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.cnt_des textarea {
+    width: 100%;
+    height: 50px;
+}
+
+

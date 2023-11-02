@@ -52,16 +52,16 @@
                             <label for="assin-to">Assigned to</label><br>
                             <form:select path="ticketOwner" min="1" required="required">
                                 <option class="service-small" value=""> -----Select User----</option>
-                                <form:options items="${ACTIVE_USERS_MAP}" class="service-small" />
+                                <form:options items="${ACTIVE_USERS_MAP}" class="service-small" style="background:black;color:white"/>
                             </form:select>
                         </div>
-                        <div class="cntd">
+                        <div class="cntd cnt-pri">
                             <label for="prio">Priority</label><br>
-                            <select id="ticketPriority" name="ticketPriority" style="width: 180px;" required>
-                                <option class="service-small" value=""> -----Select Priority----</option>
+                            <select id="ticketPriority" name="ticketPriority" style="width: 215px;" required>
+                                <option class="service-small" value="">Select Priority</option>
                                 <c:if test="${not empty TICKET_PRIORITY}">
                                     <c:forEach items="${TICKET_PRIORITY}" var="ticketPriority">
-                                        <option class="service-small" value="${ticketPriority}">${ticketPriority}
+                                        <option style="background:black;color:white" class="service-small" value="${ticketPriority}">${ticketPriority}
                                         </option>
                                     </c:forEach>
                                 </c:if>
@@ -69,8 +69,8 @@
                         </div>
                         <div class="cntd">
                             <label for="status">Status</label><br>
-                            <form:select path="ticketStatus" style="width: 150px;">
-                                <form:options items="${TICKET_STATUS}" class="service-small" />
+                            <form:select path="ticketStatus" style="width: 220px;">
+                                <form:options items="${TICKET_STATUS}" class="service-small"  style="background:black;color:white"/>
                             </form:select>
                         </div>
                         <div class="cntd cntd-date">

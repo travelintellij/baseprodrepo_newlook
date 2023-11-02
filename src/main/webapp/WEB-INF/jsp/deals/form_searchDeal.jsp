@@ -74,6 +74,7 @@
                         <form:errors path="endDate" cssClass="error" />
                     </font>
                 </div>
+                <div align="center"><font color="red"> <form:errors path="endDate" cssClass="error" /></font></div>
             </form:form>
         </div>
 
@@ -82,7 +83,6 @@
         </div>
 
         <div class="search_deals_tabel">
-
             <table class="search_deals_tabel">
                 <tr>
                     <th>Deal</th>
@@ -107,12 +107,7 @@
                     <td style="color: red;">View</td>
                 </tr>
             </table>
-
-
         </div>
-
-
-
     </div>
 
 
@@ -145,9 +140,5 @@
             });
         });
     </script>
-
-
-
 </body>
-
 </html>

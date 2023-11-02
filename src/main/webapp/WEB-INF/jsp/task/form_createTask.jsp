@@ -35,42 +35,42 @@
                 <div class="create-new-task-wrapper-f-li-d1 cntb">
                     <label for="taskTitle">Task title</label> <br>
                     <input class="form-control search-slt" type="text" name="taskTitle" id="taskTitle"
-                        placeholder="Title" required />
+                        placeholder="Enter Title" required />
                 </div>
                 <div class="create-new-task-wrapper-f-li-d2 cntb">
                     <label for="cntat">Assigned to</label> <br>
-                    <form:select path="taskOwner" style="width: 150px;" min="1" required="required">
-                        <option class="service-small" value=""> -----Select User----</option>
-                        <form:options items="${ACTIVE_USERS_MAP}" class="service-small" />
+                    <form:select path="taskOwner" style="width: 270px;" min="1" required="required">
+                        <option class="service-small" value=""  style="background:black;color:white"> -----Select User----</option>
+                        <form:options items="${ACTIVE_USERS_MAP}" class="service-small"  style="background:black;color:white" />
                     </form:select>
                 </div>
                 <div class="create-new-task-wrapper-f-li-d3 cntb">
                     <label for="cntp">Priority</label> <br>
-                    <select id="taskPriority" name="taskPriority" required>
-                        <option class="service-small" value=""> -----Select Priority----</option>
+                    <select id="taskPriority" name="taskPriority" required style="width: 270px;">
+                        <option class="service-small" value="" style="background:black;color:white"> -----Select Priority----</option>
                         <c:if test="${not empty TASK_PRIORITY}">
                             <c:forEach items="${TASK_PRIORITY}" var="taskPriority">
-                                <option class="service-small" value="${taskPriority}">${taskPriority}</option>
+                                <option class="service-small" value="${taskPriority}" style="background:black;color:white">${taskPriority}</option>
                             </c:forEach>
                         </c:if>
                     </select>
                 </div>
                 <div class="create-new-task-wrapper-f-li-2-d1 cntb">
                     <label for="cnts">Status</label> <br>
-                    <form:select path="taskStatus" style="width: 150px;">
-                        <form:options items="${TASK_STATUS}" class="service-small" />
+                    <form:select path="taskStatus" style="width: 260px;">
+                        <form:options items="${TASK_STATUS}" class="service-small" style="background:black;color:white"/>
                     </form:select>
                 </div>
             </div>
             <div class="create-new-task-wrapper-f-li-2">
                 <div class="create-new-task-wrapper-f-li-2-d2 cntb2">
                     <label for="cntdd">Due Date</label> <br>
-                    <input style="height: 30px; width: 180px;" id="taskDueDate" name="taskDueDate" required />
+                    <input style="height: 30px; width: 265px;" id="taskDueDate" name="taskDueDate" required />
                 </div>
                 <div class="create-new-task-wrapper-f-li-2-d3 cntb2 ">
                     <label for="cntlwd">Link with deal</label> <br>
                     <input type="text" name="dealName" id="dealName"
-                        placeholder="Deal Search - Enter Only numeric Deal # or Client Name " />
+                        placeholder="numeric Deal or Client Name " />
                     <input type="hidden" id="dealConfirmationId" name="dealConfirmationId" />
                 </div>
                 <div class="cnt_des cntb-des">
