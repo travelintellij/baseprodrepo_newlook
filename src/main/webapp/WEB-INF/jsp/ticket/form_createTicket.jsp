@@ -18,7 +18,7 @@
     <div class="container">
 
 
-        <div class="cnt_options container">
+        <div class="cnt_options">
             <a href="view_create_ticket_form_user">Create Ticket</a>
             <a href="view_open_ticket_form_user"> Open Ticket</a>
             <a href="view_open_ticket_form_user_filter_due_today">Due Today</a>
@@ -27,7 +27,6 @@
             <a href="view_open_my_assigned_ticket_form_user">Assigned to me</a>
             <a href="view_completed_ticket_form_user">Completed</a>
         </div>
-
 
         <div class="create-new-ticket-wrapper">
             <div align="center"><b>

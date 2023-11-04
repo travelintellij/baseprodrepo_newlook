@@ -15,7 +15,7 @@
 <body
     style="background: url(${pageContext.request.contextPath}/resources/images/revamped/create_new_task.jpg);background-size: cover; background-repeat: no-repeat; background-position: center center;background-attachment: fixed;">
 
-        <div class="cnt_options container">
+        <div class="cnt_options">
             <a href="#">Create Task</a>
             <a href="view_open_task_form_user"> Open Tasks</a>
             <a href="view_open_task_form_user_filter_due_today">Due Today</a>
@@ -28,7 +28,7 @@
     <div class="create-new-task-wrapper container">
         <font color="green"> ${Success} </font>
         <font color="red"> ${Error}</font>
-        <h1 class="create_new_task_title">Create New Task</h1>
+        <h1 class="create_new_task_title" style="font-size:30px;color: #FFBA08;margin-bottom: 10px;">Create New Task</h1>
         <form:form action="create_create_task_form_user" modelAttribute="TASK_RECORDER_OBJ">
             <div class="create-new-task-wrapper-f-li">
 

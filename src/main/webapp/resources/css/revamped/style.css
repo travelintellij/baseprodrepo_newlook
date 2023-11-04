@@ -2318,7 +2318,7 @@ footer {
 /* ################ view tasks ################ */
 
 .view_task_wrapper {
-    margin-top: 20px;
+    margin-top: 200px;
     padding: 20px 10px;
     background: rgba(0, 0, 0, 0.716);
     color: white;
@@ -2397,13 +2397,16 @@ footer {
     color: white;
     border-radius: 10px;
 }
-.view_task_table th{
-color: #FFBA08
+
+.view_task_table th {
+    color: #FFBA08
 }
-.view_task_td{
+
+.view_task_td {
     position: relative;
 }
-.view_task_ul{
+
+.view_task_ul {
     display: none;
     padding: 5px;
     width: 150px;
@@ -2413,24 +2416,29 @@ color: #FFBA08
     left: 70px;
     border-radius: 10px;
 }
-.view_task_ul a{
-    color:white;
-}
-.view_task_ul a:hover{
-    color:#dca00a
 
+.view_task_ul a {
+    color: white;
 }
-.view_task_ul li{
-    border-bottom:2px solid #dca00a;
+
+.view_task_ul a:hover {
+    color: #dca00a
 }
-.view_task_icon{
-    color:red
+
+.view_task_ul li {
+    border-bottom: 2px solid #dca00a;
 }
-.view_task_icon:hover{
+
+.view_task_icon {
+    color: red
+}
+
+.view_task_icon:hover {
     cursor: pointer;
     color: #FFBA08
 }
-.view_task_icon:hover .view_task_ul{
+
+.view_task_icon:hover .view_task_ul {
     display: block;
     cursor: pointer;
 }
@@ -2444,9 +2452,9 @@ color: #FFBA08
     border-collapse: collapse;
     border: none;
     background: rgba(0, 0, 0, 0.689);
-    padding:8px;
+    padding: 8px;
     border-radius: 10px;
-    margin-top: 0px;
+    margin-top: 200px;
 }
 
 .create-new-ticket-wrapper-f-li {
@@ -2526,26 +2534,36 @@ color: #FFBA08
     color: #FFBA08;
     margin-bottom: 10px;
 }
+
 .cnt_options {
-	display: flex;
-	justify-content: space-between;
-	margin-top:200px;
-	margin-bottom:20px;	
-	    background: rgba(0, 0, 0, 0.689);
-	    border-radius:10px;
-	    padding: 5px;
+    height: 300px;
+    position: absolute;
+    top: 0;
+    left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 200px;
+    margin-bottom: 20px;
+    background: rgba(0, 0, 0, 0.689);
+    border-radius: 10px;
+    padding: 5px;
 }
-.cnt_options a{
-	 color: #FFBA08;
+
+.cnt_options a {
+    color: #FFBA08;
 }
-.cnt_options a:hover{
-	 color: red
+
+.cnt_options a:hover {
+    color: red
 }
-.cnt-btns{
-margin-top: 10px;	
+
+.cnt-btns {
+    margin-top: 10px;
 }
-.cnt-btns input{
-	 display: inline-block;
+
+.cnt-btns input {
+    display: inline-block;
     color: white;
     width: auto;
     padding: 10px 15px;
@@ -2557,12 +2575,14 @@ margin-top: 10px;
     border: none;
     margin-right: 5px;
 }
+
 .cnt-btns input:hover {
     cursor: pointer;
     background: #FFBA08;
 }
-.cnt-btns a{
-	 display: inline-block;
+
+.cnt-btns a {
+    display: inline-block;
     color: white;
     width: auto;
     padding: 10px 15px;
@@ -2574,12 +2594,14 @@ margin-top: 10px;
     border: none;
     margin-right: 5px;
 }
+
 .cnt-btns a:hover {
     cursor: pointer;
     background: #FFBA08;
 }
-.link-wid-cli input{
-	width:97% !important;
+
+.link-wid-cli input {
+    width: 97% !important;
 }
 
 
@@ -2594,7 +2616,7 @@ margin-top: 10px;
     background: rgba(0, 0, 0, 0.689);
     padding: 30px 10px;
     border-radius: 10px;
-    margin-top: 0px;
+    margin-top: 200px;
 }
 
 .cntb {
@@ -2638,4 +2660,303 @@ margin-top: 10px;
     height: 50px;
 }
 
+/* ############### due date in deals and over due task ################# */
+
+.due_date_task_wrapper,
+.over_due_tasks_wrapper {
+    color: white;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 0.689);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 200px;
+}
+
+.due_today_task_data,
+.over_due_tasks_data {
+    display: flex;
+}
+
+.due_today_task_data_l1,
+.over_due_tasks_li {
+    text-align: start;
+    width: 400px;
+}
+
+.due_today_task_data_l1 input,
+.over_due_tasks_li input {
+    width: 90%;
+}
+
+.due_today_task_data_btns {
+    margin-top: 10px;
+}
+
+.due_today_task_data_btns a {
+    display: inline-block;
+    color: white;
+    width: auto;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: #ffb908cf;
+    color: black;
+    transition: all 0.3s ease-in-out;
+    outline: none;
+    border: none;
+    margin-right: 5px;
+}
+
+.due_today_task_data_btns a:hover {
+    cursor: pointer;
+    background: #FFBA08;
+}
+
+.due_today_task_data_btns input {
+    display: inline-block;
+    color: white;
+    width: auto;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: #ffb908cf;
+    color: black;
+    transition: all 0.3s ease-in-out;
+    outline: none;
+    border: none;
+    margin-right: 5px;
+}
+
+.due_today_task_data_btns input:hover {
+    cursor: pointer;
+    background: #FFBA08;
+}
+
+.due_date_task_tabel {
+    color: white;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 0.689);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.due_date_task_tabel th {
+    color: #FFBA08;
+}
+
+/* ################# craete by me (tasks) ####################  */
+
+.created_by_me_wrapper {
+    color: white;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 0.689);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 200px;
+}
+
+.created_by_me_data {
+    display: flex;
+}
+
+.created_by_me_data .created_by_me_data_li {
+    text-align: start;
+    width: 300px;
+}
+
+.created_by_me_data .created_by_me_data_li input {
+    width: 90%;
+}
+
+/* ############# assigned to me (tasks) ################ */
+.assin_to_me_tasks_wrapper {
+    color: white;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 0.689);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 200px;
+}
+
+.assin_to_me_tasks_data {
+    display: flex;
+}
+
+.assin_to_me_tasks_data .assin_to_me_tasks_data_li {
+    text-align: start;
+    width: 300px;
+}
+
+.assin_to_me_tasks_data .assin_to_me_tasks_data_li input {
+    width: 90%;
+}
+
+/* ######################## completed (tasks) ####################### */
+
+.completed_tasks_wrapper {
+    color: white;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 0.689);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 200px;
+}
+
+.completed_tasks_data {
+    display: flex;
+}
+
+.completed_tasks_data .complete_tasks_data_li {
+    text-align: start;
+    width: 300px;
+}
+
+.completed_tasks_data .complete_tasks_data_li input {
+    width: 90%;
+}
+
+/* ################ view ticket ################## */
+
+.view_ticket_wrapper {
+    color: white;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 0.689);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 200px;
+}
+
+.view_ticket_wrapper_data_line1 {
+    display: flex;
+}
+
+.view_ticket_wrapper_data_line1 .view_ticket_data_l1 {
+    text-align: start;
+    width: 300px;
+}
+
+.view_ticket_wrapper_data_line1 .view_ticket_data_l1 input {
+    width: 90%;
+}
+
+.view_ticket_wrapper_data_line2 {
+    display: flex;
+}
+
+.view_ticket_wrapper_data_line2 .view_ticket_data_l1 {
+    text-align: start;
+    width: 294px;
+}
+
+.view_ticket_wrapper_data_line2 .view_ticket_data_l1 input {
+    width: 90%;
+}
+
+/* ###################### due today(ticket) , over due (ticket) ################### */
+
+
+.due_today_ticket_wrapper,
+.over_due_ticket_wrapper {
+    color: white;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 0.689);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 200px;
+}
+
+.due_today_ticket_wrapper_data,
+.over_due_ticket_wrapper_data {
+    display: flex;
+}
+
+.due_today_ticket_wrapper_data .due_today_ticket_wrapper_data_l1,
+.over_due_ticket_wrapper_data .over_due_ticket_wrapper_data_li {
+    width: 400px;
+    text-align: start;
+}
+
+.due_today_ticket_wrapper_data .due_today_ticket_wrapper_data_l1 input,
+.over_due_ticket_wrapper_data .over_due_ticket_wrapper_data_li input {
+    width: 90%;
+}
+
+/* ################### created by me (tickets) ################### */
+
+.created_by_me_ticket_wrapper {
+    color: white;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 0.689);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 200px;
+}
+
+.created_by_me_ticket_wrapper_data {
+    display: flex;
+}
+
+.created_by_me_ticket_wrapper_data .created_by_me_ticket_wrapper_data_line1 {
+    width: 400px;
+    text-align: start;
+}
+
+.created_by_me_ticket_wrapper_data .created_by_me_ticket_wrapper_data_line1 input {
+    width: 90%;
+}
+
+.created_by_me_ticket_wrapper_data .created_by_me_ticket_wrapper_data_line2 {
+    width: 395px;
+    text-align: start;
+}
+
+.created_by_me_ticket_wrapper_data .created_by_me_ticket_wrapper_data_line2 input {
+    width: 90%;
+}
+/* ################### assigned_to_me (tickets) ###################### */
+
+.assigned_to_me_ticket_wrapper{
+color: white;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 0.689);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 200px;
+}
+.assigned_to_me_ticket_wrapper_data{
+    display:flex
+}
+.assigned_to_me_ticket_wrapper_data .assigned_to_me_ticket_data_l1{
+    width: 300px;
+    text-align: start;
+}
+.assigned_to_me_ticket_wrapper_data .assigned_to_me_ticket_data_l1 input{
+    width: 90%;
+}
 
