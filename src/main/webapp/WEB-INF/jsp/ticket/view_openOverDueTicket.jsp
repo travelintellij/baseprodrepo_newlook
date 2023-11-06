@@ -20,7 +20,7 @@
         <a href="view_create_ticket_form_user">Create Ticket</a>
         <a href="view_open_ticket_form_user">Open Tickets</a>
         <a href="view_open_ticket_form_user_filter_due_today">Due Today</a>
-        <a href="view_open_over_due_ticket_form_user" style="color:red;">Over Due</a>
+        <a href="view_open_over_due_ticket_form_user"  style="color:white;background:black">Over Due</a>
         <a href="view_open_my_created_ticket_form_user">Created By Me</a>
         <a href="view_open_my_assigned_ticket_form_user">Assigned to me</a>
         <a href="view_completed_ticket_form_user">Completed</a>
@@ -36,12 +36,12 @@
             <form:form action="view_open_over_due_ticket_form_user" modelAttribute="TICKET_FILTER_OBJ">
                 <div class="over_due_ticket_wrapper_data">
                     <div class="over_due_ticket_wrapper_data_li">
-                        <label for="">Ticket Owner</label>
-                    <select id="ticketOwner" name="ticketOwner" style="width: 160px;" required>
+                        <label for="">Ticket Owner</label> <br>
+                    <select id="ticketOwner" name="ticketOwner" style="width:90%;" required>
                         <option class="service-small"> -----Ticket Owner----</option>
                         <c:if test="${not empty ACTIVE_USERS_LIST}">
                             <c:forEach items="${ACTIVE_USERS_LIST}" var="userObj">
-                                <option class="service-small" value="${userObj.userId}">${userObj.name}</option>
+                                <option class="service-small" value="${userObj.userId}" style="color:white;background:black">${userObj.name}</option>
                             </c:forEach>
                         </c:if>
                     </select>
@@ -52,12 +52,12 @@
                         id="dealConfirmationId" step="0.0" placeholder="Deal Confirmation Id " />
                     </div>
                     <div class="over_due_ticket_wrapper_data_li">
-                        <label for="">Ticket Priority</label>
-                        <select id="ticketPriority" name="ticketPriority">
+                        <label for="">Ticket Priority</label> <br>
+                        <select id="ticketPriority" name="ticketPriority" style="width:90%">
                             <option class="service-small" value=""> -----Ticket Priority----</option>
                             <c:if test="${not empty TICKET_PRIORITY}">
                                 <c:forEach items="${TICKET_PRIORITY}" var="priority">
-                                    <option class="service-small" value="${priority}">${priority}</option>
+                                    <option class="service-small" value="${priority}" style="color:white;background:black">${priority}</option>
                                 </c:forEach>
                             </c:if>
                         </select>
@@ -71,24 +71,28 @@
         </div>
 
 
+<div style="color:white;background:black;width:100%;margin-top:20px;font-weight:bold;padding:5px 10px;border-radius:5px;display:flex">
+<p style="margin-right:10px"> <span style="color:#FFBA08">DA</span> : Deal Associated</p>
+<p> <span style="color:#FFBA08">AT</span> : Assigned To</p>
+</div>
+
+
         <table class="due_date_task_tabel">
             <thead>
                 <tr>
-                <th style="width:10%;"><a style="color:#ffffa0;"
+                <th style="width:10%;"><a style="color: #FFBA08"
                         href="view_open_over_due_ticket_form_user?sortBy=ticketId&dateFrom=${dateFrom}&dateTo=${dateTo}&ticketOwner=${ticketOwner}&dealConfirmationId=${dealConfirmationId}&ticketPriority=${ticketPriority}">Ticket
                         Id</a></th>
                     <th>Ticket Title</th>
                     <th>Client Associated</th>
-                    <th><a
-                            href="view_open_over_due_ticket_form_user?sortBy=dealConfirmationId&dateFrom=${dateFrom}&dateTo=${dateTo}&ticketOwner=${ticketOwner}&dealConfirmationId=${dealConfirmationId}&ticketPriority=${ticketPriority}">Deal
-                            Associated</a></th>
-                <th><a
-                        href="view_open_over_due_ticket_form_user?sortBy=ticketOwner&dateFrom=${dateFrom}&dateTo=${dateTo}&ticketOwner=${ticketOwner}&dealConfirmationId=${dealConfirmationId}&ticketPriority=${ticketPriority}">Assigned
-                        To</a></th>
-                <th><a
+                    <th><a style="color: #FFBA08"
+                            href="view_open_over_due_ticket_form_user?sortBy=dealConfirmationId&dateFrom=${dateFrom}&dateTo=${dateTo}&ticketOwner=${ticketOwner}&dealConfirmationId=${dealConfirmationId}&ticketPriority=${ticketPriority}">DA</a></th>
+                <th><a style="color: #FFBA08"
+                        href="view_open_over_due_ticket_form_user?sortBy=ticketOwner&dateFrom=${dateFrom}&dateTo=${dateTo}&ticketOwner=${ticketOwner}&dealConfirmationId=${dealConfirmationId}&ticketPriority=${ticketPriority}">AT</a></th>
+                <th><a style="color: #FFBA08"
                         href="view_open_over_due_ticket_form_user?sortBy=ticketPriority&dateFrom=${dateFrom}&dateTo=${dateTo}&ticketOwner=${ticketOwner}&dealConfirmationId=${dealConfirmationId}&ticketPriority=${ticketPriority}">Priority</a>
                 </th>
-                <th><a 
+                <th><a style="color: #FFBA08"
                         href="view_open_over_due_ticket_form_user?sortBy=ticketDueDate&dateFrom=${dateFrom}&dateTo=${dateTo}&ticketOwner=${ticketOwner}&dealConfirmationId=${dealConfirmationId}&ticketPriority=${ticketPriority}">Due
                         Date</a></th>
                     <th>Actions</th>
@@ -97,24 +101,24 @@
             <tbody>
                         <c:forEach items="${OPEN_TICKET_LIST}" var="openTicketList">
                             <tr>
-                                <td style="width:10%;">${openTicketList.ticketId }</td>
-                                <td style="width:20%;">${openTicketList.ticketTitle }</td>
-                                <td style="width:10%;">${openTicketList.clientName}</td>
-                                <td style="width:10%;">
+                                <td style="width:7%;">${openTicketList.ticketId }</td>
+                                <td style="width:15%;">${openTicketList.ticketTitle }</td>
+                                <td style="width:15%;">${openTicketList.clientName}</td>
+                                <td style="width:7%;">
                                     <c:if test="${openTicketList.dealConfirmationId != 0}">
                                         ${openTicketList.dealConfirmationId}
                                     </c:if>
                                 </td>
-                                <td style="width:15%;"> ${openTicketList.ticketOwnerName}</td>
+                                <td style="width:10%;"> ${openTicketList.ticketOwnerName}</td>
                                 <td style="width:10%;">${openTicketList.ticketPriority}</td>
                                 <td style="width:15%;">
-                                    <font color="red">${localDateTimeFormat.format(openTicketList.ticketDueDate)}</font>
+                                    <font>${localDateTimeFormat.format(openTicketList.ticketDueDate)}</font>
                                 </td>
                                 <td style="width:10%;">
                                     <a href="view_view_over_due_ticket?ticketId=${openTicketList.ticketId }"><input type="button"
-                                            style="background-color: #786AAF;" value="View" /></a> |
+                                          style="color:red;background:transparent;border:none;outline:none"   value="View" /></a> |
                                     <a href="view_form_edit_over_due_ticket?ticketId=${openTicketList.ticketId }"><input type="button"
-                                            style="background-color: #786AAF;" value="Edit" /></a>
+                                          style="color:red;background:transparent;border:none;outline:none"   value="Edit" /></a>
                                 </td>
                             </tr>
                         </c:forEach>

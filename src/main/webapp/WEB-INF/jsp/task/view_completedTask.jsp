@@ -18,13 +18,13 @@
 
 
     <div class="cnt_options">
-        <a href="view_create_ticket_form_user">Create Ticket</a>
-        <a href="view_open_ticket_form_user"> Open Ticket</a>
-        <a href="view_open_ticket_form_user_filter_due_today">Due Today</a>
-        <a href="view_open_over_due_ticket_form_user">Over Due</a>
-        <a href="view_open_my_created_ticket_form_user">Created By Me</a>
-        <a href="view_open_my_assigned_ticket_form_user">Assigned to me</a>
-        <a href="view_completed_ticket_form_user">Completed</a>
+          <a href="view_create_task_form_user">Create Task</a>
+            <a href="view_open_task_form_user"> Open Tasks</a>
+            <a href="view_open_task_form_user_filter_due_today"  >Due Today</a>
+            <a href="view_open_over_due_task_form_user">Over Due</a>
+            <a href="view_open_my_created_task_form_user">Created By Me</a>
+            <a href="view_open_my_assigned_task_form_user">Assigned to me</a>
+            <a href="view_completed_task_form_user"  style="color:white;background:black">Completed</a>
     </div>
 
 
@@ -37,23 +37,23 @@
             <form:form action="view_completed_task_form_user" modelAttribute="TASK_FILTER_OBJ">
             <div class="completed_tasks_data">
                 <div class="complete_tasks_data_li">
-                    <label for="">Task Owner</label>
-                    <select id="taskOwner" name="taskOwner" style="width: 160px;" required>
+                    <label for="">Task Owner</label> <br>
+                    <select id="taskOwner" name="taskOwner" style="width: 90%;" required>
                         <option class="service-small"> -----Task Owner----</option>
                         <c:if test="${not empty ACTIVE_USERS_LIST}">
                             <c:forEach items="${ACTIVE_USERS_LIST}" var="userObj">
-                                <option class="service-small" value="${userObj.userId}">${userObj.name}</option>
+                                <option class="service-small" value="${userObj.userId}" style="color:white;background:black">${userObj.name}</option>
                             </c:forEach>
                         </c:if>
                     </select>
                 </div>
                 <div class="complete_tasks_data_li">
-                    <label for="">Task Priority</label>
-                    <select id="taskPriority" name="taskPriority" style="height:30px;width:160px;">
+                    <label for="">Task Priority</label> <br>
+                    <select id="taskPriority" name="taskPriority" style="width:90%;">
                         <option class="service-small" value=""> -----Task Priority----</option>
                         <c:if test="${not empty TASK_PRIORITY}">
                             <c:forEach items="${TASK_PRIORITY}" var="priority">
-                                <option class="service-small" value="${priority}">${priority}</option>
+                                <option class="service-small" value="${priority}" style="color:white;background:black">${priority}</option>
                             </c:forEach>
                         </c:if>
                     </select>
@@ -78,20 +78,20 @@
             <thead>
                 <tr>
                     <th><a
-                            href="view_completed_task_form_user?sortBy=taskId&dateFrom=${dateFrom}&dateTo=${dateTo}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}">Task
+                       style="color: #FFBA08"     href="view_completed_task_form_user?sortBy=taskId&dateFrom=${dateFrom}&dateTo=${dateTo}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}">Task
                             Id</a></th>
                     <th>Task Title</th>
                     <th><a
-                            href="view_completed_task_form_user?sortBy=dealConfirmationId&dateFrom=${dateFrom}&dateTo=${dateTo}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}">Deal
+                         style="color: #FFBA08"     href="view_completed_task_form_user?sortBy=dealConfirmationId&dateFrom=${dateFrom}&dateTo=${dateTo}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}">Deal
                             Associated</a></th>
                     <th><a
-                            href="view_completed_task_form_user?sortBy=taskOwner&dateFrom=${dateFrom}&dateTo=${dateTo}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}">Assigned
+                        style="color: #FFBA08"     href="view_completed_task_form_user?sortBy=taskOwner&dateFrom=${dateFrom}&dateTo=${dateTo}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}">Assigned
                             To</a></th>
                     <th><a
-                            href="view_completed_task_form_user?sortBy=taskPriority&dateFrom=${dateFrom}&dateTo=${dateTo}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}">Priority</a>
+                          style="color: #FFBA08"    href="view_completed_task_form_user?sortBy=taskPriority&dateFrom=${dateFrom}&dateTo=${dateTo}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}">Priority</a>
                     </th>
                     <th><a
-                            href="view_completed_task_form_user?sortBy=taskDueDate&dateFrom=${dateFrom}&dateTo=${dateTo}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}">Due
+                         style="color: #FFBA08"     href="view_completed_task_form_user?sortBy=taskDueDate&dateFrom=${dateFrom}&dateTo=${dateTo}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}">Due
                             Date</a></th>
                     <th>Action</th>
                 </tr>

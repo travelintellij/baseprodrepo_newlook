@@ -19,7 +19,7 @@
 
 
         <div class="cnt_options">
-            <a href="view_create_ticket_form_user">Create Ticket</a>
+            <a href="view_create_ticket_form_user"  style="color:white;background:black">Create Ticket</a>
             <a href="view_open_ticket_form_user"> Open Ticket</a>
             <a href="view_open_ticket_form_user_filter_due_today">Due Today</a>
             <a href="view_open_over_due_ticket_form_user">Over Due</a>

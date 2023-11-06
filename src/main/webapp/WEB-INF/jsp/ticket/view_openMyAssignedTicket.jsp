@@ -22,7 +22,7 @@
         <a href="view_open_ticket_form_user_filter_due_today">Due Today</a>
         <a href="view_open_over_due_ticket_form_user">Over Due</a>
         <a href="view_open_my_created_ticket_form_user">Created By Me</a>
-        <a href="view_open_my_assigned_ticket_form_user" style="color: red;">Assigned to me</a>
+        <a href="view_open_my_assigned_ticket_form_user"  style="color:white;background:black">Assigned to me</a>
         <a href="view_completed_ticket_form_user">Completed</a>
     </div>
 
@@ -41,11 +41,11 @@
                     </div>
                     <div class="assigned_to_me_ticket_data_l1">
                         <label for="">Ticket Priority</label>
-                        <select id="ticketPriority" name="ticketPriority">
+                        <select id="ticketPriority" name="ticketPriority" style="width:90%">
                             <option class="service-small" value=""> -----Ticket Priority----</option>
                             <c:if test="${not empty TICKET_PRIORITY}">
                                 <c:forEach items="${TICKET_PRIORITY}" var="priority">
-                                    <option class="service-small" value="${priority}">${priority}</option>
+                                    <option class="service-small" value="${priority}" style="color:white;background:black">${priority}</option>
                                 </c:forEach>
                             </c:if>
                         </select>
@@ -55,8 +55,8 @@
                         <input type="date" name="DateFrom">
                     </div>
                     <div class="assigned_to_me_ticket_data_l1">
-                        <label for="">Deal Confirmation Id</label>
-                        <input type="date name=" DateTo"">
+                       <br>
+                        <input type="date" name=" DateTo"">
                     </div>
                 </div>
                 <div class="due_today_task_data_btns">
@@ -67,26 +67,33 @@
         </div>
 
         <!-- ############### tabel ##################### -->
+        
+        
+<div style="color:white;background:black;width:100%;margin-top:20px;font-weight:bold;padding:5px 10px;border-radius:5px;display:flex">
+<p style="margin-right:10px"> <span style="color:#FFBA08">DA</span> : Deal Associated</p>
+<p> <span style="color:#FFBA08">AT</span> : Assigned To</p>
+</div>
+        
+        
 
         <table class="due_date_task_tabel">
             <thead>
                 <tr>
                     <th><a
-                            href="view_open_my_assigned_ticket_form_user?sortBy=ticketId&dateFrom=${dateFrom}&dateTo=${dateTo}&ticketOwner=${ticketOwner}&dealConfirmationId=${dealConfirmationId}&ticketPriority=${ticketPriority}">Ticket
+                         style="    color: #FFBA08"   href="view_open_my_assigned_ticket_form_user?sortBy=ticketId&dateFrom=${dateFrom}&dateTo=${dateTo}&ticketOwner=${ticketOwner}&dealConfirmationId=${dealConfirmationId}&ticketPriority=${ticketPriority}">Ticket
                             Id</a></th>
                     <th>Ticket Title</th>
                     <th>Client Associated</th>
                     <th><a
-                            href="view_open_my_assigned_ticket_form_user?sortBy=dealConfirmationId&dateFrom=${dateFrom}&dateTo=${dateTo}&ticketOwner=${ticketOwner}&dealConfirmationId=${dealConfirmationId}&ticketPriority=${ticketPriority}">Deal
-                            Associated</a></th>
+                        style="    color: #FFBA08"    href="view_open_my_assigned_ticket_form_user?sortBy=dealConfirmationId&dateFrom=${dateFrom}&dateTo=${dateTo}&ticketOwner=${ticketOwner}&dealConfirmationId=${dealConfirmationId}&ticketPriority=${ticketPriority}">DA</a></th>
                     <th><a
-                            href="view_open_my_assigned_ticket_form_user?sortBy=ticketOwner&dateFrom=${dateFrom}&dateTo=${dateTo}&ticketOwner=${ticketOwner}&dealConfirmationId=${dealConfirmationId}&ticketPriority=${ticketPriority}">Assigned
-                            To</a></th>
+                         style="    color: #FFBA08"   href="view_open_my_assigned_ticket_form_user?sortBy=ticketOwner&dateFrom=${dateFrom}&dateTo=${dateTo}&ticketOwner=${ticketOwner}&dealConfirmationId=${dealConfirmationId}&ticketPriority=${ticketPriority}">AT
+                           </a></th>
                     <th><a
-                            href="view_open_my_assigned_ticket_form_user?sortBy=ticketPriority&dateFrom=${dateFrom}&dateTo=${dateTo}&ticketOwner=${ticketOwner}&dealConfirmationId=${dealConfirmationId}&ticketPriority=${ticketPriority}">Priority</a>
+                         style="    color: #FFBA08"   href="view_open_my_assigned_ticket_form_user?sortBy=ticketPriority&dateFrom=${dateFrom}&dateTo=${dateTo}&ticketOwner=${ticketOwner}&dealConfirmationId=${dealConfirmationId}&ticketPriority=${ticketPriority}">Priority</a>
                     </th>
                     <th><a
-                            href="view_open_my_assigned_ticket_form_user?sortBy=ticketDueDate&dateFrom=${dateFrom}&dateTo=${dateTo}&ticketOwner=${ticketOwner}&dealConfirmationId=${dealConfirmationId}&ticketPriority=${ticketPriority}">Due
+                         style="    color: #FFBA08"   href="view_open_my_assigned_ticket_form_user?sortBy=ticketDueDate&dateFrom=${dateFrom}&dateTo=${dateTo}&ticketOwner=${ticketOwner}&dealConfirmationId=${dealConfirmationId}&ticketPriority=${ticketPriority}">Due
                             Date</a></th>
                     <th>Action</th>
                 </tr>
@@ -94,23 +101,22 @@
             <tbody>
                 <c:forEach items="${OPEN_TICKET_LIST}" var="openTicketList">
                     <tr>
-                        <td style="width:10%;">${openTicketList.ticketId }</td>
-                        <td style="width:20%;">${openTicketList.ticketTitle }</td>
-                        <td style="width:10%;">${openTicketList.clientName }</td>
-                        <td style="width:10%;">
+                        <td style="width:7%;">${openTicketList.ticketId }</td>
+                        <td style="width:15%;">${openTicketList.ticketTitle }</td>
+                        <td style="width:15%;">${openTicketList.clientName }</td>
+                        <td style="width:7%;">
                             <c:if test="${openTicketList.dealConfirmationId != 0}">
                                 ${openTicketList.dealConfirmationId}
                             </c:if>
                         </td>
-                        <td style="width:15%;"> ${openTicketList.ticketOwnerName}</td>
+                        <td style="width:10%;"> ${openTicketList.ticketOwnerName}</td>
                         <td style="width:10%;">${openTicketList.ticketPriority}</td>
                         <td style="width:15%;">${localDateTimeFormat.format(openTicketList.ticketDueDate)}</td>
                         <td style="width:10%;">
                             <a href="view_view_my_assigned_ticket?ticketId=${openTicketList.ticketId }"><input
-                                    type="button" style="background-color: #786AAF;" value="View" /></a> |
+                                    type="button" style="color:red;background:transparent;border:none;outline:none" value="View" /></a> |
                             <a href="view_form_edit_my_assigned_ticket?ticketId=${openTicketList.ticketId }"><input
-                                    type="button" style="background-color: #786AAF;" value="Edit" /></a>
-
+                                    type="button" style="color:red;background:transparent;border:none;outline:none" value="Edit" /></a>
                         </td>
                     </tr>
 

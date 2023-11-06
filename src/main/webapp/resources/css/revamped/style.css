@@ -2336,7 +2336,9 @@ footer {
 .view_task_data .view_task_data_li input {
     width: 90%;
 }
-
+.view_task_tak_owner select,.view_task_task_pri select{
+	width:90%
+}
 .view_task_date {
     width: 295px !important;
 }
@@ -2536,22 +2538,26 @@ footer {
 }
 
 .cnt_options {
-    height: 300px;
+    height:46%;
     position: absolute;
     top: 0;
-    left: 10px;
+    left: 0;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    margin-top: 200px;
+    justify-content: flex-start;
+    margin-top: 164px;
     margin-bottom: 20px;
-    background: rgba(0, 0, 0, 0.689);
-    border-radius: 10px;
-    padding: 5px;
+    background: #FFCF53;
+    padding: 5px 0;
+    color:black;
+    border-radius: 2px;
 }
 
 .cnt_options a {
-    color: #FFBA08;
+    color: black;
+
+    padding: 10px 5px;
+
 }
 
 .cnt_options a:hover {
@@ -2662,6 +2668,13 @@ footer {
 
 /* ############### due date in deals and over due task ################# */
 
+
+.task_owner_viwe_task select,.task_pri_viwe_task select{
+	width: 90% !important;
+}
+.list_button{
+	border: 2px solid red;
+}
 .due_date_task_wrapper,
 .over_due_tasks_wrapper {
     color: white;
@@ -2689,6 +2702,12 @@ footer {
 .due_today_task_data_l1 input,
 .over_due_tasks_li input {
     width: 90%;
+}
+.due_today_task_owner{
+	width: 350px;
+}
+.due_today_task_owner select,.due_today_task_data_l1 select{
+	width: 312px !important;
 }
 
 .due_today_task_data_btns {
@@ -2751,6 +2770,8 @@ footer {
 
 /* ################# craete by me (tasks) ####################  */
 
+
+
 .created_by_me_wrapper {
     color: white;
     width: 100%;
@@ -2775,6 +2796,11 @@ footer {
 .created_by_me_data .created_by_me_data_li input {
     width: 90%;
 }
+
+.my_created_task_sel select{
+	width:265px;
+}
+
 
 /* ############# assigned to me (tasks) ################ */
 .assin_to_me_tasks_wrapper {
@@ -2885,12 +2911,10 @@ footer {
     margin-top: 200px;
 }
 
-.due_today_ticket_wrapper_data,
-.over_due_ticket_wrapper_data {
+.over_due_ticket_wrapper_data,.due_today_ticket_wrapper_data {
     display: flex;
 }
 
-.due_today_ticket_wrapper_data .due_today_ticket_wrapper_data_l1,
 .over_due_ticket_wrapper_data .over_due_ticket_wrapper_data_li {
     width: 400px;
     text-align: start;
@@ -2900,7 +2924,12 @@ footer {
 .over_due_ticket_wrapper_data .over_due_ticket_wrapper_data_li input {
     width: 90%;
 }
-
+.due_today_ticket_wrapper_data .due_today_ticket_wrapper_data_l1{
+	display: flex;
+}
+due_today_ticket_wrapper_data_l1_1{
+	width:400px
+}
 /* ################### created by me (tickets) ################### */
 
 .created_by_me_ticket_wrapper {
@@ -2957,6 +2986,41 @@ color: white;
     text-align: start;
 }
 .assigned_to_me_ticket_wrapper_data .assigned_to_me_ticket_data_l1 input{
+    width: 90%;
+}
+/* ############# compleated (tickets) ################## */
+
+.compleated_ticket_wrapper {
+    color: white;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 0.689);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 200px;
+}
+
+
+.compleated_ticket_wrapper_data_line_1,
+.compleated_ticket_wrapper_data2 {
+    text-align: start;
+    display: flex;
+}
+
+.compleated_ticket_wrapper_data_line_1 .compleated_ticket_wrapper_data_l1{
+    width: 400px;
+}
+.compleated_ticket_wrapper_data2 .compleated_ticket_wrapper_data_l1 {
+    width: 395px;
+}
+
+.compleated_ticket_wrapper_data_line_1 .compleated_ticket_wrapper_data_l1 input {
+    width: 90%;
+}
+
+.compleated_ticket_wrapper_data2 .compleated_ticket_wrapper_data_l1 input {
     width: 90%;
 }
 

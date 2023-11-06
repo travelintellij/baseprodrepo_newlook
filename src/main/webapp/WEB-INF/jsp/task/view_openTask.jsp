@@ -23,7 +23,7 @@
 
  <div class="cnt_options ">
             <a href="view_create_task_form_user">Create Task</a>
-            <a href="view_open_task_form_user"> Open Tasks</a>
+            <a href="view_open_task_form_user" style="color:white;background:black"> Open Tasks</a>
             <a href="view_open_task_form_user_filter_due_today">Due Today</a>
             <a href="view_open_over_due_task_form_user">Over Due</a>
             <a href="view_open_my_created_task_form_user">Created By Me</a>
@@ -49,24 +49,24 @@
                     <input type="text" name="dealConfirmationId" id="dealConfirmationId" step="0.0"
                         placeholder="Deal Confirmation Id ">
                 </div>
-                <div class="view_task_data_li">
+                <div class="view_task_data_li view_task_tak_owner">
                     <label for="">Task Owner</label>
                     <select id="taskOwner" name="taskOwner" required>
                         <option class="service-small"> -----Task Owner----</option>
                         <c:if test="${not empty ACTIVE_USERS_LIST}">
                             <c:forEach items="${ACTIVE_USERS_LIST}" var="userObj">
-                                <option class="service-small" value="${userObj.userId}">${userObj.name}</option>
+                                <option class="service-small" value="${userObj.userId}" style="color:white;background:black">${userObj.name}</option>
                             </c:forEach>
                         </c:if>
                     </select>
                 </div>
-                <div class="view_task_data_li">
+                <div class="view_task_data_li view_task_task_pri">
                     <label for="">Task Priority</label>
                     <select id="taskPriority" name="taskPriority">
                         <option class="service-small" value=""> -----Task Priority----</option>
                         <c:if test="${not empty TASK_PRIORITY}">
                             <c:forEach items="${TASK_PRIORITY}" var="priority">
-                                <option class="service-small" value="${priority}">${priority}</option>
+                                <option class="service-small" value="${priority}" style="color:white;background:black">${priority}</option>
                             </c:forEach>
                         </c:if>
                     </select>
@@ -88,6 +88,7 @@
                 <a href="view_open_task_form_user">Clear Filter</a>
             </div>
         </div>
+        
 
         <table class="view_task_table">
             <tr>
