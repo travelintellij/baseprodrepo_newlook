@@ -286,11 +286,7 @@ input[type=button], input[type=submit], input[type=reset] {
 			      <br><h2 style="text-align:center;" id="modelheaderh2">Supplier Details</h2>
 			    </div>
 			    <div class="modal-body">
-			
-			
-			    </div>
-			    <div class="modal-footer">
-			      <h3>Powered by @TravelIntelliJ</h3>
+
 			    </div>
 			  </div>
 			

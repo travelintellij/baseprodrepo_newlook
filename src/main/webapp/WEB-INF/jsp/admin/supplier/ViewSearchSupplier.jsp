@@ -12,7 +12,73 @@
     <title>Search Supplier</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
     <script src="https://kit.fontawesome.com/6f6addf9b0.js" crossorigin="anonymous"></script>
+    <script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
+<script	src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
 </head>
+
+
+<style>
+.modal {
+	  display: none; /* Hidden by default */
+	  position: fixed; /* Stay in place */
+	  z-index: 1; /* Sit on top */
+	  padding-top: 50px; /* Location of the box */
+	  left: 0;
+	  top: 0;
+	  width: 100%; /* Full width */
+	  height: 90%; /* Full height */
+	  background-color: transparent; /* Black w/ opacity */
+	}
+	
+	/* Modal Content */
+	.modal-content {
+	  position: relative;
+	  margin: auto;
+	  padding: 0;
+	  width: 1200px;
+	  height: 90%;
+	  -webkit-animation-name: animatetop;
+	  -webkit-animation-duration: 0.4s;
+	  animation-name: animatetop;
+	  animation-duration: 0.4s
+	}
+	
+	/* Add Animation */
+	@-webkit-keyframes animatetop {
+	  from {top:-300px; opacity:0} 
+	  to {top:0; opacity:1}
+	}
+	
+	@keyframes animatetop {
+	  from {top:-300px; opacity:0}
+	  to {top:0; opacity:1}
+	}
+	
+	/* The Close Button */
+	.close {
+	  color: white;
+	  float: right;
+	  font-size: 28px;
+	  font-weight: bold;
+	}
+	
+	.close:hover,
+	.close:focus {
+	  color: #000;
+	  text-decoration: none;
+	  cursor: pointer;
+	}
+	
+	.modal-header {
+	  padding: 2px 16px;
+	  background-color: lightblue;
+	  color: white;
+	}
+	
+	.modal-body {padding: 2px 16px;}
+
+</style>
+
 
 <body
     style="background: url(${pageContext.request.contextPath}/resources/images/revamped/search_supplier_bg.jpg);background-size: cover; background-repeat: no-repeat; background-position: center center;background-attachment: fixed;">
@@ -90,9 +156,11 @@
                     <input type="submit" value="Apply Filter" />
                     <a href="view_form_admin_search_supplier">Clear Filter</a>
                 </div>
+                    </form:form>
         </div>
+      
     </div>
-    </form:form>
+  
 
     <div class="search_suppler_table">
         <table style="padding:10px 5px">
@@ -164,6 +232,7 @@
                                                         data-toggle="modal" data-target="#myModal"><input type="button"
                                                             value="View" /></a>
                                                 </sec:authorize>
+                                             
                                             </li>
 
 
@@ -221,26 +290,25 @@
             </tbody>
         </table>
 
-            <div id="myModal" class="modal">
-            
-                <!-- Modal content -->
-                <!-- <div class="modal-content">
-                    <div class="modal-header">
-                        <span class="close">&times;</span>
-                        <br>
-                        <h2 style="text-align:center;" id="modelheaderh2">Supplier Details</h2>
-                    </div>
-                    <div class="modal-body">
-            
-            
-                    </div>
-                    <div class="modal-footer">
-                        <h3>Powered by @TravelIntelliJ</h3>
-                    </div>
-                </div> -->
-            
-            </div>
-            </table>
+           	<div id="myModal" class="modal">
+			
+			  <!-- Modal content -->
+			  <div class="modal-content">
+			    <div class="modal-header">
+			      <span class="close">&times;</span>
+			      <br><h2 style="text-align:center;" id="modelheaderh2">Supplier Details</h2>
+			    </div>
+			    <div class="modal-body">
+			
+			
+			    </div>
+			    <div class="modal-footer">
+			      <h3>Powered by @TravelIntelliJ</h3>
+			    </div>
+			  </div>
+			
+			</div>	
+           
     </div>
 
 
@@ -274,7 +342,84 @@
 			    </c:if>
 			    </font>
 			</div>
+<script>
+	//Get the modal
+	 var modal = document.getElementById("myModal");
+	 // Get the button that opens the modal
+	 var btn = document.getElementById("myBtn");
+	 // Get the <span> element that closes the modal
+	 var span = document.getElementsByClassName("close")[0];
+	 function contactDisplay(clicked) { 
+	 	//alert(clicked); 
+	 	$("#myModal .modal-body").load($(clicked).attr('data-load-url'));
+	 	modal.style.display = "block";
+	 }   
+	
+	 // When the user clicks on <span> (x), close the modal
+	 span.onclick = function() {
+	   modal.style.display = "none";
+	 }
+	
+	 // When the user clicks anywhere outside of the modal, close it
+	 window.onclick = function(event) {
+	   if (event.target == modal) {
+	     modal.style.display = "none";
+	   }
+	 }
+	
+	 function cancelModal(){
+	 	modal.style.display = "none";
+	 }
+	 
+	$('#cityName').autocomplete({
+		serviceUrl : '${pageContext.request.contextPath}/getCityList',
+		paramName : "cityName",
+		delimiter : ",",
+		onSelect : function(suggestion) {
+			cityID = suggestion.data;
+			id = cityID;
+			jQuery("#destinationId").val(cityID);
+			$('input[name=cityId]').val(id);
+			return false;
+		},
+		transformResult : function(response) {
+			return {
+				suggestions : $.map($.parseJSON(response), function(item) {
+					return {
+						value : item.cityName,
+						data : item.destinationId
+					};
+				})
 
+			};
+		}
+	});
+
+	$('#serviceCityName').autocomplete({
+		serviceUrl : '${pageContext.request.contextPath}/getCityList',
+		paramName : "cityName",
+		delimiter : ",",
+		onSelect : function(suggestion) {
+			cityID = suggestion.data;
+			id = cityID;
+			jQuery("#destinationId").val(cityID);
+			$('input[name=serviceCityId]').val(id);
+			return false;
+		},
+		transformResult : function(response) {
+			return {
+				suggestions : $.map($.parseJSON(response), function(item) {
+					return {
+						value : item.cityName,
+						data : item.destinationId
+					};
+				})
+
+			};
+		}
+	});
+ 
+ </script>
 
 </body>
 

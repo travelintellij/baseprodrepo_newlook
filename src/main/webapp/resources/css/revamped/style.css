@@ -2336,9 +2336,12 @@ footer {
 .view_task_data .view_task_data_li input {
     width: 90%;
 }
-.view_task_tak_owner select,.view_task_task_pri select{
-	width:90%
+
+.view_task_tak_owner select,
+.view_task_task_pri select {
+    width: 90%
 }
+
 .view_task_date {
     width: 295px !important;
 }
@@ -2388,14 +2391,11 @@ footer {
     background: #FFBA08;
 }
 
-
-
-
 .view_task_table {
     text-align: center;
     margin-top: 20px;
     width: 100%;
-    background: rgba(0, 0, 0, 0.716);
+    background: rgba(0, 0, 0, 0.8);
     color: white;
     border-radius: 10px;
 }
@@ -2407,7 +2407,14 @@ footer {
 .view_task_td {
     position: relative;
 }
-
+.vscl_action input{
+	 color: #FFBA08;
+	 transition: all 0.3s ease-in-out;
+}
+.vscl_action input:hover{
+	cursor: pointer;
+	color:red
+}
 .view_task_ul {
     display: none;
     padding: 5px;
@@ -2538,7 +2545,7 @@ footer {
 }
 
 .cnt_options {
-    height:46%;
+    height: 46%;
     position: absolute;
     top: 0;
     left: 0;
@@ -2549,7 +2556,7 @@ footer {
     margin-bottom: 20px;
     background: #FFCF53;
     padding: 5px 0;
-    color:black;
+    color: black;
     border-radius: 2px;
 }
 
@@ -2669,12 +2676,15 @@ footer {
 /* ############### due date in deals and over due task ################# */
 
 
-.task_owner_viwe_task select,.task_pri_viwe_task select{
-	width: 90% !important;
+.task_owner_viwe_task select,
+.task_pri_viwe_task select {
+    width: 90% !important;
 }
-.list_button{
-	border: 2px solid red;
+
+.list_button {
+    border: 2px solid red;
 }
+
 .due_date_task_wrapper,
 .over_due_tasks_wrapper {
     color: white;
@@ -2703,11 +2713,14 @@ footer {
 .over_due_tasks_li input {
     width: 90%;
 }
-.due_today_task_owner{
-	width: 350px;
+
+.due_today_task_owner {
+    width: 350px;
 }
-.due_today_task_owner select,.due_today_task_data_l1 select{
-	width: 312px !important;
+
+.due_today_task_owner select,
+.due_today_task_data_l1 select {
+    width: 312px !important;
 }
 
 .due_today_task_data_btns {
@@ -2797,8 +2810,8 @@ footer {
     width: 90%;
 }
 
-.my_created_task_sel select{
-	width:265px;
+.my_created_task_sel select {
+    width: 265px;
 }
 
 
@@ -2911,7 +2924,8 @@ footer {
     margin-top: 200px;
 }
 
-.over_due_ticket_wrapper_data,.due_today_ticket_wrapper_data {
+.over_due_ticket_wrapper_data,
+.due_today_ticket_wrapper_data {
     display: flex;
 }
 
@@ -2924,12 +2938,15 @@ footer {
 .over_due_ticket_wrapper_data .over_due_ticket_wrapper_data_li input {
     width: 90%;
 }
-.due_today_ticket_wrapper_data .due_today_ticket_wrapper_data_l1{
-	display: flex;
+
+.due_today_ticket_wrapper_data .due_today_ticket_wrapper_data_l1 {
+    display: flex;
 }
-due_today_ticket_wrapper_data_l1_1{
-	width:400px
+
+due_today_ticket_wrapper_data_l1_1 {
+    width: 400px
 }
+
 /* ################### created by me (tickets) ################### */
 
 .created_by_me_ticket_wrapper {
@@ -2965,10 +2982,11 @@ due_today_ticket_wrapper_data_l1_1{
 .created_by_me_ticket_wrapper_data .created_by_me_ticket_wrapper_data_line2 input {
     width: 90%;
 }
+
 /* ################### assigned_to_me (tickets) ###################### */
 
-.assigned_to_me_ticket_wrapper{
-color: white;
+.assigned_to_me_ticket_wrapper {
+    color: white;
     width: 100%;
     text-align: center;
     border-collapse: collapse;
@@ -2978,16 +2996,20 @@ color: white;
     border-radius: 10px;
     margin-top: 200px;
 }
-.assigned_to_me_ticket_wrapper_data{
-    display:flex
+
+.assigned_to_me_ticket_wrapper_data {
+    display: flex
 }
-.assigned_to_me_ticket_wrapper_data .assigned_to_me_ticket_data_l1{
+
+.assigned_to_me_ticket_wrapper_data .assigned_to_me_ticket_data_l1 {
     width: 300px;
     text-align: start;
 }
-.assigned_to_me_ticket_wrapper_data .assigned_to_me_ticket_data_l1 input{
+
+.assigned_to_me_ticket_wrapper_data .assigned_to_me_ticket_data_l1 input {
     width: 90%;
 }
+
 /* ############# compleated (tickets) ################## */
 
 .compleated_ticket_wrapper {
@@ -3009,9 +3031,10 @@ color: white;
     display: flex;
 }
 
-.compleated_ticket_wrapper_data_line_1 .compleated_ticket_wrapper_data_l1{
+.compleated_ticket_wrapper_data_line_1 .compleated_ticket_wrapper_data_l1 {
     width: 400px;
 }
+
 .compleated_ticket_wrapper_data2 .compleated_ticket_wrapper_data_l1 {
     width: 395px;
 }
@@ -3023,4 +3046,166 @@ color: white;
 .compleated_ticket_wrapper_data2 .compleated_ticket_wrapper_data_l1 input {
     width: 90%;
 }
+
+/* ################## view supplier contacts listing ################# */
+
+.vscl_wrapper {
+    color: white;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 230px;
+}
+
+.vscl_wrapper .vscl_wrapper_data_line_1 {
+    display: flex;
+    justify-content: space-between;
+}
+
+.vscl_wrapper_data_l1 {
+    width: 300px;
+    text-align: start;
+}
+
+.vscl_wrapper_data_l1 input {
+    width: 90%;
+}
+
+.vscl_wrapper {
+    position: relative;
+}
+
+.vscl_side_menu_bar {
+    padding: 5px;
+    position: absolute;
+    height: auto;
+    border-radius: 2px;
+    right: 5px;
+    top: -40px;
+    width: 400px;
+}
+
+.vscl_side_menu_bar_ul {
+    display: flex;
+    justify-content: space-between;
+}
+
+.vscl_side_menu_bar_ul li {
+    background: #FFCF53;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.vscl_side_menu_bar_ul li a {
+    color: black;
+}
+
+.vscl_side_menu_bar_ul li a:hover {
+    color: red;
+
+}
+
+.client_listing_tabel_div {
+    position: relative;
+
+}
+
+.table_div {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    position: absolute;
+    height: auto;
+    border-radius: 2px;
+    width: 270px;
+    right: 0;
+    top: -20px;
+}
+
+.table_div li a {
+    color: black;
+}
+
+.table_div li {
+    background: #FFCF53;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.table_div li a:hover {
+    color: red;
+}
+.scv_in_btn{
+transition: all 0.2s ease-in-out;
+}
+.scv_in_btn:hover{
+    color: red;
+    cursor: pointer;
+}
+
+
+.view_supplier_details_modal_data_line1{
+	display: flex;
+	justify-content: space-between;
+}
+.vsdm_d1 .view_supplier_details_l1{
+	width:232px
+}
+.view_supplier_details_modal_data_line2{
+	display: flex;
+}
+.vsdm_d2 .view_supplier_details_l1{
+	width:230px
+}
+.view_supplier_details_modal_data_line_con{
+	display: flex;
+}
+.view_supplier_details_modal_data_line_con .view_supplier_details_data_line{
+	width:235px
+}
+
+/* ################### view_SupplierContact_Modal ########################## */
+
+.view_SupplierContact_Modal_wrapper {
+    color: white;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 0.689);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 200px;
+}
+
+.view_SupplierContact_Modal_heading {
+    font-size: 30px;
+    color: #FFBA08;
+}
+.view_SupplierContact_Modal_data_line1,.view_SupplierContact_Modal_data_line2{
+    display: flex;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

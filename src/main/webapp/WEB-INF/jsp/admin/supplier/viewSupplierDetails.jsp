@@ -110,6 +110,14 @@ z-index: 5;
 	</style>
 </head>
 <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <h2 align="center">View Supplier Details <font color="#8433FF">(Supplier Id : ${SUPPLIER_OBJ.supplierId})</font></h2><br>
 <div align="center"><b><font color="green" > ${Success} </font><font color="red"> ${Error}</font> </b></div>
 	<body style="background-color: creamwhite;">

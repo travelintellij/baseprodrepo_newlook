@@ -128,39 +128,35 @@
         </table>
 
 
-        <div id="pagination" align="right">
-            Page:
-            <c:url value="view_completed_task_form_user" var="prev">
-                <c:param name="page" value="${page-1}" />
-            </c:url>
-            <c:if test="${page > 0}">
-                <a href="<c:out value="
-                    ${prev}&sortBy=${sortBy}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&dateFrom=${dateFrom}&dateTo=${dateTo}&taskPriority=${taskPriority}" />Prev</a>
-            </c:if>
-
-            <c:forEach begin="1" end="${maxPages}" step="1" varStatus="i">
-                <c:choose>
-                    <c:when test="${(page+1) == i.index}">
-                        <span>${i.index}</span>
-                    </c:when>
-                    <c:otherwise>
-                        <c:url value="view_completed_task_form_user" var="url">
-                            <c:param name="page" value="${i.index-1}" />
-                        </c:url>
-                        <a
-                            href='<c:out value="${url}&sortBy=${sortBy}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}" />'>${i.index}</a>
-                    </c:otherwise>
-                </c:choose>
-            </c:forEach>
-            <c:url value="view_completed_task_form_user" var="next">
-                <c:param name="page" value="${page + 1}" />
-            </c:url>
-            <c:if test="${page + 1 < maxPages}">
-                <a href='<c:out value="${next}&sortBy=${sortBy}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&dateFrom=${dateFrom}&dateTo=${dateTo}&taskPriority=${taskPriority}" />'
-                    class="pn next">Next</a>
-            </c:if>
-        </div>
-
+     	<div id="pagination" align="right">
+				Page: 
+			    <c:url value="view_completed_task_form_user" var="prev">
+			       <c:param name="page" value="${page-1}"/>
+			    </c:url>
+			    <c:if test="${page > 0}">
+			        <a href="<c:out value="${prev}&sortBy=${sortBy}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&dateFrom=${dateFrom}&dateTo=${dateTo}&taskPriority=${taskPriority}" />" class="pn prev">Prev</a>
+			    </c:if>
+			
+			    <c:forEach begin="1" end="${maxPages}" step="1" varStatus="i">
+			        <c:choose>
+			            <c:when test="${(page+1) == i.index}">
+			                <span>${i.index}</span>
+			            </c:when>
+			            <c:otherwise>
+			                <c:url value="view_completed_task_form_user" var="url">
+			                    <c:param name="page" value="${i.index-1}"/>
+			                </c:url>
+			                 <a href='<c:out value="${url}&sortBy=${sortBy}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}" />'>${i.index}</a>
+			            </c:otherwise>
+			        </c:choose>
+			    </c:forEach>
+			    <c:url value="view_completed_task_form_user" var="next">
+			        <c:param name="page" value="${page + 1}"/>
+			    </c:url>
+			    <c:if test="${page + 1 < maxPages}">
+			       <a href='<c:out value="${next}&sortBy=${sortBy}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&dateFrom=${dateFrom}&dateTo=${dateTo}&taskPriority=${taskPriority}" />' class="pn next">Next</a>
+			    </c:if>
+			</div>
 
     </div>
     <script>
