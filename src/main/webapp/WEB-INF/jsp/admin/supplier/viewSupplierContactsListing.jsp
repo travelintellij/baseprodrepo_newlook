@@ -19,26 +19,21 @@
 	  display: none; /* Hidden by default */
 	  position: fixed; /* Stay in place */
 	  z-index: 1; /* Sit on top */
-	  padding-top: 150px; /* Location of the box */
+	  padding-top: 50px; /* Location of the box */
 	  left: 0;
 	  top: 0;
 	  width: 100%; /* Full width */
-	  height: 100%; /* Full height */
-	  overflow: scroll; /* Enable scroll if needed */
-	  background-color: rgb(0,0,0); /* Fallback color */
-	  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+	  height: 90%; /* Full height */
+	  background-color: transparent; /* Black w/ opacity */
 	}
 	
 	/* Modal Content */
 	.modal-content {
 	  position: relative;
-	  background-color: #fefefe;
 	  margin: auto;
 	  padding: 0;
-	  border: 1px solid #888;
-	  width: 45%;
-	  height: 65%;
-	  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+	  width: 1200px;
+	 
 	  -webkit-animation-name: animatetop;
 	  -webkit-animation-duration: 0.4s;
 	  animation-name: animatetop;
@@ -78,13 +73,9 @@
 	}
 	
 	.modal-body {padding: 2px 16px;}
-	
-	.modal-footer {
-	  padding: 2px 16px;
-	  background-color: lightblue;
-	  color: white;
-}
-	</style>
+
+</style>
+
 <body
     style="background: url(${pageContext.request.contextPath}/resources/images/revamped/viewSupplierContactsListing_bg.jpg);background-size: cover; background-repeat: no-repeat; background-position: center center;background-attachment: fixed;">
 

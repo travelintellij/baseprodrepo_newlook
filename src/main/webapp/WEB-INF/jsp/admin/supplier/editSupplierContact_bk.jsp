@@ -110,13 +110,6 @@ z-index: 5;
 	</style>
 </head>
 <br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 <h2 align="center"><font color="#8433FF">(Supplier Id : ${SUPPLIER_OBJ.supplierId})</font></h2><br>
 <div align="center"><b><font color="green" > ${Success} </font><font color="red"> ${Error}</font> </b></div>
 	<body style="background-color: creamwhite;">
@@ -144,20 +137,26 @@ z-index: 5;
 			<td><label class="container" style="display: inline;margin: 0 auto;margin-bottom: 20px;"><form:checkbox path="sightseeing" disabled="true" /><span class="checkmark"></span></label>SightSeeing</td>
 			<td><label class="container" style="display: inline;margin: 0 auto;margin-bottom: 20px;"><form:checkbox path="visa" disabled="true" /><span class="checkmark"></span></label>Visa</td>
 			<td><label class="container" style="display: inline;margin: 0 auto;margin-bottom: 20px;"><form:checkbox path="insurance" disabled="true"/><span class="checkmark"></span></label>Insurance</td>
-			<td colspan="2"><label class="container" style="display: inline;margin: 0 auto;margin-bottom: 20px;"><form:checkbox path="landPackage" disabled="true"/><span class="checkmark"></span></label>Package</td>
-			
-			
+			<td colspan="2"><label class="container" style="display: inline;margin: 0 auto;margin-bottom: 20px;"><form:checkbox path="landPackage" disabled="true"/><span class="checkmark"></span></label>Package </td>
 			
 		</tr>
 	</table>
 <br><br>
 </form:form>
-<h2 align="center">Add New Contact</h2>
+<h2 align="center">Edit Contact</h2>
 <div align="center"><b><font color="green" > ${Success} </font><font color="red"> ${Error}</font> </b></div>
 	
-	<form:form method="post" action="create_create_supplier_contact" modelAttribute="SUPPLIER_CONTACT_OBJ" >
+	<form:form method="post" action="edit_edit_supplier_contact" modelAttribute="SUPPLIER_CONTACT_OBJ" >
 		<input type="hidden" name="supplierId" value= "${SUPPLIER_CONTACT_OBJ.supplierEntity.supplierId}" />
+		<form:hidden path = "supplierContactId" />
 		<table style="table-layout: fixed;width: 700px; margin-left: auto;margin-right: auto;" >
+				<tr height="50px;">
+					<th>Contact Id</th>
+					<td style="width:20%;">
+					${SUPPLIER_CONTACT_OBJ.supplierContactId}
+					</td>
+				</tr>
+				
 				<tr height="50px;">
 					<th>Contact Name</th>
 					<td style="width:20%;"><form:input path="contactName" name="contactName" style="height:30px;width:350px;margin: auto;" required="required"/>
@@ -205,7 +204,7 @@ z-index: 5;
 				
 				
 			<tr>
-				<td colspan="2" style="text-align: center;"><input type="submit" value="Add Contact" style="background-color: green;">
+				<td colspan="2" style="text-align: center;"><input type="submit" value="Update Contact" style="background-color: green;">
 						<a href="view_supplier_contacts_listing?supplierId=${SUPPLIER_OBJ.supplierId}"><input type="button" style="width: 160px;background-color: blue;" value="Contacts Listing"></a> 
 				</td>
 			</tr>

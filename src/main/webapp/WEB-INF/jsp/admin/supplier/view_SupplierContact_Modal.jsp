@@ -18,37 +18,37 @@
             <div class="view_SupplierContact_Modal_data">
                 <div class="view_SupplierContact_Modal_data_line1">
                     <div class="view_SupplierContact_Modal_data_l1">
-                        <label for="">Contact Id</label>
-                        <p>${SUPPLIER_CONTACT_OBJ.supplierContactId}</p>
+                        <label for="" style="color: #FFBA08;font-weight:bold">Contact Id</label>
+                        <p>${SUPPLIER_CONTACT_OBJ.supplierContactId}</p> 
                     </div>
                     <div class="view_SupplierContact_Modal_data_l1">
-                        <label for="">Contact Name</label>
+                        <label for="" style="color: #FFBA08;font-weight:bold">Contact Name</label>
                         <p>${SUPPLIER_CONTACT_OBJ.contactName}</p>
                     </div>
                     <div class="view_SupplierContact_Modal_data_l1">
-                        <label for="">Role</label>
+                        <label for="" style="color: #FFBA08;font-weight:bold">Role</label>
                         <p>${SUPPLIER_CONTACT_OBJ.role}</p>
                     </div>
                     <div class="view_SupplierContact_Modal_data_l1">
-                        <label for="">Email</label>
+                        <label for="" style="color: #FFBA08;font-weight:bold">Email</label>
                         <p>${SUPPLIER_CONTACT_OBJ.email}</p>
                     </div>
                 </div>
                 <div class="view_SupplierContact_Modal_data_line2">
                     <div class="view_SupplierContact_Modal_data_l1">
-                        <label for="">Mobile</label>
+                        <label for="" style="color: #FFBA08;font-weight:bold">Mobile</label>
                         <p>${SUPPLIER_CONTACT_OBJ.mobile}</p>
                     </div>
                     <div class="view_SupplierContact_Modal_data_l1">
-                        <label for="">Phone</label>
+                        <label for="" style="color: #FFBA08;font-weight:bold">Phone</label>
                         <p>${SUPPLIER_CONTACT_OBJ.phone}</p>
                     </div>
                     <div class="view_SupplierContact_Modal_data_l1">
-                        <label for="">Description</label>
+                        <label for="" style="color: #FFBA08;font-weight:bold">Description</label>
                         <p>${SUPPLIER_CONTACT_OBJ.description}</p>
                     </div>
                     <div class="view_SupplierContact_Modal_data_l1">
-                        <label for="">City</label>
+                        <label for="" style="color: #FFBA08;font-weight:bold">City</label>
                         <p>${SUPPLIER_CONTACT_OBJ.city}</p>
                     </div>
                 </div>

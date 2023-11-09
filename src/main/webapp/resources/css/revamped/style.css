@@ -2083,7 +2083,7 @@ footer {
 .view_supplier_details_wrapper {
     margin-top: 200px;
     padding: 20px 10px;
-    background: rgba(0, 0, 0, 0.716);
+    background: rgba(0, 0, 0, 0.89);
     color: white;
     border-radius: 10px;
 }
@@ -3176,10 +3176,10 @@ transition: all 0.2s ease-in-out;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 0.689);
-    padding: 10px;
+    background:black;
+    padding: 50px;
     border-radius: 10px;
-    margin-top: 200px;
+    margin-top: 100px;
 }
 
 .view_SupplierContact_Modal_heading {
@@ -3188,7 +3188,105 @@ transition: all 0.2s ease-in-out;
 }
 .view_SupplierContact_Modal_data_line1,.view_SupplierContact_Modal_data_line2{
     display: flex;
+    justify-content: space-between;
 }
+
+.view_SupplierContact_Modal_data_l1{
+	width:300px;
+	text-align:start
+}
+/* ############## delete Supplier Contact Confrm Modal ############# */
+
+.deleteSupplierContactConfrm_Modal_wrapper {
+      color: white;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background:black;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 100px;
+}
+
+.deleteSupplierContactConfrm_Modal_data_line {
+    display: flex;
+}
+
+.deleteSupplierContactConfrm_Modal_data_l1 {
+    width: 300px;
+    text-align: start;
+}
+
+/* ############### edit Supplier Contact ################ */
+.editSupplierContact_wrapper {
+    color: white;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 0.88);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 200px;
+}
+
+.editSupplierContact_wrapper_data_line {
+    display: flex;
+}
+
+.editSupplierContact_wrapper_data_line1 {
+    width: 300px;
+    text-align: start;
+}
+
+.editSupplierContact_wrapper_data_line1 input {
+    width: 90%
+}
+
+.editSupplierContact_data_line_info{
+    display: flex;
+}
+.editSupplierContact_data_line_info .editSupplierContact_data_line_l1_info{
+    width: 300px;
+    text-align: start;
+}
+
+/*   #################### View Supplier Details #################  */
+
+
+.view_supplier_details_data_line1{
+	display: flex;
+
+}
+.view_supplier_details_l1_d{
+	width: 300px;
+}
+
+.view_supplier_details_l1_d_max_w{
+	width: 471px !important;
+}
+
+.view_supplier_details_data_line5_box{
+	display: flex;
+}
+.view_supplier_details_data_line5_box .view_supplier_details_data_line_com{
+	width: 295px;
+}
+.vsd_btns_af{
+	display: flex;
+	justify-content: center;
+}
+
+
+
+
+
+
+
+
+
+
 
 
 

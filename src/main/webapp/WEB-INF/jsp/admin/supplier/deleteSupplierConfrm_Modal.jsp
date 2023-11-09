@@ -14,7 +14,12 @@
 <link href="<c:url value="/resources/core/main.css" />" rel="stylesheet">
 </head>
 <br>
-
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <body style="background-color: creamwhite;">
 	<form:form method="post" action="delete_delete_supplier" modelAttribute="SUPPLIER_OBJ" >
 		<form:hidden path = "supplierId" />

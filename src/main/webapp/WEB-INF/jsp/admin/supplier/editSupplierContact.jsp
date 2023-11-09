@@ -1,217 +1,129 @@
-<!doctype html>
-<jsp:include page="../../menu/MenuBuilder.jsp" />  
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<!DOCTYPE html>
+<html lang="en">
+<jsp:include page="../../menu/MenuBuilder.jsp" />
+<!-- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %> -->
 
-<html>
 <head>
-<link href="resources/core/magicsuggest.css" rel="stylesheet" type="text/css">
-<style>
-.sscontainer { max-width: 550px; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>edit Supplier Contact</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
 </head>
-<script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
-<script	src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
-<script	src="<c:url value="/resources/core/magicsuggest.js" />"></script>
-<link href="<c:url value="/resources/core/main.css" />" rel="stylesheet">
-<style>
-table {
-	  width: 100%;
-	  border-collapse: collapse;
-	  border: 1px solid #38678f;
-	  //margin: 5px auto;
-	  background: white;
-	}
-	
-	th {
-	  background: #D33F14;
-	  width: 10%;
-	  font-weight: heavy;
-	  text-shadow: 0 1px 0 #38678f;
-	  color: white;
-	  border: 1px solid #38678f;
-	  box-shadow: inset 0px 1px 2px #568ebd;
-	  transition: all 0.2s;
-	  
-	}
-	tr {
-	  border-bottom: 1px solid #cccccc;
-	}
-	
-	td {
-	  border-right: 1px solid #cccccc;
-	  padding: 5px;
-	  transition: all 0.2s;
-	  text-align: center;
-	}
-	
-	.heavyTable {
-	  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-	  animation: float 5s infinite;
-	}
-	input[type="radio"] {
-		display: inline-block;
-		opacity: 1;
-		width: 1em;
-		z-index: -1;
-	}
+<script src="<c:url value=" /resources/core/jquery.1.10.2.min.js" />"></script>
+<script src="<c:url value=" /resources/core/jquery.autocomplete.min.js" />"></script>
+<script src="<c:url value=" /resources/core/magicsuggest.js" />"></script>
 
-select {
-	appearance: none;
-	outline: 0;
-	background: lightblue;
-	background-image: none;
-	width: 80%;
-	height: 100%;
-	color: black;
-	cursor: pointer;
-	border: 1px solid black;
-	border-radius: 3px;
-	text-indent: 2px;
-}
+<body style="background: url(${pageContext.request.contextPath}/resources/images/revamped/search_supplier_bg.jpg);background-size: cover; background-repeat: no-repeat; background-position: center center;background-attachment: fixed;">
 
-.select {
-	position: relative;
-	display: block;
-	height: 2.5em;
-	line-height: 3;
-	overflow: hidden;
-	border-radius: .25em;
-	padding-bottom: 10px;
-	padding-top: 10px;
-}
+    <div class="editSupplierContact container">
+        <div class="editSupplierContact_wrapper">
 
-.select option.service-small {
-	font-size: 20px;
-	padding: 25px;
-	background: lightgreen;
-}
+            <div class="editSupplierContact_details">
+                <form:form method="post" modelAttribute="SUPPLIER_OBJ">
+                    <h1 class="editSupplierContact_supplier_id" style="font-size: 30px;color:#00b200">(Supplier Id :
+                        ${SUPPLIER_OBJ.supplierId})</h1>
+                    <div class="editSupplierContact_info">
+                        <div class="editSupplierContact_data_info">
+                            <div class="editSupplierContact_data_line_info">
+                                <div class="editSupplierContact_data_line_l1_info">
+                                    <label for="" style="color: #FFBA08;font-weight:bold">Supplier Name</label>
+                                    <p>${SUPPLIER_OBJ.supplierName}</p>
+                                </div>
+                                <div class="editSupplierContact_data_line_l1_info">
+                                    <label for="" style="color: #FFBA08;font-weight:bold">Email</label>
+                                    <p>${SUPPLIER_OBJ.email}</p>
+                                </div>
+                                <div class="editSupplierContact_data_line_l1_info">
+                                    <label for="" style="color: #FFBA08;font-weight:bold">Mobile</label>
+                                    <p>${SUPPLIER_OBJ.mobile}</p>
+                                </div>
+                                <div class="editSupplierContact_data_line_l1_info">
+                                    <label for="" style="color: #FFBA08;font-weight:bold">Destinations Supported</label>
+                                    <p>
+                                        <c:forEach items="${SUPPLIER_OBJ.destinations}" var="destination">
+                                            ${destination.cityName},
+                                        </c:forEach>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="editSupplierContact_data_line_info">
+                                <div class="edit_supp_contact_data_ser">
+                                    <h3 for="" style="color: #FFBA08;font-weight:bold;text-align:left;">Services offered
+                                    </h3>
+                                    <div class="edit_supp_contact_data_servs">
+                                        <form:checkbox path="flight" disabled="true" /><span class="checkmark"></span>
+                                        </label>Flight
+                                        <form:checkbox path="hotel" disabled="true" style="margin-left:10px"/>
+                                        Hotel
+                                        <form:checkbox path="transfers" disabled="true" style="margin-left:10px"/>Transfers
+                                        <form:checkbox path="sightseeing" disabled="true" style="margin-left:10px"/>SightSeeing
+                                        <form:checkbox path="visa" disabled="true" style="margin-left:10px"/>
+                                        Visa
+                                        <form:checkbox path="insurance" disabled="true" style="margin-left:10px"/>Insurance
+                                        <form:checkbox path="landPackage" disabled="true" style="margin-left:10px"/>Package
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form:form>
+            </div>
 
 
-input[type=button], input[type=submit], input[type=reset] {
-	background-color: #4CAF50;
-	border: none;
-	color: white;
-	padding: 16px 32px;
-	text-decoration: none;
-	margin: 4px 2px;
-	cursor: pointer;
-}
 
-.sscontainer {
-z-index: 5;
-  position: absolute;
-  width: 750px;
-  border: 1px dashed #900;
-  background-color: #fdd;  
-  max-width: 570px; 
-}
-	</style>
-</head>
-<br>
-<h2 align="center"><font color="#8433FF">(Supplier Id : ${SUPPLIER_OBJ.supplierId})</font></h2><br>
-<div align="center"><b><font color="green" > ${Success} </font><font color="red"> ${Error}</font> </b></div>
-	<body style="background-color: creamwhite;">
-	<form:form method="post" modelAttribute="SUPPLIER_OBJ" >
-	<table>
-		<tr>
-			<th>Supplier Name</th>
-			<td>${SUPPLIER_OBJ.supplierName}</td>
-			<th>Email</th>
-			<td>${SUPPLIER_OBJ.email}</td>
-			<th>Mobile</th>
-			<td>${SUPPLIER_OBJ.mobile}</td>
-			<th>Destinations Supported.</th>
-			<td colspan="2">
-				<c:forEach items="${SUPPLIER_OBJ.destinations}" var="destination">
-					${destination.cityName},
-				</c:forEach>
-			</td>
-		</tr>
-		<tr>
-			<th>Service Offerred</th>
-			<td><label class="container" style="display: inline;margin: 0 auto;margin-bottom: 20px;"><form:checkbox path="flight" disabled="true"/><span class="checkmark"></span></label>Flight</td>
-			<td><label class="container" style="display: inline;margin: 0 auto;margin-bottom: 20px;"><form:checkbox path="hotel" disabled="true"/><span class="checkmark"></span></label>Hotel</td>
-			<td><label class="container" style="display: inline;margin: 0 auto;margin-bottom: 20px;"><form:checkbox path="transfers" disabled="true"/><span class="checkmark"></span></label>Transfers</td>
-			<td><label class="container" style="display: inline;margin: 0 auto;margin-bottom: 20px;"><form:checkbox path="sightseeing" disabled="true" /><span class="checkmark"></span></label>SightSeeing</td>
-			<td><label class="container" style="display: inline;margin: 0 auto;margin-bottom: 20px;"><form:checkbox path="visa" disabled="true" /><span class="checkmark"></span></label>Visa</td>
-			<td><label class="container" style="display: inline;margin: 0 auto;margin-bottom: 20px;"><form:checkbox path="insurance" disabled="true"/><span class="checkmark"></span></label>Insurance</td>
-			<td colspan="2"><label class="container" style="display: inline;margin: 0 auto;margin-bottom: 20px;"><form:checkbox path="landPackage" disabled="true"/><span class="checkmark"></span></label>Package </td>
-			
-		</tr>
-	</table>
-<br><br>
-</form:form>
-<h2 align="center">Edit Contact</h2>
-<div align="center"><b><font color="green" > ${Success} </font><font color="red"> ${Error}</font> </b></div>
-	
-	<form:form method="post" action="edit_edit_supplier_contact" modelAttribute="SUPPLIER_CONTACT_OBJ" >
-		<input type="hidden" name="supplierId" value= "${SUPPLIER_CONTACT_OBJ.supplierEntity.supplierId}" />
-		<form:hidden path = "supplierContactId" />
-		<table style="table-layout: fixed;width: 700px; margin-left: auto;margin-right: auto;" >
-				<tr height="50px;">
-					<th>Contact Id</th>
-					<td style="width:20%;">
-					${SUPPLIER_CONTACT_OBJ.supplierContactId}
-					</td>
-				</tr>
-				
-				<tr height="50px;">
-					<th>Contact Name</th>
-					<td style="width:20%;"><form:input path="contactName" name="contactName" style="height:30px;width:350px;margin: auto;" required="required"/>
-					
-					<font color="red"><form:errors path="contactName" cssClass="error" /></font></td>
-				</tr>
-				<tr height="50px;">
-					<th>Role</th>
-					<td style="width:500px;"><form:input path="role" name="role" style="height:30px;width:250px;margin: auto;" required="required"/>
-					
-					<font color="red"><form:errors path="role" cssClass="error" /></font></td>
-				</tr>
-				<tr height="50px;">
-					<th>Email</th>
-					<td style="width:500px;"><form:input type="email" path="email" style="height:30px;width:250px;margin: auto;" />
-					<br>
-					<font color="red"><form:errors path="email" cssClass="error" /></font></td>
-				</tr>
-				<tr height="50px;">
-					<th>Mobile</th>
-					<td style="width:500px;">
-					<form:input type="number" path="mobile" style="height:30px;width:250px;margin: auto;"  />
-					<br>
-					<font color="red"><form:errors path="mobile" cssClass="error" /></font></td>
-				</tr>
-				<tr height="50px;">
-					<th>Phone</th>
-					<td style="width:500px;">
-					
-					<form:input type="number" path="phone" style="height:30px;width:250px;margin: auto;"  />
-					<br>
-					<font color="red"><form:errors path="phone" cssClass="error" /></font></td>
-				</tr>
-				<tr height="50px;">
-					<th>Description</th>
-					<td style="width:500px;"><form:input path="description" name="description" style="height:30px;width:350px;margin: auto;"/>
-				</tr>
-				<tr height="50px;">
-					<th>City</th>
-					<td style="width:500px;"><form:input path="city" name="city" style="height:30px;width:250px;margin: auto;"/>
-					
-					 
-					
-				</tr>
-				
-				
-			<tr>
-				<td colspan="2" style="text-align: center;"><input type="submit" value="Update Contact" style="background-color: green;">
-						<a href="view_supplier_contacts_listing?supplierId=${SUPPLIER_OBJ.supplierId}"><input type="button" style="width: 160px;background-color: blue;" value="Contacts Listing"></a> 
-				</td>
-			</tr>
-		</table>
-</form:form>
+            <form:form method="post" action="edit_edit_supplier_contact" modelAttribute="SUPPLIER_CONTACT_OBJ">
+                <input type="hidden" name="supplierId" value="${SUPPLIER_CONTACT_OBJ.supplierEntity.supplierId}" />
+                <form:hidden path="supplierContactId" />
+                <h1 style="color: #FFBA08;font-size: 30px;">Edit Contact</h1>
+                <div class="editSupplierContact_wrapper_data">
+                    <div class="editSupplierContact_wrapper_data_line">
+                        <div class="editSupplierContact_wrapper_data_line1">
+                            <label for="" style="color: #FFBA08;font-weight:bold">Conatct Id</label>
+                            <p>${SUPPLIER_CONTACT_OBJ.supplierContactId}</p>
+                        </div>
+                        <div class="editSupplierContact_wrapper_data_line1">
+                            <label for="" style="color: #FFBA08;font-weight:bold">Conatct Name</label>
+                            <form:input path="contactName" name="contactName" required="required" />
+                        </div>
+                        <div class="editSupplierContact_wrapper_data_line1">
+                            <label for="" style="color: #FFBA08;font-weight:bold">Role</label>
+                            <form:input path="role" name="role" required="required" />
+                        </div>
+                        <div class="editSupplierContact_wrapper_data_line1">
+                            <label for="" style="color: #FFBA08;font-weight:bold">Email</label>
+                            <form:input type="email" path="email" />
+                        </div>
+                    </div>
+                    <div class="editSupplierContact_wrapper_data_line">
+                        <div class="editSupplierContact_wrapper_data_line1">
+                            <label for="" style="color: #FFBA08;font-weight:bold">Mobile</label>
+                            <form:input type="number" path="mobile" />
+                        </div>
+                        <div class="editSupplierContact_wrapper_data_line1">
+                            <label for="" style="color: #FFBA08;font-weight:bold">Phone</label>
+                            <form:input type="number" path="phone" />
+                        </div>
+                        <div class="editSupplierContact_wrapper_data_line1">
+                            <label for="" style="color: #FFBA08;font-weight:bold">Description</label>
+                            <form:input path="description" name="description" />
+                        </div>
+                        <div class="editSupplierContact_wrapper_data_line1">
+                            <label for="" style="color: #FFBA08;font-weight:bold">City</label>
+                            <form:input path="city" name="city" />
+                        </div>
+                    </div>
+                    <div class="ans-btns">
+                        <input type="submit" value="Update Contact" style="border: none;outline: none;">
+                        <a href="view_supplier_contacts_listing?supplierId=${SUPPLIER_OBJ.supplierId}">Contacts
+                            Listing</a>
+                    </div>
+                </div>
+            </form:form>
+        </div>
+    </div>
 
-
-	
 </body>
+
 </html>
