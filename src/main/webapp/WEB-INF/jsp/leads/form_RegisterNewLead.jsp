@@ -38,7 +38,7 @@
     <div class="autocomplete-suggestion">...</div>
 </div>
 
-    <main class="leadManagmentSection ">
+    <main class="leadManagmentSection " style="margin-top:85px">
         <div class="leadMangementForm  container1">
             <div class="overlay">
                 <div class="heading">

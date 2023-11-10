@@ -11,10 +11,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Supplier</title>
      <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
-    <script src=" <c:url value=" /resources/core/jquery.1.10.2.min.js" /></script>
-    <script src="<c:url value=" /resources/core/jquery.autocomplete.min.js" />
-    </script>
-    <script src="https://kit.fontawesome.com/6f6addf9b0.js" crossorigin="anonymous"></script>
+     <script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
+     <script	src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
+     <script	src="<c:url value="/resources/core/magicsuggest.js" />"></script>
 </head>
 <style>
     .autocomplete-suggestions {
@@ -57,7 +56,7 @@
     .autocomplete-selected:hover {
         color: black
     }
-</style >
+</style>
 
 <body
     style="background: url(${pageContext.request.contextPath}/resources/images/revamped/EditSupplier_bg.jpg);background-size: cover; background-repeat: no-repeat; background-position: center center;background-attachment: fixed;">

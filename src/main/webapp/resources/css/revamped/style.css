@@ -39,6 +39,7 @@ header {
     /* right: 0; */
     background: #FFCF53;
     z-index: 999;
+    padding: 5px 0;
 }
 
 .navbar,
@@ -135,7 +136,7 @@ header {
 } */
 .bottomHeader {
     position: fixed;
-    top: 104px;
+    top: 48px;
     left: 0;
     right: 0;
     background: #F8AF51;
@@ -853,7 +854,7 @@ footer {
     background: rgba(0, 0, 0, 0.689);
     padding: 30px 10px 30px 30px;
     border-radius: 10px;
-    margin-top: 170px;
+    margin-top: 115px;
 }
 
 .anc-personal-pref {
@@ -995,7 +996,7 @@ footer {
     background: rgba(0, 0, 0, 0.689);
     padding: 30px 10px 30px 30px;
     border-radius: 10px;
-    margin-top: 170px;
+    margin-top: 115px;
 }
 
 .sc-first-li {
@@ -1129,7 +1130,7 @@ footer {
     background: rgba(0, 0, 0, 0.689);
     padding: 30px 10px 30px 10px;
     border-radius: 10px;
-    margin-top: 170px;
+    margin-top: 115px;
 }
 
 .ans-fir-li,
@@ -1285,7 +1286,7 @@ footer {
 
 
 .follow-up-wrapper {
-    margin-top: 200px;
+    margin-top: 120px;
     /* border: 2px solid red; */
     padding: 10px;
     background: rgba(0, 0, 0, 0.716);
@@ -1629,7 +1630,7 @@ footer {
 /* ###################### add Hotal styling #################### */
 
 .add-hotal-chain-wrapper {
-    margin-top: 200px;
+    margin-top: 115px;
     padding: 20px 10px;
     background: rgba(0, 0, 0, 0.716);
     color: white;
@@ -1706,7 +1707,7 @@ footer {
 /* ############### manage hotal chain styling ################# */
 
 .manage_hotal_chain_wrapper {
-    margin-top: 200px;
+    margin-top: 115px;
     padding: 20px 10px;
     background: rgba(0, 0, 0, 0.716);
     color: white;
@@ -1792,7 +1793,7 @@ footer {
 /* ################ add hotal styling ############### */
 
 .add_hotal_wrapper {
-    margin-top: 200px;
+    margin-top: 110px !important;
     padding: 20px 10px;
     background: rgba(0, 0, 0, 0.716);
     color: white;
@@ -1848,7 +1849,7 @@ footer {
 /* ################# search hotal styling ################# */
 
 .search_hotal_wraper {
-    margin-top: 200px;
+    margin-top: 115px;
     padding: 20px 10px;
     background: rgba(0, 0, 0, 0.716);
     color: white;
@@ -1926,8 +1927,8 @@ footer {
 /* ########################## search supplier ###################### */
 
 .serach_supplier_wrapper {
-    margin-top: 200px;
-    padding: 20px 10px;
+    margin-top: 115px;
+    padding: 5px 10px;
     background: rgba(0, 0, 0, 0.716);
     color: white;
     border-radius: 10px;
@@ -1951,7 +1952,6 @@ footer {
 }
 
 .serach_supplier_wrapper h1 {
-    padding-bottom: 10px;
     text-align: center;
     font-size: 30px;
     color: #FFBA08;
@@ -2081,9 +2081,9 @@ footer {
 
 
 .view_supplier_details_wrapper {
-    margin-top: 200px;
+    margin-top:25px;
     padding: 20px 10px;
-    background: rgba(0, 0, 0, 0.89);
+    background: gray;
     color: white;
     border-radius: 10px;
 }
@@ -2143,7 +2143,7 @@ footer {
 /* ################### create new deal ############### */
 
 .create_new_deal_wrapper {
-    margin-top: 180px;
+    margin-top: 115px;
     padding: 20px 10px;
     background: rgba(0, 0, 0, 0.716);
     color: white;
@@ -2218,7 +2218,7 @@ footer {
 
 /* ################## search deal wrapper ############## */
 .search_deal_wrapper {
-    margin-top: 180px;
+    margin-top: 115px;
     padding: 20px 10px;
     background: rgba(0, 0, 0, 0.716);
     color: white;
@@ -2318,7 +2318,7 @@ footer {
 /* ################ view tasks ################ */
 
 .view_task_wrapper {
-    margin-top: 200px;
+    margin-top: 115px;
     padding: 20px 10px;
     background: rgba(0, 0, 0, 0.716);
     color: white;
@@ -2463,7 +2463,7 @@ footer {
     background: rgba(0, 0, 0, 0.689);
     padding: 8px;
     border-radius: 10px;
-    margin-top: 200px;
+    margin-top: 115px;
 }
 
 .create-new-ticket-wrapper-f-li {
@@ -2629,7 +2629,7 @@ footer {
     background: rgba(0, 0, 0, 0.689);
     padding: 30px 10px;
     border-radius: 10px;
-    margin-top: 200px;
+    margin-top: 115px;
 }
 
 .cntb {
@@ -2695,7 +2695,7 @@ footer {
     background: rgba(0, 0, 0, 0.689);
     padding: 10px;
     border-radius: 10px;
-    margin-top: 200px;
+    margin-top: 115px;
 }
 
 .due_today_task_data,
@@ -2794,7 +2794,7 @@ footer {
     background: rgba(0, 0, 0, 0.689);
     padding: 10px;
     border-radius: 10px;
-    margin-top: 200px;
+    margin-top: 115px;
 }
 
 .created_by_me_data {
@@ -2825,7 +2825,7 @@ footer {
     background: rgba(0, 0, 0, 0.689);
     padding: 10px;
     border-radius: 10px;
-    margin-top: 200px;
+    margin-top: 115px;
 }
 
 .assin_to_me_tasks_data {
@@ -2852,7 +2852,7 @@ footer {
     background: rgba(0, 0, 0, 0.689);
     padding: 10px;
     border-radius: 10px;
-    margin-top: 200px;
+    margin-top: 115px;
 }
 
 .completed_tasks_data {
@@ -2879,7 +2879,7 @@ footer {
     background: rgba(0, 0, 0, 0.689);
     padding: 10px;
     border-radius: 10px;
-    margin-top: 200px;
+    margin-top: 115px;
 }
 
 .view_ticket_wrapper_data_line1 {
@@ -2921,7 +2921,7 @@ footer {
     background: rgba(0, 0, 0, 0.689);
     padding: 10px;
     border-radius: 10px;
-    margin-top: 200px;
+    margin-top: 115px;
 }
 
 .over_due_ticket_wrapper_data,
@@ -2958,7 +2958,7 @@ due_today_ticket_wrapper_data_l1_1 {
     background: rgba(0, 0, 0, 0.689);
     padding: 10px;
     border-radius: 10px;
-    margin-top: 200px;
+    margin-top: 115px;
 }
 
 .created_by_me_ticket_wrapper_data {
@@ -2994,7 +2994,7 @@ due_today_ticket_wrapper_data_l1_1 {
     background: rgba(0, 0, 0, 0.689);
     padding: 10px;
     border-radius: 10px;
-    margin-top: 200px;
+    margin-top: 115px;
 }
 
 .assigned_to_me_ticket_wrapper_data {
@@ -3021,7 +3021,7 @@ due_today_ticket_wrapper_data_l1_1 {
     background: rgba(0, 0, 0, 0.689);
     padding: 10px;
     border-radius: 10px;
-    margin-top: 200px;
+    margin-top: 115px;
 }
 
 
@@ -3058,7 +3058,7 @@ due_today_ticket_wrapper_data_l1_1 {
     background: rgba(0, 0, 0, 0.8);
     padding: 10px;
     border-radius: 10px;
-    margin-top: 230px;
+    margin-top: 160px;
 }
 
 .vscl_wrapper .vscl_wrapper_data_line_1 {
@@ -3177,9 +3177,9 @@ transition: all 0.2s ease-in-out;
     border-collapse: collapse;
     border: none;
     background:black;
-    padding: 50px;
+    padding: 25px;
     border-radius: 10px;
-    margin-top: 100px;
+    margin-top: 70px !important;
 }
 
 .view_SupplierContact_Modal_heading {
@@ -3198,7 +3198,7 @@ transition: all 0.2s ease-in-out;
 /* ############## delete Supplier Contact Confrm Modal ############# */
 
 .deleteSupplierContactConfrm_Modal_wrapper {
-      color: white;
+    color: white;
     width: 100%;
     text-align: center;
     border-collapse: collapse;
@@ -3206,7 +3206,9 @@ transition: all 0.2s ease-in-out;
     background:black;
     padding: 20px;
     border-radius: 10px;
-    margin-top: 100px;
+    margin-top:25px;
+    background:#07beb8;
+    box-shadow: 0 0 10px 5px #3dccc7, 0 0 20px 10px #3dccc7;
 }
 
 .deleteSupplierContactConfrm_Modal_data_line {
@@ -3218,6 +3220,11 @@ transition: all 0.2s ease-in-out;
     text-align: start;
 }
 
+.dscc-btn{
+	background: red !important;
+	color:white !important;
+	border:2px solid black
+}
 /* ############### edit Supplier Contact ################ */
 .editSupplierContact_wrapper {
     color: white;
@@ -3228,7 +3235,7 @@ transition: all 0.2s ease-in-out;
     background: rgba(0, 0, 0, 0.88);
     padding: 10px;
     border-radius: 10px;
-    margin-top: 200px;
+    margin-top: 135px;
 }
 
 .editSupplierContact_wrapper_data_line {
@@ -3278,6 +3285,54 @@ transition: all 0.2s ease-in-out;
 	justify-content: center;
 }
 
+
+
+/* ############### add new supplier contact styling ################# */
+.AddNewSupplierContact_wrapper {
+    color: white;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 115px;
+}
+
+.AddNewSupplierContact_wrapper_data_line {
+    display: flex;
+}
+
+.AddNewSupplierContact_wrapper_data_line .AddNewSupplierContact_wrapper_data_l1 {
+    width: 300px;
+    text-align: start;
+}
+
+.AddNewSupplierContact_wrapper_data_line_form_data,
+.AddNewSupplierContact_wrapper_data_line_form_data2 {
+    display: flex;
+
+}
+
+.AddNewSupplierContact_wrapper_data_line_form_data .AddNewSupplierContact_wrapper_data_form_l1 {
+    width: 300px;
+    text-align: start;
+}
+
+.AddNewSupplierContact_wrapper_data_line_form_data .AddNewSupplierContact_wrapper_data_form_l1 input {
+    width: 90%;
+
+}
+
+.AddNewSupplierContact_wrapper_data_line_form_data2 .AddNewSupplierContact_wrapper_data_form_l1 {
+    width: 295px;
+    text-align: start;
+}
+
+.AddNewSupplierContact_wrapper_data_line_form_data2 .AddNewSupplierContact_wrapper_data_form_l1 input {
+    width: 90%;
+}
 
 
 

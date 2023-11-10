@@ -12,11 +12,21 @@
 
 <body>
     <header>
+
+       <div class="leftSec" href="${pageContext.request.contextPath}/AdminHome" style="position:fixed;top:0;left:25px">
+                   <img src="${pageContext.request.contextPath}/resources/images/revamped/Header_Logo.png" alt="" style="width:160px">
+                </div>
+
         <div class="navbar container">
             <div class="topHeader">
-                <div class="leftSec" href="${pageContext.request.contextPath}/AdminHome">
-                    <img src="${pageContext.request.contextPath}/resources/images/revamped/Header_Logo.png" alt="">
-                </div>
+          
+          
+          
+          
+   
+          
+          
+          
                 <div class="rightSec">
                     <!-- ###### start of hamburgur menu#### -->
                     <input type="checkbox" class="headerCheckbox">
@@ -26,7 +36,7 @@
                         <span class="line line3"></span>
                     </div>
                     <!-- ###### end of hamburgur menu#### -->
-                    <ul class="topHeaderLinks">
+                    <ul class="topHeaderLinks">            
                         <li>
                             <a href="${pageContext.request.contextPath}/AdminHome" class="homeLink">
                                 <p>Home</p>

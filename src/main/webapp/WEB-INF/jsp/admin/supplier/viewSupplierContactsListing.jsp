@@ -16,6 +16,7 @@
 </head>
 <style>
 .modal {
+
 	  display: none; /* Hidden by default */
 	  position: fixed; /* Stay in place */
 	  z-index: 1; /* Sit on top */
@@ -206,7 +207,7 @@
                                     Supplier</a></li>
                         </ul>
                     </div>
-  </form:form>
+
             </div>
         </div>
 
@@ -303,7 +304,7 @@
         </div>
     </div>
 
-
+  </form:form>
 
 
     <script>

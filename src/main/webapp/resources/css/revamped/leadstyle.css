@@ -495,7 +495,7 @@ a {
 /* #################### form page styling ################## */
 
 .searchLeads {
-    margin-top: 170px;
+    margin-top: 115px;
     margin-bottom: 20px;
 }
 
@@ -689,7 +689,7 @@ i:hover .ul {
     width: 200px;
 }
 .lowerPart{color: white;
-    margin: 30px auto;
+    margin: 10px auto;
     width: 1400px;
     }
     
@@ -699,6 +699,7 @@ i:hover .ul {
 	background: black;
 	padding: 5px 10px;
 	border-radius: 5px;
+	margin-top:-10px
 }
 .full-names p {
 	margin-right:10px;

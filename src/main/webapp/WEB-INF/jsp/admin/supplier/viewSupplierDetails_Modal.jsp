@@ -9,13 +9,13 @@
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <title>View Supplier Details</title>
-                <link rel="stylesheet" href="style.css">
+       <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
             </head>
 
             <body>
                 <div class="view_supplier_details container">
-                    <div class="view_supplier_details_wrapper" style="margin-top:100px;background:black">
-                    
+                    <div class="view_supplier_details_wrapper" style="margin-top:25px;background:#07beb8;box-shadow: 0 0 10px 5px #3dccc7, 0 0 20px 10px #3dccc7">
+                    <h1 style="text-align:center;font-size:30px;margin-bottom:10px">Supplier Details</h1>
                         <div align="center"><b>
                                 <font color="green"> ${Success} </font>
                                 <font color="red"> ${Error}</font>
@@ -25,93 +25,95 @@
                             <form:hidden path="destinationNames" />
                             <form:hidden path="operatingDestinations" />
                             <div class="view_supplier_details_data">
-                                <div class="view_supplier_details_modal_data_line1 vsdm_d1">
+                                <div class="view_supplier_details_modal_data_line1 vsdm_d1" style="margin-bottom:10px">
                                     <div class="view_supplier_details_l1">
-                                        <label for="" style="color:#FFBA08;font-weight:bold">Supplier Id</label>
+                                        <label for="" style="color:Black;font-weight:bolder">Supplier Id</label>
                                         <p>${SUPPLIER_OBJ.supplierId}</p>
                                     </div>
                                     <div class="view_supplier_details_l1">
-                                        <label for="" style="color:#FFBA08;font-weight:bold">Supplier Name</label>
+                                        <label for="" style="color:black;font-weight:bold">Supplier Name</label>
                                         <p>${SUPPLIER_OBJ.supplierName}</p>
                                     </div>
                                     <div class="view_supplier_details_l1">
-                                        <label for="" style="color:#FFBA08;font-weight:bold">City</label>
+                                        <label for="" style="color:black;font-weight:bold">City</label>
                                         <p>${SUPPLIER_OBJ.cityName}</p>
                                     </div>
                                     <div class="view_supplier_details_l1">
-                                        <label for="" style="color:#FFBA08;font-weight:bold">Country</label>
+                                        <label for="" style="color:black;font-weight:bold">Country</label>
                                         <p>${SUPPLIER_OBJ.countryName}</p>
                                     </div>
                                     <div class="view_supplier_details_l1">
-                                        <label for="" style="color:#FFBA08;font-weight:bold">Mobile</label>
+                                        <label for="" style="color:black;font-weight:bold">Mobile</label>
                                         <p>${SUPPLIER_OBJ.mobile}</p>
                                     </div>
                                 </div>
-                                <div class="view_supplier_details_modal_data_line2 vsdm_d2">
+                                <div class="view_supplier_details_modal_data_line2 vsdm_d2"  style="margin-bottom:10px">
                                     <div class="view_supplier_details_l1">
-                                        <label for="" style="color:#FFBA08;font-weight:bold">Referred By</label>
+                                        <label for="" style="color:black;font-weight:bold">Referred By</label>
                                         <p>${SUPPLIER_OBJ.referredBy}</p>
                                     </div>    
                                     <div class="view_supplier_details_l1">
-                                        <label for="" style="color:#FFBA08;font-weight:bold">Phone</label>
+                                        <label for="" style="color:black;font-weight:bold">Phone</label>
                                         <p>${SUPPLIER_OBJ.phone}</p>
                                     </div>
                                     <div class="view_supplier_details_l1">
-                                        <label for="" style="color:#FFBA08;font-weight:bold">Company Details</label>
+                                        <label for="" style="color:black;font-weight:bold">Company Details</label>
                                         <p>
                                         <pre>${SUPPLIER_OBJ.companyDetails}</pre>
                                         </p>
                                     </div>
                                      <div class="view_supplier_details_l1">
-                                        <label for="" style="color:#FFBA08;font-weight:bold">GST Details</label>
+                                        <label for="" style="color:black;font-weight:bold">GST Details</label>
                                         <p>${SUPPLIER_OBJ.gstDetails}</p>
                                     </div>
                                 </div>
                                 
-                                <div class="view_supplier_details_modal_data_line3">
+                                <div class="view_supplier_details_modal_data_line3"  style="margin-bottom:10px">
                                  <div class="view_supplier_details_l1">
-                                        <label for="" style="color:#FFBA08;font-weight:bold">Email</label>
+                                        <label for="" style="color:black;font-weight:bold">Email</label>
                                         <p>${SUPPLIER_OBJ.email}</p>
                                     </div>
+                                    
                                      <div class="view_supplier_details_l1">
-                                        <label for="" style="color:#FFBA08;font-weight:bold">Company Details</label>
+                                        <label for="" style="color:black;font-weight:bold">Company Details</label>
                                         <p>
                                         <pre>${SUPPLIER_OBJ.companyDetails}</pre>
                                         </p>
                                     </div>
                                 </div>
-                                
-                                <div class="view_supplier_details_modal_data_line1">
+                                <div class="view_supplier_details_modal_data_line1"  style="margin-bottom:10px">
                                     <div class="view_supplier_details_l1">
-                                        <label for="" style="color:#FFBA08;font-weight:bold">Address</label>
+                                        <label for="" style="color:black;font-weight:bold">Address</label>
                                         <p>
                                         <pre>${SUPPLIER_OBJ.address}</pre>
                                         </p>
                                     </div>
                                     <div class="view_supplier_details_l1">
-                                        <label for="" style="color:#FFBA08;font-weight:bold">Bank Details</label>
+                                        <label for="" style="color:black;font-weight:bold">Bank Details</label>
                                         <p>
                                         <pre>${SUPPLIER_OBJ.bankDetails}</pre>
                                         </p>
                                     </div>
                                     <div class="view_supplier_details_l1">
-                                        <label for="" style="color:#FFBA08;font-weight:bold">Remarks</label>
+                                        <label for="" style="color:black;font-weight:bold">Remarks</label>
                                         <p>
                                         <pre>${SUPPLIER_OBJ.remarks}</pre>
                                         </p>
                                     </div>
                                 </div>
-                                <div class="view_supplier_details_data_line3">
-                                    <h3 class="vsd_des" style="color:#FFBA08;font-weight:bold">Following Destinations are supported</h3>
+                             
+                                <div class="view_supplier_details_data_line3"  style="margin-bottom:10px">
+                                    <h3 class="vsd_des" style="color:black;font-weight:bold">Following Destinations are supported</h3>
                                     <div class="view_supplier_details_data_line3_destination_supported">
                                         <c:forEach items="${SUPPLIER_OBJ.destinations}" var="destination">
                                             ${destination.cityName},
                                         </c:forEach>
                                     </div>
                                 </div>
-                                <div class="view_supplier_details_data_line4">
+                             
+                                <div class="view_supplier_details_data_line4"  style="margin-bottom:5px">
                                     <div class="view_supplier_details_data_line3_service_offered">
-                                       <h1 style="color:#FFBA08;font-weight:bold"> Service Offerred</h1>
+                                       <h1 style="color:black;font-weight:bold"> Service Offerred</h1>
                                                 Flight <form:checkbox path="flight" disabled="true"  style="margin-right:10px"/><span
                                                             class="checkmark"></span>
                                                     
@@ -143,24 +145,25 @@
                                            
                                     </div>
                                 </div>
+                               
+                               
                                 
-                                
-                                <div class="view_supplier_details_modal_data_line_con">
+                                <div class="view_supplier_details_modal_data_line_con"  style="margin-bottom:5px">
                                  <div class="view_supplier_details_data_line">
-                                    <h3 class="vsd_consoli" style="color:#FFBA08;font-weight:bold">consolidater</h3>
+                                    <h3 class="vsd_consoli" style="color:black;font-weight:bold">consolidater</h3>
                                     <div class="view_supplier_details_data_line3_consoli">
                                         <form:checkbox path="consolidator" disabled="true" />
                                     </div>
                                 </div>
                                 <div class="view_supplier_details_data_line">
-                                    <h3 class="vsd_sp" style="color:#FFBA08;font-weight:bold">Supplier Prefrences</h3>
+                                    <h3 class="vsd_sp" style="color:black;font-weight:bold">Supplier Prefrences</h3>
                                     <div class="view_supplier_details_data_line3_supp_pre">
                                         <p>${SUPPLIER_OBJ.supplierRating} Star
                                             (Scale 1 to 5)</p>
                                     </div>
                                 </div>
                                 <div class="view_supplier_details_data_line">
-                                    <h3 class="vsd_sp" style="color:#FFBA08;font-weight:bold">Negotiates</h3>
+                                    <h3 class="vsd_sp" style="color:black;font-weight:bold">Negotiates</h3>
                                     <div class="view_supplier_details_data_line3_supp_pre">
                                         <p>${SUPPLIER_OBJ.negotiates}</p>
                                     </div>
@@ -168,8 +171,8 @@
                                 </div>
                                
                                 <div class="due_today_task_data_btns VSD_MODAL_BTNS" style="display: flex;justify-content: center;">
-                                    <input type="submit" value="Edit Supplier">
-                                    <a href="view_supplier_contacts_listing?supplierId=${SUPPLIER_OBJ.supplierId}">Contacts Listing</a>
+                                    <input type="submit" value="Edit Supplier" style="background:#cbf3f0">
+                                    <a href="view_supplier_contacts_listing?supplierId=${SUPPLIER_OBJ.supplierId}" style="background:#cbf3f0">Contacts Listing</a>
                                 </div>
                             </div>
                         </form:form>
