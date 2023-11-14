@@ -3336,8 +3336,86 @@ transition: all 0.2s ease-in-out;
 
 
 
+/* ################ admin add sight seeing ################# */
 
 
+.Admin_Add_SightSeeing_wrapper {
+    color: white;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 115px;
+}
+
+.Admin_Add_SightSeeing_wrapper_data_line {
+    display: flex;
+}
+
+.Admin_Add_SightSeeing_wrapper_data_line .Admin_Add_SightSeeing_wrapper_data_l1 {
+    width: 300px;
+    text-align: start;
+}
+.Admin_Add_SightSeeing_wrapper_data_line .Admin_Add_SightSeeing_wrapper_data_l1  input{
+    width: 90%;
+}
+.Admin_Add_SightSeeing_wrapper_data_line .Admin_Add_SightSeeing_wrapper_data_l2 {
+    width: 300px;
+    text-align: start;
+}
+.Admin_Add_SightSeeing_wrapper_data_line .Admin_Add_SightSeeing_wrapper_data_l2  input{
+    width: 90%;
+}
+.Admin_Add_SightSeeing_wrapper_data_line .Admin_Add_SightSeeing_wrapper_data_l3 {
+    width: 295px;
+    text-align: start;
+}
+.Admin_Add_SightSeeing_wrapper_data_line .Admin_Add_SightSeeing_wrapper_data_l3  input{
+    width: 90%;
+}
+.Admin_Add_SightSeeing_wrapper_data_des2{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+/* ################# search sight seeing ############### */
+
+.searchSightSeeing_wrapper {
+    color: white;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 115px;
+}
+
+.searchSightSeeing_wrapper_data_line,.searchSightSeeing_wrapper_data_line2 {
+    display: flex;
+}
+
+.searchSightSeeing_wrapper_data_line .searchSightSeeing_wrapepr_data_l1 {
+    width: 300px;
+    text-align: start;
+}
+.searchSightSeeing_wrapper_data_line2 .searchSightSeeing_wrapepr_data_l1 {
+    width: 295px;
+    text-align: start;
+}
+
+.searchSightSeeing_wrapper_data_line .searchSightSeeing_wrapepr_data_l1 input {
+    width: 90%;
+}
+.searchSightSeeing_wrapper_data_line2 .searchSightSeeing_wrapepr_data_l1 input {
+    width: 90%;
+}
 
 
 

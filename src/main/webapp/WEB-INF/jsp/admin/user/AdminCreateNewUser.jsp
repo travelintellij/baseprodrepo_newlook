@@ -95,6 +95,12 @@ input[type=button], input[type=submit], input[type=reset] {
 <br>
 <h2 align="center"> Create New User</h2>
 <body>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 	<form:form method="post" action="create_create_Admin_User" modelAttribute="USER_OBJ">
 
 		<table>
