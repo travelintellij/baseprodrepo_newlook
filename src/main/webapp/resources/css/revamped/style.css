@@ -3417,10 +3417,60 @@ transition: all 0.2s ease-in-out;
     width: 90%;
 }
 
+/* #################### admin create user styling ##################### */
+
+.AdminCreateNewUser_wrapper {
+    color: white;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 115px;
+}
+
+.page-heading {
+    font-size: 30px;
+    color: #FFBA08;
+    margin-bottom: 10px;
+}
+
+.AdminCreateNewUser_wrapper_data_line1 {
+    display: flex;
+}
+
+.AdminCreateNewUser_wrapper_data_line1 .AdminCreateNewUser_wrapper_data_l1 {
+    width: 300px;
+    text-align: start;
+}
+
+.AdminCreateNewUser_wrapper_data_line1 .AdminCreateNewUser_wrapper_data_l1 input {
+    width: 90%;
+}
+
+.AdminCreateNewUser_wrapper_data_line2 {
+    display: flex;
+}
+
+.AdminCreateNewUser_wrapper_data_line2 .AdminCreateNewUser_wrapper_data_l1 {
+    width: 295px;
+    text-align: start;
+}
+
+.AdminCreateNewUser_wrapper_data_line2 .AdminCreateNewUser_wrapper_data_l1 input {
+    width: 90%;
+}
+
+.add input {
+    width: 100%;
+}
 
 
-
-
+.rad-btn{
+	color:blue;
+}
 
 
 

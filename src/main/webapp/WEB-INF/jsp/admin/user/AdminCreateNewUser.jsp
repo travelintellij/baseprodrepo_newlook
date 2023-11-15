@@ -1,246 +1,168 @@
 <!DOCTYPE html>
+<html lang="en">
 <jsp:include page="../../menu/MenuBuilder.jsp" />  
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<html>
 <head>
-<style>
-table {
-	  width: 90%;
-	  border-collapse: collapse;
-	  border: 1px solid #38678f;
-	  margin: 5px auto;
-	  background: white;
-	}
-	
-	th {
-	  background: steelblue;
-//	  height: 40px;
-	  width: 40%;
-	  font-weight: heavy;
-	  text-shadow: 0 1px 0 #38678f;
-	  color: white;
-	  border: 1px solid #38678f;
-	  box-shadow: inset 0px 1px 2px #568ebd;
-	  transition: all 0.2s;
-	  
-	}
-	tr {
-	  border-bottom: 1px solid #cccccc;
-	}
-	
-	td {
-	  border-right: 1px solid #cccccc;
-	  padding: 10px;
-	  transition: all 0.2s;
-	  text-align: center;
-	}
-	
-	.heavyTable {
-	  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-	  animation: float 5s infinite;
-	}
-	input[type="radio"] {
-		display: inline-block;
-		opacity: 1;
-		width: 1em;
-		z-index: -1;
-	}
-
-select {
-	appearance: none;
-	outline: 0;
-	background: lightblue;
-	background-image: none;
-	width: 80%;
-	height: 100%;
-	color: black;
-	cursor: pointer;
-	border: 1px solid black;
-	border-radius: 3px;
-	text-indent: 2px;
-}
-
-.select {
-	position: relative;
-	display: block;
-	height: 2.5em;
-	line-height: 3;
-	overflow: hidden;
-	border-radius: .25em;
-	padding-bottom: 10px;
-	padding-top: 10px;
-}
-
-.select option.service-small {
-	font-size: 20px;
-	padding: 25px;
-	background: lightgreen;
-}
-
-
-input[type=button], input[type=submit], input[type=reset] {
-	background-color: #4CAF50;
-	border: none;
-	color: white;
-	padding: 16px 32px;
-	text-decoration: none;
-	margin: 4px 2px;
-	cursor: pointer;
-}
-	</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>add user</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
 </head>
-<div align="center"><b><font color="green" > ${Success} </font><font color="red"> ${Error}</font> </b></div>
-<br>
-<h2 align="center"> Create New User</h2>
-<body>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-	<form:form method="post" action="create_create_Admin_User" modelAttribute="USER_OBJ">
 
-		<table>
-			<tr>
-				<td>
-					<table>
-						<tr><th>Login Id</th><td><form:input path="username" maxlength="100"/> <br><font color="red"><form:errors path="username" cssClass="error" /></font></td></tr>
-						<tr><th>Password</th><td><form:password path="password" showPassword="true" /> <br><font color="red"><form:errors path="password" cssClass="error" /></font></td></tr>
-						<tr><th>Confirm Password </th><td><form:password path="passwordConfirm" showPassword="true"  /><br><font color="red"><form:errors path="passwordConfirm" cssClass="error" /></font></td></tr>
-						</
-						<tr><th	>Role</th>
-							<td>
-								<form:radiobutton path="roleName" value="USER" checked = "checked" label = "User"/>  &nbsp;&nbsp;
-								<form:radiobutton path="roleName" value="ADMIN" label = "Admin"/>
-							</td>
-						</tr>
-					</table>
-				</td>
-				<td>
-				<table>
-			        <tr><th>User Full Name </th><td><form:input path="name" /> <br><font color="red"><form:errors path="name" cssClass="error" /></font></td></tr>
-			        <tr><th>Address</th><td><form:textarea path = "address" rows="3" cols="50"  maxlength="250"/><br><font color="red"><form:errors path="address" cssClass="error" /></font></td></tr>
-			        <tr><th>Company Email</th><td>  <form:input path="email" /><br><font color="red"><form:errors path="email" cssClass="error" /></font></td></tr>
-			       	<tr><th>Company Mobile</th><td><form:input path="mobile" type="number" required="required" style="height:30px;" /> <br><font color="red"><form:errors path="mobile" cssClass="error" /></font></td></tr>
-				</table>
-				</td>
-				<td>
-				<table>
-			        <tr><th>Designation</th><td><form:input path="designation" /> <br><font color="red"><form:errors path="designation" cssClass="error" /></font></td></tr>
-			        <tr><th>Type</th><td>
-			        	 <div class="select">
-				        	 <form:select path="type">  
-				      			<form:options items = "${EMP_TYPE_MAP}" class="service-small" />
-			        		</form:select> 
-						</div>
-						</td></tr>
-							
-		        	<tr><th>Shift</th>
-		        	<td>
-		        		<div class="select">
-					        	 <form:select path="shift">  
-					      			<form:options items = "${EMP_SHIFT_MAP}" class="service-small" />
-				        		</form:select> 
-						</div>
-		        	</td></tr>
-		        	<tr><th>Fixed Incentive </th><td><form:input path="fixedIncentive" type="number" required="required" style="height:30px;" /></td></tr>
-				</table>
-				</td>
-			</tr>
-		</table>
-		
-		<table style="align: center;">
-			<tr>
-				<td>
-				<table>
-					<tr>
-						<th>Pan Card</th><td><form:input path="panCard" /> </td>
-					</tr>
-					<tr>
-						<th>Aadhar Card</th><td><form:input path="aadharCard" /></td>
-					</tr>
-					<tr>
-						<th>Marial Status</th>
-						<td>
-							<div class="select">
-								<form:select path="maritalStatus">  
-					      			<form:options items = "${MARITAL_STATUS_MAP}" class="service-small" />
-				        		</form:select> 
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<th>Gender</th>
-						<td>
-							<div class="select">
-								<form:select path="gender">  
-					      			<form:options items = "${GENDER_MAP}" class="service-small" />
-				        		</form:select>
-							</div>
-						</td>
-					</tr>
-				</table>
-				</td>
-				<td>
-				<table>
-					<tr><th>Date of Birth</th><td><form:input path= "dob" type="date" required="required" style="height:30px;margin: auto;"/></td></tr>
-		    		<tr><th>Date of Joining</th><td><form:input path= "doj" type="date" required="required" style="height:30px;margin: auto;"/></td></tr>
-		    		<tr><th>Personal Email</th><td> <form:input path= "personalEmail" type="email" required="required" style="height:30px;margin: auto;"/></td></tr>
-		    		<tr><th>Personal Mobile</th><td> <form:input path= "personalMobile" type="number" required="required" style="height:30px;margin: auto;"/></td></tr>
-		    	</table>
-			</td>
-			</tr>
-			<tr>
-			<th>
-			Remarks</th>
-			<td colspan=2"> 
-				<form:textarea path = "remarks" rows="5" cols="80"  maxlength="1000"/>
-			</td>
-			</tr>
-			<tr>
-			<td colspan="3">
-				<input type="submit" value="Create User">
-				<a href="view_workloadhome"><input type="button" style="width: 100px;background-color: blue;" value="Home"></a>
-				<a href="view_search_admin_user"><input type="button" style="width: 140px;background-color: blue;" value="User Listings"></a>
-			</td>
-			</tr>
-		</table>
-	
-		        <!-- 
-		        
-		        <table>
-
-		        <tr><th>Login Id</th><td> <input class="contact" type="text" name="username" value="" /><br><form:errors path="username" cssClass="error" /></td></tr>
-		        <tr><th>Password </th><td><input class="contact" type="password" name="password" value="" /> <br><form:errors path="password" cssClass="error" /></td></tr>
-		     	<tr><th>Confirm Password </th><td><input class="contact" type="password" name="passwordConfirm" value="" /> <br><form:errors path="passwordConfirm" cssClass="error" /></td></tr>
-		      	<tr><th>Role</th><td><input type="radio" id="roles" name="roles" value="user" checked>	User <input type="radio" id="roles" name="roles" value="admin">Admin<br></td></tr>
-		        <tr><th>User Full Name </th><td><input class="contact" type="text" name="name" value="" /><br><form:errors path="name" cssClass="error" /></td></tr>
-		        <tr><th>Address</th><td><textarea rows="3" cols="50" name="address" maxlength="250"></textarea><br><form:errors path="address" cssClass="error" /></td></tr>
-		        <tr><th>Email</th><td> <input class="contact" type="text" name="email" value="" /><br><form:errors path="email" cssClass="error" /></td></tr>
-		       	<tr><th>Mobile</th><td><input class="contact" type="text" name="mobile" value="0" /><br><form:errors path="mobile" cssClass="error" /></td></tr>
-				
-		        <tr><th>Designation</th><td><input class="contact" type="text" name="designation" value="" /><br><font color="red"><form:errors path="designation" cssClass="error" /></font></td></tr>
-		        
-		        <tr><th>Type</th><td><select id = "type" name = "type">
-							   <option value = "Regular"> Regular</option>
-							  <option value = "Contractual"> Contractual</option>
-							</select></td></tr>
-							
-		        <tr><th>Shift</th><td><input class="contact" type="text" name="shift" value="" />(Day / Night)<br><font color="red"><form:errors path="shift" cssClass="error" /></font></td></tr>
-		        
-		        <tr><th>Fixed Incentive </th><td><input class="contact" type="text" name="fixedIncentive" value="" /></td></tr>
-		        <tr><th>Date of Birth</th><td><input class="contact" type="date" name="dob" value="" /><br><form:errors path="dob" cssClass="error" /></td></tr>
-		        <tr><th>Date of Joining</th><td> <input class="contact" type="date" name="doj" value="" /><br><form:errors path="doj" cssClass="error" /></td></tr>
-
-		        <tr><td colspan="2"><input class="contact" type="submit" value="Create User"></td></tr>
-		       </table>
-
-        	 -->
-        			        <input type="hidden" name="active" value="true" />
-		</form:form>
-      
+<body  style="background: url(${pageContext.request.contextPath}/resources/images/revamped/assin_to_me_tasks_bg.jpg);background-size: cover; background-repeat: no-repeat; background-position: center center;background-attachment: fixed;">
+    <div class="AdminCreateNewUser container">
+        <div class="AdminCreateNewUser_wrapper">
+            <h1 class="page-heading">Create User</h1>
+            <div align="center"><b>
+                    <font color="green"> ${Success} </font>
+                    <font color="red"> ${Error}</font>
+                </b></div>
+            <form:form method="post" action="create_create_Admin_User" modelAttribute="USER_OBJ">
+                <div class="AdminCreateNewUser_wrapper_data">
+                    <div class="AdminCreateNewUser_wrapper_data_line1">
+                        <div class="AdminCreateNewUser_wrapper_data_l1">
+                            <label for="">Login Id</label>
+                            <form:input path="username" maxlength="100" />
+                            <font color="red">
+                                <form:errors path="username" cssClass="error" />
+                            </font>
+                        </div>
+                        <div class="AdminCreateNewUser_wrapper_data_l1">
+                            <label for="">Password</label>
+                            <form:password path="password" showPassword="true" />
+                            <font color="red">
+                                <form:errors path="password" cssClass="error" />
+                            </font>
+                        </div>
+                        <div class="AdminCreateNewUser_wrapper_data_l1">
+                            <label for="">Confirm Password</label>
+                            <form:password path="passwordConfirm" showPassword="true" />
+                            <font color="red">
+                                <form:errors path="passwordConfirm" cssClass="error" />
+                        </div>
+                        <div class="AdminCreateNewUser_wrapper_data_l1">
+                            <label for="" style="color:white">Role</label>
+                            <div class="radio-btn-admin-cre-user" style="display:flex">
+                             <form:radiobutton path="roleName" value="USER" checked="checked" label="User" style="width:25px;height:25px;margin-right:5px" />
+                            &nbsp;&nbsp;
+                            <form:radiobutton path="roleName" value="ADMIN" label="Admin" style="width:25px;height:25px;margin-right:5px" /></div>                 
+                        </div>
+                    </div>
+                    <div class="AdminCreateNewUser_wrapper_data_line2">
+                        <div class="AdminCreateNewUser_wrapper_data_l1">
+                            <label for="" style="color:white">User Full Name</label>
+                            <form:input path="name" /> <br>
+                            <font color="red">
+                                <form:errors path="name" cssClass="error" />
+                            </font>
+                        </div>
+                        <div class="AdminCreateNewUser_wrapper_data_l1 add" style="width: 590px;">
+                            <label for="" style="color:white">Address</label> <br>
+                            <form:textarea path="address" rows="1" cols="66" maxlength="250" />
+                            <font color="red">
+                                <form:errors path="address" cssClass="error" />
+                            </font>
+                        </div>
+                        <div class="AdminCreateNewUser_wrapper_data_l1">
+                            <label for="" style="color:white">Company Email</label>
+                            <form:input path="email" />
+                            <font color="red">
+                                <form:errors path="email" cssClass="error" />
+                            </font>
+                        </div>
+                    </div>
+                    <div class="AdminCreateNewUser_wrapper_data_line2">
+                        <div class="AdminCreateNewUser_wrapper_data_l1">
+                            <label for="" style="color:white">Company Mobile</label>
+                            <form:input path="mobile" type="number" required="required" /> <br>
+                            <font color="red">
+                                <form:errors path="mobile" cssClass="error" />
+                            </font>
+                        </div>
+                    </div>
+                    <div class="AdminCreateNewUser_wrapper_data_line1">
+                        <div class="AdminCreateNewUser_wrapper_data_l1">
+                            <label for="" style="color:white">Designation</label>
+                            <form:input path="designation" /> <br>
+                            <font color="red">
+                                <form:errors path="designation" cssClass="error" />
+                            </font>
+                        </div>
+                        <div class="AdminCreateNewUser_wrapper_data_l1">
+                            <label for="" style="color:white">Type</label> <br>
+                            <form:select path="type" style="width:90%">
+                                <form:options items="${EMP_TYPE_MAP}" class="service-small" />
+                            </form:select>
+                        </div>
+                        <div class="AdminCreateNewUser_wrapper_data_l1">
+                            <label for="" style="color:white">Shift</label> <br>
+                            <form:select path="shift" style="width:90%">
+                                <form:options items="${EMP_SHIFT_MAP}" class="service-small" />
+                            </form:select>
+                        </div>
+                        <div class="AdminCreateNewUser_wrapper_data_l1">
+                            <label for="" style="color:white">Fixed Incentive</label>
+                            <form:input path="fixedIncentive" type="number" required="required" />
+                        </div>
+                    </div>
+                    <div class="AdminCreateNewUser_wrapper_data_line1">
+                        <div class="AdminCreateNewUser_wrapper_data_l1">
+                            <label for="" style="color:white">Pan Card</label>
+                            <form:input path="panCard" />
+                        </div>
+                        <div class="AdminCreateNewUser_wrapper_data_l1">
+                            <label for="" style="color:white">Aadhar Card</label>
+                            <form:input path="aadharCard" />
+                        </div>
+                        <div class="AdminCreateNewUser_wrapper_data_l1">
+                            <label for="" style="color:white">Marial Status</label>
+                            <form:select path="maritalStatus" style="width:90%"> <br>
+                                <form:options items="${MARITAL_STATUS_MAP}" class="service-small" />
+                            </form:select>
+                        </div>
+                        <div class="AdminCreateNewUser_wrapper_data_l1">
+                            <label for="" style="color:white">Gender</label> <br>
+                            <form:select path="gender" style="width:90%">
+                                <form:options items="${GENDER_MAP}" class="service-small" />
+                            </form:select>
+                        </div>
+                    </div>
+                    <div class="AdminCreateNewUser_wrapper_data_line1">
+                        <div class="AdminCreateNewUser_wrapper_data_l1">
+                            <label for="" style="color:white">Date of Birth</label>
+                            <form:input path="dob" type="date" required="required" />
+                        </div>
+                        <div class="AdminCreateNewUser_wrapper_data_l1">
+                            <label for="" style="color:white">Date of Joining</label>
+                            <form:input path="doj" type="date" required="required" />
+                        </div>
+                        <div class="AdminCreateNewUser_wrapper_data_l1">
+                            <label for="" style="color:white">Personal Email</label>
+                            <form:input path="personalEmail" type="email" required="required" />
+                        </div>
+                        <div class="AdminCreateNewUser_wrapper_data_l1">
+                            <label for="" style="color:white">Personal Phone</label>
+                            <form:input path="personalMobile" type="number" required="required" />
+                        </div>
+                    </div>
+                    <div class="AdminCreateNewUser_wrapper_data_line11">
+                        <div class="AdminCreateNewUser_wrapper_data_l11" style="text-align: start;">
+                            <label for="" style="color:white">Remarks</label> <br>
+                      <form:textarea path = "remarks" rows="3" cols="139"  maxlength="1000"/>
+                        </div>
+                    </div>
+                    <div class="due_today_task_data_btns">
+                        <input type="submit" value="Create User">
+                        <a href="view_workloadhome">Home</a>
+                        <a href="view_search_admin_user">User Listings</a>
+                    </div>
+                </div>
+                <input type="hidden" name="active" value="true" />
+            </form:form>
+        </div>
+    </div>
 </body>
+
 </html>

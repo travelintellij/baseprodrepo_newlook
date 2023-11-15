@@ -58,6 +58,12 @@ input[type=button], input[type=submit], input[type=reset] {
 
 </style>
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 	<center>
 		<h2><br>Search User</h2>
 	</center>
