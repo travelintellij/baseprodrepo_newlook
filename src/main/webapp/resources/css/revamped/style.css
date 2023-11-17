@@ -3474,9 +3474,143 @@ transition: all 0.2s ease-in-out;
 
 
 
+/* #################### AdminSearchUser ################### */
+
+.AdminSearchUser_wrapper {
+    color: white;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 0.9);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 115px;
+}
+
+.AdminSearchUser_wrapper_data_line {
+    display: flex;
+}
+
+.AdminSearchUser_wrapper_data_l1_id {
+    text-align: start;
+    width: 60px;
+    margin-right: 10px;
+}
+
+.AdminSearchUser_wrapper_data_l1_id input {
+    width: 100%;
+}
+
+.AdminSearchUser_wrapper_data_line {
+    display: flex;
+    justify-content: space-between;
+}
+
+.AdminSearchUser_wrapper_data_l1 {
+    text-align: start;
+}
+
+.AdminSearchUser_wrapper_data_line .AdminSearchUser_wrapper_data_l1 {
+    width: 260px;
+}
+
+.AdminSearchUser_wrapper_data_line .AdminSearchUser_wrapper_data_l1 input {
+    width: 95%;
+}
+
+.admin-search-user-tabel {
+    margin-top: 5px;
+    border-radius: 10px;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.admin-search-user-tabel th {
+    text-align: center;
+    color: #FFBA08;
+}
+
+.admin-search-user-tabel td {
+    text-align: center;
+    color: white;
+}
+
+.adsu {
+    position: relative;
+    color: red;
+}
+
+.adsu:hover {
+    cursor: pointer;
+    color: #FFBA08;
+}
+.adsu:hover .admin-search_user{
+    display: block;
+}
+
+.admin-search_user {
+    display: none;
+    border-radius: 10px;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.868);
+    padding: 10px;
+    top: 0;
+    right: 18px;
+}
+
+.admin-search_user_lis {
+    width: 100px;
+    height: 75px;
+}
+
+.admin-search_user ul li {
+    text-decoration: none;
+    border-bottom: 2px solid #FFBA08;
+}
+
+.admin-search_user ul li a {
+    color: white;
+    font-weight: normal;
+    transition: all 0.2s ease-in-out;
+}
+.admin-search_user ul li a:hover {
+    color: #FFBA08;
+}
 
 
 
+/* ################## AdminDisplayUser ##################### */
+
+.AdminDisplayUser_wrapper {
+    color: white;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 115px;
+}
+
+.AdminDisplayUser_wrapper_data_line {
+    display: flex;
+}
+
+.AdminDisplayUser_wrapper_data_line .AdminDisplayUser_wrapper_data_l1 {
+    width: 300px;
+    text-align: start;
+}
+
+.AdminDisplayUser_wrapper_data_l1 label {
+    color: #FFBA08;
+    font-weight: bold;
+}
+
+.AdminDisplayUser_wrapper_data_l1 {
+    margin-bottom: 5px;
+}
 
 
 

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html lang="en">
 <jsp:include page="../../menu/MenuBuilder.jsp" />  
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
@@ -6,192 +7,172 @@
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-
-<html>
 <head>
-<style>
-table {
-	  width: 90%;
-	  border-collapse: collapse;
-	  border: 1px solid #38678f;
-	  margin: 5px auto;
-	  background: white;
-	}
-	
-	th {
-	  background: green;
-	  width: 40%;
-	  font-weight: heavy;
-	  text-shadow: 0 1px 0 #38678f;
-	  color: white;
-	  border: 1px solid #38678f;
-	  box-shadow: inset 0px 1px 2px #568ebd;
-	  transition: all 0.2s;
-	  
-	}
-	tr {
-	  border-bottom: 1px solid #cccccc;
-	}
-	
-	td {
-	  border-right: 1px solid #cccccc;
-	  padding: 10px;
-	  transition: all 0.2s;
-	  text-align: center;
-	}
-	
-	.heavyTable {
-	  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-	  animation: float 5s infinite;
-	}
-	input[type="radio"] {
-		display: inline-block;
-		opacity: 1;
-		width: 1em;
-		z-index: -1;
-	}
-
-select {
-	appearance: none;
-	outline: 0;
-	background: lightblue;
-	background-image: none;
-	width: 80%;
-	height: 100%;
-	color: black;
-	cursor: pointer;
-	border: 1px solid black;
-	border-radius: 3px;
-	text-indent: 2px;
-}
-
-.select {
-	position: relative;
-	display: block;
-	height: 2.5em;
-	line-height: 3;
-	overflow: hidden;
-	border-radius: .25em;
-	padding-bottom: 10px;
-	padding-top: 10px;
-}
-
-.select option.service-small {
-	font-size: 20px;
-	padding: 25px;
-	background: lightgreen;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdminDisplayUser</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
 
 
-input[type=button], input[type=submit], input[type=reset] {
-	background-color: #4CAF50;
-	border: none;
-	color: white;
-	padding: 16px 32px;
-	text-decoration: none;
-	margin: 4px 2px;
-	cursor: pointer;
-}
-	</style>
 </head>
 
-<br>
-<h2 align="center"> View User</h2>
-<div align="center"><b><font color="green" > ${Success} </font><font color="red"> ${Error}</font> </b></div>
-<body>
-	<form:form method="post" action="view_edit_Admin_User" modelAttribute="userobj">
+<body  style="background: url(${pageContext.request.contextPath}/resources/images/revamped/assin_to_me_tasks_bg.jpg);background-size: cover; background-repeat: no-repeat; background-position: center center;background-attachment: fixed;">
 
-		<table>
-			<tr>
-				<td>
-					<table>
-						<tr><th>Record Id</th><td>${userobj.userId}</td></tr>
-						<tr><th>Login Id</th><td>${userobj.username}</td></tr>
-						<tr><th>Password</th><td>Confidential (Encrypted)</td></tr>
-						<tr><th	>Primary Role</th>
-							<td>
-									<c:if test = "${fn:containsIgnoreCase(userobj.roles, 'User')}">
-										User
-									</c:if> 
-									<c:if test = "${fn:containsIgnoreCase(userobj.roles, 'Admin')}">
-										Admin
-									</c:if> 
-									
-							</td>
-						</tr>
-					</table>
-				</td>
-				<td>
-				<table>
-			        <tr><th>User Full Name </th><td>${userobj.name}</td></tr>
-			        <tr><th>Address</th><td>${userobj.address}</td></tr>
-			        <tr><th>Company Email</th><td> ${userobj.email}</td></tr>
-			       	<tr><th>Company Mobile</th><td>${userobj.mobile}</td></tr>
-				</table>
-				</td>
-				<td>
-				<table>
-			        <tr><th>Designation</th><td>${userobj.designation}</td></tr>
-			        <tr><th>Type</th><td>
-			        	${userobj.type}
-						</td></tr>
-							
-		        	<tr><th>Shift</th>
-		        	<td>
-		        	${userobj.shift}
-		        	</td></tr>
-		        	<tr><th>Fixed Incentive </th><td>${userobj.fixedIncentive}</td></tr>
-				</table>
-				</td>
-			</tr>
-		</table>
-		
-		<table style="align: center;">
-			<tr>
-				<td>
-				<table>
-					<tr><th>Pan Card</th><td>${userobj.panCard}</td></tr>
-					<tr><th>Aadhar Card</th><td>${userobj.aadharCard}</td></tr>
-					<tr><th>Marial Status</th><td>${userobj.maritalStatus}</td></tr>
-					<tr><th>Gender</th><td>${userobj.gender}</td></tr>
-					<tr><th>Deleted</th><td>${userobj.deleted}</td></tr>
-					<tr><th>Account Locked</th><td>${userobj.accountLocked}</td></tr>
-					
-				</table>
-				</td>
-				<td>
-				<table>
-					<tr><th>Date of Birth</th><td><fmt:formatDate value="${userobj.dob}" pattern="dd-MM-yyyy" /></td></tr>
-		    		<tr><th>Date of Joining</th><td> <fmt:formatDate value="${userobj.doj}" pattern="dd-MM-yyyy" /></td></tr>
-		    		<tr><th>Personal Email</th><td>${userobj.personalEmail}</td></tr>
-		    		<tr><th>Personal Mobile</th><td> ${userobj.personalMobile}</td></tr>
-		    		<tr><th>Active</th><td> ${userobj.active}</td></tr>
-		    		<tr><th>Account Expired</th><td style="text-align:center;">${userobj.accountExpired}</td></tr>
-		    		<tr><th>Credentials Expired</th><td style="text-align:center;">${userobj.credentialsExpired}</td></tr>
-		    	</table>
-			</td>
-			</tr>
-			<tr>
-			<th>
-			Remarks</th>
-			<td colspan="2"> 
-				${userobj.remarks}
-			</td>
-			</tr>
-			<tr>
-			<td colspan="3">
-				<sec:authorize access="hasAnyRole('ADMIN','USER_EDIT')">
-					<input type="submit" style="width: 120px;background-color: blue;" value="Edit User">
-				</sec:authorize>
-				
-				<a href="view_workloadhome"><input type="button" style="width: 100px;background-color: blue;" value="Home"></a>
-				<a href="view_search_admin_user"><input type="button" style="width: 140px;background-color: blue;" value="User Listings"></a>
-			</td>
-			</tr>
-		</table>
-	    	<input type="hidden" name="active" value="true" />
-	    	<input type="hidden" name="userId" value="${userobj.userId}" />
-		</form:form>
-      
+    <div class="AdminDisplayUser container">
+        <div class="AdminDisplayUser_wrapper">
+            <div align="center"><b>
+                    <font color="green"> ${Success} </font>
+                    <font color="red"> ${Error}</font>
+                </b></div>
+            <form:form method="post" action="view_edit_Admin_User" modelAttribute="userobj">
+                <div class="AdminDisplayUser_wrapper_data">
+                    <div class="AdminDisplayUser_wrapper_data_line">
+                        <div class="AdminDisplayUser_wrapper_data_l1">
+                            <label for="">Record Id</label>
+                            <p>${userobj.userId}</p>
+                        </div>
+                        <div class="AdminDisplayUser_wrapper_data_l1">
+                            <label for="">Login Id</label>
+                            <p>${userobj.username}</p>
+                        </div>
+                        <div class="AdminDisplayUser_wrapper_data_l1">
+                            <label for="">Password</label>
+                            <p>Confidential (Encrypted)</p>
+                        </div>
+                        <div class="AdminDisplayUser_wrapper_data_l1">
+                            <label for="">Primary Role</label>
+                            <p>
+                                <c:if test="${fn:containsIgnoreCase(userobj.roles, 'User')}">
+                                    User
+                                </c:if>
+                                <c:if test="${fn:containsIgnoreCase(userobj.roles, 'Admin')}">
+                                    Admin
+                                </c:if>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="AdminDisplayUser_wrapper_data_line">
+                        <div class="AdminDisplayUser_wrapper_data_l1">
+                            <label for="">User Full Name</label>
+                            <p>${userobj.name}</p>
+                        </div>
+                        <div class="AdminDisplayUser_wrapper_data_l1">
+                            <label for="">Address</label>
+                            <p>${userobj.address}</p>
+                        </div>
+                        <div class="AdminDisplayUser_wrapper_data_l1">
+                            <label for="">Company Email</label>
+                            <p>${userobj.email}</p>
+                        </div>
+                        <div class="AdminDisplayUser_wrapper_data_l1">
+                            <label for="">Company Mobile</label>
+                            <p>${userobj.mobile}</p>
+                        </div>
+                    </div>
+                    <div class="AdminDisplayUser_wrapper_data_line">
+                        <div class="AdminDisplayUser_wrapper_data_l1">
+                            <label for="">Designation</label>
+                            <p>${userobj.designation}</p>
+                        </div>
+                        <div class="AdminDisplayUser_wrapper_data_l1">
+                            <label for="">Type</label>
+                            <p>${userobj.type}</p>
+                        </div>
+                        <div class="AdminDisplayUser_wrapper_data_l1">
+                            <label for="">${userobj.shift}</label>
+                            <p>Dumm</p>
+                        </div>
+                        <div class="AdminDisplayUser_wrapper_data_l1">
+                            <label for="">Fixed Incentive</label>
+                            <p>${userobj.fixedIncentive}</p>
+                        </div>
+                    </div>
+                    <div class="AdminDisplayUser_wrapper_data_line">
+                        <div class="AdminDisplayUser_wrapper_data_l1">
+                            <label for="">Pan Card</label>
+                            <p>${userobj.panCard}</p>
+                        </div>
+                        <div class="AdminDisplayUser_wrapper_data_l1">
+                            <label for="">Aadhar Card</label>
+                            <p>${userobj.aadharCard}</p>
+                        </div>
+                        <div class="AdminDisplayUser_wrapper_data_l1">
+                            <label for="">Marial Status</label>
+                            <p>${userobj.maritalStatus}</p>
+                        </div>
+                        <div class="AdminDisplayUser_wrapper_data_l1">
+                            <label for="">Gender</label>
+                            <p>${userobj.gender}</p>
+                        </div>
+                    </div>
+                    <div class="AdminDisplayUser_wrapper_data_line">
+                        <div class="AdminDisplayUser_wrapper_data_l1">
+                            <label for="">Deleted</label>
+                            <p>${userobj.deleted}</p>
+                        </div>
+                        <div class="AdminDisplayUser_wrapper_data_l1">
+                            <label for="">Account Locked</label>
+                            <p>${userobj.accountLocked}</p>
+                        </div>
+                        <div class="AdminDisplayUser_wrapper_data_l1">
+                            <label for="">Date of Birth</label>
+                            <p>
+                                <fmt:formatDate value="${userobj.dob}" pattern="dd-MM-yyyy" />
+                            </p>
+                        </div>
+                        <div class="AdminDisplayUser_wrapper_data_l1">
+                            <label for="">Date of Joining</label>
+                            <p>
+                                <fmt:formatDate value="${userobj.doj}" pattern="dd-MM-yyyy" />
+                            </p>
+                        </div>
+                    </div>
+                    <div class="AdminDisplayUser_wrapper_data_line">
+                        <div class="AdminDisplayUser_wrapper_data_l1">
+                            <label for="">Personal Email</label>
+                            <p>${userobj.personalEmail}</p>
+                        </div>
+                        <div class="AdminDisplayUser_wrapper_data_l1">
+                            <label for="">Personal Mobile</label>
+                            <p>${userobj.personalMobile}</p>
+                        </div>
+                        <div class="AdminDisplayUser_wrapper_data_l1">
+                            <label for="">Active</label>
+                            <p>${userobj.active}</p>
+                        </div>
+                        <div class="AdminDisplayUser_wrapper_data_l1">
+                            <label for="">Account Expired</label>
+                            <p>${userobj.accountExpired}</p>
+                        </div>
+                    </div>
+                    <div class="AdminDisplayUser_wrapper_data_line">
+                        <div class="AdminDisplayUser_wrapper_data_l1">
+                            <label for="">Credentials Expired</label>
+                            <p>${userobj.credentialsExpired}</p>
+                        </div>
+                    </div>
+                    <div class="AdminDisplayUser_wrapper_data_line">
+                        <div class="AdminDisplayUser_wrapper_data_l1">
+                            <label for="">Remarks</label>
+                            <p>${userobj.remarks}</p>
+                        </div>
+                    </div>
+                    <div class="due_today_task_data_btns">
+                        <sec:authorize access="hasAnyRole('ADMIN','USER_EDIT')">
+                            <input type="submit" value="Edit User">
+                        </sec:authorize>
+                        <a href="view_workloadhome">Home</a>
+                        <a href="view_search_admin_user">User Listing</a>
+                    </div>
+                    <input type="hidden" name="active" value="true" />
+                    <input type="hidden" name="userId" value="${userobj.userId}" />
+                </div>
+            </form:form>
+        </div>
+    </div>
+
+
+
 </body>
+
 </html>
