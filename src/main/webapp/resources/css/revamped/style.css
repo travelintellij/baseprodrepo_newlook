@@ -3612,6 +3612,125 @@ transition: all 0.2s ease-in-out;
     margin-bottom: 5px;
 }
 
+/* ################ Admin_Add_Visa #################### */
+.Admin_Add_Visa_wrapper{
+    color: white;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 115px;
+}
+.Admin_Add_Visa_wrapper_data_line{
+    display: flex;
+}
+.Admin_Add_Visa_wrapper_data_l1{
+    text-align: start;
+    width: 300px;
+}
+.Admin_Add_Visa_wrapper_data_l1 input{
+    width: 90%;
+}
+.Admin_Add_Visa_wrapper_data_line_remarks{
+    display: flex;
+    justify-content: space-between;
+}
+.Admin_Add_Visa_wrapper_data_line_remarks .Admin_Add_Visa_wrapper_data_l1{
+    width: 50%;
+}
+
+
+/* ######################## Admin_Search_Visa ##################### */
+
+.Admin_Search_Visa_wrapper {
+    color: white;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 115px;
+}
+
+.Admin_Search_Visa_wrapper_data_line {
+    display: flex;
+    justify-content: center;
+}
+
+.Admin_Search_Visa_wrapper_data_l1 {
+        text-align: start;
+    margin-right: 10px;
+    width: 300px;
+}
+
+.Admin_Search_Visa_wrapper_data_l1 input {
+    width: 90%;
+}
+
+/* ################ admin_add_visa_consulate ################## */
+.Admin_Add_Visa_Consulate_wrapper {
+    color: white;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 115px;
+}
+
+.Admin_Add_Visa_Consulate_wrapper_data_line {
+    display: flex;
+}
+.Admin_Add_Visa_Consulate_wrapper_data_line .Admin_Add_Visa_Consulate_wrapper_data_l1 {
+    width: 300px;
+    text-align: start;
+}
+.Admin_Add_Visa_Consulate_wrapper_data_line .Admin_Add_Visa_Consulate_wrapper_data_l1 input {
+    width: 90%;
+}
+.Admin_Add_Visa_Consulate_wrapper_data_l1_add{
+    width: 600px;
+    text-align: start;
+}
+.Admin_Add_Visa_Consulate_wrapper_data_l1_add input{
+    width:95%;
+}
+
+
+/* ###################### Admin_Search_Visa_Consulate ################# */
+
+.Admin_Search_Visa_Consulate_wrapper {
+    color: white;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 115px;
+}
+
+.Admin_Search_Visa_Consulate_wrapper_data_line {
+    display: flex;
+    justify-content: center;
+    text-align: start;
+}
+
+.Admin_Search_Visa_Consulate_wrapper_data_l1 {
+    width: 300px;
+    margin-right: 10px;
+}
+.Admin_Search_Visa_Consulate_wrapper_data_l1 input{
+    width: 90%;
+}
 
 
 
