@@ -63,6 +63,13 @@ input[type=button], input[type=submit], input[type=reset] {
 <br>
 <h2 align="center">View Quotations</h2>
 <body>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 	<form:form modelAttribute="LEAD_OBJ" action="form_view_editlead">
 	<form:hidden path = "leadId" />
 	<div align="center"><b><font color="green" > ${Success} </font><font color="red" size="5">${Error}</font> </b></div>

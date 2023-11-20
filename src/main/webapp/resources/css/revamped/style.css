@@ -2552,7 +2552,7 @@ footer {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    margin-top: 164px;
+    margin-top: 116px;
     margin-bottom: 20px;
     background: #FFCF53;
     padding: 5px 0;
@@ -3711,6 +3711,8 @@ transition: all 0.2s ease-in-out;
     width: 100%;
     text-align: center;
     border-collapse: collapse;
+    
+    
     border: none;
     background: rgba(0, 0, 0, 9);
     padding: 10px;
@@ -3734,9 +3736,152 @@ transition: all 0.2s ease-in-out;
 
 
 
+/* ########### view tasks ############# */
+
+.view_Task_wrapper {
+    color: white;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 115px;
+}
+
+.view_Task_wrapper_data {
+    width: 50%;
+    margin-right: 10px;
+    border-right: 2px solid #FFBA08;
+}
+
+.view_Task_wrapper_data label {
+    color: #FFBA08;
+}
+
+.view_Task_wrapepr_data_line,
+.view_Task_wrapepr_data_line2,
+.view_Task_wrapepr_data_line3,
+.view_Task_wrapepr_data_line4 {
+    display: flex;
+}
+
+.view_Task_wrapepr_data_line .view_Task_wrapepr_data_l1,
+.view_Task_wrapepr_data_line2 .view_Task_wrapepr_data_l1,
+.view_Task_wrapepr_data_line3 .view_Task_wrapepr_data_l1,
+.view_Task_wrapepr_data_line4 .view_Task_wrapepr_data_l1 {
+    text-align: start;
+    width: 40%;
+    margin-bottom: 10px;
+}
+.view_task_box_divide{
+    display: flex;
+}
+.view_Task_wrapper_data_comment_title{
+    text-align: start;
+}
+.view_Task_wrapper_data_comment_title label{
+color: #FFBA08;
+font-weight: bold;
+}
 
 
+/* ################### edit task #################### */
+.edit_Task_wrapper {
+    color: white;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 115px;
+}
 
+.edit_Task_wrapper_data_line,
+.edit_Task_wrapper_data_line2 {
+    display: flex;
+}
+
+.edit_Task_wrapper_data_line .edit_Task_wrapper_data_l1 {
+    text-align: start;
+    width: 300px;
+}
+
+.edit_Task_wrapper_data_line .edit_Task_wrapper_data_l1 input {
+    width: 90%;
+}
+
+.edit_Task_wrapper_data_l1_des {
+    text-align: start;
+    width: 580px;
+}
+
+.edit_Task_wrapper_data_l1_des input {
+    width: 600px;
+}
+
+.edit_Task_wrapper_data_line2 .edit_Task_wrapper_data_l1 {
+    text-align: start;
+    width: 295px;
+}
+
+.edit_Task_wrapper_data_line2 .edit_Task_wrapper_data_l1 input {
+    width: 90%;
+}
+
+.edit_Task_wrapper_data_l1_des {
+    text-align: start;
+    width: 580px;
+}
+
+.edit_Task_wrapper_data_l1_des input {
+    width: 560px;
+}
+
+.edit_Task_wrapper_data_line2_confom {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.edit_Task_wrapper_data_line2_confom .edit_Task_wrapper_data_l1 {
+    display: flex;
+    justify-content: space-between;
+    width: 520px;
+}
+
+/* ################## view_confirm_delete_task ################# */
+.view_confirm_delete_task_wrapper {
+    color: white;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 115px;
+}
+
+.view_confirm_delete_task_wrapper label {
+    color: #FABA08;
+}
+
+.view_confirm_delete_task_wrapper_data_line {
+    display: flex;
+}
+
+.view_confirm_delete_task_wrapper_data_line .view_confirm_delete_task_wrapper_data_l1 {
+    width: 300px;
+    text-align: start;
+}
+.view_confirm_delete_task_wrapper_data_l1_link{
+    text-align: start;
+    width: 600px;
+}
 
 
 

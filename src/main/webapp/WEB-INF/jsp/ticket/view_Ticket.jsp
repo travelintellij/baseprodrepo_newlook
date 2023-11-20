@@ -1,358 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
 <jsp:include page="../menu/MenuBuilder.jsp" />
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-
-<!DOCTYPE html>
-<html>
 <head>
-	<script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>view_Task</title>
+    	<script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
 	<script src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
-	<link href="<c:url value="/resources/core/main.css" />" rel="stylesheet">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {
-  font-family: "Lato", sans-serif;
-}
-
-.sidenav {
-  width: 170px;
-  position: relative;
-  z-index: 0;
-  top: 50px;
-  left: 10px;
-  background: #eee;
-  overflow-x: hidden;
-  padding: 8px 0;
-}
-
-.sidenav a {
-  padding: 10px 8px 10px 16px;
-  text-decoration: none;
-  font-size: 20px;
-  color: #2196F3;
-  display: block;
-}
-
-.sidenav a:hover {
-  color: #064579;
-}
-
-.main {
-  margin-left: 450px; /* Same width as the sidebar + left position in px */
-  font-size: 28px; /* Increased text to enable scrolling */
-  padding: 0px 10px;
-  position: fixed;
-  top: 170px;
-  z-index: 0;
-}
-
-
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-}
-a:hover, a:active {
-  background-color: lightblue;
-}
-#img th,tr, td {
-    border: 1px solid #38678f;
-    border-spacing: 0px;
-    border-collapse: collapse;
-    text-align:left;
-    padding: 15px;
-    background-color: #fff;
-}
- th, td {
-    font-size: 18px;
-    border: 1px solid #38678f;
-   	border-collapse: collapse;
-   	padding: 15px;
-  }
-
-th{
-	background-color: maroon;
-	color:white;
-}
-
-table {
-    border: 1px solid transparent;
-  	width: 30%;
-  	height: 60px;
-  	border: 1px solid #38678f;
-    border-collapse: collapse;
- 	background: white;
-  	table-layout: fixed;
-	padding: 15px;
-
-}
-
-.search-slt{
-    display: block;
-    width: 50%;
-    font-size: 0.875rem;
-    line-height: 1.5;
-    color: #55595c;
-    background-color: #fff;
-    background-image: none;
-    border: 1px solid #ccc;
-    height: 45px !important;
-    border-radius:0;
-}
-select {
-	appearance: none;
-	outline: 0;
-	background: lightgreen;
-	background-image: none;
-	width: 100%;
-	height: 100%;
-	color: black;
-	cursor: pointer;
-	border: 1px solid black;
-	border-radius: 3px;
-	text-indent: 2px;
-}
-
-.select {
-	position: relative;
-	display: block;
-	height: 2.5em;
-	line-height: 3;
-	overflow: hidden;
-	border-radius: .25em;
-	padding-bottom: 10px;
-	padding-top: 10px;
-}
-.select option.service-small {
-	font-size: 20px;
-	padding: 25px;
-	background: lightgreen;
-}
-input[type=button], input[type=submit], input[type=reset] {
-  background-color: #4CAF50;
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  text-decoration: none;
-  margin: 4px 2px;
-  cursor: pointer;
-}
-</style>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
 </head>
-<body>
 
-<div class="sidenav">
-  	<a href="view_create_ticket_form_user">Create Ticket</a>
-  	<c:if test="${VIEW_SOURCE eq 'OPEN_TICKET'}">
-  		<a href="view_open_ticket_form_user" style="background-color: #2E3F50;">Open Ticket</a>
-  	</c:if>
-  	<c:if test="${VIEW_SOURCE ne 'OPEN_TICKET'}">
-  		<a href="view_open_ticket_form_user">Open Ticket</a>
-  	</c:if>
-	<c:if test="${VIEW_SOURCE eq 'DUE_TODAY'}">
-  		<a href="view_open_ticket_form_user_filter_due_today" style="background-color: #2E3F50;">Due Today</a>
-  	</c:if>
-	<c:if test="${VIEW_SOURCE ne 'DUE_TODAY'}">
-  		<a href="view_open_ticket_form_user_filter_due_today">Due Today</a>
-  	</c:if>
+<body  style="background: url(${pageContext.request.contextPath}/resources/images/revamped/assin_to_me_tasks_bg.jpg);background-size: cover; background-repeat: no-repeat; background-position: center center;background-attachment: fixed;">
 
-	<c:if test="${VIEW_SOURCE eq 'OVER_DUE'}">
-  		<a href="view_open_ticket_form_user_filter_overdue" style="background-color: #2E3F50;">Over Due</a>
-  	</c:if>
-	<c:if test="${VIEW_SOURCE ne 'OVER_DUE'}">
-  		<a href="view_open_ticket_form_user_filter_overdue">Over Due</a>
-  	</c:if>
+      <!-- ############# side menu bar ################## -->
+    <div class="cnt_options">
+            <a href="view_create_ticket_form_user"  >Create Ticket</a>
+            <a href="view_open_ticket_form_user" style="color:white;background:black"> Open Ticket</a>
+            <a href="view_open_ticket_form_user_filter_due_today">Due Today</a>
+            <a href="view_open_over_due_ticket_form_user">Over Due</a>
+            <a href="view_open_my_created_ticket_form_user">Created By Me</a>
+            <a href="view_open_my_assigned_ticket_form_user">Assigned to me</a>
+            <a href="view_completed_ticket_form_user">Completed</a>
+        </div>
 
-	<c:if test="${VIEW_SOURCE eq 'MY_CREATED'}">
-  		<a href="view_open_my_created_ticket_form_user" style="background-color: #2E3F50;">Created By Me</a>
-  	</c:if>
-	<c:if test="${VIEW_SOURCE ne 'MY_CREATED'}">
-  		<a href="view_open_my_created_ticket_form_user">Created By Me</a>
-  	</c:if>
-	<c:if test="${VIEW_SOURCE eq 'MY_ASSIGNED'}">
-  		<a href="view_open_my_assigned_ticket_form_user" style="background-color: #2E3F50;">Assigned to me</a>
-  	</c:if>
-	<c:if test="${VIEW_SOURCE ne 'MY_ASSIGNED'}">
-  		<a href="view_open_my_assigned_ticket_form_user">Assigned to me</a>
-  	</c:if>
-  	
-  	<c:if test="${VIEW_SOURCE eq 'COMPLETED_TICKET'}">
-  		<a href="view_completed_ticket_form_user" style="background-color: #2E3F50;">Completed</a>
-  	</c:if>
-  	<c:if test="${VIEW_SOURCE ne 'COMPLETED_TICKET'}">
-  		<a href="view_completed_ticket_form_user">Completed</a>
-  	</c:if>
-  
-</div>
 
-<div class="main">
-  <div align="center"><b><font color="green" > ${Success} </font><font color="red"> ${Error}</font> </b></div>
-  
-  <c:if test="${VIEW_SOURCE eq 'DUE_TODAY'}">
-  	<c:set var = "action" value = "view_form_edit_due_today_ticket"/>
-  </c:if>
-  <c:if test="${VIEW_SOURCE eq 'OPEN_TICKET'}">
-  	  	<c:set var = "action" value = "view_form_edit_ticket"/>
-  </c:if>
 
-  <c:if test="${VIEW_SOURCE eq 'OVER_DUE'}">
-  	  	<c:set var = "action" value = "view_form_edit_over_due_ticket"/>
-  </c:if>
+    <div class="view_Task container">
+        <div class="view_Task_wrapper">
+            <form:form action="view_form_edit_task" modelAttribute="TICKET_RECORDER_OBJ">
+                <form:hidden path="ticketId" />
+                <div class="view_task_box_divide">
+                    <div class="view_Task_wrapper_data">
+                        <div class="view_Task_wrapepr_data_line">
+                            <div class="view_Task_wrapepr_data_l1">
+                                <label for="">Ticket Title</label>
+                                <p>${TICKET_RECORDER_OBJ.ticketTitle}</p>
+                            </div>
+                        </div>
+                        <div class="view_Task_wrapepr_data_line2">
+                            <div class="view_Task_wrapepr_data_l1">
+                                <label for="">Assigned to</label>
+                                <p>${TICKET_RECORDER_OBJ.ticketOwnerName}</p>
+                            </div>
+                            <div class="view_Task_wrapepr_data_l1">
+                                <label for="">Priority</label>
+                                <p>${TICKET_RECORDER_OBJ.ticketPriority}</p>
+                            </div>
+                        </div>
+                        <div class="view_Task_wrapepr_data_line3">
+                            <div class="view_Task_wrapepr_data_l1">
+                                <label for="">Status</label>
+                                <p>${TICKET_RECORDER_OBJ.ticketStatus}</p>
+                            </div>
+                            <div class="view_Task_wrapepr_data_l1">
+                                <label for="">Due Date</label>
+                                <p>${localDateTimeFormat.format(TICKET_RECORDER_OBJ.ticketDueDate)}}</p>
+                            </div>
+                        </div>
+                        <div class="view_Task_wrapepr_data_line4">
+                            <div class="view_Task_wrapepr_data_l1">
+                                <label for="">Link with deal</label>
+                                <p>
+                                    <c:if test="${TICKET_RECORDER_OBJ.dealConfirmationId != 0}">
+                                        ${TICKET_RECORDER_OBJ.dealConfirmationId}
+                                    </c:if>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="view_Task_wrapepr_data_line4">
+                            <div class="view_Task_wrapepr_data_l1">
+                                <label for="">Description</label>
+                                <p>${TICKET_RECORDER_OBJ.ticketDescription}</p>
+                            </div>
+                        </div>
+                        <div class="due_today_task_data_btns">
+                            <input type="submit" value="Edit" name="Edit" />
+                            <c:if test="${VIEW_SOURCE eq 'OPEN_TICKET'}">
+                                <a href="view_open_ticket_form_user">Cancel</a>
+                            </c:if>
+                            <c:if test="${VIEW_SOURCE eq 'DUE_TODAY'}">
+                                <a href="view_open_ticket_form_user_filter_due_today">Cancel</a>
+                            </c:if>
+                            <c:if test="${VIEW_SOURCE eq 'OVER_DUE'}">
+                                <a href="view_open_over_due_ticket_form_user">Cancel</a>
+                            </c:if>
+                            <c:if test="${VIEW_SOURCE eq 'MY_CREATED'}">
+                                <a href="view_open_my_created_ticket_form_user">Cancel</a>
+                            </c:if>
+                            <c:if test="${VIEW_SOURCE eq 'MY_ASSIGNED'}">
+                                <a href="view_open_my_assigned_ticket_form_user">Cancel</a>
+                            </c:if>
+                            <c:if test="${VIEW_SOURCE eq 'COMPLETED_TICKET'}">
+                                <a href="view_completed_ticket_form_user">Cancel</a>
+                            </c:if>
+                        </div>
+                    </div>
 
- <c:if test="${VIEW_SOURCE eq 'MY_CREATED'}">
-  	  	<c:set var = "action" value = "view_form_edit_my_created_ticket"/>
-  </c:if>
 
- <c:if test="${VIEW_SOURCE eq 'MY_ASSIGNED'}">
-  	  	<c:set var = "action" value = "view_form_edit_my_assigned_ticket"/>
-  </c:if>
+                    <!-- ############# taken code starts ########### -->
+                    <div class="view_Task_wrapper_data_comment_side">
+                        <div class="view_Task_wrapper_data_comment_title">
+                            <label for="">${pageContext.request.remoteUser} Says:</label><br>
+                            <textarea cols="70" rows="4" name="ticketComment" style="font-size: 18px;"></textarea>
+                        </div>
+                        <div class="due_today_task_data_btns">
+                            <input type="submit" value="Update Comments" name="Update Comments" />
+                        </div>
+                        <div class="commemts-sec">
+                            <c:forEach items="${FILTERED_TICKET_COMMENTS}" var="filteredTicketComments">
+                                <div class="commentBox" style="background:#cce3de;margin:5px 0 ;border-radius:5px">
+                                    <div style="display:flex">
+                                        <p
+                                            style="color:#003049;display:inline-block;margin-right:350px;font-weight:bold;margin-left:5px">
+                                            ${filteredTicketComments.commentedBy}</p>
 
- <c:if test="${VIEW_SOURCE eq 'COMPLETED_TICKET'}">
-  	  	<c:set var = "action" value = "view_form_edit_completed_ticket"/>
-  </c:if>
+                                        <p style="display:inline-block;color:gray">
+                                            ${localDateTimeFormat.format(filteredTicketComments.lastUpdated )}</p>
+                                    </div>
+                                    <p style="color:black">${filteredTicketComments.ttComment }</p>
+                                </div>
 
-<br><br>
-  <form:form action="view_form_edit_ticket" modelAttribute="TICKET_RECORDER_OBJ">
-  <form:hidden path = "ticketId" />
-  <table style="width:80%;">
-  <tr>
-  <td>
-	<table style="width:80%;">
-	<tr>
-		<th colspan="2">Ticket Title*</th>
-	</tr>
-	<tr>
-  		<td colspan="2">
-			${TICKET_RECORDER_OBJ.ticketTitle} 
-  		</td>
-	</tr>
-	<tr>
-	<th> Assigned To* </th><th>Priority*</th>
-	</tr>
-	<tr>
-	<td>
-				${TICKET_RECORDER_OBJ.ticketOwnerName}
-	</td>
-	<td>
-			${TICKET_RECORDER_OBJ.ticketPriority}
-	</td>
-	</tr>
-	<tr>
-		<th>Status*</th><th>Due Date*</th>
-	</tr>
-	<tr>
-		<td>
-				${TICKET_RECORDER_OBJ.ticketStatus}
-	</td>
-	<td>
-		${localDateTimeFormat.format(TICKET_RECORDER_OBJ.ticketDueDate)}
-	</td>
-	</tr>
-	<tr>
-		<th colspan="2">Link With Deal</th>
-	</tr>
-	<tr>
-		<td colspan="2">
-		<c:if test="${TICKET_RECORDER_OBJ.dealConfirmationId != 0}">
-			${TICKET_RECORDER_OBJ.dealConfirmationId}
-		</c:if>
-	</td>
-	</tr>
-	<tr>
-	<th colspan="2"> Description </th>
-	</tr>
-	<tr>
-	<td colspan="2" style="text-align:left;">
-			${TICKET_RECORDER_OBJ.ticketDescription}
-	</td>
-	</tr>
-	<tr>
-		<td style="text-align:right;">
-				<input style="width: 80px; background-color: green" type="submit" value="Edit" name="Edit" />
-		</td>
-		<td style="text-align:left;">
-			<c:if test="${VIEW_SOURCE eq 'OPEN_TICKET'}">
-				<a href="view_open_ticket_form_user" ><input type="button" style="width: 80px;background-color: blue;" value="Cancel"></a>
-			</c:if>
-			<c:if test="${VIEW_SOURCE eq 'DUE_TODAY'}">
-				<a href="view_open_ticket_form_user_filter_due_today" ><input type="button" style="width: 80px;background-color: blue;" value="Cancel"></a>
-			</c:if>
-			<c:if test="${VIEW_SOURCE eq 'OVER_DUE'}">
-				<a href="view_open_over_due_ticket_form_user" ><input type="button" style="width: 80px;background-color: blue;" value="Cancel"></a>
-			</c:if>
-			<c:if test="${VIEW_SOURCE eq 'MY_CREATED'}">
-				<a href="view_open_my_created_ticket_form_user" ><input type="button" style="width: 80px;background-color: blue;" value="Cancel"></a>
-			</c:if>
-			<c:if test="${VIEW_SOURCE eq 'MY_ASSIGNED'}">
-				<a href="view_open_my_assigned_ticket_form_user" ><input type="button" style="width: 80px;background-color: blue;" value="Cancel"></a>
-			</c:if>
-			<c:if test="${VIEW_SOURCE eq 'COMPLETED_TICKET'}">
-				<a href="view_completed_ticket_form_user" ><input type="button" style="width: 80px;background-color: blue;" value="Cancel"></a>
-			</c:if>
-		</td>
-	</tr>
-  </table>
-  </td>
-  <td>
-  	<table style="width:100%;">
-	  		<tr><th>${pageContext.request.remoteUser} Says:</th></tr>
-  			<tr><td> <textarea cols="60" rows="4" name="ticketComment" style="font-size: 18px;"></textarea></td></tr>
-  			<tr><td style="text-align:right;"><input style="width: 180px; background-color: green" type="submit" value="Update Comments" name="Update Comments" /></td></tr>
-  		</table>
-  		<table style="width:100%;">
-  			<c:forEach items="${FILTERED_TICKET_COMMENTS}" var="filteredTicketComments">
-	  			<tr>
-		  			<th style="background-color:lightblue;">${filteredTicketComments.commentedBy}</th>
-		  			<th style="background-color:lightblue;">${localDateTimeFormat.format(filteredTicketComments.lastUpdated )}</th>
-	  			</tr>
-	  			<tr><td colspan="2">${filteredTicketComments.ttComment }</td></tr>
-  			</c:forEach>
-  			<tr>
-  			<td colspan="2">
-  			 <div id="pagination" align="right">
-				Page: 
-			    <c:url value="view_view_ticket" var="prev">
-			       <c:param name="page" value="${page-1}"/>
-			    </c:url>
-			    <c:if test="${page > 0}">
-			        <a href="<c:out value="${prev}&ticketId=${TICKET_RECORDER_OBJ.ticketId}"/>" class="pn prev">Prev</a>
-			    </c:if>
-			
-			    <c:forEach begin="1" end="${maxPages}" step="1" varStatus="i">
-			        <c:choose>
-			            <c:when test="${(page+1) == i.index}">
-			                <span>${i.index}</span>
-			            </c:when>
-			            <c:otherwise>
-			                <c:url value="view_view_ticket" var="url">
-			                    <c:param name="page" value="${i.index-1}"/>
-			                </c:url>
-			                 <a href='<c:out value="${url}&ticketId=${TICKET_RECORDER_OBJ.ticketId}" />'>${i.index}</a>
-			            </c:otherwise>
-			        </c:choose>
-			    </c:forEach>
-			    <c:url value="view_view_ticket" var="next">
-			        <c:param name="page" value="${page + 1}"/>
-			    </c:url>
-			    <c:if test="${page + 1 < maxPages}">
-			       <a href='<c:out value="${next}&ticketId=${TICKET_RECORDER_OBJ.ticketId}" />' class="pn next">Next</a>
-			    </c:if>
-			</div>
-			</td>
-			</tr>
-  		</table>
-  		
-	</td>
-	</tr>
-  		
-  	</table>
-  
-  
-  </form:form>
-  
-</div>  
+                            </c:forEach>
+                        </div>
+                        <div id="pagination" align="right">
+                            Page:
+                            <c:url value="view_view_ticket" var="prev">
+                                <c:param name="page" value="${page-1}" />
+                            </c:url>
+                            <c:if test="${page > 0}">
+                                <a href="<c:out value=" ${prev}&ticketId=${TICKET_RECORDER_OBJ.ticketId}" />" class="pn
+                                prev">Prev</a>
+                            </c:if>
+
+                            <c:forEach begin="1" end="${maxPages}" step="1" varStatus="i">
+                                <c:choose>
+                                    <c:when test="${(page+1) == i.index}">
+                                        <span>${i.index}</span>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <c:url value="view_view_ticket" var="url">
+                                            <c:param name="page" value="${i.index-1}" />
+                                        </c:url>
+                                        <a
+                                            href='<c:out value="${url}&ticketId=${TICKET_RECORDER_OBJ.ticketId}" />'>${i.index}</a>
+                                    </c:otherwise>
+                                </c:choose>
+                            </c:forEach>
+                            <c:url value="view_view_ticket" var="next">
+                                <c:param name="page" value="${page + 1}" />
+                            </c:url>
+                            <c:if test="${page + 1 < maxPages}">
+                                <a href='<c:out value="${next}&ticketId=${TICKET_RECORDER_OBJ.ticketId}" />'
+                                    class="pn next">Next</a>
+                            </c:if>
+                        </div>
+                    </div>
+                    <!-- ############# taken code ends ########### -->
+                </div>
+            </form:form>
+        </div>
+    </div>
 </body>
-</html> 
+
+</html>
