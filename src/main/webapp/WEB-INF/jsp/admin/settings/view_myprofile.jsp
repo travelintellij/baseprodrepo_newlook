@@ -141,7 +141,12 @@ input[type=button], input[type=submit], input[type=reset] {
 </style>
 </head>
 <body>
-
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <div class="sidenav">
   <a href="view_form_my_profile" style="background-color: #2E3F50;">My Profile</a>
   <a href="view_form_change_password" >Change Password</a>

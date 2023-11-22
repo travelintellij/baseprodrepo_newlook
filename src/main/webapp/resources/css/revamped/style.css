@@ -3884,7 +3884,223 @@ font-weight: bold;
 }
 
 
+/* ################### viewLeadQuotationsList ######################## */
+.viewLeadQuotationsList_wrapper {
+    color: white;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 155px;
+}
+
+.viewLeadQuotationsList_wrapper label {
+    color: #FABA08
+}
+
+.viewLeadQuotationsList_wrapper_data_line {
+    display: flex;
+}
+
+.viewLeadQuotationsList_wrapper_data_line .viewLeadQuotationsList_wrapper_data_l1 {
+    text-align: start;
+    width: 250px;
+}
+
+.leadQ-ser {
+    width: 100%;
+}
+
+.lq-sers {
+    display: flex;
+}
+
+.lq-sers label {
+    color: white;
+}
+
+.lq-btns {
+    position: absolute;
+    top: -50px;
+    right: 0px;
+    width: 220px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.lq-btns a {
+    color: white;
+    border: 2px solid black;
+    background: #FABA08;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.viewLeadQuotationsList_wrapper_data {
+    position: relative;
+}
+
+.viewLeadQuotationsTabel {
+    margin-top: 5px;
+    color: white;
+    width: 100%;
+    background: rgba(0, 0, 0, 9);
+}
+
+.viewLeadQuotationsTabel th {
+    text-align: center;
+    color: #FABA08;
+}
+
+.viewLeadQuotationsTabel td {
+    text-align: center;
+    color: white
+}
+
+.vlq-icon {
+    color: #FABA08;
+    position: relative;
+    transition: 0.2s ease-in-out;
+}
+
+.vlq-icon:hover {
+    cursor: pointer;
+    color: red;
+}
+
+.vlq-icon:hover .vlq-icon_div {
+    display: block;
+    cursor: pointer;
+    color: red;
+}
+
+.vlq-icon_div {
+    display: none;
+    width: 150px;
+    position: absolute;
+    background: black;
+    padding: 10px;
+    top: 0;
+    left: 19px;
+    border-radius: 10px;
+    border: 2px solid #FABA08;
+}
+
+.vlq-icon_div a {
+    color: white;
+}
+
+.vlq-icon_div ul li {
+    border-bottom: 2px solid #FABA08;
+    margin-bottom: 3px;
+}
+
+.vlq-icon_div ul li a:hover {
+    color: #FABA08;
+}
+
+/* ####################### add city styling ######################### */
+
+.Admin_Add_City_wrapper {
+    color: white;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 115px;
+}
+.Admin_Add_City_wrapper_data_line_div{
+    display: flex;
+    justify-content: center;
+}
+.Admin_Add_City_wrapper_data_l1{
+    text-align: start;
+    width: 300px;
+}
+.Admin_Add_City_wrapper_data_l1 input{
+    width: 90%;
+}
 
 
+/* ################ view city listing styling ################ */
+
+.viewCityListing_wrapper {
+    color: white;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 115px;
+}
+
+.viewCityListing_wrapper_data_line {
+    display: flex;
+    justify-content: center;
+}
+
+.viewCityListing_wrapper_data_line .viewCityListing_wrapper_data_l1 {
+    width: 300px;
+    text-align: start;
+}
+
+.viewCityListing_wrapper_data_line .viewCityListing_wrapper_data_l1 input {
+    width: 90%;
+}
+
+.viewCityListing_table {
+    margin-top: 10px;
+    width: 100%;
+    background: rgba(0, 0, 0, 9);
+    border-radius: 10px;
+}
 
 
+.viewCityListing_table th{
+    color:#FABA08;
+    font-weight: bold;
+    text-align: center;
+}
+.viewCityListing_table td{
+    color: white;
+    text-align: center;
+}
+
+        /* ################### manageStatus_table ################## */
+.manageStatus_table{
+    text-align: center;
+    background: rgba(0, 0, 0, 9);
+    color: white;
+    width: 100%;
+    border-radius: 10px;
+        margin-top: 115px;
+}
+.manageStatus__sub_table{
+    text-align: center;
+    width: 100%;
+}
+.manageStatus_table th{
+  color: #FABA08;
+}
+.manageStatus__sub_table th{
+  color: #FABA08;
+}
+.mng-sts-btn:hover{
+color:#249C91;
+	cursor: pointer;
+}
+.mng-st-btn:hover{
+	cursor: pointer;
+}
+.containermm{
+	width:1400px;
+	margin:130px auto;
+}

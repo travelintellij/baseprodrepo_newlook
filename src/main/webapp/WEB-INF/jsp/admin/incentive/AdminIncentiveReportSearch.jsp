@@ -64,7 +64,7 @@
 </head>
 
 <body>
-      <br>
+
       <h2 align="center">Search Incentive Claims</h2>
        <form:form method="post" action="showAdminIncentiveSearchReport" modelAttribute="searchincentive">
         	<input type="hidden" name="userId" value="${userId}"/>

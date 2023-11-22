@@ -64,6 +64,15 @@
 </head>
 
 <body>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
         <h1><font>Submitted Incentive Details By <font color="red" size="5">  ${userName} </font></h1>
           <form:form method="post" action="adminUpdateIncentive" modelAttribute="updateincentive">
         	<input type="hidden" name="incentiveId" value="${incentiveId}" />
@@ -83,7 +92,7 @@
         	</div>
         	
         	 <table>
-		        <tr><td width="80%"><b>1. Client is Referred by You ?</b></td> <td>${question1}</td></tr>     
+		        <tr><td width="80%"><b>1. Client is Referred by You ? </b></td> <td>${question1}</td></tr>     
 		        <tr><td width="80%"><b>2. You took minimal support of management and were able to handle the query alone ? </b></td> <td>${question2}</td></tr>
 		        <tr><td width="80%"><b>3. You responded all queries of client yourself ontime without any delay ? </b> </td> <td>${question3} </td></tr>
 		        <tr><td width="80%"><b>4. You ensured and verified with management time to time for payment settlement ? </b> </td> <td>${question4}</td></tr>

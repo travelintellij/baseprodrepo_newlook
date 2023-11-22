@@ -64,24 +64,15 @@
 
 <body>
 	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
+		<br>
+			<br>
+				<br>
+					<br>
+						<br>
 	<h2 align="center">Add City</h2>
-	<form:form method="post" action="edit_edit_city" modelAttribute="CITY_OBJ">
+	<form:form method="post" action="create_create_city" modelAttribute="CITY_OBJ">
 		<form:hidden path = "countryName" id="countryName" />
-		<form:hidden path = "destinationId" />
 			<table>
-				<tr>
-					<th>Destination Id</th>
-					<td>${CITY_OBJ.destinationId}
-				</td>
-				</tr>
-
-
 				<tr>
 					<th>City Name</th>
 					<td><form:input path="cityName" name="cityName" style="height:30px;width:250px;margin: auto;" required="required"/>
@@ -103,35 +94,14 @@
 								</c:if>
 							</c:forEach>
 						</form:select>  
-				</div>
+			</div>
 					<font color="red"><form:errors path="countryCode" cssClass="error" /></font>
 					 </td>
 				</tr>
-				<tr>
-				<th>Active</th>
-				<td>
-					<div class="select">
-						<form:select path="active" style="height:30px;width: 150px;" required="required" >  
-								<c:if test="${CITY_OBJ.active eq true }">
-									<option class="service-small" value="true" selected>Active</option>
-									<option class="service-small" value="false">In-Active</option>
-								</c:if>
-								<c:if test="${CITY_OBJ.active eq false }">
-									<option class="service-small" value="true" >Active</option>
-									<option class="service-small" value="false" selected>In-Active</option>
-
-								</c:if>
-								
-						</form:select>
-					</div>
-				
-				</td>
-				</tr>
-
 
 				<tr>
 					<td colspan="2" style="text-align: center;">
-						<input type="submit" value="Update City">
+						<input type="submit" value="Add City">
 						<a href="view_search_city_form"><input type="button" value="View City List" style="background-color:blue;" /></a>	
 					</td>
 				</tr>
