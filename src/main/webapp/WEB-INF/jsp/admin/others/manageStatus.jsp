@@ -24,30 +24,30 @@
                 <form:hidden path="id" id="id" />
         <table class="manageStatus_table">
             <thead>
-                <tr>
-                    <th>Status Type</th>
-                    <th>Status Values</th>
-                    <th>Action</th>
+                <tr style="height:90px;">
+                    <th style="font-size:20px">Status Type</th>
+                    <th style="font-size:20px">Status Values</th>
+                    <th style="font-size:20px">Action</th>
                 </tr>
             </thead>
             <tbody>
 
             <c:forEach var="statusOf" items="${STATUS_LIST_OF_MAP.keySet()}" varStatus="status">
                 <tr style="background:#DEE9BE;padding:50px">
-                    <th style="background-color:#ff5d8f;width:20%;color:white">${status.count} : ${statusOf}</th>
-                    <td style="width:60%;background:#ffa6c1">
+                    <th style="background-color:black;width:20%;color:white;border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">${status.count} : ${statusOf}</th>
+                    <td style="width:60%;background:black;border-bottom:2px solid #FABA08;border-right:2px solid #FABA08;color:white">
                         <table id="dataTable${statusOf}" style="table-layout: fixed;">
                             <tr>
-                                <th style="width:20%;color:white;background:#ff4d6d;">Status Id</th>
-                                <th style="width:20%;color:white;background:#ff4d6d;">Status Object</th>
-                                <th style="width:30%;color:white;background:#ff4d6d;">Status Name</th>
-                                <th colspan="2" style="width:30%;color:white;background:#ff4d6d;">Status Action</th>
+                                <th style="width:20%;color:black;background:#ffeedd;">Status Id</th>
+                                <th style="width:20%;color:black;background:#ffeedd;">Status Object</th>
+                                <th style="width:30%;color:black;background:#ffeedd;">Status Name</th>
+                                <th colspan="2" style="width:30%;color:black;background:#ffeedd;">Status Action</th>
                             </tr>
                             <c:forEach var="statusValues" items="${ STATUS_LIST_OF_MAP.get(statusOf)}">
-            
+                           
                                 <tr>
-                                    <td style="width:20%;color:black">${statusValues.workloadStatusId }</td>
-                                    <td style="width:20%;color:black">${statusValues.workloadStatusObj }</td>
+                                    <td style="width:20%;color:white">${statusValues.workloadStatusId }</td>
+                                    <td style="width:20%;color:white">${statusValues.workloadStatusObj }</td>
             
                                     <c:choose>
                                         <c:when test="${ST_ACTION eq 'EDIT' &&  TI_STATUS.id eq statusValues.id}">
@@ -59,7 +59,7 @@
                                                     style="border:none;outline;none;background:#32cd32;color:white;border:2px solid black;padding:5px;border-radius:3px"  /></td>
                                         </c:when>
                                         <c:otherwise>
-                                            <td style="width:30%;color:black">${statusValues.workloadStatusName }</td>
+                                            <td style="width:30%;color:white">${statusValues.workloadStatusName }</td>
                                             <td style="width:15%;"><input class="mng-st-btn" type="submit" name="Edit Status" value="Edit"
                                                     onclick="toggleStatus('${statusValues.id}')"
                                                     style="border:2px solid black;padding:5px;border-radius:5px;outline;none;background:#32cd32;color:white" /></td>
@@ -82,7 +82,7 @@
                             </c:forEach>
                         </table>
                     </td>
-                    <td style="width:20%;background:#ffa6c1;color:white"><input type="button" id="addnewstatus"  value="Add New Status" class="mng-sts-btn" style="border-radius:5px;padding:5px;border:2px solid black;outline;none;background:#ff5d8f;color:white"
+                    <td style="width:20%;background:black;color:white;border-bottom:2px solid #FABA08;color:white"><input type="button" id="addnewstatus"  value="Add New Status" class="mng-sts-btn" style="border-radius:5px;padding:5px;border:2px solid #FABA08;outline;none;background:#FABA08;color:black"
                             onclick="addRow('dataTable${statusOf}','${workloadStatusObj}',${ STATUS_LIST_OF_MAP.get(statusOf).size()},'${ workloadStatusType}')" />
                     </td>
                 </tr>

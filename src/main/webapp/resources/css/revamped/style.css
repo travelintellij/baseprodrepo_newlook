@@ -4104,3 +4104,226 @@ color:#249C91;
 	width:1400px;
 	margin:130px auto;
 }
+
+
+
+
+
+
+/* #################### view_myprofile_styling ################# */
+
+.view_myprofile_wrapper {
+    color: white;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 0.689);
+    padding: 10px;
+    padding-top: 130px;
+    border-radius: 10px;
+    margin-top: 250px;
+    position: relative;
+    border: 1px solid #FABA08;
+}
+
+.other_data_view_profie {
+    display: flex;
+    justify-content: space-around;
+}
+
+.view_myprofile_wrapper_data_l1 {
+    width: 180px;
+    text-align: start;
+}
+
+.view_myprofile_wrapper_data_l1 label {
+    color: #FABA08;
+    font-weight: bold;
+}
+
+/* .view_myprofile_wrapper_data_l1 input {
+    width: 90%;
+} */
+
+.view_myprofile_wrapper_data_line_l1_pic {
+    position: absolute;
+    width: 300px;
+    top: -120px;
+    left: 38%;
+    display: flex;
+    /* Use flexbox */
+    justify-content: center;
+    /* Center content horizontally */
+    align-items: center;
+    /* Center content vertically */
+}
+
+.view_myprofile_wrapper_data_line_l1_pic {
+    width: 230px;
+    height: 230px;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 10px solid #FFCF53;
+}
+
+.view_myprofile_wrapper_data_line_l1_pic img {
+	width:100%;
+
+    display: block;
+}
+
+.other_data_view_profie2 {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.other_data_view_profie2 .view_myprofile_wrapper_data_l1 {
+    width: 210px;
+    text-align: start;
+    margin-left: 26px;
+}
+
+.view_profile_side_menu {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.689);
+    border: 1px solid #FABA08;
+    padding: 5px;
+    z-index: 10;
+    border-radius:5px ;
+}
+
+.view_profile_side_menu ul li a {
+    color: white;
+}
+.view_profile_side_menu ul li {
+    border-bottom: 2px solid #FABA08;
+}
+.container_view_p{
+    width: 1200px;
+    margin-left: 200px;
+}
+.view_profile_side_ul li a:hover{
+    color: #FABA08;
+}
+
+
+/* ################ change password ##############  */
+.view_changepassword_wrapper {
+    color: white;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 215px;
+    margin-left: 50px;
+    border: 2px solid #FABA08;
+}
+.view_changepassword_wrapper_data_line{
+    display: flex;
+    justify-content: center;
+}
+.view_changepassword_wrapper_data_l1{
+    text-align: start;
+    width: 300px;
+}
+.view_changepassword_wrapper_data_l1 input{
+    width: 90%;
+}
+
+
+
+
+/* ################## edit lead ################### */
+
+.edit_lead_wrapper {
+    color: white;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 115px;
+}
+
+.edit_lead_wrapper_data_line {
+    display: flex;
+}
+
+.edit_lead_wrapper_data_line .edit_lead_wrapper_data_l1 {
+    text-align: start;
+    width: 300px;
+}
+
+.edit_lead_wrapper_data_line .edit_lead_wrapper_data_l1 label {
+    color: #FFBA08;
+    font-weight: bold;
+}
+
+.edit_lead_wrapper_data_line .edit_lead_wrapper_data_l1 input {
+    width: 90%;
+}
+
+.lead_markers_ch {
+    display: flex;
+    justify-content: space-between;
+}
+
+.sun_edit_lead {
+    width: 50%;
+    display: flex;
+}
+
+.sun_edit_lead input[type="checkbox"] {
+    height: 20px;
+    width: 20px;
+    margin-left: 6px;
+    margin-top: 2px;
+}
+
+.adults_box_edit_box {
+    display: flex;
+}
+
+.adults_box_edit {
+
+    width: 31%;
+}
+
+.edit_ser_box {
+
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.edit_lead_wrapper_data_l1_rem {
+    display: flex;
+}
+
+.edit_lead_wrapper_data_l1_rem1 {
+    text-align: start;
+}
+
+.edit_lead_wrapper_data_l1_rem2 {
+    text-align: start;
+}
+
+.edit_lead_wrapper_data_l1_rem1 label {
+    color: #FFBA08;
+    font-weight: bold;
+}
+
+.edit_lead_wrapper_data_l1_rem2 label {
+    color: #FFBA08;
+    font-weight: bold;
+}
+.info-client_3{
+    display: flex;
+    justify-content: center;
+}
