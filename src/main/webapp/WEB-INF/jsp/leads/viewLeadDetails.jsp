@@ -1,235 +1,177 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <jsp:include page="../menu/MenuBuilder.jsp" />
   
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
-
 <head>
-<link href="<c:url value="/resources/core/main.css" />" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Lead details</title>
+    <script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
+<script src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 
-<script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
-<script src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
+<body style="background: url(${pageContext.request.contextPath}/resources/images/revamped/assin_to_me_tasks_bg.jpg);background-size: cover; background-repeat: no-repeat; background-position: center center;background-attachment: fixed;">
+    <div class="edit_lead container">
+        <div class="edit_lead_wrapper" style="background:black">
+            <form:form modelAttribute="LEAD_OBJ" action="form_view_editlead">
+                <form:hidden path="leadId" />
+                <div align="center"><b>
+                        <font color="green"> ${Success} </font>
+                        <font color="red"> ${Error}</font>
+                    </b></div>
+                <h1 class="page-heading">View Lead</h1>
+                <div class="edit_lead_wrapper_data">
+                    <div class="edit_lead_wrapper_data_line" style="margin-top: 10px;background:gray">
+                        <div class="edit_lead_wrapper_data_l1" >
+                            <label for="">Lead Id</label>
+                            <p>Q-${String.format("%04d",LEAD_OBJ.leadId)}-${LEAD_OBJ.leadSourceShortName }</p>
+                        </div>
+                        <div class="edit_lead_wrapper_data_l1" >
+                            <label for="">Lead Markers</label>
+                            <div class="lead_markers_ch">
+                                <div class="sun_edit_lead">
+                                    <p for="">Is Qualified</p>
+                                    <form:checkbox path="qualified" disabled="true" />
+                                </div>
+                                <div class="sun_edit_lead">
+                                    <p for="">Is Flagged</p>
+                                    <form:checkbox path="flagged" disabled="true" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="edit_lead_wrapper_data_l1" >
+                            <label for="">Client</label> <br>
+                            <p>${LEAD_OBJ.contactName}</p>
+                        </div>
+                        <div class="edit_lead_wrapper_data_l1" >
+                            <label for="">Lead Owner</label>
+                            <p>${LEAD_OBJ.leadOwnerName}</p>
+                        </div>
+                    </div>
+                    <div class="edit_lead_wrapper_data_line" style="margin-top: 10px;background:gray">
+                        <div class="edit_lead_wrapper_data_l1">
+                            <label for="">Source</label>
+                            <p>${LEAD_OBJ.sourceName}</p>
+                        </div>
+                        <div class="edit_lead_wrapper_data_l1"">
+                            <label for="">Destination</label>
+                            <p>${LEAD_OBJ.destinationName}</p>
+                        </div>
+                        <div class="edit_lead_wrapper_data_l1 adults_box_edit_box" >
+                            <div class="adults_box_edit">
+                                <label for="">Adults</label> <br>
+                                <p>${LEAD_OBJ.adults}</p>
+                            </div>
+                            <div class="adults_box_edit">
+                                <label for="">Children</label> <br>
+                                <p>${LEAD_OBJ.children}</p>
+                            </div>
+                            <div class="adults_box_edit">
+                                <label for="">Age Info</label> <br>
+                                <p>${LEAD_OBJ.childrenAgeInfo}</p>
+                            </div>
+                        </div>
+                        <div class="edit_lead_wrapper_data_l1" >
+                            <label for="">Lead Source</label>
+                            <p>${LEAD_OBJ.leadSourceName}</p>
+                        </div>
+                    </div>
+                    <div class="edit_lead_wrapper_data_line" style="margin: 10px 0;background:gray">
+                        <div class="edit_lead_wrapper_data_l1">
+                            <label for="">Travel Start Date</label> <br>
+                            <fmt:formatDate value="${LEAD_OBJ.travelStartDate}" pattern="dd-MM-yyyy" />
+                        </div>
+                        <div class="edit_lead_wrapper_data_l1" >
+                            <label for="">Travel End Date</label> <br>
+                            <fmt:formatDate value="${LEAD_OBJ.travelEndDate}" pattern="dd-MM-yyyy" />
+                        </div>
+                        <div class="edit_lead_wrapper_data_l1" >
+                            <label for="">Tentative Amount</label> <br>
+                            <p>${LEAD_OBJ.tentativeCost}</p>
+                        </div>
+                        <div class="edit_lead_wrapper_data_l1">
+                            <label for="">Status</label>
+                            <p>${LEAD_OBJ.statusName}</p>
+                        </div>
+                    </div>
+                      <label for="" style="margin-right:20px;  color: #FFBA08;font-weight: bold;">Select Services</label>
+                    <div class="edit_lead_wrapper_data_line" style=" margin-top: 10px;">
+                        <div class="edit_ser_box" style="width:100%;background:black;color:white">
+                            <div class="ser_1" style="display:flex;align-items:center">
+                                <label for="">Flight</label>
+                                <form:checkbox path="flight" name="flight" disabled="true" style="width:18px;height:18px;margin-left:5px"/></div>
+                                    <div class="ser_1" style="display:flex;align-items:center">
+                                        <label for="">Hotal</label>
+                                        <form:checkbox path="hotel" name="hotel" disabled="true" style="width:18px;height:18px;margin-left:5px"/>
+                                    </div>
+                                    <div class="ser_1"  style="display:flex;align-items:center">
+                                        <label for="">Visa</label>
+                                        <form:checkbox path="visa" name="visa" disabled="true" style="width:18px;height:18px;margin-left:5px"/>
+                                    </div>
+                                    <div class="ser_1"  style="display:flex;align-items:center"v>
+                                        <label for="">Insurance</label>
+                                        <form:checkbox path="insurance" name="insurance" disabled="true" style="width:18px;height:18px;margin-left:5px"/>
+                                    </div>
+                                    <div class="ser_1"  style="display:flex;align-items:center">
+                                        <label for="">Transfers</label>
+                                        <form:checkbox path="transfers" name="transfers" disabled="true" style="width:18px;height:18px;margin-left:5px"/>
+                                    </div>
+                                    <div class="ser_1"  style="display:flex;align-items:center">
+                                        <label for="">Sightseeing</label>
+                                        <form:checkbox path="sightseeing" name="sightseeing" disabled="true" style="width:18px;height:18px;margin-left:5px"/>
+                                    </div>
+                                    <div class="ser_1"  style="display:flex;align-items:center">
+                                        <label for="">Package</label>
+                                        <form:checkbox path="landPackage" name="landPackage;" disabled="true" style="width:18px;height:18px;margin-left:5px"/>
+                                    </div>
+                                    <div class="ser_1"  style="display:flex;align-items:center">
+                                        <label for="">Cruise</label>
+                                        <form:checkbox path="cruise" name="cruise" disabled="true" style="width:18px;height:18px;margin-left:5px" />
+                                    </div>
+                                    <div class="ser_1"  style="display:flex;align-items:center">
+                                        <label for="">Others</label>
+                                        <form:checkbox path="others" name="others" disabled="true" style="width:18px;height:18px;margin-left:5px"/>
+                                    </div>
+                            </div>
+                        </div>
 
+                        <div class="edit_lead_wrapper_data_l1_rem" style="margin-top: 10px;">
+                            <div class="edit_lead_wrapper_data_l1_rem1" style="width:50%;background:gray">
+                                <label for="">Client Remarks</label> <br>
+                                <p>${LEAD_OBJ.clientRemarks}</p>
+                            </div>
+                            <div class="edit_lead_wrapper_data_l1_rem2" style="margin-left: 17px;background:gray;width:50%">
+                                <label for="">Internal Remarks</label> <br>
+                                <p>${LEAD_OBJ.internalRemarks}</p>
+                            </div>
+                        </div>
 
-<style>
-table {
-  width: 100%;
-  height: 20px;
-  border-collapse: collapse;
-  border: 1px solid #38678f;
-  margin: 3px auto;
-  background: white;
-}
+                        <div class="info-client view_lead_tag_team" style="margin-top: 10px;">
+                            <label for="" style="color: #FFBA08;font-weight: bold;margin-right:10px">Tag Team Mate</label>
+                            <c:forEach items="${LEAD_OBJ.team}" var="leadteam">
+                                <li >${leadteam.name}</li>
+                            </c:forEach>
+                        </div>
+                        
+                    <div class=" sub_info-client" >
+                            <form:checkbox path="leadCreationClientInformed" disabled="true" style="width:18px;height:18px;margin-left:5px"/>
+                            <label for="">Client Informed (Email Sent)</label>
+                        </div>
+                    
+                    <div class="due_today_task_data_btns">
+                        <input type="submit" id="editLead" name="editLead" value="Edit Lead" />
+                        <a href="view_filter_leads">Search Again</a>
+                    </div>
 
-th {
-  background: green;
-  height: 30px;
-  width: 10%;
-  font-weight: heavy;
-  text-shadow: 0 1px 0 #38678f;
-  color: white;
-  border: 1px solid #38678f;
-  box-shadow: inset 0px 1px 2px #568ebd;
-  transition: all 0.2s;
-}
-tr {
-  border-bottom: 1px solid #cccccc;
-}
+                </div>
+            </form:form>
+        </div>
+    </div>
+</body>
 
-td {
-  border-right: 1px solid #cccccc;
-  padding: 10px;
-  transition: all 0.2s;
-  text-align: center;
-}
-input[type=button], input[type=submit], input[type=reset] {
-  background-color: green;
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  text-decoration: none;
-  margin: 4px 2px;
-  cursor: pointer;
-}
-
-
-</style>
-<br>
-<h2 align="center">View Lead Details</h2>
-<body>
-	<form:form modelAttribute="LEAD_OBJ" action="form_view_editlead">
-	<form:hidden path = "leadId" />
-	<div align="center"><b><font color="green" > ${Success} </font><font color="red"> ${Error}</font> </b></div>
-	<hr>
-	<table>
-		<tr>
-		<th>Lead Id </th><td align="center">Q-${String.format("%04d",LEAD_OBJ.leadId)}-${LEAD_OBJ.leadSourceShortName }</td>
-		<th>Is Qualified</th><td style="text-align:center;"><label class="container" style="display: table;margin: 0 auto;margin-bottom: 25px;"><form:checkbox path="qualified" disabled="true" /><span class="checkmark"></span></label></td>
-		<th>Is Flagged</th>
-		<td style="text-align:center;">
-			<label class="container" style="display: table;margin: 0 auto;margin-bottom: 25px;">
-				<form:checkbox path="flagged" disabled="true" />
-				<span class="checkmark"></span>
-			</label>
-		</td>
-		<th>Client</th>
-		<td>
-			${LEAD_OBJ.contactName}
-		</td>
-			<th>Lead Owner</th><td style="background-color:#66ff00;"><b>${LEAD_OBJ.leadOwnerName}</b></td>	
-		</tr>
-		<tr>
-			<th>Source</th>
-			<td>
-				${LEAD_OBJ.sourceName}
-			</td>
-			<th>Destination</th>
-			<td>
-				${LEAD_OBJ.destinationName}
-			</td>
-			<th>Adults </th><td>${LEAD_OBJ.adults}</td>
-			<th>Children</th><td>${LEAD_OBJ.children}</td>
-			<th>Age</th><td>${LEAD_OBJ.childrenAgeInfo}</td>
-		</tr>
-		<tr>
-			<th>Lead Source</th>
-			<td align="center">
-				${LEAD_OBJ.leadSourceName}
-			</td>
-			<th>Travel Date</th><td><fmt:formatDate value="${LEAD_OBJ.travelStartDate}" pattern="dd-MM-yyyy" /></td>
-			<th>Travel End Date</th><td><fmt:formatDate value="${LEAD_OBJ.travelEndDate}" pattern="dd-MM-yyyy" /></td>
-			<th>Tentative Amount</th><td>${LEAD_OBJ.tentativeCost}</td>
-			<th>Status</th>
-			<td align="center">${LEAD_OBJ.statusName}</td>
-		</tr>
-	</table>
-	
-	<table>
-		<tr style="background-color:#FFD633;">
-			<th>Select Services</th>
-			<td style="text-align:left;">
-				<label class="container" style="display:inline;" colspan="2"><form:checkbox path="landPackage" name="landPackage;" disabled="true" /> <span class="checkmark"></span></label>Package 	
-			</td>
-			
-			
-			
-			<td style="text-align:left;"><label class="container" style="display:inline;"><form:checkbox path="flight" name="flight" disabled="true" /><span class="checkmark"></span></label> Flight</td>
-			<td style="text-align:left;"><label class="container" style="display:inline;"><form:checkbox path="hotel" name="hotel" disabled="true" /><span class="checkmark"></span></label> Hotel</td>
-			<td style="text-align:left;"><label class="container" style="display:inline;"><form:checkbox path="transfers" name="transfers" disabled="true" /><span class="checkmark"></span></label> Transfers</td>
-			<td style="text-align:left;"><label class="container" style="display:inline;"><form:checkbox path="sightseeing" name="sightseeing" disabled="true" /><span class="checkmark"></span></label>SightSeeing</td>
-			<td style="text-align:left;"><label class="container" style="display:inline;"><form:checkbox path="visa" name="visa" disabled="true" /><span class="checkmark"></span></label>Visa</td>
-			<td style="text-align:left;"><label class="container" style="display:inline;"><form:checkbox path="insurance" name="insurance" disabled="true" /><span class="checkmark"></span></label>Insurance</td>
-			<td style="text-align:left;"><label class="container" style="display:inline;"><form:checkbox path="cruise" name="cruise" disabled="true" /><span class="checkmark"></span></label>Cruise</td>
-			<td style="text-align:left;"><label class="container" style="display:inline;"><form:checkbox path="others" name="others" disabled="true" /><span class="checkmark"></span></label>Others</td>
-		</tr>
-		
-		<tr><th>Client Remarks</th><td colspan="9" style="text-align:left;"><b><pre>${LEAD_OBJ.clientRemarks}</pre></b>
-		 </td></tr>
-		<tr><th>Internal Remarks</th><td colspan="9" style="text-align:left;"><b><pre>${LEAD_OBJ.internalRemarks}</pre></b>
-		</td></tr>
-	
-		<tr>
-			<th>Tagged Team Mates</th>
-			<td colspan="9" style="text-align:left;">
-				<c:forEach items="${LEAD_OBJ.team}" var="leadteam">
-							<li>${leadteam.name}</li>
-				</c:forEach>
-			</td>
-		</tr>
-	
-	
-		<tr><td colspan="10">
-			<label class="container" style="display:inline;"><form:checkbox path="leadCreationClientInformed" disabled="true"/> <span class="checkmark"></span></label>Client Informed (Email Sent) </td></tr>
-		<tr>
-			<td colspan="10">
-				<input type="submit" id="editLead"  name="editLead" value="Edit Lead" />  
-				<a href="view_filter_leads"><input type="button" style="background-color:blue;" value="Search Again" /></a> 
-			</td>
-		</tr>
-	</table>
-	
-
-
-
-    </form:form>
- 
- 
- <script>
-	
-	$(document).ready(function() {
-		$('#contactName').autocomplete({
-			serviceUrl: '${pageContext.request.contextPath}/getClientList',
-			paramName: "tagName",
-			delimiter: ",",
-			onSelect: function(suggestion) {
-	            cityID = suggestion.data;
-	            id=cityID;
-	            jQuery("#contactId").val(cityID);
-	            $('input[name=contactId]').val(id);
-	            return false;
-	        },
-			transformResult: function(response) {
-		        return {
-		            suggestions: $.map($.parseJSON(response), function(item) {
-		            	return { value: item.tagName, data: item.id };
-		            })
-		            
-		        };
-		    }
-		});
-		
-		
-		$('#sourceName').autocomplete({
-			serviceUrl: '${pageContext.request.contextPath}/getCityList',
-			paramName: "cityName",
-			delimiter: ",",
-			onSelect: function(suggestion) {
-	            cityID = suggestion.data;
-	            id=cityID;
-	            jQuery("#destinationId").val(cityID);
-	            $('input[name=source]').val(id);
-	            return false;
-	        },
-			transformResult: function(response) {
-		        return {
-		            suggestions: $.map($.parseJSON(response), function(item) {
-		            	return { value: item.cityName, data: item.destinationId };
-		            })
-		            
-		        };
-		    }
-		});
-		
-		$('#destinationName').autocomplete({
-			serviceUrl: '${pageContext.request.contextPath}/getCityList',
-			paramName: "cityName",
-			delimiter: ",",
-			onSelect: function(suggestion) {
-	            cityID = suggestion.data;
-	            id=cityID;
-	            jQuery("#destinationId").val(cityID);
-	            $('input[name=destination]').val(id);
-	            return false;
-	        },
-			transformResult: function(response) {
-		        return {
-		            suggestions: $.map($.parseJSON(response), function(item) {
-		            	return { value: item.cityName, data: item.destinationId };
-		            })
-		            
-		        };
-		    }
-		});
-	});
-	
-	
-	
-	</script>
- </body>
-  
-  </html>
-  
+</html>

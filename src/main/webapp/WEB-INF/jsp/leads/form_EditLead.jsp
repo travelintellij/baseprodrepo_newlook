@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <jsp:include page="../menu/MenuBuilder.jsp" />
-  
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
@@ -11,12 +10,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
+ <script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
 <script src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
+<script	src="<c:url value="/resources/core/magicsuggest.js" />"></script>
      <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
 </head>
+<style>
+ .autocomplete-suggestions { border: 1px solid #999; background: red;overflow-y:auto}
+		.autocomplete-suggestion {padding: 2px 5px;color:white; background: black;overflow-y: auto;overflow-y:auto}
+		.autocomplete-selected { background: #F0F0F0;overflow-y:auto} 
+		.autocomplete-suggestions strong { font-weight: normal; color:#FABA08;overflow-y:auto}
+		.autocomplete-group { padding: 2px 5px;overflow-y:auto}
+		.autocomplete-group strong { display: block; border-bottom: 1px solid #000;  background: black ; color:black overflow-y:auto}
+		.autocomplete-selected:hover{
+		color:black
+		}
+</style>
 
 <body  style="background: url(${pageContext.request.contextPath}/resources/images/revamped/assin_to_me_tasks_bg.jpg);background-size: cover; background-repeat: no-repeat; background-position: center center;background-attachment: fixed;">
+   
+     <div class="autocomplete-suggestions" style="display:none">
+    <div class="autocomplete-group" ><strong>NHL</strong></div>
+    <div class="autocomplete-suggestion autocomplete-selected" >...</div>
+    <div class="autocomplete-suggestion">...</div>
+    <div class="autocomplete-suggestion">...</div>
+     </div>
     <div class="edit_lead container">
         <div class="edit_lead_wrapper">
             <h1 class="page-heading">Edit Lead</h1>
@@ -56,8 +74,8 @@
                             <label for="">Lead Owner</label>
                             <sec:authorize access="hasAnyRole('ADMIN','LEAD_MANAGER')">
                                 <td>
-                                    <div class="select">
-                                        <form:select path="leadOwner" style="height:30px;width: 150px;"
+                                    <div class="select" >
+                                        <form:select path="leadOwner" style="width:90%"
                                             required="required">
                                             <form:options items="${ACTIVE_USERS_MAP}" class="service-small" />
                                         </form:select>
@@ -104,7 +122,7 @@
                         </div>
                         <div class="edit_lead_wrapper_data_l1">
                             <label for="">Lead Source</label>
-                            <form:select path="leadSource">
+                            <form:select path="leadSource" style="width:90%">
                                 <form:options items="${PARTNERS_MAP}" />
                             </form:select>
                         </div>
@@ -126,7 +144,7 @@
                             <label for="">Status</label>
                             <sec:authorize access="hasAnyRole('ADMIN','LEAD_MANAGER','CAN_CLOSE')">
                                 <div class="select">
-                                    <form:select path="leadStatus" style="height:30px;width: 150px;"
+                                    <form:select path="leadStatus" style="width:90%"
                                         required="required">
                                         <form:options items="${LEAD_STATUS_MAP}" class="service-small" />
                                     </form:select>
@@ -151,44 +169,43 @@
                             <form:errors path="minOneserviceError" cssClass="error" />
                         </font>
                   
-                    <div class="edit_lead_wrapper_data_line" style=" margin-top: 10px;">
-                        <label for="" style="margin-right: 20px;   color: #FFBA08;
-    font-weight: bold;">Select Services</label>
+                    <div class="edit_lead_wrapper_data_line_ser" style=" margin-top: 10px;">
+                        <label for="" style="margin-right: 20px;   color: #FFBA08; font-weight: bold;">Select Services</label>
                         <div class="edit_ser_box">
                             <div class="ser_1">
                                 <label for="">Flight</label>
-                                <form:checkbox path="flight" name="flight" />
+                                <form:checkbox path="flight" name="flight" style="width:15px;height:15px;"/>
                             </div>
                             <div class="ser_1">
                                 <label for="">Hotal</label>
-                                <form:checkbox path="hotel" name="hotel" />
+                                <form:checkbox path="hotel" name="hotel" style="width:15px;height:15px;"/>
                             </div>
                             <div class="ser_1">
                                 <label for="">Visa</label>
-                                <form:checkbox path="visa" name="visa" />
+                                <form:checkbox path="visa" name="visa" style="width:15px;height:15px;"/>
                             </div>
                             <div class="ser_1">
                                 <label for="">Insurance</label>
-                                <form:checkbox path="insurance" name="insurance" />
+                                <form:checkbox path="insurance" name="insurance" style="width:15px;height:15px;"/>
                             </div>
                             <div class="ser_1">
                                 <label for="">Transfers</label>
-                                <form:checkbox path="transfers" name="transfers" />
+                                <form:checkbox path="transfers" name="transfers" style="width:15px;height:15px;"/>
                             </div>
                             <div class="ser_1">
                                 <label for="">Sightseeing</label>
-                                <form:checkbox path="sightseeing" name="sightseeing" /> </div>
+                                <form:checkbox path="sightseeing" name="sightseeing" style="width:15px;height:15px;"/> </div>
                                     <div class="ser_1">
                                         <label for="">Package</label>
-                                        <input type="checkbox" name="" id="">
+                                        <form:checkbox path="landPackage" name="landPackage;" style="width:15px;height:15px;" />
                                     </div>
                                     <div class="ser_1">
                                         <label for="">Cruise</label>
-                                        <form:checkbox path="cruise" name="cruise" />
+                                        <form:checkbox path="cruise" name="cruise" style="width:15px;height:15px;"/>
                                     </div>
                                     <div class="ser_1">
                                         <label for="">Others</label>
-                                        <form:checkbox path="others" name="others" />
+                                        <form:checkbox path="others" name="others" style="width:15px;height:15px;" />
                                     </div>
                             </div>
                         </div>
@@ -210,11 +227,13 @@
                                 <label for="">Inform client about the lead creation (email will be sent)</label>
                             </div>
                         </div>
-                        <div class="info-client" style="margin-top: 10px;">
+                        <div class="info-client tg-tm" style="margin-top: 10px;display:flex;border:2px solid red;width:50% ">
                             <label for="">Tag Team Mate</label>
-                            <input type="text" id="leadTeams" name="leadTeams" class="form-control" />
+                            <div class="tag-team-box">
+                            <input type="text" id="leadTeams" name="leadTeams" class="form-control"/>
                             <form:hidden path="teamNames" />
                             <form:hidden path="operatingTeams" />
+                            </div>
                         </div>
                     <div class="info-client_3" style="margin-top: 10px;">
                     <div class=" sub_info-client" >
@@ -228,8 +247,9 @@
                     </div>
                 </div>
                 <div class="due_today_task_data_btns">
-                    <a href="">Edit Lead</a>
-                    <a href="">Search Leads</a>
+                    <input type="submit" id="submitLead"  name="submitLead" value="Update Lead" />  
+			<a href="view_lead_details?leadId=${LEAD_OBJ.leadId}">View Lead</a>
+			<a href="view_filter_leads">Search Again</a>
                 </div>
         </div>
             </form:form>

@@ -4245,7 +4245,7 @@ color:#249C91;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 9);
+       background: rgba(0, 0, 0, 0.689);
     padding: 10px;
     border-radius: 10px;
     margin-top: 115px;
@@ -4254,7 +4254,9 @@ color:#249C91;
 .edit_lead_wrapper_data_line {
     display: flex;
 }
-
+.edit_lead_wrapper_data_line_ser{
+	text-align: start;
+}
 .edit_lead_wrapper_data_line .edit_lead_wrapper_data_l1 {
     text-align: start;
     width: 300px;
@@ -4296,10 +4298,11 @@ color:#249C91;
 }
 
 .edit_ser_box {
-
-    width: 80%;
+	background:lightgray;
+    width: 97.5%;
     display: flex;
     justify-content: space-between;
+    color: black;
 }
 
 .edit_lead_wrapper_data_l1_rem {
@@ -4327,3 +4330,7 @@ color:#249C91;
     display: flex;
     justify-content: center;
 }
+.view_lead_tag_team{
+	display: flex;
+}
+

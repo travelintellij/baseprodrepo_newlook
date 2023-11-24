@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <jsp:include page="../menu/MenuBuilder.jsp" />
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+  
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register New Lead</title>
+    <title>Document</title>
     <script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
-	<script src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/captureLead.css">
+<script src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
+     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
 </head>
 <style>
  .autocomplete-suggestions { border: 1px solid #999; background: red;overflow-y:auto}
@@ -25,277 +25,291 @@
 		color:black
 		}
 </style>
+
 <body  style="background: url(${pageContext.request.contextPath}/resources/images/revamped/capture_lead_bg.jpg);background-size: cover; background-repeat: no-repeat; background-position: center center;background-attachment: fixed;">
-
-
-    <!-- ################## lead managment page #################### -->
-    
-    
-<div class="autocomplete-suggestions" style="display:none">
+   
+   <div class="autocomplete-suggestions" style="display:none">
     <div class="autocomplete-group" ><strong>NHL</strong></div>
     <div class="autocomplete-suggestion autocomplete-selected" >...</div>
     <div class="autocomplete-suggestion">...</div>
     <div class="autocomplete-suggestion">...</div>
 </div>
-
-    <main class="leadManagmentSection " style="margin-top:85px">
-        <div class="leadMangementForm  container1">
-            <div class="overlay">
-                <div class="heading">
-                    <h1 class="mainHeadingLeadManagment">Capture New Lead</h1>
-                </div>
-                <form:form modelAttribute="LEAD_OBJ" action="create_create_lead">
-                    <div class="firstLine firLi">
-                        <div class="div1 commonDiv1s firstLineDiv" />
-                            <p class="firstLineHeadings">Lead Id</p>
-                            <p class="leadId">Auto Generated</p>
+   
+    <div class="edit_lead container">
+        <div class="edit_lead_wrapper">
+            <form:form modelAttribute="LEAD_OBJ" action="create_create_lead">
+                <h1 class="page-heading">Capture New Lead</h1>
+                <caption>
+                    <font color="red">
+                        <form:errors path="adults" cssClass="error" />
+                    </font>
+                </caption>
+                <div class="edit_lead_wrapper_data">
+                    <div class="edit_lead_wrapper_data_line" style="margin-top: 10px;">
+                        <div class="edit_lead_wrapper_data_l1">
+                            <label for="">Lead Id</label>
+                            <p>Auto Generated</p>
                         </div>
-                        <div class="div1 commonDiv1 firstLineDiv2">
-                            <p class="firstLineHeadings">Lead Markers</p>
-                            <label for="quali" class="leadMarks">Is Qualified</label>
-                            <form:checkbox path="qualified" class="sCheckBox qualified" id="quali"/>
-                            <label for="flag" id="flag" class="leadMarks">Is Flagged</label>
-                            <form:checkbox path="flagged" class="sCheckBox flagged" id="flag" />
+                        <div class="edit_lead_wrapper_data_l1">
+                            <label for="">Lead Markers</label>
+                            <div class="lead_markers_ch">
+                                <div class="sun_edit_lead">
+                                    <p for="">Is Qualified</p>
+                                    <form:checkbox path="qualified" />
+                                </div>
+                                <div class="sun_edit_lead">
+                                    <p for="">Is Flagged</p>
+                                    <form:checkbox path="flagged" />
+                                </div>
+                            </div>
                         </div>
-                        <div class="div1 commonDiv1 contact firstLineDiv">
-                            <label for="contact" class="firstLineHeadings">Contact</label> <br>
-                            <form:input path="contactName" name="contactName" id="contactName" class="inputSmall " />
-                            <form:hidden path = "contactId" />
+                        <div class="edit_lead_wrapper_data_l1">
+                            <label for="">Contact</label> <br>
+                            <form:input path="contactName" name="contactName" /><br>
+                            <form:hidden path="contactId" />
                             <font color="red">
                                 <form:errors path="contactName" cssClass="error" />
                             </font>
                         </div>
-                        <div class="div1 commonDiv1 ldown firstLineDivLeadOwner">
-                            <label for="leadOwner" class="firstLineHeadings">Lead Owner</label> <br>
+                        <div class="edit_lead_wrapper_data_l1">
+                            <label for="">Lead Owner</label>
                             <sec:authorize access="hasAnyRole('ADMIN','LEAD_MANAGER')">
-                                <!-- <input type="text" name="" id="leadOwner"> -->
-                                <form:select path="leadOwner" required="required">
-                                    <!-- <form:option value="0" label=" Select Lead Owner "/>
-                                    <form:options items="${ACTIVE_USERS_MAP}"/>  -->
-                                    <c:forEach items="${ACTIVE_USERS_MAP}" var="userMap">
-                                        <c:if test="${userMap.key eq userId }">
-                                            <option class="service-small" value="${userMap.key}" selected>
-                                                ${userMap.value}</option>
-                                        </c:if>
-                                        <c:if test="${userMap.key ne userId }">
-                                            <option class="service-small" value="${userMap.key}">${userMap.value}
-                                            </option>
-                                        </c:if>
-                                    </c:forEach>
-                                </form:select>
+                                <td>
+                                    <div class="select">
+                                        <form:select path="leadOwner" required="required" style="width:90%">
+                                            <%--<form:option value="0" label=" Select Lead Owner "
+                                                class="service-small" />
+                                            <form:options items="${ACTIVE_USERS_MAP}" class="service-small" /> --%>
+
+                                            <c:forEach items="${ACTIVE_USERS_MAP}" var="userMap">
+                                                <c:if test="${userMap.key eq userId }">
+                                                    <option class="service-small" value="${userMap.key}" selected>
+                                                        ${userMap.value}</option>
+                                                </c:if>
+                                                <c:if test="${userMap.key ne userId }">
+                                                    <option class="service-small" value="${userMap.key}">
+                                                        ${userMap.value}</option>
+                                                </c:if>
+                                            </c:forEach>
+                                        </form:select>
+                                    </div>
+                                </td>
                             </sec:authorize>
                             <sec:authorize access="! hasAnyRole('ADMIN','LEAD_MANAGER')">
-                                ${userName }
+                                <td>
+                                    ${userName }
+                                </td>
                             </sec:authorize>
                         </div>
-
-
                     </div>
-                    <div class="secondLine">
-                        <div class="div1 commonDiv1">
-                            <label for="Source" class="firstLineHeadings">Source</label> <br>
-                            <form:input path="sourceName" name="sourceName" class="inputSmall" id="sourceName" />
-							<form:hidden path = "source" />
+                    <div class="edit_lead_wrapper_data_line" style="margin-top: 10px;">
+                        <div class="edit_lead_wrapper_data_l1">
+                            <label for="">Source</label>
+                            <form:input path="sourceName" name="sourceName" />
+                            <form:hidden path="source" />
                             <font color="red">
                                 <form:errors path="sourceName" cssClass="error" />
                             </font>
                         </div>
-                        <div class="div1 commonDiv1">
-                            <label for="Destination" class="firstLineHeadings">Destination</label> <br>
-                            <form:input path="destinationName"  class="inputSmall" id="destinationName" />
+                        <div class="edit_lead_wrapper_data_l1">
+                            <label for="">Destination</label>
+                            <form:input path="destinationName" />
                             <form:hidden path="destination" />
                             <font color="red">
                                 <form:errors path="destinationName" cssClass="error" />
                             </font>
                         </div>
-                        <div class="div1 commonDiv1">
-                            <label for="Adults" class="firstLineHeadings">Adults</label> <br>
-                            <form:input path="adults" type="number" min="0" id="Adults" />
+                        <div class="edit_lead_wrapper_data_l1 adults_box_edit_box">
+                            <div class="adults_box_edit">
+                                <label for="">Adults</label> <br>
+                                <form:input path="adults" type="number" min="0" />
+                            </div>
+                            <div class="adults_box_edit">
+                                <label for="">Children</label> <br>
+                                <form:input path="children" type="number" min="0" />
+                            </div>
+                            <div class="adults_box_edit">
+                                <label for="">Age Info</label> <br>
+                                <form:input path="childrenAgeInfo" />
+                            </div>
                         </div>
-                        <div class="div1 commonDiv1">
-                            <label for="Children" class="firstLineHeadings">Children</label> <br>
-                           <form:input path="children" type="number" min="0" id="Children"/>
-                        </div>
-                        <div class="div1 commonDiv1">
-                            <label for="Age" class="firstLineHeadings">Age Info</label> <br>
-                            <form:input path="childrenAgeInfo" id="Age" />
-                        </div>
-                        <div class="div1 commonDiv1">
-                            <label for="LeadSource" class="firstLineHeadings">Lead Source</label> <br>
-                            <!-- <input type="text" name="" id="LeadSource"> -->
-                            <form:select path="leadSource" class="selectLeadSource">  
-			      				<form:options items = "${PARTNERS_MAP}" />
-		        			</form:select>  
-                        </div>
-                    </div>
-                    <div class="thirdLine">
-                        <div class="div1 commonDiv1">
-                            <label for="TravelDate" class="firstLineHeadings">Travel Start Date</label> <br>
-                            <form:input path= "travelStartDate" type="date" required="required" />
-                        </div>
-                        <div class="div1 commonDiv1 Ted">
-                            <label for="TravelEndDate" class="firstLineHeadings">Travel End Date</label> <br>
-                            <form:input path= "travelEndDate" type="date" required="required" />
-                        </div>
-                        <div class="div1 commonDiv1 tent">
-                            <label for="TentativeAmount" class="firstLineHeadings">Tentative Amount</label> <br>
-                            <form:input path="tentativeCost" type="number" min="100" class="inputSmall" />
-                        </div>
-                        <div class="div1 commonDiv1">
-                            <p class="firstLineHeadings sts">Status</p class="firstLineHeadings">
-                            <!-- <p>open</p> -->
-                            ${LEAD_OBJ.statusName}
-                            <form:hidden path="leadStatus" />
-                            <form:errors path="travelEndDate" />
-                            <form:errors path="minOneserviceError" />
+                        <div class="edit_lead_wrapper_data_l1">
+                            <label for="">Lead Source</label>
+                            <form:select path="leadSource"  style="width:90%">
+                                <form:options items="${PARTNERS_MAP}" />
+                            </form:select>
                         </div>
                     </div>
-                    <div class="ForthLine ser">
-                        <div class="div1 commonDiv1 services">
-                            <label for="services" class="firstLineHeadings slectser">Select Services</label> <br>
-                            <div class="checkboxes">
-                                <div class="checkbox">
-                                    <label for="flight">Flight</label>
-                                        <form:checkbox path="flight" name="flight" class="sCheckBox" id="flight"/>
+                    <div class="edit_lead_wrapper_data_line" style="margin: 10px 0;">
+                        <div class="edit_lead_wrapper_data_l1">
+                            <label for="">Travel Start Date</label>
+                            <form:input path="travelStartDate" type="date" required="required" />
+                        </div>
+                        <div class="edit_lead_wrapper_data_l1">
+                            <label for="">Travel End Date</label>
+                            <form:input path="travelEndDate" type="date" required="required" />
+                        </div>
+                        <div class="edit_lead_wrapper_data_l1">
+                            <label for="">Tentative Amount</label> <br>
+                            <form:input path="tentativeCost" type="number" min="100" />
+                             </div>
+                                <div class="edit_lead_wrapper_data_l1">
+                                    <label for="">Status</label>
+                                    <p>${LEAD_OBJ.statusName}</p>
+                                    <form:hidden path="leadStatus" />
                                 </div>
-                                <div class="checkbox">
-                                    <label for="hotal">Hotal</label>
-                                    <form:checkbox path="hotel" name="hotel"  class="sCheckBox" id="hotal" />
+                        </div>
+                        <div align="center">
+                            <font color="red">
+                                <form:errors path="travelEndDate" cssClass="error" />
+                            </font>
+                            </caption>
+                        </div>
+                        <caption>
+                            <font color="red">
+                                <form:errors path="minOneserviceError" cssClass="error" />
+                            </font>
+                        </caption>
+                        <div style="text-align:start">
+                          <label for="" style="margin-right: 20px;   color: #FFBA08;
+    font-weight: bold;">Select Services</label></div>
+                        <div class="edit_lead_wrapper_data_line" style=" margin-top: 10px;">
+                            <div class="edit_ser_box">
+                                <div class="ser_1" style="display:flex;align-items:center">
+                                    <label for="">Flight</label>
+                                    <form:checkbox path="flight" name="flight" style="width:18px;height:18px;margin-left:5px"/>
                                 </div>
-                                <div class="checkbox">
-                                    <label for="visa">Visa</label>
-                                    <form:checkbox path="visa" name="visa" class="sCheckBox" id="visa" />
+                                <div class="ser_1" style="display:flex;align-items:center">
+                                    <label for="">Hotal</label>
+                                    <form:checkbox path="hotel" name="hotel" style="width:18px;height:18px;margin-left:5px"/>
                                 </div>
-                                <div class="checkbox">
-                                    <label for="insu">Insurance</label>
-                                        <form:checkbox path="insurance" name="insurance"  class="sCheckBox" id="insu"/>
+                                <div class="ser_1" style="display:flex;align-items:center">
+                                    <label for="">Visa</label>
+                                    <form:checkbox path="visa" name="visa" style="width:18px;height:18px;margin-left:5px"/>
                                 </div>
-                                <div class="checkbox">
-                                    <label for="Transfers">Transfers</label>
-                                        <form:checkbox path="transfers" name="transfers" class="sCheckBox" id="Transfers" />
+                                <div class="ser_1" style="display:flex;align-items:center">
+                                    <label for="">Insurance</label>
+                                    <form:checkbox path="insurance" name="insurance" style="width:18px;height:18px;margin-left:5px"/>
                                 </div>
-                                <div class="checkbox">
-                                    <label for="Sightseeing">Sightseeing</label>
-                                        <form:checkbox path="sightseeing" name="sightseeing"  class="sCheckBox" id="Sightseeing"/>
+                                <div class="ser_1" style="display:flex;align-items:center">
+                                    <label for="">Transfers</label>
+                                    <form:checkbox path="transfers" name="transfers" style="width:18px;height:18px;margin-left:5px"/>
                                 </div>
-                                <div class="checkbox">
-                                    <label for="Package">Package</label>
-                                        <form:checkbox path="landPackage" name="landPackage;" class="sCheckBox" id="Package" />
+                                <div class="ser_1" style="display:flex;align-items:center">
+                                    <label for="">Sightseeing</label>
+                                    <form:checkbox path="sightseeing" name="sightseeing" style="width:18px;height:18px;margin-left:5px" />
                                 </div>
-                                <div class="checkbox">
-                                    <label for="Cruise">Cruise</label>
-                                    <form:checkbox path="cruise" name="cruise"  class="sCheckBox"  id="Cruise"/>
+                                <div class="ser_1" style="display:flex;align-items:center">
+                                    <label for="">Package</label>
+                                    <form:checkbox path="landPackage" name="landPackage;" style="width:18px;height:18px;margin-left:5px"/>
                                 </div>
-                                <div class="checkbox">
-                                    <label for="Others">Others</label>
-                                    <form:checkbox path="others" name="others" class="sCheckBox" id="Others"/>
+                                <div class="ser_1" style="display:flex;align-items:center">
+                                    <label for="">Cruise</label>
+                                    <form:checkbox path="cruise" name="cruise" style="width:18px;height:18px;margin-left:5px"/>
+                                </div>
+                                <div class="ser_1" style="display:flex;align-items:center">
+                                    <label for="">Others</label>
+                                    <form:checkbox path="others" name="others" style="width:18px;height:18px;margin-left:5px"/>
                                 </div>
                             </div>
                         </div>
 
-                    </div>
-
-                    <div class="remarks">
-                        <div class="clientRemarks">
-                            <p class="remarksHedading rmks">Client Remarks</p>
-                               <form:textarea path = "clientRemarks" placeholder="These remarks will be shared with the client..." rows="3" cols="150"  maxlength="1450" class="remark1" /> 
+                        <div class="edit_lead_wrapper_data_l1_rem" style="margin-top: 10px;">
+                            <div class="edit_lead_wrapper_data_l1_rem1">
+                                <label for="">Client Remarks</label> <br>
+                                <form:textarea path="clientRemarks" maxlength="1450" name="" id="" cols="68" rows="2" />
+                            </div>
+                            <div class="edit_lead_wrapper_data_l1_rem2" style="margin-left: 17px;">
+                                <label for="">Internal Remarks</label> <br>
+                                <form:textarea path="internalRemarks" maxlength="1450" name="" id="" cols="66"
+                                    rows="2" />
+                            </div>
                         </div>
-                        <div class="internalRemarks">
-                            <p class="remarksHedading rmks">Internal Remarks</p>
-                            <form:textarea path = "internalRemarks" rows="3" cols="150"  maxlength="1450" class="remark2"/>
+
+                        <div class=" info-client" style="margin-top: 10px;">
+                            <div class="sub_info-client">
+                                <form:checkbox path="leadCreationClientInformed" checked="checked" />
+                                <label for="">Inform client about the lead creation (email will be sent)</label>
+                            </div>
+                        </div>
+                        <div class="due_today_task_data_btns">
+                            <input type="submit" id="submitLead" name="submitLead" value="Create Lead" />
+                            <a href="view_filter_leads">Search Leads</a>
                         </div>
                     </div>
-
-                    <div class="confermation">
-                        <form:checkbox path="leadCreationClientInformed" checked="checked" class="confermationCheckbox"/>
-                        <p class="fs">Inform Client About Lead Creation (Email will be sent)</p>
-                    </div>
-
-                    <div class="buttons">
-                        <input type="submit" id="submitLead" name="submitLead" value="Create Lead"
-                            class="submitbtns submit1" />
-                        <a href="view_filter_leads" class="submitbtns">Search leads</a>
-                    </div>
-                </form:form>
-            </div>
+            </form:form>
         </div>
-        </div>
-        </div>
-    </main>
+    </div>
+
+    <script>
+
+        $(document).ready(function () {
+            $('#contactName').autocomplete({
+                serviceUrl: '${pageContext.request.contextPath}/getClientList',
+                paramName: "tagName",
+                delimiter: ",",
+                onSelect: function (suggestion) {
+                    cityID = suggestion.data;
+                    id = cityID;
+                    jQuery("#contactId").val(cityID);
+                    $('input[name=contactId]').val(id);
+                    return false;
+                },
+                transformResult: function (response) {
+                    return {
+                        suggestions: $.map($.parseJSON(response), function (item) {
+                            return { value: item.tagName, data: item.id };
+                        })
+
+                    };
+                }
+            });
 
 
- <script>
-	
-	$(document).ready(function() {
-		$('#contactName').autocomplete({
-			serviceUrl: '${pageContext.request.contextPath}/getClientList',
-			paramName: "tagName",
-			delimiter: ",",
-			onSelect: function(suggestion) {
-	            cityID = suggestion.data;
-	            id=cityID;
-	            jQuery("#contactId").val(cityID);
-	            $('input[name=contactId]').val(id);
-	            return false;
-	        },
-			transformResult: function(response) {
-		        return {
-		            suggestions: $.map($.parseJSON(response), function(item) {
-		            	return { value: item.tagName, data: item.id };
-		            })
-		            
-		        };
-		    }
-		});
-		
-		
-		$('#sourceName').autocomplete({
-			serviceUrl: '${pageContext.request.contextPath}/getCityList',
-			paramName: "cityName",
-			delimiter: ",",
-			onSelect: function(suggestion) {
-	            cityID = suggestion.data;
-	            id=cityID;
-	            jQuery("#destinationId").val(cityID);
-	            $('input[name=source]').val(id);
-	            return false;
-	        },
-			transformResult: function(response) {
-		        return {
-		            suggestions: $.map($.parseJSON(response), function(item) {
-		            	return { value: item.cityName, data: item.destinationId };
-		            })
-		            
-		        };
-		    }
-		});
-		
-		$('#destinationName').autocomplete({
-			serviceUrl: '${pageContext.request.contextPath}/getCityList',
-			paramName: "cityName",
-			delimiter: ",",
-			onSelect: function(suggestion) {
-	            cityID = suggestion.data;
-	            id=cityID;
-	            jQuery("#destinationId").val(cityID);
-	            $('input[name=destination]').val(id);
-	            return false;
-	        },
-			transformResult: function(response) {
-		        return {
-		            suggestions: $.map($.parseJSON(response), function(item) {
-		            	return { value: item.cityName, data: item.destinationId };
-		            })
-		            
-		        };
-		    }
-		});
-	});
-	
-	
-	
-	</script>
- 
+            $('#sourceName').autocomplete({
+                serviceUrl: '${pageContext.request.contextPath}/getCityList',
+                paramName: "cityName",
+                delimiter: ",",
+                onSelect: function (suggestion) {
+                    cityID = suggestion.data;
+                    id = cityID;
+                    jQuery("#destinationId").val(cityID);
+                    $('input[name=source]').val(id);
+                    return false;
+                },
+                transformResult: function (response) {
+                    return {
+                        suggestions: $.map($.parseJSON(response), function (item) {
+                            return { value: item.cityName, data: item.destinationId };
+                        })
+
+                    };
+                }
+            });
+
+            $('#destinationName').autocomplete({
+                serviceUrl: '${pageContext.request.contextPath}/getCityList',
+                paramName: "cityName",
+                delimiter: ",",
+                onSelect: function (suggestion) {
+                    cityID = suggestion.data;
+                    id = cityID;
+                    jQuery("#destinationId").val(cityID);
+                    $('input[name=destination]').val(id);
+                    return false;
+                },
+                transformResult: function (response) {
+                    return {
+                        suggestions: $.map($.parseJSON(response), function (item) {
+                            return { value: item.cityName, data: item.destinationId };
+                        })
+
+                    };
+                }
+            });
+        });
+
+    </script>
 </body>
 
 </html>

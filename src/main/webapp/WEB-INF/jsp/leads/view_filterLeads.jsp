@@ -264,7 +264,7 @@
                 <table border="1">
                     <thead>
                         <th>Lead id</th>
-                        <th>F</th>
+                        <th style="width:5%">F</th>
                         <th>Q</th>
                         <th style="width:350px">Client Name</th>
                         <th>Desti.</th>
