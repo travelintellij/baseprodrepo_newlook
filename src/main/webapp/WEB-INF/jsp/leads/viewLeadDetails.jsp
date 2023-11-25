@@ -21,12 +21,12 @@
             <form:form modelAttribute="LEAD_OBJ" action="form_view_editlead">
                 <form:hidden path="leadId" />
                 <div align="center"><b>
-                        <font color="green"> ${Success} </font>
+                        <font color="#32cd32 "> ${Success} </font>
                         <font color="red"> ${Error}</font>
                     </b></div>
                 <h1 class="page-heading">View Lead</h1>
                 <div class="edit_lead_wrapper_data">
-                    <div class="edit_lead_wrapper_data_line" style="margin-top: 10px;background:gray">
+                    <div class="edit_lead_wrapper_data_line" style="margin-top: 10px;background:#6082B6">
                         <div class="edit_lead_wrapper_data_l1" >
                             <label for="">Lead Id</label>
                             <p>Q-${String.format("%04d",LEAD_OBJ.leadId)}-${LEAD_OBJ.leadSourceShortName }</p>
@@ -53,7 +53,7 @@
                             <p>${LEAD_OBJ.leadOwnerName}</p>
                         </div>
                     </div>
-                    <div class="edit_lead_wrapper_data_line" style="margin-top: 10px;background:gray">
+                    <div class="edit_lead_wrapper_data_line" style="margin-top: 10px;background:#6082B6">
                         <div class="edit_lead_wrapper_data_l1">
                             <label for="">Source</label>
                             <p>${LEAD_OBJ.sourceName}</p>
@@ -81,7 +81,7 @@
                             <p>${LEAD_OBJ.leadSourceName}</p>
                         </div>
                     </div>
-                    <div class="edit_lead_wrapper_data_line" style="margin: 10px 0;background:gray">
+                    <div class="edit_lead_wrapper_data_line" style="margin: 10px 0;background:#6082B6">
                         <div class="edit_lead_wrapper_data_l1">
                             <label for="">Travel Start Date</label> <br>
                             <fmt:formatDate value="${LEAD_OBJ.travelStartDate}" pattern="dd-MM-yyyy" />
@@ -141,24 +141,24 @@
                         </div>
 
                         <div class="edit_lead_wrapper_data_l1_rem" style="margin-top: 10px;">
-                            <div class="edit_lead_wrapper_data_l1_rem1" style="width:50%;background:gray">
+                            <div class="edit_lead_wrapper_data_l1_rem1" style="width:50%;background:#6082B6">
                                 <label for="">Client Remarks</label> <br>
                                 <p>${LEAD_OBJ.clientRemarks}</p>
                             </div>
-                            <div class="edit_lead_wrapper_data_l1_rem2" style="margin-left: 17px;background:gray;width:50%">
+                            <div class="edit_lead_wrapper_data_l1_rem2" style="margin-left: 17px;background:#6082B6;width:50%">
                                 <label for="">Internal Remarks</label> <br>
                                 <p>${LEAD_OBJ.internalRemarks}</p>
                             </div>
                         </div>
 
-                        <div class="info-client view_lead_tag_team" style="margin-top: 10px;">
+                        <div class="info-client view_lead_tag_team" style="margin-top: 10px;background:#6082B6">
                             <label for="" style="color: #FFBA08;font-weight: bold;margin-right:10px">Tag Team Mate</label>
                             <c:forEach items="${LEAD_OBJ.team}" var="leadteam">
-                                <li >${leadteam.name}</li>
+                                <li >${leadteam.name}</li> &nbsp; &nbsp; &nbsp;
                             </c:forEach>
                         </div>
                         
-                    <div class=" sub_info-client" >
+                    <div class=" sub_info-client" style="margin-top:10px">
                             <form:checkbox path="leadCreationClientInformed" disabled="true" style="width:18px;height:18px;margin-left:5px"/>
                             <label for="">Client Informed (Email Sent)</label>
                         </div>

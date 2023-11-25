@@ -86,7 +86,7 @@
         <div class="serach_supplier_wrapper">
             <h1>Search Supplier</h1>
             <div align="center"><b>
-                    <font color="green"> ${Success} </font>
+                    <font color="#32cd32 "> ${Success} </font>
                     <font color="red"> ${Error}</font>
                 </b></div>
             <form:form modelAttribute="SEARCH_SUPPLIER" action="view_form_admin_search_supplier">
@@ -165,8 +165,8 @@
     <div class="search_suppler_table">
         <table style="padding:10px 5px">
             <thead>
-                <tr >
-                    <th style="width:6.4% ;color:#FFBA08; ">Supplier Id</th>
+                <tr style="background:#6082B6">
+                    <th style="width:6.4% ;color:#FFBA08; ">Supplier <br> Id</th>
                     <th style="width:18.8%; color:#FFBA08 ">Supplier Name</th>
                     <th style="width:10.2%;color:#FFBA08 ">City</th>
                     <th style="width:23%; color:#FFBA08">Email</th>

@@ -10,11 +10,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
- <script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
+<script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
 <script src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
 <script	src="<c:url value="/resources/core/magicsuggest.js" />"></script>
-     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
-</head>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
+<link href="resources/core/magicsuggest.css" rel="stylesheet" type="text/css">
+<link href="<c:url value="/resources/core/main.css" />" rel="stylesheet">
+
 <style>
  .autocomplete-suggestions { border: 1px solid #999; background: red;overflow-y:auto}
 		.autocomplete-suggestion {padding: 2px 5px;color:white; background: black;overflow-y: auto;overflow-y:auto}
@@ -27,14 +29,19 @@
 		}
 </style>
 
+</head>
+
+
 <body  style="background: url(${pageContext.request.contextPath}/resources/images/revamped/assin_to_me_tasks_bg.jpg);background-size: cover; background-repeat: no-repeat; background-position: center center;background-attachment: fixed;">
    
-     <div class="autocomplete-suggestions" style="display:none">
+    <div class="autocomplete-suggestions" style="display:none">
     <div class="autocomplete-group" ><strong>NHL</strong></div>
     <div class="autocomplete-suggestion autocomplete-selected" >...</div>
     <div class="autocomplete-suggestion">...</div>
     <div class="autocomplete-suggestion">...</div>
-     </div>
+    </div>
+
+
     <div class="edit_lead container">
         <div class="edit_lead_wrapper">
             <h1 class="page-heading">Edit Lead</h1>
@@ -171,7 +178,7 @@
                   
                     <div class="edit_lead_wrapper_data_line_ser" style=" margin-top: 10px;">
                         <label for="" style="margin-right: 20px;   color: #FFBA08; font-weight: bold;">Select Services</label>
-                        <div class="edit_ser_box">
+                        <div class="edit_ser_box" style=" padding: 0 5px;">
                             <div class="ser_1">
                                 <label for="">Flight</label>
                                 <form:checkbox path="flight" name="flight" style="width:15px;height:15px;"/>
@@ -227,14 +234,27 @@
                                 <label for="">Inform client about the lead creation (email will be sent)</label>
                             </div>
                         </div>
-                        <div class="info-client tg-tm" style="margin-top: 10px;display:flex;border:2px solid red;width:50% ">
-                            <label for="">Tag Team Mate</label>
-                            <div class="tag-team-box">
-                            <input type="text" id="leadTeams" name="leadTeams" class="form-control"/>
-                            <form:hidden path="teamNames" />
-                            <form:hidden path="operatingTeams" />
-                            </div>
-                        </div>
+                       
+                       
+                       
+                       <p style="color: #FFBA08;font-weight: bold;margin-bottom:5px">Tag Team Mate</p>
+                       <div style="display:flex;justify-content:center">
+                       <div id="sscontainer" class="sscontainer" style="text-align: center;background:white;color:blue;">
+					<input type="text" id="leadTeams" name="leadTeams" class="form-control" style="width:498px;"/>
+					<form:hidden path = "teamNames"  style="background:red"/>
+					<form:hidden path = "operatingTeams"  style="background:red" />
+				     </div>
+                       </div>
+                       
+				
+			
+		
+                       
+                       
+                       
+                       
+                       
+                       
                     <div class="info-client_3" style="margin-top: 10px;">
                     <div class=" sub_info-client" >
                         <form:checkbox path="leadCreationClientInformed" disabled="true" />

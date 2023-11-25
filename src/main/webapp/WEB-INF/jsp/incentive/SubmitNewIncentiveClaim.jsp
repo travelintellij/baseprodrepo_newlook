@@ -147,6 +147,10 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 <body>
 <br>
+<br>
+<br>
+<br>
+<br>
         	<h2 align="center">Incentive Claim Form </h2>
           <form:form method="post" action="create_create_incentive" modelAttribute="INCENTIVE_OBJ">
  			<table>

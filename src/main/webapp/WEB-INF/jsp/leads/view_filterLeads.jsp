@@ -256,14 +256,14 @@
             </div>
     
              <!-- ############## start of lower part ############# -->
-            <div class="lowerPart">
+            <div class="lowerPart" style="padding-bottom:50px">
             
            
             
             
                 <table border="1">
-                    <thead>
-                        <th>Lead id</th>
+                    <thead >
+                        <th >Lead id</th>
                         <th style="width:5%">F</th>
                         <th>Q</th>
                         <th style="width:350px">Client Name</th>
@@ -327,8 +327,9 @@
                 </table>
             </div>
       
-<div id="pagination" align="right" class="container">
-				Page: 
+<div id="pagination" align="center" class="container">
+<p style="color:#ffa500;background:black;display:inline-block;padding:2px;border-radius:2px">Page : </p>
+				
 			    <c:url value="view_filter_leads" var="prev">
 			       <c:param name="page" value="${page-1}"/>
 			    </c:url>

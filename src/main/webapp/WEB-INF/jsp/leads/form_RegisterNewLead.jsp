@@ -174,7 +174,7 @@
                           <label for="" style="margin-right: 20px;   color: #FFBA08;
     font-weight: bold;">Select Services</label></div>
                         <div class="edit_lead_wrapper_data_line" style=" margin-top: 10px;">
-                            <div class="edit_ser_box">
+                            <div class="edit_ser_box" style="padding:0 5px">
                                 <div class="ser_1" style="display:flex;align-items:center">
                                     <label for="">Flight</label>
                                     <form:checkbox path="flight" name="flight" style="width:18px;height:18px;margin-left:5px"/>
