@@ -26,14 +26,14 @@
 	<input type="hidden" name= "leadId" value="${LEAD_OBJ.leadId}"/>
 	<div class="follow-up">
         <div class="follow-up-wrapper container">
-            <div class="follow-up-heading">
+            <div class="follow-up-heading" style="padding-top:5px">
                 <h1>Lead Followup</h1>
             </div>
             <div class="follow-up-main-form">
                 <div class="follow-up-main-upper-part">
                     <div class="follow-up-sub-uppper-part">
-                        <h3 class="follow-up-p" style="color: #FFBA08;;">
-                            ${pageContext.request.remoteUser} says
+                        <h3 class="follow-up-p" style="color:#32cd32 ;margin-top:10px" >
+                          ${pageContext.request.remoteUser} says
                         </h3>
                         <div class="follow-up-time">
                             <div class="follow-up-lead-action-time">
@@ -65,31 +65,31 @@
     </div>
     <!-- ################## followup lead ################ -->
 
-    <div class="follow-up-main-tabel" style="margin-top:50px">
+    <div class="follow-up-main-tabel" style="margin-top:60px">
         <table>
-            <tr>
+            <tr style="background:black">
               <c:if test="${LEAD_FOLLOWUP_OBJ.sortOrder eq 'ASC'}">
-				<th ><a href="form_view_lead_followup_details?leadId=${LEAD_OBJ.leadId}&sortBy=updatedBy&sortOrder=DESC" style=" color: #FFBA08 !important;">User</a></th>
+				<th ><a href="form_view_lead_followup_details?leadId=${LEAD_OBJ.leadId}&sortBy=updatedBy&sortOrder=DESC" style=" color: #FFBA08 !important;color: #FABA08; border: none;margin-bottom: 20px; font-size: 19px">User</a></th>
 			</c:if>
 
 			<c:if test="${LEAD_FOLLOWUP_OBJ.sortOrder ne 'ASC'}">
-				<th><a href="form_view_lead_followup_details?leadId=${LEAD_OBJ.leadId}&sortBy=updatedBy&sortOrder=ASC">User</a></th>
+				<th><a href="form_view_lead_followup_details?leadId=${LEAD_OBJ.leadId}&sortBy=updatedBy&sortOrder=ASC" style=" color: #FFBA08 !important;color: #FABA08; border: none;margin-bottom: 20px; font-size: 19px">User</a></th>
 			</c:if>
 
 		
 			<c:if test="${LEAD_FOLLOWUP_OBJ.sortOrder eq 'ASC'}">
-				<th><a href="form_view_lead_followup_details?leadId=${LEAD_OBJ.leadId}&sortOrder=DESC" style=" color: #FFBA08 !important;">Lead Action Time</a></th>
+				<th><a href="form_view_lead_followup_details?leadId=${LEAD_OBJ.leadId}&sortOrder=DESC" style=" color: #FFBA08 !important;color: #FABA08; border: none;margin-bottom: 20px; font-size: 19px">Lead Action Time</a></th>
 			</c:if>
 
 			<c:if test="${LEAD_FOLLOWUP_OBJ.sortOrder ne 'ASC'}">
-				<th ><a href="form_view_lead_followup_details?leadId=${LEAD_OBJ.leadId}&sortOrder=ASC" >Lead Action Time</a></th>
+				<th ><a href="form_view_lead_followup_details?leadId=${LEAD_OBJ.leadId}&sortOrder=ASC" style=" color: #FFBA08 !important;color: #FABA08; border: none;margin-bottom: 20px; font-size: 19px" >Lead Action Time</a></th>
 			</c:if>
 			
-			<th class="actionTaken">Action Taken | Client Response</th>
+			<th class="actionTaken" style=";color: #FABA08;margin-bottom: 20px; font-size: 19px">Action Taken | Client Response</th>
 			
 			
 			<c:if test="${LEAD_FOLLOWUP_OBJ.sortOrder eq 'ASC'}">
-				<th><a href="form_view_lead_followup_details?leadId=${LEAD_OBJ.leadId}&sortBy=nextfollowuptime&sortOrder=DESC" style=" color: #FFBA08 !important;"style=" color: #FFBA08 !important;">Next Action Time</a></th>
+				<th><a href="form_view_lead_followup_details?leadId=${LEAD_OBJ.leadId}&sortBy=nextfollowuptime&sortOrder=DESC" style=" color: #FFBA08 !important;color: #FABA08; border: none;margin-bottom: 20px; font-size: 19px"style=" color: #FFBA08 !important;">Next Action Time</a></th>
 			</c:if>
 
 			<c:if test="${LEAD_FOLLOWUP_OBJ.sortOrder ne 'ASC'}">
@@ -98,22 +98,21 @@
 			<th class="nextToDo">Next To Do</th>
               
             </tr>
-         <tr>
          <c:forEach items="${LEADS_FOLLOWUP_LIST}" var="filteredFollowUpList">
 		 <tr style="border-bottom:2px solid  #FABA08;;margin-bottom:20px">
-			 <td style="font-size:15px">${filteredFollowUpList.userName }</td>
-			 <td style="font-size:15px">${filteredFollowUpList.formattedFollowUpTime }</td>
-			 <td style="font-size:15px;text-align:start">${filteredFollowUpList.response}</td>
-			 <td style="font-size:15px">${filteredFollowUpList.formattedNextFollowUpTime}</td>
-			 <td style="font-size:15px;text-align:start"">${filteredFollowUpList.nextactionplan}</td>
+			 <td style="font-size:18px;text-align:center">${filteredFollowUpList.userName }</td>
+			 <td style="font-size:18px;text-align:center">${filteredFollowUpList.formattedFollowUpTime }</td>
+			 <td style="font-size:18px;text-align:center">${filteredFollowUpList.response}</td>
+			 <td style="font-size:18px;text-align:center">${filteredFollowUpList.formattedNextFollowUpTime}</td>
+			 <td style="font-size:18px;text-align:center">${filteredFollowUpList.nextactionplan}</td>
 		 </tr>
 		 </c:forEach>
         </table>
     </div>
     
     
-     <div id="pagination" align="center">
-				Page: 
+     <div id="pagination" align="center" style="margin-top:10px">
+			<span style="background:black;color:white;border-radius:5px;padding:0 2px;margin-right:5px">Page : </span>
 			    <c:url value="form_view_lead_followup_details" var="prev">
 			       <c:param name="page" value="${page-1}"/>
 			    </c:url>
@@ -124,7 +123,7 @@
 			    <c:forEach begin="1" end="${maxPages}" step="1" varStatus="i">
 			        <c:choose>
 			            <c:when test="${(page+1) == i.index}">
-			                <span>${i.index}</span>
+			                <span style="background:black;color:white;border-radius:5px;padding: 0 5px">${i.index}</span>
 			            </c:when>
 			            <c:otherwise>
 			                <c:url value="form_view_lead_followup_details" var="url">
@@ -146,7 +145,7 @@
 
 
     <div class="quick-lead-view">
-        <p class="qlv-text">Quick Lead View</p>
+        <p class="qlv-text" >Quick Lead View</p>
         <i class="fa-solid fa-bars fa-xl hamburgur-i-follow-up ham"></i>
         <input type="checkbox" name="" id="show-fu-cb" class="hamburgur-i-follow-up hamCh fwtb">
         <div  class="inside-quick-lead-view">

@@ -18,14 +18,26 @@
 </head>
 <body>
 
-    
-    <form:form modelAttribute="LEAD_OBJ" action="form_view_editlead">
+<form:form modelAttribute="LEAD_OBJ" action="form_view_editlead">
     <form:hidden path="leadId" />
-    <div class="follow-up-pop-up container">
-        <i class="fa-solid fa-xmark fa-xl cross-red"  style="color: red;"></i>
-        
+    
+ 
+ 
+ 
+  
+    
+    <div class="follow-up-pop-up container" >
+    
+    
+    <div>
+    <i class="fa-solid fa-xmark fa-xl cross-red"  style="color: red;"></i>
+    <input type="checkbox" class="lead-de-ch" style="height:20px;width:20px;position:absolute;top:7px;left:10px;opacity:0">
+    </div>
+    
+    
+    
         <h1>Lead Details</h1>
-        <div class="fupp-fir-line">
+        <div class="fupp-fir-line" style="background:#6082B6;margin-bottom:5px">
             <div class="fupp-1-d">
                 <h3>Lead ID</h3>
                 <p>Q-${String.format("%04d",LEAD_OBJ.leadId)}-${LEAD_OBJ.leadSourceShortName }</p>
@@ -43,7 +55,7 @@
                 <p>${LEAD_OBJ.destinationName}</p>
             </div>
         </div>
-        <div class="fupp-2nd-line">
+        <div class="fupp-2nd-line" style="background:#6082B6;margin-bottom:5px">
             <div class="fupp-1-d">
                 <h3>Audts</h3>
                 <p>${LEAD_OBJ.adults}</p>
@@ -61,7 +73,7 @@
                 <fmt:formatDate value="${LEAD_OBJ.travelEndDate}" pattern="dd-MM-yyyy" />
             </div>
         </div>
-        <div class="fupp-3nd-line">
+        <div class="fupp-3nd-line" style="background:#6082B6;margin-bottom:5px">
             <div class="fupp-1-d">
                 <h3>Lead Source</h3>
                 <p>${LEAD_OBJ.leadSourceName}</p>
@@ -110,11 +122,12 @@
                 <form:checkbox path="others" name="others" disabled="true" />
             </div>
         </div>
-        <div class="fupp-5th-line">
+        <div class="fupp-5th-line"  style="background:#6082B6;margin-bottom:5px">
             <h3>Remarks</h3>
             <p>${LEAD_OBJ.clientRemarks}</p>
         </div>
                  </div>
+              
             </form:form>
      
 

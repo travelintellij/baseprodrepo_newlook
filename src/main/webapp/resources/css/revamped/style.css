@@ -1368,8 +1368,9 @@ footer {
 /* ################ follow up tabel stying########### */
 
 .follow-up-main-tabel table {
+	margin:60px auto;
     color: white;
-    width: 100%;
+    width: 1300px;
     text-align: center;
     border-collapse: collapse;
     border: none;
@@ -1399,8 +1400,8 @@ footer {
 
 .quick-lead-view {
     position: absolute;
-    top: 177px;
-    left: 152px;
+    top: 120px;
+    left: 160px;
 }
 
 .inside-quick-lead-view {
@@ -1513,7 +1514,7 @@ footer {
 }
 
 .ham {
-    top: 10px;
+    top: 14px;
     left: 10px;
 }
 
@@ -1522,6 +1523,7 @@ footer {
 }
 
 .hamCh {
+   top: 3px;
     left: 10px;
     opacity: 0;
 }
@@ -1617,13 +1619,16 @@ footer {
 .actionTaken,
 .nextToDo {
     width: 350px;
-    border: 2px solid pink !important;
     padding: 10px 5px !important;
     margin: 0 20px
 }
 
 .leadActionTime {
     border: 2px solid green !important;
+}
+
+.wrapper-box{
+	position: relative;
 }
 
 
@@ -4000,6 +4005,38 @@ font-weight: bold;
 
 .vlq-icon_div ul li a:hover {
     color: #FABA08;
+}
+.stqb{
+	position: relative;
+	color: #FABA08;
+}
+.stqb:hover{
+	cursor: pointer;
+	color:red
+}
+
+.quotation-box-three-bar{
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	width:200px;
+	height:auto;
+	background:black;
+	display: none;
+	top:0;
+	left:17px;
+	padding: 2px 0;
+	border-radius: 5px;
+}
+.quotation-box-three-bar li{
+	border-bottom:2px solid #FABA08 ;
+}
+.quotation-box-three-bar ul  li:hover{
+	color: #FABA08 ;
+	cursor:pointer
+}
+.stqb:hover .quotation-box-three-bar{
+	display: block;
 }
 
 /* ####################### add city styling ######################### */

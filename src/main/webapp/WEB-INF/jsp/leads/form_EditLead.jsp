@@ -101,9 +101,11 @@
                             <label for="">Source</label>
                             <form:input path="sourceName" name="sourceName" />
                             <form:hidden path="source" />
+                            <div style="margin-left:-10px">
                             <font color="red">
                                 <form:errors path="sourceName" cssClass="error" />
                             </font>
+                            </div>
                         </div>
                         <div class="edit_lead_wrapper_data_l1">
                             <label for="">Destination</label>
@@ -142,6 +144,11 @@
                         <div class="edit_lead_wrapper_data_l1">
                             <label for="">Travel End Date</label>
                             <form:input path="travelEndDate" type="date" required="required" />
+                             <div align="center">
+                            <p style="margin-left:-22px;color:red">
+                                <form:errors path="travelEndDate" cssClass="error" />
+                            </p>
+                        </div>
                         </div>
                         <div class="edit_lead_wrapper_data_l1">
                             <label for="">Tentative Amount</label> <br>
@@ -165,11 +172,7 @@
 
                             </sec:authorize>
                         </div>
-                        <div align="center">
-                            <font color="red">
-                                <form:errors path="travelEndDate" cssClass="error" />
-                            </font>
-                        </div>
+            
                     </div>
                     
                         <font color="red">
