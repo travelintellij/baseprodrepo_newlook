@@ -127,6 +127,13 @@ input[type=button], input[type=submit], input[type=reset] {
 
 
 <body>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <form:form modelAttribute="LEAD_OBJ" action="create_create_lead_quotation">
 	<div id="mySidenav" class="sidenav">
 		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -140,7 +147,7 @@ input[type=button], input[type=submit], input[type=reset] {
 		 Quick Lead View</span>
 	<script>
 		function openNav() {
-			document.getElementById("mySidenav").style.width = "35%";
+			document.getElementById("mySidenav").style.width = "100%";
 		}
 
 		function closeNav() {

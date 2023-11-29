@@ -21,6 +21,7 @@
 <body   style="background: url(${pageContext.request.contextPath}/resources/images/revamped/assin_to_me_tasks_bg.jpg);background-size: cover; background-repeat: no-repeat; background-position: center center;background-attachment: fixed;">
     <div class="viewLeadQuotationsList container">
         <div class="viewLeadQuotationsList_wrapper">
+        <h1 class="page-heading">Quotation</h1>
             <form:form modelAttribute="LEAD_OBJ" action="form_view_editlead">
                 <form:hidden path="leadId" />
                 <div align="center"><b>
@@ -28,7 +29,7 @@
                         <font color="red" size="5">${Error}</font>
                     </b></div>
                 <div class="viewLeadQuotationsList_wrapper_data">
-                    <div class="viewLeadQuotationsList_wrapper_data_line">
+                    <div class="viewLeadQuotationsList_wrapper_data_line" style="background:#6082B6;margin-bottom:5px">
                         <div class="viewLeadQuotationsList_wrapper_data_l1">
                             <label for="">Lead Id</label>
                             <p>Q-${String.format("%04d",LEAD_OBJ.leadId)}-${LEAD_OBJ.leadSourceShortName }</p>
@@ -54,7 +55,7 @@
                             <p>${LEAD_OBJ.leadOwnerName}</p>
                         </div>
                     </div>
-                    <div class="viewLeadQuotationsList_wrapper_data_line">
+                    <div class="viewLeadQuotationsList_wrapper_data_line" style="background:#6082B6;margin-bottom:5px">
                         <div class="viewLeadQuotationsList_wrapper_data_l1">
                             <label for="">Source</label>
                             <p>${LEAD_OBJ.sourceName}</p>
@@ -76,7 +77,7 @@
                             <p>${LEAD_OBJ.childrenAgeInfo}</p>
                         </div>
                     </div>
-                    <div class="viewLeadQuotationsList_wrapper_data_line">
+                    <div class="viewLeadQuotationsList_wrapper_data_line" style="background:#6082B6;margin-bottom:5px">
                         <div class="viewLeadQuotationsList_wrapper_data_l1">
                             <label for="">Lead Source</label>
                             <p>${LEAD_OBJ.leadSourceName}</p>
@@ -147,8 +148,8 @@
 
                     <div class="lq-btns">
                         <input type="submit" id="editLead" name="editLead" value="Edit Lead"
-                            style="outline: none;border: 2px solid black;padding: 5px;background: #FABA08;color: white;border-radius: 5px;" />
-                        <a href="view_filter_leads">Search Again</a>
+                            style="outline: none;border: 2px solid black;padding: 5px;background: #FABA08;color:black;border-radius: 5px;" />
+                        <a href="view_filter_leads" style="color:black">Search Again</a>
 
                     </div>
 
@@ -158,7 +159,7 @@
 
         <div class="c-n-q" style="display: flex;justify-content: center;margin-top: 5px;">
             <a href="form_view_new_quotation?leadId=${LEAD_OBJ.leadId }"
-                style="background: #FABA08;padding: 10px;;color: white;border: 2px solid black;border-radius: 10px;">Create
+                style="background: #FABA08;padding: 10px;;color: black;border: 2px solid black;border-radius: 10px;">Create
                 New Quotation</a>
         </div>
 
@@ -265,7 +266,7 @@
                                      <i class="fa-solid fa-sliders stqb">
                                     <div class="quotation-box-three-bar">
                                     <ul>
-                                    <li>  <a
+                                    <li><a
                                             href="form_view_quotation_details?leadId=${LEAD_OBJ.leadId }&quotationId=${leadquotations.quotationId }"><input
                                                 type="button"
                                                 value="View" style="background:transparent;border:none;outline:none;color:white"/></a> </li>
@@ -273,10 +274,9 @@
                                             href="form_view_edit_quotation_details?leadId=${LEAD_OBJ.leadId }&quotationId=${leadquotations.quotationId }"><input
                                                 type="button" 
                                                 value="Edit" style="background:transparent;border:none;outline:none;color:white"/></a></li>
-                                    <li><a
-                                            href="form_view_edit_quotation_details?leadId=${LEAD_OBJ.leadId }&quotationId=${leadquotations.quotationId }"><input
-                                                type="button" 
-                                                value="Edit" style="background:transparent;border:none;outline:none;color:white"/></a></li>
+                                    <li> <a href="form_view_delete_quotation_details?leadId=${LEAD_OBJ.leadId }&quotationId=${leadquotations.quotationId }">
+                                                <input type="button" style="background:transparent;border:none;outline:none;color:white"  value="Delete" /></a></li>
+                                            
                                     <li><a
                                             href="form_view_duplicate_quotation_details?leadId=${LEAD_OBJ.leadId }&quotationId=${leadquotations.quotationId }"><input
                                                 type="button" 
@@ -300,7 +300,7 @@
 
                             <td style="border-width:5px;;">
                                 <Input type="button" value="Generated"
-                                    style="background-color:lightgray;color:black;cursor:none;" />
+                                   style="background:transparent;border:none;outline:none;color:white"/>
                             </td>
                         </c:if>
                         <c:if test="${ leadquotations.converted eq true }">
