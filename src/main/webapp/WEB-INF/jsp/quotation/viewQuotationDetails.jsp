@@ -1,238 +1,115 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <jsp:include page="../menu/MenuBuilder.jsp" />
-  
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
-
 <head>
-<link href="<c:url value="/resources/core/main.css" />" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>viewQuotationDetails</title>
+    <script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
+    <script src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
 </head>
 
-<script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
-<script src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
+<body style="background: url(${pageContext.request.contextPath}/resources/images/revamped/viewQuotationDetails.jpg);background-size: cover; background-repeat: no-repeat; background-position: center center;background-attachment: fixed;">
 
 
-<style>
-table {
-  width: 100%;
-  height: 20px;
-  border-collapse: collapse;
-  border: 1px solid #38678f;
-  margin: 3px auto;
-  background: white;
-}
-
-th {
-  background: #FF4D00;
-  height: 25px;
-  width: 15%;
-  font-weight: heavy;
-  text-shadow: 0 1px 0 #38678f;
-  color: white;
-  border: 1px solid #38678f;
-  box-shadow: inset 0px 1px 2px #568ebd;
-  transition: all 0.2s;
-}
-tr {
-  border-bottom: 1px solid #cccccc;
-}
-
-td {
-  border-right: 1px solid #cccccc;
-  padding: 10px;
-  transition: all 0.2s;
-  text-align: center;
-}
-input[type=button], input[type=submit], input[type=reset] {
-  background-color: green;
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  text-decoration: none;
-  margin: 4px 2px;
-  cursor: pointer;
-}
-
-.sidenav {
-	height: 70%;
-	width: 0;
-	position: fixed;
-	z-index: 1;
-	top: 118;
-	left: 0; //
-	//background-color: #111;
-	background-color: lightblue;
-	overflow-x: hidden;
-	transition: 0.5s;
-	padding-top: 30px;
-	text-align: center;
-}
-
-.sidenav a {
-	padding: 4px 4px 4px 16px;
-	text-decoration: none;
-	font-size: 25px;
-	color: #818181;
-	display: block;
-	transition: 0.3s;
-}
-
-.sidenav a:hover {
-	color: #f1f1f1;
-	
-}
-
-.sidenav .closebtn {
-	position: absolute;
-	top: 0;
-	right: 25px;
-	font-size: 36px;
-	margin-left: 50px;
-}
-
-@media screen and (max-height: 450px) {
-	.sidenav {
-		padding-top: 15px;
-	}
-	.sidenav a {
-		font-size: 18px;
-	}
-}
-
-.float-container {
-    //border: 3px solid #fff;
-    padding: 15px;
-}
-
-.float-child-left {
-    width: 20%;
-    float: left;
-    padding: 20px;
-    //border: 2px solid red;
-}
-
-.float-child-right {
-    width: 100%;
-    float: center;
-    //padding: 50px;
-    //border: 2px solid red;
-}  
-  
-</style>
-<br>
-<h2 align="center">View Quotation </h2>
-
-
-<body>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<form:form modelAttribute="LEAD_OBJ" action="create_create_lead_quotation">
-	<div id="mySidenav" class="sidenav">
-		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-		<jsp:include page="leadDetailsOpenNavView.jsp" />
-	</div>
-	<h3>
-		<br>
-		<font color="red">View Lead Details </font>
-	</h3>
-	<span style="font-size: 30px; cursor: pointer" onclick="openNav()">&#9776;
-		 Quick Lead View</span>
-	<script>
-		function openNav() {
-			document.getElementById("mySidenav").style.width = "100%";
-		}
-
-		function closeNav() {
-			document.getElementById("mySidenav").style.width = "0";
-		}
-	</script>
-	<input type="hidden" name="leadId" value= "${QTN_OBJ.leadEntity.leadId}" />
-</form:form>
-<form:form modelAttribute="QTN_OBJ" action="form_view_edit_quotation_details">
-
-	<input type="hidden" name="leadId" value= "${QTN_OBJ.leadEntity.leadId}" />
-	<form:hidden path = "quotationId" id="quotationId" />
-<div class="float-container">
-
-  <div class="float-child-left">
-    <div class="green" >
-      <jsp:include page="_quotationServicesMenu.jsp" />
+<div class="my-ki">
+    <!-- ############# quick lead view starts here################## -->
+    <form:form modelAttribute="LEAD_OBJ" action="create_create_lead_quotation">
+    <div class="sep_quick_lead_view">
+        <input type="checkbox" name="" id="" class="ch_quick_lead_view">
+        <div class="hamburgur_menu_quick_lead_view">
+            <span class="sep_line1"></span>
+            <span class="sep_line2"></span>
+            <span class="sep_line3"></span>
+        </div>
+        <h2 style="display:inline-block;font-size:20px;;">Quick lead view</h2>
+        <div class="lead_view_sep">
+        <jsp:include page="leadDetailsOpenNavView.jsp" />
+        </div>
     </div>
-  </div>
- <div class="float-child-right">
-    <div class="blue">
-		
-		<c:if test="${ QTN_OBJ.converted eq true }">
-			<table style="width:70%;">
-				<tr><td><input type="button" value="CONVERTED" style="background-color:green;cursor:none;" /></td></tr>
-			</table>
-		</c:if>
-	<table style="width:70%;">
-		<tr>
-		<th style="background: #FFC300;color:black;"> Quotation Id </th><td>${QTN_OBJ.quotationId}</td>
-		<th style="background: #FFC300;color:black;"> Version Id </th><td>${QTN_OBJ.version}</td>
-		
-		</tr>
-		<tr>
-			<th style="width:25%;background: #FFC300;color:black;"> Quotation Header </th><td colspan="3" style="text-align:left;">${QTN_OBJ.quotationName}</td>
-		</tr>
-		<tr>
-			<th style="width:25%;background: #FFC300;color:black;" colspan="4"> Services to be included</th>
-		</tr>
-		<tr>	
-			<td style="width:50%;text-align:left;" colspan="2"><label class="container" style="display:inline;"><form:checkbox path="tourPackage" name="tourPackage" disabled="true"/> <span class="checkmark"></span></label>Package</td>
-			<td style="width:25%;text-align:left;"><label class="container" style="display:inline;"><form:checkbox path="flight" name="flight"  disabled="true"/><span class="checkmark"></span></label> Flight</td>
-			<td style="width:25%;text-align:left;"><label class="container" style="display:inline;"><form:checkbox path="hotel" name="hotel" disabled="true" /><span class="checkmark"></span></label> Hotel</td>
-			
-		</tr>
-		<tr>	
-			<td style="width:25%;text-align:left;"><label class="container" style="display:inline;"><form:checkbox path="transfers" name="transfers" disabled="true" /><span class="checkmark"></span></label> Transfers</td>
-			<td style="width:25%;text-align:left;"><label class="container" style="display:inline;"><form:checkbox path="sightseeing" name="sightseeing" disabled="true" /><span class="checkmark"></span></label>SightSeeing</td>
-			<td style="width:25%;text-align:left;"><label class="container" style="display:inline;"><form:checkbox path="visa" name="visa" disabled="true" /><span class="checkmark"></span></label>Visa</td>
-			<td style="width:25%;text-align:left;"><label class="container" style="display:inline;"><form:checkbox path="insurance" name="insurance" disabled="true" /><span class="checkmark"></span></label>Insurance</td>
-		</tr>
-		<tr>
-			<td style="width:25%;text-align:left;"><label class="container" style="display:inline;"><form:checkbox path="cruise" name="cruise"  disabled="true" /><span class="checkmark"></span></label>Cruise</td>
-			<td style="width:25%;text-align:left;"><label class="container" style="display:inline;"><form:checkbox path="others" name="others"  disabled="true" /><span class="checkmark"></span></label>Others</td>
-			<td colspan="2">Please select all applicable services for this quotation.</td>
-		</tr>
-		<tr>
-		<th style="width:50%;background: #FFC300;color:black;" colspan="2">Quotation Status</th>
-		<td colspan="2">Created</td>
-		</tr>
-		<tr>
-			<td colspan="4">
-				<c:if test="${ QTN_OBJ.converted eq true }">
-					<input type="button" id="createquotation"  style="background-color:lightgray;color:black;cursor:none;" name="createquotation" value="Edit Quotation Skeleton" />
-				</c:if>
-				<c:if test="${ QTN_OBJ.converted ne true }">
-					<input type="submit" id="createquotation"  name="createquotation" value="Edit Quotation Skeleton" />
-				</c:if>
+    </form:form>
+    <!-- ############# quick lead view ends here################## -->
+</div>
 
-					  
-				<a href="view_lead_quotations_list?leadId=${QTN_OBJ.leadEntity.leadId}"><input type="button" style="background-color:blue;" value="Cancel" /></a>
-		 	</td>
-		 </tr>
-		
-		</table>    
-	   
-    
-   </div>
-   </div>
-   </div>
-    
-    </form:form> 
-  
+<div class="afd">
+<jsp:include page="_quotationServicesMenu_bk.jsp" />
+</div>
 
- </body>
-  
-  </html>
-  
+
+<form:form modelAttribute="QTN_OBJ" action="form_view_edit_quotation_details">
+    <div class="viewQuotationDetails container_vqd">
+        <div class="viewQuotationDetails_wrapper">
+            <div class="viewQuotationDetails_wrapper_data">
+                <div class="viewQuotationDetails_wrapper_data_line" style="background: #6082B6;margin-bottom: 5px;">
+                    <div class="viewQuotationDetails_wrapper_data_l1">
+                        <label for="">Quotation Id</label>
+                        <p>${QTN_OBJ.quotationId}</p>
+                    </div>
+                    <div class="viewQuotationDetails_wrapper_data_l1">
+                        <label for="">Version Id</label>
+                        <p>${QTN_OBJ.version}</p>
+                    </div>
+                    <div class="viewQuotationDetails_wrapper_data_l1">
+                        <label for="">Quotation Header</label>
+                        <p>${QTN_OBJ.quotationName}</p>
+                    </div>
+                    <div class="viewQuotationDetails_wrapper_data_l1">
+                        <label for="">Quotation Status</label>
+                        <p>Created</p>
+                    </div>
+                </div>
+                <p class="viewQuotationDetails_wrapper_data_line_ser_hd">Services to be included</p>
+                <div class="viewQuotationDetails_wrapper_data_line_ser">
+                    <div class="viewQuotationDetails_wrapper_data_ser">
+                        <label for="">Package</label>
+                        <form:checkbox path="tourPackage" name="tourPackage" disabled="true"/>
+                    </div>
+                    <div class="viewQuotationDetails_wrapper_data_ser">
+                        <label for="">Flight</label>
+                       <form:checkbox path="flight" name="flight"  disabled="true"/>
+                    </div>
+                    <div class="viewQuotationDetails_wrapper_data_ser">
+                        <label for="">Hotal</label>
+                       <form:checkbox path="hotel" name="hotel" disabled="true" />
+                    </div>
+                    <div class="viewQuotationDetails_wrapper_data_ser">
+                        <label for="">Transfers</label>
+                       <form:checkbox path="transfers" name="transfers" disabled="true" />
+                    </div>
+                    <div class="viewQuotationDetails_wrapper_data_ser">
+                        <label for="">Sightseeing</label>
+                       <form:checkbox path="sightseeing" name="sightseeing" disabled="true" />
+                    </div>
+                    <div class="viewQuotationDetails_wrapper_data_ser">
+                        <label for="">Visa</label>
+                        <form:checkbox path="visa" name="visa" disabled="true" />
+                    </div>
+                    <div class="viewQuotationDetails_wrapper_data_ser">
+                        <label for="">Insurance</label>
+                       <form:checkbox path="insurance" name="insurance" disabled="true" />
+                    </div>
+                    <div class="viewQuotationDetails_wrapper_data_ser">
+                        <label for="">Cruise</label>
+                      <form:checkbox path="cruise" name="cruise"  disabled="true" />
+                    </div>
+                    <div class="viewQuotationDetails_wrapper_data_ser">
+                        <label for="">Others</label>
+                        <form:checkbox path="others" name="others"  disabled="true" />
+                    </div>
+                </div>
+                <div class="due_today_task_data_btns">
+                    <a href="">Edit quotation skeleton</a>
+                    <a href="">Cancel</a>
+                </div>
+            </div>
+        </div>
+    </div>
+        </form:form> 
+</body>
+
+</html>

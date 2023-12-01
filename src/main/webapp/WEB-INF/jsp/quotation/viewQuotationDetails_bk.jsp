@@ -123,10 +123,11 @@ input[type=button], input[type=submit], input[type=reset] {
   
 </style>
 <br>
-<h2 align="center">Edit Quotation </h2>
+<h2 align="center">View Quotation </h2>
 
 
 <body>
+<br>
 <br>
 <br>
 <br>
@@ -146,7 +147,7 @@ input[type=button], input[type=submit], input[type=reset] {
 		 Quick Lead View</span>
 	<script>
 		function openNav() {
-			document.getElementById("mySidenav").style.width = "35%";
+			document.getElementById("mySidenav").style.width = "100%";
 		}
 
 		function closeNav() {
@@ -155,11 +156,10 @@ input[type=button], input[type=submit], input[type=reset] {
 	</script>
 	<input type="hidden" name="leadId" value= "${QTN_OBJ.leadEntity.leadId}" />
 </form:form>
-<form:form modelAttribute="QTN_OBJ" action="edit_edit_lead_quotation">
+<form:form modelAttribute="QTN_OBJ" action="form_view_edit_quotation_details">
 
-<input type="hidden" name="leadId" value= "${QTN_OBJ.leadEntity.leadId}" />
+	<input type="hidden" name="leadId" value= "${QTN_OBJ.leadEntity.leadId}" />
 	<form:hidden path = "quotationId" id="quotationId" />
-	<form:hidden path = "version" id="version" />
 <div class="float-container">
 
   <div class="float-child-left">
@@ -169,68 +169,55 @@ input[type=button], input[type=submit], input[type=reset] {
   </div>
  <div class="float-child-right">
     <div class="blue">
+		
+		<c:if test="${ QTN_OBJ.converted eq true }">
+			<table style="width:70%;">
+				<tr><td><input type="button" value="CONVERTED" style="background-color:green;cursor:none;" /></td></tr>
+			</table>
+		</c:if>
 	<table style="width:70%;">
 		<tr>
-			<th style="background: green;color:white;" height="40"> Quotation Id </th><td>${QTN_OBJ.quotationId}</td>
-			<th style="background: green;color:white;"> Version Id </th><td>${QTN_OBJ.version}</td>
+		<th style="background: #FFC300;color:black;"> Quotation Id </th><td>${QTN_OBJ.quotationId}</td>
+		<th style="background: #FFC300;color:black;"> Version Id </th><td>${QTN_OBJ.version}</td>
+		
 		</tr>
 		<tr>
-			<th style="width:25%;background: green;color:white;" height="40"> Quotation Header </th><td colspan="3" style="text-align:left;"><form:input path="quotationName"  style="height:30px;width:280px;margin: auto;"/></td>
+			<th style="width:25%;background: #FFC300;color:black;"> Quotation Header </th><td colspan="3" style="text-align:left;">${QTN_OBJ.quotationName}</td>
 		</tr>
 		<tr>
-			<th style="width:25%;background: green;color:white;" colspan="4" height="40"> Services to be included</th>
+			<th style="width:25%;background: #FFC300;color:black;" colspan="4"> Services to be included</th>
 		</tr>
 		<tr>	
-			<td style="width:50%;text-align:left;" colspan="2">
-				<font color="red"> <form:errors path="tourPackage" cssClass="error" /></font>
-				<label class="container" style="display:inline;"><form:checkbox path="tourPackage" name="tourPackage" /> <span class="checkmark"></span></label>Package
-			</td>
-			<td style="width:25%;text-align:left;">
-				<font color="red"> <form:errors path="flight" cssClass="error" /></font>
-				<label class="container" style="display:inline;"><form:checkbox path="flight" name="flight"  /><span class="checkmark"></span></label> Flight
-			</td>
-			<td style="width:25%;text-align:left;">
-				<font color="red"> <form:errors path="hotel" cssClass="error" /></font>
-				<label class="container" style="display:inline;"><form:checkbox path="hotel" name="hotel"  /><span class="checkmark"></span></label> Hotel
-			</td>
+			<td style="width:50%;text-align:left;" colspan="2"><label class="container" style="display:inline;"><form:checkbox path="tourPackage" name="tourPackage" disabled="true"/> <span class="checkmark"></span></label>Package</td>
+			<td style="width:25%;text-align:left;"><label class="container" style="display:inline;"><form:checkbox path="flight" name="flight"  disabled="true"/><span class="checkmark"></span></label> Flight</td>
+			<td style="width:25%;text-align:left;"><label class="container" style="display:inline;"><form:checkbox path="hotel" name="hotel" disabled="true" /><span class="checkmark"></span></label> Hotel</td>
 			
 		</tr>
 		<tr>	
-			<td style="width:25%;text-align:left;">
-				<font color="red"> <form:errors path="transfers" cssClass="error" /></font>
-				<label class="container" style="display:inline;"><form:checkbox path="transfers" name="transfers"  /><span class="checkmark"></span></label> Transfers
-			</td>
-			<td style="width:25%;text-align:left;">
-				<font color="red"> <form:errors path="sightseeing" cssClass="error" /></font>
-				<label class="container" style="display:inline;"><form:checkbox path="sightseeing" name="sightseeing"  /><span class="checkmark"></span></label>SightSeeing
-			</td>
-			<td style="width:25%;text-align:left;">
-				<font color="red"> <form:errors path="visa" cssClass="error" /></font>
-				<label class="container" style="display:inline;"><form:checkbox path="visa" name="visa"  /><span class="checkmark"></span></label>Visa
-			</td>
-			<td style="width:25%;text-align:left;">
-				<font color="red"> <form:errors path="insurance" cssClass="error" /></font>
-				<label class="container" style="display:inline;"><form:checkbox path="insurance" name="insurance"  /><span class="checkmark"></span></label>Insurance
-			</td>
+			<td style="width:25%;text-align:left;"><label class="container" style="display:inline;"><form:checkbox path="transfers" name="transfers" disabled="true" /><span class="checkmark"></span></label> Transfers</td>
+			<td style="width:25%;text-align:left;"><label class="container" style="display:inline;"><form:checkbox path="sightseeing" name="sightseeing" disabled="true" /><span class="checkmark"></span></label>SightSeeing</td>
+			<td style="width:25%;text-align:left;"><label class="container" style="display:inline;"><form:checkbox path="visa" name="visa" disabled="true" /><span class="checkmark"></span></label>Visa</td>
+			<td style="width:25%;text-align:left;"><label class="container" style="display:inline;"><form:checkbox path="insurance" name="insurance" disabled="true" /><span class="checkmark"></span></label>Insurance</td>
 		</tr>
 		<tr>
-			<td style="width:25%;text-align:left;">
-				<font color="red"> <form:errors path="cruise" cssClass="error" /></font>
-				<label class="container" style="display:inline;"><form:checkbox path="cruise" name="cruise"   /><span class="checkmark"></span></label>Cruise
-			</td>
-			<td style="width:25%;text-align:left;">
-				<font color="red"> <form:errors path="others" cssClass="error" /></font>
-				<label class="container" style="display:inline;"><form:checkbox path="others" name="others"   /><span class="checkmark"></span></label>Others
-			</td>
+			<td style="width:25%;text-align:left;"><label class="container" style="display:inline;"><form:checkbox path="cruise" name="cruise"  disabled="true" /><span class="checkmark"></span></label>Cruise</td>
+			<td style="width:25%;text-align:left;"><label class="container" style="display:inline;"><form:checkbox path="others" name="others"  disabled="true" /><span class="checkmark"></span></label>Others</td>
 			<td colspan="2">Please select all applicable services for this quotation.</td>
 		</tr>
 		<tr>
-		<th style="width:50%;background: green;color:white;" colspan="2">Quotation Status</th>
+		<th style="width:50%;background: #FFC300;color:black;" colspan="2">Quotation Status</th>
 		<td colspan="2">Created</td>
 		</tr>
 		<tr>
 			<td colspan="4">
-				<input type="submit" id="createquotation"  name="createquotation" value="Update Quotation Skeleton" />  
+				<c:if test="${ QTN_OBJ.converted eq true }">
+					<input type="button" id="createquotation"  style="background-color:lightgray;color:black;cursor:none;" name="createquotation" value="Edit Quotation Skeleton" />
+				</c:if>
+				<c:if test="${ QTN_OBJ.converted ne true }">
+					<input type="submit" id="createquotation"  name="createquotation" value="Edit Quotation Skeleton" />
+				</c:if>
+
+					  
 				<a href="view_lead_quotations_list?leadId=${QTN_OBJ.leadEntity.leadId}"><input type="button" style="background-color:blue;" value="Cancel" /></a>
 		 	</td>
 		 </tr>

@@ -4475,3 +4475,172 @@ color:#249C91;
     color: black;
     border-radius: 5px;
 }
+
+/* ################ viewQuotationDetails ############### */
+.container_vqd {
+    width: 1200px;
+    margin-left: 230px
+}
+
+.viewQuotationDetails_wrapper {
+    color: white;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 7);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 205px;
+}
+
+.viewQuotationDetails_wrapper_data_line {
+    display: flex;
+}
+
+.viewQuotationDetails_wrapper_data_l1 {
+    width: 300px;
+    text-align: start;
+}
+
+.viewQuotationDetails_wrapper_data_l1 label {
+    font-weight: bold;
+    color: #FABA08;
+    width: 300px;
+    text-align: start;
+}
+
+.viewQuotationDetails_wrapper_data_line_ser {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.viewQuotationDetails_wrapper_data_ser {
+    display: flex;
+    align-items: center;
+}
+
+.viewQuotationDetails_wrapper_data_ser label {
+    margin-right: 5px;
+}
+
+.viewQuotationDetails_wrapper_data_ser input[type="checkbox"] {
+    margin-right: 5px;
+    width: 15px;
+    height: 15px;
+}
+
+.viewQuotationDetails_wrapper_data_line_ser_hd {
+    font-weight: bold;
+    color: #FABA08;
+    width: 300px;
+    text-align: start;
+}
+
+/* ##################### quotationServicesMenu ##############  */
+
+.quotationServicesMenu_table {
+	z-index:1;
+    margin: 10px 30px;
+    height: auto;
+    padding: 10px 5px;
+    border-radius: 5px;
+    background: black;
+    color: white;
+}
+.afd{
+	position: absolute;
+	top: 200px;
+	left:-20px;
+}
+.quotationServicesMenu_table table th a input{
+	color:white
+}
+.quotationServicesMenu_table table th:hover{
+	cursor: pointer;
+	color: black;
+	background:#FFCF53
+}
+.quotationServicesMenu_table table th a input:hover{
+	cursor: pointer;
+	color:black;
+}
+/* #################### sep_quick_lead_view ################# */
+.my-ki{
+	position: absolute;
+	top:130px;
+}
+.sep_quick_lead_view {
+	z-index:5;
+    margin-top: 10px;
+    margin-left: 10px;
+    position: absolute;
+    width: 200px;
+}
+
+.hamburgur_menu_quick_lead_view,
+.ch_quick_lead_view {
+    width: 45px;
+    height: 35px;
+}
+
+.hamburgur_menu_quick_lead_view span {
+    width: 100%;
+    height: 5px;
+    background: black;
+    border-radius: 5px;
+}
+
+.hamburgur_menu_quick_lead_view {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.lead_view_sep {
+    position: absolute;
+    transform: translateX(-110%);
+    transition: .5s ease-in-out;
+}
+
+.ch_quick_lead_view {
+    opacity: 0;
+    z-index: 9;
+}
+
+.ch_quick_lead_view:checked+.hamburgur_menu_quick_lead_view+h2+.lead_view_sep {
+    transform: translateX(220px);
+    /* Adjust the value as needed */
+}
+
+.ch_quick_lead_view {
+    position: absolute;
+    top: 0;
+}
+
+.sep_line1 {
+    transform-origin: 0% 0%;
+    transition: 0.5s ease-in-out;
+}
+
+.sep_line3 {
+    transform-origin: 0% 100%;
+    transition: 0.5s ease-in-out;
+}
+
+.ch_quick_lead_view:checked~.hamburgur_menu_quick_lead_view .sep_line1 {
+    transform: rotate(45deg);
+background:red
+}
+
+.ch_quick_lead_view:checked~.hamburgur_menu_quick_lead_view .sep_line2 {
+    display: none;
+}
+
+.ch_quick_lead_view:checked~.hamburgur_menu_quick_lead_view .sep_line3 {
+    transform: rotate(-45deg);
+background:red
+}
+
+

@@ -30,7 +30,7 @@
     
     
     <div>
-    <i class="fa-solid fa-xmark fa-xl cross-red"  style="color: red;"></i>
+
     <input type="checkbox" class="lead-de-ch" style="height:20px;width:20px;position:absolute;top:7px;left:10px;opacity:0">
     </div>
     
