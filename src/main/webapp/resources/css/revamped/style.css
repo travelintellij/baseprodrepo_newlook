@@ -4643,4 +4643,153 @@ background:red
 background:red
 }
 
+/* #################### form_view_add_manual_transfer_quotation  ############################ */
 
+.form_view_add_manual_transfer_quotation_wrapper{
+    color: white;
+        width: 100%;
+        text-align: center;
+        border-collapse: collapse;
+        border: none;
+        background: rgba(0, 0, 0, 0.689);
+        padding: 10px;
+        border-radius: 10px;
+         margin-left: 170px;
+     margin-top: -50px;
+}
+.form_view_add_manual_transfer_quotation_wrapper_data_line{
+    display: flex;
+}
+.form_view_add_manual_transfer_quotation_wrapper_data_l1{
+    width: 300px;
+    text-align: start;
+}
+.form_view_add_manual_transfer_quotation_wrapper_data_l1 input{
+    width: 90%;
+}
+.form_view_add_manual_transfer_quotation_wrapper_data_l1 label{
+    width: 90%;
+}
+
+.form_view_add_manual_transfer_wrapper_data_l1_small{
+    text-align: start;
+    width: 295px;
+    display: flex;
+    justify-content: flex-start;
+}
+.com-in{
+    width: 100px;
+}
+.com-in input{
+    width: 70px;
+}
+.form_view_add_manual_transfer_quotation_remarks{
+    text-align: start;
+}
+.form_view_add_manual_transfer_quotation_wrapper_data_line{
+    margin-bottom: 5px;
+}
+
+
+/* ################# viewTransfersQuotationDetails ################## */
+.container_VTQ{
+    width: 500px;
+    margin: 100px auto;
+}
+.viewTransfersQuotationDetails_wrapper{
+color: white;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 0.689);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 115px;
+}
+.viewTransfersQuotationDetails_wrapper label{
+font-weight: bold;
+    color: #FABA08;
+    width: 300px;
+    text-align: start;
+}
+.viewTransfersQuotationDetails_wrapper_data_line{
+    display: flex;
+    justify-content: space-around;
+}
+.vtdh{
+    color: #FABA08;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 20px;
+}
+.vtdh_btns{
+    background: rgba(0, 0, 0, 0.689);
+    padding: 10px;
+        border-radius: 10px;
+}
+.mfk{
+display: flex;
+justify-content: center;
+}
+.mfka{
+	background: #32cd32  ;
+}
+/* ################## view_transfer_quotation_table ################### */
+
+.view_transfer_quotation_table_wrapper {
+    color: white;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 0.689);
+    padding: 10px;
+    border-radius: 10px;
+    margin-left: 170px;
+     margin-top: -50px;
+}
+
+.view_transfer_quotation_table_wrapper_data {
+    display: flex;
+}
+
+.view_transfer_quotation_table_wrapper_data_li {
+    width: 300px;
+    text-align: start;
+}
+
+.view_transfer_quotation_table_wrapper_data_li label {
+    font-weight: bold;
+    color: #FABA08;
+    width: 300px;
+    text-align: start;
+}
+.view_transfer_quotation_table_wrapper_data_li_wrp{
+    width: 300px;
+    display: flex;
+    justify-content: flex-start;
+}
+.vtq_child{
+    text-align: start;
+    width: 80px;
+}
+.vtq_child label{
+    font-weight: bold;
+    color: #FABA08;
+    width: 300px;
+    text-align: start;
+}
+.view_transfer_quotation_table_wrapper_data label{
+    font-weight: bold;
+        color: #FABA08;
+        width: 300px;
+        text-align: start;
+}
+.vtdh2 {
+    color: red;
+    font-size: 25px;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

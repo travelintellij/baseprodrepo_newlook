@@ -37,7 +37,7 @@
 </div>
 
 <div class="afd">
-<jsp:include page="_quotationServicesMenu_bk.jsp" />
+<jsp:include page="_quotationServicesMenu.jsp" />
 </div>
 
 
@@ -103,8 +103,15 @@
                     </div>
                 </div>
                 <div class="due_today_task_data_btns">
-                    <a href="">Edit quotation skeleton</a>
-                    <a href="">Cancel</a>
+                   <c:if test="${ QTN_OBJ.converted eq true }">
+					<input type="button" id="createquotation"  style="background-color:lightgray;color:black;cursor:none;" name="createquotation" value="Edit Quotation Skeleton" />
+				</c:if>
+				<c:if test="${ QTN_OBJ.converted ne true }">
+					<input type="submit" id="createquotation"  name="createquotation" value="Edit Quotation Skeleton" />
+				</c:if>
+
+					  
+				<a href="view_lead_quotations_list?leadId=${QTN_OBJ.leadEntity.leadId}">Cancel</a>
                 </div>
             </div>
         </div>

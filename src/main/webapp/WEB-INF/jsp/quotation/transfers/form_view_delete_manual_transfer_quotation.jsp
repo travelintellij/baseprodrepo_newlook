@@ -1,78 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
-
 <head>
-<link href="<c:url value="/resources/core/main.css" />" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form_view_delete_manual_transfer_quotation</title>
+    <script src="https://kit.fontawesome.com/6f6addf9b0.js" crossorigin="anonymous"></script>
+    <script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
+    <script src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
 </head>
 
-<script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
-<script src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
+<body>
 
-<form:form modelAttribute="MANUAL_TRN" action="delete_delete_transfer_manual_quotation">
+    <div class="view_transfer_quotation_table container">
+     <div class="view_transfer_quotation_table_wrapper">
+    <form:form modelAttribute="MANUAL_TRN" action="delete_delete_transfer_manual_quotation">
 	<input type="hidden" name="leadId" value= "${QTN_OBJ.leadEntity.leadId}" />
 	<input type="hidden" name="quotationId" value= "${QTN_OBJ.quotationId}" />
 	<input type="hidden" name="manualTransferQuotationId" value= "${MANUAL_TRN.manualTransferQuotationId}" />
-	
-	<table style="width:100%;  table-layout:fixed;background-color: #DFE0DC; border: 3px solid #000000; border-collapse: collapse" id="newflightStop">
-		<tr><th style="background-color:#800000;" colspan="5"><font size="4"><b>Id-  ${MANUAL_TRN.manualTransferQuotationId}</b></font></th></tr>
-		<tr>
-			<th style="background-color:red;" colspan="1"><font size="4"><b>Pickup City</b></font></th>
-			<th style="background-color:red;"><font size="4"><b>Pickup From</b></font></th>
-			<th style="background-color:red;" colspan="2"><font size="4"><b>Pickup From Name</b></font></th>
-			<th style="background-color:red;"><font size="4"><b>Transfer Date</b></font></th>
-		</tr>
-		<tr>
-			<td>${MANUAL_TRN.pickUpCityName }</td>
-			<td>${MANUAL_TRN.pickUpFromDesc}</td>
-			<td colspan="2">${MANUAL_TRN.pickUpFromName}</td>
-			<td><fmt:formatDate value="${MANUAL_TRN.transferDate}" type="date" pattern="dd-MMM-yyyy"/></td>
-		</tr>
+            <h1 class="vtdh2">Delete transfer quotation <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+            </h1>
+            <div class="view_transfer_quotation_table_wrapper_data" style="background:#6082B6;margin-bottom:10px">
+                <div class="view_transfer_quotation_table_wrapper_data_li">
+                    <label for="">Pickup City</label>
+                    <p>${transferQtnObj.pickUpCityName }</p>
+                </div>
+                <div class="view_transfer_quotation_table_wrapper_data_li">
+                    <label for="">Pickup From</label>
+                    <p>${transferQtnObj.pickUpFromDesc}</p>
+                </div>
+                <div class="view_transfer_quotation_table_wrapper_data_li">
+                    <label for="">Pickup From Name</label>
+                    <p>${transferQtnObj.pickUpFromName}</p>
+                </div>
+                <div class="view_transfer_quotation_table_wrapper_data_li">
+                    <label for="">Transfer Date</label>
+                    <p>
+                        <fmt:formatDate value="${transferQtnObj.transferDate}" pattern="dd-MM-yyyy" />
+                    </p>
+                </div>
+            </div>
+            <div class="view_transfer_quotation_table_wrapper_data" style="background:#6082B6;margin-bottom:10px">
+                <div class="view_transfer_quotation_table_wrapper_data_li">
+                    <label for="">Drop City</label>
+                    <p>${transferQtnObj.dropToCityName}</p>
+                </div>
+                <div class="view_transfer_quotation_table_wrapper_data_li">
+                    <label for="">Drop to</label>
+                    <p>${transferQtnObj.dropToCityName}</p>
+                </div>
+                <div class="view_transfer_quotation_table_wrapper_data_li">
+                    <label for="">Drop to name</label>
+                    <p>${transferQtnObj.dropToName}</p>
+                </div>
+                <div class="view_transfer_quotation_table_wrapper_data_li">
+                    <label for="">Transfer Type</label>
+                    <p>${transferQtnObj.transferTypeName}</p>
+                </div>
+            </div>
 
-		<tr>	
-			<th style="background-color:red;"><font size="4"><b>Drop City</b></font></th>
-			<th style="background-color:red;"><font size="4"><b>Drop To</b></font></th>
-			<th style="background-color:red;" colspan="2"><font size="4"><b>Drop To Name</b></font></th>
-			<th style="background-color:red;"><font size="4"><b>Transfer Type</b></font></th>
-		</tr>
-		<tr>
-			<td>${MANUAL_TRN.dropToCityName}</td>
-			<td>${MANUAL_TRN.dropToDesc}</td>
-			<td colspan="2">${MANUAL_TRN.dropToName}</td>
-			<td>${MANUAL_TRN.transferTypeName}</td>
-		</tr>
-		<tr>	
-			<th style="background-color:red;"><font size="4"><b>Adults</b></font></th>
-			<th style="background-color:red;"><font size="4"><b>Children</b></font></th>
-			<th style="background-color:red;"><font size="4"><b>Infant</b></font></th>
-			<th style="background-color:red;"><font size="4"><b>Transfer Cost</b></font></th>
-			<th style="background-color:red;"><font size="4"><b>Transfer Markup</b></font></th>
-		</tr>
-		<tr>	
-			<td>${MANUAL_TRN.adults}</td>
-			<td>${MANUAL_TRN.children}	</td>
-			<td>${MANUAL_TRN.infant}</td>
-			<td>${MANUAL_TRN.transferCost}</td>
-			<td>${MANUAL_TRN.transferMarkup}</td>
-		</tr>
-		<tr>	
-			<th style="background-color:red;" colspan="4"><font size="4"><b>Remarks</b></font></th>
-			<th style="background-color:red;"><font size="4"><b>Display Order</b></font></th>
-		</tr>
-		<tr>	
-			<td colspan="4">${MANUAL_TRN.remarks}</td>
-			<td>${MANUAL_TRN.displayOrder }</td>	
-		</tr>
-		<tr>
-			<th style="background-color:#800000;" colspan="5">
-				<input type="submit" name="deleteTransfer" id="deleteTransfer" Value="Confirm Delete"  style="background-color:red;"/>
-				<a href="form_view_transfer_quotation_details?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId}"><input type="button" style="background-color:blue;" value="Cancel" /></a>
-			</th>
-		</tr>
-		</table>		
-	</form:form>
-
+            <div class="view_transfer_quotation_table_wrapper_data" style="background:#6082B6;margin-bottom:10px">
+                <div class="view_transfer_quotation_table_wrapper_data_li_wrp">
+                    <div class="vtq_child">
+                        <label for="">Adults</label>
+                        <p>${transferQtnObj.adults}</p>
+                    </div>
+                    <div class="vtq_child">
+                        <label for="">Children</label>
+                        <p>${transferQtnObj.children}</p>
+                    </div>
+                    <div class="vtq_child">
+                        <label for="">Infant</label>
+                        <p>${transferQtnObj.infant}</p>
+                    </div>
+                </div>
+                <div class="view_transfer_quotation_table_wrapper_data_li">
+                    <label for="">Transfer Cost</label>
+                    <p>${transferQtnObj.transferCost}</p>
+                </div>
+                <div class="view_transfer_quotation_table_wrapper_data_li">
+                    <label for="">Transfer Markup</label>
+                    <p>${transferQtnObj.transferMarkup}</p>
+                </div>
+                <div class="view_transfer_quotation_table_wrapper_data_li">
+                    <label for="">Display order</label>
+                    <p>${transferQtnObj.displayOrder }</p>
+                </div>
+            </div>
+            <div class="view_transfer_quotation_table_wrapper_data" style="background:#6082B6;margin-bottom:10px">
+                <label for="">Remarks</label>
+                <p>${transferQtnObj.remarks}</p>
+            </div>
+            <div class="due_today_task_data_btns">
+                <input type="submit" name="deleteTransfer" id="deleteTransfer" Value="Confirm Delete"  style="background-color:red;"/>
+				<a href="form_view_transfer_quotation_details?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId}">Cancel</a>
+            </div>
+            	</form:form>
+        </div>
+    </div>
+    
+    	
+    	
 <script>
 $('#cityName').autocomplete({
 	serviceUrl : '${pageContext.request.contextPath}/getCityList',
@@ -166,3 +198,6 @@ $(document).ready(function () {
 
 </script>
    
+</body>
+
+</html>
