@@ -79,7 +79,7 @@
     
     
 
-    	<div align="center"><b><font color="green" > ${Success} </font><font color="red"> ${Error}</font> </b></div>
+    	<div  style="background:black;width:500px;margin:0 auto;text-align:center;border-radius:5px"><b><font color="#32cd32"> ${Success} </font><font color="red"> ${Error}</font> </b></div>
 	<table style="width:auto;table-layout:fixed;" >
 	<tr><td>
 		<c:if test="${TRN_ACTION eq 'ADD'}">

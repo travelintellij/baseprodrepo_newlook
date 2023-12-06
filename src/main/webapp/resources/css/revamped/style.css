@@ -4793,3 +4793,87 @@ justify-content: center;
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
+
+/* ################### SIGHT SEEING QUOTATION ############# */
+.container_VTQ {
+    width: 1200px;
+    margin: 100px auto;
+}
+
+.sssec_wrapper {
+
+    color: white;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 0.689);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 100px;
+}
+/* .lb{
+    font-weight: bold;
+    color: #FABA08;
+    width: 300px;
+    text-align: start;
+} */
+
+.sssec_wrapper_data {
+    display: flex;
+    justify-content: space-between;
+}
+
+.sssec_wrapper_data_line {
+    text-align: start;
+}
+
+.sssec_wrapper_data_line {
+    width: 300px;
+}
+
+.sssec_wrapper_data_line input {
+    width: 90%;
+}
+
+/* .sssec_radio_box{
+    border: 2px solid green;
+    display: flex;
+} */
+.sub_sssec_radio_box {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.sssecb1 label{
+   margin-right: 20px;
+}
+.sssecb2 label{
+   margin-right: 41px;
+}
+
+.sub_sssec_radio_box input[type="radio"] {
+    width: 20px;
+    height: 20px;
+}
+.sssec_wrapper_data_line_id_name{
+    margin-top: -20px;
+    text-align: start;
+    width: 97%;
+}
+.sssec_wrapper_data_line_fam_info{
+    width: 300px;
+    display: flex;
+}
+.fam_com_ssc{
+    width: 80px;
+    margin: 0 10px 0 0;
+}
+.fam_com_ssc input{
+    width: 100%;
+}
+.sssec_wrapper_data{
+    margin-bottom: 10px;
+}

@@ -1,99 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
-
 <head>
-<link href="<c:url value="/resources/core/main.css" />" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
+<script src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css"> <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
 </head>
 
-<script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
-<script src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
-
+<body>
+    <div class="sssec container">
+        <div class="sssec_wrapper">
+        
 <form:form modelAttribute="MANUAL_STS" action="create_create_sightseeing_manual_quotation">
 	<input type="hidden" name="leadId" value= "${QTN_OBJ.leadEntity.leadId}" />
 	<input type="hidden" name="quotationId" value= "${QTN_OBJ.quotationId}" />
 	<input type="hidden" name="manualSightSeeingQuotationId" value= "${MANUAL_STS.manualSightSeeingQuotationId}" />
-	
-	<table style="width:100%;" >
-		<tr><th style="background-color:blue;" colspan="5"><font size="4"><b>Id-  ${sightSeeingQtnObj.manualSightSeeingQuotationId}</b></font></th></tr>
-		<tr>
-			<th><font size="4"><b>Sight Seeing City</b></font></th>
-			<th colspan="2"><font size="4"><b>Sight Seeing Selection</b></font></th>
-			<th ><font size="4"><b>Transfer Type</b></font></th>
-			<th><font size="4"><b>Sight Seeing Date</b></font></th>
-		</tr>
-		<tr>
-			<td>
-				<font color="red"><form:errors path="cityName" cssClass="error" /></font>
-				<form:input path="cityName" style="width: 150px;height:40px;" type="text" id="cityName"  required="required" />
+            <div class="sssec_wrapper_data">
+                <div class="sssec_wrapper_data_line">
+                    <label for="" class="lb">Sight Seeing City</label>
+                    <font color="red"><form:errors path="cityName" cssClass="error" /></font>
+				<form:input path="cityName"  type="text" id="cityName"  required="required" />
 				<form:hidden path = "cityId" id="cityId" />
-			</td>
-			<td colspan="2">
-				<div class="gender" align="center">
-					<input type="radio" value="true" id="system" name="savedSightSeeing" onclick="check();" /> <label for="system" class="radio">System Based</label>
-	       			<input type="radio" value="false" id="customized" name="savedSightSeeing" onclick="check();" checked /> <label for="customized" class="radio">Customized</label>
-	      	  		<input type="button" onclick="check();" value="Click" />
-	 			</div>	
-			
-			 </td>
-			<td>
-			<div class="select">
-				<form:select path="transferType" required="required" style="width: 130px;">  
+                </div>
+                <div class="sssec_wrapper_data_line">
+                    <label for="" class="lb">Sight Seeing Selection</label>
+                    <div class="sssec_radio_box sssecb1">
+                        <div class="sub_sssec_radio_box">
+                            <label style="color:#ff6700" for="system" class="radio">system based</label>
+                            <input type="radio" value="true" id="system" name="savedSightSeeing" onclick="check();" />
+                        </div>
+                        <div class="sub_sssec_radio_box sssecb2">
+                            <label for="customized" class="radio" style="color:#ff6700">customized</label>
+                           <input type="radio" value="false" id="customized" name="savedSightSeeing" onclick="check();" checked /> 
+                        </div>
+                        <input type="button" onclick="check();" value="Click" />
+                    </div>
+                </div>
+                <div class="sssec_wrapper_data_line">
+                    <label for="" class="lb">Transfer Type</label>
+                    <form:select path="transferType" required="required" style="width: 130px;">  
 					<option class="service-small" value="" selected>Please Select</option>
 					<form:options items = "${TRANSFER_TYPE_MODE}" class="service-small"/>
 				</form:select>  
-			</div>
-			
-			</td>
-			<td><form:input type="date" path="sightSeeingDate" required="required" /> </td>
-		</tr>
-
-		<tr>	
-			<th colspan="5"><font size="4"><b>Sight Seeing Id / Sight Seeing Name</b></font></th>
-			
-		</tr>
-		<tr>
-			<td colspan="5">
-				<font color="red"><form:errors path="sightSeeingName" cssClass="error" /></font>
+                </div>
+                <div class="sssec_wrapper_data_line">
+                    <label for="" class="lb">Sight Seeing date</label>
+                    <form:input type="date" path="sightSeeingDate" required="required" /> 
+                </div>
+            </div>
+            <div class="sssec_wrapper_data">
+                <div class="sssec_wrapper_data_line_fam_info">
+                    <div class="fam_com_ssc">
+                        <label for="" class="lb">Adults</label> <br>
+				<form:input path="adults" type="number" min="0" />
+				<font color="red"><form:errors path="adults" cssClass="error" /></font>
+                    </div>
+                    <div class="fam_com_ssc">
+                        <label for="" class="lb">Children</label> <br>
+                      <form:input path="children" type="number" min="0"/>
+                    </div>
+                    <div class="fam_com_ssc">
+                        <label for="" class="lb">Infant</label> <br>
+                       <form:input path="infant" type="number" min="0" />
+                    </div>
+                </div>
+                <div class="sssec_wrapper_data_line">
+                    <label for="" class="lb">Sight Seeing Cost</label>
+                     <form:input path="sightSeeingCost" type="number" min="0" />
+                </div>
+                <div class="sssec_wrapper_data_line">
+                    <label for="" class="lb">Sight Seeing Markup</label>
+                   <form:input path="sightSeeingMarkup" type="number" min="0"/>
+                </div>
+                <div class="sssec_wrapper_data_line">
+                    <label for="" class="lb">Display Order</label>
+                   <form:input path="displayOrder" type="number" min="0"/>
+                </div>
+            </div>
+            <div class="sssec_wrapper_data">
+                <div class="sssec_wrapper_data_line_id_name"> <br>
+                    <label for="" class="lb">Sight Seeing ID / Sight seeing name</label>
+                    <font color="red"><form:errors path="sightSeeingName" cssClass="error" /></font>
 				<form:input path="sightSeeingName" style="width: 700px;height:40px;" type="text" id="sightSeeingName" required="required" onchange="considerAutoComplete()" />
 				<form:hidden path = "sightSeeingId" id="sightSeeingId" />
-			</td>
-		</tr>
-		<tr>	
-			<th><font size="4"><b>Adults</b></font></th>
-			<th><font size="4"><b>Children</b></font></th>
-			<th><font size="4"><b>Infant</b></font></th>
-			<th><font size="4"><b>Sight Seeing Cost</b></font></th>
-			<th><font size="4"><b>Sight Seeing Markup</b></font></th>
-		</tr>
-		<tr>	
-			<td>
-				<font color="red"><form:errors path="adults" cssClass="error" /></font>
-				<form:input path="adults" type="number" min="0" style="height:30px;width:50px;margin: auto;"/>
-			</td>
-			<td><form:input path="children" type="number" min="0" style="height:30px;width:50px;margin: auto;"/></td>
-			<td><form:input path="infant" type="number" min="0" style="height:30px;width:50px;margin: auto;"/></td>
-			<td><form:input path="sightSeeingCost" type="number" min="0" style="height:30px;width:120px;margin: auto;"/></td>
-			<td><form:input path="sightSeeingMarkup" type="number" min="0" style="height:30px;width:80px;margin: auto;"/></td>
-		</tr>
-		<tr>	
-			<th colspan="4"><font size="4"><b>Remarks</b></font></th>
-			<th><font size="4"><b>Display Order</b></font></th>
-		</tr>
-		<tr>	
-			<td colspan="4"><form:textarea path="remarks" rows="3" cols="100" maxlength="1450"/></td>
-			<td><form:input path="displayOrder" type="number" min="0" style="height:30px;width:50px;margin: auto;"/></td>	
-		</tr>
-		<tr>
-			<th colspan="5">
-				<input type="submit" name="addHotel" id="addHotel" Value="Add Sight Seeing" />
-				<a href="form_view_sightseeing_quotation_details?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId}"><input type="button" style="background-color:blue;" value="Cancel" /></a>
-			</th>
-		</tr>
-	</table>		
-</form:form>
+                </div>
+            </div>
 
+            <div class="sssec_wrapper_data">
+                <div class="sssec_rem_box" style="text-align: start;">
+                    <label for="" class="lb">Remarks</label> <br>
+                    <form:textarea path="remarks" rows="2" cols="139" maxlength="1450"/>
+                    
+                </div>
+            </div>
+            <div class="due_today_task_data_btns">
+                <input type="submit" name="addHotel" id="addHotel" Value="Add Sight Seeing" />
+				<a href="form_view_sightseeing_quotation_details?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId}">Cancel</a>
+            </div>
+            </form:form>
+        </div>
+    </div>
+    
+    
 <script>
 
 $(document).ready(function() {
@@ -181,3 +195,7 @@ $('#cityName').autocomplete({
 
 </script>
    
+    
+</body>
+
+</html>
