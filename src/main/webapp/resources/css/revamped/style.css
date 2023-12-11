@@ -4692,20 +4692,17 @@ background:red
 
 
 /* ################# viewTransfersQuotationDetails ################## */
-.container_VTQ{
-    width: 500px;
-    margin: 100px auto;
-}
+
 .viewTransfersQuotationDetails_wrapper{
 color: white;
-    width: 100%;
+    width: 500px;
     text-align: center;
     border-collapse: collapse;
     border: none;
     background: rgba(0, 0, 0, 0.689);
     padding: 10px;
     border-radius: 10px;
-    margin-top: 115px;
+    margin:0px auto;
 }
 .viewTransfersQuotationDetails_wrapper label{
 font-weight: bold;
@@ -4724,9 +4721,11 @@ font-weight: bold;
     margin-top: 20px;
 }
 .vtdh_btns{
+	margin:0 auto;
+	width: 500px;
     background: rgba(0, 0, 0, 0.689);
     padding: 10px;
-        border-radius: 10px;
+    border-radius: 10px;
 }
 .mfk{
 display: flex;
@@ -4798,7 +4797,7 @@ justify-content: center;
 /* ################### SIGHT SEEING QUOTATION ############# */
 .container_VTQ {
     width: 1200px;
-    margin: 100px auto;
+    margin: 150px auto;
 }
 
 .sssec_wrapper {
@@ -4811,7 +4810,7 @@ justify-content: center;
     background: rgba(0, 0, 0, 0.689);
     padding: 10px;
     border-radius: 10px;
-    margin-top: 100px;
+    margin-top: 10px;
 }
 /* .lb{
     font-weight: bold;
@@ -4876,4 +4875,46 @@ justify-content: center;
 }
 .sssec_wrapper_data{
     margin-bottom: 10px;
+}
+
+
+/* ########### form_view_delete_manual_sightseeing_quotation ############ */
+
+.form_view_delete_manual_wrapper{
+    color: white;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 0.689);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 0;
+}
+.form_view_delete_manual_wrapper_data_line{
+    display: flex;
+    justify-content: space-between;
+}
+.form_view_delete_manual_wrapper_data_l1{
+    width: 300px;
+    text-align: start;
+}
+.form_view_delete_manual_wrapper_data_l1 label,.fvmwdl1 label,.form_view_delete_manual_wrapper_data_l1_id label,.form_view_delete_manual_wrapper_data_l1_rem label{
+        font-weight: bold;
+            color: #FABA08;
+}
+.form_view_delete_manual_wrapper_data_l1_ad{
+    width: 300px;
+    display: flex;
+}
+.fvmwdl1{
+    text-align: start;
+    width: 25%;
+}
+.fvmwdl1m{
+    margin: 0 10px;
+}
+.form_view_delete_manual_wrapper_data_l1_id,.form_view_delete_manual_wrapper_data_l1_rem{
+    width: 100%;
+    text-align: start;
 }

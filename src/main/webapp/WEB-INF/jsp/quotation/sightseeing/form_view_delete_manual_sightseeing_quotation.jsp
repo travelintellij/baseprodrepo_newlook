@@ -1,92 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<jsp:include page="../../menu/MenuBuilder.jsp" />
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
-
 <head>
-<link href="<c:url value="/resources/core/main.css" />" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form_view_delete_manual_sightseeing_quotation</title>
+     <script src="https://kit.fontawesome.com/6f6addf9b0.js" crossorigin="anonymous"></script>
+    <script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
+    <script src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
+     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
 </head>
-
-<script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
-<script src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
-
-<form:form modelAttribute="MANUAL_STS" action="delete_delete_sightseeing_manual_quotation">
+<body>
+    <div class="form_view_delete_manual container">
+        <div class="form_view_delete_manual_wrapper">
+        <form:form modelAttribute="MANUAL_STS" action="delete_delete_sightseeing_manual_quotation">
 	<input type="hidden" name="leadId" value= "${QTN_OBJ.leadEntity.leadId}" />
 	<input type="hidden" name="quotationId" value= "${QTN_OBJ.quotationId}" />
 	<input type="hidden" name="manualSightSeeingQuotationId" value= "${MANUAL_STS.manualSightSeeingQuotationId}" />
-	
-	<table style="width:100%;" id="deleteSightSeeingTable">
-		<tr><th style="background-color:blue;" colspan="5"><font size="4"><b>Id-  ${MANUAL_STS.manualSightSeeingQuotationId}</b></font></th></tr>
-		<tr>
-			<th style="background-color:red;"><font size="4"><b>Sight Seeing City</b></font></th>
-			<th style="background-color:red;" colspan="2"><font size="4"><b>Sight Seeing Selection</b></font></th>
-			<th style="background-color:red;"><font size="4"><b>Transfer Type</b></font></th>
-			<th style="background-color:red;"><font size="4"><b>Sight Seeing Date</b></font></th>
-		</tr>
-		<tr>
-			<td>${MANUAL_STS.cityName}			</td>
-			<td colspan="2">
-				<c:if test="${MANUAL_STS.savedSightSeeing eq true}">
+	 <h1 class="vtdh2">Delete transfer quotation <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+            </h1>
+            <div class="form_view_delete_manual_wrapper_data">
+            <h1 style="color:red;margin-top:-20px;margin-bottom:15px">Id-  ${MANUAL_STS.manualSightSeeingQuotationId}</h1>
+                <div class="form_view_delete_manual_wrapper_data_line" style="background:#6082B6;margin-bottom:10px">
+                    <div class="form_view_delete_manual_wrapper_data_l1">
+                        <label for="">Sight Seeing City</label>
+                        <p>${MANUAL_STS.cityName}</p>
+                    </div>
+                    <div class="form_view_delete_manual_wrapper_data_l1">
+                        <label for="">Sight Seeing Selection</label>
+                        <p><c:if test="${MANUAL_STS.savedSightSeeing eq true}">
 							System Based
 				</c:if>
 				<c:if test="${MANUAL_STS.savedSightSeeing eq false}">
 							Customized 
-				</c:if>
-			
-			 </td>
-			<td>${MANUAL_STS.transferTypeName} </td>
-			<td><fmt:formatDate value="${MANUAL_STS.sightSeeingDate}" pattern="dd-MMM-yyyy" /> </td>
-		</tr>
+				</c:if></p>
+                    </div>
+                    <div class="form_view_delete_manual_wrapper_data_l1">
+                        <label for="">Transfer Type</label>
+                        <p>${MANUAL_STS.transferTypeName}</p>
+                    </div>
+                    <div class="form_view_delete_manual_wrapper_data_l1">
+                        <label for="">Sight Seeing Date</label>
+                        <p><fmt:formatDate value="${MANUAL_STS.sightSeeingDate}" pattern="dd-MMM-yyyy" /> </p>
+                    </div>
+                </div>
 
-		<tr>	
-			<th style="background-color:red;" colspan="5"><font size="4"><b>Sight Seeing Id / Sight Seeing Name</b></font></th>
-			
-		</tr>
-		<tr>
-			<td colspan="5">${MANUAL_STS.sightSeeingName} </td>
-		</tr>
-		<tr>	
-			<th style="background-color:red;"><font size="4"><b>Adults</b></font></th>
-			<th style="background-color:red;"><font size="4"><b>Children</b></font></th>
-			<th style="background-color:red;"><font size="4"><b>Infant</b></font></th>
-			<th style="background-color:red;"><font size="4"><b>Sight Seeing Cost</b></font></th>
-			<th style="background-color:red;"><font size="4"><b>Sight Seeing Markup</b></font></th>
-		</tr>
-		<tr>	
-			<td>${MANUAL_STS.adults}</td>
-			<td>${MANUAL_STS.children}	</td>
-			<td>${MANUAL_STS.infant}</td>
-			<td>${MANUAL_STS.sightSeeingCost}</td>
-			<td>${MANUAL_STS.sightSeeingMarkup}</td>		</tr>
-		<tr>	
-			<th style="background-color:red;" colspan="4"><font size="4"><b>Remarks</b></font></th>
-			<th style="background-color:red;"><font size="4"><b>Display Order</b></font></th>
-		</tr>
-		<tr>	
-			<td colspan="4">${MANUAL_STS.remarks}</td>
-			<td>${MANUAL_STS.displayOrder }</td>	
-		</tr>
-		<tr>
-			<th colspan="5">
-				<input type="submit" name="confirmDelete" id="confirmDelete" Value="Confirm Delete" style="background-color:red;"/>
-				<a href="form_view_sightseeing_quotation_details?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId}"><input type="button" style="background-color:blue;" value="Cancel" /></a>
-			</th>
-		</tr>
-	</table>		
-</form:form>
-<script>
-$(document).ready(function () {
-    // Handler for .ready() called.
-    var nt = document.getElementById('deleteSightSeeingTable');
-   	if (nt != null) {
-        $('html, body').animate({
-            scrollTop: $('#deleteSightSeeingTable').offset().top
-        }, 'slow');
-    	
-    }
-    
-});
+                <div class="form_view_delete_manual_wrapper_data_line" style="background:#6082B6;margin-bottom:10px">
+                    <div class="form_view_delete_manual_wrapper_data_l1_ad">
+                        <div class="fvmwdl1">
+                            <label for="">Adults</label>
+                            <p>${MANUAL_STS.adults}</p>
+                        </div>
+                        <div class="fvmwdl1 fvmwdl1m">
+                            <label for="">Children</label>
+                            <p>${MANUAL_STS.children}</p>
+                        </div>
+                        <div class="fvmwdl1">
+                            <label for="">Infant</label>
+                            <p>${MANUAL_STS.infant}</p>
+                        </div>
+                    </div>
+                    <div class="form_view_delete_manual_wrapper_data_l1">
+                        <label for="">Sight Seeing Cost</label>
+                        <p>${MANUAL_STS.sightSeeingCost}</p>
+                    </div>
+                    <div class="form_view_delete_manual_wrapper_data_l1">
+                        <label for="">Sight Seeing Markup</label>
+                        <p>d${MANUAL_STS.sightSeeingMarkup}</p>
+                    </div>
+                    <div class="form_view_delete_manual_wrapper_data_l1">
+                        <label for="">Display Order</label>
+                        <p>${MANUAL_STS.displayOrder }</p>
+                    </div>
+                </div>
 
-</script>
 
-   
+                <div class="form_view_delete_manual_wrapper_data_line" style="background:#6082B6;margin-bottom:10px">
+                    <div class="form_view_delete_manual_wrapper_data_l1_id">
+                        <label for="">Sight Seeing ID / <br> Sight Seeing Name</label>
+                        <p>delhi</p>
+                    </div>
+                    
+                </div>
+                <div class="form_view_delete_manual_wrapper_data_line" style="background:#6082B6;margin-bottom:10px">
+                    <div class="form_view_delete_manual_wrapper_data_l1_rem">
+                        <label for="">Remarks</label>
+                        <p>${MANUAL_STS.remarks}</p>
+                    </div> 
+                </div>
+                
+                <div class="due_today_task_data_btns">
+                <input type="submit" name="confirmDelete" id="confirmDelete" Value="Confirm Delete" style="color:white;background:red"/>
+				<a href="form_view_sightseeing_quotation_details?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId}">Cancel</a>
+                </div>
+            </div>
+            </form:form>
+        </div>
+    </div>
+</body>
+</html>

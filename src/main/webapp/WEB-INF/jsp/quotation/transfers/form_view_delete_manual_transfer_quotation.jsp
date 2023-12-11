@@ -27,39 +27,39 @@
             <div class="view_transfer_quotation_table_wrapper_data" style="background:#6082B6;margin-bottom:10px">
                 <div class="view_transfer_quotation_table_wrapper_data_li">
                     <label for="">Pickup City</label>
-                    <p>${transferQtnObj.pickUpCityName }</p>
+                    <p>${MANUAL_TRN.pickUpCityName }</p>
                 </div>
                 <div class="view_transfer_quotation_table_wrapper_data_li">
                     <label for="">Pickup From</label>
-                    <p>${transferQtnObj.pickUpFromDesc}</p>
+                    <p>${MANUAL_TRN.pickUpFromDesc}</p>
                 </div>
                 <div class="view_transfer_quotation_table_wrapper_data_li">
                     <label for="">Pickup From Name</label>
-                    <p>${transferQtnObj.pickUpFromName}</p>
+                    <p>${MANUAL_TRN.pickUpFromName}</p>
                 </div>
                 <div class="view_transfer_quotation_table_wrapper_data_li">
                     <label for="">Transfer Date</label>
                     <p>
-                        <fmt:formatDate value="${transferQtnObj.transferDate}" pattern="dd-MM-yyyy" />
+                        <fmt:formatDate value="${MANUAL_TRN.transferDate}" type="date" pattern="dd-MMM-yyyy"/>
                     </p>
                 </div>
             </div>
             <div class="view_transfer_quotation_table_wrapper_data" style="background:#6082B6;margin-bottom:10px">
                 <div class="view_transfer_quotation_table_wrapper_data_li">
                     <label for="">Drop City</label>
-                    <p>${transferQtnObj.dropToCityName}</p>
+                    <p>${MANUAL_TRN.dropToCityName}</p>
                 </div>
                 <div class="view_transfer_quotation_table_wrapper_data_li">
                     <label for="">Drop to</label>
-                    <p>${transferQtnObj.dropToCityName}</p>
+                    <p>>${MANUAL_TRN.dropToDesc}</p>
                 </div>
                 <div class="view_transfer_quotation_table_wrapper_data_li">
                     <label for="">Drop to name</label>
-                    <p>${transferQtnObj.dropToName}</p>
+                    <p>${MANUAL_TRN.dropToName}</p>
                 </div>
                 <div class="view_transfer_quotation_table_wrapper_data_li">
                     <label for="">Transfer Type</label>
-                    <p>${transferQtnObj.transferTypeName}</p>
+                    <p>${MANUAL_TRN.transferTypeName}</p>
                 </div>
             </div>
 
@@ -67,36 +67,36 @@
                 <div class="view_transfer_quotation_table_wrapper_data_li_wrp">
                     <div class="vtq_child">
                         <label for="">Adults</label>
-                        <p>${transferQtnObj.adults}</p>
+                        <p>${MANUAL_TRN.adults}</p>
                     </div>
                     <div class="vtq_child">
                         <label for="">Children</label>
-                        <p>${transferQtnObj.children}</p>
+                        <p>${MANUAL_TRN.children}</p>
                     </div>
                     <div class="vtq_child">
                         <label for="">Infant</label>
-                        <p>${transferQtnObj.infant}</p>
+                        <p>${MANUAL_TRN.infant}</p>
                     </div>
                 </div>
                 <div class="view_transfer_quotation_table_wrapper_data_li">
                     <label for="">Transfer Cost</label>
-                    <p>${transferQtnObj.transferCost}</p>
+                    <p>${MANUAL_TRN.transferCost}</p>
                 </div>
                 <div class="view_transfer_quotation_table_wrapper_data_li">
                     <label for="">Transfer Markup</label>
-                    <p>${transferQtnObj.transferMarkup}</p>
+                    <p>${MANUAL_TRN.transferMarkup}</p>
                 </div>
                 <div class="view_transfer_quotation_table_wrapper_data_li">
                     <label for="">Display order</label>
-                    <p>${transferQtnObj.displayOrder }</p>
+                    <p>${MANUAL_TRN.displayOrder }</p>
                 </div>
             </div>
             <div class="view_transfer_quotation_table_wrapper_data" style="background:#6082B6;margin-bottom:10px">
                 <label for="">Remarks</label>
-                <p>${transferQtnObj.remarks}</p>
+                <p>${MANUAL_TRN.remarks}</p>
             </div>
             <div class="due_today_task_data_btns">
-                <input type="submit" name="deleteTransfer" id="deleteTransfer" Value="Confirm Delete"  style="background-color:red;"/>
+               <input type="submit" name="deleteTransfer" id="deleteTransfer" Value="Confirm Delete" />
 				<a href="form_view_transfer_quotation_details?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId}">Cancel</a>
             </div>
             	</form:form>

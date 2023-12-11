@@ -39,12 +39,13 @@
                             <label for="customized" class="radio" style="color:#ff6700">customized</label>
                            <input type="radio" value="false" id="customized" name="savedSightSeeing" onclick="check();" checked /> 
                         </div>
-                        <input type="button" onclick="check();" value="Click" />
+                        <input type="button" onclick="check();" value="Click" style="background:gray;width:40%;border:none;outline;none;border-radius:2px;color:white;cursor:pointer"/>
                     </div>
                 </div>
                 <div class="sssec_wrapper_data_line">
-                    <label for="" class="lb">Transfer Type</label>
-                    <form:select path="transferType" required="required" style="width: 130px;">  
+                    <label for="" class="lb">Transfer Type</label> </br>
+                    <form:select path="transferType" required="required" style="width: 90%;">  
+                
 					<option class="service-small" value="" selected>Please Select</option>
 					<form:options items = "${TRANSFER_TYPE_MODE}" class="service-small"/>
 				</form:select>  
@@ -85,9 +86,9 @@
             </div>
             <div class="sssec_wrapper_data">
                 <div class="sssec_wrapper_data_line_id_name"> <br>
-                    <label for="" class="lb">Sight Seeing ID / Sight seeing name</label>
+                    <label for="" class="lb">Sight Seeing ID / </br> Sight seeing name</label>
                     <font color="red"><form:errors path="sightSeeingName" cssClass="error" /></font>
-				<form:input path="sightSeeingName" style="width: 700px;height:40px;" type="text" id="sightSeeingName" required="required" onchange="considerAutoComplete()" />
+				<form:input path="sightSeeingName" style="width: 100%;height:40px;" type="text" id="sightSeeingName" required="required" onchange="considerAutoComplete()" />
 				<form:hidden path = "sightSeeingId" id="sightSeeingId" />
                 </div>
             </div>
