@@ -4918,3 +4918,139 @@ justify-content: center;
     width: 100%;
     text-align: start;
 }
+.sssec_wrapper_data_try{
+	display:flex;
+}
+.fvemsq{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	flex-direction: row-reverse
+}
+
+/* ################################################## */
+
+
+.viewVisaQuotationDetails_wrapper {
+    color: white;
+    width: 500px;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 0.689);
+    padding: 10px;
+    border-radius: 10px;
+    margin: 150px auto;
+}
+
+.viewVisaQuotationDetails_wrapper label {
+    font-weight: bold;
+    color: #FABA08;
+    width: 300px;
+    text-align: start;
+}
+
+.viewVisaQuotationDetails_wrapper_data_line{
+    display: flex;
+        justify-content: space-around;
+}
+.viewVisaQuotationDetails_wrapper2{
+    color: white;
+        width: 500px;
+        text-align: center;
+        border-collapse: collapse;
+        border: none;
+        background: rgba(0, 0, 0, 0.689);
+        padding: 10px;
+        border-radius: 10px;
+       margin-top:-130px;
+       margin-left:350px
+}
+
+/* ######################### form_view_search_visa_add_quotation ########################### */
+
+.form_view_search_visa_add_quotation_wrapper {
+    color: white;
+    width: 800px;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 7);
+    padding: 10px;
+    border-radius: 10px;
+    margin: 100px auto;
+}
+
+.form_view_search_visa_add_quotation_wrapper_data_l1_h {
+    border-radius: 2px;
+    background: #00b4d8;
+    color: black;
+    display: flex;
+}
+
+.form_view_search_visa_add_quotation_wrapper_data_l1_h p {
+    width: 300px;
+    font-weight: bold;
+}
+
+.form_view_search_visa_add_quotation_wrapper_data_l1_btns {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.form_view_search_visa_add_quotation_wrapper_data_l1 {
+    display: flex;
+    margin-top: 20px;
+}
+
+.form_view_search_visa_add_quotation_wrapper_data_in {
+    width: 200px;
+    text-align: start;
+}
+
+.form_view_search_visa_add_quotation_wrapper_data_in input {
+    width: 90%;
+}
+
+.form_view_search_visa_add_quotation_wrapper_data_l1_c {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.form_view_search_visa_add_quotation_wrapper_data_rem {
+    text-align: start;
+}
+
+.rel-btns input {
+    background: #00b4d8a7;
+    color: black;
+    cursor: pointer;
+    padding: 5px 8px;
+    border-radius: 4px;
+    transition: background .5s ease-in-out;
+    border: none;
+    outline: none;
+}
+.rel-btns input:hover {
+    background: #00b4d8;
+}
+
+.vertical-line {
+    border-left: 2px solid #00b4d8;
+    /* You can change the color by modifying #000 */
+    height: 87px;
+    position: absolute;
+    left:49.3%;
+}
+
+.horizontal-line {
+    border-bottom: 2px solid #00b4d8;
+    height: 2px;
+    width: 51%;
+    position: absolute;
+    top: 30%;
+}

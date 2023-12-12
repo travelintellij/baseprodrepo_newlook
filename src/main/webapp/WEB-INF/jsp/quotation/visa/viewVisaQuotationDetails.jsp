@@ -145,6 +145,15 @@ li a {
 <br>
 <h2 align="center">View Visa Quotation Details </h2>
 <body>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
 <form:form modelAttribute="QTN_OBJ" action="create_create_lead_quotation">
 	<table style="width:45%;margin: auto;">
 		<tr>
