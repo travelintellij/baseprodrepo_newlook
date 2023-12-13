@@ -4965,7 +4965,7 @@ justify-content: center;
         padding: 10px;
         border-radius: 10px;
        margin-top:-130px;
-       margin-left:350px
+       margin-left:510px
 }
 
 /* ######################### form_view_search_visa_add_quotation ########################### */
@@ -5053,4 +5053,104 @@ justify-content: center;
     width: 51%;
     position: absolute;
     top: 30%;
+}
+
+/* ##################### view_visa_master_details_modal ###################### */
+
+.view_visa_master_details_modal_wrapper {
+    color: white;
+    width: 1200px;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 7);
+    padding: 10px;
+    border-radius: 10px;
+    margin: 100px auto;
+}
+
+.view_visa_master_details_modal_wrapper_data_line {
+    display: flex;
+}
+
+.view_visa_master_details_modal_wrapper_data_l1 {
+    width: 300px;
+    text-align: start;
+}
+
+.view_visa_master_details_modal_wrapper_data_l1 label {
+    font-weight: bold;
+    color: #FABA08;
+    width: 300px;
+}
+.view_visa_master_details_modal_wrapper_data_line_rem_oc{
+    display: flex;
+    justify-content: space-between;
+}
+.view_visa_master_details_modal_wrapper_data_line_rem_oc label,.view_visa_master_details_modal_wrapper_data_line_rem label{
+font-weight: bold;
+    color: #FABA08;
+    width: 300px;
+}
+.rem_oc{
+    text-align: start;
+    width: 48%;
+}
+.view_visa_master_details_modal_wrapper_data_line_rem{
+    text-align: start;
+}
+.bc-clr{
+    background: #6082B6;
+    margin-bottom: 10px;
+}
+.view_visa_master_details_modal_wrapper_data_l1_cn{
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+.view_visa_master_details_modal_wrapper_data_l1_cn label{
+    font-size: 30px;
+}
+.view_visa_master_details_modal_wrapper_data_l1_cn p{
+    color: #32cd32;
+    font-size: 30px;
+}
+.m-try{
+	position: absolute;
+	top:120px;
+	color:black;
+	height:0px;
+	z-index:9;
+}
+.mb-try{
+	margin-top:-100px
+}
+.mc-try{
+	color:red;
+	height: 30px;
+	width:30px;
+	position:absolute;
+	top:10px;
+	left:10px
+}
+.mc-try:hover{
+	cursor: pointer;
+}
+.l-st{
+    font-weight: bold;
+        color: #FABA08;
+        width: 300px;
+}
+/* ######## sb ############ */
+.sb_wrapper{
+        color: white;
+        width: 500px;
+        text-align: center;
+        border-collapse: collapse;
+        border: none;
+        background: rgba(0, 0, 0, 7);
+        padding: 10px;
+        border-radius: 10px;
+        margin-top:-30px;
+        margin-left:510px
 }

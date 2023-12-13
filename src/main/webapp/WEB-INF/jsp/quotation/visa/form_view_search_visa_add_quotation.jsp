@@ -19,21 +19,16 @@
         <input type="hidden" id="countryCode" name="countryCode" />
         <input type="hidden" name="leadId" value="${QTN_OBJ.leadEntity.leadId}" />
         <input type="hidden" name="quotationId" value="${QTN_OBJ.quotationId}" />
-        <table
-            style="width:100%;  table-layout:fixed;background-color: #DFE0DC; border: 3px solid #000000; border-collapse: collapse">
-            <tr>
-                <td style="border:0px;"> <input style="width:600px;height: 50px; border-color: blue !important;"
-                        type="text" id="countryName" name="countryName" placeholder="country name" required /> </td>
-            </tr>
-            <tr>
-                <td style="border:0px;">
-                    <input type="submit" name="submit" value="Search Visa Details" />
-                    <a
-                        href="form_view_visa_quotation_details?quotationId=${QTN_OBJ.quotationId}&leadId=${QTN_OBJ.leadEntity.leadId}"><input
-                            type="button" style="background-color:blue;" value="Cancel" /></a></li>
-                </td>
-            </tr>
-        </table>
+       <div class="sb">
+        <div class="sb_wrapper">
+            <input type="text" id="countryName" name="countryName"
+                placeholder="country name" required />
+            <div class="due_today_task_data_btns">
+                <input type="submit" name="submit" value="Search Visa Details" />
+                <a href="form_view_visa_quotation_details?quotationId=${QTN_OBJ.quotationId}&leadId=${QTN_OBJ.leadEntity.leadId}">Cancel</a>
+            </div>
+        </div>
+    </div>
     </form:form>
     <!-- ########################## not styled yet ################################## -->
     <c:if test="${not empty VISA_RESULT_SET}">
