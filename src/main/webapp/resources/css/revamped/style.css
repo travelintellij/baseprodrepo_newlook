@@ -5154,3 +5154,148 @@ font-weight: bold;
         margin-top:-30px;
         margin-left:510px
 }
+/* ################# visa sec table ################### */
+.visa_sec_tabel {
+    color: white;
+    width: 1200px;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 7);
+    padding: 10px;
+    border-radius: 10px;
+    margin: 100px auto;
+}
+
+.vsi {
+    color: #FABA08;
+    position: relative;
+    transition: all .2s ease-in-out;
+    cursor: pointer;
+
+}
+
+.vsi-ul {
+    display: none;
+    position: absolute;
+    background: black;
+    padding: 10px;
+    border-radius: 5px;
+    transition: all .2s ease-in-out;
+    z-index: 9;
+    top: 0;
+    left: 17px;
+    width: 150px;
+}
+
+.vsi-ul li a {
+    color: white;
+    /* border-bottom: 2px solid red; */
+    /* margin-bottom: 5px; */
+    /* padding-bottom:10px ; */
+}
+
+.vsi-ul li {
+    border-bottom: 2px solid #FABA08;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+}
+
+.vsi-ul li a:hover {
+    font-size: 18px;
+    color: #FABA08;
+}
+
+.vsi:hover .vsi-ul {
+    display: block;
+    cursor: pointer;
+}
+
+.vsi:hover {
+    color: red;
+
+}
+.vsh{
+    background: #00b4d8;
+}
+
+
+
+/* ######################## viewCruiseQuotationDetails ###################### */
+
+.viewCruiseQuotationDetails_wrapper {
+    color: white;
+    width: 1200px;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 0.689);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 60px;
+}
+
+.viewCruiseQuotationDetailsfrm_wrapper {
+    color: white;
+    width: 500px;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 0.689);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 150px;
+    margin-left: 500px;
+}
+
+.viewCruiseQuotationDetailsfrm_wrapper_2 {
+    color: white;
+    width: 500px;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 0.689);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-left: 500px;
+}
+
+.viewCruiseQuotationDetails_wrapper_data_line {
+    display: flex;
+}
+
+.viewCruiseQuotationDetails_wrapper_data_l1 {
+    width: 300px;
+    text-align: start;
+}
+
+.viewCruiseQuotationDetails_wrapper_data_l1 input {
+    width: 90;
+    text-align: start;
+}
+
+.lb {
+    font-weight: bold;
+    color: #FABA08;
+    width: 300px;
+}
+.viewCruiseQuotationDetailsfrm_wrapper_data{
+    display: flex;
+}
+.viewCruiseQuotationDetailsfrm_wrapper_l1{
+    width: 250px;
+    
+}
+.viewCruiseQuotationDetailsfrm_wrapper_data2{
+    border: 2px solid red;
+    display: flex;
+}
+.viewCruiseQuotationDetailsfrm_wrapper_l12{
+    border: 2px solid green;
+    width: 250px;
+    text-align: start;
+}
+.viewCruiseQuotationDetailsfrm_wrapper_l12  input{
+    width: 90%;
+}

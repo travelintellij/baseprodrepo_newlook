@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>form_view_search_visa_add_quotation</title>
    <script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
+     <script src="https://kit.fontawesome.com/6f6addf9b0.js" crossorigin="anonymous"></script>
 <script	src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
 </head>
@@ -31,53 +32,69 @@
     </div>
     </form:form>
     <!-- ########################## not styled yet ################################## -->
+
+
     <c:if test="${not empty VISA_RESULT_SET}">
         <input type="hidden" id="countryName" name="countryName" value="${COUNTRY_NAME}" />
         <input type="hidden" id="countryCode" name="countryCode" value="${COUNTRY_CODE}" />
-        <table
-            style="width:100%;  table-layout:fixed;background-color: #DFE0DC; border: 3px solid #000000; border-collapse: collapse">
-            <tr>
-                <th style="width:9%;">Country Name</th>
-                <th style="width:9%;">Consulate City</th>
-                <th style="width:9%;">Visa Profile</th>
-                <th style="width:9%;">Visa Type</th>
-                <th style="width:9%;">Visa Purpose</th>
-                <th style="width:9%;">Processing Time</th>
-                <th style="width:46%;">Action</th>
-            </tr>
-            <c:forEach var="visaMasterObj" items="${VISA_RESULT_SET}">
-                <tr>
-                    <td style="width:9%;">${visaMasterObj.countryName}</td>
-                    <td style="width:9%;">${visaMasterObj.cityName}</td>
-                    <td style="width:9%;">${VISA_PROFILE.get(visaMasterObj.profile)}</td>
-                    <td style="width:9%;">${VISA_TYPE.get(visaMasterObj.visaType)}</td>
-                    <td style="width:9%;">${VISA_PURPOSE.get(visaMasterObj.visaPurpose)}</td>
-                    <td style="width:9%;">${visaMasterObj.processingTime} Days</td>
-                    <td style="width:46%;border:0;display:inline;">
-                        <a id="myBtn[${visaMasterObj.visaId}]" onclick="myStopsDisplay(this)"
-                            data-load-url="view_visa_master_details_modal?visaId=${visaMasterObj.visaId}"
-                            data-toggle="modal" data-target="#myModal"><input type="button"
-                                style="background-color:orange;color:black;" value="View Details" /></a>
-                        <a id="myBtn[${visaMasterObj.visaId}]" onclick="myStopsDisplay(this)"
-                            data-load-url="view_visa_documents_details_modal?visaId=${visaMasterObj.visaId}"
-                            data-toggle="modal" data-target="#myModal"><input type="button"
-                                style="background-color:orange;color:black;" value="View Visa Document" /></a>
-                        <a
-                            href="form_view_add_visa_quotation_form?visaId=${visaMasterObj.visaId}&leadId=${LEAD_OBJ.leadId }&quotationId=${QTN_OBJ.quotationId}"><input
-                                type="button" style="background-color:green;" value="Add To Quotation" /></a>
-                    </td>
+        <table class="visa_sec_tabel">
+            <thead>
+                <tr class="vsh">
+                    <th>Country Name</th>
+                    <th>Consulate City</th>
+                    <th>Visa Profile</th>
+                    <th>Visa Type</th>
+                    <th>Visa Purpose</th>
+                    <th>Processing Time</th>
+                    <th>Action</th>
                 </tr>
-            </c:forEach>
-        </table>
+            </thead>
+            <tbody>
+                <!-- Add your data rows here -->
+                <c:forEach var="visaMasterObj" items="${VISA_RESULT_SET}">
+                    <tr>
+                        <td>${visaMasterObj.countryName}</td>
+                        <td>${visaMasterObj.cityName}</td>
+                        <td>${VISA_PROFILE.get(visaMasterObj.profile)}</td>
+                        <td>${VISA_TYPE.get(visaMasterObj.visaType)}</td>
+                        <td>${VISA_PURPOSE.get(visaMasterObj.visaPurpose)}</td>
+                        <td>${visaMasterObj.processingTime} Days</td>
+                        <td>
+                            <i class="fa-solid fa-sliders vsi" aria-hidden="true">
+                                <div class="vsi-ul">
+                                    <ul>
+                                        <li><a id="myBtn[${visaMasterObj.visaId}]" onclick="myStopsDisplay(this)"
+                                                data-load-url="view_visa_master_details_modal?visaId=${visaMasterObj.visaId}"
+                                                data-toggle="modal" data-target="#myModal">View Details</a>
+                                        </li>
+                                        <li><a id="myBtn[${visaMasterObj.visaId}]" onclick="myStopsDisplay(this)"
+                                                data-load-url="view_visa_documents_details_modal?visaId=${visaMasterObj.visaId}"
+                                                data-toggle="modal" data-target="#myModal">View Visa Document</li>
+                                        <li><a
+                                                href="form_view_add_visa_quotation_form?visaId=${visaMasterObj.visaId}&leadId=${LEAD_OBJ.leadId }&quotationId=${QTN_OBJ.quotationId}">Add
+                                                To Quotation</a></li>
+                                    </ul>
+                                </div>
+                            </i>
+                        </td>
+                    </tr>
+                </c:forEach>
 
+                <!-- Add more rows as needed -->
+            </tbody>
+        </table>
     </c:if>
+
+
+
+
     <!-- ########################## not styled yet ################################## -->
     <c:if test="${VSA_ACTION eq 'ADD_VISA'}">
         <form:form method="post" action="create_create_visa_manual_quotation" modelAttribute="MANUAL_VSA">
             <input type="hidden" name="leadId" value="${QTN_OBJ.leadEntity.leadId}" />
             <input type="hidden" name="quotationId" value="${QTN_OBJ.quotationId}" />
             <input type="hidden" name="visaId" value="${VISA_OBJ.visaId}" />
-            <div class="form_view_search_visa_add_quotation">
+            <div class="form_view_search_visa_add_quotation" style="margin-top:-60px">
                 <div class="form_view_search_visa_add_quotation_wrapper">
                     <div class="form_view_search_visa_add_quotation_wrapper_data">
                         <div class="form_view_search_visa_add_quotation_wrapper_data_line">
@@ -88,7 +105,7 @@
                                 <p style="padding-right: 20px;">${VISA_OBJ.cityName}</p>
                             </div>
                             <div class="vertical-line"></div>
-                            <div class="horizontal-line"></div>
+                           
                             <div class="form_view_search_visa_add_quotation_wrapper_data_l1_btns">
                                 <div class="due_today_task_data_btns part">
                                     <a id="myBtn[${VISA_OBJ.visaId}]" onclick="myStopsDisplay(this)"
