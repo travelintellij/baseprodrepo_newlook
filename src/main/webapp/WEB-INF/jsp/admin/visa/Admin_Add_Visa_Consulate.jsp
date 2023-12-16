@@ -14,8 +14,31 @@
 <script	src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
 </head>
+<style>
+.autocomplete-suggestions { border: 1px solid #999; background: red;overflow-y:auto}
+		.autocomplete-suggestion {padding: 2px 5px;color:white; background: black;overflow-y: auto;overflow-y:auto}
+		.autocomplete-selected { background: #F0F0F0;overflow-y:auto} 
+		.autocomplete-suggestions strong { font-weight: normal; color:#FABA08;overflow-y:auto}
+		.autocomplete-group { padding: 2px 5px;overflow-y:auto}
+		.autocomplete-group strong { display: block; border-bottom: 1px solid #000;  background: black ; color:black overflow-y:auto}
+		.autocomplete-selected:hover{
+		color:black
+		}
 
-<body style="background: url(${pageContext.request.contextPath}/resources/images/revamped/assin_to_me_tasks_bg.jpg);background-size: cover; background-repeat: no-repeat; background-position: center center;background-attachment: fixed;">
+</style>
+<body style="background: url(${pageContext.request.contextPath}/resources/images/revamped/visa_bg3.jpg);background-size: cover; background-repeat: no-repeat; background-position: center center;background-attachment: fixed;">
+  
+  
+  
+<div class="autocomplete-suggestions" style="display:none">
+    <div class="autocomplete-group" ><strong>NHL</strong></div>
+    <div class="autocomplete-suggestion autocomplete-selected" >...</div>
+    <div class="autocomplete-suggestion">...</div>
+    <div class="autocomplete-suggestion">...</div>
+</div>
+  
+  
+  
     <div class="Admin_Add_Visa_Consulate container">
         <div class="Admin_Add_Visa_Consulate_wrapper">
             <h1 class="page-heading">Add Visa Consulate</h1>
@@ -57,7 +80,7 @@
                     <div class="Admin_Add_Visa_Consulate_wrapper_data_line">
                         <div class="Admin_Add_Visa_Consulate_wrapper_data_l1_add">
                             <label for="">Address</label><br>
-                            <textarea rows="2" cols="67" name="address"
+                            <textarea rows="1" cols="67" name="address"
                                 htmlEscape="false">${VISA_CONSULATE_OBJ.address }</textarea>
                         </div>
                         <div class="Admin_Add_Visa_Consulate_wrapper_data_l1">

@@ -13,8 +13,28 @@
 <script	src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
 </head>
+<style>
+.autocomplete-suggestions { border: 1px solid #999; background: red;overflow-y:auto}
+		.autocomplete-suggestion {padding: 2px 5px;color:white; background: black;overflow-y: auto;overflow-y:auto}
+		.autocomplete-selected { background: #F0F0F0;overflow-y:auto} 
+		.autocomplete-suggestions strong { font-weight: normal; color:#FABA08;overflow-y:auto}
+		.autocomplete-group { padding: 2px 5px;overflow-y:auto}
+		.autocomplete-group strong { display: block; border-bottom: 1px solid #000;  background: black ; color:black overflow-y:auto}
+		.autocomplete-selected:hover{
+		color:black
+		}
 
-<body style="background: url(${pageContext.request.contextPath}/resources/images/revamped/assin_to_me_tasks_bg.jpg);background-size: cover; background-repeat: no-repeat; background-position: center center;background-attachment: fixed;">
+</style>
+<body style="background: url(${pageContext.request.contextPath}/resources/images/revamped/visa_bg2.jpg);background-size: cover; background-repeat: no-repeat; background-position: center center;background-attachment: fixed;">
+
+<div class="autocomplete-suggestions" style="display:none">
+    <div class="autocomplete-group" ><strong>NHL</strong></div>
+    <div class="autocomplete-suggestion autocomplete-selected" >...</div>
+    <div class="autocomplete-suggestion">...</div>
+    <div class="autocomplete-suggestion">...</div>
+</div>
+
+
     <div class="Admin_Search_Visa_Consulate container">
         <div class="Admin_Search_Visa_Consulate_wrapper">
             <h1 class="page-heading">Search Visa Consulate</h1>
@@ -43,34 +63,37 @@
             </div>
             </form:form>
         </div>
-        <div align="center">${VISA_CONSULATE_COUNT_MSG}</div>
+        <div style="background:black;color: #32cd32 ;text-align:center;width:250px;margin:10px auto;border-radius:2px" >${VISA_CONSULATE_COUNT_MSG}</div>
         
         <c:if test="${not empty VISA_CONSULATE_RESULT_SET}">
             <form:form modelAttribute="EMAIL_VISA_MASTER" action="view_email_visa_master_docs_form">
-                <table border="1 px;" style="width:80%; border-collapse: collapse;" align="center">
-                    <tr>
-                        <th style="width:10%;">Consulate #</th>
-                        <th style="width:10%;">Country Name</th>
-                        <th style="width:10%;">Consulate City</th>
-                        <th style="width:10%;">Title</th>
-                        <th style="width:20%;" colspan="2">Action</th>
-                    </tr>
-                    <c:forEach var="visaConsulateObj" items="${VISA_CONSULATE_RESULT_SET}">
-                        <tr>
-                            <td style="width:10%;">${visaConsulateObj.consulateId}</td>
-                            <td style="width:10%;">${COUNTRY_NAME}</td>
-                            <td style="width:10%;">${visaConsulateObj.cityName}</td>
-                            <td style="width:10%;">${visaConsulateObj.consulateTitle}</td>
-                            <td style="width:10%;border:0;">
-                                <a href="view_view_visa_consulate?consulateId=${visaConsulateObj.consulateId}"><input
-                                        type="button" style="background-color:blue;" value="View" /></a>
-                                <a href="view_edit_visa_consulate_form?consulateId=${visaConsulateObj.consulateId}"><input
-                                        type="button" style="background-color:blue;" value="Edit" /></a>
-                            </td>
-                        </tr>
-                    </c:forEach>
-                </table>
-            </form:form>
+         <table class = "vst_wrapper container ">
+        <thead>
+            <tr style="background:#6082B6">
+                <th class="vsth">Consulate</th>
+                <th class="vsth">Country Name</th>
+                <th class="vsth">Consulate City</th>
+                <th class="vsth">Title</th>
+                <th class="vsth">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        <c:forEach var="visaConsulateObj" items="${VISA_CONSULATE_RESULT_SET}">
+            <tr>
+                <td>${visaConsulateObj.consulateId}</td>
+                <td>${COUNTRY_NAME}</td>
+                <td>${visaConsulateObj.cityName}</td>
+                <td>${visaConsulateObj.consulateTitle}</td>
+                <td class="vts-btn">
+                <a href="view_view_visa_consulate?consulateId=${visaConsulateObj.consulateId}">View</a>
+                <a href="view_edit_visa_consulate_form?consulateId=${visaConsulateObj.consulateId}">Edit</a>
+                </td>
+            </tr>
+            </c:forEach>
+            <!-- Add more rows as needed with <tr> and <td> elements -->
+        </tbody>
+    </table>
+     </form:form>
         </c:if>
     </div>
 

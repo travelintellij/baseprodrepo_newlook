@@ -5299,3 +5299,122 @@ font-weight: bold;
 .viewCruiseQuotationDetailsfrm_wrapper_l12  input{
     width: 90%;
 }
+/* ################ Admin_Update_Visa_Docs ################## */
+
+.Admin_Update_Visa_Docs_wrapper{
+        color: white;
+        width: 100%;
+        text-align: center;
+        border-collapse: collapse;
+        border: none;
+        background: rgba(0, 0, 0, 9);
+        padding: 10px;
+        border-radius: 10px;
+        margin-top: 115px;
+}
+.Admin_Update_Visa_Docs_wrapper_data_line{
+    display: flex;
+}
+.Admin_Update_Visa_Docs_wrapper_data_l1{
+    width: 300px;
+    text-align: start;
+
+}
+.Admin_Update_Visa_Docs_wrapper_data_l1_rem{
+    width: 600px;
+    text-align: start;
+}
+.Admin_Update_Visa_Docs_wrapper_data_l1_rems{
+    width: 1200px;
+    text-align: start;
+}
+.vst_wrapper {
+    color: white;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.vsth {
+    font-weight: bold;
+    color: #FABA08;
+}
+.vts-btn a{
+	color:red
+}
+.vst-btn  a{
+	margin-right:10px
+}
+/* ################### Admin_View_Visa_Consulate ################ */
+
+.Admin_View_Visa_Consulate_wrapper {
+    color: white;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 115px;
+}
+.Admin_View_Visa_Consulate_wrapepr_data_line{
+    display: flex;
+}
+.Admin_View_Visa_Consulate_wrapepr_data_l1{
+    text-align: start;
+    width: 300px;
+}
+.vst-btn-cbt{
+	background:#32cd32  
+}
+
+/* #################### vstab ################## */
+
+.vstab {
+    color: white;
+    width: 1500px;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 7);
+    padding: 10px;
+    border-radius: 10px;
+    margin: 0 auto;
+    border-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.vstab thead {
+    background: #6082B6;
+    font-size: 18px;
+    color: black;
+    height: 40px;
+}
+.vstab_wrap_btns {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    width:1500px;
+    margin:0 auto;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background: black;
+    color: white;
+    align-items: center;
+}
+.vstab-btn input{
+	cursor:pointer;
+	border-radius:5px;
+	border:none;
+	outline:none;
+	padding: 5px 10px;
+	background: #32cd32  ;
+	color:white
+}
+
