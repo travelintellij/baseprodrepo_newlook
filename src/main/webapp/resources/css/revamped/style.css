@@ -5418,3 +5418,295 @@ font-weight: bold;
 	color:white
 }
 
+
+/* ################### form_visa_docs_emailer ############### */
+.form_visa_docs_emailer_wrapper {
+    color: white;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 115px;
+}
+
+.form_visa_docs_emailer_wrapper_data_wrapper_dl {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form_visa_docs_emailer_wrapper_data_wrapper_dl1 {
+    width: 600px;
+    text-align: start;
+}
+
+.form_visa_docs_emailer_wrapper_data_wrapper_dl1 input {
+    width: 100%;
+}
+
+.lb {
+    font-weight: bold;
+    color: #FABA08;
+}
+
+.form_visa_docs_emailer_wrapper_2_tabel {
+    width: 100%;
+}
+
+.form_visa_docs_emailer_wrapper_div {
+    color: white;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+.form_visa_docs_emailer_wrapper_2_tabel_h{
+   background: #6082B6
+}
+
+/* ####################  Admin_Del_Con_Visa_Docs ################  */
+.Admin_Del_Con_Visa_Docs_wrapper {
+    color: white;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 115px;
+}
+
+.Admin_Del_Con_Visa_Docs_wrapper_data_li {
+    display: flex;
+}
+
+.Admin_Del_Con_Visa_Docs_wrapper_data_l1 {
+    width: 300px;
+    text-align: start;
+}
+
+.Admin_Del_Con_Visa_Docs_wrapper_data_lower {
+    display: flex;
+}
+
+.Admin_Del_Con_Visa_Docs_wrapper_document {
+    width: 290px;
+    text-align: start;
+}
+
+.Admin_Del_Con_Visa_Docs_wrapper_document_des {
+    width: 100%;
+    text-align: start;
+}
+.update_visa_table{
+	border:2px solid red
+}
+
+/* ##################################################### */
+
+.abc_fom_wrapper{
+    color: white;
+        width: 100%;
+        text-align: center;
+        border-collapse: collapse;
+        border: none;
+        background: rgba(0, 0, 0, 9);
+        padding: 10px;
+        margin-top: 115px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+}
+.abc_fom_wrapper_data_line{
+    display: flex;
+}
+.abc_fom_wrapper_data_l1{
+    width: 300px;
+    text-align: start;
+}
+.abc_fom_wrapper_data_l1_rem{
+    width: 50%;
+    text-align: start;
+}
+.abc_fom_wrapper_data_l1_rems{
+    width: 100%;
+    text-align: start;
+}
+.container_v{
+	    color: white;
+        width: 100%;
+        text-align: center;
+        border: none;
+        background: rgba(0, 0, 0, 9);
+        padding: 10px;
+        margin-top: 115px;
+}
+/* ################## admin_visa_update_fr ############ */
+.admin_visa_update_fr_wrapper {
+    color: white;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 115px;
+}
+.admin_visa_update_fr_wrapper_data_line{
+    display: flex;
+}
+.admin_visa_update_fr_wrapper_data_l1{
+    width:300px;
+    text-align: start;
+}
+.admin_visa_update_fr_wrapper_data_l1 input{
+    width:90%;
+}
+.admin_visa_update_fr_wrapper_data_rem{
+    width: 50%;
+    text-align: start;
+}
+.admin_visa_update_fr_wrapper_data_rem {
+    width: 50%;
+    text-align: start;
+}
+.admin_visa_update_fr_wrapper_data_rem input{
+    width: 95%;
+}
+.admin_visa_update_fr_wrapper_data_rems{
+    text-align: start;
+}
+
+/* ######################  UserCRUDDocs ##################### */
+.UserCRUDDocs_tabel{
+    color: white;
+    width: 1200px;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+   margin-top: 150px;
+    margin-left: 150px;
+}
+.UserCRUDDocs_tabel2{
+    color: white;
+     width: 600px;
+     text-align: center;
+     border-collapse: collapse;
+     border: none;
+     background: rgba(0, 0, 0, 9);
+     padding: 10px;
+     border-radius: 10px;
+     margin-top:50px;
+     margin-left:450px
+}
+.UserCRUDDocs_tabel3{
+	 color: white;
+     width: 600px;
+     height: 50px;
+     text-align: center;
+     border-collapse: collapse;
+     border: none;
+     background: rgba(0, 0, 0, 9);
+     padding: 50px;
+     border-radius: 10px;
+     margin-top:50px;
+     margin-left:450px
+}
+
+
+
+
+/* ####################### rso ######################## */
+.rso_wrapper {
+    color: white;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 115px;
+}
+
+.rso_wrapper_data_line {
+    display: flex;
+}
+
+.rso_wrapper_data_l1 {
+    width: 300px;
+    text-align: start;
+}
+
+.rso_wrapper_data_l1_p {
+    width: 300px;
+    display: flex;
+}
+
+.qf {
+    text-align: start;
+    width: 50%;
+}
+
+.rso_wrapper_data_l1p {
+    width: 295px;
+    text-align: start;
+}
+
+.rso_wrapper_data_ser {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.rso_table {
+    color: white;
+    width: 1200px;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.rso_sms {
+    color: white;
+    width: 1200px;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.rso_sms_heading,
+.rso_sms_input {
+    text-align: start;
+}
+
+.sms_email_wrapper{
+    display: flex;
+    margin-bottom: 10px;
+}
+.rso_sms_heading{
+    text-align: start;
+    width: 400px;
+}
+.rso_sms_heading input{
+   width: 95%;
+}
