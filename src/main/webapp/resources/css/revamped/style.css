@@ -5710,3 +5710,105 @@ font-weight: bold;
 .rso_sms_heading input{
    width: 95%;
 }
+
+/* ####################### viewEditQuotationDetails ############ */
+
+.viewEditQuotationDetails_wrapper{
+    color: white;
+        width: 1200px;
+        text-align: center;
+        border-collapse: collapse;
+        border: none;
+        background: rgba(0, 0, 0, 9);
+        padding: 10px;
+        border-radius: 10px;
+        margin-top:185px;
+        margin-left: 230px;
+}
+.viewEditQuotationDetails_wrapper_data_line{
+    display: flex;
+}
+.viewEditQuotationDetails_wrapper_dl1{
+    width: 300px;
+    text-align: start;
+}
+.viewEditQuotationDetails_wrapper_data_line_sr{
+    display: flex;
+    justify-content: space-between;
+}
+/* ################ form_convertNewDeal ############### */
+
+.form_convertNewDeal_wrapper {
+    color: white;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 115px;
+}
+.form_convertNewDeal_wrapper_data_line{
+    display: flex;
+}
+.form_convertNewDeal_wrapper_dl1{
+    width: 300px;
+    text-align: start;  
+}
+.form_convertNewDeal_ser{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+/* #################### form_supplier_request_quotation_emailer ############### */
+
+.form_supplier_request_quotation_emailer_wrapper {
+    color: white;
+    width: 700px;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 115px;
+    margin-left:235px;
+}
+
+.form_supplier_request_quotation_emailer_wrapper_dline {
+    display: flex;
+}
+
+.form_supplier_request_quotation_emailer_wrapper_dl1 {
+    width: 400px;
+    text-align: center;
+}
+.form_supplier_request_quotation_e{
+    color: white;
+        width: 100%;
+        text-align: center;
+        border-collapse: collapse;
+        border: none;
+        background: rgba(0, 0, 0, 9);
+        padding: 10px;
+        border-radius: 10px;
+        margin-top: 10px;
+}
+.form_supplier_request_quotation_e_wr_d{
+    display: flex;
+}
+.form_supplier_request_quotation_e_w{
+    width: 400px;
+    text-align: start;
+}
+.form_supplier_request_quotation_e_w input{
+    width:90% ;
+}
+.form_supplier_request_quotation_e_m{
+    width: 100%;
+    text-align: start;
+}
+
