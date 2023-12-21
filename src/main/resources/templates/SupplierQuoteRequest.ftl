@@ -36,7 +36,7 @@ background-repeat: no-repeat; background-size: cover; background-position: cente
 
     <main style="padding: 20px;">
         <div
-            style="margin: 10px auto; max-width: 500px; text-align: center;background-color: #fff0f3e6;color:black;border-radius: 5px;border:5px solid #00b4d8">
+            style="margin: 10px auto; max-width: 500px; text-align: center;background-color: #fff0f3e6;color:black;border-radius: 5px;border:5px solid rgba(0, 0, 255, 0.488)">
             <h1 style="font-size: 20px; margin-bottom: 20px;">B2B Query Ref Number:
                 ${leadConfirmationNumber}</h1>
         </div>
@@ -46,27 +46,11 @@ background-repeat: no-repeat; background-size: cover; background-position: cente
                 in our system. You are receiving this email because UdanChoo believes that you will provide us with the
                 best possible cost and service.</p>
             <table style="border-collapse: collapse; width: 90%;">
-                <!-- <tr>
-                    <th style="padding-right: 10px; color: black; text-align: left;">Guests</th>
-                    <td style=" font-family: 'Poppins', sans-serif;color:black">${guestDetails}</td>
+             <tr>
+             <td>
+                <pre>${queryMessage}</pre>
+                </td>
                 </tr>
-                <tr>
-                    <th style="padding-right: 10px; color:black; text-align: left;">Travel Start Date</th>
-                    <td style=" font-family: 'Poppins', sans-serif;color:black">${travelStartDate}</td>
-                </tr>
-                <tr>
-                    <th style="padding-right: 10px; color:black; text-align: left;">Travel End Date</th>
-                    <td style=" font-family: 'Poppins', sans-serif;color:black">${travelEndDate}</td>
-                </tr>
-                <tr>
-                    <th style="padding-right: 10px; color: black; text-align: left;">Traveling From</th>
-                    <td style=" font-family: 'Poppins', sans-serif;color:black">${sourceName}</td>
-                </tr>
-                <tr>
-                    <th style="padding-right: 10px; color: black; text-align: left;">Traveling To</th>
-                    <td style=" font-family: 'Poppins', sans-serif;color:black">${destinationName}</td>
-                </tr> -->
-                <pre>$ queryMessage</pre>
             </table>
             <p style="color:black">Looking forward to seeing our better partnering experience
                 You will hear soon from us with the confimation to proceed further once we find your deal better and
@@ -77,7 +61,7 @@ background-repeat: no-repeat; background-size: cover; background-position: cente
                 if in case you would like to talk to us &nbsp;
             </p>
             <p style="color:black">Please feel free to escalate to my manager by email
-                <strong>sales@udanchoo.com</strong> or call @<strong>99 99 44 9267</strong>, if you find any issue
+                <strong>sales@udanchoo.com</strong> or call <strong>99 99 44 9267</strong> @, if you find any issue
                 related to my extended support in this query. I am dedicated and working on this query. </p>
             <p style="color:black">Regards <br><span style="font-weight: bold;">${serviceAdvisor}</span><br>UdanChoo
                 Query Owner <br>Customer care: 99 99 44 6267</p>
