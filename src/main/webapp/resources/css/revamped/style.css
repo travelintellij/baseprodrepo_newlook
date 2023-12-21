@@ -3950,8 +3950,9 @@ font-weight: bold;
 
 .viewLeadQuotationsTabel {
     margin-top: 5px;
+    margin-left:-100px;
     color: white;
-    width: 100%;
+    width: 1400px;
     background: rgba(0, 0, 0, 9);
 }
 
@@ -5812,3 +5813,35 @@ font-weight: bold;
     text-align: start;
 }
 
+/* #################### ViewClientDetails ############## */
+.ViewClientDetails_wrapper{
+    color: white;
+        width: 100%;
+        text-align: center;
+        border-collapse: collapse;
+        border: none;
+        background: rgba(0, 0, 0, 9);
+        padding: 10px;
+        border-radius: 10px;
+        margin-top: 125px;
+        margin-bottom: 50px;
+}
+.ViewClientDetails_wrapper_data_line{
+    display: flex;
+}
+.ViewClientDetails_wrapper_dl1{
+    width: 300px;
+    text-align: start;
+}
+.ViewClientDetails_wrapper_dl1_add{
+    width: 1200px;
+    text-align: start;
+}
+.ViewClientDetails_wrapper_dl1_M{
+    width: 295px;
+    text-align: start;
+}
+.ViewClientDetails_wrapper_dl1_rem{
+    width: 1200px;
+    text-align: start;
+}

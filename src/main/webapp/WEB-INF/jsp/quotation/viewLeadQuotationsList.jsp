@@ -167,11 +167,11 @@
         <!-- ############## tabel goes here ##################### -->
 
 
-        <table class="viewLeadQuotationsTabel">
+        <table class="viewLeadQuotationsTabel" >
             <thead>
                 <tr>
                     <th>Quotation ID</th>
-                    <th>Version</th>
+                    <th style="width:100px">Version</th>
                     <th>Quotation Name</th>
                     <th>Created Date</th>
                     <th>Last Edit</th>
@@ -209,7 +209,7 @@
 
 
                 <c:forEach items="${LEAD_OBJ.leadQuotationsList}" var="leadquotations">
-                    <tr>
+                    <tr style=" margin-bottom: 10px">
                         <td style="border-width:5px;">${leadquotations.quotationId }</td>
                         <td style="border-width:5px;">${leadquotations.version }</td>
                         <td style="border-width:5px;">${leadquotations.quotationName}</td>
@@ -222,43 +222,27 @@
                                 <c:when test="${ (leadquotations.version gt CONVERTED_QTN.version) && (CONVERTED_QTN.version gt 0) }">
                                     <td style="border-width:5px;;">
                                         <a
-                                            href="form_view_quotation_details?leadId=${LEAD_OBJ.leadId }&quotationId=${leadquotations.quotationId }"><input
-                                                type="button" 
-                                                value="View" /></a> |
+                                            href="form_view_quotation_details?leadId=${LEAD_OBJ.leadId }&quotationId=${leadquotations.quotationId }" style=";padding:2px 5px; border-radius:3px;background:#32cd32;color:white">View</a> |
                                         <a
-                                            href="form_view_edit_quotation_details?leadId=${LEAD_OBJ.leadId }&quotationId=${leadquotations.quotationId }"><input
-                                                type="button" 
-                                                value="Edit" /></a> |
+                                            href="form_view_edit_quotation_details?leadId=${LEAD_OBJ.leadId }&quotationId=${leadquotations.quotationId }" style=";padding:2px 5px; border-radius:3px;background:#32cd32;color:white">Edit</a> |
                                         <a
-                                            href="form_view_delete_quotation_details?leadId=${LEAD_OBJ.leadId }&quotationId=${leadquotations.quotationId }"><input
-                                                type="button" 
-                                                value="Delete" /></a>
+                                            href="form_view_delete_quotation_details?leadId=${LEAD_OBJ.leadId }&quotationId=${leadquotations.quotationId }" style=";padding:2px 5px; border-radius:3px;background:red;color:white">Delete</a>
                                         |
                                         <a
-                                            href="form_view_duplicate_quotation_details?leadId=${LEAD_OBJ.leadId }&quotationId=${leadquotations.quotationId }"><input
-                                                type="button" 
-                                                value="Duplicate Quotation" /></a>
+                                            href="form_view_duplicate_quotation_details?leadId=${LEAD_OBJ.leadId }&quotationId=${leadquotations.quotationId }" style=";padding:2px 5px; border-radius:3px;background:#32cd32;color:white">Duplicate Quotation</a>
                                         |
-                                        <a><input type="button" 
-                                                value="Lock-And-Convert" /></a>
+                                        <a style=";padding:2px 5px; border-radius:3px;background:#32cd32;color:white">Lock-And-Convert</a>
                                     </td>
                                 </c:when>
                                 <c:when test="${ leadquotations.version lt CONVERTED_QTN.version  }">
                                     <td style="border-width:5px;;">
                                         <a
-                                            href="form_view_quotation_details?leadId=${LEAD_OBJ.leadId }&quotationId=${leadquotations.quotationId }"><input
-                                                type="button" 
-                                                value="View" /></a> |
-                                        <a><input type="button" 
-                                                value="Edit" /></a> |
-                                        <a><input type="button" 
-                                                value="Delete" /></a> |
+                                            href="form_view_quotation_details?leadId=${LEAD_OBJ.leadId }&quotationId=${leadquotations.quotationId }" style=";padding:2px 5px; border-radius:3px;background:#32cd32;color:white">View</a> |
+                                        <a style=";padding:2px 5px; border-radius:3px;background:#32cd32;color:white">Edit</a> |
+                                        <a style=";padding:2px 5px; border-radius:3px;background:red;color:white">Delete</a> |
                                         <a
-                                            href="form_view_duplicate_quotation_details?leadId=${LEAD_OBJ.leadId }&quotationId=${leadquotations.quotationId }"><input
-                                                type="button" 
-                                                value="Duplicate Quotation" /></a> |
-                                        <a><input type="button" 
-                                                value="Lock-And-Convert" /></a>
+                                            href="form_view_duplicate_quotation_details?leadId=${LEAD_OBJ.leadId }&quotationId=${leadquotations.quotationId }" style=";padding:2px 5px; border-radius:3px;background:#32cd32;color:white">Duplicate Quotation</a> |
+                                        <a style=";padding:2px 5px; border-radius:3px;background:#32cd32;color:white">Lock-And-Convert</a>
                                     </td>
                                 </c:when>
                                 <c:otherwise>
@@ -267,23 +251,17 @@
                                     <div class="quotation-box-three-bar">
                                     <ul>
                                     <li><a
-                                            href="form_view_quotation_details?leadId=${LEAD_OBJ.leadId }&quotationId=${leadquotations.quotationId }"><input
-                                                type="button"
-                                                value="View" style="background:transparent;border:none;outline:none;color:white"/></a> </li>
+                                            href="form_view_quotation_details?leadId=${LEAD_OBJ.leadId }&quotationId=${leadquotations.quotationId }">View</a> </li>
                                     <li><a
-                                            href="form_view_edit_quotation_details?leadId=${LEAD_OBJ.leadId }&quotationId=${leadquotations.quotationId }"><input
-                                                type="button" 
-                                                value="Edit" style="background:transparent;border:none;outline:none;color:white"/></a></li>
+                                            href="form_view_edit_quotation_details?leadId=${LEAD_OBJ.leadId }&quotationId=${leadquotations.quotationId }">Edit</a></li>
                                     <li> <a href="form_view_delete_quotation_details?leadId=${LEAD_OBJ.leadId }&quotationId=${leadquotations.quotationId }">
-                                                <input type="button" style="background:transparent;border:none;outline:none;color:white"  value="Delete" /></a></li>
+                                               Delete</a></li>
                                             
                                     <li><a
-                                            href="form_view_duplicate_quotation_details?leadId=${LEAD_OBJ.leadId }&quotationId=${leadquotations.quotationId }"><input
-                                                type="button" 
-                                                value="Duplicate Quotation" style="background:transparent;border:none;outline:none;color:white" /></a></li>
+                                            href="form_view_duplicate_quotation_details?leadId=${LEAD_OBJ.leadId }&quotationId=${leadquotations.quotationId }">Duplicate Quotation</a></li>
                                     <li>
                                       <a href="form_convert_new_deal?leadId=${LEAD_OBJ.leadId }&quotationId=${leadquotations.quotationId }"
-                                            aria-disabled="true"><input type="button" value="Lock-And-Convert" style="background:transparent;border:none;outline:none;color:white"/></a>
+                                            aria-disabled="true">Lock-And-Convert</a>
                                     </li>
                                     </ul>
                                      
@@ -306,22 +284,15 @@
                         <c:if test="${ leadquotations.converted eq true }">
                             <td style="border-width:5px;;">
                                 <a
-                                    href="form_view_quotation_details?leadId=${LEAD_OBJ.leadId }&quotationId=${leadquotations.quotationId }"><input
-                                        type="button" style="background-color: #786AAF;padding: 4px 5px;"
-                                        value="View" /></a> |
-                                <a><input type="button" style="background-color: lightgrey;padding: 4px 5px;"
-                                        value="Edit" /></a> |
-                                <a><input type="button" style="background-color: lightgrey;padding: 4px 5px;"
-                                        value="Delete" /></a> |
+                                    href="form_view_quotation_details?leadId=${LEAD_OBJ.leadId }&quotationId=${leadquotations.quotationId }" style=";padding:2px 5px; border-radius:3px;background:#32cd32;color:white">View</a> |
+                                <a style=";padding:2px 5px; border-radius:3px;background:#32cd32;color:white">Edit</a> |
+                                <a style=";padding:2px 5px; border-radius:3px;background:red;color:white" >Delete</a> |
                                 <a
-                                    href="form_view_duplicate_quotation_details?leadId=${LEAD_OBJ.leadId }&quotationId=${leadquotations.quotationId }"><input
-                                        type="button" style="background-color: green;padding: 4px 5px;"
-                                        value="Duplicate Quotation" /></a> |
-                                <a><input type="button" style="background-color: lightgrey;padding: 4px 5px;"
-                                        value="Lock-And-Convert" /></a>
+                                    href="form_view_duplicate_quotation_details?leadId=${LEAD_OBJ.leadId }&quotationId=${leadquotations.quotationId }" style=";padding:2px 5px; border-radius:3px;background:#32cd32;color:white">Duplicate Quotation</a> |
+                                <a style=";padding:2px 5px; border-radius:3px;background:#32cd32;color:white">Lock-And-Convert</a>
                             </td>
                             <td style="border-width:5px;;">
-                                <Input type="button" value="CONVERTED" style="background-color:green;cursor:none;" />
+                               <a style=";padding:2px 5px; border-radius:3px;background:#32cd32;color:white">CONVERTED</a>
                             </td>
                         </c:if>
                     </tr>

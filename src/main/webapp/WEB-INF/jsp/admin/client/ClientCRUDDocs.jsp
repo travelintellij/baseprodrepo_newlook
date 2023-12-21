@@ -65,6 +65,14 @@ input[type=button], input[type=submit], input[type=reset] {
 	</center>
 	<div align="center"><b><font color="green" > ${Success} </font><font color="red"> ${Error}</font> </b></div>
 <body>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 	<form:form modelAttribute="CLIENT_OBJ" action="search_search_filtered_clients">
 			
 			<table style="width: 90%; ">

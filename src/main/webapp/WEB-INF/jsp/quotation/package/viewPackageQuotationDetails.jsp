@@ -143,6 +143,17 @@ li a {
 }
 </style>
 <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <h2 align="center">View Package Quotation Details </h2>
 <body>
 <form:form modelAttribute="QTN_OBJ" action="create_create_lead_quotation">
