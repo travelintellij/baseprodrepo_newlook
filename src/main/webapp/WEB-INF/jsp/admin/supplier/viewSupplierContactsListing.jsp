@@ -75,10 +75,25 @@
 	
 	.modal-body {padding: 2px 16px;}
 
+
+        body::before {
+            content: "";
+            background-image: url(${pageContext.request.contextPath}/resources/images/revamped/viewSupplierContactsListing_bg.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5; /* Adjust the opacity value as needed (0.0 to 1.0) */
+            z-index: -1;
+        }
 </style>
 
-<body
-    style="background: url(${pageContext.request.contextPath}/resources/images/revamped/viewSupplierContactsListing_bg.jpg);background-size: cover; background-repeat: no-repeat; background-position: center center;background-attachment: fixed;">
+<body>
 
 
 
@@ -90,7 +105,7 @@
                     <form:hidden path="supplierId" />
                     <form:hidden path="supplierName" />
                     <form:hidden path="leadId" />
-                    <div class="vscl_wrapper_data_line_1" style="margin-bottom:10px">
+                    <div class="vscl_wrapper_data_line_1" style="margin-bottom:10px;background:#6082B6">
                         <div class="vscl_wrapper_data_l1">
                             <label for="" style="color:#FFBA08">Supplier Name</label>
                             <p>${SUPPLIER_OBJ.supplierName}</p>
@@ -113,9 +128,8 @@
                     <div class="vscl_wrapper_data_line_2">
                         <h1 style="color:#FFBA08">Services offered</h1>
                         <div class="vscl_wrapper_data_l2">
-                            <tr>
-                                <td><label class="container"
-                                        style="display: inline;margin: 0 auto;margin-bottom: 20px;">
+                            <div style="display:flex;justify-content:space-between;margin:10px 0">
+                                <div><label class="container">
                                         <c:if test="${SUPPLIER_OBJ.flight eq true}">
                                             <input type="checkbox" checked disabled />
                                         </c:if>
@@ -124,8 +138,8 @@
                                         </c:if>
                                         <span class="checkmark"></span>
                                     </label>Flight
-                                </td>
-                                <td><label class="container"
+                                </div>
+                                <div><label class="container"
                                         style="display: inline;margin: 0 auto;margin-bottom: 20px;">
                                         <c:if test="${SUPPLIER_OBJ.hotel eq true}">
                                             <input type="checkbox" checked disabled />
@@ -135,8 +149,8 @@
                                         </c:if>
                                         <span class="checkmark"></span>
                                     </label>Hotel
-                                </td>
-                                <td>
+                                </div>
+                                <div>
                                     <label class="container"
                                         style="display: inline;margin: 0 auto;margin-bottom: 20px;">
                                         <c:if test="${SUPPLIER_OBJ.transfers eq true}">
@@ -147,8 +161,8 @@
                                         </c:if>
                                         <span class="checkmark"></span>
                                     </label>Transfers
-                                </td>
-                                <td>
+                                </div>
+                                <div>
                                     <label class="container"
                                         style="display: inline;margin: 0 auto;margin-bottom: 20px;">
                                         <c:if test="${SUPPLIER_OBJ.sightseeing eq true}">
@@ -159,8 +173,8 @@
                                         </c:if>
                                         <span class="checkmark"></span>
                                     </label>Sight Seeing
-                                </td>
-                                <td>
+                                </div>
+                                <div>
                                     <label class="container"
                                         style="display: inline;margin: 0 auto;margin-bottom: 20px;">
                                         <c:if test="${SUPPLIER_OBJ.visa eq true}">
@@ -171,8 +185,8 @@
                                         </c:if>
                                         <span class="checkmark"></span>
                                     </label>Visa
-                                </td>
-                                <td>
+                                </div>
+                                <div>
                                     <label class="container"
                                         style="display: inline;margin: 0 auto;margin-bottom: 20px;">
                                         <c:if test="${SUPPLIER_OBJ.insurance eq true}">
@@ -183,8 +197,8 @@
                                         </c:if>
                                         <span class="checkmark"></span>
                                     </label>Insurance
-                                </td>
-                                <td colspan="2">
+                                </div>
+                                <div colspan="2">
                                     <label class="container"
                                         style="display: inline;margin: 0 auto;margin-bottom: 20px;">
                                         <c:if test="${SUPPLIER_OBJ.landPackage eq true}">
@@ -192,8 +206,7 @@
                                         </c:if>
                                         <span class="checkmark"></span>
                                     </label>Package
-                                </td>
-                            </tr>
+                                </div>
                         </div>
                     </div>
 
@@ -210,6 +223,8 @@
 
             </div>
         </div>
+                </div>
+                        </div>
 
 
 
@@ -221,9 +236,9 @@
 
 
   
-        <div class="client_listing_tabel_div ">
+        <div class="client_listing_tabel_div " style="background:black;text-align:center;margin-top:10px;padding-top:10px">
             <div align="center" style="display:inline;"><b>
-                    <font color="green"> ${Success} </font>
+                    <font color="#32cd32  "> ${Success} </font>
                     <font color="red"> ${Error}</font>
                 </b></div>
 
@@ -237,24 +252,26 @@
             </div>
 
             <table class="view_task_table ">
+            <thead>
                 <tr>
-                    <th>Contact No.</th>
-                    <th>Contact Name</th>
-                    <th>Role</th>
-                    <th>Mobile</th>
-                    <th>Email</th>
-                    <th>Action</th>
+                    <th style="background:#6082B6">Contact No.</th>
+                    <th style="background:#6082B6">Contact Name</th>
+                    <th style="background:#6082B6">Role</th>
+                    <th style="background:#6082B6">Mobile</th>
+                    <th style="background:#6082B6">Email</th>
+                    <th style="background:#6082B6">Action</th>
                 </tr>
+                </thead>
 
                 <c:forEach items="${SUPPLIER_OBJ.supplierContactsList}" var="contactList">
                     <tr>
-                        <td style="height:30px;width:9%">${contactList.supplierContactId}</td>
-                        <td>${contactList.contactName}</td>
-                        <td>${contactList.role}</td>
-                        <td>${contactList.mobile}</td>
-                        <td>${contactList.email}</td>
+                        <td style="border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53">${contactList.supplierContactId}</td>
+                        <td  style="border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53">${contactList.contactName}</td>
+                        <td  style="border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53">${contactList.role}</td>
+                        <td  style="border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53">${contactList.mobile}</td>
+                        <td  style="border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53">${contactList.email}</td>
 
-                        <td colspan="3">
+                        <td colspan="3"  style="border-bottom:2px solid #FFCF53">
                             Email To: <label class="container"
                                 style="display: inline;margin: 0 auto;margin-bottom: 20px;"><input type="checkbox"
                                     name="emailToList" value="${contactList.email}" /> <span
@@ -302,7 +319,6 @@
             </table>
           
         </div>
-    </div>
 
   </form:form>
 

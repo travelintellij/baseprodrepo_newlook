@@ -1127,7 +1127,7 @@ footer {
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 0.689);
+    background: rgba(0, 0, 0, 0.9);
     padding: 30px 10px 30px 10px;
     border-radius: 10px;
     margin-top: 115px;
@@ -1289,7 +1289,7 @@ footer {
     margin-top: 120px;
     /* border: 2px solid red; */
     padding: 10px;
-    background: rgba(0, 0, 0, 0.716);
+    background: rgba(0, 0, 0, 0.9);
     color: white;
     border-radius: 10px;
 }
@@ -1934,7 +1934,7 @@ footer {
 .serach_supplier_wrapper {
     margin-top: 115px;
     padding: 5px 10px;
-    background: rgba(0, 0, 0, 0.716);
+    background: rgba(0, 0, 0, 0.9);
     color: white;
     border-radius: 10px;
 }
@@ -2010,7 +2010,7 @@ footer {
 .search_suppler_table {
     width: 1450px;
     margin: 10px auto;
-    background: rgba(0, 0, 0, 0.716);
+    background: rgba(0, 0, 0, 0.9);
     color: white;
     border-radius: 10px;
 }
@@ -2043,11 +2043,12 @@ footer {
     padding: 7px;
     border-radius: 10px;
     color: white;
-    background: black;
+    background: gray;
     position: absolute;
     display: none;
-    left: -120px;
-    top: 10px;
+    left: -117px;
+    top: -10px;
+    z-index:5
 }
 
 
@@ -2086,9 +2087,9 @@ footer {
 
 
 .view_supplier_details_wrapper {
-    margin-top:25px;
+    margin-top:115px;
     padding: 20px 10px;
-    background: gray;
+    background: black;
     color: white;
     border-radius: 10px;
 }
@@ -2097,7 +2098,9 @@ footer {
     display: flex;
     /* justify-content: space-between; */
 }
-
+.view_supplier_details_data p{
+	color:black
+}
 .view_supplier_details_data1 .view_supplier_details_li {
     width: 266px;
     margin-right: 100px;
@@ -2400,11 +2403,10 @@ footer {
     text-align: center;
     margin-top: 20px;
     width: 100%;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.9);
     color: white;
     border-radius: 10px;
 }
-
 .view_task_table th {
     color: #FFBA08
 }
@@ -3060,7 +3062,7 @@ due_today_ticket_wrapper_data_l1_1 {
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.9);
     padding: 10px;
     border-radius: 10px;
     margin-top: 160px;
@@ -3299,7 +3301,7 @@ transition: all 0.2s ease-in-out;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.9);
     padding: 10px;
     border-radius: 10px;
     margin-top: 115px;
@@ -4283,7 +4285,7 @@ color:#249C91;
     text-align: center;
     border-collapse: collapse;
     border: none;
-       background: rgba(0, 0, 0, 0.689);
+    background: rgba(0, 0, 0, 0.9);
     padding: 10px;
     border-radius: 10px;
     margin-top: 115px;
@@ -5789,20 +5791,21 @@ font-weight: bold;
 }
 .form_supplier_request_quotation_e{
     color: white;
-        width: 100%;
+        width: 800px;
         text-align: center;
         border-collapse: collapse;
         border: none;
         background: rgba(0, 0, 0, 9);
         padding: 10px;
         border-radius: 10px;
-        margin-top: 10px;
+        margin: 10px auto;
 }
 .form_supplier_request_quotation_e_wr_d{
     display: flex;
+    flex-direction: column;
 }
 .form_supplier_request_quotation_e_w{
-    width: 400px;
+    width: 100%;
     text-align: start;
 }
 .form_supplier_request_quotation_e_w input{

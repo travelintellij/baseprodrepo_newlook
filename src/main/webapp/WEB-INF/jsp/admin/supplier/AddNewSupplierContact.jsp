@@ -16,10 +16,26 @@
 <script	src="<c:url value="/resources/core/magicsuggest.js" />"></script>
 </head>
 
+<style>
 
+        body::before {
+            content: "";
+            background-image: url(${pageContext.request.contextPath}/resources/images/revamped/addNewSupp.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5; /* Adjust the opacity value as needed (0.0 to 1.0) */
+            z-index: -1;
+        }
+</style>
 
-<body
-      style="background: url(${pageContext.request.contextPath}/resources/images/revamped/addNewSupp.jpg);background-size: cover; background-repeat: no-repeat; background-position: center center;background-attachment: fixed;">
+<body>
     <div class="AddNewSupplierContact container">
         <div class="AddNewSupplierContact_wrapper">
             <h1 style="color:#00b200;font-size: 30px">(Supplier Id : ${SUPPLIER_OBJ.supplierId})</h1>
@@ -29,7 +45,7 @@
                 </b></div>
             <div class="AddNewSupplierContact_wrapper_data">
                 <form:form method="post" modelAttribute="SUPPLIER_OBJ">
-                    <div class="AddNewSupplierContact_wrapper_data_line">
+                    <div class="AddNewSupplierContact_wrapper_data_line" style="margin-bottom:10px;background:#6082B6">
                         <div class="AddNewSupplierContact_wrapper_data_l1">
                             <label for="" style="color:#FFBA08;font-weight: bold;">Supplier Name</label>
                             <p>${SUPPLIER_OBJ.supplierName}</p>
@@ -51,14 +67,16 @@
                     </div>
                     <!-- ############ servies starts here ############## -->
                      <h3 style="color:#FFBA08;font-weight: bold;text-align:start">Service Offerred</h3>       
-                    <div class="AddNewSupplierContact_wrapper_data_line_ser" style="display:flex;">
-                        <form:checkbox path="flight" disabled="true" style="margin-right:5px"/>Flight
-                        <form:checkbox path="hotel" disabled="true" style="margin-left:10px;margin-right:5px"/>Hotel
-                        <form:checkbox path="transfers" disabled="true" style="margin-left:10px;margin-right:5px"/>Transfers
-                        <form:checkbox path="sightseeing" disabled="true" style="margin-left:10px;margin-right:5px"/>SightSeeing
-                        <form:checkbox path="visa" disabled="true" style="margin-left:10px;margin-right:5px"/>Visa
-                        <form:checkbox path="insurance" disabled="true" style="margin-left:10px;margin-right:5px"/>Insurance
-                        <form:checkbox path="landPackage" disabled="true" style="margin-left:10px;margin-right:5px"/>Package
+                    <div class="AddNewSupplierContact_wrapper_data_line_ser" style="display:flex;justify-content:space-between">
+                    <div><form:checkbox path="flight" disabled="true" style="margin-right:5px"/>Flight</div>
+                    <div>  <form:checkbox path="hotel" disabled="true" style="margin-left:10px;margin-right:5px"/>Hotel</div>
+                    <div><form:checkbox path="transfers" disabled="true" style="margin-left:10px;margin-right:5px"/>Transfers</div>
+                    <div> <form:checkbox path="sightseeing" disabled="true" style="margin-left:10px;margin-right:5px"/>SightSeeing</div>
+                    <div><form:checkbox path="visa" disabled="true" style="margin-left:10px;margin-right:5px"/>Visa</div>
+                    <div> <form:checkbox path="insurance" disabled="true" style="margin-left:10px;margin-right:5px"/>Insurance</div>
+                    <div> <form:checkbox path="landPackage" disabled="true" style="margin-left:10px;margin-right:5px"/>Package</div>
+  
+                       
                     </div>
                 </form:form>
                 <!-- ############ servies ends here ############## -->
@@ -67,7 +85,7 @@
                 <!-- ######## Add new Contact from starts here ########## -->
 
                 <form:form method="post" action="create_create_supplier_contact" modelAttribute="SUPPLIER_CONTACT_OBJ">
-                    <div class="AddNewSupplierContact_wrapper_data_form">
+                    <div class="AddNewSupplierContact_wrapper_data_form" style="margin:20px 0">
                         <input type="hidden" name="supplierId"
                             value="${SUPPLIER_CONTACT_OBJ.supplierEntity.supplierId}" />
                         <h1 style="color:#FFBA08;font-weight: bold;font-size: 30px;">Add New Contact</h1>

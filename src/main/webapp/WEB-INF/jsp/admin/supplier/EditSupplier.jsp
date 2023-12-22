@@ -14,63 +14,51 @@
      <script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
      <script	src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
      <script	src="<c:url value="/resources/core/magicsuggest.js" />"></script>
+     <link href="resources/core/magicsuggest.css" rel="stylesheet" type="text/css">
+     <link href="<c:url value="/resources/core/main.css" />" rel="stylesheet">
 </head>
 <style>
-    .autocomplete-suggestions {
-        border: 1px solid #999;
-        background: red;
-        overflow-y: auto
-    }
+   .autocomplete-suggestions { border: 1px solid #999; background: red;overflow-y:auto}
+		.autocomplete-suggestion {padding: 2px 5px;color:white; background: black;overflow-y: auto;overflow-y:auto}
+		.autocomplete-selected { background: #F0F0F0;overflow-y:auto} 
+		.autocomplete-suggestions strong { font-weight: normal; color:#FABA08;overflow-y:auto}
+		.autocomplete-group { padding: 2px 5px;overflow-y:auto}
+		.autocomplete-group strong { display: block; border-bottom: 1px solid #000;  background: black ; color:black overflow-y:auto}
+		.autocomplete-selected:hover{
+		color:black
+		}
 
-    .autocomplete-suggestion {
-        padding: 2px 5px;
-        color: white;
-        background: black;
-        overflow-y: auto;
-        overflow-y: auto
-    }
+        body::before {
+            content: "";
+            background-image: url(${pageContext.request.contextPath}/resources/images/revamped/EditSupplier_bg.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5; /* Adjust the opacity value as needed (0.0 to 1.0) */
+            z-index: -1;
+        }
 
-    .autocomplete-selected {
-        background: #F0F0F0;
-        overflow-y: auto
-    }
-
-    .autocomplete-suggestions strong {
-        font-weight: normal;
-        color: #FABA08;
-        overflow-y: auto
-    }
-
-    .autocomplete-group {
-        padding: 2px 5px;
-        overflow-y: auto
-    }
-
-    .autocomplete-group strong {
-        display: block;
-        border-bottom: 1px solid #000;
-        background: black;
-        color: black overflow-y:auto
-    }
-
-    .autocomplete-selected:hover {
-        color: black
-    }
 </style>
 
-<body
-    style="background: url(${pageContext.request.contextPath}/resources/images/revamped/EditSupplier_bg.jpg);background-size: cover; background-repeat: no-repeat; background-position: center center;background-attachment: fixed;">
-    <div class="autocomplete-suggestions" style="display:none">
-        <div class="autocomplete-group"><strong>NHL</strong></div>
-        <div class="autocomplete-suggestion autocomplete-selected">...</div>
-        <div class="autocomplete-suggestion">...</div>
-        <div class="autocomplete-suggestion">...</div>
-    </div>
+<body>
+  <div class="autocomplete-suggestions" style="display:none">
+    <div class="autocomplete-group" ><strong>NHL</strong></div>
+    <div class="autocomplete-suggestion autocomplete-selected" >...</div>
+    <div class="autocomplete-suggestion">...</div>
+    <div class="autocomplete-suggestion">...</div>
+</div>
+
     <div class="container">
         <div class="add-new-supplier-wrapper">
             <h1 class="ansupplier-heading" style="font-size: 30px;
     color: #FFBA08;
-    margin-bottom: 10px;">Edit Supplier <span>(Supplier Id : ${SUPPLIER_OBJ.supplierId})</span> </h1>
+    margin-bottom: 10px;">Edit Supplier <span style="color:#32cd32  ">(Supplier Id : ${SUPPLIER_OBJ.supplierId})</span> </h1>
             <div align="center"><b>
                     <font color="green"> ${Success} </font>
                     <font color="red"> ${Error}</font>
@@ -102,7 +90,7 @@
 
                     <div class="ansd1">
                         <label for="con">Country</label><br>
-                        <form:input path="countryName" style="height:30px;width:250px;margin: auto;" /><br>
+                        <form:input path="countryName" style="width:90%" /><br>
                         <form:hidden path="countryId" />
                         <font color="red">
                             <form:errors path="countryName" cssClass="error" />
@@ -144,46 +132,55 @@
                             <form:errors path="phone" cssClass="error" />
                         </font>
                     </div>
-
-                    <div class="ans-last-sec">
-                        <p class="ans-heading">Select destinations
-                            Services</p>
-                        <font color="red">
-                            <form:errors path="destinationNames" cssClass="error" />
-                        </font>
-                        <input style="background:pink;color:black;width:250px" type="text" id="destinationHandling"
-                            name="destinationHandling" placeholder="Select Destination Services"
-                            style="width: 250px;" />
-                        <form:hidden path="destinationNames" />
-                        <form:hidden path="operatingDestinations" />
-                    </div>
-
-
-                </div>
-                <div class="ans-thir-li">
-                    <div class="ansd1-rem ans-comDel">
-                        <label for="cd">Company Details</label><br>
-                        <form:textarea path="companyDetails" rows="1" cols="50" maxlength="240" />
-                        <font color="red">
-                            <form:errors path="companyDetails" cssClass="error" />
-                        </font>
-                    </div>
-                    <div class="ansd1 ans-gst">
+                     <div class="ans-thir-li">
+                    <div class="ansd1" >
                         <label for="GST-Details">GST Details</label><br>
-                        <form:input path="gstDetails" name="gstDetails" style="height:30px;width:250px;margin: auto;"
+                        <form:input path="gstDetails" name="gstDetails" style="width:90%"
                             class="contact" id="GST-Details" />
                         <font color="red">
                             <form:errors path="gstDetails" cssClass="error" />
                         </font>
                     </div>
-                    <div class="ansd1-rem">
+                </div>
+                     
+                </div>
+                
+                <div class="ansd1-rem ans-comDel" style="width:1210px">
+                        <label for="cd">Company Details</label><br>
+                        <form:textarea path="companyDetails" rows="1" cols="100" maxlength="240" />
+                        <font color="red">
+                            <form:errors path="companyDetails" cssClass="error" />
+                        </font>
+                    </div>
+                
+                
+                <div class="ans-last-sec">
+                        <p class="ans-heading" style="text-align:start">Select destinations
+                            Services</p>
+                       	<font color="red"><form:errors path="destinationNames" cssClass="error" /></font>
+					<div id="sscontainer" class="sscontainer">
+					<form:hidden path = "destinationNames" color="white"/>
+					<form:hidden path = "operatingDestinations"  color="white"/>
+					<input type="text" id="destinationHandling" name="destinationHandling" class="form-control"  style="width:1190px"/>
+					</div>
+                    </div>
+                
+                
+                
+                
+                
+               
+                
+                
+                <div class="ansd1-rem" style="width:1210px">
                         <label for="Address">Address</label><br>
-                        <form:textarea path="address" rows="2" cols="50" maxlength="240" />
+                        <form:textarea path="address" rows="2" cols="10" maxlength="240" />
                         <font color="red">
                             <form:errors path="address" cssClass="error" />
                         </font>
                     </div>
-                </div>
+                
+                
                 <div class="ans-for-li">
                     <div class="ansd1-rem">
                         <label for="cd">Bank Details</label><br>

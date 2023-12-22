@@ -15,7 +15,7 @@
     <div class="view_SupplierContact_Modal container">
     <form:form method="post" >
 		<input type="hidden" name="supplierId" value= "${SUPPLIER_CONTACT_OBJ.supplierEntity.supplierId}" />
-        <div class="view_SupplierContact_Modal_wrapper" style="margin-top:25px;background:#07beb8;box-shadow: 0 0 10px 5px #3dccc7, 0 0 20px 10px #3dccc7;">
+        <div class="view_SupplierContact_Modal_wrapper" style="margin-top:25px;background:#94d2bd;box-shadow: 0 0 10px 5px #94d2bd, 0 0 20px 10px #94d2bd;">
             <h1 class="view_SupplierContact_Modal_heading" style="color:white">Contact Details</h1>
             <div class="view_SupplierContact_Modal_data">
                 <div class="view_SupplierContact_Modal_data_line1">

@@ -76,15 +76,34 @@
 	}
 	
 	.modal-body {padding: 2px 16px;}
+	
+	
+
+        body::before {
+            content: "";
+            background-image:url(${pageContext.request.contextPath}/resources/images/revamped/search_supplier_bg.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5; /* Adjust the opacity value as needed (0.0 to 1.0) */
+            z-index: -1;
+        }
+
+	
 
 </style>
 
 
-<body
-    style="background: url(${pageContext.request.contextPath}/resources/images/revamped/search_supplier_bg.jpg);background-size: cover; background-repeat: no-repeat; background-position: center center;background-attachment: fixed;">
+<body>
     <div class="search_supplier container">
         <div class="serach_supplier_wrapper">
-            <h1>Search Supplier</h1>
+            <h1>Search Supplier </h1>
             <div align="center"><b>
                     <font color="#32cd32 "> ${Success} </font>
                     <font color="red"> ${Error}</font>
@@ -313,24 +332,24 @@
 
 
 	<div id="pagination" align="center">
-				<font size="3">Page: 
-			    <c:url value="view_form_admin_search_supplier" var="prev">
+				<font size="3">  <span style="background:black;padding:2px 5px;border-radius:2px;color:#ffa500">Page:</span>   
+			    <c:url value="view_form_admin_search_supplier" var="prev"> 
 			       <c:param name="page" value="${page-1}"/>
 			    </c:url>
 			    <c:if test="${page > 0}">
-			        <a href="<c:out value="${prev}&sortBy=${sortBy}&supplierName=${SEARCH_SUPPLIER.supplierName}&cityId=${SEARCH_SUPPLIER.cityId}&cityName=${SEARCH_SUPPLIER.cityName}&serviceCityId=${SEARCH_SUPPLIER.serviceCityId}&serviceCityName=${SEARCH_SUPPLIER.serviceCityName}&flight=${SEARCH_SUPPLIER.flight}&hotel=${SEARCH_SUPPLIER.hotel}&transfers=${SEARCH_SUPPLIER.transfers}&sightseeing=${SEARCH_SUPPLIER.sightseeing}&visa=${SEARCH_SUPPLIER.visa}&insurance=${SEARCH_SUPPLIER.insurance}&cruise=${SEARCH_SUPPLIER.cruise}&consolidator=${SEARCH_SUPPLIER.consolidator}&landPackage=${SEARCH_SUPPLIER.landPackage}&leadId=${SEARCH_SUPPLIER.leadId}" />" class="pn prev">Prev</a>
+			        <a style="background:black;padding:2px 5px;border-radius:2px;color:#ffa500" href="<c:out value="${prev}&sortBy=${sortBy}&supplierName=${SEARCH_SUPPLIER.supplierName}&cityId=${SEARCH_SUPPLIER.cityId}&cityName=${SEARCH_SUPPLIER.cityName}&serviceCityId=${SEARCH_SUPPLIER.serviceCityId}&serviceCityName=${SEARCH_SUPPLIER.serviceCityName}&flight=${SEARCH_SUPPLIER.flight}&hotel=${SEARCH_SUPPLIER.hotel}&transfers=${SEARCH_SUPPLIER.transfers}&sightseeing=${SEARCH_SUPPLIER.sightseeing}&visa=${SEARCH_SUPPLIER.visa}&insurance=${SEARCH_SUPPLIER.insurance}&cruise=${SEARCH_SUPPLIER.cruise}&consolidator=${SEARCH_SUPPLIER.consolidator}&landPackage=${SEARCH_SUPPLIER.landPackage}&leadId=${SEARCH_SUPPLIER.leadId}" />" class="pn prev">Prev</a>
 			    </c:if>
 			
 			    <c:forEach begin="1" end="${maxPages}" step="1" varStatus="i">
 			        <c:choose>
 			            <c:when test="${(page+1) == i.index}">
-			                <span>${i.index}</span>
+			                <span pagination styling   style="background:black;padding:2px 5px;border-radius:2px;color:white">${i.index}</span>
 			            </c:when>
 			            <c:otherwise>
 			                <c:url value="view_form_admin_search_supplier" var="url">
 			                    <c:param name="page" value="${i.index-1}"/>
 			                </c:url>
-			                 <a href='<c:out value="${url}&sortBy=${sortBy}&supplierName=${SEARCH_SUPPLIER.supplierName}&cityId=${SEARCH_SUPPLIER.cityId}&cityName=${SEARCH_SUPPLIER.cityName}&serviceCityId=${SEARCH_SUPPLIER.serviceCityId}&serviceCityName=${SEARCH_SUPPLIER.serviceCityName}&flight=${SEARCH_SUPPLIER.flight}&hotel=${SEARCH_SUPPLIER.hotel}&transfers=${SEARCH_SUPPLIER.transfers}&sightseeing=${SEARCH_SUPPLIER.sightseeing}&visa=${SEARCH_SUPPLIER.visa}&insurance=${SEARCH_SUPPLIER.insurance}&cruise=${SEARCH_SUPPLIER.cruise}&consolidator=${SEARCH_SUPPLIER.consolidator}&landPackage=${SEARCH_SUPPLIER.landPackage}&leadId=${SEARCH_SUPPLIER.leadId}" />'>${i.index}</a>
+			                 <a pagination styling   style="background:black;padding:2px 5px;border-radius:2px;color:white" href='<c:out value="${url}&sortBy=${sortBy}&supplierName=${SEARCH_SUPPLIER.supplierName}&cityId=${SEARCH_SUPPLIER.cityId}&cityName=${SEARCH_SUPPLIER.cityName}&serviceCityId=${SEARCH_SUPPLIER.serviceCityId}&serviceCityName=${SEARCH_SUPPLIER.serviceCityName}&flight=${SEARCH_SUPPLIER.flight}&hotel=${SEARCH_SUPPLIER.hotel}&transfers=${SEARCH_SUPPLIER.transfers}&sightseeing=${SEARCH_SUPPLIER.sightseeing}&visa=${SEARCH_SUPPLIER.visa}&insurance=${SEARCH_SUPPLIER.insurance}&cruise=${SEARCH_SUPPLIER.cruise}&consolidator=${SEARCH_SUPPLIER.consolidator}&landPackage=${SEARCH_SUPPLIER.landPackage}&leadId=${SEARCH_SUPPLIER.leadId}" />'>${i.index}</a>
 			            </c:otherwise>
 			        </c:choose>
 			    </c:forEach>
@@ -338,7 +357,7 @@
 			        <c:param name="page" value="${page + 1}"/>
 			    </c:url>
 			    <c:if test="${page + 1 < maxPages}">
-			       <a href='<c:out value="${next}&sortBy=${sortBy}&supplierName=${SEARCH_SUPPLIER.supplierName}&cityId=${SEARCH_SUPPLIER.cityId}&cityName=${SEARCH_SUPPLIER.cityName}&serviceCityId=${SEARCH_SUPPLIER.serviceCityId}&serviceCityName=${SEARCH_SUPPLIER.serviceCityName}&flight=${SEARCH_SUPPLIER.flight}&hotel=${SEARCH_SUPPLIER.hotel}&transfers=${SEARCH_SUPPLIER.transfers}&sightseeing=${SEARCH_SUPPLIER.sightseeing}&visa=${SEARCH_SUPPLIER.visa}&insurance=${SEARCH_SUPPLIER.insurance}&cruise=${SEARCH_SUPPLIER.cruise}&consolidator=${SEARCH_SUPPLIER.consolidator}&landPackage=${SEARCH_SUPPLIER.landPackage}&leadId=${SEARCH_SUPPLIER.leadId}" />' class="pn next">Next</a>
+			       <a style="background:black;padding:2px 5px;border-radius:2px;color:#ffa500" href='<c:out value="${next}&sortBy=${sortBy}&supplierName=${SEARCH_SUPPLIER.supplierName}&cityId=${SEARCH_SUPPLIER.cityId}&cityName=${SEARCH_SUPPLIER.cityName}&serviceCityId=${SEARCH_SUPPLIER.serviceCityId}&serviceCityName=${SEARCH_SUPPLIER.serviceCityName}&flight=${SEARCH_SUPPLIER.flight}&hotel=${SEARCH_SUPPLIER.hotel}&transfers=${SEARCH_SUPPLIER.transfers}&sightseeing=${SEARCH_SUPPLIER.sightseeing}&visa=${SEARCH_SUPPLIER.visa}&insurance=${SEARCH_SUPPLIER.insurance}&cruise=${SEARCH_SUPPLIER.cruise}&consolidator=${SEARCH_SUPPLIER.consolidator}&landPackage=${SEARCH_SUPPLIER.landPackage}&leadId=${SEARCH_SUPPLIER.leadId}" />' class="pn next">Next</a>
 			    </c:if>
 			    </font>
 			</div>

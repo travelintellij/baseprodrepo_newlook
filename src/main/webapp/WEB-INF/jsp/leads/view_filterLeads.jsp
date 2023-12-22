@@ -95,9 +95,24 @@
 	  color: white;
 	}
 
+        body::before {
+            content: "";
+            background-image:  url(${pageContext.request.contextPath}/resources/images/revamped/lens.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5; /* Adjust the opacity value as needed (0.0 to 1.0) */
+            z-index: -1;
+        }
 </style>
 
-<body style="background: url(${pageContext.request.contextPath}/resources/images/revamped/lens.jpg);background-size: cover; background-repeat: no-repeat; background-position: center center;background-attachment: fixed;">
+<body>
    
 <div class="autocomplete-suggestions" style="display:none">
     <div class="autocomplete-group" ><strong>NHL</strong></div>
@@ -262,50 +277,50 @@
             
             
                 <table border="1">
-                    <thead >
-                        <th >Lead id</th>
-                        <th style="width:5%">F</th>
-                        <th>Q</th>
-                        <th style="width:350px">Client Name</th>
-                        <th>Desti.</th>
-                        <th>Reference</th>
-                        <th>Tsd</th>
-                        <th>Ted</th>
-                        <th>Status</th>
-                        <th>Owner</th>
-                        <th>Action</th>
+                    <thead style="background:#6082B6" >
+                        <th style="color:black" >Lead id</th>
+                        <th style="width:3%;color:black">F</th>
+                        <th style="width:3%;color:black">Q</th>
+                        <th style="width:350px;color:black">Client Name</th>
+                        <th style="color:black">Desti.</th>
+                        <th style="color:black">Reference</th>
+                        <th style="color:black">Tsd</th>
+                        <th style="color:black">Ted</th>
+                        <th style="color:black">Status</th>
+                        <th style="color:black">Owner</th>
+                        <th style="color:black">Action</th>
                     </thead>
                     <tbody>
                   	<c:forEach items="${FILTERED_LEADS_RECORDS}" var="filteredLeads">
 						<tr>
-							<td class="leadId">
+							<td class="leadId" style="border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53;border-left:2px solid #FFCF53"">
 								<a style="cursor: pointer;" id="myBtn[${filteredLeads.leadId}]" onclick="myLeadDisplay(this)" data-load-url="view_lead_details_modal?leadId=${filteredLeads.leadId}" data-toggle="modal" data-target="#myModal" >
 									Q-${String.format("%04d",filteredLeads.leadId)}-${filteredLeads.leadSourceShortName }
 								</a>
 							</td>
 							<c:if test="${filteredLeads.flagged eq true}">
-								<td class="tick"><i class="fa-solid fa-check"></i></td>
+								<td class="tick" style="border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53"><i class="fa-solid fa-check"></i></td>
 							</c:if>
 							<c:if test="${filteredLeads.flagged eq false}">
-								<td class="cross"><i class="fa-solid fa-xmark"></i></td>
+								<td class="cross" style="border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53"><i class="fa-solid fa-xmark"></i></td>
 							</c:if>
 							<c:if test="${filteredLeads.qualified eq true}">
-								<td class="tick"><i class="fa-solid fa-check"></i></td>
+								<td class="tick" style="border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53"><i class="fa-solid fa-check"></i></td>
 									</c:if>
 									<c:if test="${filteredLeads.qualified eq false}">
-								<td class="cross"><i class="fa-solid fa-xmark"></i></td>
+								<td class="cross" style="border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53"><i class="fa-solid fa-xmark"></i></td>
 							</c:if>
-							<td>${filteredLeads.contactName}</td>
-							<td>${filteredLeads.destinationName}</td>
-							<td>${filteredLeads.leadSourceName}</td>
-							<td><fmt:formatDate value="${filteredLeads.travelStartDate}" pattern="dd-MM-yyyy" /></td>
-							<td><fmt:formatDate value="${filteredLeads.travelEndDate}" pattern="dd-MM-yyyy" /></td>
+							<td style="border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53">${filteredLeads.contactName}</td>
+							<td style="border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53">${filteredLeads.destinationName}</td>
+							<td style="border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53">${filteredLeads.leadSourceName}</td>
+							<td style="border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53"><fmt:formatDate value="${filteredLeads.travelStartDate}" pattern="dd-MM-yyyy" /></td>
+							<td style="border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53"><fmt:formatDate value="${filteredLeads.travelEndDate}" pattern="dd-MM-yyyy" /></td>
 							
-							<td>${filteredLeads.statusName}</td>
-							<td>${filteredLeads.leadOwnerName}</td>
-							    <td class="st fili">
+							<td style="border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53">${filteredLeads.statusName}</td>
+							<td style="border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53">${filteredLeads.leadOwnerName}</td>
+							    <td class="st fili" style="border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53">
 	                               <i class="fa-solid fa-sliders st1">
-	                                   <div class="ul">
+	                                   <div class="ul" style="background:gray">
 	                                       <ul>
 	                                           <li><a href="form_view_lead_followup_details?leadId=${filteredLeads.leadId }"
 	                                                   class="pop-up">FollowUp</a></li>
@@ -334,19 +349,19 @@
 			       <c:param name="page" value="${page-1}"/>
 			    </c:url>
 			    <c:if test="${page > 0}">
-			        <a href="<c:out value="${prev}&sortBy=${sortBy}&qualified=${FILTER_LEAD_WL.qualified}&flagged=${FILTER_LEAD_WL.flagged}&leadOwner=${FILTER_LEAD_WL.leadOwner}&leadSource=${FILTER_LEAD_WL.leadSource}&leadStatus=${FILTER_LEAD_WL.leadStatus}&source=${FILTER_LEAD_WL.source}&sourceName=${FILTER_LEAD_WL.sourceName}&destinationName=${FILTER_LEAD_WL.destinationName}&destination=${FILTER_LEAD_WL.destination}&contactId=${FILTER_LEAD_WL.contactId}&contactName=${FILTER_LEAD_WL.contactName}&dateCriteria=${FILTER_LEAD_WL.dateCriteria}&startDate=${FILTER_LEAD_WL.startDate}&endDate=${FILTER_LEAD_WL.endDate}" />" class="pn prev">Prev</a>
+			        <a style="background:black;padding:2px 5px;border-radius:2px;color:#ffa500" href="<c:out value="${prev}&sortBy=${sortBy}&qualified=${FILTER_LEAD_WL.qualified}&flagged=${FILTER_LEAD_WL.flagged}&leadOwner=${FILTER_LEAD_WL.leadOwner}&leadSource=${FILTER_LEAD_WL.leadSource}&leadStatus=${FILTER_LEAD_WL.leadStatus}&source=${FILTER_LEAD_WL.source}&sourceName=${FILTER_LEAD_WL.sourceName}&destinationName=${FILTER_LEAD_WL.destinationName}&destination=${FILTER_LEAD_WL.destination}&contactId=${FILTER_LEAD_WL.contactId}&contactName=${FILTER_LEAD_WL.contactName}&dateCriteria=${FILTER_LEAD_WL.dateCriteria}&startDate=${FILTER_LEAD_WL.startDate}&endDate=${FILTER_LEAD_WL.endDate}" />" class="pn prev">Prev</a>
 			    </c:if>
 			
 			    <c:forEach begin="1" end="${maxPages}" step="1" varStatus="i">
 			        <c:choose>
 			            <c:when test="${(page+1) == i.index}">
-			                <span>${i.index}</span>
+			                <span style="background:black;padding:2px 5px;border-radius:2px;color:white">${i.index}</span>
 			            </c:when>
 			            <c:otherwise>
 			                <c:url value="view_filter_leads" var="url">
 			                    <c:param name="page" value="${i.index-1}"/>
 			                </c:url>
-			                 <a href='<c:out value="${url}&sortBy=${sortBy}&qualified=${FILTER_LEAD_WL.qualified}&flagged=${FILTER_LEAD_WL.flagged}&leadOwner=${FILTER_LEAD_WL.leadOwner}&leadSource=${FILTER_LEAD_WL.leadSource}&leadStatus=${FILTER_LEAD_WL.leadStatus}&source=${FILTER_LEAD_WL.source}&sourceName=${FILTER_LEAD_WL.sourceName}&destinationName=${FILTER_LEAD_WL.destinationName}&destination=${FILTER_LEAD_WL.destination}&contactId=${FILTER_LEAD_WL.contactId}&contactName=${FILTER_LEAD_WL.contactName}&dateCriteria=${FILTER_LEAD_WL.dateCriteria}" />'>${i.index}</a>
+			                 <a style="background:black;padding:2px 5px;border-radius:2px;color:white" href='<c:out value="${url}&sortBy=${sortBy}&qualified=${FILTER_LEAD_WL.qualified}&flagged=${FILTER_LEAD_WL.flagged}&leadOwner=${FILTER_LEAD_WL.leadOwner}&leadSource=${FILTER_LEAD_WL.leadSource}&leadStatus=${FILTER_LEAD_WL.leadStatus}&source=${FILTER_LEAD_WL.source}&sourceName=${FILTER_LEAD_WL.sourceName}&destinationName=${FILTER_LEAD_WL.destinationName}&destination=${FILTER_LEAD_WL.destination}&contactId=${FILTER_LEAD_WL.contactId}&contactName=${FILTER_LEAD_WL.contactName}&dateCriteria=${FILTER_LEAD_WL.dateCriteria}" />'>${i.index}</a>
 			            </c:otherwise>
 			        </c:choose>
 			    </c:forEach>
@@ -354,7 +369,7 @@
 			        <c:param name="page" value="${page + 1}"/>
 			    </c:url>
 			    <c:if test="${page + 1 < maxPages}">
-			       <a href='<c:out value="${next}&sortBy=${sortBy}&qualified=${FILTER_LEAD_WL.qualified}&flagged=${FILTER_LEAD_WL.flagged}&leadOwner=${FILTER_LEAD_WL.leadOwner}&leadSource=${FILTER_LEAD_WL.leadSource}&leadStatus=${leadStatus}&source=${FILTER_LEAD_WL.source}&sourceName=${FILTER_LEAD_WL.sourceName}&destinationName=${FILTER_LEAD_WL.destinationName}&destination=${FILTER_LEAD_WL.destination}&contactId=${FILTER_LEAD_WL.contactId}&contactName=${FILTER_LEAD_WL.contactName}&dateCriteria=${FILTER_LEAD_WL.dateCriteria}&startDate=${FILTER_LEAD_WL.startDate}&endDate=${FILTER_LEAD_WL.endDate}" />' class="pn next">Next</a>
+			       <a style="background:black;padding:2px 5px;border-radius:2px;color:#ffa500" href='<c:out value="${next}&sortBy=${sortBy}&qualified=${FILTER_LEAD_WL.qualified}&flagged=${FILTER_LEAD_WL.flagged}&leadOwner=${FILTER_LEAD_WL.leadOwner}&leadSource=${FILTER_LEAD_WL.leadSource}&leadStatus=${leadStatus}&source=${FILTER_LEAD_WL.source}&sourceName=${FILTER_LEAD_WL.sourceName}&destinationName=${FILTER_LEAD_WL.destinationName}&destination=${FILTER_LEAD_WL.destination}&contactId=${FILTER_LEAD_WL.contactId}&contactName=${FILTER_LEAD_WL.contactName}&dateCriteria=${FILTER_LEAD_WL.dateCriteria}&startDate=${FILTER_LEAD_WL.startDate}&endDate=${FILTER_LEAD_WL.endDate}" />' class="pn next">Next</a>
 			    </c:if>
 			</div>
 

@@ -18,9 +18,24 @@
 	<link href="<c:url value="/resources/css/jquery.datetimepicker.min.css" />" rel="stylesheet">
 	<script src="<c:url value="/resources/js/jquery.datetimepicker.full.js" />"></script>
 </head>
-
-<body
-    style="background: url(${pageContext.request.contextPath}/resources/images/revamped/lead_follow_up_1.jpg);background-size: cover; background-repeat: no-repeat; background-position: center center;background-attachment: fixed;">
+<style>
+body::before {
+            content: "";
+            background-image:url(${pageContext.request.contextPath}/resources/images/revamped/lead_follow_up_1.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5; /* Adjust the opacity value as needed (0.0 to 1.0) */
+            z-index: -1;
+        }
+</style>
+<body>
 	
 	<form:form modelAttribute="LEAD_FOLLOWUP_OBJ" action="create_create_lead_followup">
 	<input type="hidden" name= "leadId" value="${LEAD_OBJ.leadId}"/>
@@ -67,39 +82,39 @@
 
     <div class="follow-up-main-tabel" style="margin-top:60px">
         <table>
-            <tr style="background:black">
+            <tr style="background:#6082B6;">
               <c:if test="${LEAD_FOLLOWUP_OBJ.sortOrder eq 'ASC'}">
-				<th ><a href="form_view_lead_followup_details?leadId=${LEAD_OBJ.leadId}&sortBy=updatedBy&sortOrder=DESC" style=" color: #FFBA08 !important;color: #FABA08; border: none;margin-bottom: 20px; font-size: 19px">User</a></th>
+				<th ><a href="form_view_lead_followup_details?leadId=${LEAD_OBJ.leadId}&sortBy=updatedBy&sortOrder=DESC" style=" color: black !important;color: #FABA08; border: none;margin-bottom: 20px; font-size: 19px">User</a></th>
 			</c:if>
 
 			<c:if test="${LEAD_FOLLOWUP_OBJ.sortOrder ne 'ASC'}">
-				<th><a href="form_view_lead_followup_details?leadId=${LEAD_OBJ.leadId}&sortBy=updatedBy&sortOrder=ASC" style=" color: #FFBA08 !important;color: #FABA08; border: none;margin-bottom: 20px; font-size: 19px">User</a></th>
+				<th><a href="form_view_lead_followup_details?leadId=${LEAD_OBJ.leadId}&sortBy=updatedBy&sortOrder=ASC" style=" color: black !important;color: #FABA08; border: none;margin-bottom: 20px; font-size: 19px">User</a></th>
 			</c:if>
 
 		
 			<c:if test="${LEAD_FOLLOWUP_OBJ.sortOrder eq 'ASC'}">
-				<th><a href="form_view_lead_followup_details?leadId=${LEAD_OBJ.leadId}&sortOrder=DESC" style=" color: #FFBA08 !important;color: #FABA08; border: none;margin-bottom: 20px; font-size: 19px">Lead Action Time</a></th>
+				<th><a href="form_view_lead_followup_details?leadId=${LEAD_OBJ.leadId}&sortOrder=DESC" style=" color: black !important;color: #FABA08; border: none;margin-bottom: 20px; font-size: 19px">Lead Action Time</a></th>
 			</c:if>
 
 			<c:if test="${LEAD_FOLLOWUP_OBJ.sortOrder ne 'ASC'}">
-				<th ><a href="form_view_lead_followup_details?leadId=${LEAD_OBJ.leadId}&sortOrder=ASC" style=" color: #FFBA08 !important;color: #FABA08; border: none;margin-bottom: 20px; font-size: 19px" >Lead Action Time</a></th>
+				<th ><a href="form_view_lead_followup_details?leadId=${LEAD_OBJ.leadId}&sortOrder=ASC" style=" color: black !important;color: #FABA08; border: none;margin-bottom: 20px; font-size: 19px" >Lead Action Time</a></th>
 			</c:if>
 			
-			<th class="actionTaken" style=";color: #FABA08;margin-bottom: 20px; font-size: 19px">Action Taken | Client Response</th>
+			<th class="actionTaken" style="color: black;margin-bottom: 20px; font-size: 19px">Action Taken | Client Response</th>
 			
 			
 			<c:if test="${LEAD_FOLLOWUP_OBJ.sortOrder eq 'ASC'}">
-				<th><a href="form_view_lead_followup_details?leadId=${LEAD_OBJ.leadId}&sortBy=nextfollowuptime&sortOrder=DESC" style=" color: #FFBA08 !important;color: #FABA08; border: none;margin-bottom: 20px; font-size: 19px"style=" color: #FFBA08 !important;">Next Action Time</a></th>
+				<th><a href="form_view_lead_followup_details?leadId=${LEAD_OBJ.leadId}&sortBy=nextfollowuptime&sortOrder=DESC" style=" color: black !important;color: #FABA08; border: none;margin-bottom: 20px; font-size: 19px"style=" color: #FFBA08 !important;">Next Action Time</a></th>
 			</c:if>
 
 			<c:if test="${LEAD_FOLLOWUP_OBJ.sortOrder ne 'ASC'}">
-				<th><a href="form_view_lead_followup_details?leadId=${LEAD_OBJ.leadId}&sortBy=nextfollowuptime&sortOrder=ASC" style=" color: #FFBA08 !important;"style=" color: #FFBA08 !important;">Next Action Time</a></th>
+				<th><a href="form_view_lead_followup_details?leadId=${LEAD_OBJ.leadId}&sortBy=nextfollowuptime&sortOrder=ASC" style=" color: black !important;"style=" color: #FFBA08 !important;">Next Action Time</a></th>
 			</c:if>
-			<th class="nextToDo">Next To Do</th>
+			<th class="nextToDo" style="color: black;margin-bottom: 20px; font-size: 19px">Next To Do</th>
               
             </tr>
          <c:forEach items="${LEADS_FOLLOWUP_LIST}" var="filteredFollowUpList">
-		 <tr style="border-bottom:2px solid  #FABA08;;margin-bottom:20px">
+		 <tr style="border-bottom:2px solid  #FABA08;;margin-bottom:20px;background:black">
 			 <td style="font-size:18px;text-align:center">${filteredFollowUpList.userName }</td>
 			 <td style="font-size:18px;text-align:center">${filteredFollowUpList.formattedFollowUpTime }</td>
 			 <td style="font-size:18px;text-align:center">${filteredFollowUpList.response}</td>
@@ -112,24 +127,24 @@
     
     
      <div id="pagination" align="center" style="margin-top:10px">
-			<span style="background:black;color:white;border-radius:5px;padding:0 2px;margin-right:5px">Page : </span>
+			<span style="background:black;padding:2px 5px;border-radius:2px;color:#ffa500;margin-right:5px">Page : </span>
 			    <c:url value="form_view_lead_followup_details" var="prev">
 			       <c:param name="page" value="${page-1}"/>
 			    </c:url>
 			    <c:if test="${page > 0}">
-			        <a href="<c:out value="${prev}&leadId=${LEAD_OBJ.leadId}&sortBy=${LEAD_FOLLOWUP_OBJ.sortBy}&sortOrder=${LEAD_FOLLOWUP_OBJ.sortOrder}"/>" class="pn prev">Prev</a>
+			        <a style="background:black;padding:2px 5px;border-radius:2px;color:#ffa500" href="<c:out value="${prev}&leadId=${LEAD_OBJ.leadId}&sortBy=${LEAD_FOLLOWUP_OBJ.sortBy}&sortOrder=${LEAD_FOLLOWUP_OBJ.sortOrder}"/>" class="pn prev">Prev</a>
 			    </c:if>
 			
 			    <c:forEach begin="1" end="${maxPages}" step="1" varStatus="i">
 			        <c:choose>
 			            <c:when test="${(page+1) == i.index}">
-			                <span style="background:black;color:white;border-radius:5px;padding: 0 5px">${i.index}</span>
+			                <span style="background:black;padding:2px 5px;border-radius:2px;color:#ffa500"">${i.index}</span>
 			            </c:when>
 			            <c:otherwise>
 			                <c:url value="form_view_lead_followup_details" var="url">
 			                    <c:param name="page" value="${i.index-1}"/>
 			                </c:url>
-			                 <a href='<c:out value="${url}&leadId=${LEAD_OBJ.leadId}&sortBy=${LEAD_FOLLOWUP_OBJ.sortBy}&sortOrder=${LEAD_FOLLOWUP_OBJ.sortOrder}" />'>${i.index}</a>
+			                 <a style="background:black;padding:2px 5px;border-radius:2px;color:#ffa500" href='<c:out value="${url}&leadId=${LEAD_OBJ.leadId}&sortBy=${LEAD_FOLLOWUP_OBJ.sortBy}&sortOrder=${LEAD_FOLLOWUP_OBJ.sortOrder}" />'>${i.index}</a>
 			            </c:otherwise>
 			        </c:choose>
 			    </c:forEach>
@@ -137,7 +152,7 @@
 			        <c:param name="page" value="${page + 1}"/>
 			    </c:url>
 			    <c:if test="${page + 1 < maxPages}">
-			       <a href='<c:out value="${next}&leadId=${LEAD_OBJ.leadId}&sortBy=${LEAD_FOLLOWUP_OBJ.sortBy}&sortOrder=${LEAD_FOLLOWUP_OBJ.sortOrder}" />' class="pn next">Next</a>
+			       <a style="background:black;padding:2px 5px;border-radius:2px;color:#ffa500" href='<c:out value="${next}&leadId=${LEAD_OBJ.leadId}&sortBy=${LEAD_FOLLOWUP_OBJ.sortBy}&sortOrder=${LEAD_FOLLOWUP_OBJ.sortOrder}" />' class="pn next">Next</a>
 			    </c:if>
 			</div>
 	</form:form>
