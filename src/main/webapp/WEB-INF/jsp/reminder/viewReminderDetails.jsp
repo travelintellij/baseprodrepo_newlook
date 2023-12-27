@@ -3,46 +3,49 @@
 <jsp:include page="../menu/MenuBuilder.jsp" />
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-    <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-        <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-            <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-                <head>
-                    <meta charset="UTF-8">
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <title>Document</title>
-                    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
-                    <script src="https://kit.fontawesome.com/6f6addf9b0.js" crossorigin="anonymous"></script>
-                    <script src="<c:url value=" /resources/core/jquery.1.10.2.min.js" />"></script>
-                    <script src="<c:url value=" /resources/core/jquery.autocomplete.min.js" />"></script>
-                </head>
-                <style>
-                 body::before {
-            content: "";
-            background-image:   url(${pageContext.request.contextPath}/resources/images/revamped/re_lead.jpg);
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-attachment: fixed;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.5; /* Adjust the opacity value as needed (0.0 to 1.0) */
-            z-index: -1;
-        }
-                </style>
+   <head>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>Reminder Service</title>
+       <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
+       <script src="https://kit.fontawesome.com/6f6addf9b0.js" crossorigin="anonymous"></script>
+       
+       <script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
+		<script src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
+
+       
+   </head>
+   <style>
+  body::before {
+     content: "";
+     background-image:   url(${pageContext.request.contextPath}/resources/images/revamped/re_lead.jpg);
+     background-size: cover;
+     background-repeat: no-repeat;
+     background-position: center center;
+     background-attachment: fixed;
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     opacity: 0.5; /* Adjust the opacity value as needed (0.0 to 1.0) */
+     z-index: -1;
+ }
+  </style>
                 <body>
-                    <form:form modelAttribute="REMINDER_SERVICE" action="send_send_leadReminder">
-                        <form:hidden path="leadsRecorderObj.leadId" />
-                        <form:hidden path="leadsRecorderObj.contactName" />
-                        <form:hidden path="smsVo.to" />
-                        <form:hidden path="smsVo.message" />
-
-                        <form:hidden path="bothSmsAndEmailReminder" />
-                        <form:hidden path="smsReminder" />
-                        <form:hidden path="emailReminder" />
+        	<form:form modelAttribute="REMINDER_SERVICE" action="send_send_leadReminder">
+					<form:hidden path = "leadsRecorderObj.leadId" />
+					<form:hidden path = "leadsRecorderObj.contactName" />
+					<form:hidden path = "smsVo.to" />
+					<form:hidden path = "smsVo.message" />
+					
+					<form:hidden path = "bothSmsAndEmailReminder" />
+					<form:hidden path = "smsReminder" />
+					<form:hidden path = "emailReminder" />
                         <div align="center"><b>
                                 <font color="green"> ${Success} </font>
                                 <font color="red"> ${Failure}</font>
@@ -59,8 +62,7 @@
                                         <div class="rso_wrapper_data_l1">
                                             <label for="" class="lb">Is Qualified</label>
                                             <p>
-                                                <form:checkbox path="leadsRecorderObj.qualified" disabled="true" /><span
-                                                    class="checkmark">
+                                                <form:checkbox path="leadsRecorderObj.qualified" disabled="true" /><span class="checkmark">
                                             </p>
                                         </div>
                                         <div class="rso_wrapper_data_l1">
@@ -237,8 +239,7 @@
                                         disabled="true" />
                                 </div>
                                 <div class="due_today_task_data_btns">
-                                    <input type="submit" style="background:#32cd32;color:white" name="SendEmail"
-                                        value="Send SMS Reminder" id="sms" />
+                                    <input type="submit" style="background:#32cd32;color:white" name="SendEmail" value="Send SMS Reminder" id="sms" />
                                 </div>
                             </div>
 
@@ -275,16 +276,11 @@
                                     <form:textarea path="emailMessageVo.emailMessage" rows="2" cols="65" />
                                 </div>
                                 <div class="due_today_task_data_btns">
-                                    <input type="submit" style="background:#32cd32;color:white" name="SendEmail"
-                                        value="Send Email Reminder" id="email" />
+                                    <input type="submit" style="background:#32cd32;color:white" name="SendEmail" value="Send Email Reminder" id="email" onclick="return setReminderMode()" />
                                 </div>
                             </div>
                             </div>
-                            
-                            
-                            
                             <!-- ########################### email reminder ####################### -->
-
                             <div class="due_today_task_data_btns"
                                 style="display:flex;justify-content: center;margin-bottom: 50px;">
                                 <input type="submit" name="SendEmail" value="Send Both Sms-Email Reminder" id="both"  style="background:#023e8a;color:white"/>
@@ -295,34 +291,34 @@
                     </form:form>
 
 
-                    <script>
-                        $('#sms, #email,#both').click(function () {
-                            if (this.id == 'sms') {
-                                $("#smsReminder").attr('value', 'true');
-                                $("#bothSmsAndEmailReminder").attr('value', 'false');
-                                $("#emailReminder").attr('value', 'false');
-                            }
-                            else if (this.id == 'email') {
-                                $("#emailReminder").attr('value', 'true');
-                                $("#smsReminder").attr('value', 'false');
-                                $("#bothSmsAndEmailReminder").attr('value', 'false');
-                            }
-                            else if (this.id == 'both') {
-                                $("#bothSmsAndEmailReminder").attr('value', 'true');
-                                $("#smsReminder").attr('value', 'false');
-                                $("#emailReminder").attr('value', 'false');
-                            }
-                        });
+					<script>
+					$('#sms, #email,#both').click(function () {
+						   if (this.id == 'sms') {
+							   $("#smsReminder").attr('value','true');
+							   $("#bothSmsAndEmailReminder").attr('value','false');
+							   $("#emailReminder").attr('value','false');
+						   }
+						   else if (this.id == 'email') {
+							   $("#emailReminder").attr('value','true');
+							   $("#smsReminder").attr('value','false');
+							   $("#bothSmsAndEmailReminder").attr('value','false');
+						   }
+						   else if (this.id == 'both') {
+							   $("#bothSmsAndEmailReminder").attr('value','true');
+							   $("#smsReminder").attr('value','false');
+							   $("#emailReminder").attr('value','false');
+							}
+						});
 
-                        /*
-                        function setNotifyAction(clicked){ 
-                            alert(clicked);
-                            $("#bothSmsAndEmailReminder").attr('value','true');
-                            alert($("#bothSmsAndEmailReminder").val());
-                        }
-                        */
-                    </script>
-
+					
+					/*
+					function setNotifyAction(clicked){ 
+						alert(clicked);
+						$("#bothSmsAndEmailReminder").attr('value','true');
+						alert($("#bothSmsAndEmailReminder").val());
+					}
+					*/
+					</script>
 
                 </body>
 

@@ -250,11 +250,13 @@ input[type=button], input[type=submit], input[type=reset] {
 <script>
 $('#sms, #email,#both').click(function () {
 	   if (this.id == 'sms') {
+			alert('sms is clicked for reminde2r');
 		   $("#smsReminder").attr('value','true');
 		   $("#bothSmsAndEmailReminder").attr('value','false');
 		   $("#emailReminder").attr('value','false');
 	   }
 	   else if (this.id == 'email') {
+		   alert('sms is clicked for reminde2r');
 		   $("#emailReminder").attr('value','true');
 		   $("#smsReminder").attr('value','false');
 		   $("#bothSmsAndEmailReminder").attr('value','false');
