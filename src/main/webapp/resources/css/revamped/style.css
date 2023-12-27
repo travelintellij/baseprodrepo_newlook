@@ -5953,3 +5953,45 @@ font-weight: bold;
 .form_view_add_manual_hotel_quo_box input {
     width: 90%;
 }
+
+/* ############# main_p ############## */
+
+.main_p_wrapper {
+    color: white;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+}
+.main_p_wrapper_data_line{
+display: flex;
+}
+.main_p_wrapper_dl{
+    width: 300px;
+    text-align: start;
+}
+.main_p_wrapper_dl_rem{
+    text-align: start;
+    width: 100%;
+}
+
+.due_today_task_data_btnss input{
+	display: inline-block;
+    color: white;
+    width: auto;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: #ffb908cf;
+    color: black;
+    transition: all 0.3s ease-in-out;
+    outline: none;
+    border: none;
+    margin-right: 5px;
+    cursor:pointer;
+}
+.due_today_task_data_btnss input:hover {
+    cursor: pointer;
+    background: #FFBA08;
+}

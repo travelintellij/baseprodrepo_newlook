@@ -100,88 +100,116 @@
 	</c:if>
 	
 	
-	<tr><td>
-		<c:if test="${HTL_STOP_ACTION eq 'ADD'}">
-			<jsp:include page="form_view_add_manual_hotel_quotation.jsp" />
-		</c:if>
-		
-		<c:forEach items="${QTN_OBJ.hotelVoList}" var="hotelQtnObj">
-			<c:choose>
-				<c:when test="${hotelQtnObj.manualHotelQuotationId eq MANUAL_HTL.manualHotelQuotationId  && HTL_STOP_ACTION eq 'EDIT' }">
-					<jsp:include page="form_view_edit_manual_hotel_quotation.jsp" />
-				</c:when>
-				<c:when test="${hotelQtnObj.manualHotelQuotationId eq MANUAL_HTL.manualHotelQuotationId  && HTL_STOP_ACTION eq 'DELETE' }">
-					<jsp:include page="form_view_delete_manual_hotel_quotation.jsp" />
-				</c:when>
-				<c:otherwise>
-					<table style="width:100%;  table-layout:fixed;background-color: #DFE0DC; border: 3px solid #000000; border-collapse: collapse" >
-					<tr><th style="background-color:blue;" colspan="5"><font size="4"><b>Id-  ${hotelQtnObj.manualHotelQuotationId}</b></font></th></tr>
-					<tr>
-						
-						<th colspan="1"><font size="4"><b>City</b></font></th>
-						<th colspan="2"><font size="4"><b>Hotel Name</b></font></th>
-						<th><font size="4"><b>Room Category</b></font></th>
-						<th><font size="4"><b>Meal Plan</b></font></th>
-					</tr>
-					<tr>
-						<td>${hotelQtnObj.cityName }</td>
-						<td colspan="2">${hotelQtnObj.hotelName}</td>
-						<td>${hotelQtnObj.roomCategoryName}</td>
-						<td>${hotelQtnObj.mealPlanName}</td>
-					</tr>
-		
-					<tr>	
-						<th><font size="4"><b>CheckIn Date</b></font></th>
-						<th><font size="4"><b>CheckOut Date</b></font></th>
-						<th><font size="4"><b>Adults</b></font></th>
-						<th><font size="4"><b>Children</b></font></th>
-						<th><font size="4"><b>Extra Bed</b></font></th>
-					</tr>
-					<tr>
-						<td><fmt:formatDate value="${hotelQtnObj.checkInDate}" pattern="dd-MM-yyyy" /> </td>
-						<td><fmt:formatDate value="${hotelQtnObj.checkOutDate}" pattern="dd-MM-yyyy" /></td>
-						<td>${hotelQtnObj.adults}</td>
-						<td>${hotelQtnObj.children}</td>
-						<td>${hotelQtnObj.extrabed}</td>
-					</tr>
-					
-					
-					<tr>	
-						<th><font size="4"><b>No. of Rooms </b></font></th>
-						<th colspan="2"><font size="4"><b>Total Cost</b></font></th>
-						<th><font size="4"><b>Total Markup</b></font></th>
-						<th><font size="4"><b>Display Order</b></font></th>
-					</tr>
-					<tr>	
-						<td>${hotelQtnObj.noOfRooms}</td>
-						<td colspan="2">${hotelQtnObj.hotelStayCost}	</td>
-						<td>${hotelQtnObj.hotelStayMarkup}</td>
-						<td>${hotelQtnObj.displayOrder }		</td>
-					</tr>
-					<tr>	
-						<th colspan="5"><font size="4"><b>Remarks</b></font></th>
-					</tr>
-					<tr>	
-						<td colspan="5">${hotelQtnObj.remarks}</td>
-					</tr>
-					<tr>
-						<th colspan="5">
-							<c:if test="${QTN_OBJ.converted ne true }">
-								<a href="form_view_edit_manual_hotel_quotation?manualHotelQuotationId=${hotelQtnObj.manualHotelQuotationId}&quotationId=${QTN_OBJ.quotationId}&leadId=${QTN_OBJ.leadEntity.leadId}&hotelOptionNo=${QTN_OBJ.hotelOptionNo}"><input type="button" style="background-color:blue;" value="Edit Stay" /></a>
-								<a href="form_view_delete_manual_hotel_quotation?manualHotelQuotationId=${hotelQtnObj.manualHotelQuotationId}&quotationId=${QTN_OBJ.quotationId}&leadId=${QTN_OBJ.leadEntity.leadId}&hotelOptionNo=${QTN_OBJ.hotelOptionNo}"><input type="button" style="background-color:red;" value="Delete Stay" /></a>
-							</c:if>
-							<c:if test="${QTN_OBJ.converted eq true }">
-								<a><input type="button" style="background-color:lightgray;" value="Edit Stay" /></a>
-								<a><input type="button" style="background-color:lightgray;" value="Delete Stay" /></a>
-							</c:if>
-						</th>
-					</tr>
-				</table>	
-			</c:otherwise>
-			</c:choose>
-		</c:forEach>
-		</td>
-		</tr>
+	
+    <c:forEach items="${QTN_OBJ.hotelVoList}" var="hotelQtnObj">
+        <c:choose>
+            <c:when
+                test="${hotelQtnObj.manualHotelQuotationId eq MANUAL_HTL.manualHotelQuotationId  && HTL_STOP_ACTION eq 'EDIT' }">
+                <jsp:include page="form_view_edit_manual_hotel_quotation.jsp" />
+            </c:when>
+            <c:when
+                test="${hotelQtnObj.manualHotelQuotationId eq MANUAL_HTL.manualHotelQuotationId  && HTL_STOP_ACTION eq 'DELETE' }">
+                <jsp:include page="form_view_delete_manual_hotel_quotation.jsp" />
+            </c:when>
+            <c:otherwise>
+                <div class="main_p container">
+                    <div class="main_p_wrapper">
+                        <div class="main_p_wrapper_data">
+                            <h1 style="margin:10px 0">Id- ${hotelQtnObj.manualHotelQuotationId}</h1>
+                            <div class="main_p_wrapper_data_line bc-clr">
+                                <div class="main_p_wrapper_dl ">
+                                    <label for="" class="lb">City</label>
+                                    <p>${hotelQtnObj.cityName }</p>
+                                </div>
+                                <div class="main_p_wrapper_dl">
+                                    <label for="" class="lb">Hotal Name</label>
+                                    <p>${hotelQtnObj.cityName }</p>
+                                </div>
+                                <div class="main_p_wrapper_dl">
+                                    <label for="" class="lb">Category</label>
+                                    <p>${hotelQtnObj.roomCategoryName}</p>
+                                </div>
+                                <div class="main_p_wrapper_dl">
+                                    <label for="" class="lb">Meal Plan</label>
+                                    <p>${hotelQtnObj.mealPlanName}</p>
+                                </div>
+                            </div>
+                            <div class="main_p_wrapper_data_line bc-clr">
+                                <div class="main_p_wrapper_dl ">
+                                    <label for="" class="lb">CheckIn Date</label>
+                                    <p>
+                                        <fmt:formatDate value="${hotelQtnObj.checkInDate}" pattern="dd-MM-yyyy" />
+                                    </p>
+                                </div>
+                                <div class="main_p_wrapper_dl">
+                                    <label for="" class="lb">CheckOut Date</label>
+                                    <p>
+                                        <fmt:formatDate value="${hotelQtnObj.checkOutDate}" pattern="dd-MM-yyyy" />
+                                    </p>
+                                </div>
+
+
+                                <div class="main_p_wrapper_dl">
+                                    <label for="" class="lb">Adults</label>
+                                    <p>${hotelQtnObj.adults}</p>
+                                </div>
+                                <div class="main_p_wrapper_dl">
+                                    <label for="" class="lb">Children</label>
+                                    <p>${hotelQtnObj.children}</p>
+                                </div>
+                            </div>
+                            <div class="main_p_wrapper_data_line bc-clr">
+                                <div class="main_p_wrapper_dl ">
+                                    <label for="" class="lb">Extra Bed</label>
+                                    <p>${hotelQtnObj.extrabed}</p>
+                                </div>
+
+                                <div class="main_p_wrapper_dl">
+                                    <label for="" class="lb">Number of Rooms</label>
+                                    <p>${hotelQtnObj.noOfRooms}</p>
+                                </div>
+                                <div class="main_p_wrapper_dl">
+                                    <label for="" class="lb">Total Cost</label>
+                                    <p>${hotelQtnObj.hotelStayCost}</p>
+                                </div>
+                                <div class="main_p_wrapper_dl">
+                                    <label for="" class="lb">Total Markup</label>
+                                    <p>${hotelQtnObj.hotelStayMarkup}</p>
+                                </div>
+                            </div>
+                            <div class="main_p_wrapper_data_line bc-clr">
+                                <div class="main_p_wrapper_dl ">
+                                    <label for="" class="lb">Display Order</label>
+                                    <p>${hotelQtnObj.displayOrder }</p>
+                                </div>
+                            </div>
+                            <div class="main_p_wrapper_data_line bc-clr">
+                                <div class="main_p_wrapper_dl_rem ">
+                                    <label for="" class="lb">Remarks</label>
+                                    <p>${hotelQtnObj.remarks}</p>
+                                </div>
+                            </div>
+                            <div class="due_today_task_data_btnss">
+                                <c:if test="${QTN_OBJ.converted ne true }">
+                                    <a
+                                        href="form_view_edit_manual_hotel_quotation?manualHotelQuotationId=${hotelQtnObj.manualHotelQuotationId}&quotationId=${QTN_OBJ.quotationId}&leadId=${QTN_OBJ.leadEntity.leadId}&hotelOptionNo=${QTN_OBJ.hotelOptionNo}"><input
+                                            type="button" value="Edit Stay" /></a>
+                                    <a
+                                        href="form_view_delete_manual_hotel_quotation?manualHotelQuotationId=${hotelQtnObj.manualHotelQuotationId}&quotationId=${QTN_OBJ.quotationId}&leadId=${QTN_OBJ.leadEntity.leadId}&hotelOptionNo=${QTN_OBJ.hotelOptionNo}"><input
+                                            type="button" style="background:red;color:white"  value="Delete Stay" /></a>
+                                </c:if>
+                                <c:if test="${QTN_OBJ.converted eq true }">
+                                    <input type="button"  value="Edit Stay" />
+                                    <input type="button"
+                                            value="Delete Stay" />
+                                </c:if>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </c:otherwise>
+        </c:choose>
+    </c:forEach>
 		<tr>
 		<td>
 			<form:form action="view_lead_quotations_list">
