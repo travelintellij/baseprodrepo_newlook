@@ -5995,3 +5995,22 @@ display: flex;
     cursor: pointer;
     background: #FFBA08;
 }
+
+.due_today_task_data_btnss a input{
+	display: inline-block;
+    color: white;
+    width: auto;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: #ffb908cf;
+    color: black;
+    transition: all 0.3s ease-in-out;
+    outline: none;
+    border: none;
+    margin-right: 5px;
+    cursor:pointer;
+}
+.due_today_task_data_btnss a input:hover {
+    cursor: pointer;
+    background: #FFBA08;
+}

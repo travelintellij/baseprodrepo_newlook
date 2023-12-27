@@ -10,7 +10,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
      <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
+     <script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
+<script src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
 </head>
+
+<style> body::before {
+            content: "";
+            background-image:  url(${pageContext.request.contextPath}/resources/images/revamped/hotal_qu.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5; /* Adjust the opacity value as needed (0.0 to 1.0) */
+            z-index: -1;
+        } </style>
+
 <body>
     
     
@@ -54,14 +73,14 @@
                 </form:form>
             </div>
         </div>
-        <!-- ########### view hotal details ######### -->
+      
         <div class="viewHotelQuotationDetails_hd">
             <h2 style="font-size: 20px;">Add Hotal To Stay Quotation</h2>
             <div class="due_today_task_data_btns">
                <c:if test="${QTN_OBJ.converted ne true }">
 		  				<a href="#">Search Hotel</a>
 		  				<a href="form_view_add_hotel_quotation?leadId=${LEAD_OBJ.leadId }&quotationId=${QTN_OBJ.quotationId}&hotelOptionNo=${QTN_OBJ.hotelOptionNo}">
-		  				Add Manually</a>
+		  				Add Manually </a>
 		  			</c:if>
 		  			<c:if test="${QTN_OBJ.converted eq true }">
 		  				<a href="#">Search Hotel</a>
@@ -69,16 +88,10 @@
 		  			</c:if>
             </div>
         </div>
-        <div align="center"><b><font color="green" > ${Success} </font><font color="red"> ${Error}</font> </b></div>
+        <div align="center"><b><font color="#32cd32  " > ${Success} </font><font color="red"> ${Error}</font> </b></div>
     </div>
 
 
-
-	<div align="center"><b><font color="green" > ${Success} </font><font color="red"> ${Error}</font> </b></div>
-	
-	
-	
-	<table style="width:70%;  table-layout:fixed;background-color:#cc3300;" >
 	<c:if test="${not empty QTN_OBJ.hotelVoList}">
 			<tr>
 			<td style="background-color:white;text-align:left;">
@@ -112,8 +125,8 @@
                 <jsp:include page="form_view_delete_manual_hotel_quotation.jsp" />
             </c:when>
             <c:otherwise>
-                <div class="main_p container">
-                    <div class="main_p_wrapper">
+                <div class="main_p container" >
+                    <div class="main_p_wrapper" style="margin-top:100px">
                         <div class="main_p_wrapper_data">
                             <h1 style="margin:10px 0">Id- ${hotelQtnObj.manualHotelQuotationId}</h1>
                             <div class="main_p_wrapper_data_line bc-clr">
@@ -210,19 +223,25 @@
             </c:otherwise>
         </c:choose>
     </c:forEach>
-		<tr>
-		<td>
+		
+		<br>
+			<br>
+				<br>
+					<br>
+						<br>
+							<br>
+								<br>
+		
 			<form:form action="view_lead_quotations_list">
 				<input type="hidden" name="leadId" value= "${QTN_OBJ.leadEntity.leadId}" />
 				<input type="submit" name="Version List" Value="Show Version List" />
 			</form:form>
 		
-		</td>
-		</tr>
-		</table>
-   	</div>
-   	</div>
-</div>
+		
+
+
+
+
 
 <div id="myModal" class="modal">	
 		  <!-- Modal content -->
@@ -239,7 +258,9 @@
 		      <h3 align="center">Powered by @TravelIntelliJ</h3>
 		    </div>
 		  </div>
-	</div>
+	</div> 
+
+
     
  
 
