@@ -1,177 +1,246 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>viewLeadDetails_modal</title>
+                    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
+                </head>
+
+                <body>
+                    <form:form modelAttribute="LEAD_OBJ" action="form_view_editlead">
+                        <form:hidden path="leadId" />
+                        <div class="viewLeadDetails_modal container">
+                            <div class="viewLeadDetails_modal_wrapper">
+                                <h1 style="font-size: 25px;margin:5px 0;color:#FABA08">View Lead Details</h1>
+                                <div align="center"><b>
+                                        <font color="green"> ${Success} </font>
+                                        <font color="red"> ${Error}</font>
+                                    </b></div>
+                                <div class="viewLeadDetails_modal_wrapper_data">
+                                    <div class="viewLeadDetails_modal_wrapper_data_line bc-clr">
+                                        <div class=" viewLeadDetails_modal_wrapper_dl1">
+                                            <label for="" class="lb">Lead Id</label>
+                                            <p>Q-${String.format("%04d",LEAD_OBJ.leadId)}-${LEAD_OBJ.leadSourceShortName
+                                                }</p>
+                                        </div>
+                                        <div class="viewLeadDetails_modal_wrapper_dl1">
+                                            <label for="" class="lb">Is Qualified</label>
+                                            <p>
+                                                <form:checkbox path="qualified" disabled="true" />
+                                            </p>
+                                        </div>
+                                        <div class="viewLeadDetails_modal_wrapper_dl1">
+                                            <label for="" class="lb">Is Flagged</label>
+                                            <p>
+                                                <form:checkbox path="flagged" disabled="true" />
+                                            </p>
+                                        </div>
+                                        <div class="viewLeadDetails_modal_wrapper_dl1">
+                                            <label for="" class="lb">Client</label>
+                                            <p>${LEAD_OBJ.contactName}</p>
+                                        </div>
+                                    </div>
+                                    <div class="viewLeadDetails_modal_wrapper_data_line bc-clr">
+                                        <div class="viewLeadDetails_modal_wrapper_dl1">
+                                            <label for="" class="lb">Lead Owner</label>
+                                            <p>${LEAD_OBJ.leadOwnerName}</p>
+                                        </div>
+                                        <div class="viewLeadDetails_modal_wrapper_dl1">
+                                            <label for="" class="lb">Source</label>
+                                            <p>${LEAD_OBJ.sourceName}</p>
+                                        </div>
+                                        <div class="viewLeadDetails_modal_wrapper_dl1">
+                                            <label for="" class="lb">Destination</label>
+                                            <p>${LEAD_OBJ.destinationName}</p>
+                                        </div>
+                                        <div class="viewLeadDetails_modal_wrapper_dl1">
+                                            <label for="" class="lb">Adults</label>
+                                            <p>${LEAD_OBJ.adults}</p>
+                                        </div>
+                                    </div>
+                                    <div class="viewLeadDetails_modal_wrapper_data_line bc-clr">
+                                        <div class="viewLeadDetails_modal_wrapper_dl1">
+                                            <label for="" class="lb">Children</label>
+                                            <p>${LEAD_OBJ.children}</p>
+                                        </div>
+                                        <div class="viewLeadDetails_modal_wrapper_dl1">
+                                            <label for="" class="lb">Age</label>
+                                            <p>${LEAD_OBJ.childrenAgeInfo}</p>
+                                        </div>
+                                        <div class="viewLeadDetails_modal_wrapper_dl1">
+                                            <label for="" class="lb">Lead Source</label>
+                                            <p>${LEAD_OBJ.leadSourceName}</p>
+                                        </div>
+                                        <div class="viewLeadDetails_modal_wrapper_dl1">
+                                            <label for="" class="lb">Travel start date</label>
+                                            <p>
+                                                <fmt:formatDate value="${LEAD_OBJ.travelStartDate}"
+                                                    pattern="dd-MM-yyyy" />
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="viewLeadDetails_modal_wrapper_data_line bc-clr">
+                                        <div class="viewLeadDetails_modal_wrapper_dl1">
+                                            <label for="" class="lb">Tentative Amount</label>
+                                            <p>${LEAD_OBJ.tentativeCost}</p>
+                                        </div>
+                                        <div class="viewLeadDetails_modal_wrapper_dl1">
+                                            <label for="" class="lb">Status</label>
+                                            <p>${LEAD_OBJ.statusName}</p>
+                                        </div>
+                                    </div>
+                                    <h1 style="text-align: start;" class="lb">Select Services</h1>
+                                    <div class="viewLeadDetails_modal_wrapper_data_linesr">
+                                        <div class="viewLeadDetails_modal_wrapper_dser">
+                                            <form:checkbox path="landPackage" name="landPackage;" disabled="true" />
+                                            <label for="">Package</label>
+                                        </div>
+                                        <div class="viewLeadDetails_modal_wrapper_dser">
+                                            <form:checkbox path="flight" name="flight" disabled="true" />
+                                            <label for="">Flight</label>
+                                        </div>
+                                        <div class="viewLeadDetails_modal_wrapper_dser">
+                                            <form:checkbox path="hotel" name="hotel" disabled="true" />
+                                            <label for="">Hotal</label>
+                                        </div>
+                                        <div class="viewLeadDetails_modal_wrapper_dser">
+                                            <form:checkbox path="transfers" name="transfers" disabled="true" />
+                                            <label for="">Transfers</label>
+                                        </div>
+                                        <div class="viewLeadDetails_modal_wrapper_dser">
+                                            <form:checkbox path="sightseeing" name="sightseeing" disabled="true" />
+                                            <label for="">Sightseeing</label>
+                                        </div>
+                                        <div class="viewLeadDetails_modal_wrapper_dser">
+                                            <form:checkbox path="visa" name="visa" disabled="true" />
+                                            <label for="">Visa</label>
+                                        </div>
+                                        <div class="viewLeadDetails_modal_wrapper_dser">
+                                            <form:checkbox path="insurance" name="insurance" disabled="true" />
+                                            <label for="">Insurance</label>
+                                        </div>
+                                        <div class="viewLeadDetails_modal_wrapper_dser">
+                                            <form:checkbox path="cruise" name="cruise" disabled="true" />
+                                            <label for="">Cruise</label>
+                                        </div>
+                                        <div class="viewLeadDetails_modal_wrapper_dser">
+                                            <form:checkbox path="others" name="others" disabled="true" />
+                                            <label for="">Others</label>
+                                        </div>
+                                    </div>
+                                    <div class="viewLeadDetails_modal_wrapper_data_line bc-clr">
+                                        <div class="viewLeadDetails_modal_wrapper_dl1rem" style="text-align: start;">
+                                            <label for="" class="lb">Remarks</label>
+                                            <p>${LEAD_OBJ.clientRemarks}</p>
+                                        </div>
+                                    </div>
+                                    <div class="viewLeadDetails_modal_wrapper_data_line bc-clr">
+                                        <div class="viewLeadDetails_modal_wrapper_dl1rem" style="text-align: start;">
+                                            <label for="" class="lb">Internal Remarks</label>
+                                            <p>${LEAD_OBJ.internalRemarks}</p>
+                                        </div>
+                                    </div>
+                                    <div class="viewLeadDetails_modal_wrapper_data_line bc-clr">
+                                        <div class="viewLeadDetails_modal_wrapper_dl1rem" style="text-align: start;">
+                                            <label for="" class="lb">Tagged team mates</label>
+                                            <c:forEach items="${LEAD_OBJ.team}" var="leadteam">
+                                                <li>${leadteam.name}</li>
+                                            </c:forEach>
+                                        </div>
+                                    </div>
+                                    <div class="viewLeadDetails_modal_wrapper_data_line_ci">
+                                        <div class="viewLeadDetails_modal_wrapper_dlci">
+                                            <form:checkbox path="leadCreationClientInformed" disabled="true" />
+                                            <label for="">Client Informed (email sent)</label>
+                                        </div>
+                                    </div>
+                                    <div class="due_today_task_data_btns"
+                                        style="display: flex;justify-content: center;">
+                                        <input type="submit" id="editLead" name="editLead" value="Edit Lead" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form:form>
 
 
-<body>
-	<form:form modelAttribute="LEAD_OBJ" action="form_view_editlead">
-	<form:hidden path = "leadId" />
-	<div align="center"><b><font color="green" > ${Success} </font><font color="red"> ${Error}</font> </b></div>
-	<hr>
-	<table>
-		<tr>
-		<th>Lead Id </th><td align="center">Q-${String.format("%04d",LEAD_OBJ.leadId)}-${LEAD_OBJ.leadSourceShortName }</td>
-		<th>Is Qualified</th><td style="text-align:center;"><label class="container" style="display: table;margin: 0 auto;margin-bottom: 25px;"><form:checkbox path="qualified" disabled="true" /><span class="checkmark"></span></label></td>
-		<th>Is Flagged</th>
-		<td style="text-align:center;">
-			<label class="container" style="display: table;margin: 0 auto;margin-bottom: 25px;">
-				<form:checkbox path="flagged" disabled="true" />
-				<span class="checkmark"></span>
-			</label>
-		</td>
-		<th>Client</th>
-		<td>
-			${LEAD_OBJ.contactName}
-		</td>
-		<th>Lead Owner</th><td style="background-color:#66ff00;"><b>${LEAD_OBJ.leadOwnerName}</b></td>
-		</tr>
-		<tr>
-			<th>Source</th>
-			<td>
-				${LEAD_OBJ.sourceName}
-			</td>
-			<th>Destination</th>
-			<td>
-				${LEAD_OBJ.destinationName}
-			</td>
-			<th>Adults </th><td>${LEAD_OBJ.adults}</td>
-			<th>Children</th><td>${LEAD_OBJ.children}</td>
-			<th>Age</th><td>${LEAD_OBJ.childrenAgeInfo}</td>
-		</tr>
-		<tr>
-			<th>Lead Source</th>
-			<td align="center">
-				${LEAD_OBJ.leadSourceName}
-			</td>
-			<th>Travel Date</th><td><fmt:formatDate value="${LEAD_OBJ.travelStartDate}" pattern="dd-MM-yyyy" /></td>
-			<th>Travel End Date</th><td><fmt:formatDate value="${LEAD_OBJ.travelEndDate}" pattern="dd-MM-yyyy" /></td>
-			<th>Tentative Amount</th><td>${LEAD_OBJ.tentativeCost}</td>
-			<th>Status</th>
-			<td align="center">${LEAD_OBJ.statusName}</td>
-		</tr>
-	</table>
-	
-	<table>
-		<tr style="background-color:#FFD633;">
-			<th>Select Services</th>
-			<td style="text-align:left;">
-				<label class="container" style="display:inline;" colspan="2"><form:checkbox path="landPackage" name="landPackage;" disabled="true" /> <span class="checkmark"></span></label>Package 	
-			</td>
-			
-			<td style="text-align:left;"><label class="container" style="display:inline;"><form:checkbox path="flight" name="flight" disabled="true" /><span class="checkmark"></span></label> Flight</td>
-			<td style="text-align:left;"><label class="container" style="display:inline;"><form:checkbox path="hotel" name="hotel" disabled="true" /><span class="checkmark"></span></label> Hotel</td>
-			<td style="text-align:left;"><label class="container" style="display:inline;"><form:checkbox path="transfers" name="transfers" disabled="true" /><span class="checkmark"></span></label> Transfers</td>
-			<td style="text-align:left;"><label class="container" style="display:inline;"><form:checkbox path="sightseeing" name="sightseeing" disabled="true" /><span class="checkmark"></span></label>SightSeeing</td>
-			<td style="text-align:left;"><label class="container" style="display:inline;"><form:checkbox path="visa" name="visa" disabled="true" /><span class="checkmark"></span></label>Visa</td>
-			<td style="text-align:left;"><label class="container" style="display:inline;"><form:checkbox path="insurance" name="insurance" disabled="true" /><span class="checkmark"></span></label>Insurance</td>
-			<td style="text-align:left;"><label class="container" style="display:inline;"><form:checkbox path="cruise" name="cruise" disabled="true" /><span class="checkmark"></span></label>Cruise</td>
-			<td style="text-align:left;"><label class="container" style="display:inline;"><form:checkbox path="others" name="others" disabled="true" /><span class="checkmark"></span></label>Others</td>
-		</tr>
-		
-		<tr><th>Client Remarks</th><td colspan="9" style="text-align:left;"><b><pre>${LEAD_OBJ.clientRemarks}</pre></b>
-		 </td></tr>
-		<tr><th>Internal Remarks</th><td colspan="9" style="text-align:left;"><b><pre>${LEAD_OBJ.internalRemarks}</pre></b>
-		</td></tr>
-		
-		<tr>
-			<th>Tagged Team Mates</th>
-			<td colspan="9" style="text-align:left;">
-				<c:forEach items="${LEAD_OBJ.team}" var="leadteam">
-							<li>${leadteam.name}</li>
-				</c:forEach>
-			</td>
-		</tr>
-	
-		<tr><td colspan="10">
-			<label class="container" style="display:inline;"><form:checkbox path="leadCreationClientInformed" disabled="true"/> <span class="checkmark"></span></label>Client Informed (Email Sent) </td></tr>
-		<tr>
-			<td colspan="10">
-				<input type="submit" id="editLead"  name="editLead" value="Edit Lead" />  
-			</td>
-		</tr>
-	</table>
-	
+                    <script>
+
+                        $(document).ready(function () {
+                            $('#contactName').autocomplete({
+                                serviceUrl: '${pageContext.request.contextPath}/getClientList',
+                                paramName: "tagName",
+                                delimiter: ",",
+                                onSelect: function (suggestion) {
+                                    cityID = suggestion.data;
+                                    id = cityID;
+                                    jQuery("#contactId").val(cityID);
+                                    $('input[name=contactId]').val(id);
+                                    return false;
+                                },
+                                transformResult: function (response) {
+                                    return {
+                                        suggestions: $.map($.parseJSON(response), function (item) {
+                                            return { value: item.tagName, data: item.id };
+                                        })
+
+                                    };
+                                }
+                            });
+
+
+                            $('#sourceName').autocomplete({
+                                serviceUrl: '${pageContext.request.contextPath}/getCityList',
+                                paramName: "cityName",
+                                delimiter: ",",
+                                onSelect: function (suggestion) {
+                                    cityID = suggestion.data;
+                                    id = cityID;
+                                    jQuery("#destinationId").val(cityID);
+                                    $('input[name=source]').val(id);
+                                    return false;
+                                },
+                                transformResult: function (response) {
+                                    return {
+                                        suggestions: $.map($.parseJSON(response), function (item) {
+                                            return { value: item.cityName, data: item.destinationId };
+                                        })
+
+                                    };
+                                }
+                            });
+
+                            $('#destinationName').autocomplete({
+                                serviceUrl: '${pageContext.request.contextPath}/getCityList',
+                                paramName: "cityName",
+                                delimiter: ",",
+                                onSelect: function (suggestion) {
+                                    cityID = suggestion.data;
+                                    id = cityID;
+                                    jQuery("#destinationId").val(cityID);
+                                    $('input[name=destination]').val(id);
+                                    return false;
+                                },
+                                transformResult: function (response) {
+                                    return {
+                                        suggestions: $.map($.parseJSON(response), function (item) {
+                                            return { value: item.cityName, data: item.destinationId };
+                                        })
+
+                                    };
+                                }
+                            });
+                        });
 
 
 
-    </form:form>
- 
- 
- <script>
-	
-	$(document).ready(function() {
-		$('#contactName').autocomplete({
-			serviceUrl: '${pageContext.request.contextPath}/getClientList',
-			paramName: "tagName",
-			delimiter: ",",
-			onSelect: function(suggestion) {
-	            cityID = suggestion.data;
-	            id=cityID;
-	            jQuery("#contactId").val(cityID);
-	            $('input[name=contactId]').val(id);
-	            return false;
-	        },
-			transformResult: function(response) {
-		        return {
-		            suggestions: $.map($.parseJSON(response), function(item) {
-		            	return { value: item.tagName, data: item.id };
-		            })
-		            
-		        };
-		    }
-		});
-		
-		
-		$('#sourceName').autocomplete({
-			serviceUrl: '${pageContext.request.contextPath}/getCityList',
-			paramName: "cityName",
-			delimiter: ",",
-			onSelect: function(suggestion) {
-	            cityID = suggestion.data;
-	            id=cityID;
-	            jQuery("#destinationId").val(cityID);
-	            $('input[name=source]').val(id);
-	            return false;
-	        },
-			transformResult: function(response) {
-		        return {
-		            suggestions: $.map($.parseJSON(response), function(item) {
-		            	return { value: item.cityName, data: item.destinationId };
-		            })
-		            
-		        };
-		    }
-		});
-		
-		$('#destinationName').autocomplete({
-			serviceUrl: '${pageContext.request.contextPath}/getCityList',
-			paramName: "cityName",
-			delimiter: ",",
-			onSelect: function(suggestion) {
-	            cityID = suggestion.data;
-	            id=cityID;
-	            jQuery("#destinationId").val(cityID);
-	            $('input[name=destination]').val(id);
-	            return false;
-	        },
-			transformResult: function(response) {
-		        return {
-		            suggestions: $.map($.parseJSON(response), function(item) {
-		            	return { value: item.cityName, data: item.destinationId };
-		            })
-		            
-		        };
-		    }
-		});
-	});
-	
-	
-	
-	</script>
- </body>
-  
-  </html>
-  
+                    </script>
+                </body>
+
+</html>

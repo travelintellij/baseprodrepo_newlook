@@ -15,7 +15,26 @@
 <script src="<c:url value=" /resources/core/jquery.autocomplete.min.js" />"></script>
 <script src="<c:url value=" /resources/core/magicsuggest.js" />"></script>
 
-<body style="background: url(${pageContext.request.contextPath}/resources/images/revamped/search_supplier_bg.jpg);background-size: cover; background-repeat: no-repeat; background-position: center center;background-attachment: fixed;">
+<style>
+ body::before {
+            content: "";
+            background-image:url(${pageContext.request.contextPath}/resources/images/revamped/search_supplier_bg.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5; /* Adjust the opacity value as needed (0.0 to 1.0) */
+            z-index: -1;
+        }
+</style>
+
+
+<body>
 
     <div class="editSupplierContact container">
         <div class="editSupplierContact_wrapper">
@@ -26,7 +45,7 @@
                         ${SUPPLIER_OBJ.supplierId})</h1>
                     <div class="editSupplierContact_info">
                         <div class="editSupplierContact_data_info">
-                            <div class="editSupplierContact_data_line_info">
+                            <div class="editSupplierContact_data_line_info bc-clr">
                                 <div class="editSupplierContact_data_line_l1_info">
                                     <label for="" style="color: #FFBA08;font-weight:bold">Supplier Name</label>
                                     <p>${SUPPLIER_OBJ.supplierName}</p>

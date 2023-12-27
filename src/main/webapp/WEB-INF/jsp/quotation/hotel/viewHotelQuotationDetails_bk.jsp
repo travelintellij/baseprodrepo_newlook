@@ -1,79 +1,218 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <jsp:include page="../../menu/MenuBuilder.jsp" />
+  
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
+<link href="<c:url value="/resources/core/main.css" />" rel="stylesheet">
 </head>
+
+<script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
+<script src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
+
+
+<style>
+table {
+  width: 100%;
+  height: 40px;
+  border-collapse: collapse;
+  border: 1px solid #38678f;
+  margin: 35px auto;
+  background: white;
+    
+}
+
+th {
+  background: #9999ff;
+  height: 30px;
+  width: 15%;
+  font-weight: bold;
+  text-shadow: 0 1px 0 #38678f;
+  color: white;
+  border: 1px solid #38678f;
+  box-shadow: inset 0px 1px 2px #568ebd;
+  transition: all 0.2s;
+  height: 30px;
+}
+tr {
+  border-bottom: 1px solid #cccccc;
+}
+
+td {
+  border-right: 1px solid #cccccc;
+  padding: 10px;
+  transition: all 0.2s;
+  text-align: center;
+  height: 30px;
+  font-size: 16px;
+  font-weight:bold;
+}
+input[type=button], input[type=submit], input[type=reset] {
+  background-color: green;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.sidenav {
+	height: 70%;
+	width: 0;
+	position: fixed;
+	z-index: 1;
+	top: 118;
+	left: 0; //
+	//background-color: #111;
+	background-color: lightblue;
+	overflow-x: hidden;
+	transition: 0.5s;
+	padding-top: 30px;
+	text-align: center;
+}
+
+.sidenav a {
+	padding: 4px 4px 4px 16px;
+	text-decoration: none;
+	font-size: 25px;
+	color: #818181;
+	display: block;
+	transition: 0.3s;
+}
+
+.sidenav a:hover {
+	color: #f1f1f1;
+	
+}
+
+.sidenav .closebtn {
+	position: absolute;
+	top: 0;
+	right: 25px;
+	font-size: 36px;
+	margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+	.sidenav {
+		padding-top: 15px;
+	}
+	.sidenav a {
+		font-size: 18px;
+	}
+}
+
+.float-container {
+    //border: 3px solid #fff;
+    padding: 15px;
+}
+
+.float-child-left {
+    width: 20%;
+    float: left;
+    padding: 20px;
+    //border: 2px solid red;
+}
+
+.float-child-right {
+    width: 80%;
+    float: center;
+    //padding: 50px;
+    //border: 2px solid red;
+}  
+  ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  padding: 20px;
+  background-color: #dddddd;
+}
+</style>
+<br>
+<h2 align="center">View Hotel Quotation Details </h2>
 <body>
-    
-    
-    <div class="my-ki">
-    <!-- ############# quick lead view starts here################## -->
-    <form:form modelAttribute="LEAD_OBJ" action="create_create_lead_quotation">
-    <div class="sep_quick_lead_view">
-        <input type="checkbox" name="" id="" class="ch_quick_lead_view">
-        <div class="hamburgur_menu_quick_lead_view">
-            <span class="sep_line1"></span>
-            <span class="sep_line2"></span>
-            <span class="sep_line3"></span>
-        </div>
-        <h2 style="display:inline-block;font-size:20px;;">Quick lead view</h2>
-        <div class="lead_view_sep">
-        <jsp:include page="../leadDetailsOpenNavView.jsp" />
-        </div>
+<br>
+<br>
+<br>
+<br>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<form:form modelAttribute="QTN_OBJ" action="create_create_lead_quotation">
+	<table style="width:45%;margin: auto;">
+		<tr>
+		<th style="background: #FFC300;color:black;"> Quotation Id </th><td>${QTN_OBJ.quotationId}</td>
+		<th style="background: #FFC300;color:black;"> Version Id </th><td>${QTN_OBJ.version}</td>
+		</tr>
+	</table>
+</form:form>
+
+
+<form:form modelAttribute="LEAD_OBJ" action="create_create_lead_quotation">
+	<div id="mySidenav" class="sidenav">
+		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+		<jsp:include page="../leadDetailsOpenNavView.jsp" />
+	</div>
+	<h3><font color="red">View Lead Details </font>	</h3>
+	<span style="font-size: 30px; cursor: pointer" onclick="openNav()">&#9776;
+		 Quick Lead View</span>
+	<script>
+		function openNav() {
+			document.getElementById("mySidenav").style.width = "35%";
+		}
+
+		function closeNav() {
+			document.getElementById("mySidenav").style.width = "0";
+		}
+	</script>
+	<input type="hidden" name="leadId" value= "${QTN_OBJ.leadEntity.leadId}" />
+</form:form>
+	
+	<h3 align="center"><font color="blue"><b>View Hotel Details</b></font></h3>
+	
+<div class="float-container">
+  	<div class="float-child-left">
+    <div class="green" >
+   		<jsp:include page="../_quotationServicesMenu.jsp" />
     </div>
-    </form:form>
-    <!-- ############# quick lead view ends here################## -->
-</div>
+  	</div>
 
-<div class="afd">
-<jsp:include page="../_quotationServicesMenu.jsp" />
-</div>
-
- <div class="viewHotelQuotationDetails">
-        <div class="viewHotelQuotationDetails_wrapper">
-            <div class="viewHotelQuotationDetails_wrapper_data">
-             <form:form modelAttribute="QTN_OBJ" action="create_create_lead_quotation">
-                <div class="viewHotelQuotationDetails_wrapper_dl">
-                    <div class="viewHotelQuotationDetails_wrapper_dli">
-                        <label for="" class="lb">Quotation Id</label>
-                        <p>${QTN_OBJ.quotationId}</p>
-                    </div>
-                    <div class="viewHotelQuotationDetails_wrapper_dli">
-                        <label for="" class="lb">Version Id</label>
-                        <p>${QTN_OBJ.version}</p>
-                    </div>
-                </div>
-                </form:form>
-            </div>
-        </div>
-        <!-- ########### view hotal details ######### -->
-        <div class="viewHotelQuotationDetails_hd">
-            <h2 style="font-size: 20px;">Add Hotal To Stay Quotation</h2>
-            <div class="due_today_task_data_btns">
-               <c:if test="${QTN_OBJ.converted ne true }">
-		  				<a href="#">Search Hotel</a>
-		  				<a href="form_view_add_hotel_quotation?leadId=${LEAD_OBJ.leadId }&quotationId=${QTN_OBJ.quotationId}&hotelOptionNo=${QTN_OBJ.hotelOptionNo}">
-		  				Add Manually</a>
+ 	<div class="float-child-right">
+    <div class="blue">
+		<table style="width:21%;">
+		<caption><font size="4"> <b>Add Hotel Stay to quotation.</b></font></caption>
+			<tr>
+				<td style="text-align:center;">
+				<ul>
+					<c:if test="${QTN_OBJ.converted ne true }">
+		  				<li><a href="#"> <input type="button" style="background-color:blue;" value="Search Hotel" /></a></li>
+		  				<li><a href="form_view_add_hotel_quotation?leadId=${LEAD_OBJ.leadId }&quotationId=${QTN_OBJ.quotationId}&hotelOptionNo=${QTN_OBJ.hotelOptionNo}"><input type="button" style="background-color:green;" value="Add Manually" /></a></li>
 		  			</c:if>
 		  			<c:if test="${QTN_OBJ.converted eq true }">
-		  				<a href="#">Search Hotel</a>
-		  				<a>Add Manually</a>
+		  				<li><a href="#"> <input type="button" style="background-color:lightgray;" value="Search Hotel" /></a></li>
+		  				<li><a><input type="button" style="background-color:lightgray;" value="Add Manually" /></a></li>
 		  			</c:if>
-            </div>
-        </div>
-        <div align="center"><b><font color="green" > ${Success} </font><font color="red"> ${Error}</font> </b></div>
-    </div>
-
-
-
+				</ul>
+				</td>
+			</tr>
+		</table>
 	<div align="center"><b><font color="green" > ${Success} </font><font color="red"> ${Error}</font> </b></div>
 	
 	
@@ -240,3 +379,4 @@ window.onclick = function(event) {
 </script>
 </body>
 </html>
+  

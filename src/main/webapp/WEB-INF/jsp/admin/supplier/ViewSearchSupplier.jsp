@@ -321,9 +321,7 @@
 			
 			
 			    </div>
-			    <div class="modal-footer">
-			      <h3>Powered by @TravelIntelliJ</h3>
-			    </div>
+			    <div class="modal-footer"> </div>
 			  </div>
 			
 			</div>	

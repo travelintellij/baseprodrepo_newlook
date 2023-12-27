@@ -3214,8 +3214,8 @@ transition: all 0.2s ease-in-out;
     padding: 20px;
     border-radius: 10px;
     margin-top:25px;
-    background:#07beb8;
-    box-shadow: 0 0 10px 5px #3dccc7, 0 0 20px 10px #3dccc7;
+    background:#94D2BD;
+    box-shadow: 0 0 10px 5px #94D2BD, 0 0 20px 10px #94D2BD;
 }
 
 .deleteSupplierContactConfrm_Modal_data_line {
@@ -3557,14 +3557,17 @@ transition: all 0.2s ease-in-out;
 }
 
 .admin-search_user {
+	width: 90px;
     display: none;
     border-radius: 10px;
     position: absolute;
-    background: rgba(0, 0, 0, 0.868);
+    background:gray;
     padding: 10px;
     top: 0;
     right: 18px;
+    color:black
 }
+
 
 .admin-search_user_lis {
     width: 100px;
@@ -3952,9 +3955,9 @@ font-weight: bold;
 
 .viewLeadQuotationsTabel {
     margin-top: 5px;
-    margin-left:-100px;
+    margin-left:-150px;
     color: white;
-    width: 1400px;
+    width: 1500px;
     background: rgba(0, 0, 0, 9);
 }
 
@@ -5687,14 +5690,14 @@ font-weight: bold;
 
 .rso_sms {
     color: white;
-    width: 1200px;
+    width: 800px;
     text-align: center;
     border-collapse: collapse;
     border: none;
     background: rgba(0, 0, 0, 9);
     padding: 10px;
     border-radius: 10px;
-    margin-top: 20px;
+    margin: 20px auto;
 }
 
 .rso_sms_heading,
@@ -5704,6 +5707,7 @@ font-weight: bold;
 
 .sms_email_wrapper{
     display: flex;
+    flex-direction: column;
     margin-bottom: 10px;
 }
 .rso_sms_heading{
@@ -5711,7 +5715,7 @@ font-weight: bold;
     width: 400px;
 }
 .rso_sms_heading input{
-   width: 95%;
+   width: 550px;
 }
 
 /* ####################### viewEditQuotationDetails ############ */
@@ -5847,4 +5851,105 @@ font-weight: bold;
 .ViewClientDetails_wrapper_dl1_rem{
     width: 1200px;
     text-align: start;
+}
+.my-b{
+	cursor: pointer;
+}
+/* ##################### viewLeadDetails_modal ############### */
+.viewLeadDetails_modal_wrapper {
+    color: white;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.viewLeadDetails_modal_wrapper_data_line {
+    display: flex;
+}
+
+.viewLeadDetails_modal_wrapper_dl1 {
+    width: 300px;
+    text-align: start;
+}
+
+.viewLeadDetails_modal_wrapper_data_linesr {
+    display: flex;
+    justify-content: space-around;
+}
+
+.viewLeadDetails_modal_wrapper_dl1rem {
+    width: 100%;
+}
+
+.viewLeadDetails_modal_wrapper_data_line_ci {
+    display: flex;
+    justify-content: center;
+}
+.sms-mail-wrapper{
+	display:flex;
+	justify-content: space-between;
+	}
+	.rso_sms{
+		width:590px
+	}
+	
+	
+/* ################## viewHotelQuotationDetails ##################### */
+
+.viewHotelQuotationDetails_wrapper_dl {
+    display: flex;
+    width: 500px;
+    margin-top: 210px;
+    margin-left:510px;
+    background: black;
+    color: white;
+    justify-content: space-between;
+    border-radius: 5px;
+}
+.viewHotelQuotationDetails_hd{
+    padding: 10px 0;
+    text-align: center;
+    /* display: flex; */
+    width: 500px;
+    margin: 50px auto;
+    background: black;
+    color: white;
+    /* justify-content: space-between; */
+    border-radius: 5px;
+}
+
+.viewHotelQuotationDetails_wrapper_dli {
+    width: 250px;
+    padding: 10px;
+}
+
+
+/* #########################################    */
+.form_view_add_manual_hotel_quotation{
+       color: white;
+        text-align: center;
+        border-collapse: collapse;
+        border: none;
+        background: rgba(0, 0, 0, 9);
+        padding: 10px;
+        border-radius: 10px;
+        width: 1200px;
+        margin-top: 5px;
+        margin-left:200px
+        
+}
+.form_view_add_manual_hotel_quotation_wrapper {
+    display: flex;
+}
+
+.form_view_add_manual_hotel_quo_box {
+    width: 300px;
+    text-align: start;
+}
+
+.form_view_add_manual_hotel_quo_box input {
+    width: 90%;
 }

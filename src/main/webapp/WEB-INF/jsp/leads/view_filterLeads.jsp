@@ -14,6 +14,7 @@
     <title>Search Leads</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/leadstyle.css">
     <script src="https://kit.fontawesome.com/6f6addf9b0.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/6f6addf9b0.js" crossorigin="anonymous"></script>
 </head>
 <style>
         .autocomplete-suggestions { border: 1px solid #999; background: red;overflow-y:auto}
@@ -83,7 +84,6 @@
 	
 	.modal-header {
 	  padding: 2px 16px;
-	  background-color: lightblue;
 	  color: white;
 	}
 	
@@ -232,21 +232,18 @@
             </div>
             <!-- ############## end of upper part ############# -->
 
-            <div id="myModal" class="modal">
+            <div id="myModal" class="modal" style="background: rgba(0, 0, 0, 0.8);margin-top:80px">
 						
 						  <!-- Modal content -->
-						  <div class="modal-content">
+						  <div class="modal-content" style="background:black;border-radius:10px">
 						    <div class="modal-header">
-						      <span class="close">&times;</span>
-						      <br><h2 style="text-align:center;">View Lead Details</h2>
+						      <span class="close" style="color:red;"><i class="fa-solid fa-xmark fa-xl"></i></span>
 						    </div>
 						    <div class="modal-body">
 						
 						
 						    </div>
-						    <div class="modal-footer">
-						      <h3>Powered by @TravelIntelliJ</h3>
-						    </div>
+
 						  </div>
 						
 						</div>
@@ -277,18 +274,18 @@
             
             
                 <table border="1">
-                    <thead style="background:#6082B6" >
-                        <th style="color:black" >Lead id</th>
-                        <th style="width:3%;color:black">F</th>
-                        <th style="width:3%;color:black">Q</th>
-                        <th style="width:350px;color:black">Client Name</th>
-                        <th style="color:black">Desti.</th>
-                        <th style="color:black">Reference</th>
-                        <th style="color:black">Tsd</th>
-                        <th style="color:black">Ted</th>
-                        <th style="color:black">Status</th>
-                        <th style="color:black">Owner</th>
-                        <th style="color:black">Action</th>
+                    <thead style="background:#6082B6;" >
+                        <th style="color:white" >Lead id</th>
+                        <th style="width:3%;color:white">F</th>
+                        <th style="width:3%;color:white">Q</th>
+                        <th style="width:350px;color:white">Client Name</th>
+                        <th style="color:white">Destination</th>
+                        <th style="color:white">Reference</th>
+                        <th style="color:white">Tsd</th>
+                        <th style="color:white">Ted</th>
+                        <th style="color:white">Status</th>
+                        <th style="color:white">Owner</th>
+                        <th style="color:white">Action</th>
                     </thead>
                     <tbody>
                   	<c:forEach items="${FILTERED_LEADS_RECORDS}" var="filteredLeads">
@@ -341,6 +338,25 @@
                     </tbody>
                 </table>
             </div>
+            
+            
+            
+            <!-- The Modal -->
+						<div id="myModal" class="modal" style="margin-top:100px">
+						
+						  <!-- Modal content -->
+						  <div class="modal-content">
+						    <div class="modal-header">
+						      <span class="close">&times;</span>
+						    </div>
+						    <div class="modal-body">
+						    </div>
+						  </div>
+						
+						</div>
+            
+            
+            
       
 <div id="pagination" align="center" class="container">
 <p style="color:#ffa500;background:black;display:inline-block;padding:2px;border-radius:2px">Page : </p>
@@ -373,9 +389,9 @@
 			    </c:if>
 			</div>
 
+	
 
 <script>
-	
 $(document).ready(function() {
 	$('#contactName').autocomplete({
 		serviceUrl: '${pageContext.request.contextPath}/getClientList',
@@ -393,6 +409,7 @@ $(document).ready(function() {
 	            suggestions: $.map($.parseJSON(response), function(item) {
 	            	return { value: item.tagName, data: item.id };
 	            })
+	            
 	        };
 	    }
 	});
@@ -409,7 +426,7 @@ $('#sourceName').autocomplete({
         $('input[name=source]').val(id);
         return false;
     },
-  	transformResult: function(response) {
+	transformResult: function(response) {
         return {
             suggestions: $.map($.parseJSON(response), function(item) {
             	return { value: item.cityName, data: item.destinationId };

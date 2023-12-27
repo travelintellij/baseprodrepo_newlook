@@ -16,8 +16,24 @@
                     <script src="<c:url value=" /resources/core/jquery.1.10.2.min.js" />"></script>
                     <script src="<c:url value=" /resources/core/jquery.autocomplete.min.js" />"></script>
                 </head>
-
-                <body style="background: url(${pageContext.request.contextPath}/resources/images/revamped/re_lead.jpg);background-size: cover; background-repeat: no-repeat; background-position: center center;background-attachment: fixed;">
+                <style>
+                 body::before {
+            content: "";
+            background-image:   url(${pageContext.request.contextPath}/resources/images/revamped/re_lead.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5; /* Adjust the opacity value as needed (0.0 to 1.0) */
+            z-index: -1;
+        }
+                </style>
+                <body>
                     <form:form modelAttribute="REMINDER_SERVICE" action="send_send_leadReminder">
                         <form:hidden path="leadsRecorderObj.leadId" />
                         <form:hidden path="leadsRecorderObj.contactName" />
@@ -205,17 +221,19 @@
                             </table>
 
                             <!-- ########################### table ####################### -->
+                            
+                            <div class="sms-mail-wrapper">
                             <!-- ########################### sms reminder ####################### -->
                             <div class="rso_sms">
-                                <h1 style="font-size: 25px;color:#32cd32  ">SMS Reminder <i
+                                <h1 style="font-size: 25px;color:#32cd32  ">SMS Reminder<i
                                         class="fa-solid fa-comment-sms fa-xl"></i>
                                 </h1>
-                                <div class="rso_sms_heading">
+                                <div class="rso_sms_heading"  style= "color:#FABA08">
                                     To : ${REMINDER_SERVICE.leadsRecorderObj.contactName} ( ${REMINDER_SERVICE.smsVo.to}
                                     )
                                 </div>
                                 <div class="rso_sms_input">
-                                    <form:textarea path="smsVo.message" rows="3" cols="140" maxlength="240"
+                                    <form:textarea path="smsVo.message" rows="9" cols="65" maxlength="240"
                                         disabled="true" />
                                 </div>
                                 <div class="due_today_task_data_btns">
@@ -233,40 +251,44 @@
                                         class="fa-regular fa-envelope fa-xl"></i>
                                 </h1>
                                 <div class="sms_email_wrapper">
-                                    <div class="rso_sms_heading">
-                                        <label for="">To : </label> <br>
+                                    <div class="rso_sms_heading" style="width:815px">
+                                        <label for="" style="color:#FABA08">To : </label> <br>
                                         <form:input path="emailMessageVo.emailToList" />
                                         <font color="red">
                                             <form:errors path="emailMessageVo.emailToList" cssClass="error" />
                                         </font>
                                     </div>
-                                    <div class="rso_sms_heading">
-                                        <label for="">Cc : </label> <br>
+                                    <div class="rso_sms_heading" style="width:815px">
+                                        <label for="" style= "color:#FABA08">Cc : </label> <br>
                                         <form:input path="emailMessageVo.emailCcList" />
                                         <font color="red">
                                             <form:errors path="emailMessageVo.emailCcList" cssClass="error" />
                                         </font>
                                     </div>
-                                    <div class="rso_sms_heading">
-                                        <label for="">Subject : </label> <br>
+                                    <div class="rso_sms_heading" style="width:815px">
+                                        <label for="" style= "color:#FABA08">Subject : </label> <br>
                                         <form:input path="emailMessageVo.emailSubject" />
                                     </div>
                                 </div>
                                 <div class="rso_sms_input">
-                                    <label for="">Massage : </label> <br>
-                                    <form:textarea path="emailMessageVo.emailMessage" rows="3" cols="140" />
+                                    <label for=""  style= "color:#FABA08">Massage : </label> <br>
+                                    <form:textarea path="emailMessageVo.emailMessage" rows="2" cols="65" />
                                 </div>
                                 <div class="due_today_task_data_btns">
                                     <input type="submit" style="background:#32cd32;color:white" name="SendEmail"
                                         value="Send Email Reminder" id="email" />
                                 </div>
                             </div>
+                            </div>
+                            
+                            
+                            
                             <!-- ########################### email reminder ####################### -->
 
                             <div class="due_today_task_data_btns"
                                 style="display:flex;justify-content: center;margin-bottom: 50px;">
-                                <input type="submit" name="SendEmail" value="Send Both Sms-Email Reminder" id="both" />
-                                <a href="view_filter_leads?page=${page}">Cancel</a>
+                                <input type="submit" name="SendEmail" value="Send Both Sms-Email Reminder" id="both"  style="background:#023e8a;color:white"/>
+                                <a href="view_filter_leads?page=${page}" style="background:#023e8a;color:white">Cancel</a>
                             </div>
 
                         </div>

@@ -17,8 +17,24 @@
  <script src="https://kit.fontawesome.com/6f6addf9b0.js" crossorigin="anonymous"></script>
      <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
 </head>
-
-<body   style="background: url(${pageContext.request.contextPath}/resources/images/revamped/assin_to_me_tasks_bg.jpg);background-size: cover; background-repeat: no-repeat; background-position: center center;background-attachment: fixed;">
+<style>
+ body::before {
+            content: "";
+            background-image:  url(${pageContext.request.contextPath}/resources/images/revamped/assin_to_me_tasks_bg.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5; /* Adjust the opacity value as needed (0.0 to 1.0) */
+            z-index: -1;
+        }
+</style>
+<body>
     <div class="viewLeadQuotationsList container">
         <div class="viewLeadQuotationsList_wrapper">
         <h1 class="page-heading">Quotation</h1>
@@ -170,57 +186,29 @@
         <table class="viewLeadQuotationsTabel" >
             <thead>
                 <tr>
-                    <th>Quotation ID</th>
-                    <th style="width:100px">Version</th>
-                    <th>Quotation Name</th>
-                    <th>Created Date</th>
-                    <th>Last Edit</th>
-                    <th>Action</th>
-                    <th>Status</th>
+                    <th style="background:#6082B6;color:white">Quotation ID</th>
+                    <th style="width:100px;background:#6082B6;color:white">Version</th>
+                    <th style="background:#6082B6;color:white">Quotation Name</th>
+                    <th style="background:#6082B6;color:white">Created Date</th>
+                    <th style="background:#6082B6;color:white">Last Edit</th>
+                    <th style="background:#6082B6;color:white">Action</th>
+                    <th style="background:#6082B6;color:white">Status</th>
                 </tr>
             </thead>
             <tbody>
-                <!-- Add your data rows here -->
-                <!-- <tr>
-                    <td>1</td>
-                    <td>1.0</td>
-                    <td>Quotation 1</td>
-                    <td>2023-11-20</td>
-                    <td>2023-11-21</td>
-                    <td>
-                        <i class="fa-solid fa-sliders vlq-icon">
-                            <div class="vlq-icon_div">
-                                <ul>
-                                    <li><a href="form_view_lead_followup_details?leadId=516" class="pop-up">FollowUp</a>
-                                    </li>
-                                    <li><a href="form_view_editlead?leadId=516" class="pop-up">Edit</a></li>
-                                    <li><a href="view_form_search_supplier_quote?leadId=516" class="pop-up">Request
-                                            Quote</a></li>
-                                    <li><a href="view_lead_quotations_list?leadId=516" class="pop-up">Quotations</a>
-                                    </li>
-                                    <li><a href="form_view_lead_reminder_details?leadId=516&amp;page=0"
-                                            class="pop-up">Reminder</a></li>
-                                </ul>
-                            </div>
-                        </i>
-                    </td>
-                    <td>Active</td>
-                </tr> -->
-
-
                 <c:forEach items="${LEAD_OBJ.leadQuotationsList}" var="leadquotations">
                     <tr style=" margin-bottom: 10px">
-                        <td style="border-width:5px;">${leadquotations.quotationId }</td>
-                        <td style="border-width:5px;">${leadquotations.version }</td>
-                        <td style="border-width:5px;">${leadquotations.quotationName}</td>
-                        <td style="border-width:5px;">
+                        <td style="border-bottom:2px solid #FFCF53;padding:5px 0;border-right:2px solid #FFCF53" >${leadquotations.quotationId }</td>
+                        <td style="border-bottom:2px solid #FFCF53;padding:5px 0;border-right:2px solid #FFCF53">${leadquotations.version }</td>
+                        <td style="border-bottom:2px solid #FFCF53;padding:5px 0;border-right:2px solid #FFCF53">${leadquotations.quotationName}</td>
+                        <td style="border-bottom:2px solid #FFCF53;padding:5px 0;border-right:2px solid #FFCF53">
                             <fmt:formatDate value="${leadquotations.createdAt }" pattern="dd-MMM-yyyy HH:MM" />
                         </td>
-                        <td style="border-width:5px;">${leadquotations.updatedAt }</td>
+                        <td style="border-bottom:2px solid #FFCF53;padding:5px 0;border-right:2px solid #FFCF53">${leadquotations.updatedAt }</td>
                         <c:if test="${ (leadquotations.converted ne true)  }">
                             <c:choose>
                                 <c:when test="${ (leadquotations.version gt CONVERTED_QTN.version) && (CONVERTED_QTN.version gt 0) }">
-                                    <td style="border-width:5px;;">
+                                    <td style="border-bottom:2px solid #FFCF53;padding:5px 0;border-right:2px solid #FFCF53">
                                         <a
                                             href="form_view_quotation_details?leadId=${LEAD_OBJ.leadId }&quotationId=${leadquotations.quotationId }" style=";padding:2px 5px; border-radius:3px;background:#32cd32;color:white">View</a> |
                                         <a
@@ -235,7 +223,7 @@
                                     </td>
                                 </c:when>
                                 <c:when test="${ leadquotations.version lt CONVERTED_QTN.version  }">
-                                    <td style="border-width:5px;;">
+                                    <td style="border-bottom:2px solid #FFCF53;padding:5px 0;border-right:2px solid #FFCF53">
                                         <a
                                             href="form_view_quotation_details?leadId=${LEAD_OBJ.leadId }&quotationId=${leadquotations.quotationId }" style=";padding:2px 5px; border-radius:3px;background:#32cd32;color:white">View</a> |
                                         <a style=";padding:2px 5px; border-radius:3px;background:#32cd32;color:white">Edit</a> |
@@ -246,7 +234,7 @@
                                     </td>
                                 </c:when>
                                 <c:otherwise>
-                                    <td style="border-width:5px;;">
+                                    <td style="border-bottom:2px solid #FFCF53;padding:5px 0;border-right:2px solid #FFCF53">
                                      <i class="fa-solid fa-sliders stqb">
                                     <div class="quotation-box-three-bar">
                                     <ul>
@@ -276,13 +264,13 @@
                                 </c:otherwise>
                             </c:choose>
 
-                            <td style="border-width:5px;;">
+                            <td style="border-bottom:2px solid #FFCF53;padding:5px 0;border-right:2px solid #FFCF53">
                                 <Input type="button" value="Generated"
                                    style="background:transparent;border:none;outline:none;color:white"/>
                             </td>
                         </c:if>
                         <c:if test="${ leadquotations.converted eq true }">
-                            <td style="border-width:5px;;">
+                            <td style="border-bottom:2px solid #FFCF53;padding:5px 0;border-right:2px solid #FFCF53">
                                 <a
                                     href="form_view_quotation_details?leadId=${LEAD_OBJ.leadId }&quotationId=${leadquotations.quotationId }" style=";padding:2px 5px; border-radius:3px;background:#32cd32;color:white">View</a> |
                                 <a style=";padding:2px 5px; border-radius:3px;background:#32cd32;color:white">Edit</a> |
@@ -291,7 +279,7 @@
                                     href="form_view_duplicate_quotation_details?leadId=${LEAD_OBJ.leadId }&quotationId=${leadquotations.quotationId }" style=";padding:2px 5px; border-radius:3px;background:#32cd32;color:white">Duplicate Quotation</a> |
                                 <a style=";padding:2px 5px; border-radius:3px;background:#32cd32;color:white">Lock-And-Convert</a>
                             </td>
-                            <td style="border-width:5px;;">
+                            <td style="border-bottom:2px solid #FFCF53;padding:5px 0">
                                <a style=";padding:2px 5px; border-radius:3px;background:#32cd32;color:white">CONVERTED</a>
                             </td>
                         </c:if>
