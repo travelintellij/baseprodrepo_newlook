@@ -4552,7 +4552,7 @@ color:#249C91;
     height: auto;
     padding: 10px 5px;
     border-radius: 5px;
-    background: black;
+    background: #3c6e71;
     color: white;
 }
 .afd{
@@ -6013,4 +6013,171 @@ display: flex;
 .due_today_task_data_btnss a input:hover {
     cursor: pointer;
     background: #FFBA08;
+}
+
+/* ##################### viewInsuranceQuotation ########### */
+.viewInsuranceQuotationD_wr_data {
+    color: white;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    width: 600px;
+    margin-top:200px
+}
+.viewInsuranceQuotationD_wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.viewInsuranceQuotationD_wr_data{
+    display: flex;
+}
+.viewInsuranceQuotationD_wr_data_line{
+    text-align: center;
+    width: 300px;
+}
+.sa-q{
+    color: white;
+        text-align: center;
+        border-collapse: collapse;
+        border: none;
+        background: rgba(0, 0, 0, 9);
+        padding: 10px;
+        border-radius: 10px;
+        width: 200px;
+        margin:10px auto;
+}
+
+.form_view_add_manual_insurance_q_wrap {
+    color: white;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top:20px;
+    margin-left:50px;
+}
+.form_view_add_manual_insurance_q_wrap_dl{
+    display: flex;
+}
+.form_view_add_manual_insurance_q_wrap_dl1{
+    text-align: start;
+    width: 300px;
+}
+.form_view_add_manual_insurance_q_wrap_dl1 input{
+    width: 90%;
+}
+.in_mu_add_wrp{
+	margin-top:-100px;
+        color: white;
+        text-align: center;
+        border-collapse: collapse;
+        border: none;
+        background: rgba(0, 0, 0, 9);
+        padding: 10px;
+        border-radius: 10px;
+}
+.in_mu_add_wrp_d{
+    display: flex;
+}
+.in_mu_add_wrp_l{
+    width: 300px;
+    text-align: start;
+}
+
+.in_mu_add_wrp {
+    color: white;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.in_mu_add_wrp_d {
+    display: flex;
+}
+
+.in_mu_add_wrp_l {
+    width: 300px;
+    text-align: start;
+}
+
+
+.Flight_qu {
+    margin: 20px auto;
+    width: 700px;
+    color: white;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+}
+.fr_view_fli_qu_wr{
+     color: white;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+}
+.fr_view_fli_qu_wr_li_f{
+    display: flex;
+}
+.fr_view_fli_qu_wr_li_f .fr_view_fli_qu_wr_d{
+    text-align: start;
+    width: 600px;
+}
+.fr_view_fli_qu_wr_li_f .fr_view_fli_qu_wr_d input{
+    width: 95%;
+}
+.fr_view_fli_qu_wr_li{
+display: flex;
+}
+.fr_view_fli_qu_wr_li .fr_view_fli_qu_wr_d{
+width: 300px;
+text-align: start;
+}
+.fr_view_fli_qu_wr_li .fr_view_fli_qu_wr_d input{
+width: 90%
+}
+
+.oneW_wr {
+    color: white;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.oneW_wr_d {
+    display: flex;
+}
+
+.oneW_wr_d_li {
+    width: 300px;
+    text-align: start;
+}
+
+.oneW_wr_d_li input {
+    width: 90%;
+}
+.oneW_wr_d_li_ch{
+    margin: 10px auto;
+}
+.hotal_btn{
+	border:none;
+	outline:none;
+	
 }

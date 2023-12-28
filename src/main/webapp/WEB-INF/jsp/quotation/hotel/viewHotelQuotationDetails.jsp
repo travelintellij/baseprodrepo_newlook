@@ -216,6 +216,10 @@
                                     <input type="button"
                                             value="Delete Stay" />
                                 </c:if>
+                                <form:form action="view_lead_quotations_list">
+				<input type="hidden" name="leadId" value= "${QTN_OBJ.leadEntity.leadId}" />
+				<input type="submit" name="Version List" Value="Show Version List" />
+			</form:form>
                             </div>
                         </div>
                     </div>
@@ -223,42 +227,21 @@
             </c:otherwise>
         </c:choose>
     </c:forEach>
-		
-		<br>
-			<br>
-				<br>
-					<br>
-						<br>
-							<br>
-								<br>
-		
+
+<br>
+<br>
+		<div class="due_today_task_data_btns" style="margin-left:17px">
 			<form:form action="view_lead_quotations_list">
-				<input type="hidden" name="leadId" value= "${QTN_OBJ.leadEntity.leadId}" />
-				<input type="submit" name="Version List" Value="Show Version List" />
+				<input type="hidden" name="leadId" value= "${QTN_OBJ.leadEntity.leadId}" style="background:#03045e;color:white"/>
+				<input type="submit" name="Version List" Value="Show Version List"  style="background:#03045e;color:white"/>
 			</form:form>
+			</div>
 		
 		
 
 
 
 
-
-<div id="myModal" class="modal">	
-		  <!-- Modal content -->
-		  <div class="modal-content">
-		    <div class="modal-header">
-		      <span class="close">&times;</span>
-		      <br><h2 style="text-align:center;">View Hotel Details</h2>
-		    </div>
-		    <div class="modal-body">
-		
-		
-		    </div>
-		    <div class="modal-footer">
-		      <h3 align="center">Powered by @TravelIntelliJ</h3>
-		    </div>
-		  </div>
-	</div> 
 
 
     

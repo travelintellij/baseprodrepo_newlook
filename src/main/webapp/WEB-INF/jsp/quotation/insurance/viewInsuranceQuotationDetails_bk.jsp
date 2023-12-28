@@ -27,7 +27,7 @@ table {
 }
 
 th {
-  background: #9999ff;
+  background: #900C3F;
   height: 30px;
   width: 15%;
   font-weight: bold;
@@ -144,21 +144,20 @@ li a {
 }
 </style>
 <br>
-<h2 align="center">View Other Service Quotation Details </h2>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h2 align="center">View Insurance Quotation Details </h2>
 <body>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br><br>
-
 <form:form modelAttribute="QTN_OBJ" action="create_create_lead_quotation">
 	<table style="width:45%;margin: auto;">
 		<tr>
-		<th style="background: #FFC300;color:black;"> Quotation Id </th><td>${QTN_OBJ.quotationId}</td>
+		<th style="background: #FFC300;color:black;"> Quotation Id</th><td>${QTN_OBJ.quotationId}</td>
 		<th style="background: #FFC300;color:black;"> Version Id </th><td>${QTN_OBJ.version}</td>
 		</tr>
 	</table>
@@ -196,17 +195,17 @@ li a {
 
  	<div class="float-child-right">
     <div class="blue">
-		<c:if test="${OTH_ACTION ne 'ADD'}">
+		<c:if test="${INS_ACTION ne 'ADD'}">
 		<table style="width:10%;">
 		<caption><font size="4"> <b>Services Action </b></font></caption>
 			<tr>
 				<td style="text-align:center;">
 				<ul>
 					<c:if test="${QTN_OBJ.converted ne true }">
-		  				<li><a href="form_view_add_other_quotation?leadId=${LEAD_OBJ.leadId }&quotationId=${QTN_OBJ.quotationId}"><input type="button" style="background-color:green;" value="Add Service" /></a></li>
+		  				<li><a href="form_view_add_insurance_quotation?leadId=${LEAD_OBJ.leadId }&quotationId=${QTN_OBJ.quotationId}"><input type="button" style="background-color:green;" value="Add Insurance" /></a></li>
 		  			</c:if>
 		  			<c:if test="${QTN_OBJ.converted eq true }">
-		  				<li><a><input type="button" style="background-color:lightgray;" value="Add Service" /></a></li>
+						<li><a><input type="button" style="background-color:lightgray;" value="Add Insurance" /></a></li>		  			
 		  			</c:if>
 				</ul>
 				</td>
@@ -216,50 +215,70 @@ li a {
 	<div align="center"><b><font color="green" > ${Success} </font><font color="red"> ${Error}</font> </b></div>
 	<table style="width:70%;  table-layout:fixed;background-color:#cc3300;" >
 	<tr><td>
-		<c:if test="${OTH_ACTION eq 'ADD'}">
-			<jsp:include page="form_view_add_manual_other_quotation.jsp" />
+		<c:if test="${INS_ACTION eq 'ADD'}">
+			<jsp:include page="form_view_add_manual_insurance_quotation.jsp" />
 		</c:if>
 		
-		<c:forEach items="${QTN_OBJ.otherVoList}" var="otherQtnObj">
+		<c:forEach items="${QTN_OBJ.insuranceVoList}" var="insuranceQtnObj">
 			<c:choose>
-				<c:when test="${otherQtnObj.manualOtherQuotationId eq MANUAL_OTH.manualOtherQuotationId  && OTH_ACTION eq 'EDIT' }">
-					<jsp:include page="form_view_edit_manual_other_quotation.jsp" />
+				<c:when test="${insuranceQtnObj.manualInsuranceQuotationId eq MANUAL_INS.manualInsuranceQuotationId  && INS_ACTION eq 'EDIT' }">
+					<jsp:include page="form_view_edit_manual_insurance_quotation.jsp" />
 				</c:when>
-				<c:when test="${otherQtnObj.manualOtherQuotationId eq MANUAL_OTH.manualOtherQuotationId  && OTH_ACTION eq 'DELETE' }">
-					<jsp:include page="form_view_delete_manual_other_quotation.jsp" />
+				<c:when test="${insuranceQtnObj.manualInsuranceQuotationId eq MANUAL_INS.manualInsuranceQuotationId  && INS_ACTION eq 'DELETE' }">
+					<jsp:include page="form_view_delete_manual_insurance_quotation.jsp" />
 				</c:when>
 				<c:otherwise>
 					<table style="width:100%;  table-layout:fixed;background-color: #DFE0DC; border: 3px solid #000000; border-collapse: collapse" >
-					<tr><th style="background-color:blue;" colspan="6"><font size="4"><b>Id-  ${otherQtnObj.manualOtherQuotationId}</b></font></th></tr>
+					<tr><th style="background-color:blue;" colspan="5"><font size="4"><b>Id-  ${insuranceQtnObj.manualInsuranceQuotationId}</b></font></th></tr>
 					<tr>
-						<th><font size="4"><b>Service Name</b></font></th>
-						<th colspan="4"><font size="4"><b>Service Details</b></font></th>
-						<th><font size="4"><b>Service Date</b></font></th>
+						<th><font size="4"><b>Country Name</b></font></th>
+						<th><font size="4"><b>Insurance Name</b></font></th>
+						<th><font size="4"><b>Start Date</b></font></th>
+						<th><font size="4"><b>End Date</b></font></th>
+						<th><font size="4"><b>Insurance Provider</b></font></th>
 					</tr>
 					<tr>
-						<td>${otherQtnObj.serviceName }</td>
-						<td colspan="4">${otherQtnObj.serviceDetails}</td>
-						<td><fmt:formatDate value="${otherQtnObj.serviceDate}" pattern="dd-MM-yyyy" /></td>
+						<td>${insuranceQtnObj.countryName }</td>
+						<td>${insuranceQtnObj.insuranceName}</td>
+						<td><fmt:formatDate value="${insuranceQtnObj.coverageStartDate}" pattern="dd-MM-yyyy" /></td>
+						<td><fmt:formatDate value="${insuranceQtnObj.coverageEndDate}" pattern="dd-MM-yyyy" /></td>
+						<td>${insuranceQtnObj.insuranceProviderName}</td>
 					</tr>
 		
 					<tr>	
-						<th><font size="4"><b>Service Cost</b></font></th>
-						<td>${otherQtnObj.serviceCost}</td>
-						<th><font size="4"><b>Service Markup</b></font></th>
-						<td>${otherQtnObj.serviceMarkup}</td>
-						<th><font size="4"><b>Display Order</b></font></th>
-						<td>${otherQtnObj.displayOrder}</td>
+						<th><font size="4"><b>Coverage Amount</b></font></th>
+						<th><font size="4"><b>Coverage Currency</b></font></th>
+						<th colspan="2"><font size="4"><b>Guest Details</b></font></th>
+						<th><font size="4"><b>Insurance Type</b></font></th>
 					</tr>
-
 					<tr>
-						<th colspan="6">
+						<td>${insuranceQtnObj.coverageAmount }</td>
+						<td>${insuranceQtnObj.coverageCurrency}</td>
+						<td colspan="2">${insuranceQtnObj.adults} Adults | ${insuranceQtnObj.children} Children | ${insuranceQtnObj.infant} Infants</td>
+						<td>${insuranceQtnObj.insuranceTypeName} </td>
+					</tr>
+					<tr>	
+						<th colspan="2"><font size="4"><b>Remarks</b></font></th>
+						<th><font size="4"><b>Premium Cost</b></font></th>
+						<th><font size="4"><b>Markup</b></font></th>
+						<th><font size="4"><b>Display Order</b></font></th>
+					</tr>
+						<tr>
+						<td colspan="2">${insuranceQtnObj.remarks }</td>
+						<td>${insuranceQtnObj.premiumCost}</td>
+						<td>${insuranceQtnObj.premiumMarkup}</td>
+						<td>${insuranceQtnObj.displayOrder}</td>
+					</tr>
+					<tr>
+						<th style="background-color:#DAF7A6;" colspan="5">
 							<c:if test="${QTN_OBJ.converted ne true }">
-								<a href="form_view_edit_manual_other_quotation?manualOtherQuotationId=${otherQtnObj.manualOtherQuotationId}&quotationId=${QTN_OBJ.quotationId}&leadId=${QTN_OBJ.leadEntity.leadId}"><input type="button" style="background-color:blue;" value="Edit Service" /></a>
-								<a href="form_view_delete_manual_other_quotation?manualOtherQuotationId=${otherQtnObj.manualOtherQuotationId}&quotationId=${QTN_OBJ.quotationId}&leadId=${QTN_OBJ.leadEntity.leadId}"><input type="button" style="background-color:red;" value="Delete Service" /></a>
+								<a href="form_view_edit_manual_insurance_quotation?manualInsuranceQuotationId=${insuranceQtnObj.manualInsuranceQuotationId}&quotationId=${QTN_OBJ.quotationId}&leadId=${QTN_OBJ.leadEntity.leadId}"><input type="button" style="background-color:blue;" value="Edit Insurance" /></a>
+								<a href="form_view_delete_manual_insurance_quotation?manualInsuranceQuotationId=${insuranceQtnObj.manualInsuranceQuotationId}&quotationId=${QTN_OBJ.quotationId}&leadId=${QTN_OBJ.leadEntity.leadId}"><input type="button" style="background-color:red;" value="Delete Insurance" /></a>
 							</c:if>
 							<c:if test="${QTN_OBJ.converted eq true }">
-								<a><input type="button" style="background-color:lightgray;" value="Edit Service" /></a>
-								<a><input type="button" style="background-color:lightgray;" value="Delete Service" /></a>
+								<a><input type="button" style="background-color:lightgray;" value="Edit Insurance" /></a>
+								<a><input type="button" style="background-color:lightgray;" value="Delete Insurance" /></a>
+
 							</c:if>
 						</th>
 					</tr>

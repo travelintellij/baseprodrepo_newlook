@@ -15,8 +15,23 @@
 <script src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
 </head>
 <style>
+  body::before {
+            content: "";
+            background-image: url(${pageContext.request.contextPath}/resources/images/revamped/assin_to_me_tasks_bg.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5; /* Adjust the opacity value as needed (0.0 to 1.0) */
+            z-index: -1;
+        }
 </style>
-<body style="background: url(${pageContext.request.contextPath}/resources/images/revamped/assin_to_me_tasks_bg.jpg);background-size: cover; background-repeat: no-repeat; background-position: center center;background-attachment: fixed;">
+<body>
 
 <div class="my-ki">
     <!-- ############# quick lead view starts here################## -->
@@ -97,7 +112,8 @@
 				</c:when>
 				<c:otherwise>
 			 <div class="view_transfer_quotation_table container">
-        <div class="view_transfer_quotation_table_wrapper" style="margin-top:10px">
+        <div class="view_transfer_quotation_table_wrapper" 
+style="margin-top:20px;margin-left:50px";>
             <div class="view_transfer_quotation_table_wrapper_data" style="background:#6082B6;margin-bottom:10px">
                 <div class="view_transfer_quotation_table_wrapper_data_li">
                     <label for="">Pickup City</label>

@@ -16,7 +16,7 @@
 
 <body>
     <div class="form_view_add_manual_transfer_quotation container">
-        <div class="form_view_add_manual_transfer_quotation_wrapper">
+        <div class="form_view_add_manual_transfer_quotation_wrapper" >
             <form:form modelAttribute="MANUAL_TRN" action="create_create_transfer_manual_quotation">
                 <input type="hidden" name="leadId" value="${QTN_OBJ.leadEntity.leadId}" />
                 <input type="hidden" name="quotationId" value="${QTN_OBJ.quotationId}" />
