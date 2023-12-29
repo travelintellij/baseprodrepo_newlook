@@ -12,6 +12,7 @@
 <title>Document</title>
 <script src="<c:url value=" /resources/core/jquery.1.10.2.min.js" />"></script>
 <script src="<c:url value=" /resources/core/jquery.autocomplete.min.js" />"></script>
+ <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
 </head>
 <style>
   body::before {
@@ -115,145 +116,127 @@
                                             <font color="green"> ${Success} </font>
                                             <font color="red"> ${Error}</font>
                                         </b></div>
-                                    <table style="width:70%;  table-layout:fixed;">
+                                       
+                                
                                         <tr>
                                             <td>
                                                 <c:forEach items="${QTN_OBJ.manualQuotationsVoList}" var="flightQtnObj">
-                                                    <table style="width:100%;  table-layout:fixed;">
-                                                        <tr>
-                                                            <th style="background-color:blue;">
-                                                                <font size="4"><b>Id-
-                                                                        ${flightQtnObj.manualFlightQuotationId}</b>
-                                                                </font>
-                                                            </th>
-
-                                                            <th colspan="1">
-                                                                <font size="4"><b>Airline</b></font>
-                                                            </th>
-                                                            <td>${flightQtnObj.airlineName }</td>
-                                                            <th>
-                                                                <font size="4"><b>Flight No. </b></font>
-                                                            </th>
-                                                            <td> ${flightQtnObj.flightNumber }</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>
-                                                                <font size="4"><b>Departure</b></font>
-                                                            </th>
-                                                            <th>
-                                                                <font size="4"><b>Arrival</b></font>
-                                                            </th>
-                                                            <th>
-                                                                <font size="4"><b>Departure Details</b></font>
-                                                            </th>
-                                                            <th>
-                                                                <font size="4"><b>Arrival Details</b></font>
-                                                            </th>
-                                                            <th>
-                                                                <font size="4"><b>Duration</b></font>
-                                                            </th>
-                                                        </tr>
-                                                        <tr>
-                                                            <td> ${flightQtnObj.originCity } </td>
-                                                            <td> ${flightQtnObj.destinationCity} </td>
-                                                            <td>${localDateTimeFormat.format(flightQtnObj.departureDate
-                                                                )} </td>
-                                                            <td>${localDateTimeFormat.format(flightQtnObj.arrivalDate )}
-                                                            </td>
-                                                            <td>${flightQtnObj.duration } </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>
-                                                                <font size="4"><b>Adults</b></font>
-                                                            </th>
-                                                            <th>
-                                                                <font size="4"><b>Child</b></font>
-                                                            </th>
-                                                            <th>
-                                                                <font size="4"><b>Infants</b></font>
-                                                            </th>
-                                                            <th>
-                                                                <font size="4"><b>Stops</b></font>
-                                                            </th>
-                                                            <th>
-                                                                <font size="4"><b>Travel Class</b></font>
-                                                            </th>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>${flightQtnObj.adultCount } </td>
-                                                            <td>${flightQtnObj.childCount } </td>
-                                                            <td>${flightQtnObj.infantCount } </td>
-                                                            <td>${flightQtnObj.noOfStops } </td>
-                                                            <td>${flightQtnObj.cabinClassName }</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th colspan="2">
-                                                                <font size="4"><b>Total Flight Cost</b></font>
-                                                            </th>
-                                                            <th colspan="2">
-                                                                <font size="4"><b>Total Flight Markup</b></font>
-                                                            </th>
-                                                            <th>
-                                                                <font size="4"><b>Display Order</b></font>
-                                                            </th>
-                                                        </tr>
-                                                        <tr>
-                                                            <td colspan="2">${flightQtnObj.flightCost} </td>
-                                                            <td colspan="2">${flightQtnObj.flightMarkup } </td>
-                                                            <td>${flightQtnObj.displayOrder } </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th colspan="2">
-                                                                <c:if test="${flightQtnObj.noOfStops gt 0 }">
-                                                                    <a
-                                                                        href="form_view_manage_stops_quotation?manualFlightQuotationId=${flightQtnObj.manualFlightQuotationId}&quotationId=${QTN_OBJ.quotationId}&leadId=${QTN_OBJ.leadEntity.leadId}"><input
-                                                                            type="button"
-                                                                            style="background-color:orange;color:black;"
-                                                                            value="Manage Stops" /></a>
-                                                                    <a id="myBtn[${filteredLeads.leadId}]"
-                                                                        onclick="myStopsDisplay(this)"
-                                                                        data-load-url="form_view_flight_stops_quotation_modal?manualFlightQuotationId=${flightQtnObj.manualFlightQuotationId}&quotationId=${QTN_OBJ.quotationId}&leadId=${QTN_OBJ.leadEntity.leadId}"
-                                                                        data-toggle="modal"
-                                                                        data-target="#myModal"><input type="button"
-                                                                            style="background-color:orange;color:black;"
-                                                                            value="View Connections" /></a>
-                                                                </c:if>
-
-                                                                &nbsp;
-                                                            </th>
-
-                                                            <c:if test="${QTN_OBJ.converted eq true }">
-                                                                <th colspan="3">
-                                                                    <a><input type="button"
-                                                                            style="background-color:lightgray;"
-                                                                            value="Edit Flight" /></a>
-                                                                    <a><input type="button"
-                                                                            style="background-color:lightgray;"
-                                                                            value="Delete Flight" /></a>
-                                                                </th>
-                                                            </c:if>
-                                                            <c:if test="${QTN_OBJ.converted ne true }">
-                                                                <th colspan="3">
-                                                                    <a
-                                                                        href="form_view_edit_manual_flight_quotation?manualFlightQuotationId=${flightQtnObj.manualFlightQuotationId}&quotationId=${QTN_OBJ.quotationId}&leadId=${QTN_OBJ.leadEntity.leadId}"><input
-                                                                            type="button" style="background-color:blue;"
-                                                                            value="Edit Flight" /></a>
-                                                                    <a
-                                                                        href="form_view_delete_manual_flight_quotation?manualFlightQuotationId=${flightQtnObj.manualFlightQuotationId}&quotationId=${QTN_OBJ.quotationId}&leadId=${QTN_OBJ.leadEntity.leadId}"><input
-                                                                            type="button" style="background-color:red;"
-                                                                            value="Delete Flight" /></a>
-                                                                </th>
-                                                            </c:if>
-
-                                                        </tr>
-                                                    </table>
+               <div class="fli_de container">
+             <div class="fli_de_wrapper" style="margin-top:120px" >
+            <h1 style="margin:10px 0;font-size: 25px;color:#32cd32 ">Id-
+            ${flightQtnObj.manualFlightQuotationId}</h1>
+            <div class="fli_de_wrapper_data">
+                <div class="fli_de_wrapper_data_fli bc-clr">
+                    <div class="fli_de_wrapper_dl1">
+                        <label for="" class="lb">Airline</label>
+                        <p>${flightQtnObj.airlineName }</p>
+                    </div>
+                    <div class="fli_de_wrapper_dl1">
+                        <label for="" class="lb">Flight Number</label>
+                        <p>${flightQtnObj.flightNumber }</p>
+                    </div>
+                </div>
+            </div>
+                <div class="fli_de_wrapper_data_li bc-clr">
+                    <div class="fli_de_wrapper_dl1">
+                        <label for="" class="lb">Departure</label>
+                        <p>${flightQtnObj.originCity }</p>
+                    </div>
+                    <div class="fli_de_wrapper_dl1">
+                        <label for="" class="lb">Arrival</label>
+                        <p>${flightQtnObj.destinationCity}</p>
+                    </div>
+                    <div class="fli_de_wrapper_dl1">
+                        <label for="" class="lb">Departure Details</label>
+                        <p>${localDateTimeFormat.format(flightQtnObj.departureDate
+                        )}</p>
+                    </div>
+                    <div class="fli_de_wrapper_dl1">
+                        <label for="" class="lb">Arrival Details</label>
+                        <p>${localDateTimeFormat.format(flightQtnObj.arrivalDate )}</p>
+                    </div>
+                </div>
+                <div class="fli_de_wrapper_data_li bc-clr">
+                    <div class="fli_de_wrapper_dl1">
+                        <label for="" class="lb">Duration</label>
+                        <p>${flightQtnObj.duration }</p>
+                    </div>
+                    <div class="fli_de_wrapper_dl1">
+                        <label for="" class="lb">Adults</label>
+                        <p>${flightQtnObj.adultCount }</p>
+                    </div>
+                    <div class="fli_de_wrapper_dl1">
+                        <label for="" class="lb">Child</label>
+                        <p>${flightQtnObj.childCount }</p>
+                    </div>
+                    <div class="fli_de_wrapper_dl1">
+                        <label for="" class="lb">Infants</label>
+                        <p>${flightQtnObj.infantCount }</p>
+                    </div>
+                </div>
+                <div class="fli_de_wrapper_data_li bc-clr">
+                    <div class="fli_de_wrapper_dl1">
+                        <label for="" class="lb">Stops</label>
+                        <p>${flightQtnObj.noOfStops }</p>
+                    </div>
+                    <div class="fli_de_wrapper_dl1">
+                        <label for="" class="lb">Travel Class</label>
+                        <p>${flightQtnObj.cabinClassName }</p>
+                    </div>
+                    <div class="fli_de_wrapper_dl1">
+                        <label for="" class="lb">Total Flight Cost</label>
+                        <p>${flightQtnObj.flightCost}</p>
+                    </div>
+                    <div class="fli_de_wrapper_dl1">
+                        <label for="" class="lb">Total Flight Markup</label>
+                        <p>${flightQtnObj.flightMarkup }</p>
+                    </div>
+                </div>
+                <div class="fli_de_wrapper_data_li bc-clr">
+                    <div class="fli_de_wrapper_dl1">
+                        <label for="" class="lb">Display order</label>
+                        <p>${flightQtnObj.displayOrder }</p>
+                    </div>
+                </div>
+                <div class="due_today_task_data_btnss">
+                        <c:if test="${flightQtnObj.noOfStops gt 0 }">
+                            <a
+                                href="form_view_manage_stops_quotation?manualFlightQuotationId=${flightQtnObj.manualFlightQuotationId}&quotationId=${QTN_OBJ.quotationId}&leadId=${QTN_OBJ.leadEntity.leadId}"><input
+                                    type="button" style="background-color:orange;color:black;" value="Manage Stops" /></a>
+                            <a id="myBtn[${filteredLeads.leadId}]" onclick="myStopsDisplay(this)"
+                                data-load-url="form_view_flight_stops_quotation_modal?manualFlightQuotationId=${flightQtnObj.manualFlightQuotationId}&quotationId=${QTN_OBJ.quotationId}&leadId=${QTN_OBJ.leadEntity.leadId}"
+                                data-toggle="modal" data-target="#myModal"><input type="button" style="background-color:orange;color:black;"
+                                    value="View Connections" /></a>
+                        </c:if>
+                    
+                        &nbsp;
+           
+                    
+                    <c:if test="${QTN_OBJ.converted eq true }">
+                       
+                            <a><input type="button" style="background-color:lightgray;" value="Edit Flight" /></a>
+                            <a><input type="button" style="background-color:lightgray;" value="Delete Flight" /></a>
+                       
+                    </c:if>
+                    <c:if test="${QTN_OBJ.converted ne true }">
+                        
+                            <a
+                                href="form_view_edit_manual_flight_quotation?manualFlightQuotationId=${flightQtnObj.manualFlightQuotationId}&quotationId=${QTN_OBJ.quotationId}&leadId=${QTN_OBJ.leadEntity.leadId}"><input
+                                    type="button"  value="Edit Flight" /></a>
+                            <a
+                                href="form_view_delete_manual_flight_quotation?manualFlightQuotationId=${flightQtnObj.manualFlightQuotationId}&quotationId=${QTN_OBJ.quotationId}&leadId=${QTN_OBJ.leadEntity.leadId}"><input
+                                    type="button" style="background-color:red;" value="Delete Flight" /></a>
+                                    </c:if>
+                </div>
+        </div>
+    </div>
                                                 </c:forEach>
                                             </td>
                                         </tr>
                                     </table>
                                 </div>
                             </div>
-                        </div>
+                    
 
                        
 
@@ -296,6 +279,5 @@ window.onclick = function(event) {
   }
 }
 </script>
-                </body>
-
+</body>
 </html>

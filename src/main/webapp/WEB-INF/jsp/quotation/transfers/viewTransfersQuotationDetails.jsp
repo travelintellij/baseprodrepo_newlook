@@ -96,8 +96,7 @@
     
 
     	<div  style="background:black;width:500px;margin:0 auto;text-align:center;border-radius:5px"><b><font color="#32cd32"> ${Success} </font><font color="red"> ${Error}</font> </b></div>
-	<table style="width:auto;table-layout:fixed;" >
-	<tr><td>
+	
 		<c:if test="${TRN_ACTION eq 'ADD'}">
 			<jsp:include page="form_view_add_manual_transfer_quotation.jsp" />
 		</c:if>
@@ -111,9 +110,9 @@
 					<jsp:include page="form_view_delete_manual_transfer_quotation.jsp" />
 				</c:when>
 				<c:otherwise>
-			 <div class="view_transfer_quotation_table container">
-        <div class="view_transfer_quotation_table_wrapper" 
-style="margin-top:20px;margin-left:50px";>
+				<div class="container2">
+			 <div class="view_transfer_quotation_table ">
+        <div class="view_transfer_quotation_table_wrapper">
             <div class="view_transfer_quotation_table_wrapper_data" style="background:#6082B6;margin-bottom:10px">
                 <div class="view_transfer_quotation_table_wrapper_data_li">
                     <label for="">Pickup City</label>
@@ -196,14 +195,12 @@ style="margin-top:20px;margin-left:50px";>
                 </c:if>
             </div>
         </div>
-	
+	 </div>
+	  </div>
 			</c:otherwise>
 			</c:choose>
 		</c:forEach>
-		</td>
-		</tr>
-		</table>
-    </div>
+	
     
     
     

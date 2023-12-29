@@ -4652,7 +4652,7 @@ background:red
 /* #################### form_view_add_manual_transfer_quotation  ############################ */
 
 .form_view_add_manual_transfer_quotation_wrapper{
-    color: white;
+        color: white;
         width: 100%;
         text-align: center;
         border-collapse: collapse;
@@ -4660,9 +4660,8 @@ background:red
         background: rgba(0, 0, 0, 0.689);
         padding: 10px;
         border-radius: 10px;
-         margin-left: 170px;
-     margin-top: -50px;
-}
+        
+}  
 .form_view_add_manual_transfer_quotation_wrapper_data_line{
     display: flex;
 }
@@ -4750,9 +4749,14 @@ justify-content: center;
     border: none;
     background: rgba(0, 0, 0, 0.689);
     padding: 10px;
-    border-radius: 10px;
-    margin-left: 170px;
-     margin-top: -50px;
+    border-radius: 10px;     
+}
+
+.container2{
+	margin:10px 0;
+	display: flex;
+	justify-content: center;
+	width:100%
 }
 
 .view_transfer_quotation_table_wrapper_data {
@@ -4978,7 +4982,7 @@ justify-content: center;
 
 .form_view_search_visa_add_quotation_wrapper {
     color: white;
-    width: 800px;
+    width: 900px;
     text-align: center;
     border-collapse: collapse;
     border: none;
@@ -5012,7 +5016,7 @@ justify-content: center;
 }
 
 .form_view_search_visa_add_quotation_wrapper_data_in {
-    width: 200px;
+    width: 300px;
     text-align: start;
 }
 
@@ -6180,4 +6184,66 @@ width: 90%
 	border:none;
 	outline:none;
 	
+}
+
+/* ################### tour package ############# */
+
+.add_man_pckage_wrapper {
+    color: white;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top:100px;
+}
+.add_man_pckage_wrapper_data_line{
+    display: flex;
+}
+.add_man_pckage_wrapper_dl1{
+    text-align: start;
+    width: 300px;
+}
+.add_man_pckage_wrapper_dl1 input{
+    width: 90%;
+}
+.pt_wrapper {
+    width: 500px;
+    color: white;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    margin: 100px auto;
+}
+
+/* #################### flight ###### */
+
+.fli_de_wrapper {
+    color: white;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.fli_de_wrapper_data_fli {
+    display: flex;
+}
+
+.fli_de_wrapper_data_fli .fli_de_wrapper_dl1 {
+    text-align: start;
+    width: 600px;
+}
+.fli_de_wrapper_data_li{
+    display: flex;
+}
+.fli_de_wrapper_data_li .fli_de_wrapper_dl1{
+    text-align: start;
+    width: 300px;
 }

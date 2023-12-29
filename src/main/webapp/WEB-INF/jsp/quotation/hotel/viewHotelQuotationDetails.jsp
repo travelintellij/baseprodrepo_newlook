@@ -112,7 +112,9 @@
 
 	</c:if>
 	
-	
+	<c:if test="${HTL_STOP_ACTION eq 'ADD'}">
+			<jsp:include page="form_view_add_manual_hotel_quotation.jsp" />
+		</c:if>
 	
     <c:forEach items="${QTN_OBJ.hotelVoList}" var="hotelQtnObj">
         <c:choose>
