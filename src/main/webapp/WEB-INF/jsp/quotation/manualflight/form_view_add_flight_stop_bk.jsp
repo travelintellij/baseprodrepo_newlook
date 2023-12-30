@@ -5,7 +5,7 @@
 <link href="<c:url value="/resources/css/jquery.datetimepicker.min.css" />" rel="stylesheet">
 <script src="<c:url value="/resources/js/jquery.datetimepicker.full.js" />"></script>
 
-<form:form modelAttribute="FLT_STOP" action="create_create_flight_stop_quotation">	
+<form:form modelAttribute="FLT_STOP" action="create_createoriginCity_flight_stop_quotation">	
 	<input type="hidden" name="leadId" value= "${QTN_OBJ.leadEntity.leadId}" />
 	<input type="hidden" name="quotationId" value= "${QTN_OBJ.quotationId}" />
 	<input type="hidden" name="manualFlightQuotationId" value= "${MANUAL_FLT.manualFlightQuotationId}" />
