@@ -10,8 +10,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
-<script src="<c:url value=" /resources/core/jquery.1.10.2.min.js" />"></script>
-<script src="<c:url value=" /resources/core/jquery.autocomplete.min.js" />"></script>
+<script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
+<script src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
 </head>
 <style>
@@ -203,6 +203,8 @@
                             <a
                                 href="form_view_manage_stops_quotation?manualFlightQuotationId=${flightQtnObj.manualFlightQuotationId}&quotationId=${QTN_OBJ.quotationId}&leadId=${QTN_OBJ.leadEntity.leadId}"><input
                                     type="button" style="background-color:orange;color:black;" value="Manage Stops" /></a>
+                            
+                            
                             <a id="myBtn[${filteredLeads.leadId}]" onclick="myStopsDisplay(this)"
                                 data-load-url="form_view_flight_stops_quotation_modal?manualFlightQuotationId=${flightQtnObj.manualFlightQuotationId}&quotationId=${QTN_OBJ.quotationId}&leadId=${QTN_OBJ.leadEntity.leadId}"
                                 data-toggle="modal" data-target="#myModal"><input type="button" style="background-color:orange;color:black;"
@@ -233,10 +235,26 @@
                                                 </c:forEach>
                                             </td>
                                         </tr>
-                                    </table>
                                 </div>
                             </div>
-                    
+
+<div id="myModal" class="modal">	
+		  <!-- Modal content -->
+		  <div class="modal-content">
+		    <div class="modal-header">
+		      <span class="close">&times;</span>
+		      <br><h2 style="text-align:center;">View Flight Connections </h2>
+		    </div>
+		    <div class="modal-body">
+		
+		
+		    </div>
+		    <div class="modal-footer">
+		      <h3 align="center">Powered by @TravelIntelliJ</h3>
+		    </div>
+		  </div>
+	</div>
+                        
 
                        
 

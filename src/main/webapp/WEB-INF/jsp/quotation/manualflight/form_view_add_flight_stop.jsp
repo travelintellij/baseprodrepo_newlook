@@ -2,8 +2,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
-<link href="<c:url value="/resources/css/jquery.datetimepicker.min.css" />" rel="stylesheet">
-<script src="<c:url value="/resources/js/jquery.datetimepicker.full.js" />"></script>
+<link href="<c:url value="/resources/css/jquery.datetimepicker.min.css"/>" rel="stylesheet">
+<script src="<c:url value="/resources/js/jquery.datetimepicker.full.js"/>"></script>
    
 <form:form modelAttribute="FLT_STOP" action="create_create_flight_stop_quotation">	
 	<input type="hidden" name="leadId" value= "${QTN_OBJ.leadEntity.leadId}" />
@@ -28,7 +28,7 @@
                     <div class="fr_view_fli_qu_wr_d">
                         <label for="">Departure</label> <br>
                    
-                    <form:input path="originCity"  type="text" id="originCity" />he
+                    <form:input path="originCity"  type="text" id="originCity" />
                     <form:hidden path="airportCodeOrigin" id="origin" />
                     <font color="red">
                         <form:errors path="originCity" cssClass="error" />

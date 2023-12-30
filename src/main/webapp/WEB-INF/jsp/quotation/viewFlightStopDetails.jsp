@@ -11,8 +11,8 @@
                     <meta charset="UTF-8">
                     <meta name="viewport" content="width=device-width, initial-scale=1.0">
                     <title>viewFlightStopDetails</title>
-                    <script src="<c:url value=" /resources/core/jquery.1.10.2.min.js" />"></script>
-                    <script src="<c:url value=" /resources/core/jquery.autocomplete.min.js" />"></script>
+                    <script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
+                    <script src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
                 </head>
 <style>
   body::before {
