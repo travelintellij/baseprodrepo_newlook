@@ -14,92 +14,96 @@
 	<form:hidden path = "fltQuotationStopId" />
 
 	
-	
-	
-<table style="width:60%;border-collapse:collapse;border:none;border-spacing:0;background-color:creamwhite" id="newflightStop">
-	<tr>
-		<th style="background-color:#800000"><font size="4"><b>Flight Stop Id-  ${FLT_STOP.fltQuotationStopId}</b></font></th>
-		<th colspan="1"><font size="4"><b>Airline</b></font></th>
-		<td>
-			<div class="select">
-				<form:select path="airlineId" required="required" >  
-					<option class="service-small" value="" selected>Please Select</option>
-					<form:options items = "${AIRLINE_MAP}" class="service-small"/>
-				</form:select>  
-			</div>
-		</td>
-		<th><font size="3"><b>Flight No. </b></font></th>
-		<td colspan="2"><form:input path="flightNumber"  style="height:30px;width:120px;margin: auto;"/></td>
-	</tr>
-	<tr>	
-		<th><font size="4"><b>Departure</b></font></th>
-		<th><font size="4"><b>Arrival</b></font></th>
-		<th><font size="4"><b>Departure Details</b></font></th>
-		<th><font size="4"><b>Arrival Details</b></font></th>
-		<th><font size="4"><b>Travel Class</b></font></th>
-	</tr>
-	<tr>	
-		<td>
-			<font color="red"><form:errors path="originCity" cssClass="error" /></font>
-			<form:input path="originCity" style="width: 250px;height:40px;" type="text" id="originCity"  />
-			<form:hidden path = "airportCodeOrigin" id="origin" />
-		</td>
-		<td>
-			<font color="red"><form:errors path="destinationCity" cssClass="error" /></font>
-			<form:input path="destinationCity" style="width: 250px;height:40px;" type="text" id="destinationCity"  />
-			<form:hidden path = "airportCodeDestination" id="origin"  />
-		</td>
-		<td>
-		  	<c:if test="${not empty FLT_STOP.departureDate}">
-				<input style="height: 30px; width: 130px;" id="departureDate" name="departureDate" value="${localDateTimeFormatToEdit.format(FLT_STOP.departureDate)}" required />
-			</c:if>
-		  	<c:if test="${empty FLT_STOP.departureDate}">
-				<input style="height: 30px; width: 130px;" id="departureDate" name="departureDate" required />
-			</c:if>
-		</td>
-		<td>
-			<font color="red"><form:errors path="dateErrorHolder" cssClass="error" /></font>
-			<c:if test="${not empty FLT_STOP.arrivalDate}">
-				<input style="height: 30px; width: 130px;" id="arrivalDate" name="arrivalDate" value="${localDateTimeFormatToEdit.format(FLT_STOP.arrivalDate)}" required />
-			</c:if>
-		  	<c:if test="${empty FLT_STOP.arrivalDate}">
-				<input style="height: 30px; width: 130px;" id="arrivalDate" name="arrivalDate" required />
-			</c:if>
-			
-		</td>
-			
-		<td>
-			<div class="select">
-				<form:select path="cabinClass" required="required" >  
-					<option class="service-small" value="0" selected>Please Select</option>
-					<form:options items = "${CABIN_CLASS}" class="service-small"/>
-				</form:select>  
-			</div>
-		</td>
-	</tr>
-	<tr>	
-		<th><font size="4"><b>Adults</b></font></th>
-		<th><font size="4"><b>Child</b></font></th>
-		<th><font size="4"><b>Infants</b></font></th>
-		<th colspan="2"><font size=4"><b>Action</b></font></th>
+        <div class="fr_view_fli_qu container" style="margin-top:20px">
+            <div class="fr_view_fli_qu_wr ">
+                <div class="fr_view_fli_qu_wr_li_f">
+                    <div class="fr_view_fli_qu_wr_d">
+                        <label for="">Airline</label> <br>
+                        <form:select path="airlineId" required="required" style="width:95%">
+                            <option class="service-small" value="" selected>Please Select</option>
+                            <form:options items="${AIRLINE_MAP}" class="service-small" />
+                        </form:select>
+                    </div>
+                    <div class="fr_view_fli_qu_wr_d">
+                        <label for="">Flight Number</label> <br>
+                        <form:input path="flightNumber" />
+                    </div>
+                </div>
+                <div class="fr_view_fli_qu_wr_li">
+                    <div class="fr_view_fli_qu_wr_d">
+                        <label for="">Departure</label> <br>
+                   
+                    <form:input path="originCity"  type="text" id="originCity" />
+                    <form:hidden path="airportCodeOrigin" id="origin" />
+                    <font color="red">
+                        <form:errors path="originCity" cssClass="error" />
+                    </font>
+                    </div>
+                    <div class="fr_view_fli_qu_wr_d">
+                        <label for="">Arrival</label> <br>
+                        
+                        <form:input path="destinationCity"  type="text" id="destinationCity" />
+                        <form:hidden path="airportCodeDestination" id="origin" />
+                        <font color="red">
+                            <form:errors path="destinationCity" cssClass="error" />
+                        </font>
+                    </div>
+                    <div class="fr_view_fli_qu_wr_d">
+                        <label for="">Departure Details</label> <br>
+                        <c:if test="${not empty FLT_STOP.departureDate}">
+                            <input id="departureDate" name="departureDate"
+                                value="${localDateTimeFormatToEdit.format(FLT_STOP.departureDate)}" required />
+                        </c:if>
+                        <c:if test="${empty FLT_STOP.departureDate}">
+                            <input  id="departureDate" name="departureDate" required />
+                        </c:if>
+                    </div>
+                    <div class="fr_view_fli_qu_wr_d">
+                        <label for="">Arrival Details</label> <br>
+                        <font color="red">
+                            <form:errors path="dateErrorHolder" cssClass="error" />
+                        </font>
+                        <c:if test="${not empty FLT_STOP.arrivalDate}">
+                            <input  id="arrivalDate" name="arrivalDate"
+                                value="${localDateTimeFormatToEdit.format(FLT_STOP.arrivalDate)}" required />
+                        </c:if>
+                        <c:if test="${empty FLT_STOP.arrivalDate}">
+                            <input  id="arrivalDate" name="arrivalDate" required />
+                        </c:if>
+                    </div>
+                </div>
+                <div class="fr_view_fli_qu_wr_li">
+                    <div class="fr_view_fli_qu_wr_d">
+                        <label for="">Adults</label> <br>
+                        <font color="red">
+                            <form:errors path="adultCount" cssClass="error" />
+                        </font>
+                        <form:input path="adultCount" type="number" min="0"  />
+                    </div>
+                    <div class="fr_view_fli_qu_wr_d">
+                        <label for="">Children</label> <br>
+                        <form:input path="childCount" type="number" min="0"  />
+                    </div>
+                    <div class="fr_view_fli_qu_wr_d">
+                        <label for="">Infants</label> <br>
+                        <form:input path="infantCount" type="number" min="0" />
+                    </div>
+                      <div class="fr_view_fli_qu_wr_d">
+                        <label for="">Travel Class</label> <br>
+                        <form:select path="cabinClass" required="required" style="width:90%">
+                            <option class="service-small" value="0" selected>Please Select</option>
+                            <form:options items="${CABIN_CLASS}" class="service-small" />
+                        </form:select>
+                    </div>
+                </div>
+            
+                <div class="due_today_task_data_btnss" style="margin:10px 0">
+                <input type="submit" name="editFlight" id="editFlight" Value="Update Flight Stop" />
+		<a href="form_view_manage_stops_quotation?manualFlightQuotationId=${MANUAL_FLT.manualFlightQuotationId}&leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId}"><input type="button"  value="Cancel" /></a>
 		
-	</tr>
-	<tr>	
-		<td>
-		<font color="red"><form:errors path="adultCount" cssClass="error" /></font>
-		<form:input path="adultCount" type="number" min="0" style="height:30px;width:50px;margin: auto;"/></td>
-		<td><form:input path="childCount" type="number" min="0" style="height:30px;width:50px;margin: auto;"/></td>
-		<td><form:input path="infantCount" type="number" min="0" style="height:30px;width:50px;margin: auto;"/></td>
-		<td colspan="2"><input type="submit" name="editFlight" id="editFlight" Value="Update Flight Stop" />
-		<a href="form_view_manage_stops_quotation?manualFlightQuotationId=${MANUAL_FLT.manualFlightQuotationId}&leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId}"><input type="button" style="background-color:blue;" value="Cancel" /></a>
-		
-		</td>
-	
-	</tr>
-	<tr>
-		
-	</tr>
-	</table>
+                </div>
+            </div>
+        </div>
 </form:form>
 
 <script>

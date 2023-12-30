@@ -6305,3 +6305,20 @@ width: 90%
 .form_view_add_manual_other_w_dl1 input{
     width: 90%;
 }
+/* ################### flight stop view ################# */
+.view_flight_wrapper{
+color: white;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+}
+.view_flight_wrapper_data_line{
+    display: flex;
+}
+.view_flight_wrapper_dl{
+    text-align: start;
+    width: 300px;
+}
