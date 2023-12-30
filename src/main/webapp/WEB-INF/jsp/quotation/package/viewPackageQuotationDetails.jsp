@@ -100,128 +100,95 @@
                         <font color="green"> ${Success} </font>
                         <font color="red"> ${Error}</font>
                     </b></div>
-                <table style="width:70%;  table-layout:fixed">
-                    <tr>
-                        <td>
-                            <%-- <c:if test="${HTL_STOP_ACTION eq 'ADD'}">
-                                <jsp:include page="form_view_add_manual_package_quotation.jsp" />
-                                </c:if>
-                                --%>
+                    
+                  
+                        
+                    <br>
+                   
+               
                                 <c:forEach items="${QTN_OBJ.tourPackageVoList}" var="packageQtnObj">
-                                    <%-- <c:choose>
-                                        <c:when
-                                            test="${packageQtnObj.manualPackageQuotationId eq MANUAL_PKG.manualPackageQuotationId  && PKG_STOP_ACTION eq 'EDIT' }">
-                                            <jsp:include page="form_view_edit_manual_package_quotation.jsp" />
-                                        </c:when>
-                                        <c:when
-                                            test="${packageQtnObj.manualPackageQuotationId eq MANUAL_PKG.manualPackageQuotationId  && PKG_STOP_ACTION eq 'DELETE' }">
-                                            <jsp:include page="form_view_delete_manual_package_quotation.jsp" />
-                                        </c:when>
-                                        <c:otherwise>
-                                            --%>
-                                            <table
-                                                style="width:100%;  table-layout:fixed;background-color: #DFE0DC; border: 3px solid #000000; border-collapse: collapse">
-                                                <tr>
-                                                    <th style="background-color:blue;" colspan="5">
-                                                        <font size="4"><b>Id- ${packageQtnObj.manualPkgQuotationId}</b>
-                                                        </font>
-                                                    </th>
-                                                </tr>
-                                                <tr>
-
-                                                    <th colspan="1">
-                                                        <font size="4"><b>City</b></font>
-                                                    </th>
-                                                    <th colspan="2">
-                                                        <font size="4"><b>Package Name</b></font>
-                                                    </th>
-                                                    <th>
-                                                        <font size="4"><b>Start Date</b></font>
-                                                    </th>
-                                                    <th>
-                                                        <font size="4"><b>End Date</b></font>
-                                                    </th>
-                                                </tr>
-                                                <tr>
-                                                    <td>${packageQtnObj.cityName }</td>
-                                                    <td colspan="2">${packageQtnObj.packageName}</td>
-                                                    <td>
-                                                        <fmt:formatDate value="${packageQtnObj.startDate}"
-                                                            pattern="dd-MM-yyyy" />
-                                                    </td>
-                                                    <td>
-                                                        <fmt:formatDate value="${packageQtnObj.endDate}"
-                                                            pattern="dd-MM-yyyy" />
-                                                    </td>
-                                                </tr>
-
-                                                <tr>
-                                                    <th>
-                                                        <font size="4"><b>Adults</b></font>
-                                                    </th>
-                                                    <th>
-                                                        <font size="4"><b>Children</b></font>
-                                                    </th>
-                                                    <th>
-                                                        <font size="4"><b>Infant</b></font>
-                                                    </th>
-                                                    <th>
-                                                        <font size="4"><b>Package Cost</b></font>
-                                                    </th>
-                                                    <th>
-                                                        <font size="4"><b>Package Markup</b></font>
-                                                    </th>
-                                                </tr>
-                                                <tr>
-                                                    <td>${packageQtnObj.adults}</td>
-                                                    <td>${packageQtnObj.children}</td>
-                                                    <td>${packageQtnObj.infant}</td>
-                                                    <td>${packageQtnObj.pkgCost}</td>
-                                                    <td>${packageQtnObj.pkgMarkup}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th colspan="3">
-                                                        <font size="4"><b>Remarks</b></font>
-                                                    </th>
-                                                    <th>
-                                                        <font size="4"><b>Flight Included</b></font>
-                                                    </th>
-                                                    <th>
-                                                        <font size="4"><b>Display Order</b></font>
-                                                    </th>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="3">${packageQtnObj.remarks} </td>
-                                                    <td>${packageQtnObj.flightIncluded}</td>
-                                                    <td>${packageQtnObj.displayOrder } </td>
-                                                </tr>
-                                                <tr>
-                                                    <th colspan="5">
-                                                        <a
-                                                            href="form_view_manual_package_quotation_detail?manualPkgQuotationId=${packageQtnObj.manualPkgQuotationId}&quotationId=${QTN_OBJ.quotationId}&leadId=${QTN_OBJ.leadEntity.leadId}"><input
-                                                                type="button" style="background-color:blue;"
-                                                                value="View Details" /></a>
-
-                                                        <c:if test="${QTN_OBJ.converted ne true }">
-                                                            <a
-                                                                href="form_view_edit_manual_package_quotation?manualPkgQuotationId=${packageQtnObj.manualPkgQuotationId}&quotationId=${QTN_OBJ.quotationId}&leadId=${QTN_OBJ.leadEntity.leadId}"><input
-                                                                    type="button" style="background-color:blue;"
-                                                                    value="Edit Package" /></a>
-                                                            <a
-                                                                href="form_view_delete_manual_package_quotation?manualPkgQuotationId=${packageQtnObj.manualPkgQuotationId}&quotationId=${QTN_OBJ.quotationId}&leadId=${QTN_OBJ.leadEntity.leadId}"><input
-                                                                    type="button" style="background-color:red;"
-                                                                    value="Delete Package" /></a>
-                                                        </c:if>
-                                                        <c:if test="${QTN_OBJ.converted eq true }">
-                                                            <a><input type="button" style="background-color:lightgray;"
-                                                                    value="Edit Package" /></a>
-                                                            <a><input type="button" style="background-color:lightgray;"
-                                                                    value="Delete Package" /></a>
-
-                                                        </c:if>
-                                                    </th>
-                                                </tr>
-                                            </table>
+                              
+       <div class="fl_view " style="margin:0 auto;width:1200px">
+        <div class="fl_view_wrapper">
+            <div class="fl_view_wrapper_data">
+                <div class="fl_view_wrapper_data_line bc-clr">
+                    <div class="fl_view_wrapper_dl">
+                        <label for="" class="lb">City</label>
+                        <p>${packageQtnObj.cityName }</p>
+                    </div>
+                    <div class="fl_view_wrapper_dl">
+                        <label for="" class="lb">Package Name</label>
+                        <p>${packageQtnObj.packageName}</p>
+                    </div>
+                    <div class="fl_view_wrapper_dl">
+                        <label for="" class="lb">Start Date</label>
+                        <p><fmt:formatDate value="${packageQtnObj.startDate}" pattern="dd-MM-yyyy" /></p>
+                    </div>
+                    <div class="fl_view_wrapper_dl">
+                        <label for="" class="lb">End Date</label>
+                        <p><fmt:formatDate value="${packageQtnObj.endDate}" pattern="dd-MM-yyyy" /></p>
+                    </div>
+                </div>
+                <div class="fl_view_wrapper_data_line bc-clr">
+                    <div class="fl_view_wrapper_dl">
+                        <label for="" class="lb">Adult</label>
+                        <p>${packageQtnObj.adults}</p>
+                    </div>
+                    <div class="fl_view_wrapper_dl">
+                        <label for="" class="lb">Children</label>
+                        <p>${packageQtnObj.children}</p>
+                    </div>
+                    <div class="fl_view_wrapper_dl">
+                        <label for="" class="lb">Infant</label>
+                        <p>${packageQtnObj.infant}</p>
+                    </div>
+                    <div class="fl_view_wrapper_dl">
+                        <label for="" class="lb">Package Cost</label>
+                        <p>${packageQtnObj.pkgCost}</p>
+                    </div>
+                </div>
+                <div class="fl_view_wrapper_data_line bc-clr">
+                    <div class="fl_view_wrapper_dl" style="width:25%">
+                        <label for="" class="lb">Package Markup</label>
+                        <p>${packageQtnObj.pkgMarkup}</p>
+                    </div>
+                    <div class="fl_view_wrapper_dl" style="width:25%">
+                        <label for="" class="lb">Flight Included</label>
+                        <p>${packageQtnObj.flightIncluded}</p>
+                    </div>
+                    <div class="fl_view_wrapper_dl" style="width:25%">
+                        <label for="" class="lb">Display Order</label>
+                        <p>${packageQtnObj.displayOrder }</p>
+                    </div>
+                </div>
+                <div class="fl_view_wrapper_data_line bc-clr">
+                    <div class="fl_view_wrapper_dl" style="width:100%">
+                        <label for="" class="lb">Remarks</label>
+                        <p>${packageQtnObj.remarks}</p>
+                    </div>
+                </div>
+                <div class="due_today_task_data_btnss">
+                    <a
+                        href="form_view_manual_package_quotation_detail?manualPkgQuotationId=${packageQtnObj.manualPkgQuotationId}&quotationId=${QTN_OBJ.quotationId}&leadId=${QTN_OBJ.leadEntity.leadId}"><input
+                            type="button"  value="View Details" /></a>
+                    
+                    <c:if test="${QTN_OBJ.converted ne true }">
+                        <a
+                            href="form_view_edit_manual_package_quotation?manualPkgQuotationId=${packageQtnObj.manualPkgQuotationId}&quotationId=${QTN_OBJ.quotationId}&leadId=${QTN_OBJ.leadEntity.leadId}"><input
+                                type="button"  value="Edit Package" /></a>
+                        <a
+                            href="form_view_delete_manual_package_quotation?manualPkgQuotationId=${packageQtnObj.manualPkgQuotationId}&quotationId=${QTN_OBJ.quotationId}&leadId=${QTN_OBJ.leadEntity.leadId}"><input
+                                type="button" style="background-color:red;" value="Delete Package" /></a>
+                    </c:if>
+                    <c:if test="${QTN_OBJ.converted eq true }">
+                        <a><input type="button" style="background-color:lightgray;" value="Edit Package" /></a>
+                        <a><input type="button" style="background-color:lightgray;" value="Delete Package" /></a>
+                    
+                    </c:if>
+                </div>
+            </div>
+        </div>
+    </div>
                                             <%-- </c:otherwise>
                                                 </c:choose>
                                                 --%>

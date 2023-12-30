@@ -6247,3 +6247,61 @@ width: 90%
     text-align: start;
     width: 300px;
 }
+/* #################### fli dl ########### */
+.fl_view_wrapper{
+    color: white;
+        text-align: center;
+        border-collapse: collapse;
+        border: none;
+        background: rgba(0, 0, 0, 9);
+        padding: 10px;
+        border-radius: 10px;
+        margin-top: 100px;
+}
+.fl_view_wrapper_data_line{
+    display: flex;
+}
+.fl_view_wrapper_dl{
+    width: 300px;
+    text-align: start;
+}
+/* ############### com_page ############# */
+.com_page_wrapper{
+    color: white;
+        text-align: center;
+        border-collapse: collapse;
+        border: none;
+        background: rgba(0, 0, 0, 9);
+        padding: 10px;
+        border-radius: 10px;
+        margin-top: 100px;
+}
+.com_page_wrapper_data_line{
+    display: flex;
+}
+.com_page_wrapper_dl1{
+   text-align: start;
+   width: 300px;
+}
+
+
+.form_view_add_manual_other_wrapper {
+    color: white;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 100px;
+}
+.form_view_add_manual_other_w_dline{
+    display: flex;
+}
+.form_view_add_manual_other_w_dl1{
+    text-align: start;
+    width: 300px;
+}
+.form_view_add_manual_other_w_dl1 input{
+    width: 90%;
+}

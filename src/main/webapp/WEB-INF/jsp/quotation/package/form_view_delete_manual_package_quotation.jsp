@@ -1,294 +1,183 @@
 <!DOCTYPE html>
-<html>
-<jsp:include page="../../menu/MenuBuilder.jsp" />
-  
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
-
-<head>
-<link href="<c:url value="/resources/core/main.css" />" rel="stylesheet">
-</head>
-
-<script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
-<script src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
-
-
-<style>
-table {
-  width: 100%;
-  height: 40px;
-  border-collapse: collapse;
-  border: 1px solid #38678f;
-  margin: 35px auto;
-  background: white;
+<html lang="en">
+    <jsp:include page="../../menu/MenuBuilder.jsp" />
     
-}
-
-th {
-  background: red;
-  height: 30px;
-  width: 15%;
-  font-weight: bold;
-  text-shadow: 0 1px 0 #38678f;
-  color: white;
-  border: 1px solid #38678f;
-  box-shadow: inset 0px 1px 2px #568ebd;
-  transition: all 0.2s;
-  height: 30px;
-}
-tr {
-  border-bottom: 1px solid #cccccc;
-}
-
-td {
-  border-right: 1px solid #cccccc;
-  padding: 10px;
-  transition: all 0.2s;
-  text-align: center;
-  height: 30px;
-  font-size: 16px;
-  font-weight:bold;
-}
-input[type=button], input[type=submit], input[type=reset] {
-  background-color: red;
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  text-decoration: none;
-  margin: 4px 2px;
-  cursor: pointer;
-}
-
-.sidenav {
-	height: 70%;
-	width: 0;
-	position: fixed;
-	z-index: 1;
-	top: 118;
-	left: 0; //
-	//background-color: #111;
-	background-color: lightblue;
-	overflow-x: hidden;
-	transition: 0.5s;
-	padding-top: 30px;
-	text-align: center;
-}
-
-.sidenav a {
-	padding: 4px 4px 4px 16px;
-	text-decoration: none;
-	font-size: 25px;
-	color: #818181;
-	display: block;
-	transition: 0.3s;
-}
-
-.sidenav a:hover {
-	color: #f1f1f1;
-	
-}
-
-.sidenav .closebtn {
-	position: absolute;
-	top: 0;
-	right: 25px;
-	font-size: 36px;
-	margin-left: 50px;
-}
-
-@media screen and (max-height: 450px) {
-	.sidenav {
-		padding-top: 15px;
-	}
-	.sidenav a {
-		font-size: 18px;
-	}
-}
-
-.float-container {
-    //border: 3px solid #fff;
-    padding: 15px;
-}
-
-.float-child-left {
-    width: 20%;
-    float: left;
-    padding: 20px;
-    //border: 2px solid red;
-}
-
-.float-child-right {
-    width: 80%;
-    float: center;
-    //padding: 50px;
-    //border: 2px solid red;
-}  
-  ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
-
-li {
-  float: left;
-}
-
-li a {
-  display: block;
-  padding: 20px;
-  background-color: #dddddd;
-}
-</style>
-<br>
-<h2 align="center">View Package Quotation Details </h2>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+        <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+            <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+                <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="<c:url value=" /resources/core/jquery.1.10.2.min.js" />"></script>
+    <script src="<c:url value=" /resources/core/jquery.autocomplete.min.js" />"></script>
+</head>
 <body>
-<form:form modelAttribute="QTN_OBJ" action="create_create_lead_quotation">
-	<table style="width:45%;margin: auto;">
-		<tr>
-		<th style="background: #FFC300;color:black;"> Quotation Id </th><td>${QTN_OBJ.quotationId}</td>
-		<th style="background: #FFC300;color:black;"> Version Id </th><td>${QTN_OBJ.version}</td>
-		</tr>
-	</table>
-</form:form>
 
-
-<form:form modelAttribute="LEAD_OBJ" action="create_create_lead_quotation">
-	<div id="mySidenav" class="sidenav">
-		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-		<jsp:include page="../leadDetailsOpenNavView.jsp" />
-	</div>
-	<h3><font color="red">View Lead Details </font>	</h3>
-	<span style="font-size: 30px; cursor: pointer" onclick="openNav()">&#9776;
-		 Quick Lead View</span>
-	<script>
-		function openNav() {
-			document.getElementById("mySidenav").style.width = "35%";
-		}
-
-		function closeNav() {
-			document.getElementById("mySidenav").style.width = "0";
-		}
-	</script>
-	<input type="hidden" name="leadId" value= "${QTN_OBJ.leadEntity.leadId}" />
-</form:form>
-	
-	<h3 align="center"><font color="blue"><b>Confirm Package Delete</b></font></h3>
-	
-<div class="float-container">
-  	<div class="float-child-left">
-    <div class="green" >
-   		<jsp:include page="../_quotationServicesMenu.jsp" />
+<div class="my-ki">
+    <!-- ############# quick lead view starts here################## -->
+    <form:form modelAttribute="LEAD_OBJ" action="create_create_lead_quotation">
+    <div class="sep_quick_lead_view">
+        <input type="checkbox" name="" id="" class="ch_quick_lead_view">
+        <div class="hamburgur_menu_quick_lead_view">
+            <span class="sep_line1"></span>
+            <span class="sep_line2"></span>
+            <span class="sep_line3"></span>
+        </div>
+        <h2 style="display:inline-block;font-size:20px;;">Quick lead view</h2>
+        <div class="lead_view_sep">
+        <jsp:include page="../leadDetailsOpenNavView.jsp" />
+        </div>
     </div>
-  	</div>
-
- 	<div class="float-child-right">
-    <div class="blue">
-		
-	<div align="center"><b><font color="green" > ${Success} </font><font color="red"> ${Error}</font> </b></div>
-	<table style="width:70%;  table-layout:fixed;background-color:#cc3300;" >
-	<tr><td>
-<form:form modelAttribute="MANUAL_PKG" action="delete_delete_package_manual_quotation">
-	
-	<input type="hidden" name="leadId" value= "${QTN_OBJ.leadEntity.leadId}" />
-	<input type="hidden" name="quotationId" value= "${QTN_OBJ.quotationId}" />
-	<input type="hidden" name="manualPkgQuotationId" value= "${MANUAL_PKG.manualPkgQuotationId}" />
-	
-	<table style="width:100%;  table-layout:fixed;" >
-		<tr><th style="background-color:blue;" colspan="5"><font size="4"><b>Id-  ${MANUAL_PKG.manualPkgQuotationId}</b></font></th></tr>
-		<tr>
-			<th style="width:20%;"><font size="4"><b>City</b></font></th>
-			<th colspan="2" style="width:40%;"><font size="4"><b>Package Name</b></font></th>
-			<th><font size="4" style="width:20%;"><b>Start Date</b></font></th>
-			<th><font size="4" style="width:20%;"><b>End Date</b></font></th>
-		</tr>
-		<tr>
-			<td>${MANUAL_PKG.cityName}</td>
-			<td colspan="2">${MANUAL_PKG.packageName}</td>
-			<td>${MANUAL_PKG.startDate}</td>
-			<td>${MANUAL_PKG.endDate}</td>
-		</tr>
-		<tr>	
-			<th colspan="5"><font size="4"><b>Package Description</b></font></th>
-		</tr>
-		<tr>
-			<td colspan="5"><p align="left" style="white-space: pre-line">${MANUAL_PKG.packageDescription}</p></td>
-		</tr>
-		<tr>
-			<th colspan="5">Inclusions </th>
-			
-		</tr>
-		<tr>
-			
-			<td colspan="5"><p align="left" style="white-space: pre-line">${MANUAL_PKG.inclusions}</p></td>
-			
-		</tr>
-		<tr>
-			<th colspan="5" style="background-color:red;"> Exclusions</th>
-		</tr>
-		<tr>
-			<td colspan="5"><p align="left" style="white-space: pre-line">${MANUAL_PKG.exclusions}</p></td>
-		</tr>
-		<tr>
-
-		</tr>
-		<tr>	
-			<th colspan="5" style="background-color:red;"><font size="4"><b>Cancellation Policy</b></font>(If left empty, it won't be printed)</th>
-		</tr>
-		<tr>
-			<td colspan="5"><p align="left" style="white-space: pre-line">${MANUAL_PKG.cancellationPolicy}</p></td>
-		</tr>
-		<tr>	
-			<th colspan="5"><font size="4"><b>Remarks</b></font></th>
-		</tr>
-		<tr>
-			<td colspan="5"><p align="left" style="white-space: pre-line">${MANUAL_PKG.remarks}</p></td>
-		</tr>
-		
-		<tr>	
-			<th style="width:20%;"><font size="4"><b>Adults</b></font></th>
-			<th style="width:20%;"><font size="4"><b >Children</b></font></th>
-			<th style="width:20%;"><font size="4"><b>Infant</b></font></th>
-			<th style="width:20%;"><font size="4"><b>Package Cost</b></font></th>
-			<th style="width:20%;"><font size="4"><b>Package Markup</b></font></th>
-		</tr>
-		<tr>
-			<td>${MANUAL_PKG.adults}</td>
-			<td>${MANUAL_PKG.children}</td>
-			<td>${MANUAL_PKG.infant}</td>
-			<td>${MANUAL_PKG.pkgCost}</td>
-			<td>${MANUAL_PKG.pkgMarkup}</td>
-			
-		</tr>
-			
-			
-		<tr>	
-			<th colspan="2"><font size="4"><b>Flights Included</b></font></th>
-			<td>${MANUAL_PKG.flightIncluded}</td>  
-			<th><font size="4"><b>Display Order</b></font></th>
-			<td>${MANUAL_PKG.displayOrder}</td>
-		</tr>
-		<tr><td colspan="5">&nbsp;</td></tr>
-		<tr>
-			<th colspan="5" style="background-color:green;">
-			
-			
-			<input type="submit" name="deletePackage" id="deletePackage" Value="Confirm Delete !" />
-			<a href="form_view_package_quotation_details?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId}"><input type="button" style="background-color:blue;" value="Back" /></a>
-		</th>
-	</tr>
-	</table>	
-</form:form>
+    </form:form>
+    <!-- ############# quick lead view ends here################## -->
+</div>
 
 
-		</td>
-		</tr>
-		</table>
-   	</div>
-   	</div>
-	</div>
+    <form:form modelAttribute="QTN_OBJ" action="create_create_lead_quotation">
+             <div class="viewInsuranceQuotationDetails">
+            <div class="viewInsuranceQuotationD_wrapper">
+                <div class="viewInsuranceQuotationD_wr_data">
+                    <div class="viewInsuranceQuotationD_wr_data_line">
+                        <label for="" class="lb">Quotation</label>
+                        <p>${QTN_OBJ.quotationId}</p>
+                    </div>
+                    <div class="viewInsuranceQuotationD_wr_data_line">
+                        <label for="" class="lb"> Version Id</label>
+                        <p>${QTN_OBJ.version}</p>
+                    </div>
+                </div>
+              </div>
+            </div>
+    </form:form>
+    
+    <div class="afd">
+<jsp:include page="../_quotationServicesMenu.jsp" />
+</div>
+ 
+    
+  
+    
+    <div class="float-container">
+       
+    
+        <div class="float-child-right">
+            <div class="blue">
+    
+                <div align="center"><b>
+                        <font color="green"> ${Success} </font>
+                        <font color="red"> ${Error}</font>
+                    </b></div>
+              
+                            <form:form modelAttribute="MANUAL_PKG" action="delete_delete_package_manual_quotation">
+    
+                                <input type="hidden" name="leadId" value="${QTN_OBJ.leadEntity.leadId}" />
+                                <input type="hidden" name="quotationId" value="${QTN_OBJ.quotationId}" />
+                                <input type="hidden" name="manualPkgQuotationId"
+                                    value="${MANUAL_PKG.manualPkgQuotationId}" />
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+     <br>
+      <br>
+                       <div class="com_page container">
+        <div class="com_page_wrapper" >
+            <h1>Id- ${MANUAL_PKG.manualPkgQuotationId}</h1>
+            <div class="com_page_wrapper_data">
+                <div class="com_page_wrapper_data_line bc-clr">
+                    <div class="com_page_wrapper_dl1">
+                        <label for="" class="lb">City</label>
+                        <p>${MANUAL_PKG.cityName}</p>
+                    </div>
+                    <div class="com_page_wrapper_dl1">
+                        <label for="" class="lb">Package Name</label>
+                        <p>${MANUAL_PKG.packageName}</p>
+                    </div>
+                    <div class="com_page_wrapper_dl1">
+                        <label for="" class="lb">Start Date</label>
+                        <p>${MANUAL_PKG.startDate}</p>
+                    </div>
+                    <div class="com_page_wrapper_dl1">
+                        <label for="" class="lb">End Date</label>
+                        <p>${MANUAL_PKG.endDate}</p>
+                    </div>
+                </div>
+                <div class="com_page_wrapper_data_line bc-clr">
+                    <div class="com_page_wrapper_dl1">
+                        <label for="" class="lb">Adults</label>
+                        <p>${MANUAL_PKG.adults}</p>
+                    </div>
+                    <div class="com_page_wrapper_dl1">
+                        <label for="" class="lb">Children</label>
+                        <p>${MANUAL_PKG.children}</p>
+                    </div>
+                    <div class="com_page_wrapper_dl1">
+                        <label for="" class="lb">Infant</label>
+                        <p>${MANUAL_PKG.infant}</p>
+                    </div>
+                    <div class="com_page_wrapper_dl1">
+                        <label for="" class="lb">Package Cost</label>
+                        <p>${MANUAL_PKG.pkgCost}</p>
+                    </div>
+                </div>
+                <div class="com_page_wrapper_data_line bc-clr">
+                    <div class="com_page_wrapper_dl1" style="width:294px">
+                        <label for="" class="lb">Package Markup</label>
+                        <p>${MANUAL_PKG.pkgMarkup}</p>
+                    </div>
+                    <div class="com_page_wrapper_dl1" style="width:294px">
+                        <label for="" class="lb">Flight Included</label>
+                        <p>${MANUAL_PKG.flightIncluded}</p>
+                    </div>
+                    <div class="com_page_wrapper_dl1" style="width:294px">
+                        <label for="" class="lb">Display Order</label>
+                        <p>${MANUAL_PKG.displayOrder}</p>
+                    </div>
+                </div>
+                <div class="com_page_wrapper_data_line bc-clr">
+                    <div class="com_page_wrapper_dl1" style="width: 100%;">
+                        <label for="" class="lb">Package Description</label>
+                        <p>${MANUAL_PKG.packageDescription}</p>
+                    </div>
+                </div>
+                <div class="com_page_wrapper_data_line bc-clr">
+                    <div class="com_page_wrapper_dl1" style="width: 100%;">
+                        <label for="" class="lb">Inclusions</label>
+                        <p>${MANUAL_PKG.inclusions}</p>
+                    </div>
+                </div>
+                <div class="com_page_wrapper_data_line bc-clr">
+                    <div class="com_page_wrapper_dl1" style="width: 100%;">
+                        <label for="" class="lb">Exclusions</label>
+                        <p>${MANUAL_PKG.exclusions}</p>
+                    </div>
+                </div>
+                <div class="com_page_wrapper_data_line bc-clr">
+                    <div class="com_page_wrapper_dl1" style="width: 100%;">
+                        <label for="" class="lb">Cancellation Policy (If left empty , it wont be printed)</label>
+                        <p>${MANUAL_PKG.cancellationPolicy}</p>
+                    </div>
+                </div>
+                <div class="due_today_task_data_btnss">
+                <input type="submit" name="deletePackage" id="deletePackage" Value="Confirm Delete !" />
+                <a href="form_view_package_quotation_details?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId}"><input
+                        type="button" value="Back" /></a>
+                </div>
+            </div>
+        </div>
+    </div>
+                            </form:form>
+    
+    
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
-  
