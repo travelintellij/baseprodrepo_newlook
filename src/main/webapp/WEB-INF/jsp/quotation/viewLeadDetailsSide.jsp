@@ -17,7 +17,7 @@
     <div class="createNewQuotation container">
     
  <div class="createNewQuotation_btn">
-        <input type="submit" id="editLead"  name="editLead" value="Edit Lead"/>  
+        <input type="submit" id="editLead"  name="editLead" value="Edit Lead" class="my-b"/>  
 		<a href="view_filter_leads">Search Again</a> 
  </div>
  

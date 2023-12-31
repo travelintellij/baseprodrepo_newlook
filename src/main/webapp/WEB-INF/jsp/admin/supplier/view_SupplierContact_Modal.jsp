@@ -15,10 +15,10 @@
     <div class="view_SupplierContact_Modal container">
     <form:form method="post" >
 		<input type="hidden" name="supplierId" value= "${SUPPLIER_CONTACT_OBJ.supplierEntity.supplierId}" />
-        <div class="view_SupplierContact_Modal_wrapper" style="margin-top:25px;background:#94d2bd;box-shadow: 0 0 10px 5px #94d2bd, 0 0 20px 10px #94d2bd;">
-            <h1 class="view_SupplierContact_Modal_heading" style="color:white">Contact Details</h1>
+        <div class="view_SupplierContact_Modal_wrapper" style="margin-top:-15px;background:#94d2bd;box-shadow: 0 0 10px 5px #94d2bd, 0 0 20px 10px #94d2bd;">
+            <h1 class="view_SupplierContact_Modal_heading" style="color:black">Contact Details</h1>
             <div class="view_SupplierContact_Modal_data">
-                <div class="view_SupplierContact_Modal_data_line1">
+                <div class="view_SupplierContact_Modal_data_line1" style="background:#d8e2dc;color:black;margin-bottom:10px">
                     <div class="view_SupplierContact_Modal_data_l1">
                         <label for="" style="color: black;font-weight:bold">Contact Id</label>
                         <p>${SUPPLIER_CONTACT_OBJ.supplierContactId}</p> 
@@ -36,7 +36,7 @@
                         <p>${SUPPLIER_CONTACT_OBJ.email}</p>
                     </div>
                 </div>
-                <div class="view_SupplierContact_Modal_data_line2">
+                <div class="view_SupplierContact_Modal_data_line2" style="background:#d8e2dc;color:black;margin-bottom:10px">
                     <div class="view_SupplierContact_Modal_data_l1">
                         <label for="" style="color: black;font-weight:bold">Mobile</label>
                         <p>${SUPPLIER_CONTACT_OBJ.mobile}</p>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <jsp:include page="../../menu/MenuBuilder.jsp" />
   
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -8,374 +8,302 @@
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 
 <head>
-<link href="<c:url value="/resources/core/main.css" />" rel="stylesheet">
-</head>
-
-<script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form_view_add_manual_flight_quotation</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
+    <script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
 <script src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
 <link href="<c:url value="/resources/css/jquery.datetimepicker.min.css" />" rel="stylesheet">
 	<script src="<c:url value="/resources/js/jquery.datetimepicker.full.js" />"></script>
 
+</head>
 <style>
-table {
-  width: 100%;
-  height: 20px;
-  border-collapse: collapse;
-  border: 1px solid #38678f;
-  margin: 3px auto;
-  background: white;
-  
-}
-
-th {
-  background: #FF4D00;
-  height: 25px;
-  width: 15%;
-  font-weight: heavy;
-  font-size: 20px;
-  text-shadow: 0 1px 0 #38678f;
-  color: white;
-  border: 1px solid #38678f;
-  box-shadow: inset 0px 1px 2px #568ebd;
-  transition: all 0.2s;
-}
-tr {
-  border-bottom: 1px solid #cccccc;
-}
-
-td {
- // border-right: 1px solid #cccccc;
-  width: 15%;
-  padding: 10px;
-  transition: all 0.2s;
-  text-align: left;
-     
-}
-input[type=button], input[type=submit], input[type=reset] {
-  background-color: green;
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  text-decoration: none;
-  margin: 4px 2px;
-  cursor: pointer;
-}
-
-.sidenav {
-	height: 70%;
-	width: 0;
-	position: fixed;
-	z-index: 1;
-	top: 118;
-	left: 0; //
-	//background-color: #111;
-	background-color: lightblue;
-	overflow-x: hidden;
-	transition: 0.5s;
-	padding-top: 30px;
-	text-align: center;
-}
-
-.sidenav a {
-	padding: 4px 4px 4px 16px;
-	text-decoration: none;
-	font-size: 25px;
-	color: #818181;
-	display: block;
-	transition: 0.3s;
-}
-
-.sidenav a:hover {
-	color: #f1f1f1;
-	
-}
-
-.sidenav .closebtn {
-	position: absolute;
-	top: 0;
-	right: 25px;
-	font-size: 36px;
-	margin-left: 50px;
-}
-
-@media screen and (max-height: 450px) {
-	.sidenav {
-		padding-top: 15px;
-	}
-	.sidenav a {
-		font-size: 18px;
-	}
-}
-
-.float-container {
-    //border: 3px solid #fff;
-    padding: 15px;
-}
-
-.float-child-left {
-    width: 20%;
-    float: left;
-    padding: 20px;
-    //border: 2px solid red;
-}
-
-.float-child-right {
-    width: 80%;
-    float: center;
-    //padding: 50px;
-    //border: 2px solid red;
-}  
-  ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
-
-li {
-  float: left;
-}
-
-li a {
-  display: block;
-  padding: 20px;
-  background-color: #dddddd;
-}
+  body::before {
+            content: "";
+            background-image:  url(${pageContext.request.contextPath}/resources/images/revamped/flight_qu.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5; /* Adjust the opacity value as needed (0.0 to 1.0) */
+            z-index: -1;
+        }
+.autocomplete-suggestions { border: 1px solid #999; background: red;overflow-y:auto}
+		.autocomplete-suggestion {padding: 2px 5px;color:white; background: black;overflow-y: auto;overflow-y:auto}
+		.autocomplete-selected { background: #F0F0F0;overflow-y:auto} 
+		.autocomplete-suggestions strong { font-weight: normal; color:#FABA08;overflow-y:auto}
+		.autocomplete-group { padding: 2px 5px;overflow-y:auto}
+		.autocomplete-group strong { display: block; border-bottom: 1px solid #000;  background: black ; color:black overflow-y:auto}
+		.autocomplete-selected:hover{
+		color:black
+		}
 
 </style>
-<br>
-<h2 align="center">View Flight Quotation Details </h2>
 <body>
-<form:form modelAttribute="QTN_OBJ" action="create_create_lead_quotation">
-	<table style="width:45%;margin: auto;">
-		<tr>
-		<th style="background: #FFC300;color:black;"> Quotation Id </th><td>${QTN_OBJ.quotationId}</td>
-		<th style="background: #FFC300;color:black;"> Version Id </th><td>${QTN_OBJ.version}</td>
-		
-		</tr>
-	</table>
-</form:form>
+
+<div class="autocomplete-suggestions" style="display:none">
+    <div class="autocomplete-group" ><strong>NHL</strong></div>
+    <div class="autocomplete-suggestion autocomplete-selected" >...</div>
+    <div class="autocomplete-suggestion">...</div>
+    <div class="autocomplete-suggestion">...</div>
+</div>
+
+    <form:form modelAttribute="QTN_OBJ" action="create_create_lead_quotation">
+    
+      <div class="viewInsuranceQuotationDetails">
+            <div class="viewInsuranceQuotationD_wrapper">
+                <div class="viewInsuranceQuotationD_wr_data">
+                    <div class="viewInsuranceQuotationD_wr_data_line">
+                        <label for="" class="lb">Quotation</label>
+                        <p>${QTN_OBJ.quotationId}</p>
+                    </div>
+                    <div class="viewInsuranceQuotationD_wr_data_line">
+                        <label for="" class="lb"> Version Id</label>
+                        <p>${QTN_OBJ.version}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form:form>
+
+<div class="my-ki">
+    <!-- ############# quick lead view starts here################## -->
+    <form:form modelAttribute="LEAD_OBJ" action="create_create_lead_quotation">
+    <div class="sep_quick_lead_view">
+        <input type="checkbox" name="" id="" class="ch_quick_lead_view">
+        <div class="hamburgur_menu_quick_lead_view">
+            <span class="sep_line1"></span>
+            <span class="sep_line2"></span>
+            <span class="sep_line3"></span>
+        </div>
+        <h2 style="display:inline-block;font-size:20px;;">Quick lead view</h2>
+        <div class="lead_view_sep">
+        <jsp:include page="../leadDetailsOpenNavView.jsp" />
+        </div>
+    </div>
+    </form:form>
+    <!-- ############# quick lead view ends here################## -->
+</div>
+
+<div class="afd">
+<jsp:include page="../_quotationServicesMenu.jsp" />
+</div>
 
 
-<form:form modelAttribute="LEAD_OBJ" action="create_create_lead_quotation">
-	<div id="mySidenav" class="sidenav">
-		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-		<jsp:include page="../leadDetailsOpenNavView.jsp" />
-	</div>
-	<h3>
-		<br>
-		<font color="red">View Lead Details </font>
-	</h3>
-	<span style="font-size: 30px; cursor: pointer" onclick="openNav()">&#9776;
-		 Quick Lead View</span>
-	<script>
-		function openNav() {
-			document.getElementById("mySidenav").style.width = "35%";
-		}
-
-		function closeNav() {
-			document.getElementById("mySidenav").style.width = "0";
-		}
-	</script>
-	<input type="hidden" name="leadId" value= "${QTN_OBJ.leadEntity.leadId}" />
-</form:form>
 
 
-
-	
-<div class="float-container">
-	<div class="float-child-left">
-    	<div class="green" >
-   			<jsp:include page="../_quotationServicesMenu.jsp" />
-    	</div>
-	</div>
- 	<div class="float-child-right">
-    	<div class="gender" align="center">
-			<input type="radio" value="oneway" id="oneway" name="flightMode" data-url="form_view_serach_flight_oneway_quotation?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId}" /> <label for="oneway" class="radio">One Way</label>
-	        <input type="radio" value="return" id="return" name="flightMode" data-url="www.returnflight.com" /> <label for="return" class="radio">Return</label>
-	        <input type="radio" value="manual" id="manual" name="flightMode" data-url="form_view_add_manual_flight_quotation?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId}" checked/> <label for="manual" class="radio">Manual</label>
-	 	</div>	
-    	<div class="blue">
-		<form:form modelAttribute="MANUAL_FLT" action="create_create_manual_quotation">	
-			<input type="hidden" name="leadId" value= "${QTN_OBJ.leadEntity.leadId}" />
-			<input type="hidden" name="quotationId" value= "${QTN_OBJ.quotationId}" />
-	
-		<table style="width:70%;border-collapse:collapse;border:none;border-spacing:0;background-color:rgba(0, 0, 0, 0);" >
-			<tr>
-				<td colspan="1"><font size="4"><b>Airline</b></font></td>
-				<td>
-					<div class="select">
-						<form:select path="airlineId" required="required" >  
-							<option class="service-small" value="" selected>Please Select</option>
-							<form:options items = "${AIRLINE_MAP}" class="service-small"/>
-						</form:select>  
-					</div>
-				</td>
-				<td><font size="4"><b>Flight No. </b></font></td>
-				<td colspan="2"><form:input path="flightNumber"  style="height:30px;width:120px;margin: auto;"/></td>
-			</tr>
-			<tr>	
-				<td><font size="4"><b>Departure</b></font></td>
-				<td><font size="4"><b>Arrival</b></font></td>
-				<td><font size="4"><b>Departure Details</b></font></td>
-				<td><font size="4"><b>Arrival Details</b></font></td>
-				<td><font size="4"><b>Duration</b></font></td>
-			</tr>
-			<tr>	
-				<td>
-					<font color="red"><form:errors path="originCity" cssClass="error" /></font>
-					<input style="width: 250px;height:40px;" type="text" id="originCity" name="originCity" />
-					<form:hidden path = "airportCodeOrigin" id="origin" value = "0" />
-				</td>
-				<td>
-					<font color="red"><form:errors path="destinationCity" cssClass="error" /></font>
-					<input style="width: 250px;height:40px;" type="text" id="destinationCity" name="destinationCity" />
-					<form:hidden path = "airportCodeDestination" id="origin" value = "0" />
-				</td>
-				<td>
-					<input style="height: 30px; width: 180px;" id="departureDate" name="departureDate" required />
-				</td>
-				<td>
-					<input style="height: 30px; width: 180px;" id="arrivalDate" name="arrivalDate" required />
-				</td>
-				<td>
-					<form:input path="duration"  style="height:30px;width:120px;margin: auto;"/>
-				</td>
-			</tr>
-			<tr>	
-				<td><font size="4"><b>Adults</b></font></td>
-				<td><font size="4"><b>Child</b></font></td>
-				<td><font size="4"><b>Infants</b></font></td>
-				<td><font size="4"><b>Stops</b></font></td>
-				<td><font size="4"><b>Travel Class</b></font></td>
-			</tr>
-			<tr>	
-				<td>
-				<font color="red"><form:errors path="adultCount" cssClass="error" /></font>
-				<form:input path="adultCount" type="number" min="0" style="height:30px;width:50px;margin: auto;"/></td>
-				<td><form:input path="childCount" type="number" min="0" style="height:30px;width:50px;margin: auto;"/></td>
-				<td><form:input path="infantCount" type="number" min="0" style="height:30px;width:50px;margin: auto;"/></td>
-				<td><form:input path="noOfStops" type="number" min="0" style="height:30px;width:50px;margin: auto;"/></td>
-				<td>
-					<div class="select">
-						<form:select path="cabinClass" required="required" >  
-							<option class="service-small" value="0" selected>Please Select</option>
-							<form:options items = "${CABIN_CLASS}" class="service-small"/>
-						</form:select>  
-					</div>
-				</td>
-			</tr>
-			<tr>	
-				<td colspan="2"><font size="4"><b>Total Flight Cost</b></font></td>
-				<td colspan="2"><font size="4"><b>Total Flight Markup</b></font></td>
-				<td><font size="4"><b>Display Order</b></font></td>
-			</tr>
-			<tr>	
-				<td colspan="2"><form:input path="flightCost" type="number" min="0" style="height:30px;width:150px;margin: auto;"/></td> 
-				<td colspan="2"><form:input path="flightMarkup" type="number" min="0" style="height:30px;width:150px;margin: auto;"/></td>
-				<td><form:input path="displayOrder" type="number" min="0" style="height:30px;width:50px;margin: auto;"/></td>
-			</tr>
-			
-			<tr>
-				<th colspan="5"><input type="submit" name="addFlight" id="addFlight" Value="Add Flight" />
-				<a href="form_view_flight_quotation_details?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId}"><input type="button" style="background-color:blue;" value="Cancel" /></a>
-				
-				</th>
-			</tr>
-			</table>
-		</form:form>
-   	</div>
-
-
-   </div>
-   </div>
-
-<script>
-$(document).ready(function() {	
-	$('#originCity').autocomplete({
-			serviceUrl: '${pageContext.request.contextPath}/getAirportList',
-			paramName: "cityName",
-			delimiter: ",",
-			onSelect: function(suggestion) {
-	            cityID = suggestion.data;
-	            id=cityID;
-	            jQuery("#destinationId").val(cityID);
-	            $('input[name=airportCodeOrigin]').val(id);
-	            return false;
-	        },
-			transformResult: function(response) {
-		        return {
-		            suggestions: $.map($.parseJSON(response), function(item) {
-		            	return { value: item.cityName, data: item.airportId };
-		            })
-		            
-		        };
-		    }
-		});
-
-		$('#destinationCity').autocomplete({
-			serviceUrl: '${pageContext.request.contextPath}/getAirportList',
-			paramName: "cityName",
-			delimiter: ",",
-			onSelect: function(suggestion) {
-	            cityID = suggestion.data;
-	            id=cityID;
-	            jQuery("#destinationId").val(cityID);
-	            $('input[name=airportCodeDestination]').val(id);
-	            return false;
-	        },
-			transformResult: function(response) {
-		        return {
-		            suggestions: $.map($.parseJSON(response), function(item) {
-		            	return { value: item.cityName, data: item.airportId };
-		            })
-		            
-		        };
-		    }
-		});
-
-		//$('.flightMode').change(function(e) {
-		//$('#flightMode').change(function(e) {
-		$('input[name="flightMode"]').change(function() {
-			//alert($('form input[type=radio]:checked').val());
-			var url = $(this).attr('data-url');
-			window.location.replace(url);
-			//const $this = $(this), $link = $("#url");
-			//$link.html($this.val());
-			//$link.attr("href", $this.attr("data-url"));
-			//alert($this.attr("data-url"))
-			});
-				
-	});
-
-	
-	/*$("input[type=radio][name=flightMode]").change(function (one,two) {
-	
-	    if ($(this).val() == "oneway") {
-		    alert(one);
-	    	//window.location.replace("form_view_serach_flight_oneway_quotation?leadId=&quotationId=");
-	    } else {
-	        alert('false');
-	    }
-	});
-	*/
-	</script>
-	<script>
-
-$(document).ready(function(){
-	$("#addFlight").on('click', function () {
-	   var getValue=$("#departureDate").val();
-	   $('input[name=departureDate]').val(getValue);
-	 });
-
-	 
-	});
-	$("#departureDate").datetimepicker();
-	$("#arrivalDate").datetimepicker();
+    <div class="float-container">
+        <div class="float-child-right">
+            <div class="gender" align="center" style="border:2px solid black;background:black;color:white;width:600px;margin:10px auto;padding:10px 0;border-radius:10px">
+                <input type="radio" value="oneway" id="oneway" name="flightMode"
+                    data-url="form_view_serach_flight_oneway_quotation?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId}" />
+                <label for="oneway" class="radio" style="margin-right:10px">One Way</label>
+                <input type="radio" value="return" id="return" name="flightMode" data-url="www.returnflight.com" />
+                <label for="return" class="radio" style="margin-right:10px">Return</label>
+                <input type="radio" value="manual" id="manual" name="flightMode"
+                    data-url="form_view_add_manual_flight_quotation?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId}"
+                    checked /> <label for="manual" class="radio">Manual</label>
+            </div>
+            <div class="blue">
+          
+        <form:form modelAttribute="MANUAL_FLT" action="create_create_manual_quotation">
+        <input type="hidden" name="leadId" value="${QTN_OBJ.leadEntity.leadId}" />
+        <input type="hidden" name="quotationId" value="${QTN_OBJ.quotationId}" />
+        <div class="fr_view_fli_qu container">
+            <div class="fr_view_fli_qu_wr" style="margin-top:20px;margin-left:50px">
+                <div class="fr_view_fli_qu_wr_li_f">
+                    <div class="fr_view_fli_qu_wr_d">
+                        <label for="">Airline</label> <br>
+                        <form:select path="airlineId" required="required" style="width:95%">
+                            <option class="service-small" value="" selected>Please Select</option>
+                            <form:options items="${AIRLINE_MAP}" class="service-small" />
+                        </form:select>
+                    </div>
+                    <div class="fr_view_fli_qu_wr_d">
+                        <label for="">Flight Number</label> <br>
+                        <form:input path="flightNumber" />
+                    </div>
+                </div>
+                <div class="fr_view_fli_qu_wr_li">
+                    <div class="fr_view_fli_qu_wr_d">
+                        <label for="">Departure</label> <br>
+                        <font color="red">
+                            <form:errors path="originCity" cssClass="error" />
+                        </font>
+                        <input type="text" id="originCity" name="originCity" />
+                        <form:hidden path="airportCodeOrigin" id="origin" value="0" />
+                    </div>
+                    <div class="fr_view_fli_qu_wr_d">
+                        <label for="">Arrival</label> <br>
+                        <font color="red">
+                            <form:errors path="destinationCity" cssClass="error" />
+                        </font>
+                        <input type="text" id="destinationCity" name="destinationCity" />
+                        <form:hidden path="airportCodeDestination" id="origin" value="0" />
+                    </div>
+                    <div class="fr_view_fli_qu_wr_d">
+                        <label for="">Departure Details</label> <br>
+                        <input id="departureDate" name="departureDate" required />
+                    </div>
+                    <div class="fr_view_fli_qu_wr_d">
+                        <label for="">Arrival Details</label> <br>
+                        <input id="arrivalDate" name="arrivalDate" required />
+                    </div>
+                </div>
+                <div class="fr_view_fli_qu_wr_li">
+                    <div class="fr_view_fli_qu_wr_d">
+                        <label for="">Duration</label> <br>
+                        <form:input path="duration" />
+                    </div>
+                    <div class="fr_view_fli_qu_wr_d">
+                        <label for="">Adults</label> <br>
+                        <font color="red">
+                            <form:errors path="adultCount" cssClass="error" />
+                        </font>
+                        <form:input path="adultCount" type="number" min="0" />
+                    </div>
+                    <div class="fr_view_fli_qu_wr_d">
+                        <label for="">Children</label> <br>
+                        <form:input path="childCount" type="number" min="0" />
+                    </div>
+                    <div class="fr_view_fli_qu_wr_d">
+                        <label for="">Infants</label> <br>
+                        <form:input path="infantCount" type="number" min="0" />
+                    </div>
+                </div>
+                <div class="fr_view_fli_qu_wr_li">
+                    <div class="fr_view_fli_qu_wr_d">
+                        <label for="">Stops</label> <br>
+                        <form:input path="noOfStops" type="number" min="0" />
+                    </div>
+                    <div class="fr_view_fli_qu_wr_d">
+                        <label for="">Travel Class</label> <br>
+                        <form:select path="cabinClass" required="required" style="width:90%">
+                            <option class="service-small" value="0" selected>Please Select</option>
+                            <form:options items="${CABIN_CLASS}" class="service-small" />
+                        </form:select>
+                    </div>
+                    <div class="fr_view_fli_qu_wr_d">
+                        <label for="">Total Flight Cost</label> <br>
+                    <form:input path="flightCost" type="number" min="0" />
+                    </div>
+                    <div class="fr_view_fli_qu_wr_d">
+                        <label for="">Total Flight Markup</label> <br>
+                        <form:input path="flightMarkup" type="number" min="0" />
+                    </div>
+                </div>
+                <div class="fr_view_fli_qu_wr_li">
+                    <div class="fr_view_fli_qu_wr_d">
+                        <label for="">Display Order</label> <br>
+                        <form:input path="displayOrder" type="number" min="0"/>
+                    </div>
+                </div>
+                <div class="due_today_task_data_btnss">
+                <input type="submit" name="addFlight" id="addFlight" Value="Add Flight" />
+                <a href="form_view_flight_quotation_details?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId}"><input
+                        type="button"  value="Cancel" /></a>
+                </div>
+            </div>
+        </div>
+        </form:form>
+            </div>
 
 
-</script>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('#originCity').autocomplete({
+                serviceUrl: '${pageContext.request.contextPath}/getAirportList',
+                paramName: "cityName",
+                delimiter: ",",
+                onSelect: function (suggestion) {
+                    cityID = suggestion.data;
+                    id = cityID;
+                    jQuery("#destinationId").val(cityID);
+                    $('input[name=airportCodeOrigin]').val(id);
+                    return false;
+                },
+                transformResult: function (response) {
+                    return {
+                        suggestions: $.map($.parseJSON(response), function (item) {
+                            return { value: item.cityName, data: item.airportId };
+                        })
+
+                    };
+                }
+            });
+
+            $('#destinationCity').autocomplete({
+                serviceUrl: '${pageContext.request.contextPath}/getAirportList',
+                paramName: "cityName",
+                delimiter: ",",
+                onSelect: function (suggestion) {
+                    cityID = suggestion.data;
+                    id = cityID;
+                    jQuery("#destinationId").val(cityID);
+                    $('input[name=airportCodeDestination]').val(id);
+                    return false;
+                },
+                transformResult: function (response) {
+                    return {
+                        suggestions: $.map($.parseJSON(response), function (item) {
+                            return { value: item.cityName, data: item.airportId };
+                        })
+
+                    };
+                }
+            });
+
+            //$('.flightMode').change(function(e) {
+            //$('#flightMode').change(function(e) {
+            $('input[name="flightMode"]').change(function () {
+                //alert($('form input[type=radio]:checked').val());
+                var url = $(this).attr('data-url');
+                window.location.replace(url);
+                //const $this = $(this), $link = $("#url");
+                //$link.html($this.val());
+                //$link.attr("href", $this.attr("data-url"));
+                //alert($this.attr("data-url"))
+            });
+
+        });
+
+
+        /*$("input[type=radio][name=flightMode]").change(function (one,two) {
+    	
+            if ($(this).val() == "oneway") {
+                alert(one);
+                //window.location.replace("form_view_serach_flight_oneway_quotation?leadId=&quotationId=");
+            } else {
+                alert('false');
+            }
+        });
+        */
+    </script>
+    <script>
+
+        $(document).ready(function () {
+            $("#addFlight").on('click', function () {
+                var getValue = $("#departureDate").val();
+                $('input[name=departureDate]').val(getValue);
+            });
+
+
+        });
+        $("#departureDate").datetimepicker();
+        $("#arrivalDate").datetimepicker();
+
+
+    </script>
 
 </body>
+
 </html>
-  

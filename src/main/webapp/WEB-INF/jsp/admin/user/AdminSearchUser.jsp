@@ -17,8 +17,24 @@
     <script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
 <script	src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
 </head>
-
-<body  style="background: url(${pageContext.request.contextPath}/resources/images/revamped/search_supplier_bg.jpg);background-size: cover; background-repeat: no-repeat; background-position: center center;background-attachment: fixed;">
+<style>
+ body::before {
+            content: "";
+            background-image:url(${pageContext.request.contextPath}/resources/images/revamped/search_supplier_bg.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5; /* Adjust the opacity value as needed (0.0 to 1.0) */
+            z-index: -1;
+        }
+</style>
+<body>
     <div class="AdminSearchUser container">
         <div class="AdminSearchUser_wrapper">
             <h1 class="page-heading">Search User</h1>
@@ -101,14 +117,14 @@
 
                 <c:forEach items="${userList}" var="user">
                     <tr>
-                        <td>${user.userId}</td>
-                        <td>${user.username}</td>
-                        <td>${user.name}</td>
-                        <td>
+                        <td style="border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53;border-left:2px solid #FFCF53">${user.userId}</td>
+                        <td style="border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53;">${user.username}</td>
+                        <td style="border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53;">${user.name}</td>
+                        <td style="border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53;">
                             <fmt:formatDate value="${user.doj}" pattern="dd-MM-yyyy" />
-                        </td>
-                        <td>${user.designation}</td>
-                        <td>
+                        </td style="border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53;">
+                        <td style="border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53;">${user.designation}</td>
+                        <td style="border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53;">
                             <c:if test="${fn:containsIgnoreCase(user.roles, 'ADMIN')}">
                                 Admin
                             </c:if>
@@ -118,8 +134,8 @@
 
                         </td>
 
-                        <td>${user.active}</td>
-                        <td>
+                        <td style="border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53;">${user.active}</td>
+                        <td style="border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53;">
 
 
                             <i class="fa-solid fa-sliders adsu">
@@ -140,22 +156,22 @@
                                                 disabled /></a>
                                     </c:when>
                                     <c:when test="${fn:containsIgnoreCase(LOGGED_USER.roles, 'ADMIN')}">
-                                        | <a href="view_edit_Admin_User?userId=${user.userId}"><input type="button"
+                                         <a href="view_edit_Admin_User?userId=${user.userId}"><input type="button"
                                              style="background:transparent;border:none;outline:none;color: white;font-weight: normal;transition: all 0.2s ease-in-out;"    value="Edit" /></a>
                                     </c:when>
                                     <c:when
                                         test="${ (! fn:containsIgnoreCase(LOGGED_USER.roles, 'ADMIN') and fn:containsIgnoreCase(user.roles, 'ADMIN'))}">
-                                        | <a href="view_edit_Admin_User?userId=${user.userId}"><input type="button"
+                                         <a href="view_edit_Admin_User?userId=${user.userId}"><input type="button"
                                              style="background:transparent;border:none;outline:none;color: white;font-weight: normal;transition: all 0.2s ease-in-out;"    value="Edit"
                                                 disabled /></a>
                                     </c:when>
                                     <c:when
                                         test="${ (! fn:containsIgnoreCase(LOGGED_USER.roles, 'ADMIN') and (!fn:containsIgnoreCase(user.roles, 'ADMIN')))}">
-                                        | <a href="view_edit_Admin_User?userId=${user.userId}"><input type="button"
+                                       <a href="view_edit_Admin_User?userId=${user.userId}"><input type="button"
                                              style="background:transparent;border:none;outline:none;color: white;font-weight: normal;transition: all 0.2s ease-in-out;"    value="Edit" /></a>
                                     </c:when>
                                     <c:otherwise>
-                                        | <a href="view_edit_Admin_User?userId=${user.userId}"><input type="button"
+                                         <a href="view_edit_Admin_User?userId=${user.userId}"><input type="button"
                                               style="background:transparent;border:none;outline:none;color: white;font-weight: normal;transition: all 0.2s ease-in-out;"   value="Edit" /></a>
                                     </c:otherwise>
                                 </c:choose>
@@ -165,21 +181,21 @@
                                     <c:choose>
                                         <c:when
                                             test="${ (! fn:containsIgnoreCase(LOGGED_USER.roles, 'ADMIN') and fn:containsIgnoreCase(user.roles, 'ADMIN'))}">
-                                            | <a href="view_view_delete_User_confirmation?userId=${user.userId}"><input
+                                             <a href="view_view_delete_User_confirmation?userId=${user.userId}"><input
                                                 style="background:transparent;border:none;outline:none;color: white;font-weight: normal;transition: all 0.2s ease-in-out;"    type="button" 
                                                     value="Delete" disabled /></a>
                                         </c:when>
                                         <c:when
                                             test="${ (! fn:containsIgnoreCase(LOGGED_USER.roles, 'ADMIN') and (!fn:containsIgnoreCase(user.roles, 'ADMIN')))}">
-                                            | <a href="view_view_delete_User_confirmation?userId=${user.userId}"><input
+                                             <a href="view_view_delete_User_confirmation?userId=${user.userId}"><input
                                                 style="background:transparent;border:none;outline:none;color: white;font-weight: normal;transition: all 0.2s ease-in-out;"    type="button" 
                                                     value="Delete" /></a>
                                         </c:when>
                                         <c:when test="${ user.deleted eq true }">
-                                            | <font color="red">Deleted</font>
+                                             <font color="red">Deleted</font>
                                         </c:when>
                                         <c:otherwise>
-                                            | <a href="view_view_delete_User_confirmation?userId=${user.userId}"><input
+                                             <a href="view_view_delete_User_confirmation?userId=${user.userId}"><input
                                                 style="background:transparent;border:none;outline:none;color: white;font-weight: normal;transition: all 0.2s ease-in-out;"    type="button" 
                                                     value="Delete" /></a>
                                         </c:otherwise>
@@ -187,14 +203,14 @@
                                 </c:if>
 
                                 <c:if test="${user.userId eq LOGGED_USER.userId }">
-                                    | <a href="view_view_delete_User_confirmation?userId=${user.userId}"><input
+                                    <a href="view_view_delete_User_confirmation?userId=${user.userId}"><input
                                           style="background:transparent;border:none;outline:none;color: white;font-weight: normal;transition: all 0.2s ease-in-out;"  type="button" 
                                             value="Delete" disabled /></a>
                                 </c:if>
                             </sec:authorize>
 
                             <sec:authorize access="hasAnyRole('ADMIN','USER_MANAGE_DOCS')">
-                                | <a href="view_view_crud_user_docs?userId=${user.userId}"><input type="button"
+                                <a href="view_view_crud_user_docs?userId=${user.userId}"><input type="button"
                                     style="background:transparent;border:none;outline:none;color: white;font-weight: normal;transition: all 0.2s ease-in-out;"    value="Docs" /></a>
                             </sec:authorize>
                                         </div>

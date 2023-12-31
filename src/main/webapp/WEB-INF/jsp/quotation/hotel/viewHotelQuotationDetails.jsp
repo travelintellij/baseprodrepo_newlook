@@ -1,213 +1,97 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <jsp:include page="../../menu/MenuBuilder.jsp" />
-  
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
-
 <head>
-<link href="<c:url value="/resources/core/main.css" />" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
+     <script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
+<script src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
 </head>
 
-<script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
-<script src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
+<style> body::before {
+            content: "";
+            background-image:  url(${pageContext.request.contextPath}/resources/images/revamped/hotal_qu.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5; /* Adjust the opacity value as needed (0.0 to 1.0) */
+            z-index: -1;
+        } </style>
 
-
-<style>
-table {
-  width: 100%;
-  height: 40px;
-  border-collapse: collapse;
-  border: 1px solid #38678f;
-  margin: 35px auto;
-  background: white;
-    
-}
-
-th {
-  background: #9999ff;
-  height: 30px;
-  width: 15%;
-  font-weight: bold;
-  text-shadow: 0 1px 0 #38678f;
-  color: white;
-  border: 1px solid #38678f;
-  box-shadow: inset 0px 1px 2px #568ebd;
-  transition: all 0.2s;
-  height: 30px;
-}
-tr {
-  border-bottom: 1px solid #cccccc;
-}
-
-td {
-  border-right: 1px solid #cccccc;
-  padding: 10px;
-  transition: all 0.2s;
-  text-align: center;
-  height: 30px;
-  font-size: 16px;
-  font-weight:bold;
-}
-input[type=button], input[type=submit], input[type=reset] {
-  background-color: green;
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  text-decoration: none;
-  margin: 4px 2px;
-  cursor: pointer;
-}
-
-.sidenav {
-	height: 70%;
-	width: 0;
-	position: fixed;
-	z-index: 1;
-	top: 118;
-	left: 0; //
-	//background-color: #111;
-	background-color: lightblue;
-	overflow-x: hidden;
-	transition: 0.5s;
-	padding-top: 30px;
-	text-align: center;
-}
-
-.sidenav a {
-	padding: 4px 4px 4px 16px;
-	text-decoration: none;
-	font-size: 25px;
-	color: #818181;
-	display: block;
-	transition: 0.3s;
-}
-
-.sidenav a:hover {
-	color: #f1f1f1;
-	
-}
-
-.sidenav .closebtn {
-	position: absolute;
-	top: 0;
-	right: 25px;
-	font-size: 36px;
-	margin-left: 50px;
-}
-
-@media screen and (max-height: 450px) {
-	.sidenav {
-		padding-top: 15px;
-	}
-	.sidenav a {
-		font-size: 18px;
-	}
-}
-
-.float-container {
-    //border: 3px solid #fff;
-    padding: 15px;
-}
-
-.float-child-left {
-    width: 20%;
-    float: left;
-    padding: 20px;
-    //border: 2px solid red;
-}
-
-.float-child-right {
-    width: 80%;
-    float: center;
-    //padding: 50px;
-    //border: 2px solid red;
-}  
-  ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
-
-li {
-  float: left;
-}
-
-li a {
-  display: block;
-  padding: 20px;
-  background-color: #dddddd;
-}
-</style>
-<br>
-<h2 align="center">View Hotel Quotation Details </h2>
 <body>
-<form:form modelAttribute="QTN_OBJ" action="create_create_lead_quotation">
-	<table style="width:45%;margin: auto;">
-		<tr>
-		<th style="background: #FFC300;color:black;"> Quotation Id </th><td>${QTN_OBJ.quotationId}</td>
-		<th style="background: #FFC300;color:black;"> Version Id </th><td>${QTN_OBJ.version}</td>
-		</tr>
-	</table>
-</form:form>
-
-
-<form:form modelAttribute="LEAD_OBJ" action="create_create_lead_quotation">
-	<div id="mySidenav" class="sidenav">
-		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-		<jsp:include page="../leadDetailsOpenNavView.jsp" />
-	</div>
-	<h3><font color="red">View Lead Details </font>	</h3>
-	<span style="font-size: 30px; cursor: pointer" onclick="openNav()">&#9776;
-		 Quick Lead View</span>
-	<script>
-		function openNav() {
-			document.getElementById("mySidenav").style.width = "35%";
-		}
-
-		function closeNav() {
-			document.getElementById("mySidenav").style.width = "0";
-		}
-	</script>
-	<input type="hidden" name="leadId" value= "${QTN_OBJ.leadEntity.leadId}" />
-</form:form>
-	
-	<h3 align="center"><font color="blue"><b>View Hotel Details</b></font></h3>
-	
-<div class="float-container">
-  	<div class="float-child-left">
-    <div class="green" >
-   		<jsp:include page="../_quotationServicesMenu.jsp" />
+    
+    
+    <div class="my-ki">
+    <!-- ############# quick lead view starts here################## -->
+    <form:form modelAttribute="LEAD_OBJ" action="create_create_lead_quotation">
+    <div class="sep_quick_lead_view">
+        <input type="checkbox" name="" id="" class="ch_quick_lead_view">
+        <div class="hamburgur_menu_quick_lead_view">
+            <span class="sep_line1"></span>
+            <span class="sep_line2"></span>
+            <span class="sep_line3"></span>
+        </div>
+        <h2 style="display:inline-block;font-size:20px;;">Quick lead view</h2>
+        <div class="lead_view_sep">
+        <jsp:include page="../leadDetailsOpenNavView.jsp" />
+        </div>
     </div>
-  	</div>
+    </form:form>
+    <!-- ############# quick lead view ends here################## -->
+</div>
 
- 	<div class="float-child-right">
-    <div class="blue">
-		<table style="width:21%;">
-		<caption><font size="4"> <b>Add Hotel Stay to quotation.</b></font></caption>
-			<tr>
-				<td style="text-align:center;">
-				<ul>
-					<c:if test="${QTN_OBJ.converted ne true }">
-		  				<li><a href="#"> <input type="button" style="background-color:blue;" value="Search Hotel" /></a></li>
-		  				<li><a href="form_view_add_hotel_quotation?leadId=${LEAD_OBJ.leadId }&quotationId=${QTN_OBJ.quotationId}&hotelOptionNo=${QTN_OBJ.hotelOptionNo}"><input type="button" style="background-color:green;" value="Add Manually" /></a></li>
+<div class="afd">
+<jsp:include page="../_quotationServicesMenu.jsp" />
+</div>
+
+ <div class="viewHotelQuotationDetails">
+        <div class="viewHotelQuotationDetails_wrapper">
+            <div class="viewHotelQuotationDetails_wrapper_data">
+             <form:form modelAttribute="QTN_OBJ" action="create_create_lead_quotation">
+                <div class="viewHotelQuotationDetails_wrapper_dl">
+                    <div class="viewHotelQuotationDetails_wrapper_dli">
+                        <label for="" class="lb">Quotation Id</label>
+                        <p>${QTN_OBJ.quotationId}</p>
+                    </div>
+                    <div class="viewHotelQuotationDetails_wrapper_dli">
+                        <label for="" class="lb">Version Id</label>
+                        <p>${QTN_OBJ.version}</p>
+                    </div>
+                </div>
+                </form:form>
+            </div>
+        </div>
+      
+        <div class="viewHotelQuotationDetails_hd">
+            <h2 style="font-size: 20px;">Add Hotal To Stay Quotation</h2>
+            <div class="due_today_task_data_btns">
+               <c:if test="${QTN_OBJ.converted ne true }">
+		  				<a href="#">Search Hotel</a>
+		  				<a href="form_view_add_hotel_quotation?leadId=${LEAD_OBJ.leadId }&quotationId=${QTN_OBJ.quotationId}&hotelOptionNo=${QTN_OBJ.hotelOptionNo}">
+		  				Add Manually </a>
 		  			</c:if>
 		  			<c:if test="${QTN_OBJ.converted eq true }">
-		  				<li><a href="#"> <input type="button" style="background-color:lightgray;" value="Search Hotel" /></a></li>
-		  				<li><a><input type="button" style="background-color:lightgray;" value="Add Manually" /></a></li>
+		  				<a href="#">Search Hotel</a>
+		  				<a>Add Manually</a>
 		  			</c:if>
-				</ul>
-				</td>
-			</tr>
-		</table>
-	<div align="center"><b><font color="green" > ${Success} </font><font color="red"> ${Error}</font> </b></div>
-	
-	
-	
-	<table style="width:70%;  table-layout:fixed;background-color:#cc3300;" >
+            </div>
+        </div>
+        <div align="center"><b><font color="#32cd32  " > ${Success} </font><font color="red"> ${Error}</font> </b></div>
+    </div>
+
+
 	<c:if test="${not empty QTN_OBJ.hotelVoList}">
 			<tr>
 			<td style="background-color:white;text-align:left;">
@@ -228,119 +112,140 @@ li a {
 
 	</c:if>
 	
-	
-	<tr><td>
-		<c:if test="${HTL_STOP_ACTION eq 'ADD'}">
+	<c:if test="${HTL_STOP_ACTION eq 'ADD'}">
 			<jsp:include page="form_view_add_manual_hotel_quotation.jsp" />
 		</c:if>
-		
-		<c:forEach items="${QTN_OBJ.hotelVoList}" var="hotelQtnObj">
-			<c:choose>
-				<c:when test="${hotelQtnObj.manualHotelQuotationId eq MANUAL_HTL.manualHotelQuotationId  && HTL_STOP_ACTION eq 'EDIT' }">
-					<jsp:include page="form_view_edit_manual_hotel_quotation.jsp" />
-				</c:when>
-				<c:when test="${hotelQtnObj.manualHotelQuotationId eq MANUAL_HTL.manualHotelQuotationId  && HTL_STOP_ACTION eq 'DELETE' }">
-					<jsp:include page="form_view_delete_manual_hotel_quotation.jsp" />
-				</c:when>
-				<c:otherwise>
-					<table style="width:100%;  table-layout:fixed;background-color: #DFE0DC; border: 3px solid #000000; border-collapse: collapse" >
-					<tr><th style="background-color:blue;" colspan="5"><font size="4"><b>Id-  ${hotelQtnObj.manualHotelQuotationId}</b></font></th></tr>
-					<tr>
-						
-						<th colspan="1"><font size="4"><b>City</b></font></th>
-						<th colspan="2"><font size="4"><b>Hotel Name</b></font></th>
-						<th><font size="4"><b>Room Category</b></font></th>
-						<th><font size="4"><b>Meal Plan</b></font></th>
-					</tr>
-					<tr>
-						<td>${hotelQtnObj.cityName }</td>
-						<td colspan="2">${hotelQtnObj.hotelName}</td>
-						<td>${hotelQtnObj.roomCategoryName}</td>
-						<td>${hotelQtnObj.mealPlanName}</td>
-					</tr>
-		
-					<tr>	
-						<th><font size="4"><b>CheckIn Date</b></font></th>
-						<th><font size="4"><b>CheckOut Date</b></font></th>
-						<th><font size="4"><b>Adults</b></font></th>
-						<th><font size="4"><b>Children</b></font></th>
-						<th><font size="4"><b>Extra Bed</b></font></th>
-					</tr>
-					<tr>
-						<td><fmt:formatDate value="${hotelQtnObj.checkInDate}" pattern="dd-MM-yyyy" /> </td>
-						<td><fmt:formatDate value="${hotelQtnObj.checkOutDate}" pattern="dd-MM-yyyy" /></td>
-						<td>${hotelQtnObj.adults}</td>
-						<td>${hotelQtnObj.children}</td>
-						<td>${hotelQtnObj.extrabed}</td>
-					</tr>
-					
-					
-					<tr>	
-						<th><font size="4"><b>No. of Rooms </b></font></th>
-						<th colspan="2"><font size="4"><b>Total Cost</b></font></th>
-						<th><font size="4"><b>Total Markup</b></font></th>
-						<th><font size="4"><b>Display Order</b></font></th>
-					</tr>
-					<tr>	
-						<td>${hotelQtnObj.noOfRooms}</td>
-						<td colspan="2">${hotelQtnObj.hotelStayCost}	</td>
-						<td>${hotelQtnObj.hotelStayMarkup}</td>
-						<td>${hotelQtnObj.displayOrder }		</td>
-					</tr>
-					<tr>	
-						<th colspan="5"><font size="4"><b>Remarks</b></font></th>
-					</tr>
-					<tr>	
-						<td colspan="5">${hotelQtnObj.remarks}</td>
-					</tr>
-					<tr>
-						<th colspan="5">
-							<c:if test="${QTN_OBJ.converted ne true }">
-								<a href="form_view_edit_manual_hotel_quotation?manualHotelQuotationId=${hotelQtnObj.manualHotelQuotationId}&quotationId=${QTN_OBJ.quotationId}&leadId=${QTN_OBJ.leadEntity.leadId}&hotelOptionNo=${QTN_OBJ.hotelOptionNo}"><input type="button" style="background-color:blue;" value="Edit Stay" /></a>
-								<a href="form_view_delete_manual_hotel_quotation?manualHotelQuotationId=${hotelQtnObj.manualHotelQuotationId}&quotationId=${QTN_OBJ.quotationId}&leadId=${QTN_OBJ.leadEntity.leadId}&hotelOptionNo=${QTN_OBJ.hotelOptionNo}"><input type="button" style="background-color:red;" value="Delete Stay" /></a>
-							</c:if>
-							<c:if test="${QTN_OBJ.converted eq true }">
-								<a><input type="button" style="background-color:lightgray;" value="Edit Stay" /></a>
-								<a><input type="button" style="background-color:lightgray;" value="Delete Stay" /></a>
-							</c:if>
-						</th>
-					</tr>
-				</table>	
-			</c:otherwise>
-			</c:choose>
-		</c:forEach>
-		</td>
-		</tr>
-		<tr>
-		<td>
-			<form:form action="view_lead_quotations_list">
+	
+    <c:forEach items="${QTN_OBJ.hotelVoList}" var="hotelQtnObj">
+        <c:choose>
+            <c:when
+                test="${hotelQtnObj.manualHotelQuotationId eq MANUAL_HTL.manualHotelQuotationId  && HTL_STOP_ACTION eq 'EDIT' }">
+                <jsp:include page="form_view_edit_manual_hotel_quotation.jsp" />
+            </c:when>
+            <c:when
+                test="${hotelQtnObj.manualHotelQuotationId eq MANUAL_HTL.manualHotelQuotationId  && HTL_STOP_ACTION eq 'DELETE' }">
+                <jsp:include page="form_view_delete_manual_hotel_quotation.jsp" />
+            </c:when>
+            <c:otherwise>
+                <div class="main_p container" >
+                    <div class="main_p_wrapper" style="margin-top:100px">
+                        <div class="main_p_wrapper_data">
+                            <h1 style="margin:10px 0">Id- ${hotelQtnObj.manualHotelQuotationId}</h1>
+                            <div class="main_p_wrapper_data_line bc-clr">
+                                <div class="main_p_wrapper_dl ">
+                                    <label for="" class="lb">City</label>
+                                    <p>${hotelQtnObj.cityName }</p>
+                                </div>
+                                <div class="main_p_wrapper_dl">
+                                    <label for="" class="lb">Hotal Name</label>
+                                    <p>${hotelQtnObj.cityName }</p>
+                                </div>
+                                <div class="main_p_wrapper_dl">
+                                    <label for="" class="lb">Category</label>
+                                    <p>${hotelQtnObj.roomCategoryName}</p>
+                                </div>
+                                <div class="main_p_wrapper_dl">
+                                    <label for="" class="lb">Meal Plan</label>
+                                    <p>${hotelQtnObj.mealPlanName}</p>
+                                </div>
+                            </div>
+                            <div class="main_p_wrapper_data_line bc-clr">
+                                <div class="main_p_wrapper_dl ">
+                                    <label for="" class="lb">CheckIn Date</label>
+                                    <p>
+                                        <fmt:formatDate value="${hotelQtnObj.checkInDate}" pattern="dd-MM-yyyy" />
+                                    </p>
+                                </div>
+                                <div class="main_p_wrapper_dl">
+                                    <label for="" class="lb">CheckOut Date</label>
+                                    <p>
+                                        <fmt:formatDate value="${hotelQtnObj.checkOutDate}" pattern="dd-MM-yyyy" />
+                                    </p>
+                                </div>
+
+
+                                <div class="main_p_wrapper_dl">
+                                    <label for="" class="lb">Adults</label>
+                                    <p>${hotelQtnObj.adults}</p>
+                                </div>
+                                <div class="main_p_wrapper_dl">
+                                    <label for="" class="lb">Children</label>
+                                    <p>${hotelQtnObj.children}</p>
+                                </div>
+                            </div>
+                            <div class="main_p_wrapper_data_line bc-clr">
+                                <div class="main_p_wrapper_dl ">
+                                    <label for="" class="lb">Extra Bed</label>
+                                    <p>${hotelQtnObj.extrabed}</p>
+                                </div>
+
+                                <div class="main_p_wrapper_dl">
+                                    <label for="" class="lb">Number of Rooms</label>
+                                    <p>${hotelQtnObj.noOfRooms}</p>
+                                </div>
+                                <div class="main_p_wrapper_dl">
+                                    <label for="" class="lb">Total Cost</label>
+                                    <p>${hotelQtnObj.hotelStayCost}</p>
+                                </div>
+                                <div class="main_p_wrapper_dl">
+                                    <label for="" class="lb">Total Markup</label>
+                                    <p>${hotelQtnObj.hotelStayMarkup}</p>
+                                </div>
+                            </div>
+                            <div class="main_p_wrapper_data_line bc-clr">
+                                <div class="main_p_wrapper_dl ">
+                                    <label for="" class="lb">Display Order</label>
+                                    <p>${hotelQtnObj.displayOrder }</p>
+                                </div>
+                            </div>
+                            <div class="main_p_wrapper_data_line bc-clr">
+                                <div class="main_p_wrapper_dl_rem ">
+                                    <label for="" class="lb">Remarks</label>
+                                    <p>${hotelQtnObj.remarks}</p>
+                                </div>
+                            </div>
+                            <div class="due_today_task_data_btnss">
+                                <c:if test="${QTN_OBJ.converted ne true }">
+                                    <a
+                                        href="form_view_edit_manual_hotel_quotation?manualHotelQuotationId=${hotelQtnObj.manualHotelQuotationId}&quotationId=${QTN_OBJ.quotationId}&leadId=${QTN_OBJ.leadEntity.leadId}&hotelOptionNo=${QTN_OBJ.hotelOptionNo}"><input
+                                            type="button" value="Edit Stay" /></a>
+                                    <a
+                                        href="form_view_delete_manual_hotel_quotation?manualHotelQuotationId=${hotelQtnObj.manualHotelQuotationId}&quotationId=${QTN_OBJ.quotationId}&leadId=${QTN_OBJ.leadEntity.leadId}&hotelOptionNo=${QTN_OBJ.hotelOptionNo}"><input
+                                            type="button" style="background:red;color:white"  value="Delete Stay" /></a>
+                                </c:if>
+                                <c:if test="${QTN_OBJ.converted eq true }">
+                                    <input type="button"  value="Edit Stay" />
+                                    <input type="button"
+                                            value="Delete Stay" />
+                                </c:if>
+                                <form:form action="view_lead_quotations_list">
 				<input type="hidden" name="leadId" value= "${QTN_OBJ.leadEntity.leadId}" />
 				<input type="submit" name="Version List" Value="Show Version List" />
 			</form:form>
-		
-		</td>
-		</tr>
-		</table>
-   	</div>
-   	</div>
-</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </c:otherwise>
+        </c:choose>
+    </c:forEach>
 
-<div id="myModal" class="modal">	
-		  <!-- Modal content -->
-		  <div class="modal-content">
-		    <div class="modal-header">
-		      <span class="close">&times;</span>
-		      <br><h2 style="text-align:center;">View Hotel Details</h2>
-		    </div>
-		    <div class="modal-body">
+<br>
+<br>
+		<div class="due_today_task_data_btns" style="margin-left:17px">
+			<form:form action="view_lead_quotations_list">
+				<input type="hidden" name="leadId" value= "${QTN_OBJ.leadEntity.leadId}" style="background:#03045e;color:white"/>
+				<input type="submit" name="Version List" Value="Show Version List"  style="background:#03045e;color:white"/>
+			</form:form>
+			</div>
 		
 		
-		    </div>
-		    <div class="modal-footer">
-		      <h3 align="center">Powered by @TravelIntelliJ</h3>
-		    </div>
-		  </div>
-	</div>
+
+
+
+
+
+
     
  
 
@@ -369,4 +274,3 @@ window.onclick = function(event) {
 </script>
 </body>
 </html>
-  

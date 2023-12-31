@@ -3214,8 +3214,8 @@ transition: all 0.2s ease-in-out;
     padding: 20px;
     border-radius: 10px;
     margin-top:25px;
-    background:#07beb8;
-    box-shadow: 0 0 10px 5px #3dccc7, 0 0 20px 10px #3dccc7;
+    background:#94D2BD;
+    box-shadow: 0 0 10px 5px #94D2BD, 0 0 20px 10px #94D2BD;
 }
 
 .deleteSupplierContactConfrm_Modal_data_line {
@@ -3557,14 +3557,17 @@ transition: all 0.2s ease-in-out;
 }
 
 .admin-search_user {
+	width: 90px;
     display: none;
     border-radius: 10px;
     position: absolute;
-    background: rgba(0, 0, 0, 0.868);
+    background:gray;
     padding: 10px;
     top: 0;
     right: 18px;
+    color:black
 }
+
 
 .admin-search_user_lis {
     width: 100px;
@@ -3952,9 +3955,9 @@ font-weight: bold;
 
 .viewLeadQuotationsTabel {
     margin-top: 5px;
-    margin-left:-100px;
+    margin-left:-150px;
     color: white;
-    width: 1400px;
+    width: 1500px;
     background: rgba(0, 0, 0, 9);
 }
 
@@ -4549,7 +4552,7 @@ color:#249C91;
     height: auto;
     padding: 10px 5px;
     border-radius: 5px;
-    background: black;
+    background: #3c6e71;
     color: white;
 }
 .afd{
@@ -4649,7 +4652,7 @@ background:red
 /* #################### form_view_add_manual_transfer_quotation  ############################ */
 
 .form_view_add_manual_transfer_quotation_wrapper{
-    color: white;
+        color: white;
         width: 100%;
         text-align: center;
         border-collapse: collapse;
@@ -4657,9 +4660,8 @@ background:red
         background: rgba(0, 0, 0, 0.689);
         padding: 10px;
         border-radius: 10px;
-         margin-left: 170px;
-     margin-top: -50px;
-}
+        
+}  
 .form_view_add_manual_transfer_quotation_wrapper_data_line{
     display: flex;
 }
@@ -4747,9 +4749,14 @@ justify-content: center;
     border: none;
     background: rgba(0, 0, 0, 0.689);
     padding: 10px;
-    border-radius: 10px;
-    margin-left: 170px;
-     margin-top: -50px;
+    border-radius: 10px;     
+}
+
+.container2{
+	margin:10px 0;
+	display: flex;
+	justify-content: center;
+	width:100%
 }
 
 .view_transfer_quotation_table_wrapper_data {
@@ -4975,7 +4982,7 @@ justify-content: center;
 
 .form_view_search_visa_add_quotation_wrapper {
     color: white;
-    width: 800px;
+    width: 900px;
     text-align: center;
     border-collapse: collapse;
     border: none;
@@ -5009,7 +5016,7 @@ justify-content: center;
 }
 
 .form_view_search_visa_add_quotation_wrapper_data_in {
-    width: 200px;
+    width: 300px;
     text-align: start;
 }
 
@@ -5687,14 +5694,14 @@ font-weight: bold;
 
 .rso_sms {
     color: white;
-    width: 1200px;
+    width: 800px;
     text-align: center;
     border-collapse: collapse;
     border: none;
     background: rgba(0, 0, 0, 9);
     padding: 10px;
     border-radius: 10px;
-    margin-top: 20px;
+    margin: 20px auto;
 }
 
 .rso_sms_heading,
@@ -5704,6 +5711,7 @@ font-weight: bold;
 
 .sms_email_wrapper{
     display: flex;
+    flex-direction: column;
     margin-bottom: 10px;
 }
 .rso_sms_heading{
@@ -5711,7 +5719,7 @@ font-weight: bold;
     width: 400px;
 }
 .rso_sms_heading input{
-   width: 95%;
+   width: 550px;
 }
 
 /* ####################### viewEditQuotationDetails ############ */
@@ -5847,4 +5855,470 @@ font-weight: bold;
 .ViewClientDetails_wrapper_dl1_rem{
     width: 1200px;
     text-align: start;
+}
+.my-b{
+	cursor: pointer;
+}
+/* ##################### viewLeadDetails_modal ############### */
+.viewLeadDetails_modal_wrapper {
+    color: white;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.viewLeadDetails_modal_wrapper_data_line {
+    display: flex;
+}
+
+.viewLeadDetails_modal_wrapper_dl1 {
+    width: 300px;
+    text-align: start;
+}
+
+.viewLeadDetails_modal_wrapper_data_linesr {
+    display: flex;
+    justify-content: space-around;
+}
+
+.viewLeadDetails_modal_wrapper_dl1rem {
+    width: 100%;
+}
+
+.viewLeadDetails_modal_wrapper_data_line_ci {
+    display: flex;
+    justify-content: center;
+}
+.sms-mail-wrapper{
+	display:flex;
+	justify-content: space-between;
+	}
+	.rso_sms{
+		width:590px
+	}
+	
+	
+/* ################## viewHotelQuotationDetails ##################### */
+
+.viewHotelQuotationDetails_wrapper_dl {
+    display: flex;
+    width: 500px;
+    margin-top: 210px;
+    margin-left:510px;
+    background: black;
+    color: white;
+    justify-content: space-between;
+    border-radius: 5px;
+}
+.viewHotelQuotationDetails_hd{
+    padding: 10px 0;
+    text-align: center;
+    /* display: flex; */
+    width: 500px;
+    margin: 50px auto;
+    background: black;
+    color: white;
+    /* justify-content: space-between; */
+    border-radius: 5px;
+}
+
+.viewHotelQuotationDetails_wrapper_dli {
+    width: 250px;
+    padding: 10px;
+}
+
+
+/* #########################################    */
+.form_view_add_manual_hotel_quotation{
+       color: white;
+        text-align: center;
+        border-collapse: collapse;
+        border: none;
+        background: rgba(0, 0, 0, 9);
+        padding: 10px;
+        border-radius: 10px;
+        width: 1200px;
+        margin-top: 5px;
+        margin-left:200px
+        
+}
+.form_view_add_manual_hotel_quotation_wrapper {
+    display: flex;
+}
+
+.form_view_add_manual_hotel_quo_box {
+    width: 300px;
+    text-align: start;
+}
+
+.form_view_add_manual_hotel_quo_box input {
+    width: 90%;
+}
+
+/* ############# main_p ############## */
+
+.main_p_wrapper {
+    color: white;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+}
+.main_p_wrapper_data_line{
+display: flex;
+}
+.main_p_wrapper_dl{
+    width: 300px;
+    text-align: start;
+}
+.main_p_wrapper_dl_rem{
+    text-align: start;
+    width: 100%;
+}
+
+.due_today_task_data_btnss input{
+	display: inline-block;
+    color: white;
+    width: auto;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: #ffb908cf;
+    color: black;
+    transition: all 0.3s ease-in-out;
+    outline: none;
+    border: none;
+    margin-right: 5px;
+    cursor:pointer;
+}
+.due_today_task_data_btnss input:hover {
+    cursor: pointer;
+    background: #FFBA08;
+}
+
+.due_today_task_data_btnss a input{
+	display: inline-block;
+    color: white;
+    width: auto;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: #ffb908cf;
+    color: black;
+    transition: all 0.3s ease-in-out;
+    outline: none;
+    border: none;
+    margin-right: 5px;
+    cursor:pointer;
+}
+.due_today_task_data_btnss a input:hover {
+    cursor: pointer;
+    background: #FFBA08;
+}
+
+/* ##################### viewInsuranceQuotation ########### */
+.viewInsuranceQuotationD_wr_data {
+    color: white;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    width: 600px;
+    margin-top:200px
+}
+.viewInsuranceQuotationD_wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.viewInsuranceQuotationD_wr_data{
+    display: flex;
+}
+.viewInsuranceQuotationD_wr_data_line{
+    text-align: center;
+    width: 300px;
+}
+.sa-q{
+    color: white;
+        text-align: center;
+        border-collapse: collapse;
+        border: none;
+        background: rgba(0, 0, 0, 9);
+        padding: 10px;
+        border-radius: 10px;
+        width: 200px;
+        margin:10px auto;
+}
+
+.form_view_add_manual_insurance_q_wrap {
+    color: white;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top:20px;
+    margin-left:50px;
+}
+.form_view_add_manual_insurance_q_wrap_dl{
+    display: flex;
+}
+.form_view_add_manual_insurance_q_wrap_dl1{
+    text-align: start;
+    width: 300px;
+}
+.form_view_add_manual_insurance_q_wrap_dl1 input{
+    width: 90%;
+}
+.in_mu_add_wrp{
+	margin-top:-100px;
+        color: white;
+        text-align: center;
+        border-collapse: collapse;
+        border: none;
+        background: rgba(0, 0, 0, 9);
+        padding: 10px;
+        border-radius: 10px;
+}
+.in_mu_add_wrp_d{
+    display: flex;
+}
+.in_mu_add_wrp_l{
+    width: 300px;
+    text-align: start;
+}
+
+.in_mu_add_wrp {
+    color: white;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.in_mu_add_wrp_d {
+    display: flex;
+}
+
+.in_mu_add_wrp_l {
+    width: 300px;
+    text-align: start;
+}
+
+
+.Flight_qu {
+    margin: 20px auto;
+    width: 700px;
+    color: white;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+}
+.fr_view_fli_qu_wr{
+     color: white;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+}
+.fr_view_fli_qu_wr_li_f{
+    display: flex;
+}
+.fr_view_fli_qu_wr_li_f .fr_view_fli_qu_wr_d{
+    text-align: start;
+    width: 600px;
+}
+.fr_view_fli_qu_wr_li_f .fr_view_fli_qu_wr_d input{
+    width: 95%;
+}
+.fr_view_fli_qu_wr_li{
+display: flex;
+}
+.fr_view_fli_qu_wr_li .fr_view_fli_qu_wr_d{
+width: 300px;
+text-align: start;
+}
+.fr_view_fli_qu_wr_li .fr_view_fli_qu_wr_d input{
+width: 90%
+}
+
+.oneW_wr {
+    color: white;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.oneW_wr_d {
+    display: flex;
+}
+
+.oneW_wr_d_li {
+    width: 300px;
+    text-align: start;
+}
+
+.oneW_wr_d_li input {
+    width: 90%;
+}
+.oneW_wr_d_li_ch{
+    margin: 10px auto;
+}
+.hotal_btn{
+	border:none;
+	outline:none;
+	
+}
+
+/* ################### tour package ############# */
+
+.add_man_pckage_wrapper {
+    color: white;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top:100px;
+}
+.add_man_pckage_wrapper_data_line{
+    display: flex;
+}
+.add_man_pckage_wrapper_dl1{
+    text-align: start;
+    width: 300px;
+}
+.add_man_pckage_wrapper_dl1 input{
+    width: 90%;
+}
+.pt_wrapper {
+    width: 500px;
+    color: white;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    margin: 100px auto;
+}
+
+/* #################### flight ###### */
+
+.fli_de_wrapper {
+    color: white;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.fli_de_wrapper_data_fli {
+    display: flex;
+}
+
+.fli_de_wrapper_data_fli .fli_de_wrapper_dl1 {
+    text-align: start;
+    width: 600px;
+}
+.fli_de_wrapper_data_li{
+    display: flex;
+}
+.fli_de_wrapper_data_li .fli_de_wrapper_dl1{
+    text-align: start;
+    width: 300px;
+}
+/* #################### fli dl ########### */
+.fl_view_wrapper{
+    color: white;
+        text-align: center;
+        border-collapse: collapse;
+        border: none;
+        background: rgba(0, 0, 0, 9);
+        padding: 10px;
+        border-radius: 10px;
+        margin-top: 100px;
+}
+.fl_view_wrapper_data_line{
+    display: flex;
+}
+.fl_view_wrapper_dl{
+    width: 300px;
+    text-align: start;
+}
+/* ############### com_page ############# */
+.com_page_wrapper{
+    color: white;
+        text-align: center;
+        border-collapse: collapse;
+        border: none;
+        background: rgba(0, 0, 0, 9);
+        padding: 10px;
+        border-radius: 10px;
+        margin-top: 100px;
+}
+.com_page_wrapper_data_line{
+    display: flex;
+}
+.com_page_wrapper_dl1{
+   text-align: start;
+   width: 300px;
+}
+
+
+.form_view_add_manual_other_wrapper {
+    color: white;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 100px;
+}
+.form_view_add_manual_other_w_dline{
+    display: flex;
+}
+.form_view_add_manual_other_w_dl1{
+    text-align: start;
+    width: 300px;
+}
+.form_view_add_manual_other_w_dl1 input{
+    width: 90%;
+}
+/* ################### flight stop view ################# */
+.view_flight_wrapper{
+color: white;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+}
+.view_flight_wrapper_data_line{
+    display: flex;
+}
+.view_flight_wrapper_dl{
+    text-align: start;
+    width: 300px;
 }

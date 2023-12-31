@@ -14,8 +14,24 @@
 <script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
 <script src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
 </head>
-
-<body style="background: url(${pageContext.request.contextPath}/resources/images/revamped/assin_to_me_tasks_bg.jpg);background-size: cover; background-repeat: no-repeat; background-position: center center;background-attachment: fixed;">
+<style>
+  body::before {
+            content: "";
+            background-image: url(${pageContext.request.contextPath}/resources/images/revamped/assin_to_me_tasks_bg.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5; /* Adjust the opacity value as needed (0.0 to 1.0) */
+            z-index: -1;
+        }
+</style>
+<body>
 
 <div class="my-ki">
     <!-- ############# quick lead view starts here################## -->
@@ -80,8 +96,7 @@
     
 
     	<div  style="background:black;width:500px;margin:0 auto;text-align:center;border-radius:5px"><b><font color="#32cd32"> ${Success} </font><font color="red"> ${Error}</font> </b></div>
-	<table style="width:auto;table-layout:fixed;" >
-	<tr><td>
+	
 		<c:if test="${TRN_ACTION eq 'ADD'}">
 			<jsp:include page="form_view_add_manual_transfer_quotation.jsp" />
 		</c:if>
@@ -95,8 +110,9 @@
 					<jsp:include page="form_view_delete_manual_transfer_quotation.jsp" />
 				</c:when>
 				<c:otherwise>
-			 <div class="view_transfer_quotation_table container">
-        <div class="view_transfer_quotation_table_wrapper" style="margin-top:10px">
+				<div class="container2">
+			 <div class="view_transfer_quotation_table ">
+        <div class="view_transfer_quotation_table_wrapper">
             <div class="view_transfer_quotation_table_wrapper_data" style="background:#6082B6;margin-bottom:10px">
                 <div class="view_transfer_quotation_table_wrapper_data_li">
                     <label for="">Pickup City</label>
@@ -179,14 +195,12 @@
                 </c:if>
             </div>
         </div>
-	
+	 </div>
+	  </div>
 			</c:otherwise>
 			</c:choose>
 		</c:forEach>
-		</td>
-		</tr>
-		</table>
-    </div>
+	
     
     
     

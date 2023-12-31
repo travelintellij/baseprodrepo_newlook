@@ -15,8 +15,24 @@
     <script src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
 </head>
-
-<body style="background: url(${pageContext.request.contextPath}/resources/images/revamped/assin_to_me_tasks_bg.jpg);background-size: cover; background-repeat: no-repeat; background-position: center center;background-attachment: fixed;">
+<style>
+ body::before {
+            content: "";
+            background-image:  url(${pageContext.request.contextPath}/resources/images/revamped/assin_to_me_tasks_bg.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5; /* Adjust the opacity value as needed (0.0 to 1.0) */
+            z-index: -1;
+        }
+</style>
+<body>
 
 <jsp:include page="viewLeadDetailsSide.jsp" />
 
@@ -90,7 +106,7 @@
                             </div>
                         </div>
                     </div>
-                    <p style="margin-top: 10px;">Please select all applicable services for this quotation.</p>
+                    <p style="margin-top: 10px;color:#FB8500">( Please select all applicable services for this quotation. )</p>
                     <div class="due_today_task_data_btns">
                         <input type="submit" id="createquotation"  name="createquotation" value="Create Quotation Skeleton" />  
 				         <a href="view_lead_quotations_list?leadId=${QTN_OBJ.leadEntity.leadId}">Cancel</a>

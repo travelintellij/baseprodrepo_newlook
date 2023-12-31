@@ -29,6 +29,7 @@
                         <form:hidden path="emailReminder" />
                         <div class="rso container">
                             <div class="rso_wrapper">
+                            <h1 style="font-size:25px;margin-bottom:10px;color:#FABA08">View Reminder Service</h1>
                                 <div class="rso_wrapper_data">
                                     <div class="rso_wrapper_data_line bc-clr">
                                         <div class="rso_wrapper_data_l1">
@@ -178,18 +179,15 @@
 
                                             <c:set var="count" value="${LEADS_REMINDER_RECORDS.size()+1}"
                                                 scope="page" />
-                                            <c:forEach items="${LEADS_REMINDER_RECORDS}" var="leadReminderRecorder">
-                                                <tr>
-                                                    <td>${count=count-1}</td>
-                                                    <td>${leadReminderRecorder.smsSent}</td>
-                                                    <td>${leadReminderRecorder.emailSent}</td>
-                                                    <td>
-                                                        <fmt:formatDate type="both" dateStyle="medium"
-                                                            timeStyle="medium" pattern="dd-MMM-yyyy"
-                                                            value="${leadReminderRecorder.createdAt}" />
-                                                    </td>
-                                                </tr>
-                                            </c:forEach>
+                                           <c:set var="count" value="${LEADS_REMINDER_RECORDS.size()+1}" scope="page" />
+						<c:forEach items="${LEADS_REMINDER_RECORDS}" var="leadReminderRecorder">
+							<tr>
+								<td>${count=count-1}</td>
+								<td>${leadReminderRecorder.smsSent}</td>
+								<td>${leadReminderRecorder.emailSent}</td>
+								<td><fmt:formatDate type="both" dateStyle="medium" timeStyle="medium" pattern="dd-MM-yyyy" value="${leadReminderRecorder.createdAt}" /></td>
+							</tr>	
+						</c:forEach>
                                         </table>
                                     </td>
                                 </tr>

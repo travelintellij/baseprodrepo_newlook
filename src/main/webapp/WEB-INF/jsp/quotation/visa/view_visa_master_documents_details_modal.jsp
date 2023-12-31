@@ -12,13 +12,7 @@
 <link href="<c:url value="/resources/css/jquery.datetimepicker.min.css" />" rel="stylesheet">
 <script src="<c:url value="/resources/js/jquery.datetimepicker.full.js" />"></script>
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
 <form:form modelAttribute="VISA_OBJ">
 	<table style="width:100% ;background:red;  table-layout:fixed;background-color: #DFE0DC; border: 3px solid #000000; border-collapse: collapse" >
 		<c:forEach var="visaDocObj" items="${VISA_OBJ.visaDocumentEntityList}">

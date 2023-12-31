@@ -15,54 +15,65 @@
 
 	
 	
-<h2 align="center">
-	<input type="image" src="${pageContext.request.contextPath}/resources/images/warning.jpg" height="50" width="50"/>
-	 Delete Flight Stop
-</h2>
+
 	
-<table style="width:100%;border-collapse:collapse;border:none;border-spacing:0;background-color:creamwhite" id="newflightStop">
-	<tr>
-		<th style="background-color:#800000"><font size="4"><b>Flight Stop Id-  ${FLT_STOP.fltQuotationStopId}</b></font></th>
-		<th colspan="1" style="background-color:red;"><font size="4"><b>Airline</b></font></th>
-		<td>${FLT_STOP.airlineName }</td>
-		<th style="background-color:red;"><font size="3"><b>Flight No. </b></font></th>
-		<td colspan="2">${FLT_STOP.flightNumber }</td>
-	</tr>
-	<tr>	
-		<th style="background-color:red;"><font size="4"><b>Departure</b></font></th>
-		<th style="background-color:red;"><font size="4"><b>Arrival</b></font></th>
-		<th style="background-color:red;"><font size="4"><b>Departure Details</b></font></th>
-		<th style="background-color:red;"><font size="4"><b>Arrival Details</b></font></th>
-		<th style="background-color:red;"><font size="4"><b>Travel Class</b></font></th>
-	</tr>
-	<tr>	
-		<td>${FLT_STOP.originCity }</td>
-		<td>${FLT_STOP.destinationCity }</td>
-		<td>${localDateTimeFormatToEdit.format(FLT_STOP.departureDate)}</td>
-		<td>${localDateTimeFormatToEdit.format(FLT_STOP.arrivalDate)}</td>
-		<td>${FLT_STOP.cabinClassName }</td>
-	</tr>
-	<tr>	
-		<th style="background-color:red;"><font size="4"><b>Adults</b></font></th>
-		<th style="background-color:red;"><font size="4"><b>Child</b></font></th>
-		<th style="background-color:red;"><font size="4"><b>Infants</b></font></th>
-		<th colspan="2" style="background-color:red;"><font size=4"><b>Action</b></font></th>
-		
-	</tr>
-	<tr>	
-		<td>${FLT_STOP.adultCount }</td>
-		<td>${FLT_STOP.childCount } </td>
-		<td>${FLT_STOP.infantCount } </td>
-		<td colspan="2"><input type="submit" name="deleteFlight" id="deleteFlight" Value="Confirm Delete"  style="background-color:red;"/>
-		<a href="form_view_manage_stops_quotation?manualFlightQuotationId=${MANUAL_FLT.manualFlightQuotationId}&leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId}"><input type="button" style="background-color:blue;" value="Cancel" /></a>
-		
-		</td>
-	
-	</tr>
-	<tr>
-		
-	</tr>
-	</table>
+				  <div class="fli_de container">
+                <div class="fli_de_wrapper" style="margin-top:120px">
+                    <h1 style="margin:10px 0;font-size: 25px;color:#32cd32 ">Flight Stop Id-  ${FLT_STOP.fltQuotationStopId}</h1>
+                    <div class="fli_de_wrapper_data">
+                        <div class="fli_de_wrapper_data_fli bc-clr">
+                            <div class="fli_de_wrapper_dl1">
+                                <label for="" class="lb">Airline</label>
+                                <p>${FLT_STOP.airlineName }</p>
+                            </div>
+                            <div class="fli_de_wrapper_dl1">
+                                <label for="" class="lb">Flight Number</label>
+                                <p>${FLT_STOP.flightNumber }</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fli_de_wrapper_data_li bc-clr">
+                        <div class="fli_de_wrapper_dl1">
+                            <label for="" class="lb">Departure</label>
+                            <p>${FLT_STOP.originCity }</p>
+                        </div>
+                        <div class="fli_de_wrapper_dl1">
+                            <label for="" class="lb">Arrival</label>
+                            <p>${FLT_STOP.destinationCity }</p>
+                        </div>
+                        <div class="fli_de_wrapper_dl1">
+                            <label for="" class="lb">Departure Details</label>
+                            <p>${localDateTimeFormatToEdit.format(FLT_STOP.departureDate)}</p>
+                        </div>
+                        <div class="fli_de_wrapper_dl1">
+                            <label for="" class="lb">Arrival Details</label>
+                            <p>${localDateTimeFormatToEdit.format(FLT_STOP.arrivalDate)}</p>
+                        </div>
+                    </div>
+                    <div class="fli_de_wrapper_data_li bc-clr">
+                        <div class="fli_de_wrapper_dl1">
+                            <label for="" class="lb">Travel Class</label>
+                            <p>${FLT_STOP.cabinClassName }</p>
+                        </div>
+                        <div class="fli_de_wrapper_dl1">
+                            <label for="" class="lb">Adults</label>
+                            <p>${FLT_STOP.adultCount }</p>
+                        </div>
+                        <div class="fli_de_wrapper_dl1">
+                            <label for="" class="lb">Child</label>
+                            <p>${FLT_STOP.childCount } </p>
+                        </div>
+                        <div class="fli_de_wrapper_dl1">
+                            <label for="" class="lb">Infants</label>
+                            <p>${FLT_STOP.infantCount }</p>
+                        </div>
+                    </div>
+                    <div class="due_today_task_data_btnss">
+                    <input type="submit" name="deleteFlight" id="deleteFlight" Value="Confirm Delete"  style="background-color:red;"/>
+		<a href="form_view_manage_stops_quotation?manualFlightQuotationId=${MANUAL_FLT.manualFlightQuotationId}&leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId}"><input type="button"  value="Cancel" /></a>
+                    </div>
+                </div>
+            </div>
 </form:form>
 
 <script>

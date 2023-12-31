@@ -120,48 +120,48 @@
                             </div>
                             <div class="form_view_search_visa_add_quotation_wrapper_data_l1">
                                 <div class="form_view_search_visa_add_quotation_wrapper_data_in">
-                                    <label for="">Adults</label>
-                                    <font color="red">
+                                    <label for="" class="lb">Adults</label>
+                                    <form:input path="adults" type="number" min="0" />
+                                     <font color="red">
                                         <form:errors path="adults" cssClass="error" />
                                     </font>
-                                    <form:input path="adults" type="number" min="0" />
                                 </div>
                                 <div class="form_view_search_visa_add_quotation_wrapper_data_in">
-                                    <label for="">Child</label>
+                                    <label for="" class="lb">Child</label>
                                     <form:input path="children" type="number" min="0" />
                                 </div>
                                 <div class="form_view_search_visa_add_quotation_wrapper_data_in">
-                                    <label for="">Infants</label>
+                                    <label for="" class="lb">Infants</label>
                                     <form:input path="infant" type="number" min="0" />
                                 </div>
                                 <div class="form_view_search_visa_add_quotation_wrapper_data_in">
-                                    <label for="">Display Order</label>
+                                    <label for="" class="lb">Display Order</label>
                                     <form:input path="displayOrder" type="number" min="0" />
                                 </div>
                             </div>
                             <div class="form_view_search_visa_add_quotation_wrapper_data_l1_c">
                                 <div class="form_view_search_visa_add_quotation_wrapper_data_in">
-                                    <label for="">System Cost PP(B2C)</label>
+                                    <label for="" class="lb">System Cost PP(B2C)</label>
                                     <p>${VISA_OBJ.standardCost}</p>
                                 </div>
                                 <div class="form_view_search_visa_add_quotation_wrapper_data_in">
-                                    <label for="">B2C S.Price PP | <br> B2B S.Price PP </label>
+                                    <label for="" class="lb">B2C S.Price PP | <br> B2B S.Price PP </label>
                                     <p>${VISA_OBJ.standardB2cPrice } | ${VISA_OBJ.standardB2bPrice } </p>
                                 </div>
                                 <div class="form_view_search_visa_add_quotation_wrapper_data_in">
-                                    <label for="">Total Updated Cost</label>
+                                    <label for="" class="lb">Total Updated Cost</label>
                                     <form:input path="visaCost" type="number" min="0" />
                                 </div>
                                 <div class="form_view_search_visa_add_quotation_wrapper_data_in">
-                                    <label for="">Total Markup</label>
+                                    <label for="" class="lb">Total Markup</label>
                                     <form:input path="visaMarkup" type="number" min="0" />
                                 </div>
                             </div>
                             <div class="form_view_search_visa_add_quotation_wrapper_data_l1_c"
                                 style="margin-bottom: 20px;">
                                 <div class="form_view_search_visa_add_quotation_wrapper_data_rem">
-                                    <label for="">Remarks</label> <br>
-                                    <form:textarea path="remarks" rows="2" cols="49" maxlength="1450" />
+                                    <label for="" class="lb">Remarks</label> <br>
+                                    <form:textarea path="remarks" rows="2" cols="103" maxlength="1450" />
                                 </div>
                             </div>
                             <div class="rel-btns">
