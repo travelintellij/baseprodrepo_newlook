@@ -10,10 +10,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create new task</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
+    <script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
+	
+	<script src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
+	<link href="<c:url value="/resources/css/jquery.datetimepicker.min.css" />" rel="stylesheet">
+		<link href="<c:url value="/resources/core/main.css" />" rel="stylesheet">
+	<script src="<c:url value="/resources/js/jquery.datetimepicker.full.js" />"></script>
 </head>
-
-<body
-    style="background: url(${pageContext.request.contextPath}/resources/images/revamped/create_new_task.jpg);background-size: cover; background-repeat: no-repeat; background-position: center center;background-attachment: fixed;">
+<style>
+  body::before {
+            content: "";
+            background-image: url(${pageContext.request.contextPath}/resources/images/revamped/create_new_task.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5; /* Adjust the opacity value as needed (0.0 to 1.0) */
+            z-index: -1;
+        }
+</style>
+<body>
 
         <div class="cnt_options">
             <a href="#" style="color:white;background:black">Create Task</a>
@@ -26,7 +47,7 @@
         </div>
 
     <div class="create-new-task-wrapper container">
-        <font color="green"> ${Success} </font>
+        <font color="#32cd32"> ${Success} </font>
         <font color="red"> ${Error}</font>
         <h1 class="create_new_task_title" style="font-size:30px;color: #FFBA08;margin-bottom: 10px;">Create New Task</h1>
         <form:form action="create_create_task_form_user" modelAttribute="TASK_RECORDER_OBJ">
@@ -65,7 +86,7 @@
             <div class="create-new-task-wrapper-f-li-2">
                 <div class="create-new-task-wrapper-f-li-2-d2 cntb2">
                     <label for="cntdd">Due Date</label> <br>
-                    <input style="height: 30px; width: 265px;" id="taskDueDate" name="taskDueDate" required />
+                    	<input id="taskDueDate" name="taskDueDate" required />
                 </div>
                 <div class="create-new-task-wrapper-f-li-2-d3 cntb2 ">
                     <label for="cntlwd">Link with deal</label> <br>
@@ -73,14 +94,15 @@
                         placeholder="numeric Deal or Client Name " />
                     <input type="hidden" id="dealConfirmationId" name="dealConfirmationId" />
                 </div>
-                <div class="cnt_des cntb-des">
-                    <label for="">Description</label>
-                    <textarea  rows="6" cols="250" name="taskDescription"></textarea>
-                </div>
+               
             </div>
-            <div class="cnt-btns">
-                <a href="">Create Task</a>
-                <a href="view_open_task_form_user">Cancel</a>
+             <div class="cnt_des cntb-des">
+                    <label for="">Description</label>
+                    <textarea  rows="10" cols="250" name="taskDescription"></textarea>
+                </div>
+            <div class="due_today_task_data_btnss" style="margin-top:15px">
+               <input type="submit" id="create" value="Create" />
+               <a href="view_open_task_form_user" ><input type="button" value="Cancel"></a>
             </div>
         </form:form>
     </div>

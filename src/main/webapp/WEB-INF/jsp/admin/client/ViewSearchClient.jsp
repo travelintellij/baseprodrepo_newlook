@@ -13,13 +13,47 @@
     <title>Manage Clients</title>
     
     <script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
-<script	src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
+      <script src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
     <script src="https://kit.fontawesome.com/6f6addf9b0.js" crossorigin="anonymous"></script>
+     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
 </head>
-
-<body
-    style="background: url(${pageContext.request.contextPath}/resources/images/revamped/search_clients.jpg);background-size: cover; background-repeat: no-repeat; background-position: center center;background-attachment: fixed;">
+<style>
+.autocomplete-suggestions { border: 1px solid #999; background: red;overflow-y:auto}
+		.autocomplete-suggestion {padding: 2px 5px;color:white; background: black;overflow-y: auto;overflow-y:auto}
+		.autocomplete-selected { background: #F0F0F0;overflow-y:auto} 
+		.autocomplete-suggestions strong { font-weight: normal; color:#FABA08;overflow-y:auto}
+		.autocomplete-group { padding: 2px 5px;overflow-y:auto}
+		.autocomplete-group strong { display: block; border-bottom: 1px solid #000;  background: black ; color:black overflow-y:auto}
+		.autocomplete-selected:hover{
+		color:black
+		}
+		 body::before {
+            content: "";
+            background-image: url(${pageContext.request.contextPath}/resources/images/revamped/search_clients.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5; /* Adjust the opacity value as needed (0.0 to 1.0) */
+            z-index: -1;
+        }
+</style>
+<body>
     <div class="container">
+    
+    
+    
+<div class="autocomplete-suggestions" style="display:none">
+    <div class="autocomplete-group" ><strong>NHL</strong></div>
+    <div class="autocomplete-suggestion autocomplete-selected" >...</div>
+    <div class="autocomplete-suggestion">...</div>
+    <div class="autocomplete-suggestion">...</div>
+</div>
         <div class="manage-client-wrapper">
             <h1 class="search-clients">Search Client</h1>
             <font color="green"> ${Success} </font>
@@ -49,13 +83,13 @@
                     </div>
                 </div>
                 <div class="search-client-form">
-                    <div class="sc-first-li">
-                        <div class="sc-first-li-d1">
+                    <div class="sc-first-li cli-em-sec">
+                        <div class="sc-first-li-d1 mp">
                             <label for="">Email</label> <br>
                             <input type="text" class="contact" id="email" name="email" placeholder="email"
                                 value="${SEARCH_CLIENTS.email}" />
                         </div>
-                        <div class="sc-first-li-d1">
+                        <div class="sc-first-li-d1 mp">
                             <label for="">Active</label> <br>
                             <select id="active" name="active" class="anc-active">
                                 <c:if test="${active eq true }">
@@ -77,25 +111,24 @@
                                 </c:if>
                             </select>
                         </div>
-                        <div class="sc-first-li-d1 sc-btns">
-                            <a href="">Apply filter</a>
-                            <a href="view_form_admin_search_client">Clear Filter</a>
-                        </div>
+                       
                     </div>
+                     <div class="sc-first-li-d1 due_today_task_data_btnss" style="margin-top:10px">
+                            <input style="background-color:#32cd32;" type="submit" value="Apply Filter" />
+                            <a href="view_form_admin_search_client"><input type="button" value="Clear Filter" /></a>
+                        </div>
                 </div>
                 </form:form>
             </div>
         </div>
-        
-
-        
+  
          </div>
         
         
            <div class="search-clients-sec">
             <c:set value="${CLIENTS_LIST}" var="clientList" />
             <table class="sc-table">
-                <thead>
+                <thead style="background:#6082B6;">
                     <tr>
                         <th class="sc-th" style="width: 110px;"><a
                                 href="search_search_filtered_clients?sortBy=clientId&clientName=${clientName}&cityId=${cityId}&cityName=${cityName}&email=${email}&active=${active}" style="color:#FFBA08">Client
@@ -113,14 +146,14 @@
                 <c:forEach items="${clientList}" var="client">
                 <tbody>
                     <tr>
-                        <td>${client.clientId }</td>
-                        <td>${client.clientName }</td>
-                        <td>${client.cityName }</td>
-                        <td>${client.countryName }</td>
-                        <td>${client.email }</td>
-                        <td>${client.mobile }</td>
-                        <td>${client.active }</td>
-                        <td>
+                        <td  style="border-bottom:2px solid #FABA08;border-right:2px solid#FABA08;border-left:2px solid#FABA08">${client.clientId }</td>
+                        <td style="border-bottom:2px solid #FABA08;border-right:2px solid#FABA08;">${client.clientName }</td>
+                        <td  style="border-bottom:2px solid #FABA08;border-right:2px solid#FABA08;">${client.cityName }</td>
+                        <td  style="border-bottom:2px solid #FABA08;border-right:2px solid#FABA08;">${client.countryName }</td>
+                        <td  style="border-bottom:2px solid #FABA08;border-right:2px solid#FABA08;">${client.email }</td>
+                        <td  style="border-bottom:2px solid #FABA08;border-right:2px solid#FABA08;">${client.mobile }</td>
+                        <td  style="border-bottom:2px solid #FABA08;border-right:2px solid#FABA08;">${client.active }</td>
+                        <td  style="border-bottom:2px solid #FABA08;border-right:2px solid#FABA08;">
                             <i class="fa-solid fa-sliders anc-i">
                                 <div class="ul-anc">
                                     <ul>
@@ -132,7 +165,7 @@
                                         </li>
                                         <li>
                                             <sec:authorize access="hasAnyRole('ADMIN','CLIENT_EDIT')">
-                                                <a href="view_edit_admin_client?clientId=${client.clientId}">Edit</a>
+                                                <a  style="border-bottom: 2px solid #FABA08;margin:5px 0" href="view_edit_admin_client?clientId=${client.clientId}">Edit</a>
                                             </sec:authorize>
                                         </li>
                                         <li>
@@ -171,24 +204,24 @@
 
 
 	<div id="pagination" align="center">
-				<font size="3">Page: 
+				<font size="3" style="color:#ffa500;background:black;display:inline-block;padding:2px;border-radius:2px">Page:  </font>
 			    <c:url value="view_form_admin_search_client" var="prev">
 			       <c:param name="page" value="${page-1}"/>
 			    </c:url>
 			    <c:if test="${page > 0}">
-			        <a href="<c:out value="${prev}&sortBy=${sortBy}&clientName=${clientName}&cityId=${cityId}&cityName=${cityName}&email=${email}&active=${active}" />" class="pn prev">Prev</a>
+			        <a style="background:black;padding:2px 5px;border-radius:2px;color:#ffa500" href="<c:out value="${prev}&sortBy=${sortBy}&clientName=${clientName}&cityId=${cityId}&cityName=${cityName}&email=${email}&active=${active}" />" class="pn prev">Prev</a>
 			    </c:if>
 			
 			    <c:forEach begin="1" end="${maxPages}" step="1" varStatus="i">
 			        <c:choose>
 			            <c:when test="${(page+1) == i.index}">
-			                <span>${i.index}</span>
+			                <span style="background:black;padding:2px 5px;border-radius:2px;color:white">${i.index}</span>
 			            </c:when>
 			            <c:otherwise>
 			                <c:url value="view_form_admin_search_client" var="url">
-			                    <c:param name="page" value="${i.index-1}"/>
+			                    <c:param name="page" value="${i.index-1} "/>
 			                </c:url>
-			                 <a href='<c:out value="${url}&sortBy=${sortBy}&clientName=${clientName}&cityId=${cityId}&cityName=${cityName}&email=${email}&active=${active}" />'>${i.index}</a>
+			                 <a  style="background:black;padding:2px 5px;border-radius:2px;color:white" href='<c:out value="${url}&sortBy=${sortBy}&clientName=${clientName}&cityId=${cityId}&cityName=${cityName}&email=${email}&active=${active}" />'>${i.index}</a>
 			            </c:otherwise>
 			        </c:choose>
 			    </c:forEach>
@@ -196,9 +229,9 @@
 			        <c:param name="page" value="${page + 1}"/>
 			    </c:url>
 			    <c:if test="${page + 1 < maxPages}">
-			       <a href='<c:out value="${next}&sortBy=${sortBy}&clientName=${clientName}&cityId=${cityId}&cityName=${cityName}&email=${email}&active=${active}" />' class="pn next">Next</a>
+			       <a  style="background:black;padding:2px 5px;border-radius:2px;color:#ffa500" href='<c:out value="${next}&sortBy=${sortBy}&clientName=${clientName}&cityId=${cityId}&cityName=${cityName}&email=${email}&active=${active}" />' class="pn next">Next</a>
 			    </c:if>
-			    </font>
+			    
 			</div>
 
 

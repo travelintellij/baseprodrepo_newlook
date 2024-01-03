@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -85,6 +91,14 @@
 
     <!-- Extra privilege role starts from here. -->
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
     <!-- ############### bottom top header ############### -->
     <div class="bottomHeader">
         <div class="insideBottomHeader container">

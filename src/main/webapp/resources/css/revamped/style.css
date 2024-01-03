@@ -993,7 +993,7 @@ footer {
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 0.689);
+    background: rgba(0, 0, 0, 0.9);
     padding: 30px 10px 30px 30px;
     border-radius: 10px;
     margin-top: 115px;
@@ -1033,7 +1033,7 @@ footer {
 .search-clients {
     font-size: 30px;
     color: #FFBA08;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .anc-active {
@@ -1049,14 +1049,18 @@ footer {
 .sc-th {
     width: 150px;
 }
+.cli-em-sec .sc-first-li-d1{
+	width:95%
+	border:2px solid red
+}
 
 .search-clients-sec {
     color: white;
-    width: 1300px;
+    width: 95vw;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 0.689);
+    background: rgba(0, 0, 0, 0.9);
     padding: 30px 10px 30px 30px;
     border-radius: 10px;
     margin: 20px auto
@@ -1073,10 +1077,10 @@ footer {
     display: none;
     padding: 5px;
     position: absolute;
-    background: rgba(0, 0, 0, 0.885);
+    background: gray;
     border-radius: 10px;
     width: 160px;
-    right: -160px;
+    left: -160px;
     transition: all 0.3s ease-in-out;
     top: -1px;
     z-index: 1;
@@ -1087,8 +1091,8 @@ footer {
     color: white;
 }
 
-.ul-anc li {
-    border-bottom: 1px solid #FABA08;
+.ul-anc li  {
+    border-bottom: 2px solid #FABA08;
 }
 
 .anc-i {
@@ -1101,6 +1105,20 @@ footer {
     color: red;
 }
 
+.sc-first-li .sc-first-li-d1{
+
+	width:2950px !important;
+}
+.sc-first-li .sc-first-li-d1 input{
+	width:95% !important;
+}
+.search-client-form .mp{
+
+	width:290px !important;
+}
+.search-client-form .mp input{
+	width:95% !important;
+}
 .anc-i:hover .ul-anc {
     display: block;
 }
@@ -2422,25 +2440,34 @@ footer {
 	cursor: pointer;
 	color:red
 }
+.view_task_icon{
+	position:relative
+}
 .view_task_ul {
-    display: none;
+	display: none;
     padding: 5px;
     width: 150px;
-    background: rgba(0, 0, 0, 0.799);
-    position: absolute;
-    top: 0px;
-    left: 70px;
+    background: gray;
     border-radius: 10px;
+    position: absolute;
+    z-index:9;
+    right:-150px;
+    top:-5px;
 }
-
+.view_task_icon:hover .view_task_ul {
+    display: block;
+    cursor: pointer;
+}
 .view_task_ul a {
     color: white;
 }
 
-.view_task_ul a:hover {
+.view_task_ul a:hover{
     color: #dca00a
 }
-
+.view_task_ul a:hover .view_task_ul{
+display: block;
+}
 .view_task_ul li {
     border-bottom: 2px solid #dca00a;
 }
@@ -2454,10 +2481,7 @@ footer {
     color: #FFBA08
 }
 
-.view_task_icon:hover .view_task_ul {
-    display: block;
-    cursor: pointer;
-}
+
 
 /* ############################## create new ticket ##################### */
 
@@ -2633,7 +2657,7 @@ footer {
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 0.689);
+    background: rgba(0, 0, 0, 0.9);
     padding: 30px 10px;
     border-radius: 10px;
     margin-top: 115px;
@@ -2655,10 +2679,7 @@ footer {
     width: 90%;
 }
 
-.cntb-des {
-    width: 556px;
-    height: 53px
-}
+
 
 .create-new-task-wrapper-f-li,
 .create-new-task-wrapper-f-li-2 {

@@ -6,6 +6,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <head>
     <meta charset="UTF-8">
@@ -37,13 +38,13 @@
                 <form:hidden path="taskId" />
                 <div class="view_task_box_divide">
                     <div class="view_Task_wrapper_data">
-                        <div class="view_Task_wrapepr_data_line">
+                        <div class="view_Task_wrapepr_data_line bc-clr">
                             <div class="view_Task_wrapepr_data_l1">
                                 <label for="">Task Tittle</label>
                                 <p>${TASK_RECORDER_OBJ.taskTitle}</p>
                             </div>
                         </div>
-                        <div class="view_Task_wrapepr_data_line2">
+                        <div class="view_Task_wrapepr_data_line2 bc-clr">
                             <div class="view_Task_wrapepr_data_l1">
                                 <label for="">Assigned to</label>
                                 <p>${TASK_RECORDER_OBJ.taskOwnerName}</p>
@@ -53,7 +54,7 @@
                                 <p>${TASK_RECORDER_OBJ.taskPriority}</p>
                             </div>
                         </div>
-                        <div class="view_Task_wrapepr_data_line3">
+                        <div class="view_Task_wrapepr_data_line3 bc-clr">
                             <div class="view_Task_wrapepr_data_l1">
                                 <label for="">Status</label>
                                 <p>${TASK_RECORDER_OBJ.taskStatus}</p>
@@ -63,7 +64,7 @@
                                 <p>${localDateTimeFormat.format(TASK_RECORDER_OBJ.taskDueDate)}</p>
                             </div>
                         </div>
-                        <div class="view_Task_wrapepr_data_line4">
+                        <div class="view_Task_wrapepr_data_line4 bc-clr">
                             <div class="view_Task_wrapepr_data_l1">
                                 <label for="">Link with deal</label>
                                 <p>
@@ -73,7 +74,7 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="view_Task_wrapepr_data_line4">
+                        <div class="view_Task_wrapepr_data_line4 bc-clr">
                             <div class="view_Task_wrapepr_data_l1">
                                 <label for="">Description</label>
                                 <p>${TASK_RECORDER_OBJ.taskDescription}</p>
@@ -113,11 +114,12 @@
                             <c:forEach items="${FILTERED_TASK_COMMENTS}" var="filteredTaskComments" >
                             <div class="commentBox" style="background:#cce3de;margin:5px 0 ;border-radius:5px">
                             <div style="display:flex">
-                            <p style="color:#003049;display:inline-block;margin-right:350px;font-weight:bold;margin-left:5px">${filteredTaskComments.commentedBy}</p>
+                            <p style="color:#003049;display:inline-block;margin-right:350px;font-weight:bold;margin-left:5px">${filteredTaskComments.commentedBy} | ${filteredTaskComments.ttComment} </p>
                                     
                                     <p style="display:inline-block;color:gray">  ${localDateTimeFormat.format(filteredTaskComments.lastUpdated )}</p> 
+                                  <p style="color:black"> ${filteredTaskComments.ttComment }  </p>
                                      </div>            
-                                   <p style="color:black"> ${filteredTaskComments.ttComment }  </p>
+                                   
                                 </div>
     
                             </c:forEach>
