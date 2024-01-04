@@ -6343,3 +6343,24 @@ color: white;
     text-align: start;
     width: 300px;
 }
+/* ###################### ClientCRUDDocs_wrapper ############## */
+.ClientCRUDDocs_wrapper {
+    color: white;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 115px;
+}
+
+.cli_crud {
+    color: white;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+}
