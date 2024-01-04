@@ -61,6 +61,12 @@
 </head>
 
 <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 	<h2 align="center">
 	Manage Room Category
 	</h2>

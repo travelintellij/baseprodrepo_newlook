@@ -14,14 +14,30 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
 </head>
 
+<style>
+        body::before {
+            content: "";
+            background-image: url(${pageContext.request.contextPath}/resources/images/revamped/manage_hotal_chain.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5; /* Adjust the opacity value as needed (0.0 to 1.0) */
+            z-index: -1;
+        }
+</style>
 
-<body
-    style="background: url(${pageContext.request.contextPath}/resources/images/revamped/manage_hotal_chain.jpg);background-size: cover; background-repeat: no-repeat; background-position: center center;background-attachment: fixed;">
+<body>
     <div class="manage-hotal-chain container">
         <div class="manage_hotal_chain_wrapper">
             <h1>Search Hotel Chain</h1>
-            <div align="center"><b>
-                    <font color="green"> ${Success} </font>
+            <div align="center" style="margin:10px 0"><b>
+                    <font color="#32cd32"> ${Success} </font>
                     <font color="red"> ${Error}</font>
                 </b></div>
             <form:form modelAttribute="SEARCH_HOTEL_CHAIN" action="search_search_hotel_chain">
@@ -67,13 +83,13 @@
         </div>
         <!-- ################ table ################## -->
         <table class="manage-hotal-chain-tabel">
-            <thead>
+            <thead style="background:#6082B6;height:50px;">
                 <tr>
-                    <th style="width:100px">Chain No</th>
-                    <th>Hotel Chain Name</th>
-                    <th>Hotel Chain Remarks</th>
-                    <th>Active</th>
-                    <th>Action</th>
+                    <th style="width:100px;color:white">Chain No</th>
+                    <th style="color:white">Hotel Chain Name</th>
+                    <th style="color:white">Hotel Chain Remarks</th>
+                    <th style="color:white;width:100px">Active</th>
+                    <th style="color:white">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -81,11 +97,11 @@
                     <c:if test="${not empty chainSearchList}">
                         <c:forEach var="chainObj" items="${chainSearchList}">
                 <tr>
-                    <td style="color:white;text-align:center">${chainObj.hotelChainId}</td>
-                    <td  style="color:white;text-align:center">${chainObj.hotelChainName}</td>
-                    <td  style="color:white;text-align:center">${chainObj.remarks}</td>
-                    <td  style="color:white;text-align:center">${chainObj.active}</td>
-                    <td style="width:15%;text-align:center;">
+                    <td style="color:white;text-align:center;border-bottom:2px solid #FFBA08;border-left:2px solid #FFBA08;border-right:2px solid #FFBA08">${chainObj.hotelChainId}</td>
+                    <td  style="color:white;text-align:center;border-bottom:2px solid #FFBA08;">${chainObj.hotelChainName}</td>
+                    <td  style="color:white;text-align:center;border-bottom:2px solid #FFBA08;border-left:2px solid #FFBA08;">${chainObj.remarks}</td>
+                    <td  style="color:white;text-align:center;border-bottom:2px solid #FFBA08;border-left:2px solid #FFBA08;">${chainObj.active}</td>
+                    <td style="width:15%;text-align:center;border-bottom:2px solid #FFBA08;border-left:2px solid #FFBA08;">
 
                         <table style= "background:transparent;text-align:center">
                             <tr>

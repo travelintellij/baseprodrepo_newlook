@@ -1732,7 +1732,7 @@ footer {
 .manage_hotal_chain_wrapper {
     margin-top: 115px;
     padding: 20px 10px;
-    background: rgba(0, 0, 0, 0.716);
+    background: rgba(0, 0, 0, 0.9);
     color: white;
     border-radius: 10px;
 }
@@ -1795,7 +1795,7 @@ footer {
 }
 
 .manage-hotal-chain table {
-    background: rgba(0, 0, 0, 0.716);
+    background: rgba(0, 0, 0, 0.9);
     width: 100%;
     margin-top: 20px;
     border-radius: 10px;
@@ -6363,4 +6363,56 @@ color: white;
     background: rgba(0, 0, 0, 9);
     padding: 10px;
     border-radius: 10px;
+}
+/* ################## Admin_Edit_HotelChain ########## */
+
+.Admin_Edit_HotelChain_wrapper {
+    color: white;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 115px;
+}
+.Admin_Edit_HotelChain_wrapper_li{
+    display: flex;
+}
+.Admin_Edit_HotelChain_wrapper_li .Admin_Edit_HotelChain_wrapper_dl1{
+    text-align: start;
+    width: 350px;
+}
+.Admin_Edit_HotelChain_wrapper_li .Admin_Edit_HotelChain_wrapper_dl1 input{
+    width: 90%;
+}
+.Admin_Edit_HotelChain_wrapper_li2 {
+    display: flex;
+    text-align: start;
+}
+/* ###############Admin_View_Hotel_wrapper############# */
+.Admin_View_Hotel_wrapper {
+    color: white;
+        text-align: center;
+        border-collapse: collapse;
+        border: none;
+        background: rgba(0, 0, 0, 9);
+        padding: 10px;
+        border-radius: 10px;
+        margin-top: 115px;
+}
+.Admin_View_Hotel_wrapper_data_line{
+display: flex;
+}
+.Admin_View_Hotel_wrapper_d1{
+    width: 300px;
+    text-align: start;
+}
+.cat-btn{
+transition: all 0.3s ease-in-out;	
+}
+.cat-btn:hover{
+	cursor:pointer;
+	background:orangered;
+	color:white;
 }

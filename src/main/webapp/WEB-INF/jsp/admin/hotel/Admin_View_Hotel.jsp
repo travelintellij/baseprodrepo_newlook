@@ -1,188 +1,121 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-
-
-<script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
-<script	src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
-<link href="<c:url value="/resources/core/main.css" />" rel="stylesheet">
-
+<!DOCTYPE html>
+<html lang="en">
 <jsp:include page="../../menu/MenuBuilder.jsp" />
-
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin_View_Hotel</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
+    <script src="<c:url value=" /resources/core/jquery.1.10.2.min.js" />"></script>
+    <script src="<c:url value=" /resources/core/jquery.autocomplete.min.js" />"></script>
+</head>
 <style>
-li {
-  text-align: left;
-}
-table {
-  border-collapse: separate;
-  border-spacing: 0;
-}
-th,
-td {
-  padding: 10px 15px;
- text-align: center;
-}
-thead {
-  background: #395870;
-  color: #fff;
-}
-th {
-  font-weight: bold;
-  border:1px solid white;
-}
-tbody tr:nth-child(even) {
-  background: #f0f0f2;
-}
-td {
-  border-bottom: 1px solid #cecfd5;
-  border-right: 1px solid #cecfd5;
-}
-td:first-child {
-  border-left: 1px solid #cecfd5;
-}
-
-input[type=button], input[type=submit], input[type=reset] {
-	background-color: #4CAF50;
-	border: none;
-	color: white;
-	padding: 16px 32px;
-	text-decoration: none;
-	margin: 4px 2px;
-	cursor: pointer;
-}
-
-
-
+body::before {
+            content: "";
+            background-image:  url(${pageContext.request.contextPath}/resources/images/revamped/lens.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5; /* Adjust the opacity value as needed (0.0 to 1.0) */
+            z-index: -1;
+        }
 </style>
-<br>
-<br>
-<h2 align="center">
-		View Hotel
-	</h2>
-
-	
-	
-
 <body>
-<div align="center"><b><font color="green" > ${Success} </font><font color="red"> ${Error}</font> </b></div>
-<table class="table" style="border:1px solid white;margin-left:auto;margin-right:auto; width: 80%;" >
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">Hotel Id</th>
-      <th scope="col">Hotel Chain Name</th>
-      <th scope="col" width="40%">Hotel Name</th>
-      <th scope="col" width="15%">City</th>
-      <th scope="col" width="15%">Locality</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">${hotelMasterObj.hotelId}</th>
-      <td>${hotelMasterObj.hotelChainName} </td>
-      <td width="30%">${hotelMasterObj.hotelName}</td>
-      <td>${hotelMasterObj.cityName}</td>
-      <td>${hotelMasterObj.locality}</td>
-    </tr>
- <tr>
- <td colspan="2">
- 	<table class="table" style="border:1px solid white;margin-left:auto;margin-right:auto;width: 100%; " >
- 	 <thead class="thead-dark">
- 	<tr>
- 		<th scope="col" width="40%">Room Category</th>
- 		<th scope="col" width="10%">Active</th>
- 	</tr>
- 	</thead>
- 	<tr>
- 		<td scope="col" width="40%">
- 			<c:forEach items="${hotelMasterObj.roomCategoryEntityList}" var="roomCategory">
- 				
- 				<li>${roomCategory.roomCategoryName}</li>
- 			
- 			</c:forEach>
- 			<br>
- 			
- 		
- 		</td>
- 		<td scope="col" width="10%">${hotelMasterObj.active}</td>
- 	</tr>
- 	</table>
- </td>
- <td>
- 	<table class="table" style="border:1px solid white;margin-left:auto;margin-right:auto;width: 100%; " >
- 	 <thead class="thead-dark">
- 	<tr>
- 		<th scope="col" width="15%">Hotel Category</th>
- 		<th scope="col" width="10%">Is Preferred</th>
- 		<th scope="col" width="15%">Hotel Rating</th>
- 		
- 	</tr>
- 	</thead>
- 	<tr>
- 		<td scope="col">${hotelMasterObj.starCategory} Star</td>
- 		<td scope="col" width="10%">${hotelMasterObj.preferred}</td>
- 		<td scope="col">${hotelMasterObj.udnServiceRating} Star</td>
- 	</tr>
- 	</table>
- </td>
- <td colspan="2">
- 	<table class="table" style="border:1px solid white;margin-left:auto;margin-right:auto;width: 100%; " >
- 	 <thead class="thead-dark">
- 	<tr>
- 		
- 		<th scope="col" width="25%">Address</th>
- 	</tr>
- 	</thead>
- 	<tr>
- 		
- 		<td scope="col" width="25%">${hotelMasterObj.address}</td>
- 	</tr>
- 	</table>
- </td>
- <tr>
- <td colspan="3">
-	 	<table class="table" style="border:1px solid white;margin-left:auto;margin-right:auto;width: 100%; " >
-	 	 <thead class="thead-dark">
-	 	<tr>
-	 		<th scope="col">Remarks</th>
-	 	</tr>
-	 	</thead>
-	 	<tr>
-	 		<td scope="col">${hotelMasterObj.remarks} </td>
-	 		
-	 	</tr>
-	 	</table>
-	</td>
-	<td colspan="2">
- 		<table class="table" style="border:1px solid white;margin-left:auto;margin-right:auto;width: 100%; " >
-	 	 <thead class="thead-dark">
-	 	<tr>
-	 		<th scope="col">Phone</th>
-	 		<th scope="col">Email</th>
-	 	</tr>
-	 	</thead>
-	 	<tr>
-	 		<td scope="col">${hotelMasterObj.phone} </td>
-	 		<td scope="col">${hotelMasterObj.email} </td>
-		</tr>
-	 	</table>
-	 </td>
-	 </tr>	
-	 <tr>
-	 <td colspan="5" style="border:1px solid white;margin-left:auto;margin-right:auto;width: 100%; ">
-	 		<sec:authorize access="hasAnyRole('ADMIN','HOTEL_EDIT')">
-		 		<form:form method="post" action="view_edit_hotel_form?hotelId=${hotelMasterObj.hotelId}" modelAttribute="hotel_obj" style="display:inline;">
-		 			<input type="submit" value="Edit Hotel" style="background-color:green;"  />
-		 		</form:form>
-		 	</sec:authorize>	 
-	 		<a href="view_search_hotel_form"><input type="button" style="width: 140px;background-color: blue;" value="Search Hotel"></a></td>
-	 		 
-	 </td>
-
-	 </tr>
-  </tbody>
-</table>
-
+    <div class="Admin_View_Hotel container">
+        <div class="Admin_View_Hotel_wrapper">
+            <h1 style="font-size: 25px;color: #32cd32 ;margin: 10px 0;">Hotal Id : ${hotelMasterObj.hotelId}</h1>
+            <div align="center" style="margin:10px 0"><b>
+                    <font color="#32cd32 "> ${Success} </font>
+                    <font color="red"> ${Error}</font>
+                </b></div>
+            <div class="Admin_View_Hotel_wrapper_data">
+                <div class="Admin_View_Hotel_wrapper_data_line bc-clr">
+                    <div class="Admin_View_Hotel_wrapper_d1">
+                        <label for="" class="lb">Hotal Chain Name</label>
+                        <p>${hotelMasterObj.hotelChainName}</p>
+                    </div>
+                    <div class="Admin_View_Hotel_wrapper_d1">
+                        <label for="" class="lb">Hotal Name</label>
+                        <p>${hotelMasterObj.hotelName}</p>
+                    </div>
+                    <div class="Admin_View_Hotel_wrapper_d1">
+                        <label for="" class="lb">City</label>
+                        <p>${hotelMasterObj.cityName}</p>
+                    </div>
+                    <div class="Admin_View_Hotel_wrapper_d1">
+                        <label for="" class="lb">Locality</label>
+                        <p>${hotelMasterObj.locality}</p>
+                    </div>
+                </div>
+                <div class="Admin_View_Hotel_wrapper_data_line bc-clr">
+                    <div class="Admin_View_Hotel_wrapper_d1">
+                        <label for="" class="lb">Room Category</label>
+                        <p><c:forEach items="${hotelMasterObj.roomCategoryEntityList}" var="roomCategory">
+                        
+                            <li>${roomCategory.roomCategoryName}</li>
+                        
+                        </c:forEach></p>
+                    </div>
+                    <div class="Admin_View_Hotel_wrapper_d1">
+                        <label for="" class="lb">Active</label>
+                        <p>${hotelMasterObj.active}</p>
+                    </div>
+                    <div class="Admin_View_Hotel_wrapper_d1">
+                        <label for="" class="lb">Hotel Category</label>
+                        <p>${hotelMasterObj.starCategory} Star</p>
+                    </div>
+                    <div class="Admin_View_Hotel_wrapper_d1">
+                        <label for="" class="lb">Is Prefered</label>
+                        <p>${hotelMasterObj.preferred}</p>
+                    </div>
+                </div>
+                <div class="Admin_View_Hotel_wrapper_data_line bc-clr">
+                    <div class="Admin_View_Hotel_wrapper_d1">
+                        <label for="" class="lb">Hotal Rating</label>
+                        <p>${hotelMasterObj.udnServiceRating} Star</p>
+                    </div>
+                    <div class="Admin_View_Hotel_wrapper_d1">
+                        <label for="" class="lb">Address</label>
+                        <p>${hotelMasterObj.address}</p>
+                    </div>
+                    <div class="Admin_View_Hotel_wrapper_d1">
+                        <label for="" class="lb">Phone No.</label>
+                        <p>${hotelMasterObj.phone}</p>
+                    </div>
+                    <div class="Admin_View_Hotel_wrapper_d1">
+                        <label for="" class="lb">Email</label>
+                        <p>${hotelMasterObj.email}</p>
+                    </div>
+                </div>
+                <div class="Admin_View_Hotel_wrapper_data_line bc-clr">
+                    <div class="Admin_View_Hotel_wrapper_d1" style="width:100%">
+                        <label for="" class="lb">Remarks</label>
+                        <p>${hotelMasterObj.remarks}</p>
+                    </div>
+                </div>
+                <div class="due_today_task_data_btnss">
+                <sec:authorize access="hasAnyRole('ADMIN','HOTEL_EDIT')">
+                    <form:form method="post" action="view_edit_hotel_form?hotelId=${hotelMasterObj.hotelId}" modelAttribute="hotel_obj"
+                        style="display:inline;">
+                        <input type="submit" value="Edit Hotel" style="background-color:#32cd32;" />
+                    </form:form>
+                </sec:authorize>
+                <a href="view_search_hotel_form"><input type="button" 
+                        value="Search Hotel"></a></td>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+</html>
