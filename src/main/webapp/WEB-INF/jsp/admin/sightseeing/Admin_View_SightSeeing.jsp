@@ -59,6 +59,13 @@ input[type=button], input[type=submit], input[type=reset] {
 
 </style>
 <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <h2 align="center">  ${sightSeeingMasterObj.sightSeeingName } </h2>
 <div align="center"><b><font color="green" > ${Success} </font><font color="red"> ${Error}</font> </b></div>
 

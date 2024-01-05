@@ -57,9 +57,17 @@ input[type=button], input[type=submit], input[type=reset] {
   margin: 4px 2px;
   cursor: pointer;
 }
+
 </style>
 <body>
 	<br>
+	<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 	<form:form modelAttribute="search_sight_seeing_obj" action="search_search_sight_seeing">
 		<table style="text-align:center">
 				<tr>

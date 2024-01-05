@@ -33,6 +33,7 @@
 </style>
 
 <body>
+
     <div class="manage-hotal-chain container">
         <div class="manage_hotal_chain_wrapper">
             <h1>Search Hotel Chain</h1>

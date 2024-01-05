@@ -6416,3 +6416,94 @@ transition: all 0.3s ease-in-out;
 	background:orangered;
 	color:white;
 }
+
+/* ############### form_searchHotel_Result ############### */
+
+.form_searchHotel_Result_wrapper {
+    color: white;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 115px;
+}
+
+.form_searchHotel_Result_wrapper_data_lin {
+    display: flex;
+}
+
+.form_searchHotel_Result_wrapper_dl1 {
+    text-align: start;
+    width: 300px;
+}
+
+.form_searchHotel_Result_wrapper_dl1 input {
+    width: 90%;
+}
+
+.hotel_re_tb {
+    width: 98vw;
+    color: white;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    margin:10px auto;
+}
+/* ################# hotel room category ########### */
+.Hotel_Room_Category_Update_wrapper {
+    color: white;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 115px;
+}
+
+.Hotel_Room_Category_Update_wrapper_dline {
+    display: flex;
+}
+
+.Hotel_Room_Category_Update_wrapper_dl1 {
+    width: 300px;
+    text-align: center;
+}
+
+.rm-ct-up {
+    width: 95vw;
+    color: white;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    margin: 15px auto;
+}
+/* ############### Admin_Delete_Confirmation_RoomCategory_wr############## */
+
+.Admin_Delete_Confirmation_RoomCategory_wr {
+    color: white;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 115px;
+}
+
+.Admin_Delete_Confirmation_RoomCategory_wr_dl {
+    display: flex;
+}
+
+.Admin_Delete_Confirmation_RoomCategory_wr_dl1 {
+    text-align: start;
+    width: 300px;
+}

@@ -14,13 +14,31 @@
 <script	src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
 </head>
-
+<style>
+.autocomplete-suggestions { border: 1px solid #999; background: red;overflow-y:auto}
+		.autocomplete-suggestion {padding: 2px 5px;color:white; background: black;overflow-y: auto;overflow-y:auto}
+		.autocomplete-selected { background: #F0F0F0;overflow-y:auto} 
+		.autocomplete-suggestions strong { font-weight: normal; color:#FABA08;overflow-y:auto}
+		.autocomplete-group { padding: 2px 5px;overflow-y:auto}
+		.autocomplete-group strong { display: block; border-bottom: 1px solid #000;  background: black ; color:black overflow-y:auto}
+		.autocomplete-selected:hover{
+		color:black
+		}
+</style>
 <body  style="background: url(${pageContext.request.contextPath}/resources/images/revamped/add_hotal.jpg);background-size: cover; background-repeat: no-repeat; background-position: center center;background-attachment: fixed;">
+  
+  <div class="autocomplete-suggestions" style="display:none">
+    <div class="autocomplete-group" ><strong>NHL</strong></div>
+    <div class="autocomplete-suggestion autocomplete-selected" >...</div>
+    <div class="autocomplete-suggestion">...</div>
+    <div class="autocomplete-suggestion">...</div>
+</div>
+  
     <div class="searchSightSeeing container">
         <div class="searchSightSeeing_wrapper">
          <h1 style="font-size: 30px;
     color: #FFBA08;
-    margin-bottom: 10px;">Search Sight Seeing</h1>
+    margin-bottom: 10px;">Search Sight Seeing </h1>
             <form:form modelAttribute="search_sight_seeing_obj" action="search_search_sight_seeing">
             <div class="searchSightSeeing_wrapper_data">
                 <div class="searchSightSeeing_wrapper_data_line">

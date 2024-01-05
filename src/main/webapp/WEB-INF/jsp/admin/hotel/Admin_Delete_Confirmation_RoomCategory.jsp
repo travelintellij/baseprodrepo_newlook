@@ -1,161 +1,79 @@
 <!DOCTYPE html>
-<jsp:include page="../../menu/MenuBuilder.jsp" />  
+<html lang="en">
+<jsp:include page="../../menu/MenuBuilder.jsp" />
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+    <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+        <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+            <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
-<html>
-<head>
-
-<script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
-<script	src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
-<link href="<c:url value="/resources/core/main.css" />" rel="stylesheet">
-
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Admin_Delete_Confirmation_RoomCategory</title>
+                    <script src="https://kit.fontawesome.com/6f6addf9b0.js" crossorigin="anonymous"></script>
+                    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
+                    <script src="<c:url value=" /resources/core/jquery.1.10.2.min.js" />"></script>
+                    <script src="<c:url value=" /resources/core/jquery.autocomplete.min.js" />"></script>
+                </head>
 <style>
-table {
-	  width: 40%;
-	  border-collapse: collapse;
-	  border: 1px solid #38678f;
-	  margin: 5px auto;
-	  background: white;
-	}
-	
-	th {
-	  background: #FFCC00;
-	  width: 40%;
-	  font-weight: heavy;
-	  text-shadow: 0 1px 0 #38678f;
-	  color: black;
-	  border: 1px solid #38678f;
-	  box-shadow: inset 0px 1px 2px #568ebd;
-	  transition: all 0.2s;
-	  
-	}
-	tr {
-	  border-bottom: 1px solid #cccccc;
-	}
-	
-	td {
-	  border-right: 1px solid #cccccc;
-	  padding: 10px;
-	  transition: all 0.2s;
-	  text-align: center;
-	}
-	
-	.heavyTable {
-	  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-	  animation: float 5s infinite;
-	}
-	input[type="radio"] {
-		display: inline-block;
-		opacity: 1;
-		width: 1em;
-		z-index: -1;
-	}
+  body::before {
+            content: "";
+            background-image:  url(${pageContext.request.contextPath}/resources/images/revamped/lens.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5; /* Adjust the opacity value as needed (0.0 to 1.0) */
+            z-index: -1;
+        }
 
-select {
-	appearance: none;
-	outline: 0;
-	background: lightblue;
-	background-image: none;
-	width: 80%;
-	height: 100%;
-	color: black;
-	cursor: pointer;
-	border: 1px solid black;
-	border-radius: 3px;
-	text-indent: 2px;
-}
+</style>
+                <body>
+                    <div class="Admin_Delete_Confirmation_RoomCategory container">
+                        <div class="Admin_Delete_Confirmation_RoomCategory_wr">
+                            <form:form method="post" action="delete_delete_room_category">
+                                <input type="hidden" name="roomCategoryId"
+                                    value="${ROOM_CATEGORY_OBJ.roomCategoryId}" />
+                                <h1 style="font-size: 25px;color:red;margin: 10px 0;">Delete Room Category <i
+                                        class="fa-solid fa-triangle-exclamation fa-lg"></i></h1>
+                                <div class="Admin_Delete_Confirmation_RoomCategory_wr_dl bc-clr">
+                                    <div class="Admin_Delete_Confirmation_RoomCategory_wr_dl1">
+                                        <label for="" class="lb">Room Category Id</label>
+                                        <p>${ROOM_CATEGORY_OBJ.roomCategoryId}</p>
+                                    </div>
+                                    <div class="Admin_Delete_Confirmation_RoomCategory_wr_dl1">
+                                        <label for="" class="lb">Room Category Name</label>
+                                        <p>${ROOM_CATEGORY_OBJ.roomCategoryName}</p>
+                                    </div>
+                                    <div class="Admin_Delete_Confirmation_RoomCategory_wr_dl1">
+                                        <label for="" class="lb">Hotel Name</label>
+                                        <p>${ROOM_CATEGORY_OBJ.hotelName}</p>
+                                    </div>
+                                    <div class="Admin_Delete_Confirmation_RoomCategory_wr_dl1">
+                                        <label for="" class="lb">Active</label>
+                                        <p>${ROOM_CATEGORY_OBJ.active eq true }</p>
+                                    </div>
+                                </div>
+                                <div class="Admin_Delete_Confirmation_RoomCategory_wr_dl bc-clr">
+                                    <div class="Admin_Delete_Confirmation_RoomCategory_wr_dl1" style="width:100%">
+                                        <label for="" class="lb">Remarks</label>
+                                        <p>${ROOM_CATEGORY_OBJ.remarks}</p>
+                                    </div>
+                                </div>
+                                <div class="due_today_task_data_btnss">
+                                    <input type="submit" style="background-color:red;" value="CONFIRM DELETE">
+                                    <a
+                                        href="edit_edit_hotel?hotelId=${ROOM_CATEGORY_OBJ.hotelId}&action=EditRoomCategory"><input
+                                             type="button" value="Cancel" /></a>
+                                </div>
+                            </form:form>
+                        </div>
+                    </div>
+                </body>
 
-.select {
-	position: relative;
-	display: block;
-	height: 2.5em;
-	line-height: 3;
-	overflow: hidden;
-	border-radius: .25em;
-	padding-bottom: 10px;
-	padding-top: 10px;
-}
-
-.select option.service-small {
-	font-size: 20px;
-	padding: 25px;
-	background: lightgreen;
-}
-
-
-input[type=button], input[type=submit], input[type=reset] {
-	background-color: #4CAF50;
-	border: none;
-	color: white;
-	padding: 16px 32px;
-	text-decoration: none;
-	margin: 4px 2px;
-	cursor: pointer;
-}
-
-.warning {
-    border: 10px ridge #f00;
-    background-color: #ff0;
-    padding: .3rem;
-    display: block;
-    flex-direction: column;
-}
-ul li span {
-        display: block;
-        margin-left: -0.5em;
-        color: #000;
-      }
-	</style>
-</head>
-
-
-
-<br>
-<h2 align="center">
-	<input type="image" src="${pageContext.request.contextPath}/resources/images/warning.jpg" height="50" width="50"/> Delete Room Category
-</h2>
-<hr>
-<div align="center"><b><font color="green" > ${Success} </font><font color="red"> ${Error}</font> </b></div>
-
-	<body style="background-color: creamwhite;">
-	<form:form method="post" action="delete_delete_room_category">
-		<input type="hidden" name="roomCategoryId" value="${ROOM_CATEGORY_OBJ.roomCategoryId}" />
-			<table>
-				<tr>
-					<th>Room Category Id</th>
-					<td>${ROOM_CATEGORY_OBJ.roomCategoryId}
-				</td>
-				</tr>
-
-				<tr>
-					<th>Room Category Name</th>
-					<td>${ROOM_CATEGORY_OBJ.roomCategoryName}
-				</td>
-				</tr>
-				<tr>
-					<th>Hotel Name</th>
-					<td>${ROOM_CATEGORY_OBJ.hotelName}</td>
-				</tr>
-				<tr>
-					<th>Remarks</th>
-					<td>${ROOM_CATEGORY_OBJ.remarks}</td>
-				</tr>
-				<tr>
-					<th>Active</th>
-					<td>
-						${ROOM_CATEGORY_OBJ.active eq true }
-					 </td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<input type="submit" style="background-color:red;"value="CONFIRM DELETE">
-						<a href="edit_edit_hotel?hotelId=${ROOM_CATEGORY_OBJ.hotelId}&action=EditRoomCategory"><input style="background-color: blue;" type="button" value="Cancel" /></a>
-					</td>
-				</tr>
-			</table>
-	</form:form>
-
-</body>
+</html>

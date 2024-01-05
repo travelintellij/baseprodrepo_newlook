@@ -40,7 +40,7 @@
                     <div class="view_Task_wrapper_data">
                         <div class="view_Task_wrapepr_data_line bc-clr">
                             <div class="view_Task_wrapepr_data_l1">
-                                <label for="">Task Tittle</label>
+                                <label for="">Task Tittle </label>
                                 <p>${TASK_RECORDER_OBJ.taskTitle}</p>
                             </div>
                         </div>
