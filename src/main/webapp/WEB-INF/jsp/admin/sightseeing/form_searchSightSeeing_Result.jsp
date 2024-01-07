@@ -8,7 +8,6 @@
 <script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
 <script	src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
 
-
 <jsp:include page="../../menu/MenuBuilder.jsp" />
 
 <style>
