@@ -105,7 +105,7 @@
                     <div class="view_Task_wrapper_data_comment_side">
                         <div class="view_Task_wrapper_data_comment_title">
                             <label for="">${pageContext.request.remoteUser} Says:</label><br>
-                            <textarea name="" id="" cols="70" rows="4"></textarea>
+                            <textarea name="taskComment" id="taskComment" cols="70" rows="4"></textarea>
                         </div>
                         <div class="due_today_task_data_btns">
                             <input type="submit" value="Update Comments" name="Update Comments" />
