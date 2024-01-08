@@ -377,7 +377,7 @@
 			                <c:url value="view_filter_leads" var="url">
 			                    <c:param name="page" value="${i.index-1}"/>
 			                </c:url>
-			                 <a style="background:black;padding:2px 5px;border-radius:2px;color:white" href='<c:out value="${url}&sortBy=${sortBy}&qualified=${FILTER_LEAD_WL.qualified}&flagged=${FILTER_LEAD_WL.flagged}&leadOwner=${FILTER_LEAD_WL.leadOwner}&leadSource=${FILTER_LEAD_WL.leadSource}&leadStatus=${FILTER_LEAD_WL.leadStatus}&source=${FILTER_LEAD_WL.source}&sourceName=${FILTER_LEAD_WL.sourceName}&destinationName=${FILTER_LEAD_WL.destinationName}&destination=${FILTER_LEAD_WL.destination}&contactId=${FILTER_LEAD_WL.contactId}&contactName=${FILTER_LEAD_WL.contactName}&dateCriteria=${FILTER_LEAD_WL.dateCriteria}" />'>${i.index}</a>
+			                 <a style="background:white;padding:2px 5px;border-radius:2px;color:black" href='<c:out value="${url}&sortBy=${sortBy}&qualified=${FILTER_LEAD_WL.qualified}&flagged=${FILTER_LEAD_WL.flagged}&leadOwner=${FILTER_LEAD_WL.leadOwner}&leadSource=${FILTER_LEAD_WL.leadSource}&leadStatus=${FILTER_LEAD_WL.leadStatus}&source=${FILTER_LEAD_WL.source}&sourceName=${FILTER_LEAD_WL.sourceName}&destinationName=${FILTER_LEAD_WL.destinationName}&destination=${FILTER_LEAD_WL.destination}&contactId=${FILTER_LEAD_WL.contactId}&contactName=${FILTER_LEAD_WL.contactName}&dateCriteria=${FILTER_LEAD_WL.dateCriteria}" />'>${i.index}</a>
 			            </c:otherwise>
 			        </c:choose>
 			    </c:forEach>

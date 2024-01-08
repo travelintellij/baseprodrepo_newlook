@@ -61,8 +61,8 @@
                         <form:input path="startDate" type="date" required="required" />
                     </div>
                     <div class="search_deals_data_l1">
-                        <label for="to">To</label> <br>
-                        <form:input path="endDate" type="date" required="required" />
+                        <label for="to">To </label> <br>
+                        <form:input path="endDate" type="date" required="required" style="width:100%"/>
                     </div>
                 </div>
                 <div class="search_deals_btns">
@@ -80,33 +80,6 @@
 
         <div class="search_deals_total">
             <p>Total Deals Found : 0</p>
-        </div>
-
-        <div class="search_deals_tabel">
-            <table class="search_deals_tabel">
-                <tr>
-                    <th>Deal</th>
-                    <th>Query</th>
-                    <th>Booking Date</th>
-                    <th>Client Name</th>
-                    <th>Travel Date</th>
-                    <th>Services Booked</th>
-                    <th>Deal Status</th>
-                    <th>Deal Owner</th>
-                    <th>Action</th>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>12345</td>
-                    <td>2023-10-31</td>
-                    <td>John Doe</td>
-                    <td>2023-11-15</td>
-                    <td>Flight and Hotel</td>
-                    <td>Pending</td>
-                    <td>Jane Smith</td>
-                    <td style="color: red;">View</td>
-                </tr>
-            </table>
         </div>
     </div>
 

@@ -15,8 +15,42 @@
 <script	src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
 </head>
+<style>
+    body::before {
+            content: "";
+            background-image:   url(${pageContext.request.contextPath}/resources/images/revamped/add_hotal.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5; /* Adjust the opacity value as needed (0.0 to 1.0) */
+            z-index: -1;
+        }
+.autocomplete-suggestions { border: 1px solid #999; background: red;overflow-y:auto}
+		.autocomplete-suggestion {padding: 2px 5px;color:white; background: black;overflow-y: auto;overflow-y:auto}
+		.autocomplete-selected { background: #F0F0F0;overflow-y:auto} 
+		.autocomplete-suggestions strong { font-weight: normal; color:#FABA08;overflow-y:auto}
+		.autocomplete-group { padding: 2px 5px;overflow-y:auto}
+		.autocomplete-group strong { display: block; border-bottom: 1px solid #000;  background: black ; color:black overflow-y:auto}
+		.autocomplete-selected:hover{
+		color:black
+		}
 
-<body  style="background: url(${pageContext.request.contextPath}/resources/images/revamped/add_hotal.jpg);background-size: cover; background-repeat: no-repeat; background-position: center center;background-attachment: fixed;">
+</style>
+<body>
+    
+    <div class="autocomplete-suggestions" style="display:none">
+    <div class="autocomplete-group" ><strong>NHL</strong></div>
+    <div class="autocomplete-suggestion autocomplete-selected" >...</div>
+    <div class="autocomplete-suggestion">...</div>
+    <div class="autocomplete-suggestion">...</div>
+</div>
+    
     <div class="Admin_Add_SightSeeing container">
         <div class="Admin_Add_SightSeeing_wrapper">
        

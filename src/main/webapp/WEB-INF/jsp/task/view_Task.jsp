@@ -112,12 +112,10 @@
                         </div>
                         <div class="commemts-sec">
                             <c:forEach items="${FILTERED_TASK_COMMENTS}" var="filteredTaskComments" >
-                            <div class="commentBox" style="background:#cce3de;margin:5px 0 ;border-radius:5px">
-                            <div style="display:flex">
-                            <p style="color:#003049;display:inline-block;margin-right:350px;font-weight:bold;margin-left:5px">${filteredTaskComments.commentedBy} | ${filteredTaskComments.ttComment} </p>
-                                    
-                                    <p style="display:inline-block;color:gray">  ${localDateTimeFormat.format(filteredTaskComments.lastUpdated )}</p> 
-                                  <p style="color:black"> ${filteredTaskComments.ttComment }  </p>
+                            <div class="commentBox" style="background:#eaf4f4;margin:5px 0 ;border-radius:5px;">
+                            <div style="display:flex;">
+                            <p style="padding:5px;color:#003049;display:inline-block;font-weight:bold;width:95%;text-align:start"> <span style="color:red">${filteredTaskComments.commentedBy}</span>  <br>  ${filteredTaskComments.ttComment} </p>
+                            <p style="padding:5px;;display:inline-block;color:gray">  ${localDateTimeFormat.format(filteredTaskComments.lastUpdated )}</p> 
                                      </div>            
                                    
                                 </div>
@@ -125,25 +123,25 @@
                             </c:forEach>
                         </div>
                         <div id="pagination" align="right" style="margin-top:20px">
-                            Page:
+                           <p style="color:#ffa500;background:black;display:inline-block;padding:2px;border-radius:2px">Page : </p>
                             <c:url value="view_view_task" var="prev">
                                 <c:param name="page" value="${page-1}" />
                             </c:url>
                             <c:if test="${page > 0}">
-                                <a href="<c:out value=" ${prev}&taskId=${TASK_RECORDER_OBJ.taskId}" />" class="pn
+                                <a style="background:black;padding:2px 5px;border-radius:2px;color:#ffa500" href="<c:out value=" ${prev}&taskId=${TASK_RECORDER_OBJ.taskId}" />" class="pn
                                 prev" style="color:#FFBA08">Prev</a>
                             </c:if>
 
                             <c:forEach begin="1" end="${maxPages}" step="1" varStatus="i">
                                 <c:choose>
                                     <c:when test="${(page+1) == i.index}">
-                                        <span>${i.index}</span>
+                                        <span style="background:black;padding:2px 5px;border-radius:2px;color:white">${i.index}</span>
                                     </c:when>
                                     <c:otherwise>
                                         <c:url value="view_view_task" var="url">
                                             <c:param name="page" value="${i.index-1}" />
                                         </c:url>
-                                        <a
+                                        <a style="background:white;padding:2px 5px;border-radius:2px;color:black"
                                             href='<c:out value="${url}&taskId=${TASK_RECORDER_OBJ.taskId}" />'>${i.index}</a>
                                     </c:otherwise>
                                 </c:choose>
@@ -152,7 +150,7 @@
                                 <c:param name="page" value="${page + 1}" />
                             </c:url>
                             <c:if test="${page + 1 < maxPages}">
-                                <a href='<c:out value="${next}&taskId=${TASK_RECORDER_OBJ.taskId}" />'
+                                <a style="background:black;padding:2px 5px;border-radius:2px;color:#ffa500" href='<c:out value="${next}&taskId=${TASK_RECORDER_OBJ.taskId}" />'
                                     class="pn next" style="color:#FFBA08">Next</a>
                             </c:if>
                         </div>
