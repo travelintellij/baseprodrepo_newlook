@@ -389,6 +389,7 @@ public interface UdanChooConstants {
 	public String FRESH_DEAL_CONF_TEMPLATE_NAME = "Deal-Confirmation.ftl";
 	
 	public String TASK_COMMENT_UPDATE_TEMPLATE = "TaskCommentUpdate.ftl";
+	public String TICKET_COMMENT_UPDATE_TEMPLATE = "TicketCommentUpdate.ftl";
 	
 	/*********************************************************************************/
 

@@ -36,6 +36,7 @@ public class Udn_Ticket_Recorder_Obj {
 	//Additional fields not part of entity. 
 	private String ticketOwnerName;
 	private String ticketCreatorName;
+	private String placeHolder1;
 	
 	private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");
 	
@@ -147,15 +148,18 @@ public class Udn_Ticket_Recorder_Obj {
 	
 	
 	
+	
+
 	@Override
 	public String toString() {
 		return "Udn_Ticket_Recorder_Obj [ticketId=" + ticketId + ", ticketTitle=" + ticketTitle + ", ticketPriority="
 				+ ticketPriority + ", dealConfirmationId=" + dealConfirmationId + ", ticketOwner=" + ticketOwner
 				+ ", ticketCreator=" + ticketCreator + ", ticketDueDate=" + ticketDueDate + ", ticketDescription="
 				+ ticketDescription + ", ticketStatus=" + ticketStatus + ", createdAt=" + createdAt + ", updatedAt="
-				+ updatedAt + ", notifyTicketOwner=" + notifyTicketOwner + ", clientId=" + clientId + ", dealName="
-				+ dealName + ", clientName=" + clientName + ", ticketOwnerName=" + ticketOwnerName
-				+ ", ticketCreatorName=" + ticketCreatorName + ", formatter=" + formatter + "]";
+				+ updatedAt + ", notifyTicketOwner=" + notifyTicketOwner + ", clientId=" + clientId + ", page=" + page
+				+ ", dealName=" + dealName + ", clientName=" + clientName + ", ticketComment=" + ticketComment
+				+ ", ticketOwnerName=" + ticketOwnerName + ", ticketCreatorName=" + ticketCreatorName
+				+ ", placeHolder1=" + placeHolder1 + ", formatter=" + formatter + "]";
 	}
 
 	public String getTicketOwnerName() {
@@ -214,6 +218,14 @@ public class Udn_Ticket_Recorder_Obj {
 
 	public void setTicketComment(String ticketComment) {
 		this.ticketComment = ticketComment;
+	}
+
+	public String getPlaceHolder1() {
+		return placeHolder1;
+	}
+
+	public void setPlaceHolder1(String placeHolder1) {
+		this.placeHolder1 = placeHolder1;
 	}
 	
 	

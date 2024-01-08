@@ -11,6 +11,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>create new ticket</title>
      <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
+     <script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
+	<script src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
+     	
+     	<link href="<c:url value="/resources/css/jquery.datetimepicker.min.css" />" rel="stylesheet">
+	<script src="<c:url value="/resources/js/jquery.datetimepicker.full.js" />"></script>
+     
 </head>
 
 <body
@@ -104,7 +110,7 @@
                             <h1>Inform Client</h1>
                         </div>
                         <div class="cnt-check">
-                            <input type="checkbox">
+                            <input type="checkbox" name="notifyTicketOwner" checked />
                         </div>
                         <div class="cnt-text">
                             <p>(if checked email will be sent to client with Ticket Title only)</p>

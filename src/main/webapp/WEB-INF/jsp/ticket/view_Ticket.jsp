@@ -32,7 +32,7 @@
 
     <div class="view_Task container">
         <div class="view_Task_wrapper">
-            <form:form action="view_form_edit_task" modelAttribute="TICKET_RECORDER_OBJ">
+            <form:form action="view_form_edit_ticket" modelAttribute="TICKET_RECORDER_OBJ">
                 <form:hidden path="ticketId" />
                 <div class="view_task_box_divide">
                     <div class="view_Task_wrapper_data">

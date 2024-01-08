@@ -130,6 +130,7 @@ public class TicketController {
 		try {
 			Udn_Ticket_Recorder_Entity ticketEntity = new Udn_Ticket_Recorder_Entity(ticketRecorderObj);
 			ticketService.saveTicket(ticketEntity);
+			ticketRecorderObj.updateVoFromEntity(ticketEntity);
 			if(ticketRecorderObj.isNotifyTicketOwner()) {
 				ticketRecorderObj.setTicketId(ticketEntity.getTicketId());
 				String emailSubject = "Your ticket '" + ticketRecorderObj.getTicketTitle() +  "' is created with Ticket Id < " + ticketRecorderObj.getTicketId() +" >";
@@ -147,8 +148,8 @@ public class TicketController {
 
 	private void notifyTicketTargetAudience(Udn_Ticket_Recorder_Obj ticketRecorderObj,String templateName,String emailSubject) {
 		if(emailNotifyActive && emailClientNotifyActive) {
-			UdnTeam taskCreator = userDetailsService.findUserByID(ticketRecorderObj.getTicketCreator());
-			UdnTeam taskOwner = userDetailsService.findUserByID(ticketRecorderObj.getTicketOwner());
+			UdnTeam ticketCreator = userDetailsService.findUserByID(ticketRecorderObj.getTicketCreator());
+			UdnTeam ticketOwner = userDetailsService.findUserByID(ticketRecorderObj.getTicketOwner());
 			Mail mail = new Mail();
 			mail.setSubject(emailSubject);
 			//Udn_Ticket_Recorder_Obj
@@ -161,17 +162,18 @@ public class TicketController {
 			}
 			if(client!=null) {
 				mail.setTo(client.getEmail());
-				mail.setCc(taskCreator.getEmail());
-				mail.setCc(taskOwner.getEmail());
+				mail.setCc(ticketCreator.getEmail());
+				mail.setCc(ticketOwner.getEmail());
 				try {
 			        Map<String, Object> model = new HashMap<String, Object>();
-			        model.put("taskOwner", taskOwner.getName());
-			        model.put("taskCreator",taskCreator.getName());
+			        model.put("ticketOwner", ticketOwner.getName());
+			        model.put("ticketCreator",ticketCreator.getName());
 			        model.put("ticketId", ticketRecorderObj.getTicketId());
 			        model.put("ticketTitle", ticketRecorderObj.getTicketTitle());
 			        model.put("clientName", client.getClientName());
 			        model.put("status", ticketRecorderObj.getTicketStatus());
-			        model.put("ticketOwnerEmail", taskOwner.getEmail());
+			        model.put("ticketOwnerEmail", ticketOwner.getEmail());
+			        model.put("username", ticketRecorderObj.getPlaceHolder1());
 			        mail.setModel(model);
 					emailService.sendEmailMessageUsingTemplate(mail,templateName);
 				
@@ -186,6 +188,35 @@ public class TicketController {
 		}
 		
 	}
+	 
+	
+	private void notifyTicketCommentsTargetAudience(Udn_Ticket_Recorder_Obj ticketRecorderObj,String templateName,String emailSubject) {
+		if(emailNotifyActive) {
+			UdnTeam ticketCreator = userDetailsService.findUserByID(ticketRecorderObj.getTicketCreator());
+			UdnTeam ticketOwner = userDetailsService.findUserByID(ticketRecorderObj.getTicketOwner());
+			Mail mail = new Mail();
+			mail.setSubject(emailSubject);
+			mail.setTo(ticketOwner.getEmail());
+			mail.setCc(ticketCreator.getEmail());
+			try {
+		        Map<String, Object> model = new HashMap<String, Object>();
+		        model.put("ticketOwner", ticketOwner.getName());
+		        model.put("ticketCreator",ticketCreator.getName());
+		        model.put("ticketId", ticketRecorderObj.getTicketId());
+		        model.put("ticketTitle", ticketRecorderObj.getTicketTitle());
+		        model.put("status", ticketRecorderObj.getTicketStatus());
+		        model.put("ticketOwnerEmail", ticketOwner.getEmail());
+		        model.put("username", ticketRecorderObj.getPlaceHolder1());
+		        model.put("ticketComment", ticketRecorderObj.getTicketComment());
+		        mail.setModel(model);
+				emailService.sendEmailMessageUsingTemplate(mail,templateName);
+			} catch (MessagingException | IOException | TemplateException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+
 	 
 	 
 	//@RequestMapping("/workload/view_open_ticket_form_user")
@@ -333,6 +364,11 @@ public class TicketController {
     	ticketCommentEntity.setTicketEntity(ticketEntity);
 		ticketEntity.getTicketCommentsEntityList().add(ticketCommentEntity);
 		ticketService.saveTicket(ticketEntity);
+		
+		ticketObj.setPlaceHolder1(userObj.getUsername());
+		ticketObj.updateVoFromEntity(ticketEntity);
+		notifyTicketCommentsTargetAudience(ticketObj,  UdanChooConstants.TICKET_COMMENT_UPDATE_TEMPLATE,"Ticket ID <"+ ticketEntity.getTicketId() + ">"  + " | Comment Update by " +  userObj.getUsername());
+		
 		redirectAttrib.addFlashAttribute("Success", "Ticket Comment is updated Successfully..");
 		ModelAndView modelView = new ModelAndView(); 
 		modelView.setViewName("redirect:view_view_ticket?ticketId="+ticketObj.getTicketId());

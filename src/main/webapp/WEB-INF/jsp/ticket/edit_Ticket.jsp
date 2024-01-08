@@ -31,7 +31,7 @@
 
     <div class="edit_Task container">
         <div class="edit_Task_wrapper">
-            <form:form action="${action}" modelAttribute="TICKET_RECORDER_OBJ">
+            <form:form action="edit_edit_ticket_form_user" modelAttribute="TICKET_RECORDER_OBJ">
                 <form:hidden path="ticketId" />
                 <div class="edit_Task_wrapper_data">
                     <div class="edit_Task_wrapper_data_line">
@@ -82,9 +82,7 @@
                         </div>
                         <div class="edit_Task_wrapper_data_l1">
                             <label for="">Link with deal</label> <br>
-                            <form:input path="dealName" name="dealName" class="form-control search-slt"
-                                style="width:560px"
-                                placeholder="Deal Search - Enter Only numeric Deal # or Client Name " /><br>
+                            <form:input path="dealName" name="dealName" class="form-control search-slt" style="width:560px" placeholder="Deal Search - Enter Only numeric Deal # or Client Name " /><br>
                             <form:hidden path="dealConfirmationId" />
                         </div>
                        
