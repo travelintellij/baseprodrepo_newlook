@@ -31,6 +31,9 @@ public class Udn_Task_Recorder_Obj {
 	private String taskOwnerName;
 	private String taskCreatorName;
 	
+	private String placeHolder1;
+	private String placeHolder2;
+	
 	private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");
 	
 	public Udn_Task_Recorder_Obj() {
@@ -149,7 +152,9 @@ public class Udn_Task_Recorder_Obj {
 		attrib = attrib + " taskStatus-> " +taskStatus + "\n";
 		attrib = attrib + " createdAt-> " +createdAt + "\n";
 		attrib = attrib + " updatedAt-> " +updatedAt + "\n";
-		
+		attrib = attrib + " Notify Task Owner-> " +notifyTaskOwner+ "\n";
+		attrib = attrib + " Placeholder1-> " +placeHolder1+ "\n";
+		attrib = attrib + " Placeholder2-> " +placeHolder2+ "\n";
 		return attrib;
 	}
 	public String getTaskOwnerName() {
@@ -190,6 +195,18 @@ public class Udn_Task_Recorder_Obj {
 	}
 	public void setPage(int page) {
 		this.page = page;
+	}
+	public String getPlaceHolder1() {
+		return placeHolder1;
+	}
+	public void setPlaceHolder1(String placeHolder1) {
+		this.placeHolder1 = placeHolder1;
+	}
+	public String getPlaceHolder2() {
+		return placeHolder2;
+	}
+	public void setPlaceHolder2(String placeHolder2) {
+		this.placeHolder2 = placeHolder2;
 	}
 
 	

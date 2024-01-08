@@ -1050,7 +1050,7 @@ footer {
     width: 150px;
 }
 .cli-em-sec .sc-first-li-d1{
-	width:95%
+	width:95%;
 	border:2px solid red
 }
 
@@ -3782,7 +3782,7 @@ transition: all 0.2s ease-in-out;
 }
 
 .view_Task_wrapper_data {
-    width: 50%;
+    width: 100%;
     margin-right: 10px;
     border-right: 2px solid #FFBA08;
 }

@@ -13,6 +13,9 @@
     <script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
 	<script src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
+    
+    <link href="<c:url value="/resources/css/jquery.datetimepicker.min.css" />" rel="stylesheet">
+    <script src="<c:url value="/resources/js/jquery.datetimepicker.full.js" />"></script>
 </head>
 
 <body  style="background: url(${pageContext.request.contextPath}/resources/images/revamped/assin_to_me_tasks_bg.jpg);background-size: cover; background-repeat: no-repeat; background-position: center center;background-attachment: fixed;">
@@ -31,7 +34,7 @@
     <div class="edit_Task container">
         <div class="edit_Task_wrapper">
         <h1 class="page-heading">Edit Task</h1>
-            <form:form action="${action}" modelAttribute="TASK_RECORDER_OBJ">
+            <form:form action="edit_edit_task_form_user" modelAttribute="TASK_RECORDER_OBJ">
                 <form:hidden path="taskId" />
                 <div class="edit_Task_wrapper_data">
                     <div class="edit_Task_wrapper_data_line">
@@ -64,11 +67,11 @@
                     <div class="edit_Task_wrapper_data_line2">
                         <div class="edit_Task_wrapper_data_l1">
                             <label for="">Due Date</label> <br>
-                            <input type="datetime-local" name="taskDueDate" value="${TASK_OBJ.taskDueDate }" required />
                             <fmt:parseDate value="${TASK_RECORDER_OBJ.taskDueDate}" pattern="yyyy-MM-dd'T'HH:mm"
                                 var="parsedDateTime" type="both" />
                             <fmt:formatDate pattern="yyyy/MM/dd HH:mm" value="${ parsedDateTime }" var="parsedDate" />
                             <input id="taskDueDate" name="taskDueDate" value="${parsedDate}" required />
+                            
                         </div>
                         <div class="edit_Task_wrapper_data_l1">
                             <label for="">Link with deal</label> <br>

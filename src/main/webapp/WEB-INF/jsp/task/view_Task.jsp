@@ -37,10 +37,10 @@
             <form:form action="view_form_edit_task" modelAttribute="TASK_RECORDER_OBJ">
                 <form:hidden path="taskId" />
                 <div class="view_task_box_divide">
-                    <div class="view_Task_wrapper_data">
-                        <div class="view_Task_wrapepr_data_line bc-clr">
+                    <div class="view_Task_wrapper_data" >
+                        <div class="view_Task_wrapepr_data_line bc-clr" >
                             <div class="view_Task_wrapepr_data_l1">
-                                <label for="">Task Tittle </label>
+                                <label for="">Task Title </label>
                                 <p>${TASK_RECORDER_OBJ.taskTitle}</p>
                             </div>
                         </div>

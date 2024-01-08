@@ -150,8 +150,11 @@ public class TaskController {
 		        model.put("taskId", taskRecorderObj.getTaskId());
 		        model.put("taskTitle", taskRecorderObj.getTaskTitle());
 		        model.put("taskDesciption", taskRecorderObj.getTaskDescription());
+		        
 		        model.put("taskPriority", taskRecorderObj.getTaskPriority());
 		        model.put("taskStatus", taskRecorderObj.getTaskStatus());
+		        model.put("username", taskRecorderObj.getPlaceHolder1());
+		        model.put("taskComment", taskRecorderObj.getTaskComment());
 		        model.put("taskDueDate", DateTimeFormatter.ofPattern("dd/MMM/yyyy HH:mm").format(taskRecorderObj.getTaskDueDate()));
 		        mail.setModel(model);
 				emailService.sendEmailMessageUsingTemplate(mail,templateName);
@@ -313,13 +316,16 @@ public class TaskController {
     	String DEFAULT_SORTING="UpdatedAt";
     	//ModelAndView modelView = view_view_task(taskObj.getTaskId(),taskObj,result);
 		Udn_Task_Recorder_Entity taskEntity = taskService.find_task_ById(taskObj.getTaskId()).get();
-		
+		taskObj.updateVoFrmEntity(taskEntity);
     	Udn_Task_Comments_Entity taskCommentEntity = new Udn_Task_Comments_Entity ();
 		taskCommentEntity.setTaskComment(taskObj.getTaskComment());
 		taskCommentEntity.setUpdatedBy(userObj.getUserId());
 		taskCommentEntity.setTaskEntity(taskEntity);
 		taskEntity.getTaskCommentsEntityList().add(taskCommentEntity);
 		taskService.saveTask(taskEntity);
+		taskObj.setPlaceHolder1(userObj.getUsername());
+
+		notifyTaskTargetAudience(taskObj, "Task ID <"+ taskEntity.getTaskId() + ">"  + " | Comment Update by " +  userObj.getUsername(), UdanChooConstants.TASK_COMMENT_UPDATE_TEMPLATE);
 
 		redirectAttrib.addFlashAttribute("Success", "Task Comment is updated Successfully..");
 		ModelAndView modelView = new ModelAndView(); 
