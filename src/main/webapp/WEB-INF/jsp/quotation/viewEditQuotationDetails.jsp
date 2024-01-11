@@ -44,6 +44,10 @@
 
 
     <form:form modelAttribute="QTN_OBJ" action="edit_edit_lead_quotation">
+    
+    <input type="hidden" name="leadId" value= "${QTN_OBJ.leadEntity.leadId}" />
+    	<form:hidden path = "quotationId" id="quotationId" />
+	<form:hidden path = "version" id="version" />
     <div class="viewEditQuotationDetails">
         <div class="viewEditQuotationDetails_wrapper">
             <div class="viewEditQuotationDetails_wrapper_data">
