@@ -65,7 +65,7 @@
                                         <div class="form_viewDeal_wrapper_data_line">
                                             <div class="form_viewDeal_wrapper_data_l1">
                                                 <label for="" >Deal Confirmation Number</label>
-                                                <p style="color:#32cd32 ">UDN- ${DealObject.dealConfirmationId}</p>
+                                                <p style="color:#32cd32 ;font-weight:bold;">UDN- ${DealObject.dealConfirmationId}</p>
                                             </div>
                                             <div class="form_viewDeal_wrapper_data_l1">
                                                 <label for="" >Deal Status</label>

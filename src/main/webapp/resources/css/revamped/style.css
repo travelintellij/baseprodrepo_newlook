@@ -39,7 +39,7 @@ header {
     /* right: 0; */
     background: #FFCF53;
     z-index: 999;
-    padding: 5px 0;
+    padding: 3px 0;
 }
 
 .navbar,
@@ -6616,5 +6616,55 @@ color:#FABA08;
 
 .form_viewDeal_wrapper_data_line_ser .form_viewDeal_wrapper_data_l1 {
     width: 140px;
+}
+/* ##################### AdminIncentiveReportSearch ############## */
+.AdminIncentiveReportSearch_wrapper {
+    color: white;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 115px;
+}
 
+.AdminIncentiveReportSearch_wrapper_data_line {
+    display: flex;
+}
+
+.AdminIncentiveReportSearch_wrapper_dl1 {
+    width: 300px;
+    text-align: start;
+}
+
+.AdminIncentiveReportSearch_wrapper_dl1 input {
+    width: 90%;
+}
+
+/* #################  IncentiveReportSearch   #################### */
+.IncentiveReportSearch_wrapper_data_line{
+    display: flex;
+    justify-content: space-between;
+}
+.IncentiveReportSearch_wrapper{
+    color: white;
+        text-align: center;
+        border-collapse: collapse;
+        border: none;
+        background: rgba(0, 0, 0, 9);
+        padding: 10px;
+        border-radius: 10px;
+        margin-top: 115px;
+}
+.IncentiveReportSearch_wrapper_dl1{
+    width: 300px;
+    text-align: start;
+}
+.IncentiveReportSearch_wrapper_dl1_r{
+    width: 300px;
+    text-align: start;
+}
+.IncentiveReportSearch_wrapper_dl1_r input{
+    width: 90%;
 }

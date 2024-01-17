@@ -11,25 +11,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="index.js" defer></script>
-     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/homePageUserMenuCss.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/homePageUserMenuCss.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
 </head>
 <body>
     <header>
         <div class="navbar container">
             <div class="topHeader">
-                <div class="leftSec">
-                    <img src="${pageContext.request.contextPath}/resources/images/revamped/Header_Logo.png" alt="">
-                </div>
+                  
                 <div class="rightSec">
-                    <!-- ###### start of hamburgur menu#### -->
+                 
                     <input type="checkbox" class="headerCheckbox">
                     <div class="hamburgurLines">
                         <span class="line line1"></span>
                         <span class="line line2"></span>
                         <span class="line line3"></span>
                     </div>
-                    <!-- ###### end of hamburgur menu#### -->
+            
                     <ul class="topHeaderLinks ">
+                    <img src="${pageContext.request.contextPath}/resources/images/revamped/Header_Logo.png" alt="" style="height:40px">
                         <li>
                             <a href="view_workloadhome" class="homeLink">
                                 <p class="homeLinkTopMenu">Home</p>
@@ -89,16 +89,6 @@
         </div>
     </header>
 
-    <!-- Extra privilege role starts from here. -->
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
     <!-- ############### bottom top header ############### -->
     <div class="bottomHeader">
         <div class="insideBottomHeader container">
@@ -214,13 +204,5 @@
             </ul>
         </div>
     </div>
-
-    <!-- ########################## home page styling ###################### -->
-
-
- 
-
-
-
 
 </html>

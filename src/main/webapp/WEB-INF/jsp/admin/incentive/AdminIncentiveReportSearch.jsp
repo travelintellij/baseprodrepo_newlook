@@ -1,112 +1,82 @@
 <!DOCTYPE html>
+<html lang="en">
 <jsp:include page="../../menu/MenuBuilder.jsp" />
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<html>
-<head>
+    <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+        <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
-<style>
-	table {
-	  width: 50%;
-	  height: 60px;
-	  border-collapse: collapse;
-	  border: 1px solid #38678f;
-	  margin: 5px auto;
-	  background: white;
-	}
-	
-	th {
-	  background: #7B68EE;
-	  height: 40px;
-	  width: 40%;
-	  font-weight: heavy;
-	  text-shadow: 0 1px 0 #38678f;
-	  color: white;
-	  border: 1px solid #38678f;
-	  box-shadow: inset 0px 1px 2px #568ebd;
-	  transition: all 0.2s;
-	  
-	}
-	tr {
-	  border-bottom: 1px solid #cccccc;
-	}
-	
-	td {
-	  border-right: 1px solid #cccccc;
-	  padding: 10px;
-	  transition: all 0.2s;
-	  text-align: center;
-	}
-	
-	.heavyTable {
-	  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-	  animation: float 5s infinite;
-	}
-	
-	input[type=button], input[type=submit], input[type=reset] {
-	  background-color: #4CAF50;
-	  border: none;
-	  color: white;
-	  padding: 10px 20px;
-	  text-decoration: none;
-	  margin: 4px 2px;
-	  cursor: pointer;
-	}
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>AdminIncentiveReportSearch</title>
+               <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
+            </head>
+            <style>
+           body::before {
+            content: "";
+            background-image:  url(${pageContext.request.contextPath}/resources/images/revamped/ad_in_rep.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5; /* Adjust the opacity value as needed (0.0 to 1.0) */
+            z-index: -1;
+        }
+            </style>
+            <body>
+                <div class="AdminIncentiveReportSearch container">
+                    <div class="AdminIncentiveReportSearch_wrapper">
+                        <form:form method="post" action="showAdminIncentiveSearchReport"
+                            modelAttribute="searchincentive">
+                            <input type="hidden" name="userId" value="${userId}" />
+                            <input type="hidden" name="userName" value="${userName}" />
+                            <h1 style="font-size: 25px;margin:10px 0;color:#32cd32  ">Search Incentive Claims</h1>
+                            <div class="AdminIncentiveReportSearch_wrapper_data">
+                                <div class="AdminIncentiveReportSearch_wrapper_data_line">
+                                    <div class="AdminIncentiveReportSearch_wrapper_dl1">
+                                        <label for="">From Date</label>
+                                        <input type="date" name="claimFromDate" />
+                                    </div>
+                                    <div class="AdminIncentiveReportSearch_wrapper_dl1">
+                                        <label for="">To Date</label>
+                                        <input type="date" name="claimToDate" />
+                                    </div>
+                                    <div class="AdminIncentiveReportSearch_wrapper_dl1">
+                                        <label for="">Claim Status</label>
+                                        <select id="claimStatus" name="claimStatus" style="width:90%">
+                                            <option value="None">Select</option>
+                                            <option value="ALL"> -----ALL----</option>
+                                            <option value="Pending"> --Pending---</option>
+                                            <option value="Approved"> --Approved--</option>
+                                            <option value="Paid"> --Paid------</option>
+                                            <option value="Rejected">-Rejected---</option>
+                                        </select>
+                                    </div>
+                                    <div class="AdminIncentiveReportSearch_wrapper_dl1">
+                                        <label for="">User Name</label>
+                                        <select id="reportOfUser" name="reportOfUser" style="width:90%">
+                                            <option value="0"> -----ALL----</option>
+                                            <c:if test="${not empty ActiveUsersList}">
+                                                <c:forEach items="${ActiveUsersList}" var="userObj">
+                                                    <option value="${userObj.userId}">${userObj.name}</option>
+                                                </c:forEach>
+                                            </c:if>
 
-	input[type="radio"] {
-		display: inline-block;
-		opacity: 1;
-		width: 1em;
-		z-index: -1;
-	}
-	</style>
-</head>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="due_today_task_data_btns">
+                                    <input type="submit" value="Search Claims" />
+                                </div>
+                            </div>
+                        </form:form>
+                    </div>
+                </div>
+            </body>
 
-<body>
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-      <h2 align="center">Search Incentive Claims</h2>
-       <form:form method="post" action="showAdminIncentiveSearchReport" modelAttribute="searchincentive">
-        	<input type="hidden" name="userId" value="${userId}"/>
-        	<input type="hidden" name="userName" value="${userName}"/>
-        	<div id="table">
-		        <table>
-		      		 <tr><th>From Date </th><td><input type="date" name="claimFromDate" /></td><th>To Date</th><td><input type="date" name="claimToDate" /></td></tr>
-		  	  		 <tr>
-		  	  		 	<th>Claim Status</th>
-		  	  		 	<td>
-		  	  		 		<select id = "claimStatus" name = "claimStatus">
-							   <option value = "None">Select</option>
-							   <option value = "ALL">     -----ALL----</option>
-							   <option value = "Pending"> --Pending---</option>
-							  <option value = "Approved"> --Approved--</option>
-							   <option value = "Paid">    --Paid------</option>
-							   <option value = "Rejected">-Rejected---</option>
-							</select>  </td>
-		  	  		 	<th>User Name</th>
-		  	  		 	<td>
-		  	  		 	<select id = "reportOfUser" name = "reportOfUser">
-							   <option value = "0">     -----ALL----</option>
-							    <c:if test="${not empty ActiveUsersList}">
-					        			<c:forEach items="${ActiveUsersList}" var="userObj">
-					      					<option value="${userObj.userId}">${userObj.name}</option>
-					   					</c:forEach>
-					 			</c:if>
-							
-							</select>  
-						</td>
-		  	  		 	<tr><td colspan="4"><input type="submit" value="Search Claims" /></td></tr>
-		       </table>
-        	</div>
-		</form:form>
- </body>
 </html>
