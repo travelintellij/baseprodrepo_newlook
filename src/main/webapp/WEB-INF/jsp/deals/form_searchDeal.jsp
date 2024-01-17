@@ -11,14 +11,29 @@
     <title>search deals</title>
      <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/captureLead.css">
 </head>
-
-<body
-    style="background: url(${pageContext.request.contextPath}/resources/images/revamped/search_deals.jpg);background-size: cover; background-repeat: no-repeat; background-position: center center;background-attachment: fixed;">
+<style>
+  body::before {
+            content: "";
+            background-image:  url(${pageContext.request.contextPath}/resources/images/revamped/search_deals.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5; /* Adjust the opacity value as needed (0.0 to 1.0) */
+            z-index: -1;
+        }
+</style>
+<body>
 
     <div class="search_deal container">
         <div class="search_deal_wrapper">
             <h1 class="search_deal_h1">
-                Search Deals
+                Search Deals 
             </h1>
             <form:form modelAttribute="FILTER_DEAL_OBJ" action="view_filter_deals">
                 <div class="search_deals_data">
@@ -78,9 +93,6 @@
             </form:form>
         </div>
 
-        <div class="search_deals_total">
-            <p>Total Deals Found : 0</p>
-        </div>
     </div>
 
 

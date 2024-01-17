@@ -201,6 +201,12 @@ table {
 </head>
 
 <body>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
         <h1>Search Incentive Claims</h1>
        <form:form method="post" action="view_filter_incentives" modelAttribute="SEARCH_INCENTIVE">
         	

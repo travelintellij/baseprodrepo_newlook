@@ -17,6 +17,21 @@
 	<script src="<c:url value="/resources/js/jquery.datetimepicker.full.js" />"></script>
   	
 <style>
+body::before {
+            content: "";
+            background-image:  url(${pageContext.request.contextPath}/resources/images/revamped/lens.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5; /* Adjust the opacity value as needed (0.0 to 1.0) */
+            z-index: -1;
+        }
 body {font-family: Arial, Helvetica, sans-serif;}
 
 	/* The Modal (background) */
@@ -151,9 +166,12 @@ body {font-family: Arial, Helvetica, sans-serif;}
 <br>
 <br>
 <br>
+<br>
+<br>
+
         	<h2 align="center">Incentive Claim Form </h2>
           <form:form method="post" action="create_create_incentive" modelAttribute="INCENTIVE_OBJ">
- 			<table>
+ 			<table style="width:1200px">
 		        <tr>
 		        	<th>Incentive Claimant</th>
 		        	<td>
@@ -224,7 +242,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 						</div>
 	
  		       <br>
-				<table style="background-color:#DCDCDC;">
+				<table style="background-color:#DCDCDC;width:1200px">
 				<tr>
 					<td style="text-align:left;">
 						<b>Please answer following questions to justify your claim for an incentive. 
@@ -235,7 +253,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
         	
         	<br>
         	<h2 align="center">Incentive Effort Details</h2>  
-        	 <table>
+        	 <table style="background-color:#DCDCDC;width:1200px">
 		        <tr>
 		        	<th style="width:5%;">1</th><th style="width:35%; padding: 5px;text-align:left;">Client is Referred by You ? <form:errors path="question1" cssClass="error" /></th> 
 		        	<td> <input type="radio" name="question1" value="yes"> Yes
@@ -250,7 +268,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 		        <tr><th style="width:5%;">6</th><th style="width:50%; padding: 5px;text-align:left;">UdanChoo online Review achieved or decided not needed ?  </th> <td><input type="radio" name="question6" value="yes">Yes</td><td> <input type="radio" name="question6" value="no" checked>No </td></tr>
 		     </table>
 		     
-		     <table>
+		     <table style="background-color:#DCDCDC;width:1200px">
 		    	<tr><th><b>Claimed Amount </b></th><td style="text-align:left;">INR &nbsp;<input style="height:30px;width: 100px;" class="contact" type="number" name="claimedAmount" value="0" required /><br><font color="red"><form:errors path="claimedAmount" cssClass="error" /></font></td></tr>
 		    	<tr><th><b>User Remarks </b></th>
 		    		<td style="text-align:left;"><textarea rows="4" cols="60" name="userRemarks" maxlength="250"></textarea><br><font color="red"><form:errors path="userRemarks" cssClass="error" /></font></td></tr>
