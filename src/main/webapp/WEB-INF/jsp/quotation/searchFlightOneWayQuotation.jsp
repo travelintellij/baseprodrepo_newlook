@@ -73,6 +73,10 @@
     <!-- ############# quick lead view ends here################## -->
 </div>
 
+    <div class="afd">
+<jsp:include page="_quotationServicesMenu.jsp" />
+</div>
+
     <form:form modelAttribute="QTN_OBJ" action="create_create_lead_quotation">
     
     
@@ -92,9 +96,7 @@
         </div>
     </form:form>
     
-    <div class="afd">
-<jsp:include page="_quotationServicesMenu.jsp" />
-</div>
+
   
     <form:form modelAttribute="FLT_SRCH" action="serach_flight_oneway_quotation_results">
         <input type="hidden" name="leadId" value="${QTN_OBJ.leadEntity.leadId}" />

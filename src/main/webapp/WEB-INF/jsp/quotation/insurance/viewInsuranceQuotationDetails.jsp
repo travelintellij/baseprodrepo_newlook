@@ -58,6 +58,11 @@
     <!-- ############# quick lead view ends here################## -->
 </div>
 
+<div class="afd">
+<jsp:include page="../_quotationServicesMenu.jsp" />
+</div>
+	
+
     <div class="viewInsuranceQuotationDetails">
         <div class="viewInsuranceQuotationD_wrapper">
             <div class="viewInsuranceQuotationD_wr_data">
@@ -75,10 +80,7 @@
 
     <!-- ################# service Actions ############ -->
 
-<div class="afd">
-<jsp:include page="../_quotationServicesMenu.jsp" />
-</div>
-	
+
 	
 
 		<c:if test="${INS_ACTION ne 'ADD'}">
@@ -103,19 +105,8 @@
     <div class="blue">
 		<c:if test="${INS_ACTION ne 'ADD'}">
 		<table style="width:10%;">
-		<caption><font size="4"> <b>Services Action </b></font></caption>
-			<tr>
-				<td style="text-align:center;">
-				<ul>
-					<c:if test="${QTN_OBJ.converted ne true }">
-		  				<li><a href="form_view_add_insurance_quotation?leadId=${LEAD_OBJ.leadId }&quotationId=${QTN_OBJ.quotationId}"><input type="button" style="background-color:green;" value="Add Insurance" /></a></li>
-		  			</c:if>
-		  			<c:if test="${QTN_OBJ.converted eq true }">
-						<li><a><input type="button" style="background-color:lightgray;" value="Add Insurance" /></a></li>		  			
-		  			</c:if>
-				</ul>
-				</td>
-			</tr>
+		
+			
 		</table>
 		</c:if>
 	<div align="center"><b><font color="green" > ${Success} </font><font color="red"> ${Error}</font> </b></div>
@@ -133,20 +124,17 @@
 					<jsp:include page="form_view_delete_manual_insurance_quotation.jsp" />
 				</c:when>
 				<c:otherwise>
-					<br>
-						<br>
-							<br>
-								<br>
-									<br>
-										<br>
-											<br>
+					
+				<br>
+				<br>
+				<br>
 				<br>
 					  <div class="in_mu_add container">
         <div class="in_mu_add_wrp">
-            <h1>Id- ${insuranceQtnObj.manualInsuranceQuotationId}</h1>
+            <h1 style="font-size:25px;margin:10px 0;color:#32cd32 ">Id- ${insuranceQtnObj.manualInsuranceQuotationId}</h1>
             <div class="in_mu_add_wrp_d bc-clr">
                 <div class="in_mu_add_wrp_l">
-                    <label for="" class="lb">Contry Name</label>
+                    <label for="" class="lb">Contry Name </label>
                     <p>${insuranceQtnObj.countryName }</p>
                 </div>
                 <div class="in_mu_add_wrp_l">

@@ -28,11 +28,30 @@
             height: 100%;
             opacity: 0.5; /* Adjust the opacity value as needed (0.0 to 1.0) */
             z-index: -1;
-        } </style>
+        } 
+        .autocomplete-suggestions { border: 1px solid #999; background: red;overflow-y:auto}
+		.autocomplete-suggestion {padding: 2px 5px;color:white; background: black;overflow-y: auto;overflow-y:auto}
+		.autocomplete-selected { background: #F0F0F0;overflow-y:auto} 
+		.autocomplete-suggestions strong { font-weight: normal; color:#FABA08;overflow-y:auto}
+		.autocomplete-group { padding: 2px 5px;overflow-y:auto}
+		.autocomplete-group strong { display: block; border-bottom: 1px solid #000;  background: black ; color:black overflow-y:auto}
+		.autocomplete-selected:hover{
+		color:black
+		}
+
+
+        
+        
+        </style>
 
 <body>
     
-    
+    <div class="autocomplete-suggestions" style="display:none">
+    <div class="autocomplete-group" ><strong>NHL</strong></div>
+    <div class="autocomplete-suggestion autocomplete-selected" >...</div>
+    <div class="autocomplete-suggestion">...</div>
+    <div class="autocomplete-suggestion">...</div>
+</div>
     <div class="my-ki">
     <!-- ############# quick lead view starts here################## -->
     <form:form modelAttribute="LEAD_OBJ" action="create_create_lead_quotation">
@@ -128,7 +147,7 @@
             </c:when>
             <c:otherwise>
                 <div class="main_p container" >
-                    <div class="main_p_wrapper" style="margin-top:100px">
+                    <div class="main_p_wrapper" style="margin-top:20px">
                         <div class="main_p_wrapper_data">
                             <h1 style="margin:10px 0">Id- ${hotelQtnObj.manualHotelQuotationId}</h1>
                             <div class="main_p_wrapper_data_line bc-clr">
@@ -232,7 +251,7 @@
 
 <br>
 <br>
-		<div class="due_today_task_data_btns" style="margin-left:17px">
+		<div class="due_today_task_data_btns" style="position:absolute;top:140px;right:0">
 			<form:form action="view_lead_quotations_list">
 				<input type="hidden" name="leadId" value= "${QTN_OBJ.leadEntity.leadId}" style="background:#03045e;color:white"/>
 				<input type="submit" name="Version List" Value="Show Version List"  style="background:#03045e;color:white"/>

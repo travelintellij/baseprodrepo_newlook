@@ -11,9 +11,9 @@
                     <meta charset="UTF-8">
                     <meta name="viewport" content="width=device-width, initial-scale=1.0">
                     <title>Document</title>
-                    <script src="<c:url value=" /resources/core/jquery.1.10.2.min.js" />"></script>
-                    <script src="<c:url value=" /resources/core/jquery.autocomplete.min.js" />"></script>
-                    <script src="<c:url value=" /resources/js/jquery.datetimepicker.full.js" />"></script>
+                    <script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
+                    <script src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
+                    <script src="<c:url value="/resources/js/jquery.datetimepicker.full.js" />"></script>
 
                 </head>
 <style>
@@ -32,11 +32,28 @@
             opacity: 0.5; /* Adjust the opacity value as needed (0.0 to 1.0) */
             z-index: -1;
         }
+        
+        .autocomplete-suggestions { border: 1px solid #999; background: red;overflow-y:auto}
+		.autocomplete-suggestion {padding: 2px 5px;color:white; background: black;overflow-y: auto;overflow-y:auto}
+		.autocomplete-selected { background: #F0F0F0;overflow-y:auto} 
+		.autocomplete-suggestions strong { font-weight: normal; color:#FABA08;overflow-y:auto}
+		.autocomplete-group { padding: 2px 5px;overflow-y:auto}
+		.autocomplete-group strong { display: block; border-bottom: 1px solid #000;  background: black ; color:black overflow-y:auto}
+		.autocomplete-selected:hover{
+		color:black
+		}
+
+
 
 </style>
                 <body>
                 
-                
+                <div class="autocomplete-suggestions" style="display:none">
+    <div class="autocomplete-group" ><strong>NHL</strong></div>
+    <div class="autocomplete-suggestion autocomplete-selected" >...</div>
+    <div class="autocomplete-suggestion">...</div>
+    <div class="autocomplete-suggestion">...</div>
+</div>
                 
 <div class="my-ki">
     <!-- ############# quick lead view starts here################## -->
@@ -137,11 +154,12 @@
                 </div>
                 <div class="fr_view_fli_qu_wr_d">
                     <label for="">Arrival</label> <br>
+                    
+                    <input type="text" id="destinationCity" name="destinationCity" />
+                    <form:hidden path="airportCodeDestination" id="origin" value="0" />
                     <font color="red">
                         <form:errors path="destinationCity" cssClass="error" />
                     </font>
-                    <input type="text" id="destinationCity" name="destinationCity" />
-                    <form:hidden path="airportCodeDestination" id="origin" value="0" />
                 </div>
                 <div class="fr_view_fli_qu_wr_d">
                     <label for="">Departure Details</label> <br>

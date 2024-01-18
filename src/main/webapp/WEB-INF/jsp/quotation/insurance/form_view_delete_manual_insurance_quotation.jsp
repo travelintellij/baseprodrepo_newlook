@@ -20,7 +20,7 @@
                         <input type="hidden" name="quotationId" value="${QTN_OBJ.quotationId}" />
                         <form:hidden path="manualInsuranceQuotationId" />
                         <div class="in_mu_add container">
-                            <div class="in_mu_add_wrp" style="margin-top:100px">
+                            <div class="in_mu_add_wrp" style="margin-top:20px">
                                 <h1>Id- ${MANUAL_INS.manualInsuranceQuotationId}</h1>
                                 <div class="in_mu_add_wrp_d bc-clr">
                                     <div class="in_mu_add_wrp_l">

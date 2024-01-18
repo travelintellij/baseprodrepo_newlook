@@ -31,9 +31,26 @@
             opacity: 0.5; /* Adjust the opacity value as needed (0.0 to 1.0) */
             z-index: -1;
         }
+        
+        .autocomplete-suggestions { border: 1px solid #999; background: red;overflow-y:auto}
+		.autocomplete-suggestion {padding: 2px 5px;color:white; background: black;overflow-y: auto;overflow-y:auto}
+		.autocomplete-selected { background: #F0F0F0;overflow-y:auto} 
+		.autocomplete-suggestions strong { font-weight: normal; color:#FABA08;overflow-y:auto}
+		.autocomplete-group { padding: 2px 5px;overflow-y:auto}
+		.autocomplete-group strong { display: block; border-bottom: 1px solid #000;  background: black ; color:black overflow-y:auto}
+		.autocomplete-selected:hover{
+		color:black
+		}
+
+
 </style>
 <body>
-
+<div class="autocomplete-suggestions" style="display:none">
+    <div class="autocomplete-group" ><strong>NHL</strong></div>
+    <div class="autocomplete-suggestion autocomplete-selected" >...</div>
+    <div class="autocomplete-suggestion">...</div>
+    <div class="autocomplete-suggestion">...</div>
+</div>
     <div class="my-ki">
         <!-- ############# quick lead view starts here################## -->
         <form:form modelAttribute="LEAD_OBJ" action="create_create_lead_quotation">
@@ -65,11 +82,11 @@
                 <div class="viewCruiseQuotationDetailsfrm_wrapper_data">
                     <div class="viewCruiseQuotationDetailsfrm_wrapper_l1">
                         <label for="" style=" font-weight: bold;color: #FABA08;">Quotation Id</label>
-                        <p>12</p>
+                        <p>${QTN_OBJ.quotationId}</p>
                     </div>
                     <div class="viewCruiseQuotationDetailsfrm_wrapper_l1">
                         <label for="" style=" font-weight: bold;   color: #FABA08;">Version Id</label>
-                        <p>2</p>
+                        <p>${QTN_OBJ.version}</p>
                     </div>
                 </div>
             </div>

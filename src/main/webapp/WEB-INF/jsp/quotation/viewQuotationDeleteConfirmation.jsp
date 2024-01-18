@@ -16,6 +16,26 @@
                     <script src="https://kit.fontawesome.com/6f6addf9b0.js" crossorigin="anonymous"></script>
                 </head>
 
+<style>
+
+
+        body::before {
+            content: "";
+            background-image:  url(${pageContext.request.contextPath}/resources/images/revamped/lens.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5; /* Adjust the opacity value as needed (0.0 to 1.0) */
+            z-index: -1;
+        }
+</style>
+
                 <body>
                 
                 

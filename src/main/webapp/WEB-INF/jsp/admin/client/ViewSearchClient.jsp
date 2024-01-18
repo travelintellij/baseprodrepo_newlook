@@ -85,7 +85,7 @@
                 <div class="search-client-form">
                     <div class="sc-first-li cli-em-sec">
                         <div class="sc-first-li-d1 mp">
-                            <label for="">Email</label> <br>
+                            <label for="">Email </label> <br>
                             <input type="text" class="contact" id="email" name="email" placeholder="email"
                                 value="${SEARCH_CLIENTS.email}" />
                         </div>

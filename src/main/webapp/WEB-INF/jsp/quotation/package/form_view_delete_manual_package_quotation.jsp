@@ -13,8 +13,29 @@
     <script src="<c:url value=" /resources/core/jquery.1.10.2.min.js" />"></script>
     <script src="<c:url value=" /resources/core/jquery.autocomplete.min.js" />"></script>
 </head>
-<body>
+<style>
+body::before {
+            content: "";
+            background-image:  url(${pageContext.request.contextPath}/resources/images/revamped/lens.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5; /* Adjust the opacity value as needed (0.0 to 1.0) */
+            z-index: -1;
+        }
 
+</style>
+<body>
+    <div class="afd">
+<jsp:include page="../_quotationServicesMenu.jsp" />
+</div>
+ 
 <div class="my-ki">
     <!-- ############# quick lead view starts here################## -->
     <form:form modelAttribute="LEAD_OBJ" action="create_create_lead_quotation">
@@ -52,10 +73,7 @@
             </div>
     </form:form>
     
-    <div class="afd">
-<jsp:include page="../_quotationServicesMenu.jsp" />
-</div>
- 
+
     
   
     
@@ -76,14 +94,7 @@
                                 <input type="hidden" name="quotationId" value="${QTN_OBJ.quotationId}" />
                                 <input type="hidden" name="manualPkgQuotationId"
                                     value="${MANUAL_PKG.manualPkgQuotationId}" />
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-     <br>
-      <br>
+
                        <div class="com_page container">
         <div class="com_page_wrapper" >
             <h1>Id- ${MANUAL_PKG.manualPkgQuotationId}</h1>

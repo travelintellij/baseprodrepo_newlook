@@ -33,7 +33,10 @@
 </style>
                 <body>
 
-                    <body>
+                    <div class="afd">
+<jsp:include page="../_quotationServicesMenu.jsp" />
+</div>
+                    
                         <form:form modelAttribute="QTN_OBJ" action="create_create_lead_quotation">
                             <div class="viewInsuranceQuotationDetails">
             <div class="viewInsuranceQuotationD_wrapper">
@@ -74,9 +77,6 @@
 
 
 
-<div class="afd">
-<jsp:include page="../_quotationServicesMenu.jsp" />
-</div>
 
                         <div class="float-container">
                          
@@ -88,14 +88,8 @@
                                             <font color="green"> ${Success} </font>
                                             <font color="red"> ${Error}</font>
                                         </b></div>
-                                        <br>
-                                         <br>
-                                          <br>
-                                           <br>
-                                            <br>
-                                             <br>
-                                              <br>
-                                               <br>
+                                        
+                                         
                                     
                                                 <form:form modelAttribute="MANUAL_PKG"
                                                     action="form_view_edit_manual_package_quotation">

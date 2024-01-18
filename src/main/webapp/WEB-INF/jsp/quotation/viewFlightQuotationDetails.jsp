@@ -55,7 +55,14 @@
 </div>
                 
                 
-            <form:form modelAttribute="QTN_OBJ" action="create_create_lead_quotation">
+          
+
+
+<div class="afd">
+<jsp:include page="_quotationServicesMenu.jsp" />
+</div>
+
+  <form:form modelAttribute="QTN_OBJ" action="create_create_lead_quotation">
              <div class="viewInsuranceQuotationDetails">
             <div class="viewInsuranceQuotationD_wrapper">
                 <div class="viewInsuranceQuotationD_wr_data">
@@ -73,11 +80,7 @@
             </form:form>
 
 
-<div class="afd">
-<jsp:include page="_quotationServicesMenu.jsp" />
-</div>
-
-                     <div class="Flight_qu">
+            <div class="Flight_qu">
             <h1 style="text-align:center;font-size:20px;margin:10px 0;'">Add Flight Sectors to Quotation</h1>
             <div class="due_today_task_data_btnss">
                  <c:if test="${QTN_OBJ.converted ne true }">
@@ -122,7 +125,7 @@
                                             <td>
                                                 <c:forEach items="${QTN_OBJ.manualQuotationsVoList}" var="flightQtnObj">
                <div class="fli_de container">
-             <div class="fli_de_wrapper" style="margin-top:120px" >
+             <div class="fli_de_wrapper" style="margin-top:10px" >
             <h1 style="margin:10px 0;font-size: 25px;color:#32cd32 ">Id-
             ${flightQtnObj.manualFlightQuotationId}</h1>
             <div class="fli_de_wrapper_data">

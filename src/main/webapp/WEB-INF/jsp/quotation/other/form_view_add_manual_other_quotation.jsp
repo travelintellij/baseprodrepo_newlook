@@ -16,7 +16,7 @@
     <form:form modelAttribute="MANUAL_OTH" action="create_create_other_manual_quotation">
         <input type="hidden" name="leadId" value="${QTN_OBJ.leadEntity.leadId}" />
         <input type="hidden" name="quotationId" value="${QTN_OBJ.quotationId}" />
-        <div class="form_view_add_manual_other_quotation container" style="margin:270px auto">
+        <div class="form_view_add_manual_other_quotation container" style="margin:15px auto">
             <div class="form_view_add_manual_other_wrapper">
                 <h1 style="font-size:25px;margin:10px 0;color:#32cd32">Add Service to quotation</h1>
                 <div class="form_view_add_manual_other_w_data">

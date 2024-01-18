@@ -17,7 +17,7 @@
         <input type="hidden" name="leadId" value="${QTN_OBJ.leadEntity.leadId}" />
         <input type="hidden" name="quotationId" value="${QTN_OBJ.quotationId}" />
         <form:hidden path="manualOtherQuotationId" />
-     <div class="form_view_add_manual_other_quotation container" style="margin:270px auto">
+     <div class="form_view_add_manual_other_quotation container" style="margin:0 auto">
             <div class="form_view_add_manual_other_wrapper">
                 <h1 style="font-size:25px;margin:10px 0;color:#32cd32">Edit service</h1>
                 <div class="form_view_add_manual_other_w_data">

@@ -26,7 +26,7 @@
                 </b></div>
             <form:form method="post" action="view_edit_Admin_User" modelAttribute="userobj">
                 <div class="AdminDisplayUser_wrapper_data">
-                    <div class="AdminDisplayUser_wrapper_data_line">
+                    <div class="AdminDisplayUser_wrapper_data_line bc-clr " >
                         <div class="AdminDisplayUser_wrapper_data_l1">
                             <label for="">Record Id</label>
                             <p>${userobj.userId}</p>
@@ -51,15 +51,12 @@
                             </p>
                         </div>
                     </div>
-                    <div class="AdminDisplayUser_wrapper_data_line">
+                    <div class="AdminDisplayUser_wrapper_data_line  bc-clr">
                         <div class="AdminDisplayUser_wrapper_data_l1">
                             <label for="">User Full Name</label>
                             <p>${userobj.name}</p>
                         </div>
-                        <div class="AdminDisplayUser_wrapper_data_l1">
-                            <label for="">Address</label>
-                            <p>${userobj.address}</p>
-                        </div>
+                        
                         <div class="AdminDisplayUser_wrapper_data_l1">
                             <label for="">Company Email</label>
                             <p>${userobj.email}</p>
@@ -69,7 +66,11 @@
                             <p>${userobj.mobile}</p>
                         </div>
                     </div>
-                    <div class="AdminDisplayUser_wrapper_data_line">
+                    <div class="AdminDisplayUser_wrapper_data_l1 bc-clr" style="text-align:start">
+                            <label for="">Address</label>
+                            <p>${userobj.address}</p>
+                        </div>
+                    <div class="AdminDisplayUser_wrapper_data_line  bc-clr">
                         <div class="AdminDisplayUser_wrapper_data_l1">
                             <label for="">Designation</label>
                             <p>${userobj.designation}</p>
@@ -87,7 +88,7 @@
                             <p>${userobj.fixedIncentive}</p>
                         </div>
                     </div>
-                    <div class="AdminDisplayUser_wrapper_data_line">
+                    <div class="AdminDisplayUser_wrapper_data_line  bc-clr">
                         <div class="AdminDisplayUser_wrapper_data_l1">
                             <label for="">Pan Card</label>
                             <p>${userobj.panCard}</p>
@@ -105,7 +106,7 @@
                             <p>${userobj.gender}</p>
                         </div>
                     </div>
-                    <div class="AdminDisplayUser_wrapper_data_line">
+                    <div class="AdminDisplayUser_wrapper_data_line  bc-clr">
                         <div class="AdminDisplayUser_wrapper_data_l1">
                             <label for="">Deleted</label>
                             <p>${userobj.deleted}</p>
@@ -127,7 +128,7 @@
                             </p>
                         </div>
                     </div>
-                    <div class="AdminDisplayUser_wrapper_data_line">
+                    <div class="AdminDisplayUser_wrapper_data_line  bc-clr">
                         <div class="AdminDisplayUser_wrapper_data_l1">
                             <label for="">Personal Email</label>
                             <p>${userobj.personalEmail}</p>
@@ -145,18 +146,18 @@
                             <p>${userobj.accountExpired}</p>
                         </div>
                     </div>
-                    <div class="AdminDisplayUser_wrapper_data_line">
+                    <div class="AdminDisplayUser_wrapper_data_line  bc-clr">
                         <div class="AdminDisplayUser_wrapper_data_l1">
                             <label for="">Credentials Expired</label>
                             <p>${userobj.credentialsExpired}</p>
                         </div>
                     </div>
-                    <div class="AdminDisplayUser_wrapper_data_line">
-                        <div class="AdminDisplayUser_wrapper_data_l1">
+                   
+                        <div class="AdminDisplayUser_wrapper_data_l1 bc-clr" style="text-align:start">
                             <label for="">Remarks</label>
                             <p>${userobj.remarks}</p>
                         </div>
-                    </div>
+                  
                     <div class="due_today_task_data_btns">
                         <sec:authorize access="hasAnyRole('ADMIN','USER_EDIT')">
                             <input type="submit" value="Edit User">

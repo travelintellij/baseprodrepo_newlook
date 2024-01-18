@@ -90,7 +90,7 @@
             <div class="viewVisaQuotationDetails_wrapper_data">
                 <div class="viewVisaQuotationDetails_wrapper_data_line">
                     <div class="viewVisaQuotationDetails_wrapper_data_l1">
-                        <label for="">Quotation Id</label>
+                        <label for="">Quotation Id </label>
                         <p>${QTN_OBJ.quotationId}</p>
                     </div>
                     <div class="viewVisaQuotationDetails_wrapper_data_l1">

@@ -32,7 +32,10 @@
         }
 </style>
                 <body>
-                
+                                
+                    <div class="afd">
+<jsp:include page="../_quotationServicesMenu.jsp" />
+</div>
                 
 <div class="my-ki">
     <!-- ############# quick lead view starts here################## -->
@@ -53,10 +56,7 @@
     <!-- ############# quick lead view ends here################## -->
 </div>
                 
-                
-                    <div class="afd">
-<jsp:include page="../_quotationServicesMenu.jsp" />
-</div>
+
                 
                     <form:form modelAttribute="QTN_OBJ" action="create_create_lead_quotation">
                        <div class="viewInsuranceQuotationDetails">

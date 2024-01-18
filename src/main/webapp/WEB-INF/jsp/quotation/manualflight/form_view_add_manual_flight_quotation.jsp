@@ -46,13 +46,17 @@
 
 </style>
 <body>
-
+<div class="afd">
+<jsp:include page="../_quotationServicesMenu.jsp" />
+</div>
 <div class="autocomplete-suggestions" style="display:none">
     <div class="autocomplete-group" ><strong>NHL</strong></div>
     <div class="autocomplete-suggestion autocomplete-selected" >...</div>
     <div class="autocomplete-suggestion">...</div>
     <div class="autocomplete-suggestion">...</div>
 </div>
+
+
 
     <form:form modelAttribute="QTN_OBJ" action="create_create_lead_quotation">
     
@@ -91,9 +95,7 @@
     <!-- ############# quick lead view ends here################## -->
 </div>
 
-<div class="afd">
-<jsp:include page="../_quotationServicesMenu.jsp" />
-</div>
+
 
 
 

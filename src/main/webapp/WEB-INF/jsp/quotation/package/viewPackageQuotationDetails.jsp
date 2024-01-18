@@ -100,12 +100,8 @@
                         <font color="green"> ${Success} </font>
                         <font color="red"> ${Error}</font>
                     </b></div>
-                    
-                  
-                        
-                    <br>
-                   
-               
+                           <br>
+     
                                 <c:forEach items="${QTN_OBJ.tourPackageVoList}" var="packageQtnObj">
                               
        <div class="fl_view " style="margin:0 auto;width:1200px">
@@ -188,10 +184,7 @@
                 </div>
             </div>
         </div>
-    </div>
-                                            <%-- </c:otherwise>
-                                                </c:choose>
-                                                --%>
+    </div>             
                                 </c:forEach>
                         </td>
                     </tr>

@@ -13,8 +13,25 @@
     <script src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
 </head>
+<style>
 
-<body style="background: url(${pageContext.request.contextPath}/resources/images/revamped/viewQuotationDetails.jpg);background-size: cover; background-repeat: no-repeat; background-position: center center;background-attachment: fixed;">
+        body::before {
+            content: "";
+            background-image:  url(${pageContext.request.contextPath}/resources/images/revamped/viewQuotationDetails.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5; /* Adjust the opacity value as needed (0.0 to 1.0) */
+            z-index: -1;
+        }
+</style>
+<body >
 
 
 <div class="my-ki">
@@ -45,8 +62,9 @@
 
 	<input type="hidden" name="leadId" value= "${QTN_OBJ.leadEntity.leadId}" />
 	<form:hidden path = "quotationId" id="quotationId" />
-    <div class="viewQuotationDetails container_vqd">
+    <div class="viewQuotationDetails container" style="margin-top:10px">
         <div class="viewQuotationDetails_wrapper">
+        <h1 style="font-size:25px;margin:10px 0;color:#32cd32">	Quotation Summary </h1>
             <div class="viewQuotationDetails_wrapper_data">
                 <div class="viewQuotationDetails_wrapper_data_line" style="background: #6082B6;margin-bottom: 5px;">
                     <div class="viewQuotationDetails_wrapper_data_l1">

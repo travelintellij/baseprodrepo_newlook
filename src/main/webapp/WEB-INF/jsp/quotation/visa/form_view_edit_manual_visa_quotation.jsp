@@ -31,9 +31,9 @@
                                 <p style="padding-right: 20px;">${VISA_OBJ.cityName}</p>
                             </div>
                             <div class="vertical-line"></div>
-                            <div class="horizontal-line"></div>
+                           
                             <div class="form_view_search_visa_add_quotation_wrapper_data_l1_btns">
-                                <div class="due_today_task_data_btns part">
+                                <div class="due_today_task_data_btns part" style="width:40%">
                                     <a id="myBtn[${VISA_OBJ.visaId}]" onclick="myStopsDisplay(this)"
                                         data-load-url="view_visa_master_details_modal?visaId=${VISA_OBJ.visaId}"
                                         data-toggle="modal" data-target="#myModal">View Visa Master Details</a>
@@ -72,7 +72,7 @@
                                 </div>
                                 <div class="form_view_search_visa_add_quotation_wrapper_data_in">
                                     <label for="">B2C S.Price PP | <br> B2B S.Price PP </label>
-                                    <p>${VISA_OBJ.standardB2cPrice } | ${VISA_OBJ.standardB2bPrice }</p>
+                                    <p style="background:lightpink;color:black;width:120px;padding:3px;border-radius:2px'">${VISA_OBJ.standardB2cPrice } | ${VISA_OBJ.standardB2bPrice }</p>
                                 </div>
                                 <div class="form_view_search_visa_add_quotation_wrapper_data_in">
                                     <label for="">Total Updated Cost</label>
@@ -87,16 +87,27 @@
                                 style="margin-bottom: 20px;">
                                 <div class="form_view_search_visa_add_quotation_wrapper_data_rem">
                                     <label for="">Remarks</label> <br>
-                                    <form:textarea path="remarks" rows="2" cols="49" maxlength="1450" />
+                                    <form:textarea path="remarks" rows="2" cols="103" maxlength="1450" />
                                 </div>
                             </div>
                             <div class="rel-btns">
                                 <input type="button" value="Compute B2C" onclick="computeb2c();" />
                                 <input type="button" value="Compute B2B" onclick="computeb2b();" />
                             </div>
-                            <div class="due_today_task_data_btns" style="margin-top: 15px;">
+                            <div class="due_today_task_data_btnss" style="margin-top: 15px;">
                                 	<input type="submit" name="updateVisa" id="updateVisa" Value="Update Visa" />
-				                    <a href="form_view_visa_quotation_details?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId}">Cancel</a>
+				                    <a style="	display: inline-block;
+    color: white;
+    width: auto;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: #ffb908cf;
+    color: black;
+    transition: all 0.3s ease-in-out;
+    outline: none;
+    border: none;
+    margin-right: 5px;
+    cursor:pointer;" href="form_view_visa_quotation_details?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId}">Cancel</a>
                             </div>
                         </div>
                     </div>
@@ -106,34 +117,23 @@
     </c:if>
 
 
-    <script>
-        $(document).ready(function () {
-            // Handler for .ready() called.
-            var nt = document.getElementById('editVisaRecord');
-            if (nt != null) {
-                $('html, body').animate({
-                    scrollTop: $('#editVisaRecord').offset().top
-                }, 'slow');
 
-            }
 
-        });
-    </script>
-    <script>
+<script>
 
-        function computeb2c() {
-            var totalGuests = parseInt($("#adults").val()) + parseInt($("#children").val()) + parseInt($("#infant").val());
-            $('#visaCost').val(totalGuests * ${ VISA_OBJ.standardCost });
-            $('#visaMarkup').val(totalGuests * (${ VISA_OBJ.standardB2cPrice } - ${ VISA_OBJ.standardCost }));
-        }
+function computeb2c(){
+	var totalGuests = parseInt($("#adults").val()) + parseInt($("#children").val()) + parseInt($("#infant").val());
+	$('#visaCost').val(totalGuests * ${VISA_OBJ.standardCost});
+	$('#visaMarkup').val(totalGuests * (${VISA_OBJ.standardB2cPrice} - ${VISA_OBJ.standardCost}));
+}
 
-        function computeb2b() {
-            var totalGuests = parseInt($("#adults").val()) + parseInt($("#children").val()) + parseInt($("#infant").val());
-            $('#visaCost').val(totalGuests * ${ VISA_OBJ.standardCost });
-            $('#visaMarkup').val(totalGuests * (${ VISA_OBJ.standardB2bPrice } - ${ VISA_OBJ.standardCost }));
-        }
+function computeb2b(){
+	var totalGuests = parseInt($("#adults").val()) + parseInt($("#children").val()) + parseInt($("#infant").val());
+	$('#visaCost').val(totalGuests * ${VISA_OBJ.standardCost});
+	$('#visaMarkup').val(totalGuests * (${VISA_OBJ.standardB2bPrice} - ${VISA_OBJ.standardCost}));
+}
 
-    </script>
+</script>
 </body>
 
 </html>

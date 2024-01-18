@@ -235,31 +235,22 @@
                                 </c:when>
                                 <c:otherwise>
                                     <td style="border-bottom:2px solid #FFCF53;padding:5px 0;border-right:2px solid #FFCF53">
-                                     <i class="fa-solid fa-sliders stqb">
-                                    <div class="quotation-box-three-bar">
-                                    <ul>
-                                    <li><a
-                                            href="form_view_quotation_details?leadId=${LEAD_OBJ.leadId }&quotationId=${leadquotations.quotationId }">View</a> </li>
-                                    <li><a
-                                            href="form_view_edit_quotation_details?leadId=${LEAD_OBJ.leadId }&quotationId=${leadquotations.quotationId }">Edit</a></li>
-                                    <li> <a href="form_view_delete_quotation_details?leadId=${LEAD_OBJ.leadId }&quotationId=${leadquotations.quotationId }">
-                                               Delete</a></li>
+                             
+                                   
+                                    <a
+                                            href="form_view_quotation_details?leadId=${LEAD_OBJ.leadId }&quotationId=${leadquotations.quotationId }" style=";padding:2px 5px; border-radius:3px;background:#32cd32;color:white">View</a>
+                                  <a
+                                            href="form_view_edit_quotation_details?leadId=${LEAD_OBJ.leadId }&quotationId=${leadquotations.quotationId}"  style=";padding:2px 5px; border-radius:3px;background:#32cd32;color:white">Edit</a>
+                                    <a href="form_view_delete_quotation_details?leadId=${LEAD_OBJ.leadId }&quotationId=${leadquotations.quotationId }" style=";padding:2px 5px; border-radius:3px;background:red;color:white">
+                                               Delete</a>
                                             
-                                    <li><a
-                                            href="form_view_duplicate_quotation_details?leadId=${LEAD_OBJ.leadId }&quotationId=${leadquotations.quotationId }">Duplicate Quotation</a></li>
-                                    <li>
-                                      <a href="form_convert_new_deal?leadId=${LEAD_OBJ.leadId }&quotationId=${leadquotations.quotationId }"
+                                    <a
+                                            href="form_view_duplicate_quotation_details?leadId=${LEAD_OBJ.leadId }&quotationId=${leadquotations.quotationId }" style=";padding:2px 5px; border-radius:3px;background:#32cd32;color:white">Duplicate Quotation</a>
+                                    
+                                      <a href="form_convert_new_deal?leadId=${LEAD_OBJ.leadId }&quotationId=${leadquotations.quotationId }" style=";padding:2px 5px; border-radius:3px;background:#32cd32;color:white"
                                             aria-disabled="true">Lock-And-Convert</a>
-                                    </li>
-                                    </ul>
+                                   
                                      
-                                       
-                                        
-                                        
-                                        
-                                      
-                                        </div>
-                                      </i>
                                     </td>
                                 </c:otherwise>
                             </c:choose>
@@ -277,7 +268,7 @@
                                 <a style=";padding:2px 5px; border-radius:3px;background:red;color:white" >Delete</a> |
                                 <a
                                     href="form_view_duplicate_quotation_details?leadId=${LEAD_OBJ.leadId }&quotationId=${leadquotations.quotationId }" style=";padding:2px 5px; border-radius:3px;background:#32cd32;color:white">Duplicate Quotation</a> |
-                                <a style=";padding:2px 5px; border-radius:3px;background:#32cd32;color:white">Lock-And-Convert</a>
+                                <a style=";padding:2px 5px; border-radius:3px;background:#32cd32;color:white">Lock-And-Convert </a>
                             </td>
                             <td style="border-bottom:2px solid #FFCF53;padding:5px 0">
                                <a style=";padding:2px 5px; border-radius:3px;background:#32cd32;color:white">CONVERTED</a>
@@ -294,23 +285,7 @@
 
 
 
-    <div id="myModal" class="modal">
-        <!-- Modal content -->
-        <div class="modal-content">
-            <div class="modal-header">
-                <span class="close">&times;</span>
-                <br>
-                <h2 style="text-align:center;">Confirm Quotation Version Delete</h2>
-            </div>
-            <div class="modal-body">
-
-
-            </div>
-            <div class="modal-footer">
-                <h3 align="center">Powered by @TravelIntelliJ</h3>
-            </div>
-        </div>
-    </div>
+    
 
 
 

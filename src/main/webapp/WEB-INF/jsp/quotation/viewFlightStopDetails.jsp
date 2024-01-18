@@ -90,7 +90,7 @@
                                 </b></div>
        
                                  <div class="fli_de container">
-        <div class="fli_de_wrapper" style="margin-top:300px">
+        <div class="fli_de_wrapper" style="margin-top:20px">
             <h1 style="margin:10px 0;font-size: 25px;color:#32cd32 ">Id- ${MANUAL_FLT.manualFlightQuotationId}</h1>
             <div class="fli_de_wrapper_data">
                 <div class="fli_de_wrapper_data_fli bc-clr">

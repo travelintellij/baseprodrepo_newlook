@@ -43,7 +43,10 @@ body::before {
 </style>
                 <body>
                 
-                
+               <div class="afd">
+<jsp:include page="../_quotationServicesMenu.jsp" />
+</div>
+            
                 
 <div class="autocomplete-suggestions" style="display:none">
     <div class="autocomplete-group" ><strong>NHL</strong></div>
@@ -88,10 +91,7 @@ body::before {
             </div>
                     </form:form>
 
-<div class="afd">
-<jsp:include page="../_quotationServicesMenu.jsp" />
-</div>
-                  
+       
 
                     <div class="float-container">
                       <div class="float-child-right">
