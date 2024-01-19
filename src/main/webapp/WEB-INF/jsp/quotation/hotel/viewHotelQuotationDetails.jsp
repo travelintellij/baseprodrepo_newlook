@@ -251,7 +251,7 @@
 
 <br>
 <br>
-		<div class="due_today_task_data_btns" style="position:absolute;top:140px;right:0">
+		<div class="due_today_task_data_btns" style="position:absolute;top:160px;right:0">
 			<form:form action="view_lead_quotations_list">
 				<input type="hidden" name="leadId" value= "${QTN_OBJ.leadEntity.leadId}" style="background:#03045e;color:white"/>
 				<input type="submit" name="Version List" Value="Show Version List"  style="background:#03045e;color:white"/>

@@ -13,6 +13,7 @@
 <script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
 <script src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
+ <link href="<c:url value="/resources/core/main.css" />" rel="stylesheet">
 </head>
 <style>
   body::before {
@@ -243,18 +244,14 @@
   
                             </div>
 
-<div id="myModal" class="modal">	
-		  <!-- Modal content -->
+<div id="myModal" class="modal" style="display:none;width:100%;margin-top:50px;z-index:999"">	
 		  <div class="modal-content">
-		    <div class="modal-header">
+		    <div class="modal-header" style="width:100%">
 		      <span class="close">&times;</span>
-		      <br><h2 style="text-align:center;">View Flight Connections </h2>
+		    <h2 style="text-align:center;padding:10px 0">View Flight Connections </h2>
 		    </div>
-		    <div class="modal-body">
-		
-		
-		    </div>
-		    <div class="modal-footer">
+		    <div class="modal-body" style="width:100%"></div>
+		    <div class="modal-footer" style="width:100%">
 		      <h3 align="center">Powered by @TravelIntelliJ</h3>
 		    </div>
 		  </div>

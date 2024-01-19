@@ -27,7 +27,7 @@
         </ul>
     </div>
 
-    <div class="view_myprofile container_view_p">
+    <div class="view_myprofile container" style="width:1100px">
         <div class="view_myprofile_wrapper">
             <form:form action="view_open_task_form_user" modelAttribute="TASK_FILTER_OBJ">
                 <div align="center"><b>
@@ -83,6 +83,14 @@
                                 <label for="">Bank Account</label>
                                 <p></p>
                             </div>
+                              <div class="view_myprofile_wrapper_data_l1">
+                               
+                            </div>
+                              <div class="view_myprofile_wrapper_data_l1">
+                               
+                            </div>
+                          
+                            
                         </div>
                     </div>
             </form:form>

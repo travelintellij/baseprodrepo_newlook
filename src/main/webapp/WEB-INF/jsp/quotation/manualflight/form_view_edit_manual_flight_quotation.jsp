@@ -92,7 +92,7 @@
                         <p>${QTN_OBJ.quotationId}</p>
                     </div>
                     <div class="viewInsuranceQuotationD_wr_data_line">
-                        <label for="" class="lb"> Version Id</label>
+                        <label for="" class="lb"> Version Id </label>
                         <p>${QTN_OBJ.version}</p>
                     </div>
                 </div>

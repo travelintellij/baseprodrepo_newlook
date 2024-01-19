@@ -23,7 +23,6 @@ table {
   border: 1px solid #38678f;
   margin: 35px auto;
   background: white;
-    
 }
 
 th {
@@ -306,19 +305,17 @@ li a {
 <div id="myModal" class="modal">	
 		  <!-- Modal content -->
 		  <div class="modal-content">
-		    <div class="modal-header">
+		    <div class="modal-header" style="background:red">
 		      <span class="close">&times;</span>
 		      <br><h2 style="text-align:center;">View Sight Seeing Details</h2>
 		    </div>
 		    <div class="modal-body">
-		
-		
 		    </div>
 		    <div class="modal-footer">
 		      <h3 align="center">Powered by @TravelIntelliJ</h3>
 		    </div>
 		  </div>
-	</div>
+</div>
 
 	<script>
 		// Get the modal

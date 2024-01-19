@@ -13,9 +13,24 @@
     <title>Add Hotal Chain</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
 </head>
-
-<body
-    style="background: url(${pageContext.request.contextPath}/resources/images/revamped/ADD_HOTAL_CHAIN_BG.jpg);background-size: cover; background-repeat: no-repeat; background-position: center center;background-attachment: fixed;">
+<style>
+body::before {
+            content: "";
+            background-image:  url(${pageContext.request.contextPath}/resources/images/revamped/ADD_HOTAL_CHAIN_BG.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5; /* Adjust the opacity value as needed (0.0 to 1.0) */
+            z-index: -1;
+        }
+</style>
+<body>
 
 
     <div class="Add-Hotal-Chain container">

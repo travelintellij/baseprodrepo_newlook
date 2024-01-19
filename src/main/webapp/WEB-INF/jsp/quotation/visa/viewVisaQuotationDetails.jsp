@@ -16,6 +16,7 @@
 <script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
 <script src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
 <script src="https://kit.fontawesome.com/6f6addf9b0.js" crossorigin="anonymous"></script>
+<link href="<c:url value="/resources/core/main.css" />" rel="stylesheet">
 </head>
 <style>
 
@@ -226,21 +227,22 @@
 		</c:choose>
 		</c:forEach>
 		
-		
-			<div id="myModal" class="modal m-try" style="background:black">	
+	      <div id="myModal" class="modal" style="margin-top:105px;z-index:999;display:none">	
 		  <!-- Modal content -->
-		  <div class="modal-content" >
+		  <div class="modal-content">
 		    <div class="modal-header">
-		      <span class="close mc-try">
-		      <i class="fa-regular fa-rectangle-xmark fa-2xl"></i>
-		      </span>
+		      <span class="close">&times;</span>
+		      <br><h2 style="text-align:center;">View Visa Master</h2>
 		    </div>
-		    <div class="modal-body mb-try">
+		    <div class="modal-body">
 		
 		
+		    </div>
+		    <div class="modal-footer">
+		      <h3 align="center">Powered by @TravelIntelliJ</h3>
 		    </div>
 		  </div>
-	      </div>
+	</div>
 		
 	
 

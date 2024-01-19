@@ -10,26 +10,26 @@
 
 <div class="quotationServicesMenu_table">
 <div style="color:white">
-<a href="form_view_quotation_details?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId }"><input type="button" style="background:transparent;outline:none;border:none;width:100%;border-bottom:2px solid #F8AF51;color:black;cursor:pointer"  value="Quotation Summary" /></a>
+<a href="form_view_quotation_details?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId }"><input type="button" style="background:transparent;outline:none;border:none;width:100%;border-bottom:2px solid #F8AF51;color:white;cursor:pointer"  value="Quotation Summary" /></a>
 </div>
 			
 		<div class="com-q">
 		<c:if test="${QTN_OBJ.flight eq true}">
 			
-				 <a href="form_view_flight_quotation_details?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId }"><input type="button" style="background:transparent;outline:none;width:100%;border:none;border-bottom:2px solid #F8AF51;cursor:pointer"   value="Flight" /></a>
+				 <a href="form_view_flight_quotation_details?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId }"><input type="button" style="background:transparent;outline:none;width:100%;border:none;border-bottom:2px solid #F8AF51;cursor:pointer;color:white"   value="Flight" /></a>
 		
 		</c:if></div>
 		
 		<div class="com-q">
 		<c:if test="${QTN_OBJ.hotel eq true}">
-			 <a href="form_view_hotel_quotation_details?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId }"><input type="button" style="background:transparent;outline:none;border:none;width:100%;border-bottom:2px solid #F8AF51;cursor:pointer"   value="Hotel" /></a>
+			 <a href="form_view_hotel_quotation_details?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId }"><input type="button" style="background:transparent;outline:none;border:none;width:100%;border-bottom:2px solid #F8AF51;cursor:pointer;color:white"   value="Hotel" /></a>
 		</c:if></div>
 		
 		
 		<div class="com-q">
 		<c:if test="${QTN_OBJ.transfers eq true}">
 			
-				 <a href="form_view_transfer_quotation_details?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId }"><input type="button" style="background:transparent;outline:none;border:none;width:100%;border-bottom:2px solid #F8AF51;cursor:pointer"   value="Transfers" /></a>
+				 <a href="form_view_transfer_quotation_details?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId }"><input type="button" style="background:transparent;outline:none;border:none;width:100%;border-bottom:2px solid #F8AF51;cursor:pointer;color:white"   value="Transfers" /></a>
 		</c:if></div>
 		
 		
@@ -37,45 +37,45 @@
 		
 		<div class="com-q"><c:if test="${QTN_OBJ.sightseeing eq true}">
 			
-				 <a href="form_view_sightseeing_quotation_details?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId }"><input type="button" style="background:transparent;outline:none;border:none;width:100%;border-bottom:2px solid #F8AF51;cursor:pointer"   value="Sight Seeing" /></a>
+				 <a href="form_view_sightseeing_quotation_details?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId }"><input type="button" style="background:transparent;outline:none;border:none;width:100%;border-bottom:2px solid #F8AF51;cursor:pointer;color:white"   value="Sight Seeing" /></a>
 			
 		</c:if></div>
 		
 		<div class="com-q">
 			<c:if test="${QTN_OBJ.visa eq true}">
 		
-				<a href="form_view_visa_quotation_details?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId }"><input type="button" style="background:transparent;outline:none;border:none;width:100%;border-bottom:2px solid #F8AF51;cursor:pointer"   value="Visa" /></a>
+				<a href="form_view_visa_quotation_details?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId }"><input type="button" style="background:transparent;outline:none;border:none;width:100%;border-bottom:2px solid #F8AF51;cursor:pointer;color:white"   value="Visa" /></a>
 			
 		</c:if></div>
 		
 	
 	<div class="com-q"><c:if test="${QTN_OBJ.insurance eq true}">
 			
-				<a href="form_view_insurance_quotation_details?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId }"><input type="button" style="background:transparent;outline:none;border:none;width:100%;border-bottom:2px solid #F8AF51;cursor:pointer"   value="Insurance" /></a> 
+				<a href="form_view_insurance_quotation_details?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId }"><input type="button" style="background:transparent;outline:none;border:none;width:100%;border-bottom:2px solid #F8AF51;cursor:pointer;color:white"   value="Insurance" /></a> 
 			
 		</c:if></div>
 	
 		
 		<div class="com-q">	<c:if test="${QTN_OBJ.cruise eq true}">
 			
-				 <a href="form_view_cruise_quotation_details?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId }"><input type="button"  style="background:transparent;outline:none;border:none;width:100%;border-bottom:2px solid #F8AF51;cursor:pointer"  value="Cruise" /></a>
+				 <a href="form_view_cruise_quotation_details?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId }"><input type="button"  style="background:transparent;outline:none;border:none;width:100%;border-bottom:2px solid #F8AF51;cursor:pointer;color:white"  value="Cruise" /></a>
 		
 		</c:if></div>
 		
 	
 	<div class="com-q">	<c:if test="${QTN_OBJ.tourPackage eq true}">
 			
-				 <a href="form_view_package_quotation_details?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId }"><input type="button" style="background:transparent;outline:none;border:none;width:100%;border-bottom:2px solid #F8AF51;cursor:pointer"  value="Tour Package" /></a>
+				 <a href="form_view_package_quotation_details?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId }"><input type="button" style="background:transparent;outline:none;border:none;width:100%;border-bottom:2px solid #F8AF51;cursor:pointer;color:white"  value="Tour Package" /></a>
 			
 		</c:if></div>
 	<div class="com-q"><c:if test="${QTN_OBJ.others eq true}">
 		
-				 <a href="form_view_other_quotation_details?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId }"><input type="button" style="background:transparent;outline:none;border:none;width:100%;border-bottom:2px solid #F8AF51;cursor:pointer"  value="Others" /></a>
+				 <a href="form_view_other_quotation_details?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId }"><input type="button" style="background:transparent;outline:none;border:none;width:100%;border-bottom:2px solid #F8AF51;cursor:pointer;color:white"  value="Others" /></a>
 			
 		</c:if></div>
 	
 	
 		
-				 <a  href="form_view_configure_quotation_details?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId }"><input type="button" style="background:transparent;outline:none;border:none;width:100%;border-bottom:2px solid #F8AF51;color:white;cursor:pointer;color:black;margin-left:10px"  value="Configure / Generate" /></a>	
+				 <a  href="form_view_configure_quotation_details?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId }"><input type="button" style="background:transparent;outline:none;border:none;width:100%;border-bottom:2px solid #F8AF51;color:white;cursor:pointer;margin-left:10px"  value="Configure / Generate" /></a>	
 
 </div>

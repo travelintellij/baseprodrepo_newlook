@@ -76,9 +76,8 @@
                 
             </div>
         </div>
-        <h1 class="vtdh">View transfer Details</h1>
 
-        <div class="vtdh_btns">
+        <div class="vtdh_btns" style="margin-top:10px">
             <h1 class="vtdh">Add Transfer to Quotation</h1>
             <div class="due_today_task_data_btns mfk">
                <c:if test="${QTN_OBJ.converted ne true }">

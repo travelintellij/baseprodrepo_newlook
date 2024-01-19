@@ -5,23 +5,21 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
-<br>
+
 <body>
     <div align="center"><b><font color="green" > ${Success} </font><font color="red"> ${Error}</font> </b></div>
-	<table style="width:70%;  table-layout:fixed;background-color:#cc3300;" >
-		<tr style="background-color: lightblue;">
-		<td>Stops Details </td></tr>
-		<tr style="background-color: lightblue; border: 1px solid black;">
-		
-		<td style=" border: 1px solid black;">
+	<table style="width:100%;table-layout:fixed;" >
+		<h1 style="font-size:25px;color:#32cd32;background:black;text-align:center">Stops Details </h1>
+		<tr style="background-color:black; border: 1px solid black;">
+		<td>
 			<c:forEach items="${MANUAL_FLT.flightStopsQuotationsVoList}" var="flightStopDetailQtnObj">
 				  <div class="fli_de container">
-                <div class="fli_de_wrapper" style="margin-top:120px">
+                <div class="fli_de_wrapper">
                     <h1 style="margin:10px 0;font-size: 25px;color:#32cd32 ">Flight Stop Id- ${flightStopDetailQtnObj.fltQuotationStopId}</h1>
                     <div class="fli_de_wrapper_data">
                         <div class="fli_de_wrapper_data_fli bc-clr">
                             <div class="fli_de_wrapper_dl1">
-                                <label for="" class="lb">Airline</label>
+                                <label for="" class="lb">Airline </label>
                                 <p>${flightStopDetailQtnObj.airlineName }</p>
                             </div>
                             <div class="fli_de_wrapper_dl1">
