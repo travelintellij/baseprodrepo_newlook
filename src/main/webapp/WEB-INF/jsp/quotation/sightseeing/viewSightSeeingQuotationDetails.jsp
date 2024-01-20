@@ -13,6 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>viewTransfersQuotationDetails</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
+    <link href="<c:url value="/resources/core/main.css" />" rel="stylesheet">
 <script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
 <script src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
 </head>
@@ -214,19 +215,17 @@
 <div id="myModal" class="modal">	
 		  <!-- Modal content -->
 		  <div class="modal-content">
-		    <div class="modal-header">
+		    <div class="modal-header" style="background:red">
 		      <span class="close">&times;</span>
 		      <br><h2 style="text-align:center;">View Sight Seeing Details</h2>
 		    </div>
 		    <div class="modal-body">
-		
-		
 		    </div>
 		    <div class="modal-footer">
 		      <h3 align="center">Powered by @TravelIntelliJ</h3>
 		    </div>
 		  </div>
-	</div>
+</div>
 
     
 	<script>

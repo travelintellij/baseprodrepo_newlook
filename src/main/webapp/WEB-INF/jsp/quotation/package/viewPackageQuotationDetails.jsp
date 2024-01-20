@@ -65,7 +65,7 @@
             <div class="viewInsuranceQuotationD_wrapper">
                 <div class="viewInsuranceQuotationD_wr_data">
                     <div class="viewInsuranceQuotationD_wr_data_line">
-                        <label for="" class="lb">Quotation</label>
+                        <label for="" class="lb">Quotation Id</label>
                         <p>${QTN_OBJ.quotationId}</p>
                     </div>
                     <div class="viewInsuranceQuotationD_wr_data_line">
