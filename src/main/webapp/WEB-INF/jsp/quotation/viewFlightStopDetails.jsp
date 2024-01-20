@@ -93,7 +93,7 @@
         <div class="fli_de_wrapper" style="margin-top:20px">
             <h1 style="margin:10px 0;font-size: 25px;color:#32cd32 ">Id- ${MANUAL_FLT.manualFlightQuotationId}</h1>
             <div class="fli_de_wrapper_data">
-                <div class="fli_de_wrapper_data_fli bc-clr">
+                <div class="fli_de_wrapper_data_fli a">
                     <div class="fli_de_wrapper_dl1">
                         <label for="" class="lb">Airline</label>
                         <p>${MANUAL_FLT.airlineName }</p>
@@ -104,7 +104,7 @@
                     </div>
                 </div>
             </div>
-            <div class="fli_de_wrapper_data_li bc-clr">
+            <div class="fli_de_wrapper_data_li a">
                 <div class="fli_de_wrapper_dl1">
                     <label for="" class="lb">Departure</label>
                     <p>${MANUAL_FLT.originCity }</p>
@@ -122,7 +122,7 @@
                     <p>${localDateTimeFormat.format(MANUAL_FLT.arrivalDate )}</p>
                 </div>
             </div>
-            <div class="fli_de_wrapper_data_li bc-clr">
+            <div class="fli_de_wrapper_data_li a">
                 <div class="fli_de_wrapper_dl1">
                     <label for="" class="lb">Duration</label>
                     <p>${MANUAL_FLT.duration }</p>
@@ -140,7 +140,7 @@
                     <p>${MANUAL_FLT.infantCount }</p>
                 </div>
             </div>
-            <div class="fli_de_wrapper_data_li bc-clr">
+            <div class="fli_de_wrapper_data_li a">
                 <div class="fli_de_wrapper_dl1">
                     <label for="" class="lb">Stops</label>
                     <p>${MANUAL_FLT.noOfStops }</p>
@@ -158,13 +158,13 @@
                     <p>${MANUAL_FLT.flightMarkup }</p>
                 </div>
             </div>
-            <div class="fli_de_wrapper_data_li bc-clr">
+            <div class="fli_de_wrapper_data_li a">
                 <div class="fli_de_wrapper_dl1">
                     <label for="" class="lb">Display order</label>
                     <p>${MANUAL_FLT.displayOrder }</p>
                 </div>
             </div>
-            <div class="due_today_task_data_btnss">
+            <div class="due_today_task_data_btnss" style="margin-top:10px">
               
     <c:if test="${ MANUAL_FLT.flightStopsQuotationsVoList.size() le MANUAL_FLT.noOfStops }">
         <c:if test="${QTN_OBJ.converted ne true }">
@@ -232,7 +232,7 @@
             <h1 style="margin:10px 0;font-size: 25px;color:#32cd32 " >Flight Stop Id-
             ${flightStopDetailQtnObj.fltQuotationStopId}</h1>
             <div class="view_flight_wrapper_data">
-                <div class="view_flight_wrapper_data_line bc-clr">
+                <div class="view_flight_wrapper_data_line a">
                     <div class="view_flight_wrapper_dl">
                         <label for="" class="lb">Airline</label>
                         <p>${flightStopDetailQtnObj.airlineName }</p>
@@ -250,7 +250,7 @@
                         <p>${flightStopDetailQtnObj.destinationCity}</p>
                     </div>
                 </div>
-                <div class="view_flight_wrapper_data_line bc-clr">
+                <div class="view_flight_wrapper_data_line a">
                     <div class="view_flight_wrapper_dl">
                         <label for="" class="lb">Departure Details</label>
                         <p>${localDateTimeFormat.format(flightStopDetailQtnObj.departureDate
@@ -270,7 +270,7 @@
                         <p>${flightStopDetailQtnObj.adultCount }</p>
                     </div>
                 </div>
-                <div class="view_flight_wrapper_data_line bc-clr">
+                <div class="view_flight_wrapper_data_line a">
                     <div class="view_flight_wrapper_dl" style="width:25%">
                         <label for="" class="lb">Child</label>
                         <p>${flightStopDetailQtnObj.childCount }</p>
@@ -284,7 +284,7 @@
                         <p>3232</p>
                     </div>
                 </div>
-                <div class="due_today_task_data_btnss">
+                <div class="due_today_task_data_btnss" style="margin-top:10px">
                     <c:if test="${QTN_OBJ.converted ne true }">
                         <a
                             href="form_view_edit_flight_stop_quotation?manualFlightQuotationId=${MANUAL_FLT.manualFlightQuotationId}&quotationId=${QTN_OBJ.quotationId}&leadId=${QTN_OBJ.leadEntity.leadId}&fltQuotationStopId=${flightStopDetailQtnObj.fltQuotationStopId}"><input

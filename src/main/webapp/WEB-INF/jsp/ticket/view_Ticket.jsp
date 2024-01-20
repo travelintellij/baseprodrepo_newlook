@@ -36,23 +36,23 @@
                 <form:hidden path="ticketId" />
                 <div class="view_task_box_divide">
                     <div class="view_Task_wrapper_data">
-                        <div class="view_Task_wrapepr_data_line bc-clr">
+                        <div class="view_Task_wrapepr_data_line a">
                             <div class="view_Task_wrapepr_data_l1">
                                 <label for="">Ticket Title</label>
                                 <p>${TICKET_RECORDER_OBJ.ticketTitle}</p>
                             </div>
                         </div>
-                        <div class="view_Task_wrapepr_data_line2 bc-clr">
+                        <div class="view_Task_wrapepr_data_line2 a">
                             <div class="view_Task_wrapepr_data_l1">
                                 <label for="">Assigned to</label>
                                 <p>${TICKET_RECORDER_OBJ.ticketOwnerName}</p>
                             </div>
-                            <div class="view_Task_wrapepr_data_l1 bc-clr">
+                            <div class="view_Task_wrapepr_data_l1 ">
                                 <label for="">Priority</label>
                                 <p>${TICKET_RECORDER_OBJ.ticketPriority}</p>
                             </div>
                         </div>
-                        <div class="view_Task_wrapepr_data_line3 bc-clr">
+                        <div class="view_Task_wrapepr_data_line3 a">
                             <div class="view_Task_wrapepr_data_l1">
                                 <label for="">Status</label>
                                 <p>${TICKET_RECORDER_OBJ.ticketStatus}</p>
@@ -62,7 +62,7 @@
                                 <p>${localDateTimeFormat.format(TICKET_RECORDER_OBJ.ticketDueDate)}</p>
                             </div>
                         </div>
-                        <div class="view_Task_wrapepr_data_line4 bc-clr">
+                        <div class="view_Task_wrapepr_data_line4 a">
                             <div class="view_Task_wrapepr_data_l1">
                                 <label for="">Link with deal</label>
                                 <p>
@@ -72,7 +72,7 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="view_Task_wrapepr_data_line4 bc-clr">
+                        <div class="view_Task_wrapepr_data_line4 a">
                             <div class="view_Task_wrapepr_data_l1">
                                 <label for="">Description</label>
                                 <p>${TICKET_RECORDER_OBJ.ticketDescription}</p>

@@ -24,7 +24,7 @@
 	<input type="hidden" name="manualTransferQuotationId" value= "${MANUAL_TRN.manualTransferQuotationId}" />
             <h1 class="vtdh2">Delete transfer quotation <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
             </h1>
-            <div class="view_transfer_quotation_table_wrapper_data" style="background:#6082B6;margin-bottom:10px">
+            <div class="view_transfer_quotation_table_wrapper_data a" >
                 <div class="view_transfer_quotation_table_wrapper_data_li">
                     <label for="">Pickup City</label>
                     <p>${MANUAL_TRN.pickUpCityName }</p>
@@ -44,14 +44,14 @@
                     </p>
                 </div>
             </div>
-            <div class="view_transfer_quotation_table_wrapper_data" style="background:#6082B6;margin-bottom:10px">
+            <div class="view_transfer_quotation_table_wrapper_data a" >
                 <div class="view_transfer_quotation_table_wrapper_data_li">
                     <label for="">Drop City</label>
                     <p>${MANUAL_TRN.dropToCityName}</p>
                 </div>
                 <div class="view_transfer_quotation_table_wrapper_data_li">
                     <label for="">Drop to</label>
-                    <p>>${MANUAL_TRN.dropToDesc}</p>
+                    <p>${MANUAL_TRN.dropToDesc}</p>
                 </div>
                 <div class="view_transfer_quotation_table_wrapper_data_li">
                     <label for="">Drop to name</label>
@@ -63,7 +63,7 @@
                 </div>
             </div>
 
-            <div class="view_transfer_quotation_table_wrapper_data" style="background:#6082B6;margin-bottom:10px">
+            <div class="view_transfer_quotation_table_wrapper_data a" >
                 <div class="view_transfer_quotation_table_wrapper_data_li_wrp">
                     <div class="vtq_child">
                         <label for="">Adults</label>
@@ -88,11 +88,11 @@
                 </div>
                 <div class="view_transfer_quotation_table_wrapper_data_li">
                     <label for="">Display order</label>
-                    <p>${MANUAL_TRN.displayOrder }</p>
+                    <p style="display:block">${MANUAL_TRN.displayOrder }</p>
                 </div>
             </div>
-            <div class="view_transfer_quotation_table_wrapper_data" style="background:#6082B6;margin-bottom:10px">
-                <label for="">Remarks</label>
+            <div class="view_transfer_quotation_table_wrapper_data a" style="width:100%">
+                <label for="">Remarks</label> <br/>
                 <p>${MANUAL_TRN.remarks}</p>
             </div>
             <div class="due_today_task_data_btns">

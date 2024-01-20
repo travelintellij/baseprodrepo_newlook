@@ -22,7 +22,7 @@
                         <div class="in_mu_add container">
                             <div class="in_mu_add_wrp" style="margin-top:20px">
                                 <h1>Id- ${MANUAL_INS.manualInsuranceQuotationId}</h1>
-                                <div class="in_mu_add_wrp_d bc-clr">
+                                <div class="in_mu_add_wrp_d a">
                                     <div class="in_mu_add_wrp_l">
                                         <label for="" class="lb">Contry Name</label>
                                         <p>${MANUAL_INS.countryName }</p>
@@ -47,7 +47,7 @@
                                     </div>
                                 </div>
 
-                                <div class="in_mu_add_wrp_d bc-clr">
+                                <div class="in_mu_add_wrp_d a">
                                     <div class="in_mu_add_wrp_l">
                                         <label for="" class="lb">Insurance Provider</label>
                                         <p>${MANUAL_INS.insuranceProviderName}</p>
@@ -65,7 +65,7 @@
                                         <p>${MANUAL_INS.adults}</p>
                                     </div>
                                 </div>
-                                <div class="in_mu_add_wrp_d bc-clr">
+                                <div class="in_mu_add_wrp_d a">
                                     <div class="in_mu_add_wrp_l">
                                         <label for="" class="lb">Children</label>
                                         <p>${MANUAL_INS.children}</p>
@@ -83,7 +83,7 @@
                                         <p>${MANUAL_INS.premiumCost}</p>
                                     </div>
                                 </div>
-                                <div class="in_mu_add_wrp_d bc-clr">
+                                <div class="in_mu_add_wrp_d a">
                                     <div class="in_mu_add_wrp_l">
                                         <label for="" class="lb">Mark up</label>
                                         <p>${MANUAL_INS.premiumMarkup}</p>
@@ -93,13 +93,13 @@
                                         <p>${MANUAL_INS.displayOrder}</p>
                                     </div>
                                 </div>
-                                <div class="in_mu_add_wrp_d bc-clr">
+                                <div class="in_mu_add_wrp_d a">
                                     <div class="in_mu_add_wrp_l" style="width:100%">
                                         <label for="" class="lb">Remarks</label>
                                         <p>${MANUAL_INS.remarks }</p>
                                     </div>
                                 </div>
-                                <div class="due_today_task_data_btnss">
+                                <div class="due_today_task_data_btnss" style="margin-top:20px">
                                     <input type="submit" style="background-color:red;" value="Confirm Delete" />
                                     <a
                                         href="form_view_insurance_quotation_details?quotationId=${QTN_OBJ.quotationId}&leadId=${QTN_OBJ.leadEntity.leadId}"><input

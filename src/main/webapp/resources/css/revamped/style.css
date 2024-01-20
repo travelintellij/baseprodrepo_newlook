@@ -4790,7 +4790,7 @@ justify-content: center;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 0.689);
+    background: rgba(0, 0, 0, 0.9);
     padding: 10px;
     border-radius: 10px;     
 }
@@ -4860,7 +4860,7 @@ justify-content: center;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 0.689);
+    background: rgba(0, 0, 0, 0.9);
     padding: 10px;
     border-radius: 10px;
     margin-top: 10px;
@@ -4939,7 +4939,7 @@ justify-content: center;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 0.689);
+    background: rgba(0, 0, 0, 0.9);
     padding: 10px;
     border-radius: 10px;
     margin-top: 0;
@@ -5025,7 +5025,7 @@ justify-content: center;
 
 .form_view_search_visa_add_quotation_wrapper {
     color: white;
-    width: 900px;
+    width: 1200px;
     text-align: center;
     border-collapse: collapse;
     border: none;
@@ -5281,7 +5281,7 @@ font-weight: bold;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 0.689);
+    background: rgba(0, 0, 0, 0.9);
     padding: 10px;
     border-radius: 10px;
     margin-top: 20px;
@@ -6708,4 +6708,10 @@ color: white;
 }
 .form_view_delete_manual_visa_quotation_wrpr{
     position: relative;
+}
+.a{
+	border-bottom: 2px solid gray
+}
+.ab{
+	border-bottom: 2px solid black;
 }

@@ -128,7 +128,7 @@
         <div class="viewCruiseQuotationDetails_wrapper">
         <h1 style = "font-size:20px;margin-bottom:10px;color:#32cd32 ">Id-  ${cruiseQtnObj.manualCruiseQuotationId}</h1>
             <div class="viewCruiseQuotationDetails_wrapper_data">
-                <div class="viewCruiseQuotationDetails_wrapper_data_line bc-clr" >
+                <div class="viewCruiseQuotationDetails_wrapper_data_line a" >
                     <div class="viewCruiseQuotationDetails_wrapper_data_l1">
                         <label for="" class="lb">City</label>
                         <p>${cruiseQtnObj.cityName }</p>
@@ -146,7 +146,7 @@
                         <p>${cruiseQtnObj.cruiseProviderName}</p>
                     </div>
                 </div>
-                <div class="viewCruiseQuotationDetails_wrapper_data_line bc-clr">
+                <div class="viewCruiseQuotationDetails_wrapper_data_line a">
                     <div class="viewCruiseQuotationDetails_wrapper_data_l1">
                         <label for="" class="lb">Sailing Start Date</label>
                         <p>
@@ -168,7 +168,7 @@
                         <p>${cruiseQtnObj.children}</p>
                     </div>
                 </div>
-                <div class="viewCruiseQuotationDetails_wrapper_data_line bc-clr">
+                <div class="viewCruiseQuotationDetails_wrapper_data_line a">
                     <div class="viewCruiseQuotationDetails_wrapper_data_l1">
                         <label for="" class="lb">Children Age Info</label>
                         <p>${cruiseQtnObj.childrenAgeInfo}</p>
@@ -186,13 +186,13 @@
                         <p>${cruiseQtnObj.cruiseStayMarkup}</p>
                     </div>
                 </div>
-                <div class="viewCruiseQuotationDetails_wrapper_data_line bc-clr">
+                <div class="viewCruiseQuotationDetails_wrapper_data_line a">
                     <div class="viewCruiseQuotationDetails_wrapper_data_l1">
                         <label for="" class="lb">Display Order</label>
                         <p>${cruiseQtnObj.displayOrder}</p>
                     </div>
                 </div>
-                <div class="viewCruiseQuotationDetails_wrapper_data_line bc-clr">
+                <div class="viewCruiseQuotationDetails_wrapper_data_line a">
                     <div class="viewCruiseQuotationDetails_wrapper_data_l1_rem" style="text-align: start;">
                         <label for="" class="lb">Remarks</label>
                         <p style="width:1175px">${cruiseQtnObj.remarks}</p>

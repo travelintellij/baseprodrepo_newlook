@@ -132,7 +132,7 @@
 					  <div class="in_mu_add container">
         <div class="in_mu_add_wrp">
             <h1 style="font-size:25px;margin:10px 0;color:#32cd32 ">Id- ${insuranceQtnObj.manualInsuranceQuotationId}</h1>
-            <div class="in_mu_add_wrp_d bc-clr">
+            <div class="in_mu_add_wrp_d a">
                 <div class="in_mu_add_wrp_l">
                     <label for="" class="lb">Contry Name </label>
                     <p>${insuranceQtnObj.countryName }</p>
@@ -150,7 +150,7 @@
                     <p><fmt:formatDate value="${insuranceQtnObj.coverageEndDate}" pattern="dd-MM-yyyy" /></p>
                 </div>
             </div>
-            <div class="in_mu_add_wrp_d bc-clr">
+            <div class="in_mu_add_wrp_d a">
                 <div class="in_mu_add_wrp_l">
                     <label for="" class="lb">Insurance Provider</label>
                     <p>${insuranceQtnObj.insuranceProviderName}</p>
@@ -168,7 +168,7 @@
                     <p>${insuranceQtnObj.adults}</p>
                 </div>
             </div>
-            <div class="in_mu_add_wrp_d bc-clr">
+            <div class="in_mu_add_wrp_d a">
                 <div class="in_mu_add_wrp_l">
                     <label for="" class="lb">Children</label>
                     <p>${insuranceQtnObj.children}</p>
@@ -186,7 +186,7 @@
                     <p>${insuranceQtnObj.premiumCost}</p>
                 </div>
             </div>
-            <div class="in_mu_add_wrp_d bc-clr">
+            <div class="in_mu_add_wrp_d a">
                 <div class="in_mu_add_wrp_l">
                     <label for="" class="lb">Mark up</label>
                     <p>${insuranceQtnObj.premiumMarkup}</p>
@@ -196,13 +196,13 @@
                     <p>${insuranceQtnObj.displayOrder}</p>
                 </div>
             </div>
-            <div class="in_mu_add_wrp_d bc-clr">
+            <div class="in_mu_add_wrp_d a">
                 <div class="in_mu_add_wrp_l" style="width:100%">
                     <label for="" class="lb">Remarks</label>
                     <p>${insuranceQtnObj.remarks }</p>
                 </div>
             </div>
-            <div class="due_today_task_data_btnss">
+            <div class="due_today_task_data_btnss" style="margin-top:20px">
             <c:if test="${QTN_OBJ.converted ne true }">
                 <a
                     href="form_view_edit_manual_insurance_quotation?manualInsuranceQuotationId=${insuranceQtnObj.manualInsuranceQuotationId}&quotationId=${QTN_OBJ.quotationId}&leadId=${QTN_OBJ.leadEntity.leadId}"><input

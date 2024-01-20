@@ -26,7 +26,7 @@
                         <label for="">Country Name </label> &nbsp &nbsp
                         <p>${VISA_OBJ.countryName}</p>
                     </div>
-                    <div class="view_visa_master_details_modal_wrapper_data_line bc-clr">
+                    <div class="view_visa_master_details_modal_wrapper_data_line a">
                         <div class="view_visa_master_details_modal_wrapper_data_l1">
                             <label for="">Consulate City</label>
                             <p>${VISA_OBJ.cityName}</p>
@@ -45,7 +45,7 @@
                             <p>${VISA_PURPOSE.get(VISA_OBJ.visaPurpose)}</p>
                         </div>
                     </div>
-                    <div class="view_visa_master_details_modal_wrapper_data_line bc-clr">
+                    <div class="view_visa_master_details_modal_wrapper_data_line a">
                         <div class="view_visa_master_details_modal_wrapper_data_l1">
                             <label for="">Standrad Cost</label>
                             <p>${VISA_OBJ.standardCost}</p>
@@ -63,7 +63,7 @@
                             <p>${VISA_OBJ.processingTime} Days</p>
                         </div>
                     </div>
-                    <div class="view_visa_master_details_modal_wrapper_data_line_rem_oc bc-clr">
+                    <div class="view_visa_master_details_modal_wrapper_data_line_rem_oc a">
                         <div class="view_visa_master_details_modal_wrapper_data_rem rem_oc">
                             <label for="">Internal Remarks(will never be shared with the client)</label>
                             <p>${VISA_OBJ.internalRemarks}</p>
@@ -73,7 +73,7 @@
                             <p>${VISA_OBJ.otherCosts}</p>
                         </div>
                     </div>
-                    <div class="view_visa_master_details_modal_wrapper_data_line_rem bc-clr">
+                    <div class="view_visa_master_details_modal_wrapper_data_line_rem a">
                         <label for="">Remarks</label> <br>
                         <p>${VISA_OBJ.remarks}</p>
                     </div>

@@ -25,7 +25,7 @@
             </h1>
             <div class="form_view_delete_manual_wrapper_data">
             <h1 style="color:red;margin-top:-20px;margin-bottom:15px">Id-  ${MANUAL_STS.manualSightSeeingQuotationId}</h1>
-                <div class="form_view_delete_manual_wrapper_data_line" style="background:#6082B6;margin-bottom:10px">
+                <div class="form_view_delete_manual_wrapper_data_line a">
                     <div class="form_view_delete_manual_wrapper_data_l1">
                         <label for="">Sight Seeing City</label>
                         <p>${MANUAL_STS.cityName}</p>
@@ -49,7 +49,7 @@
                     </div>
                 </div>
 
-                <div class="form_view_delete_manual_wrapper_data_line" style="background:#6082B6;margin-bottom:10px">
+                <div class="form_view_delete_manual_wrapper_data_line a">
                     <div class="form_view_delete_manual_wrapper_data_l1_ad">
                         <div class="fvmwdl1">
                             <label for="">Adults</label>
@@ -79,14 +79,14 @@
                 </div>
 
 
-                <div class="form_view_delete_manual_wrapper_data_line" style="background:#6082B6;margin-bottom:10px">
+                <div class="form_view_delete_manual_wrapper_data_line a">
                     <div class="form_view_delete_manual_wrapper_data_l1_id">
-                        <label for="">Sight Seeing ID / <br> Sight Seeing Name</label>
+                        <label for="">Sight Seeing ID /  Sight Seeing Name</label>
                         <p>delhi</p>
                     </div>
                     
                 </div>
-                <div class="form_view_delete_manual_wrapper_data_line" style="background:#6082B6;margin-bottom:10px">
+                <div class="form_view_delete_manual_wrapper_data_line a">
                     <div class="form_view_delete_manual_wrapper_data_l1_rem">
                         <label for="">Remarks</label>
                         <p>${MANUAL_STS.remarks}</p>

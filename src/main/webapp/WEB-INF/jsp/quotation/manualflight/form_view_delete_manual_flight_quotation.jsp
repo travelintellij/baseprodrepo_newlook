@@ -92,11 +92,11 @@
         <input type="hidden" name="leadId" value="${QTN_OBJ.leadEntity.leadId}" />
         <input type="hidden" name="quotationId" value="${QTN_OBJ.quotationId}" />
     <div class="fli_de container">
-        <div class="fli_de_wrapper">
+        <div class="fli_de_wrapper" style="margin-top:10px">
             <h1 style="margin:10px 0;font-size: 25px;color:#32cd32 ">Id-
                 ${flightQtnObj.manualFlightQuotationId}</h1>
             <div class="fli_de_wrapper_data">
-                <div class="fli_de_wrapper_data_fli bc-clr">
+                <div class="fli_de_wrapper_data_fli a">
                     <div class="fli_de_wrapper_dl1">
                         <label for="" class="lb">Airline</label>
                         <p>${MANUAL_FLT.airlineName}</p>
@@ -107,7 +107,7 @@
                     </div>
                 </div>
             </div>
-            <div class="fli_de_wrapper_data_li bc-clr">
+            <div class="fli_de_wrapper_data_li a">
                 <div class="fli_de_wrapper_dl1">
                     <label for="" class="lb">Departure</label>
                     <p>${MANUAL_FLT.originCity}</p>
@@ -125,7 +125,7 @@
                     <p>${localDateTimeFormatToEdit.format(MANUAL_FLT.arrivalDate)}</p>
                 </div>
             </div>
-            <div class="fli_de_wrapper_data_li bc-clr">
+            <div class="fli_de_wrapper_data_li a">
                 <div class="fli_de_wrapper_dl1">
                     <label for="" class="lb">Duration</label>
                     <p>${MANUAL_FLT.duration}</p>
@@ -143,7 +143,7 @@
                     <p>${MANUAL_FLT.infantCount}</p>
                 </div>
             </div>
-            <div class="fli_de_wrapper_data_li bc-clr">
+            <div class="fli_de_wrapper_data_li a">
                 <div class="fli_de_wrapper_dl1">
                     <label for="" class="lb">Stops</label>
                     <p>${MANUAL_FLT.noOfStops}</p>
@@ -153,7 +153,7 @@
                     <p>${MANUAL_FLT.cabinClassName}</p>
                 </div>
             </div>         
-            <div class="due_today_task_data_btnss">
+            <div class="due_today_task_data_btnss" style="margin-top:10px">
                 <input type="submit" name="deleteFlight" id="deleteFlight" style="background-color:red;" Value="Confirm Delete" />
                 <a href="form_view_flight_quotation_details?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId}"><input
                         type="button"  value="Cancel" /></a>

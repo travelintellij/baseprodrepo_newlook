@@ -44,7 +44,7 @@
                 <form:hidden path="destinationNames" />
                 <form:hidden path="operatingDestinations" />
                 <div class="view_supplier_details_data">
-                    <div class="view_supplier_details_data_line1" style="margin-bottom:10px;background:#6082B6">
+                    <div class="view_supplier_details_data_line1 a" >
                         <div class="view_supplier_details_l1_d">
                             <label for="" style="color:#FFBA08;font-weight:bold">Supplier Name</label>
                             <p style="color:white">${SUPPLIER_OBJ.supplierName}</p>
@@ -67,7 +67,7 @@
                             <p style="color:white">${SUPPLIER_OBJ.phone}</p>
                         </div>
                     </div>
-                    <div class="view_supplier_details_data_line1" style="margin-bottom:10px;background:#6082B6">
+                    <div class="view_supplier_details_data_line1 a">
                         
                         <div class="view_supplier_details_l1_d_max_w">
                             <label for="" style="color:#FFBA08;font-weight:bold"`>Email</label>
@@ -78,25 +78,25 @@
                             <p style="color:white">${SUPPLIER_OBJ.referredBy}</p>
                         </div>
                     </div>
-                       <div class="view_supplier_details_l1_d" style="margin-bottom:10px;background:#6082B6;width:100%">
+                       <div class="view_supplier_details_l1_d a" style="width:100%" >
                             <label for="" style="color:#FFBA08;font-weight:bold">Company Details</label>
                             <p style="color:white">
                             ${SUPPLIER_OBJ.companyDetails}
                             </p>
                         </div>
                    
-                        <div style="margin-bottom:10px;background:#6082B6;width:100%">
+                        <div class="a">
                             <label for="" style="color:#FFBA08;font-weight:bold">GST Details</label>
                             <p style="color:white">${SUPPLIER_OBJ.gstDetails}</p>
                         </div>
                        
-                        <div class="view_supplier_details_l1_d" style="margin-bottom:10px;background:#6082B6;width:100%">
+                        <div class="view_supplier_details_l1_d a" style="width:100%">
                             <label for="" style="color:#FFBA08;font-weight:bold">Bank Details</label>
                             <p style="color:white">
                             ${SUPPLIER_OBJ.bankDetails}
                             </p>
                         </div>
-                        <div class="view_supplier_details_l1_d" style="margin-bottom:10px;background:#6082B6;width:100%">
+                        <div class="view_supplier_details_l1_d a" style="width:100%">
                             <label for="" style="color:#FFBA08;font-weight:bold">Remarks</label>
                             <p style="color:white">
                            ${SUPPLIER_OBJ.remarks}
@@ -105,7 +105,7 @@
                    
                     
                     
-                     <div  style="margin-bottom:10px;background:#6082B6;width:100%">
+                     <div  class="a">
                             <label for="" style="color:#FFBA08;font-weight:bold">Address</label>
                             <p style="color:white">
                            ${SUPPLIER_OBJ.address}
@@ -114,7 +114,7 @@
                     
                     
                     
-                    <div class="view_supplier_details_data_line3" style="margin-bottom:10px;background:#6082B6">
+                    <div class="view_supplier_details_data_line3 a" >
                         <h3 class="vsd_des"  style="color:#FFBA08;font-weight:bold">Following Destinations are supported</h3>
                         <div class="view_supplier_details_data_line3_destination_supported">
                             <c:forEach items="${SUPPLIER_OBJ.destinations}" var="destination">
@@ -122,11 +122,9 @@
                             </c:forEach>
                         </div>
                     </div>
-                    <div class="view_supplier_details_data_line4" style="margin-bottom:10px">
+                    <div class="view_supplier_details_data_line4 a">
                         <h3 class="vsd_ser" style="color:#FFBA08;font-weight:bold">Service offered</h3>
-                        <div class="view_supplier_details_data_line3_service_offered">
-                            <table>
-                                <tr>
+                        <div class="view_supplier_details_data_line3_service_offered a">
                                   Flight<form:checkbox path="flight" disabled="true" style="margin-right:15px" />
                                   hotel
                                    <form:checkbox path="hotel" disabled="true" style="margin-right:15px"/>
@@ -148,7 +146,7 @@
                         </div>
                     </div>
                  
-                 <div class="view_supplier_details_data_line5_box" style="margin-bottom:10px;background:#6082B6"> 
+                 <div class="view_supplier_details_data_line5_box a" style="margin-top:2px solid gray"> 
                    <div class="view_supplier_details_data_line_com">
                         <h3 class="vsd_consoli"  style="color:#FFBA08;font-weight:bold">consolidater</h3>
                         <div class="view_supplier_details_data_line3_consoli">

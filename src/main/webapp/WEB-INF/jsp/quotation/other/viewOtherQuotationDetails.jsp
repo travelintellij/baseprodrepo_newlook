@@ -140,7 +140,7 @@
             <h1>Id-
                 ${otherQtnObj.manualOtherQuotationId}</h1>
             <div class="form_view_add_manual_other_w_data">
-                <div class="form_view_add_manual_other_w_dline bc-clr">
+                <div class="form_view_add_manual_other_w_dline a">
                     <div class="form_view_add_manual_other_w_dl1">
                         <label for="" class="lb">Service Name</label>
                         <p>${otherQtnObj.serviceName }</p>
@@ -161,7 +161,7 @@
                         <p>${otherQtnObj.serviceCost}</p>
                     </div>
                 </div>
-                <div class="form_view_add_manual_other_w_dline bc-clr">
+                <div class="form_view_add_manual_other_w_dline a">
                     <div class="form_view_add_manual_other_w_dl1" style="width:25%">
                         <label for="" class="lb">Service Markup</label>
                         <p>${otherQtnObj.serviceMarkup}</p>
@@ -171,7 +171,7 @@
                         <p>${otherQtnObj.displayOrder}</p>
                     </div>
                 </div>
-                <div class="due_today_task_data_btnss">
+                <div class="due_today_task_data_btnss" style="margin-top:20px">
                     <c:if test="${QTN_OBJ.converted ne true }">
                         <a
                             href="form_view_edit_manual_other_quotation?manualOtherQuotationId=${otherQtnObj.manualOtherQuotationId}&quotationId=${QTN_OBJ.quotationId}&leadId=${QTN_OBJ.leadEntity.leadId}"><input

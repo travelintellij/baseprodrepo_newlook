@@ -115,7 +115,7 @@
     <div class="sssec container">
         <div class="sssec_wrapper">
         <h1 style="color:#32cd32;margin:10px">Id-  ${sightSeeingQtnObj.manualSightSeeingQuotationId}</h1>
-            <div class="sssec_wrapper_data" style="background:#6082B6;margin-bottom:10px">
+            <div class="sssec_wrapper_data a">
                 <div class="sssec_wrapper_data_line">
                     <label for="" class="lb" style="font-weight: bold;
     color: #FABA08;">Sight Seeing City</label>
@@ -144,7 +144,7 @@
                     <p><fmt:formatDate value="${sightSeeingQtnObj.sightSeeingDate}" pattern="dd-MMM-yyyy" /></p>
                 </div>
             </div>
-            <div class="sssec_wrapper_data" style="background:#6082B6;margin-bottom:10px">
+            <div class="sssec_wrapper_data a" >
                 <div class="sssec_wrapper_data_line_fam_info">
                     <div class="fam_com_ssc">
                         <label for="" class="lb" style="font-weight: bold;
@@ -178,7 +178,7 @@
                    <p>${sightSeeingQtnObj.displayOrder }</p>
                 </div>
             </div>
-            <div class="sssec_wrapper_data" style="background:#6082B6;margin-bottom:10px">
+            <div class="sssec_wrapper_data a">
                 <div class="sssec_wrapper_data_line_id_name"> <br>
                     <label for="" class="lb" style="font-weight: bold;
     color: #FABA08;">Sight Seeing ID / Sight seeing name</label>
@@ -186,7 +186,7 @@
                 </div>
             </div>
 
-            <div class="sssec_wrapper_data" style="background:#6082B6;margin-bottom:10px">
+            <div class="sssec_wrapper_data a">
                 <div class="sssec_rem_box" style="text-align: start;">
                     <label for="" class="lb" style="font-weight: bold;
     color: #FABA08;">Remarks</label> <br>

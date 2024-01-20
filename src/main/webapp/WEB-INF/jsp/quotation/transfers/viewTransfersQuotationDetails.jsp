@@ -114,7 +114,7 @@
 				<div class="container2">
 			 <div class="view_transfer_quotation_table ">
         <div class="view_transfer_quotation_table_wrapper">
-            <div class="view_transfer_quotation_table_wrapper_data" style="background:#6082B6;margin-bottom:10px">
+            <div class="view_transfer_quotation_table_wrapper_data a" >
                 <div class="view_transfer_quotation_table_wrapper_data_li">
                     <label for="">Pickup City</label>
                     <p>${transferQtnObj.pickUpCityName }</p>
@@ -132,7 +132,7 @@
                     <p><fmt:formatDate value="${transferQtnObj.transferDate}" pattern="dd-MM-yyyy" /></p>
                 </div>
             </div>
-            <div class="view_transfer_quotation_table_wrapper_data" style="background:#6082B6;margin-bottom:10px">
+            <div class="view_transfer_quotation_table_wrapper_data a">
                 <div class="view_transfer_quotation_table_wrapper_data_li">
                     <label for="">Drop City</label>
                     <p>${transferQtnObj.dropToCityName}</p>
@@ -151,7 +151,7 @@
                 </div>
             </div>
 
-            <div class="view_transfer_quotation_table_wrapper_data" style="background:#6082B6;margin-bottom:10px">
+            <div class="view_transfer_quotation_table_wrapper_data a" >
                 <div class="view_transfer_quotation_table_wrapper_data_li_wrp">
                     <div class="vtq_child">
                         <label for="">Adults</label>
@@ -179,8 +179,8 @@
                     <p>${transferQtnObj.displayOrder }</p>
                 </div>
             </div>
-            <div class="view_transfer_quotation_table_wrapper_data" style="background:#6082B6;margin-bottom:10px">
-                <label for="">Remarks</label>
+            <div class="view_transfer_quotation_table_wrapper_data a" >
+                <label for="">Remarks</label> <br>
                 <p>${transferQtnObj.remarks}</p>
             </div>
             <div class="due_today_task_data_btns">

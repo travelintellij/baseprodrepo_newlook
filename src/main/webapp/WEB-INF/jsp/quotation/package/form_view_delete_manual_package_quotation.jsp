@@ -97,9 +97,9 @@ body::before {
 
                        <div class="com_page container">
         <div class="com_page_wrapper" >
-            <h1>Id- ${MANUAL_PKG.manualPkgQuotationId}</h1>
+            <h1 style="color: #32cd32 ">Id- ${MANUAL_PKG.manualPkgQuotationId}</h1>
             <div class="com_page_wrapper_data">
-                <div class="com_page_wrapper_data_line bc-clr">
+                <div class="com_page_wrapper_data_line a">
                     <div class="com_page_wrapper_dl1">
                         <label for="" class="lb">City</label>
                         <p>${MANUAL_PKG.cityName}</p>
@@ -117,7 +117,7 @@ body::before {
                         <p>${MANUAL_PKG.endDate}</p>
                     </div>
                 </div>
-                <div class="com_page_wrapper_data_line bc-clr">
+                <div class="com_page_wrapper_data_line a">
                     <div class="com_page_wrapper_dl1">
                         <label for="" class="lb">Adults</label>
                         <p>${MANUAL_PKG.adults}</p>
@@ -135,7 +135,7 @@ body::before {
                         <p>${MANUAL_PKG.pkgCost}</p>
                     </div>
                 </div>
-                <div class="com_page_wrapper_data_line bc-clr">
+                <div class="com_page_wrapper_data_line a">
                     <div class="com_page_wrapper_dl1" style="width:294px">
                         <label for="" class="lb">Package Markup</label>
                         <p>${MANUAL_PKG.pkgMarkup}</p>
@@ -149,31 +149,31 @@ body::before {
                         <p>${MANUAL_PKG.displayOrder}</p>
                     </div>
                 </div>
-                <div class="com_page_wrapper_data_line bc-clr">
+                <div class="com_page_wrapper_data_line a">
                     <div class="com_page_wrapper_dl1" style="width: 100%;">
                         <label for="" class="lb">Package Description</label>
                         <p>${MANUAL_PKG.packageDescription}</p>
                     </div>
                 </div>
-                <div class="com_page_wrapper_data_line bc-clr">
+                <div class="com_page_wrapper_data_line a">
                     <div class="com_page_wrapper_dl1" style="width: 100%;">
                         <label for="" class="lb">Inclusions</label>
                         <p>${MANUAL_PKG.inclusions}</p>
                     </div>
                 </div>
-                <div class="com_page_wrapper_data_line bc-clr">
+                <div class="com_page_wrapper_data_line a">
                     <div class="com_page_wrapper_dl1" style="width: 100%;">
                         <label for="" class="lb">Exclusions</label>
                         <p>${MANUAL_PKG.exclusions}</p>
                     </div>
                 </div>
-                <div class="com_page_wrapper_data_line bc-clr">
+                <div class="com_page_wrapper_data_line a">
                     <div class="com_page_wrapper_dl1" style="width: 100%;">
                         <label for="" class="lb">Cancellation Policy (If left empty , it wont be printed)</label>
                         <p>${MANUAL_PKG.cancellationPolicy}</p>
                     </div>
                 </div>
-                <div class="due_today_task_data_btnss">
+                <div class="due_today_task_data_btnss" style="margin-top:20px">
                 <input type="submit" name="deletePackage" id="deletePackage" Value="Confirm Delete !" />
                 <a href="form_view_package_quotation_details?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId}"><input
                         type="button" value="Back" /></a>

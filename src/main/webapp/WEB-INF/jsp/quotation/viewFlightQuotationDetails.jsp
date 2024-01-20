@@ -130,7 +130,7 @@
             <h1 style="margin:10px 0;font-size: 25px;color:#32cd32 ">Id-
             ${flightQtnObj.manualFlightQuotationId}</h1>
             <div class="fli_de_wrapper_data">
-                <div class="fli_de_wrapper_data_fli bc-clr">
+                <div class="fli_de_wrapper_data_fli a">
                     <div class="fli_de_wrapper_dl1">
                         <label for="" class="lb">Airline</label>
                         <p>${flightQtnObj.airlineName }</p>
@@ -141,7 +141,7 @@
                     </div>
                 </div>
             </div>
-                <div class="fli_de_wrapper_data_li bc-clr">
+                <div class="fli_de_wrapper_data_li a">
                     <div class="fli_de_wrapper_dl1">
                         <label for="" class="lb">Departure</label>
                         <p>${flightQtnObj.originCity }</p>
@@ -160,7 +160,7 @@
                         <p>${localDateTimeFormat.format(flightQtnObj.arrivalDate )}</p>
                     </div>
                 </div>
-                <div class="fli_de_wrapper_data_li bc-clr">
+                <div class="fli_de_wrapper_data_li a">
                     <div class="fli_de_wrapper_dl1">
                         <label for="" class="lb">Duration</label>
                         <p>${flightQtnObj.duration }</p>
@@ -178,7 +178,7 @@
                         <p>${flightQtnObj.infantCount }</p>
                     </div>
                 </div>
-                <div class="fli_de_wrapper_data_li bc-clr">
+                <div class="fli_de_wrapper_data_li a">
                     <div class="fli_de_wrapper_dl1">
                         <label for="" class="lb">Stops</label>
                         <p>${flightQtnObj.noOfStops }</p>
@@ -196,13 +196,13 @@
                         <p>${flightQtnObj.flightMarkup }</p>
                     </div>
                 </div>
-                <div class="fli_de_wrapper_data_li bc-clr">
+                <div class="fli_de_wrapper_data_li a">
                     <div class="fli_de_wrapper_dl1">
                         <label for="" class="lb">Display order</label>
                         <p>${flightQtnObj.displayOrder }</p>
                     </div>
                 </div>
-                <div class="due_today_task_data_btnss">
+                <div class="due_today_task_data_btnss" style="margin-top:10px">
                         <c:if test="${flightQtnObj.noOfStops gt 0 }">
                             <a
                                 href="form_view_manage_stops_quotation?manualFlightQuotationId=${flightQtnObj.manualFlightQuotationId}&quotationId=${QTN_OBJ.quotationId}&leadId=${QTN_OBJ.leadEntity.leadId}"><input

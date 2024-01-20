@@ -107,7 +107,7 @@
        <div class="fl_view " style="margin:0 auto;width:1200px">
         <div class="fl_view_wrapper">
             <div class="fl_view_wrapper_data">
-                <div class="fl_view_wrapper_data_line bc-clr">
+                <div class="fl_view_wrapper_data_line a">
                     <div class="fl_view_wrapper_dl">
                         <label for="" class="lb">City</label>
                         <p>${packageQtnObj.cityName }</p>
@@ -125,7 +125,7 @@
                         <p><fmt:formatDate value="${packageQtnObj.endDate}" pattern="dd-MM-yyyy" /></p>
                     </div>
                 </div>
-                <div class="fl_view_wrapper_data_line bc-clr">
+                <div class="fl_view_wrapper_data_line a">
                     <div class="fl_view_wrapper_dl">
                         <label for="" class="lb">Adult</label>
                         <p>${packageQtnObj.adults}</p>
@@ -143,7 +143,7 @@
                         <p>${packageQtnObj.pkgCost}</p>
                     </div>
                 </div>
-                <div class="fl_view_wrapper_data_line bc-clr">
+                <div class="fl_view_wrapper_data_line a">
                     <div class="fl_view_wrapper_dl" style="width:25%">
                         <label for="" class="lb">Package Markup</label>
                         <p>${packageQtnObj.pkgMarkup}</p>
@@ -157,13 +157,13 @@
                         <p>${packageQtnObj.displayOrder }</p>
                     </div>
                 </div>
-                <div class="fl_view_wrapper_data_line bc-clr">
+                <div class="fl_view_wrapper_data_line a">
                     <div class="fl_view_wrapper_dl" style="width:100%">
                         <label for="" class="lb">Remarks</label>
                         <p>${packageQtnObj.remarks}</p>
                     </div>
                 </div>
-                <div class="due_today_task_data_btnss">
+                <div class="due_today_task_data_btnss" style="margin-top:20px">
                     <a
                         href="form_view_manual_package_quotation_detail?manualPkgQuotationId=${packageQtnObj.manualPkgQuotationId}&quotationId=${QTN_OBJ.quotationId}&leadId=${QTN_OBJ.leadEntity.leadId}"><input
                             type="button"  value="View Details" /></a>

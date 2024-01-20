@@ -145,7 +145,7 @@
                                     <p>${VISA_OBJ.standardCost}</p>
                                 </div>
                                 <div class="form_view_search_visa_add_quotation_wrapper_data_in">
-                                    <label for="" class="lb">B2C S.Price PP | <br> B2B S.Price PP </label>
+                                    <label for="" class="lb">B2C S.Price PP | B2B S.Price PP </label>
                                     <p>${VISA_OBJ.standardB2cPrice } | ${VISA_OBJ.standardB2bPrice } </p>
                                 </div>
                                 <div class="form_view_search_visa_add_quotation_wrapper_data_in">
@@ -161,7 +161,7 @@
                                 style="margin-bottom: 20px;">
                                 <div class="form_view_search_visa_add_quotation_wrapper_data_rem">
                                     <label for="" class="lb">Remarks</label> <br>
-                                    <form:textarea path="remarks" rows="2" cols="103" maxlength="1450" />
+                                    <form:textarea path="remarks" rows="2" cols="140" maxlength="1450" />
                                 </div>
                             </div>
                             <div class="rel-btns">

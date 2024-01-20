@@ -164,7 +164,7 @@
                             data-toggle="modal" data-target="#myModal">View Visa Document Details</a>
                         </div>
                     </div>
-                    <div class="form_view_search_visa_add_quotation_wrapper_data_l1 bc-clr">
+                    <div class="form_view_search_visa_add_quotation_wrapper_data_l1 a">
                         <div class="form_view_search_visa_add_quotation_wrapper_data_in">
                             <label for="" class="l-st">Adults</label>
                             <p>${visaQtnObj.adults}</p>
@@ -182,7 +182,7 @@
                             <p>${visaQtnObj.displayOrder}</p>
                         </div>
                     </div>
-                    <div class="form_view_search_visa_add_quotation_wrapper_data_l1_c bc-clr">
+                    <div class="form_view_search_visa_add_quotation_wrapper_data_l1_c a">
                         <div class="form_view_search_visa_add_quotation_wrapper_data_in">
                             <label for="" class="l-st">Total Visa Cost (System)</label>
                             <p>${visaQtnObj.systemVisaCost}</p>
@@ -200,7 +200,7 @@
                             <p>${visaQtnObj.visaMarkup }</p>
                         </div>
                     </div>
-                    <div class="form_view_search_visa_add_quotation_wrapper_data_l1_c bc-clr" style="margin-bottom: 20px;">
+                    <div class="form_view_search_visa_add_quotation_wrapper_data_l1_c a" style="margin-bottom: 20px;">
                         <div class="form_view_search_visa_add_quotation_wrapper_data_rem">
                             <label for="" class="l-st">Remarks</label> <br>
                            <p>${visaQtnObj.remarks }</p>

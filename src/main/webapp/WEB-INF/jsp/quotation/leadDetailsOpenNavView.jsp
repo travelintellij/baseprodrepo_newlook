@@ -37,7 +37,7 @@
     
     
         <h1>Lead Details</h1>
-        <div class="fupp-fir-line" style="background:#6082B6;margin-bottom:5px">
+        <div class="fupp-fir-line ab">
             <div class="fupp-1-d">
                 <h3>Lead ID</h3>
                 <p>Q-${String.format("%04d",LEAD_OBJ.leadId)}-${LEAD_OBJ.leadSourceShortName }</p>
@@ -55,7 +55,7 @@
                 <p>${LEAD_OBJ.destinationName}</p>
             </div>
         </div>
-        <div class="fupp-2nd-line" style="background:#6082B6;margin-bottom:5px">
+        <div class="fupp-2nd-line ab">
             <div class="fupp-1-d">
                 <h3>Audts</h3>
                 <p>${LEAD_OBJ.adults}</p>
@@ -73,7 +73,7 @@
                 <fmt:formatDate value="${LEAD_OBJ.travelEndDate}" pattern="dd-MM-yyyy" />
             </div>
         </div>
-        <div class="fupp-3nd-line" style="background:#6082B6;margin-bottom:5px">
+        <div class="fupp-3nd-line ab">
             <div class="fupp-1-d">
                 <h3>Lead Source</h3>
                 <p>${LEAD_OBJ.leadSourceName}</p>
@@ -83,7 +83,7 @@
                 <p>${LEAD_OBJ.statusName}</p>
             </div>
         </div>
-        <div class="fupp-4th-line">
+        <div class="fupp-4th-line ab">
             <h2 class="fupp-srh">Services Requested</h2>
             <div class="fupp-sr">
                 <h3>package</h3>
@@ -122,7 +122,7 @@
                 <form:checkbox path="others" name="others" disabled="true" />
             </div>
         </div>
-        <div class="fupp-5th-line"  style="background:#6082B6;margin-bottom:5px">
+        <div class="fupp-5th-line ab" >
             <h3>Remarks</h3>
             <p>${LEAD_OBJ.clientRemarks}</p>
         </div>

@@ -27,7 +27,7 @@
             <h1 style="font-size:20px;color:red">Confirm Delete <i class="fa fa-exclamation-triangle fa-xl" aria-hidden="true"></i><h1>
                 <h1 style="color:#32cd32;margin-bottom:13px">Id- ${MANUAL_CRS.manualCruiseQuotationId}</h1>
                 <div class="viewCruiseQuotationDetails_wrapper_data">
-                    <div class="viewCruiseQuotationDetails_wrapper_data_line bc-clr">
+                    <div class="viewCruiseQuotationDetails_wrapper_data_line a">
                         <div class="viewCruiseQuotationDetails_wrapper_data_l1">
                             <label for="" class="lb">City</label>
                             <p>${MANUAL_CRS.cityName }</p>
@@ -45,7 +45,7 @@
                             <p>${MANUAL_CRS.cruiseProviderName}</p>
                         </div>
                     </div>
-                    <div class="viewCruiseQuotationDetails_wrapper_data_line bc-clr">
+                    <div class="viewCruiseQuotationDetails_wrapper_data_line a">
                         <div class="viewCruiseQuotationDetails_wrapper_data_l1">
                             <label for="" class="lb">Sailing Start Date</label>
                             <p>
@@ -67,7 +67,7 @@
                             <p>${MANUAL_CRS.children}</p>
                         </div>
                     </div>
-                    <div class="viewCruiseQuotationDetails_wrapper_data_line bc-clr">
+                    <div class="viewCruiseQuotationDetails_wrapper_data_line a">
                         <div class="viewCruiseQuotationDetails_wrapper_data_l1">
                             <label for="" class="lb">Children Age Info</label>
                             <p>${MANUAL_CRS.childrenAgeInfo}</p>
@@ -86,13 +86,13 @@
                             <p>${MANUAL_CRS.cruiseStayMarkup}</p>
                         </div>
                     </div>
-                    <div class="viewCruiseQuotationDetails_wrapper_data_line bc-clr">
+                    <div class="viewCruiseQuotationDetails_wrapper_data_line a">
                         <div class="viewCruiseQuotationDetails_wrapper_data_l1">
                             <label for="" class="lb">Display Order</label>
                             <p>${MANUAL_CRS.displayOrder }</p>
                         </div>
                     </div>
-                    <div class="viewCruiseQuotationDetails_wrapper_data_line bc-clr">
+                    <div class="viewCruiseQuotationDetails_wrapper_data_line a">
                         <div class="viewCruiseQuotationDetails_wrapper_data_l1_rem" style="text-align: start;">
                             <label for="" class="lb">Remarks</label>
                             <p style="width:1175px">${MANUAL_CRS.remarks}</p>

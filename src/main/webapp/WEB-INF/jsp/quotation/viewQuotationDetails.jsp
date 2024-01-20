@@ -66,7 +66,7 @@
         <div class="viewQuotationDetails_wrapper">
         <h1 style="font-size:25px;margin:10px 0;color:#32cd32">	Quotation Summary </h1>
             <div class="viewQuotationDetails_wrapper_data">
-                <div class="viewQuotationDetails_wrapper_data_line" style="background: #6082B6;margin-bottom: 5px;">
+                <div class="viewQuotationDetails_wrapper_data_line a">
                     <div class="viewQuotationDetails_wrapper_data_l1">
                         <label for="">Quotation Id</label>
                         <p>${QTN_OBJ.quotationId}</p>

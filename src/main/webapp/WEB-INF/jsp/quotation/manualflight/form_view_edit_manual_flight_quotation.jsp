@@ -14,6 +14,7 @@
                     <script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
                     <script src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
                     <script src="<c:url value="/resources/js/jquery.datetimepicker.full.js" />"></script>
+                    <link href="<c:url value="/resources/css/jquery.datetimepicker.min.css" />" rel="stylesheet">
 
                 </head>
 <style>
@@ -227,7 +228,7 @@
             <div class="due_today_task_data_btnss">
             <input type="submit" name="editFlight" id="editFlight" Value="Update Flight" />
             <a href="form_view_flight_quotation_details?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId}"><input
-                    type="button" style="background-color:blue;" value="Cancel" /></a>
+                    type="button"  value="Cancel" /></a>
             </div>
         </div>
     </div>

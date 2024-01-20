@@ -45,7 +45,7 @@
                         <font color="red" size="5">${Error}</font>
                     </b></div>
                 <div class="viewLeadQuotationsList_wrapper_data">
-                    <div class="viewLeadQuotationsList_wrapper_data_line" style="background:#6082B6;margin-bottom:5px">
+                    <div class="viewLeadQuotationsList_wrapper_data_line a" >
                         <div class="viewLeadQuotationsList_wrapper_data_l1">
                             <label for="">Lead Id</label>
                             <p>Q-${String.format("%04d",LEAD_OBJ.leadId)}-${LEAD_OBJ.leadSourceShortName }</p>
@@ -71,7 +71,7 @@
                             <p>${LEAD_OBJ.leadOwnerName}</p>
                         </div>
                     </div>
-                    <div class="viewLeadQuotationsList_wrapper_data_line" style="background:#6082B6;margin-bottom:5px">
+                    <div class="viewLeadQuotationsList_wrapper_data_line a" >
                         <div class="viewLeadQuotationsList_wrapper_data_l1">
                             <label for="">Source</label>
                             <p>${LEAD_OBJ.sourceName}</p>
@@ -93,7 +93,7 @@
                             <p>${LEAD_OBJ.childrenAgeInfo}</p>
                         </div>
                     </div>
-                    <div class="viewLeadQuotationsList_wrapper_data_line" style="background:#6082B6;margin-bottom:5px">
+                    <div class="viewLeadQuotationsList_wrapper_data_line a">
                         <div class="viewLeadQuotationsList_wrapper_data_l1">
                             <label for="">Lead Source</label>
                             <p>${LEAD_OBJ.leadSourceName}</p>

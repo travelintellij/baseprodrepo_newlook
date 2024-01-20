@@ -30,7 +30,7 @@
                                         ${MANUAL_VSA.manualVisaQuotationId}
                                     </h1>
                                     <div class="form_view_delete_manual_visa_quotation_wrpr_data">
-                                        <div class="form_view_delete_manual_visa_quotation_wrpe_data_line bc-clr">
+                                        <div class="form_view_delete_manual_visa_quotation_wrpe_data_line a">
                                             <div class="form_view_delete_manual_visa_quotation_wdl1">
                                                 <label for="" class="lb">Visa Country</label>
                                                 <p>${MANUAL_VSA.visaCountry}</p>
@@ -48,7 +48,7 @@
                                                 <p>${MANUAL_VSA.children}</p>
                                             </div>
                                         </div>
-                                        <div class="form_view_delete_manual_visa_quotation_wrpe_data_line bc-clr">
+                                        <div class="form_view_delete_manual_visa_quotation_wrpe_data_line a">
                                             <div class="form_view_delete_manual_visa_quotation_wdl1">
                                                 <label for="" class="lb">Infants</label>
                                                 <p>${MANUAL_VSA.infant}</p>
@@ -66,7 +66,7 @@
                                                 <p>${MANUAL_VSA.systemVisaMarkup }</p>
                                             </div>
                                         </div>
-                                        <div class="form_view_delete_manual_visa_quotation_wrpe_data_line bc-clr">
+                                        <div class="form_view_delete_manual_visa_quotation_wrpe_data_line a">
                                             <div class="form_view_delete_manual_visa_quotation_wdl1">
                                                 <label for="" class="lb">New Cost (Changed Current)</label>
                                                 <p>${MANUAL_VSA.visaCost}</p>
@@ -82,18 +82,18 @@
 
                                             </div>
                                         </div>
-                                        <div class="form_view_delete_manual_visa_quotation_wrpe_data_line bc-clr">
+                                        <div class="form_view_delete_manual_visa_quotation_wrpe_data_line a">
                                             <div class="form_view_delete_manual_visa_quotation_wdl1" style="width:100%">
                                                 <label for="" class="lb">Remarks</label>
                                                 <p>${MANUAL_VSA.remarks }</p>
                                             </div>
                                         </div>
-                                        <div class="due_today_task_data_btnss">
+                                        <div class="due_today_task_data_btnss" style="margin-top:20px">
                                             <input type="submit" name="deleteVisa" id="deleteVisa"
                                                 Value="Confirm Delete" style="background-color:red;" />
                                             <a
                                                 href="form_view_visa_quotation_details?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId}"><input
-                                                    type="button" style="background-color:blue;" value="Cancel" /></a>
+                                                    type="button"  value="Cancel" /></a>
                                         </div>
                                     </div>
 

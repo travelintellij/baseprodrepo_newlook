@@ -42,7 +42,7 @@
                                 <div class="due_today_task_data_btns">
                                     <a id="myBtn[${VISA_OBJ.visaId}]" onclick="myStopsDisplay(this)"
                                         data-load-url="view_visa_documents_details_modal?visaId=${VISA_OBJ.visaId}"
-                                        data-toggle="modal" data-target="#myModal">View Visa Document Details</td>
+                                        data-toggle="modal" data-target="#myModal">View Visa Document Details</a>
                                 </div>
                             </div>
                             <div class="form_view_search_visa_add_quotation_wrapper_data_l1">

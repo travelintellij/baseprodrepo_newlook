@@ -23,7 +23,7 @@
                                         <font color="red"> ${Error}</font>
                                     </b></div>
                                 <div class="viewLeadDetails_modal_wrapper_data">
-                                    <div class="viewLeadDetails_modal_wrapper_data_line bc-clr">
+                                    <div class="viewLeadDetails_modal_wrapper_data_line a">
                                         <div class=" viewLeadDetails_modal_wrapper_dl1">
                                             <label for="" class="lb">Lead Id</label>
                                             <p>Q-${String.format("%04d",LEAD_OBJ.leadId)}-${LEAD_OBJ.leadSourceShortName
@@ -46,7 +46,7 @@
                                             <p>${LEAD_OBJ.contactName}</p>
                                         </div>
                                     </div>
-                                    <div class="viewLeadDetails_modal_wrapper_data_line bc-clr">
+                                    <div class="viewLeadDetails_modal_wrapper_data_line a">
                                         <div class="viewLeadDetails_modal_wrapper_dl1">
                                             <label for="" class="lb">Lead Owner</label>
                                             <p>${LEAD_OBJ.leadOwnerName}</p>
@@ -64,7 +64,7 @@
                                             <p>${LEAD_OBJ.adults}</p>
                                         </div>
                                     </div>
-                                    <div class="viewLeadDetails_modal_wrapper_data_line bc-clr">
+                                    <div class="viewLeadDetails_modal_wrapper_data_line a">
                                         <div class="viewLeadDetails_modal_wrapper_dl1">
                                             <label for="" class="lb">Children</label>
                                             <p>${LEAD_OBJ.children}</p>
@@ -85,7 +85,7 @@
                                             </p>
                                         </div>
                                     </div>
-                                    <div class="viewLeadDetails_modal_wrapper_data_line bc-clr">
+                                    <div class="viewLeadDetails_modal_wrapper_data_line a">
                                         <div class="viewLeadDetails_modal_wrapper_dl1">
                                             <label for="" class="lb">Tentative Amount</label>
                                             <p>${LEAD_OBJ.tentativeCost}</p>
@@ -96,7 +96,7 @@
                                         </div>
                                     </div>
                                     <h1 style="text-align: start;" class="lb">Select Services</h1>
-                                    <div class="viewLeadDetails_modal_wrapper_data_linesr">
+                                    <div class="viewLeadDetails_modal_wrapper_data_linesr a">
                                         <div class="viewLeadDetails_modal_wrapper_dser">
                                             <form:checkbox path="landPackage" name="landPackage;" disabled="true" />
                                             <label for="">Package</label>
@@ -134,19 +134,19 @@
                                             <label for="">Others</label>
                                         </div>
                                     </div>
-                                    <div class="viewLeadDetails_modal_wrapper_data_line bc-clr">
+                                    <div class="viewLeadDetails_modal_wrapper_data_line a">
                                         <div class="viewLeadDetails_modal_wrapper_dl1rem" style="text-align: start;">
                                             <label for="" class="lb">Remarks</label>
                                             <p>${LEAD_OBJ.clientRemarks}</p>
                                         </div>
                                     </div>
-                                    <div class="viewLeadDetails_modal_wrapper_data_line bc-clr">
+                                    <div class="viewLeadDetails_modal_wrapper_data_line a">
                                         <div class="viewLeadDetails_modal_wrapper_dl1rem" style="text-align: start;">
                                             <label for="" class="lb">Internal Remarks</label>
                                             <p>${LEAD_OBJ.internalRemarks}</p>
                                         </div>
                                     </div>
-                                    <div class="viewLeadDetails_modal_wrapper_data_line bc-clr">
+                                    <div class="viewLeadDetails_modal_wrapper_data_line a">
                                         <div class="viewLeadDetails_modal_wrapper_dl1rem" style="text-align: start;">
                                             <label for="" class="lb">Tagged team mates</label>
                                             <c:forEach items="${LEAD_OBJ.team}" var="leadteam">

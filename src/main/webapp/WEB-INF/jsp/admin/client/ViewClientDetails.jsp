@@ -42,7 +42,7 @@
             <form:form method="post" action="view_edit_admin_client" modelAttribute="CLIENT_OBJ">
             <input type="hidden" name="clientId" value="${CLIENT_OBJ.clientId}" />
             <div class="ViewClientDetails_wrapper_data">
-                <div class="ViewClientDetails_wrapper_data_line bc-clr">
+                <div class="ViewClientDetails_wrapper_data_line a">
                     <div class="ViewClientDetails_wrapper_dl1">
                         <label for="" class="lb">Client Name</label>
                         <p>${CLIENT_OBJ.clientName}</p>
@@ -60,13 +60,13 @@
                         <p>${CLIENT_OBJ.email}</p>
                     </div>
                 </div>
-                <div class="ViewClientDetails_wrapper_data_line bc-clr">
+                <div class="ViewClientDetails_wrapper_data_line a">
                     <div class="ViewClientDetails_wrapper_dl1_add">
                         <label for="" class="lb">Client address</label>
                         <p>${CLIENT_OBJ.address}</p>
                     </div>
                 </div>
-                <div class="ViewClientDetails_wrapper_data_line bc-clr">
+                <div class="ViewClientDetails_wrapper_data_line a">
                     <div class="ViewClientDetails_wrapper_dl1_M">
                         <label for="" class="lb">Mobile</label>
                         <p>${CLIENT_OBJ.mobile}</p>
@@ -80,7 +80,7 @@
                         <p>${CLIENT_OBJ.active}</p>
                     </div>
                 </div>
-                <div class="ViewClientDetails_wrapper_data_line bc-clr">
+                <div class="ViewClientDetails_wrapper_data_line a">
                     <div class="ViewClientDetails_wrapper_dl1">
                         <label for="" class="lb">Company Details</label>
                         <p>${CLIENT_OBJ.companyDetails}</p>
@@ -99,7 +99,7 @@
                     </div>
                 </div>
 
-                <div class="ViewClientDetails_wrapper_data_line bc-clr">
+                <div class="ViewClientDetails_wrapper_data_line a">
                     <div class="ViewClientDetails_wrapper_dl1">
                         <label for="" class="lb">Passport Number</label>
                         <p>${CLIENT_OBJ.passportNumber}</p>
@@ -117,14 +117,14 @@
                         <p>${CLIENT_OBJ.anniversaryDate}</p>
                     </div>
                 </div>
-                <div class="ViewClientDetails_wrapper_data_line bc-clr">
+                <div class="ViewClientDetails_wrapper_data_line a">
                     <div class="ViewClientDetails_wrapper_dl1_rem">
                         <label for="" class="lb">Remarks</label>
                         <p>${CLIENT_OBJ.remarks}</p>
                     </div>
                 </div>
                 <h2 style="margin: 10px 0;color:#32cd32 ">Personal Prefrences</h2>
-                <div class="ViewClientDetails_wrapper_data_line bc-clr">
+                <div class="ViewClientDetails_wrapper_data_line a">
                     <div class="ViewClientDetails_wrapper_dl1">
                         <label for="" class="lb">Hotal preferences</label>
                         <p>${CLIENT_OBJ.hotelPref} Star</p>
@@ -142,7 +142,7 @@
                         <p>${CLIENT_OBJ.foodPref}</p>
                     </div>
                 </div>
-                <div class="ViewClientDetails_wrapper_data_line bc-clr">
+                <div class="ViewClientDetails_wrapper_data_line a">
                     <div class="ViewClientDetails_wrapper_dl1">
                         <label for="" class="lb">Aggressivenness</label>
                         <p>${CLIENT_OBJ.aggressiveness} (Scale 1 to 5)</p>
