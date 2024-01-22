@@ -68,7 +68,7 @@
                     <div class="due_today_task_data_btnss">
                         <input type="submit" value="Update Hotel Chain">
                         <a href="view_search_hotel_chain_form"><input type="button"
-                                style="width: 140px;background-color: blue;" value="Cancel"></a>
+                                 value="Cancel"></a>
                         </td>
                     </div>
                 </div>

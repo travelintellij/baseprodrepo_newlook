@@ -40,7 +40,7 @@ body::before {
                     <font color="red"> ${Error}</font>
                 </b></div>
             <div class="Admin_View_Hotel_wrapper_data">
-                <div class="Admin_View_Hotel_wrapper_data_line bc-clr">
+                <div class="Admin_View_Hotel_wrapper_data_line a">
                     <div class="Admin_View_Hotel_wrapper_d1">
                         <label for="" class="lb">Hotal Chain Name</label>
                         <p>${hotelMasterObj.hotelChainName}</p>
@@ -58,7 +58,7 @@ body::before {
                         <p>${hotelMasterObj.locality}</p>
                     </div>
                 </div>
-                <div class="Admin_View_Hotel_wrapper_data_line bc-clr">
+                <div class="Admin_View_Hotel_wrapper_data_line a">
                     <div class="Admin_View_Hotel_wrapper_d1">
                         <label for="" class="lb">Room Category</label>
                         <p><c:forEach items="${hotelMasterObj.roomCategoryEntityList}" var="roomCategory">
@@ -80,7 +80,7 @@ body::before {
                         <p>${hotelMasterObj.preferred}</p>
                     </div>
                 </div>
-                <div class="Admin_View_Hotel_wrapper_data_line bc-clr">
+                <div class="Admin_View_Hotel_wrapper_data_line a">
                     <div class="Admin_View_Hotel_wrapper_d1">
                         <label for="" class="lb">Hotal Rating</label>
                         <p>${hotelMasterObj.udnServiceRating} Star</p>
@@ -98,13 +98,13 @@ body::before {
                         <p>${hotelMasterObj.email}</p>
                     </div>
                 </div>
-                <div class="Admin_View_Hotel_wrapper_data_line bc-clr">
+                <div class="Admin_View_Hotel_wrapper_data_line a">
                     <div class="Admin_View_Hotel_wrapper_d1" style="width:100%">
                         <label for="" class="lb">Remarks</label>
                         <p>${hotelMasterObj.remarks}</p>
                     </div>
                 </div>
-                <div class="due_today_task_data_btnss">
+                <div class="due_today_task_data_btnss" style="margin-top:20px">
                 <sec:authorize access="hasAnyRole('ADMIN','HOTEL_EDIT')">
                     <form:form method="post" action="view_edit_hotel_form?hotelId=${hotelMasterObj.hotelId}" modelAttribute="hotel_obj"
                         style="display:inline;">

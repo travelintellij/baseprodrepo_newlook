@@ -159,16 +159,16 @@
                                     </div>
                                     <div class="Admin_View_Hotel_wrapper_data_line ">
                                  
-                                        <div class="Admin_View_Hotel_wrapper_d1">
+                                        <div class="Admin_View_Hotel_wrapper_d1" style="width:628px">
                                             <label for="">Hotel Email</label>
                                             <input type="text" name="email" id="email" value="${hotel_obj.email}"
                                                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" style="width:89%"/>
                                         </div>
                                     </div>
-                                    <div class="Admin_View_Hotel_wrapper_d1 room-ct" style="display:flex;width:500px;margin:10px 0">
+                                    <div class="Admin_View_Hotel_wrapper_d1 room-ct" style="display:flex;width:757px;margin:10px 0">
                                             <label for="" >Room Category</label>
                                             <c:forEach items="${hotel_obj.roomCategoryEntityList}" var="roomCategory">
-                                                <li style="color:orangered;margin:0  42px">${roomCategory.roomCategoryName}</li>
+                                                <li style="color:orangered;margin:0  42px;">${roomCategory.roomCategoryName}</li>
                                             </c:forEach>
                                             <button type="submit" id="btnSave" name="action" class="cat-btn"
                                               style="border:1px solid orangered;outline:none;background:transparent;color:orangered;padding:2px 4px;border-radius:3px;cursor:pointer"  value="EditRoomCategory">Edit Room

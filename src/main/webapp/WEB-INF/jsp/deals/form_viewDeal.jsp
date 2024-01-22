@@ -43,7 +43,7 @@
                                     <input type="hidden" name="dealConfirmationId"
                                         value="${DealObject.dealConfirmationId}" />
                                     <div class="form_viewDeal_wrapper_data">
-                                        <div class="form_viewDeal_wrapper_data_line bc-clr">
+                                        <div class="form_viewDeal_wrapper_data_line a">
                                             <div class="form_viewDeal_wrapper_data_l1">
                                                 <label for="" class="lb">Deal Confirmation Number</label>
                                                 <p>UDN- ${DealObject.dealConfirmationId}</p>
@@ -61,7 +61,7 @@
                                                 <p>${DealObject.clientName}</p>
                                             </div>
                                         </div>
-                                        <div class="form_viewDeal_wrapper_data_line bc-clr">
+                                        <div class="form_viewDeal_wrapper_data_line a">
                                             <div class="form_viewDeal_wrapper_data_l1">
                                                 <label for="" class="lb">Traveling From</label>
                                                 <p>${DealObject.travelingFromCity}</p>
@@ -79,7 +79,7 @@
                                                 <p>${DealObject.children}</p>
                                             </div>
                                         </div>
-                                        <div class="form_viewDeal_wrapper_data_line bc-clr">
+                                        <div class="form_viewDeal_wrapper_data_line a">
                                             <div class="form_viewDeal_wrapper_data_l1">
                                                 <label for="" class="lb">Booking Date</label>
                                                <p>  <fmt:formatDate value="${DealObject.bookingDate}"
@@ -141,12 +141,12 @@
                                                 </tr>
                                             </table>
                                         </div>
-                                        <div class="form_viewDeal_wrapper_data_line_des bc-clr" style="margin-top:10px">
+                                        <div class="form_viewDeal_wrapper_data_line_des a" style="margin-top:10px">
                                             <h1 style="text-align: start;" class="lb">Deal Detailed Description</h1>
                                             <p style="text-align:start">${DealObject.dealDescription}</p>
                                         </div>
 
-                                        <div class="form_viewDeal_wrapper_data_line bc-clr">
+                                        <div class="form_viewDeal_wrapper_data_line a">
                                             <div class="form_viewDeal_wrapper_data_l1">
                                                 <label for="" class="lb">Deal Source</label>
                                                 <p>${DealObject.dealSourceName }</p>
@@ -165,7 +165,7 @@
                                             </div>
 
                                         </div>
-                                        <div class="form_viewDeal_wrapper_data_line bc-clr">
+                                        <div class="form_viewDeal_wrapper_data_line a">
                                             <div class="form_viewDeal_wrapper_data_l1">
                                                 <label for="" class="lb">Cost Incurred</label>
                                                 <p>${DealObject.actualCost }</p>
@@ -181,7 +181,7 @@
                                             </div>
 
                                         </div>
-                                        <div class="form_viewDeal_wrapper_data_line bc-clr">
+                                        <div class="form_viewDeal_wrapper_data_line a">
                                             <div class="form_viewDeal_wrapper_data_l1">
                                                 <label for="" class="lb">Deal Owner</label>
                                                 <p>${dealRecorder.dealOwnerName}</p>
@@ -201,7 +201,7 @@
                                             </div>
 
                                         </div>
-                                        <div class="due_today_task_data_btnss" style="display:flex;justify-content:center">
+                                        <div class="due_today_task_data_btnss" style="display:flex;justify-content:center;margin-top:20px">
                                             <form:form action="view_edit_deal_form" >
 			      	<input type="hidden" name="dealConfirmationId" value="${DealObject.dealConfirmationId}" />
 			        <div class="btn-block">
