@@ -14,24 +14,10 @@
 	
 	
 	<link href="<c:url value="/resources/css/jquery.datetimepicker.min.css" />" rel="stylesheet">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
 	<script src="<c:url value="/resources/js/jquery.datetimepicker.full.js" />"></script>
   	
 <style>
-body::before {
-            content: "";
-            background-image:  url(${pageContext.request.contextPath}/resources/images/revamped/lens.jpg);
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-attachment: fixed;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.5; /* Adjust the opacity value as needed (0.0 to 1.0) */
-            z-index: -1;
-        }
 body {font-family: Arial, Helvetica, sans-serif;}
 
 	/* The Modal (background) */
@@ -95,6 +81,8 @@ body {font-family: Arial, Helvetica, sans-serif;}
 	  background-color: lightblue;
 	  color: white;
 	}
+	
+	.modal-body {padding: 2px 16px;}
 	
 	.modal-footer {
 	  padding: 2px 16px;
@@ -165,11 +153,13 @@ body {font-family: Arial, Helvetica, sans-serif;}
 <br>
 <br>
 <br>
-<br>
-
-        	<h2 align="center">Incentive Claim Form </h2>
-          <form:form method="post" action="create_create_incentive" modelAttribute="INCENTIVE_OBJ">
- 			<table style="width:1200px">
+v
+			<form:form method="post" action="edit_edit_incentive_details" modelAttribute="INCENTIVE_OBJ">
+        	<h2 align="center">Update Incentive Details </h2>
+          
+         	 <form:input type="hidden" path="incentiveId" />
+         	 <h3 align="center"><font color="blue"><b>Incentive Id - ${INCENTIVE_OBJ.incentiveId}</b></font></h3>
+ 			<table>
 		        <tr>
 		        	<th>Incentive Claimant</th>
 		        	<td>
@@ -177,22 +167,15 @@ body {font-family: Arial, Helvetica, sans-serif;}
 					
 					<div class="select">
 						<form:select path="claimantId" required="required" >  
-							<c:forEach items="${ACTIVE_USERS_MAP}" var="userMap">
-								<c:if test="${userMap.key eq claimantId }">
-									<option class="service-small" value="${userMap.key}" selected>${userMap.value}</option>
-								</c:if>
-								<c:if test="${userMap.key ne claimantId }">
-									<option class="service-small" value="${userMap.key}">${userMap.value}</option>
-								</c:if>
-							</c:forEach>
+							 <form:options items = "${ACTIVE_USERS_MAP}" class="service-small"/>
 						</form:select>  
 					</div>
 					
 					</sec:authorize>
 			
 					<sec:authorize access="! hasAnyRole('ADMIN')">
-						<form:input type="hidden" path="claimantId" value="${userId}" />
-						${userName }
+					
+						${INCENTIVE_OBJ.claimantName }
 					
 					</sec:authorize>
 		      		  </td>
@@ -200,12 +183,9 @@ body {font-family: Arial, Helvetica, sans-serif;}
 		       <tr>	
 		       		<th>Deal ID </th>
 		       		<td style="text-align:left;">
-		       			
-		       			
-		       			<input style="width:450px;" class="form-control search-slt" type="text" name="dealName" id="dealName" placeholder="Deal Search - Enter Only numeric Deal # or Client Name " required />
+		       			<input style="width:450px;" class="form-control search-slt" type="text" name="dealName" id="dealName" placeholder="Deal Search - Enter Only numeric Deal # or Client Name " value=${INCENTIVE_OBJ.dealConfirmationId } />
 						<form:hidden path = "dealConfirmationId" /> 
 						<a id="myBtn[${filteredLeads.leadId}]" onclick="myLeadDisplay(this)" data-load-url="view_view_deal_form_modal" data-toggle="modal" data-target="#myModal" ><input type="button" style="background-color: #786AAF;padding: 4px 5px;"  value="View Lead Details" /></a> 
-						
 		       		 <br><font color="red"><form:errors path="dealConfirmationId" cssClass="error" /></font>
 		       		 
 		       		
@@ -220,7 +200,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 		         --%>
  		       </table>
  		       <!-- The Modal -->
-						<div id="myModal" class="modal" style="margin-top:100px">
+						<div id="myModal" class="modal">
 						
 						  <!-- Modal content -->
 						  <div class="modal-content">
@@ -240,7 +220,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 						</div>
 	
  		       <br>
-				<table style="background-color:#DCDCDC;width:1200px">
+				<table style="background-color:#DCDCDC;">
 				<tr>
 					<td style="text-align:left;">
 						<b>Please answer following questions to justify your claim for an incentive. 
@@ -251,30 +231,81 @@ body {font-family: Arial, Helvetica, sans-serif;}
         	
         	<br>
         	<h2 align="center">Incentive Effort Details</h2>  
-        	 <table style="background-color:#DCDCDC;width:1200px">
+        	 <table>
 		        <tr>
 		        	<th style="width:5%;">1</th><th style="width:35%; padding: 5px;text-align:left;">Client is Referred by You ? <form:errors path="question1" cssClass="error" /></th> 
-		        	<td> <input type="radio" name="question1" value="yes"> Yes
-		        	
-		        	</td>
-		        	<td> <input type="radio" name="question1" value="no" checked> No</td>
+		        	<td> <form:radiobutton path="question1" value="1" /> Yes</td>
+		        	<td> <form:radiobutton path="question1" value="0" />  No</td>
 		        </tr>     
-		        <tr><th style="width:5%;">2</th><th style="width:50%; padding: 5px;text-align:left;">You took minimal support of management and were able to handle the query alone ? </th> <td><input type="radio" name="question2" value="yes">Yes</td><td> <input type="radio" name="question2" value="no" checked>No </td></tr>
-		        <tr><th style="width:5%;">3</th><th style="width:50%; padding: 5px;text-align:left;">You responded all queries of client yourself ontime without any delay ?  </th> <td><input type="radio" name="question3" value="yes">Yes</td><td> <input type="radio" name="question3" value="no" checked>No </td></tr>
-		        <tr><th style="width:5%;">4</th><th style="width:50%; padding: 5px;text-align:left;">You ensured and verified with management time to time for payment settlement ?  </th> <td><input type="radio" name="question4" value="yes">Yes</td><td> <input type="radio" name="question4" value="no" checked>No </td></tr>
-		        <tr><th style="width:5%;">5</th><th style="width:50%; padding: 5px;text-align:left;">You ensured Vouchers Shared, Invoices Collected and all settled with the deal ?  </th> <td><input type="radio" name="question5" value="yes">Yes</td><td> <input type="radio" name="question5" value="no" checked>No </td></tr>
-		        <tr><th style="width:5%;">6</th><th style="width:50%; padding: 5px;text-align:left;">UdanChoo online Review achieved or decided not needed ?  </th> <td><input type="radio" name="question6" value="yes">Yes</td><td> <input type="radio" name="question6" value="no" checked>No </td></tr>
+		        <tr>
+		        	<th style="width:5%;">2</th><th style="width:50%; padding: 5px;text-align:left;">You took minimal support of management and were able to handle the query alone ? </th> 
+		        	<td> <form:radiobutton path="question2" value="true"/> Yes</td>
+		        	<td> <form:radiobutton path="question2" value="false"/>  No</td>
+		        </tr>
+		        <tr>
+		        	<th style="width:5%;">3</th><th style="width:50%; padding: 5px;text-align:left;">You responded all queries of client yourself ontime without any delay ?  </th>
+					<td> <form:radiobutton path="question3" value="Yes"/> Yes</td>
+		        	<td> <form:radiobutton path="question3" value="No"/>  No</td>				</tr>
+		        <tr>
+		        	<th style="width:5%;">4</th><th style="width:50%; padding: 5px;text-align:left;">You ensured and verified with management time to time for payment settlement ?  </th> 
+		        	<td> <form:radiobutton path="question4" value="Yes"/> Yes</td>
+		        	<td> <form:radiobutton path="question4" value="No"/>  No</td>
+				</tr>
+		        <tr>
+		        	<th style="width:5%;">5</th><th style="width:50%; padding: 5px;text-align:left;">You ensured the vouchers were sent on time and reminder call before travel is made to the client.  </th> 
+		        	<td> <form:radiobutton path="question5" value="Yes"/> Yes</td>
+		        	<td> <form:radiobutton path="question5" value="No"/>  No</td>
+		        </tr>
+		        <tr>
+		        	<th style="width:5%;">6</th><th style="width:50%; padding: 5px;text-align:left;">UdanChoo online Review achieved or decided not needed ?  </th> 
+					<td> <form:radiobutton path="question6" value="Yes"/> Yes</td>
+		        	<td> <form:radiobutton path="question6" value="No"/>  No</td>
+		       </tr>
 		     </table>
 		     
-		     <table style="background-color:#DCDCDC;width:1200px">
-		    	<tr><th><b>Claimed Amount </b></th><td style="text-align:left;">INR &nbsp;<input style="height:30px;width: 100px;" class="contact" type="number" name="claimedAmount" value="0" required /><br><font color="red"><form:errors path="claimedAmount" cssClass="error" /></font></td></tr>
-		    	<tr><th><b>User Remarks </b></th>
-		    		<td style="text-align:left;"><textarea rows="4" cols="60" name="userRemarks" maxlength="250"></textarea><br><font color="red"><form:errors path="userRemarks" cssClass="error" /></font></td></tr>
-		        <tr>
-		        	<td style="text-align:center;width:50%;" colspan="2">
-		        	<input style="background:green;" type="submit" value="Submit Claim">
-		        	<a href="view_default_incentives_report"><input type="button" style="background:blue;" value="View Incentive Listing" /></a></td>
-		        	</tr>
+		     <table>
+		     	<form:input type="hidden" path="claimedAmount" />
+		     	<form:input type="hidden" path="userRemarks" />
+		    	<tr>
+		    		<td width="50%"><font color="red"><b>Claimed Amount </b></font></td>
+		    		<td>${INCENTIVE_OBJ.claimedAmount}</td>
+		    	</tr>
+		    	<tr>
+		    		<td width="50%"><font color="green"><b>Approved Amount </b></font></td>
+		    		<td><form:input type="number" path="approvedAmount" style="height:30px;width: 100px;"/></td>
+		    	</tr>
+		    	
+		    	<tr>
+		    		<td width="50%"><font color="red"><b>User Remarks </b></font></td>
+		    		<td>${INCENTIVE_OBJ.userRemarks}</td>
+		    	</tr>
+		    	
+		    	<tr>
+		    		<td width="50%"><font color="red"><b>Management Remarks </b></font></td>
+		    		<td>
+		    		  <form:textarea path="managementRemarks" rows="4" cols="60" maxlength="250"/>
+		    		</td>
+		    	</tr>
+		    	
+		    	<tr>
+		    		<td style="background-color:pink" ><b>Update Claim Status</b></td>
+		    		<td>
+		    			<form:select path="status" required="required" style="height:30px;width: 150px;">
+		  	  		 		<form:options items = "${ACTIVE_INCENTIVE_STATUS}" class="service-small"/>
+						</form:select>
+		    		</td>
+		    	</tr>
+				<tr>
+					<td>Inform Claimant</td>
+					<td>&nbsp;&nbsp;<label class="container"><form:checkbox path="notifyClaimant"/><i><font size="2">(if checked email will be sent to claimant)</font></i><span class="checkmark"></span></label>
+					</td>
+				</tr>	
+				<tr>
+					<td colspan="2">
+						<input type="submit" value="Update Claim" style="background:green;"/>
+						<a href="view_default_incentives_report"><input type="button" style="background:blue;" value="Cancel" /></a>
+					</td>
+				</tr>		
 		     </table>
 		     
 	

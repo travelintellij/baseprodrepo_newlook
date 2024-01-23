@@ -37,7 +37,7 @@
             <form:form action="${action}" modelAttribute="TASK_RECORDER_OBJ">
                 <input type="hidden" name="taskId" value="${TASK_RECORDER_OBJ.taskId}" />
                 <div class="view_confirm_delete_task_wrapper_data">
-                    <div class="view_confirm_delete_task_wrapper_data_line bc-clr">
+                    <div class="view_confirm_delete_task_wrapper_data_line a">
                         <div class="view_confirm_delete_task_wrapper_data_l1">
                             <label for="">Task Id</label>
                             <p>${TASK_RECORDER_OBJ.taskId}</p>
@@ -55,7 +55,7 @@
                             <p>${TASK_RECORDER_OBJ.taskPriority}</p>
                         </div>
                     </div>
-                    <div class="view_confirm_delete_task_wrapper_data_line bc-clr">
+                    <div class="view_confirm_delete_task_wrapper_data_line a">
                         <div class="view_confirm_delete_task_wrapper_data_l1">
                             <label for="">Status</label>
                             <p>${TASK_RECORDER_OBJ.taskStatus}</p>
@@ -76,7 +76,7 @@
                             </p>
                         </div>
                     </div>
-                    <div class="view_confirm_delete_task_wrapper_data_line bc-clr">
+                    <div class="view_confirm_delete_task_wrapper_data_line a">
                         <div class="view_confirm_delete_task_wrapper_data_l1">
                             <label for="">Description</label>
                             <p>${TASK_RECORDER_OBJ.taskDescription}</p>

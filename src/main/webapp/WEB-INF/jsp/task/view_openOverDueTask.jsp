@@ -12,9 +12,24 @@
     <title>Over due</title>
      <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
 </head>
-
-<body
-    style="background: url(${pageContext.request.contextPath}/resources/images/revamped/over_due_task_bg.jpg);background-size: cover; background-repeat: no-repeat; background-position: center center;background-attachment: fixed;">
+<style>
+ body::before {
+            content: "";
+            background-image:  url(${pageContext.request.contextPath}/resources/images/revamped/over_due_task_bg.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5; /* Adjust the opacity value as needed (0.0 to 1.0) */
+            z-index: -1;
+        }
+</style>
+<body>
     <div class="cnt_options">
         <a href="view_create_ticket_form_user" >Create Task</a>
             <a href="view_open_task_form_user"> Open Tasks</a>
@@ -35,7 +50,7 @@
                     </b></div>
                 <div class="over_due_tasks_data">
                     <div class="over_due_tasks_li task_owner_viwe_task">
-                        <label for="">Task Owner</label><br>
+                        <label for="">Task Owner </label><br>
                         <select class="task_owner_viwe_task" id="taskOwner" name="taskOwner" style="width: 160px;" required>
                             <option class="service-small"> -----Task Owner----</option>
                             <c:if test="${not empty ACTIVE_USERS_LIST}">

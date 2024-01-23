@@ -185,90 +185,85 @@
                             </div>
                         </div>
 
- <div class="container">
 
-                        <table style="width:100%;margin:10px 0">
+                        <table style="width:1450px;margin:10px auto;text-align:center;background:black;color:white">
                             <tr>
-                                <th style="width:10%;background:green;">Incentive Id</th>
-                                <th style="width:10%;background:green;">Deal Confirmation Id </th>
-                                <th style="width:20%;background:green;">Lead Guest Name</th>
-                                <th style="width:10%;background:green;">Travel Date</th>
-                                <th style="width:10%;background:green;">End Date</th>
-                                <th style="width:10%;background:green;">Claim Date</th>
-                                <th style="width:10%;background:green;">Claimant</th>
-                                <th style="width:10%;background:green;">Claim Amount</th>
-                                <th style="width:10%;background:green;">Claim Status</th>
+                                <th style="width:10%;background: #6082B6;">Incentive Id </th>
+                                <th style="width:10%;background: #6082B6;">Deal Confirmation Id </th>
+                                <th style="width:20%;background: #6082B6;">Lead Guest Name</th>
+                                <th style="width:10%;background: #6082B6;">Travel Date</th>
+                                <th style="width:10%;background: #6082B6;">End Date</th>
+                                <th style="width:10%;background: #6082B6;">Claim Date</th>
+                                <th style="width:10%;background: #6082B6;">Claimant</th>
+                                <th style="width:10%;background: #6082B6;">Claim Amount</th>
+                                <th style="width:10%;background: #6082B6;">Claim Status</th>
                             </tr>
                             <c:if test="${not empty INCENTIVES_LIST}">
                                 <c:set var="totalIncentive" value="${0}" />
                                 <c:forEach var="incentiveObj" items="${INCENTIVES_LIST}">
                                     <tr>
-                                        <td>
+                                        <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">
                                             <a id="myBtn[${incentiveObj.incentiveId}]" onclick="myLeadDisplay(this)"
                                                 data-load-url="displayIncentiveModal?incentiveId=${incentiveObj.incentiveId}"
                                                 data-toggle="modal" data-target="#myModal"><input type="button"
-                                                    style="background-color: blue;padding: 4px 5px;"
+                                                    style="background-color: orange;padding: 3px 4px;border:none;outline:none;cursor:pointer;border-radius:2px"
                                                     value="${incentiveObj.incentiveId}" /></a>
 
                                             <sec:authorize access="hasAnyRole('ADMIN')">
-                                                &nbsp;&nbsp;<a
+                                                &nbsp;&nbsp;<a style="color:#32cd32"
                                                     href="form_view_editIncentive?incentiveId=${incentiveObj.incentiveId}">Edit</a>
                                             </sec:authorize>
 
                                         </td>
-                                        <td>
+                                        <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">
                                             <a id="myBtn[${incentiveObj.dealConfirmationId}]"
                                                 onclick="myLeadDisplay(this)"
                                                 data-load-url="view_view_deal_form_modal_free_acl?dealConfirmationId=${incentiveObj.dealConfirmationId}"
                                                 data-toggle="modal" data-target="#myModal"><input type="button"
-                                                    style="background-color: #786AAF;padding: 4px 5px;"
+                                                   style="background-color: orange;padding: 3px 4px;border:none;outline:none;cursor:pointer;border-radius:2px"
                                                     value="${incentiveObj.dealConfirmationId}" /></a>
 
                                         </td>
-                                        <td>${incentiveObj.guestName}</td>
-                                        <td>
+                                        <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">${incentiveObj.guestName}</td>
+                                        <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">
                                             <fmt:formatDate value="${incentiveObj.travelStartDate}"
                                                 pattern="dd-MM-yyyy" />
                                         </td>
-                                        <td>
+                                        <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">
                                             <fmt:formatDate value="${incentiveObj.travelEndDate}"
                                                 pattern="dd-MM-yyyy" />
                                         </td>
-                                        <td>
+                                        <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">
                                             <fmt:formatDate value="${incentiveObj.createdAt}" pattern="dd-MM-yyyy" />
                                         </td>
-                                        <td>${incentiveObj.claimantName}</td>
-                                        <td>${incentiveObj.claimedAmount}</td>
-                                        <td>${incentiveObj.claimStatusName}</td>
+                                        <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">${incentiveObj.claimantName}</td>
+                                        <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">${incentiveObj.claimedAmount}</td>
+                                        <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">${incentiveObj.claimStatusName}</td>
                                     </tr>
                                     <c:set var="totalIncentive"
                                         value="${totalIncentive + incentiveObj.claimedAmount}" />
                                 </c:forEach>
                             </c:if>
                         </table>
-                        <table style="width:80%;">
+                        <table style="width:20%;margin:10px auto ; background:black;color:white;border-radius:3px;padding;3px">
                             <tr>
                                 <td colspan="7"><b>
                                         <font size="3">Total Claim Amount </font>
                                     </b></td>
-                                <td colspan="2" bgcolor="#D6EEEE">${totalIncentive}</td>
+                                <td colspan="2" style="color:#32cd32">${totalIncentive}</td>
 
                             </tr>
                         </table>
- </div>
-                        <div id="myModal" class="modal">
+
+                        <div id="myModal" class="modal" style="z-index:999;margin-top:100px">
 
                             <!-- Modal content -->
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <span class="close">&times;</span>
-                                    <br>
+                                    <span class="close" style="color:red">&times;</span>
                                     <h2 style="text-align:center;">View Details</h2>
                                 </div>
-                                <div class="modal-body">
-
-
-                                </div>
+                                <div class="modal-body" style="padding:0"></div>
                                 <div class="modal-footer">
                                     <h3>Powered by @TravelIntelliJ</h3>
                                 </div>
@@ -278,12 +273,12 @@
 
 
                         <div id="pagination" align="center">
-                            Page:
+                           <p style="color:#ffa500;background:black;display:inline-block;padding:2px;border-radius:2px">Page:</p> 
                             <c:url value="view_filter_incentives" var="prev">
                                 <c:param name="page" value="${page-1}" />
                             </c:url>
                             <c:if test="${page > 0}">
-                                <a href="<c:out value="
+                                <a style="background:black;padding:2px 5px;border-radius:2px;color:#ffa500" href="<c:out value="
                                     ${prev}&sortBy=${sortBy}&claimFromDate=${SEARCH_INCENTIVE.claimFromDate
                                     }&claimToDate=${SEARCH_INCENTIVE.claimToDate}&claimantId=${SEARCH_INCENTIVE.claimantId}&claimStatus=${SEARCH_INCENTIVE.claimStatus}" />"
                                 class="pn prev">Prev</a>
@@ -292,7 +287,7 @@
                             <c:forEach begin="1" end="${maxPages}" step="1" varStatus="i">
                                 <c:choose>
                                     <c:when test="${(page+1) == i.index}">
-                                        <span>${i.index}</span>
+                                        <span style="background:black;padding:2px 5px;border-radius:2px;color:white">${i.index}</span>
                                     </c:when>
                                     <c:otherwise>
                                         <c:url value="view_filter_incentives" var="url">
@@ -307,7 +302,7 @@
                                 <c:param name="page" value="${page + 1}" />
                             </c:url>
                             <c:if test="${page + 1 < maxPages}">
-                                <a href='<c:out value="${next}&sortBy=${sortBy}&claimFromDate=${SEARCH_INCENTIVE.claimFromDate }&claimToDate=${SEARCH_INCENTIVE.claimToDate}&claimantId=${SEARCH_INCENTIVE.claimantId}&claimStatus=${SEARCH_INCENTIVE.claimStatus}" />'
+                                <a style="background:black;padding:2px 5px;border-radius:2px;color:#ffa500"  href='<c:out value="${next}&sortBy=${sortBy}&claimFromDate=${SEARCH_INCENTIVE.claimFromDate }&claimToDate=${SEARCH_INCENTIVE.claimToDate}&claimantId=${SEARCH_INCENTIVE.claimantId}&claimStatus=${SEARCH_INCENTIVE.claimStatus}" />'
                                     class="pn next">Next</a>
                             </c:if>
                         </div>

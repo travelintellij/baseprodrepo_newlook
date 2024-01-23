@@ -6716,3 +6716,164 @@ color: white;
 .ab{
 	border-bottom: 2px solid black;
 }
+
+/* ############ viewIncentiveDetails ############# */
+
+.viewIncentiveDetails_wrapper {
+    color: white;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 150px;
+}
+
+.viewIncentiveDetails_wr_dt {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.viewIncentiveDetails_wr_dt_line {
+    width: 300px;
+    text-align: start;
+}
+
+.hd {
+    color: #32cd32;
+    font-size: 25px;
+    margin: 10px 0;
+}
+
+.viewIncentiveDetails_wr_dt_2 {
+    color: white;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.inc_q {
+    /* border: 2px solid red; */
+    width: 80%;
+    text-align: start;
+}
+
+.inc_a {
+    /* border: 2px solid blue; */
+    width: 20%;
+    text-align: start;
+}
+
+.viewIncentiveDetails_wr_dt_line_2 {
+    display: flex;
+    margin: 10px 0;
+}
+
+.viewIncentiveDetails_wr_dt_3 {
+    color: white;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+.viewIncentiveDetails_wr_dt_3_b{
+    display: flex;
+}
+.viewIncentiveDetails_wr_dt_3_b_l3{
+    width: 300px;
+    text-align: start;
+}
+
+/* ################## form_editIncentiveClaim_wrapper ########## */
+.form_editIncentiveClaim{
+	margin-top:150px;
+}
+.form_editIncentiveClaim_wrapper {
+    color: white;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px auto;
+    width: 1000px;
+}
+.form_editIncentiveClaim_wrapper_data{
+    display: flex;
+    justify-content: center;
+}
+.form_editIncentiveClaim_wrapper_data_line{
+   width: 300px;
+   text-align: start;
+}
+.form_editIncentiveClaim_wrapper_data_line input{
+   width: 90%;
+}
+.inc_sp_l{
+    display: flex;
+        justify-content: flex-start;
+}
+.inc_sp_l2{
+    display: flex;
+    flex-direction: column;
+}
+.inc-btn{
+	position: absolute;
+}
+.m-btn {
+	background: black;
+	color:white;
+}
+
+/* ##################################################### */
+.viewIncentiveDetails_modal_wrapper{
+    color: white;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    width: 100%;
+}
+.viewIncentiveDetails_modal_wrapper_data{
+    display: flex;
+
+  
+}
+.viewIncentiveDetails_modal_wrapper_data_line{
+    width: 300px;
+    text-align: start;
+}
+/* ########################################### */
+
+.form_viewDeal_modal_wrapper{
+color: white;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+   
+}
+.form_viewDeal_modal_wrapper_data{
+    display: flex;
+}
+.form_viewDeal_modal_wrapper_data_line{
+    width: 300px;
+    text-align: start;
+}
+.form_viewDeal_modal_wrapper_data_ser{
+    display: flex;
+    justify-content: space-between;
+}
