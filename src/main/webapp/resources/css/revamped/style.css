@@ -6846,9 +6846,7 @@ color: white;
     width: 100%;
 }
 .viewIncentiveDetails_modal_wrapper_data{
-    display: flex;
-
-  
+    display: flex;  
 }
 .viewIncentiveDetails_modal_wrapper_data_line{
     width: 300px;
@@ -6876,4 +6874,80 @@ color: white;
 .form_viewDeal_modal_wrapper_data_ser{
     display: flex;
     justify-content: space-between;
+}
+
+/* ########################  */
+.form_view_aCMQuotation_fb_wrp {
+    width: 600px;
+    color: white;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    margin: 50px auto;
+}
+
+.form_view_aCMQuotation_fbw {
+    display: flex;
+}
+
+.form_view_aCMQuotation_fbwls {
+    width: 300px;
+    text-align: center;
+}
+
+.form_view_aCMQuotation_btns_wrapper {
+    width: auto;
+    color: white;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    margin: 50px auto;
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.form_view_aCMQuotation_lb_wr {
+    color: white;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    margin: 50px auto;
+    width: 800px;
+}
+
+.form_view_aCMQuotation_lb_wr_f {
+    width: 800px;
+    margin: 10px auto;
+    display: flex;
+}
+
+.form_view_aCMQuotation_lb_wr_f_sb {
+    width: 300px;
+    text-align: center;
+}
+
+.fvacmq {
+    display: flex;
+}
+
+.form_view_aCMQuotation_lb_wr_tb {
+    width: 700px;
+    margin: 10px auto;
+}
+
+.qu_in {
+    width: 70%;
+}
+.qu_ans{
+    text-align: center;
 }
