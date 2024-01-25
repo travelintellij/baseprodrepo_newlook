@@ -66,6 +66,7 @@
                         <!-- ###############  small box starts ###########  -->
                         <form:form modelAttribute="QTN_OBJ" action="create_create_lead_quotation">
                             <div class="form_view_aCMQuotation_fb_wrp">
+                            <h1 class="hd">Configure Quotation Parameters</h1>
                                 <div class="form_view_aCMQuotation_fbw">
                                     <div class="form_view_aCMQuotation_fbwls">
                                         <label for="" class="lb">Quotation Id</label>
@@ -90,8 +91,10 @@
                             <form:hidden path="remarks" />
                             <!-- ###############  buttons box starts ###########  -->
                             <div class="form_view_aCMQuotation_btnss">
-                                <font color="green"> ${Success} </font>
-                                <font color="red"> ${Error}</font>
+                            <p style="background:black;text-align:center;width:500px;margin:0 auto">
+                             <font color="#32cd32"> ${Success} </font>
+                                <font color="red"> ${Error}</font></p>
+                               
                                 <div class="form_view_aCMQuotation_btns_wrapper due_today_task_data_btnss">
                                     <c:if test="${QUOTATION_EXISTS eq true}">
                                         <a id="myBtn[${filteredLeads.leadId}]"
@@ -124,7 +127,7 @@
                             <!-- ###############  buttons box ends ###########  -->
 
                             <!-- ############### 2 buttons box starts ###########  -->
-                            <div class="form_view_aCMQuotation_btnss">
+                            <div class="form_vaccmquotation_btns2" >
                                 <div class="form_view_aCMQuotation_2_btns_wrapper due_today_task_data_btnss" style="display:flex;justify-content:center">
                                     <a href="#"><input type="button" value="General Configuration Section" /></a>
                                     <a
@@ -147,7 +150,7 @@
                                             </form:select>
                                         </div>
                                         <div class="form_view_aCMQuotation_lb_wr_f_sb">
-                                            <label for="">Logo Header</label> <br>
+                                            <label for="" class="lb">Logo Header</label> <br>
                                             <form:radiobutton path="logoHeader" id="logoHeaderTrue" name="logoHeader"
                                                 value="true" /> <label for="logoHeaderTrue" class="radio">Yes</label>
                                             <form:radiobutton path="logoHeader" id="logoHeaderFalse" name="logoHeader"
@@ -155,7 +158,7 @@
 
                                         </div>
                                         <div class="form_view_aCMQuotation_lb_wr_f_sb">
-                                            <label for="">Complete Address</label>  <br>
+                                            <label for="" class="lb">Complete Address</label>  <br>
                                             <form:radiobutton path="completeAddress" id="completeAddressTrue"
                                                 name="completeAddress" value="true" /> <label for="completeAddressTrue"
                                                 class="radio">Yes</label>

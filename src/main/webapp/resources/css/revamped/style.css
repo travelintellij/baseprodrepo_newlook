@@ -6951,3 +6951,140 @@ color: white;
 .qu_ans{
     text-align: center;
 }
+/* ################# form_vaccmquotation_fbox_wrapper ########### */
+.form_vaccmquotation_fbox_wrapper {
+    width: 600px;
+    color: white;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    margin: 50px auto;
+}
+
+.form_vaccmquotation_fbox {
+    display: flex;
+}
+
+.form_vaccmquotation_fbox1 {
+    width: 300px;
+    text-align: center;
+}
+
+.form_vaccmquotation_btns {
+    width: auto;
+    color: white;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px auto;
+}
+
+.form_vaccmquotation_btns2 {
+    width: 600px;
+        color: white;
+        text-align: center;
+        border-collapse: collapse;
+        border: none;
+        background: rgba(0, 0, 0, 9);
+        padding: 10px;
+        border-radius: 10px;
+        margin: 50px auto;
+}
+.form_vaccmquotation_lastbox_wrapper{
+	 width: 800px;
+    color: white;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    margin: 50px auto;
+}
+
+/* ################# form_vaccmquotation_fbox_wrapper ########### */
+.form_vaccmquotation_fbox_wrapper {
+    width: 600px;
+    color: white;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    margin: 50px auto;
+}
+
+.form_vaccmquotation_fbox {
+    display: flex;
+}
+
+.form_vaccmquotation_fbox1 {
+    width: 300px;
+    text-align: center;
+}
+
+.form_vaccmquotation_btns {
+    width: auto;
+    color: white;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    margin: 50px auto;
+}
+
+.form_vaccmquotation_btns2 {
+    width: 600px;
+    color: white;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    margin: 50px auto;
+}
+
+.form_view_send_email_quotation_emailer_wrapper {
+    width: 800px;
+    color: white;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    margin: 50px auto;
+}
+.form_view_send_emailqw_mw{
+    display: flex;
+    flex-direction: column;
+}
+.form_view_send_emailqw{
+    width: 100%;
+    text-align: start;
+}
+.form_view_send_emailqw Input{
+    width: 100%;
+    text-align: start;
+}
+.form_view_delete_cmquotation_dev{
+    width: 600px;
+        color: white;
+        text-align: center;
+        border-collapse: collapse;
+        border: none;
+        background: rgba(0, 0, 0, 9);
+        padding: 10px;
+        border-radius: 10px;
+        margin: 50px auto;
+}
