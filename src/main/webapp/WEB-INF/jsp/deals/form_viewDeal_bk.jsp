@@ -161,10 +161,11 @@
 	        	<td style="width: 50%;">
 			      <form:form action="view_edit_deal_form" >
 			      	<input type="hidden" name="dealConfirmationId" value="${DealObject.dealConfirmationId}" />
+			      		
 			        <div class="btn-block">
-			          <button type="submit" href="/">Edit Deal</button>
+			          <button type="submit">Edit Deal</button>
 			        </div>
-				</form:form>		     
+					</form:form>		     
 	        	</td>
 	        	<td style="width: 50%;">
 	                <form:form action="view_workload_createNewWorkLoadForm" target="_blank">
