@@ -73,7 +73,7 @@
             </div>
         </form:form>
 
-        <form:form modelAttribute="MANUAL_CNF" action="create_update_costing_remarks_manual_configuration_quotation">
+        <form:form modelAttribute="MANUAL_CNF" action="create_update_generate_manual_configuration_quotation">
             <input type="hidden" name="leadId" value="${QTN_OBJ.leadEntity.leadId}" />
             <input type="hidden" name="quotationId" value="${QTN_OBJ.quotationId}" />
             <input type="hidden" name="manualConfigurationQuotationId"
@@ -152,6 +152,7 @@
                          <p style="color:orangered;margin:10px auto">Quotation Attached</p>
                         <div class="due_today_task_data_btnss">
                         <input type="submit" name="Send Email" value="Send Email" />
+                        
                         </div>
                     </div>
                 </div>
