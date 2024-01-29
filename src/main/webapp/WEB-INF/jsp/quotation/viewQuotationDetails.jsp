@@ -88,44 +88,44 @@
                 <div class="viewQuotationDetails_wrapper_data_line_ser">
                     <div class="viewQuotationDetails_wrapper_data_ser">
                         <label for="">Package</label>
-                        <form:checkbox path="tourPackage" name="tourPackage" disabled="true"/>
+                        <form:checkbox class="ch_c" path="tourPackage" name="tourPackage" disabled="true"/>
                     </div>
                     <div class="viewQuotationDetails_wrapper_data_ser">
                         <label for="">Flight</label>
-                       <form:checkbox path="flight" name="flight"  disabled="true"/>
+                       <form:checkbox class="ch_c" path="flight" name="flight"  disabled="true"/>
                     </div>
                     <div class="viewQuotationDetails_wrapper_data_ser">
                         <label for="">Hotal</label>
-                       <form:checkbox path="hotel" name="hotel" disabled="true" />
+                       <form:checkbox class="ch_c" path="hotel" name="hotel" disabled="true" />
                     </div>
                     <div class="viewQuotationDetails_wrapper_data_ser">
                         <label for="">Transfers</label>
-                       <form:checkbox path="transfers" name="transfers" disabled="true" />
+                       <form:checkbox class="ch_c" path="transfers" name="transfers" disabled="true" />
                     </div>
                     <div class="viewQuotationDetails_wrapper_data_ser">
                         <label for="">Sightseeing</label>
-                       <form:checkbox path="sightseeing" name="sightseeing" disabled="true" />
+                       <form:checkbox class="ch_c" path="sightseeing" name="sightseeing" disabled="true" />
                     </div>
                     <div class="viewQuotationDetails_wrapper_data_ser">
                         <label for="">Visa</label>
-                        <form:checkbox path="visa" name="visa" disabled="true" />
+                        <form:checkbox class="ch_c" path="visa" name="visa" disabled="true" />
                     </div>
                     <div class="viewQuotationDetails_wrapper_data_ser">
                         <label for="">Insurance</label>
-                       <form:checkbox path="insurance" name="insurance" disabled="true" />
+                       <form:checkbox class="ch_c" path="insurance" name="insurance" disabled="true" />
                     </div>
                     <div class="viewQuotationDetails_wrapper_data_ser">
                         <label for="">Cruise</label>
-                      <form:checkbox path="cruise" name="cruise"  disabled="true" />
+                      <form:checkbox class="ch_c" path="cruise" name="cruise"  disabled="true" />
                     </div>
                     <div class="viewQuotationDetails_wrapper_data_ser">
                         <label for="">Others</label>
-                        <form:checkbox path="others" name="others"  disabled="true" />
+                        <form:checkbox class="ch_c" path="others" name="others"  disabled="true" />
                     </div>
                 </div>
                 <div class="due_today_task_data_btns">
                    <c:if test="${ QTN_OBJ.converted eq true }">
-					<input type="button" id="createquotation"  style="background-color:lightgray;color:black;cursor:none;" name="createquotation" value="Edit Quotation Skeleton" />
+					<input type="button" id="createquotation"   name="createquotation" value="Edit Quotation Skeleton" />
 				</c:if>
 				<c:if test="${ QTN_OBJ.converted ne true }">
 					<input type="submit" id="createquotation"  name="createquotation" value="Edit Quotation Skeleton" />

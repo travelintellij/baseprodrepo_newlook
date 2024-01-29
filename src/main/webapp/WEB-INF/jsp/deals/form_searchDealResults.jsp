@@ -15,7 +15,7 @@
         <div class="form_searchDealResults_wrapper">
             <div class="form_searchDealResults_wrapper_data">
                 <div class="form_searchDealResults_wdl">
-                        <div align="center"><span style="background:black;color:white;padding:0 10px;margin-bottom:10px;border-radius:5px;color:#32cd32 ">Total Deals Found : ${FILTERED_DEAL_RECORDS.size()}</span></div>
+                        <div align="center"><span style="background:black;color:white;padding:0 10px;margin-bottom:20px;border-radius:5px;color:#32cd32 ">Total Deals Found : ${FILTERED_DEAL_RECORDS.size()}</span></div>
                         <table class="deal_table">
                             <tr style="background:#6082B6;height:40px">
                                 <th style="width: 5%;" align="center">Deal #</th>
@@ -73,12 +73,12 @@
         </div>
     </div>
         <div id="pagination" align="center">
-            Page:
+           <p style="color:#ffa500;background:black;display:inline-block;padding:2px;border-radius:2px">Page : </p>
             <c:url value="view_filter_deals" var="prev">
                 <c:param name="page" value="${page-1}" />
             </c:url>
             <c:if test="${page > 0}">
-                <a href="<c:out value="
+                <a style="background:black;padding:2px 5px;border-radius:2px;color:#ffa500" href="<c:out value="
                     ${prev}&sortBy=${sortBy}&dealStatus=${FILTER_DEAL_OBJ.dealStatus}&startDate=${FILTER_DEAL_OBJ.startDate}&endDate=${FILTER_DEAL_OBJ.endDate}&searchOnBookingDate=${FILTER_DEAL_OBJ.searchOnBookingDate}" />"
                 class="pn prev">Prev</a>
             </c:if>
@@ -86,14 +86,14 @@
             <c:forEach begin="1" end="${maxPages}" step="1" varStatus="i">
                 <c:choose>
                     <c:when test="${(page+1) == i.index}">
-                        <span>${i.index}</span>
+                        <span style="background:black;padding:2px 5px;border-radius:2px;color:white">${i.index}</span>
                     </c:when>
                     <c:otherwise>
                         <c:url value="view_filter_deals" var="url">
-                            <c:param name="page" value="${i.index-1}" />
+                            <c:param  name="page" value="${i.index-1}" />
                         </c:url>
                         <a
-                            href='<c:out value="${url}&sortBy=${sortBy}&dealStatus=${FILTER_DEAL_OBJ.dealStatus}&startDate=${FILTER_DEAL_OBJ.startDate}&endDate=${FILTER_DEAL_OBJ.endDate}&searchOnBookingDate=${FILTER_DEAL_OBJ.searchOnBookingDate}" />'>${i.index}</a>
+                         style="background:white;padding:2px 5px;border-radius:2px;color:black"   href='<c:out value="${url}&sortBy=${sortBy}&dealStatus=${FILTER_DEAL_OBJ.dealStatus}&startDate=${FILTER_DEAL_OBJ.startDate}&endDate=${FILTER_DEAL_OBJ.endDate}&searchOnBookingDate=${FILTER_DEAL_OBJ.searchOnBookingDate}" />'>${i.index}</a>
                     </c:otherwise>
                 </c:choose>
             </c:forEach>
@@ -101,7 +101,7 @@
                 <c:param name="page" value="${page + 1}" />
             </c:url>
             <c:if test="${page + 1 < maxPages}">
-                <a href='<c:out value="${next}&sortBy=${sortBy}&dealStatus=${FILTER_DEAL_OBJ.dealStatus}&startDate=${FILTER_DEAL_OBJ.startDate}&endDate=${FILTER_DEAL_OBJ.endDate}&searchOnBookingDate=${FILTER_DEAL_OBJ.searchOnBookingDate}" />'
+                <a style="background:black;padding:2px 5px;border-radius:2px;color:#ffa500" href='<c:out value="${next}&sortBy=${sortBy}&dealStatus=${FILTER_DEAL_OBJ.dealStatus}&startDate=${FILTER_DEAL_OBJ.startDate}&endDate=${FILTER_DEAL_OBJ.endDate}&searchOnBookingDate=${FILTER_DEAL_OBJ.searchOnBookingDate}" />'
                     class="pn next">Next</a>
             </c:if>
         </div>

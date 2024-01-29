@@ -36,7 +36,7 @@ body::before {
 <body>
 	<div class="form_viewDeal container">
 		<div class="form_viewDeal_wrapper">
-			<h1 style="font-size: 25px; color: #32cd32">View Deal</h1>
+			<h1 style="font-size: 25px; color: #32cd32">View Deal </h1>
 			<div align="center">
 				<b> <font color="green"> ${Success} </font> <font color="red">
 						${Error}</font>
@@ -107,7 +107,7 @@ body::before {
 						</div>
 						<div class="form_viewDeal_wrapper_data_l1"></div>
 					</div>
-					<h1 style="text-align: start;">Services Confirmed</h1>
+					<h1 style="text-align: start;" class="lb">Services Confirmed</h1>
 					<div class="form_viewDeal_wrapper_data_line_ser ">
 						<table style="width: 100%">
 							<tr>
@@ -119,14 +119,14 @@ body::before {
 									<td style="text-align: start"><label> <c:choose>
 												<c:when
 													test='${fn:contains(DealObject.serviceWorkLoadList, listValue.serviceCode)}'>
-													<form:checkbox path="serviceList"
+													<form:checkbox class="ch_c" path="serviceList"
 														value="${listValue.serviceCode}" checked="checked"
 														disabled="true" />
 													<c:out value="${listValue.serviceName}" />
 													<span class="checkmark"></span>
 												</c:when>
 												<c:otherwise>
-													<form:checkbox path="serviceList"
+													<form:checkbox class="ch_c" path="serviceList"
 														value="${listValue.serviceCode}" disabled="true" />
 													<c:out value="${listValue.serviceName}" />
 													<span class="checkmark"></span>

@@ -13,7 +13,25 @@
     <script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
     <script src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
 </head>
-<body style="background: url(${pageContext.request.contextPath}/resources/images/revamped/assin_to_me_tasks_bg.jpg);background-size: cover; background-repeat: no-repeat; background-position: center center;background-attachment: fixed;">
+<style>
+
+        body::before {
+            content: "";
+            background-image:   url(${pageContext.request.contextPath}/resources/images/revamped/assin_to_me_tasks_bg.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5; /* Adjust the opacity value as needed (0.0 to 1.0) */
+            z-index: -1;
+        }
+</style>
+<body>
 
 <div class="container" style="margin-top:115px; ">
    
@@ -31,7 +49,7 @@
             <input type="hidden" name="visaPurpose" value="${VISA_OBJ.visaPurpose}" />
             <div class="admin_visa_update_fr container">
                 <div class="admin_visa_update_fr_wrapper">
-                    <h1 style="font-size: 25px;margin:15px 0;text-align: center;">Country Name : <span style="font-size: 25px;color:#32cd32  ">
+                    <h1 style="font-size: 25px;margin:15px 0;text-align: center;">Country Name: <span style="font-size: 25px;color:#32cd32  ">
                             ${VISA_OBJ.countryName}</span> </h1>
                     <div class="admin_visa_update_fr_wrapper_data">
                         <div class="admin_visa_update_fr_wrapper_data_line" style="margin-bottom:10px">
@@ -108,7 +126,7 @@
         <div class="abc_fom_wrapper">
             <h1 style="font-size: 25px;margin:10px 0">Country Name : <span style="font-size: 25px;margin:10px 0">${VISA_OBJ.countryName}</span> </h1>
             <div class="abc_fom_wrapper_data">
-                <div class="abc_fom_wrapper_data_line bc-clr">
+                <div class="abc_fom_wrapper_data_line a">
                     <div class="abc_fom_wrapper_data_l1">
                         <label for="" class="lb">Consulate City</label>
                         <p>${VISA_OBJ.cityName}</p>
@@ -127,7 +145,7 @@
                         <p>${VISA_PURPOSE.get(VISA_OBJ.visaPurpose)}</p>
                     </div>
                 </div>
-                <div class="abc_fom_wrapper_data_line bc-clr">
+                <div class="abc_fom_wrapper_data_line a">
                     <div class="abc_fom_wrapper_data_l1">
                         <label for="" class="lb">Standrad Cost</label>
                         <p>${VISA_OBJ.standardCost}</p>
@@ -145,7 +163,7 @@
                         <p>${VISA_OBJ.processingTime} Days</p>
                     </div>
                 </div>
-                <div class="abc_fom_wrapper_data_line bc-clr">
+                <div class="abc_fom_wrapper_data_line a">
                     <div class="abc_fom_wrapper_data_l1_rem">
                         <label for="" class="lb">Internal Remarks</label>
                         <p>${VISA_OBJ.internalRemarks}</p>
@@ -155,7 +173,7 @@
                         <p>${VISA_OBJ.otherCosts}</p>
                     </div>
                 </div>
-                <div class="abc_fom_wrapper_data_line bc-clr">
+                <div class="abc_fom_wrapper_data_line a">
                     <div class="abc_fom_wrapper_data_l1_rems">
                         <label for="" class="lb">Remarks</label>
                         <p>${VISA_OBJ.remarks}</p>

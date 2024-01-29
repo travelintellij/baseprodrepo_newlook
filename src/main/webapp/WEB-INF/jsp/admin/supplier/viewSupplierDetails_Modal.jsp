@@ -14,7 +14,7 @@
 
             <body>
                 <div class="view_supplier_details container">
-                    <div class="view_supplier_details_wrapper" style="margin-top:25px;background:#94d2bd;box-shadow: 0 0 10px 5px #94d2bd, 0 0 20px 10px #94d2bd">
+                    <div class="view_supplier_details_wrapper" style=";margin-top:-25px;background:#94d2bd;box-shadow: 0 0 10px 5px #94d2bd, 0 0 20px 10px #94d2bd">
                     <h1 style="text-align:center;font-size:30px;margin-bottom:10px;color:black">Supplier Details </h1>
                         <div align="center"><b>
                                 <font color="green"> ${Success} </font>
@@ -114,32 +114,32 @@
                                 <div class="view_supplier_details_data_line4"  style="margin-bottom:10px;background:#d8e2dc">
                                     <div class="view_supplier_details_data_line3_service_offered" style="color:black">
                                        <h1 style="color:black;font-weight:bold"> Service Offerred</h1>
-                                                Flight <form:checkbox path="flight" disabled="true"  style="margin-right:10px"/><span
+                                                Flight <form:checkbox class="ch_c" path="flight" disabled="true"  style="margin-right:10px"/><span
                                                             class="checkmark"></span>
                                                     
-                                                Hotel<form:checkbox path="hotel" disabled="true" style="margin-right:10px;margin-left:5px" /><span
+                                                Hotel<form:checkbox class="ch_c" path="hotel" disabled="true" style="margin-right:10px;margin-left:5px" /><span
                                                             class="checkmark"></span>
                                                  
-                                                Transfers<form:checkbox path="transfers" disabled="true" style="margin-right:10px;margin-left:5px"/><span
+                                                Transfers<form:checkbox class="ch_c" path="transfers" disabled="true" style="margin-right:10px;margin-left:5px"/><span
                                                             class="checkmark"></span>
                                                 
        
-                                           SightSeeing<form:checkbox path="sightseeing" disabled="true" style="margin-right:10px;margin-left:5px"/><span
+                                           SightSeeing<form:checkbox class="ch_c" path="sightseeing" disabled="true" style="margin-right:10px;margin-left:5px"/><span
                                                             class="checkmark"></span>
                                                     
-                                               Visa<form:checkbox path="visa" disabled="true" style="margin-right:10px;margin-left:5px"/><span
+                                               Visa<form:checkbox class="ch_c" path="visa" disabled="true" style="margin-right:10px;margin-left:5px"/><span
                                                             class="checkmark"></span>
                                                    
-                                               Insurance<form:checkbox path="insurance" disabled="true" style="margin-right:10px;margin-left:5px"/><span
+                                               Insurance<form:checkbox class="ch_c" path="insurance" disabled="true" style="margin-right:10px;margin-left:5px"/><span
                                                             class="checkmark"></span>
                                                     
-                                           Package<form:checkbox path="landPackage" disabled="true" style="margin-right:10px;margin-left:5px"/><span
+                                           Package<form:checkbox class="ch_c" path="landPackage" disabled="true" style="margin-right:10px;margin-left:5px"/><span
                                                             class="checkmark"></span>
                                                   
-                                                Cruise<form:checkbox path="cruise" disabled="true" style="margin-right:10px;margin-left:5px"/><span
+                                                Cruise<form:checkbox class="ch_c" path="cruise" disabled="true" style="margin-right:10px;margin-left:5px"/><span
                                                             class="checkmark"></span>
                                               
-                                          Others <form:checkbox path="others" disabled="true" style="margin-right:10px;margin-left:5px"/><span
+                                          Others <form:checkbox class="ch_c" path="others" disabled="true" style="margin-right:10px;margin-left:5px"/><span
                                                             class="checkmark"></span>
                                                     
                                            

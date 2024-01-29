@@ -12,9 +12,25 @@
     <title>Due Today ticket</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
 </head>
+<style>
 
-<body
-    style="background: url(${pageContext.request.contextPath}/resources/images/revamped/due_today_ticket.jpg);background-size: cover; background-repeat: no-repeat; background-position: center center;background-attachment: fixed;">
+        body::before {
+            content: "";
+            background-image:   url(${pageContext.request.contextPath}/resources/images/revamped/due_today_ticket.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5; /* Adjust the opacity value as needed (0.0 to 1.0) */
+            z-index: -1;
+        }
+</style>
+<body>
 
     <div class="cnt_options">
         <a href="view_create_ticket_form_user">Create Ticket</a>

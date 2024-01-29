@@ -63,11 +63,15 @@
                     <div class="form_view_aCMQuotatioN container">
                     <br>
 
+<div style="position:absolute;background:black;color:white;width:300px;right:0;padding:10px 5px;border-radius:5px">
+
+                           
+
                         <!-- ###############  small box starts ###########  -->
                         <form:form modelAttribute="QTN_OBJ" action="create_create_lead_quotation">
-                            <div class="form_view_aCMQuotation_fb_wrp">
-                            <h1 class="hd">Configure Quotation Parameters</h1>
-                                <div class="form_view_aCMQuotation_fbw">
+
+                           
+                                <div class="form_view_aCMQuotation_fbw " style="background:#588157">
                                     <div class="form_view_aCMQuotation_fbwls">
                                         <label for="" class="lb">Quotation Id</label>
                                         <p>${QTN_OBJ.quotationId}</p>
@@ -77,7 +81,7 @@
                                         <p>${QTN_OBJ.version}</p>
                                     </div>
                                 </div>
-                            </div>
+                       
                         </form:form>
                         <!-- ###############  small box ends ###########  -->
                         <form:form modelAttribute="MANUAL_CNF"
@@ -90,36 +94,32 @@
                             <form:hidden path="totalQuotationAmount" />
                             <form:hidden path="remarks" />
                             <!-- ###############  buttons box starts ###########  -->
-                            <div class="form_view_aCMQuotation_btnss">
-                            <p style="background:black;text-align:center;width:500px;margin:0 auto">
-                             <font color="#32cd32"> ${Success} </font>
-                                <font color="red"> ${Error}</font></p>
-                               
-                                <div class="form_view_aCMQuotation_btns_wrapper due_today_task_data_btnss">
+                            <div  style="border:2px solid black">
+                                <div class="form_view_aCMQuotation_btns_wrapper ">
                                     <c:if test="${QUOTATION_EXISTS eq true}">
-                                        <a id="myBtn[${filteredLeads.leadId}]"
+                                        <a class="a"  id="myBtn[${filteredLeads.leadId}]"
                                             href="form_view_quotation_modal?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId}&manualConfigurationQuotationId=${MANUAL_CNF.manualConfigurationQuotationId}"
                                             target="_new"><input type="button" value="Old View / Print Quotation" /></a>
-                                        <input type="submit" name="Generate Quotation" id="Generate Quotation"
+                                        <input class="a" type="submit" name="Generate Quotation" id="Generate Quotation"
                                             Value="Generate Quotation" />
-                                        <a href="viewQuotation?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId }&version=${QTN_OBJ.version}"
+                                        <a class="a"  href="viewQuotation?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId }&version=${QTN_OBJ.version}"
                                             target="_new"><input type="button" value="View" /></a>
-                                        <a
+                                        <a class="a" 
                                             href="downloadQuotation?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId }&version=${QTN_OBJ.version}"><input
                                                 type="button" value="Download" /></a>
-                                        <a
+                                        <a class="a"
                                             href="form_view_email_quotation?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId }&version=${QTN_OBJ.version}"><input
                                                 type="button" value="Send Email" /></a>
-                                        <a href="view_lead_quotations_list?leadId=${QTN_OBJ.leadEntity.leadId}"><input
+                                        <a  class="a" href="view_lead_quotations_list?leadId=${QTN_OBJ.leadEntity.leadId}"><input
                                                 type="button" value="List Versions" /></a>
                                     </c:if>
                                     <c:if test="${QUOTATION_EXISTS eq false}">
-                                        <a id="myBtn[${filteredLeads.leadId}]"
+                                        <a class="a" id="myBtn[${filteredLeads.leadId}]"
                                             href="form_view_quotation_modal?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId}&manualConfigurationQuotationId=${MANUAL_CNF.manualConfigurationQuotationId}"
                                             target="_new"><input type="button" value="Old View / Print Quotation" /></a>
                                         <input type="submit" name="Generate Quotation" id="Generate Quotation"
                                             Value="Generate Quotation" />
-                                        <a href="view_lead_quotations_list?leadId=${QTN_OBJ.leadEntity.leadId}"><input
+                                        <a class="a" href="view_lead_quotations_list?leadId=${QTN_OBJ.leadEntity.leadId}"><input
                                                 type="button" value="List Versions" /></a>
                                     </c:if>
                                 </div>
@@ -127,20 +127,25 @@
                             <!-- ###############  buttons box ends ###########  -->
 
                             <!-- ############### 2 buttons box starts ###########  -->
-                            <div class="form_vaccmquotation_btns2" >
-                                <div class="form_view_aCMQuotation_2_btns_wrapper due_today_task_data_btnss" style="display:flex;justify-content:center">
-                                    <a href="#"><input type="button" value="General Configuration Section" /></a>
-                                    <a
-                                        href="form_view_cost_remarks_configure_quotation_details?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId }"><input
+                            <div style="border:2px solid black">
+                                <div class="form_view_aCMQuotation_btns_wrapper" style="display:flex;justify-content:center;flex-direction:column">
+                                    <a class="a" href="#"><input type="button" value="General Configuration Section" /></a>
+                                    <a class="a" href="form_view_cost_remarks_configure_quotation_details?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId }"><input
                                             type="button" value="Costing & Remarks Section" /></a>
                                 </div>
                             </div>
                             <!-- ############### 2 buttons box ends ###########  -->
+</div>
+
 
                             <!-- ############### last box starts ###########  -->
                             <div class="form_view_aCMQuotation_btns">
+                            
                                 <div class="form_view_aCMQuotation_lb_wr">
-
+                                 <p style="background:black;text-align:center;width:500px;margin:0 auto">
+                             <font color="orangered"> ${Success} </font>
+                                <font color="red"> ${Error}</font></p>
+                                <h1 class="hd">Configure Quotation Parameters</h1>
                                     <div class="form_view_aCMQuotation_lb_wr_f " style="margin:10px auto">
                                         <div class="form_view_aCMQuotation_lb_wr_f_sb">
                                             <label for="" class="lb">Quotation Partner Header</label>

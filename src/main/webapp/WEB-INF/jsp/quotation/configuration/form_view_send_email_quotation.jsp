@@ -55,69 +55,81 @@
                 <div class="afd">
 <jsp:include page="../_quotationServicesMenu.jsp" />
 </div>
-    <div class="form_vaccmquotation container">
-        <!-- ########### first box  starts #########  -->
-        <form:form modelAttribute="QTN_OBJ" action="create_create_lead_quotation">
-            <div class="form_vaccmquotation_fbox_wrapper">
-                <h1 class="hd">Configure Quotation parameters</h1>
-                <div class="form_vaccmquotation_fbox">
-                    <div class="form_vaccmquotation_fbox1">
-                        <label for="" class="lb">Quotation Id</label>
-                        <p>123</p>
-                    </div>
-                    <div class="form_vaccmquotation_fbox1">
-                        <label for="" class="lb">Version Id</label>
-                        <p>123</p>
-                    </div>
-                </div>
-            </div>
-        </form:form>
+<br>
+<div style="position:absolute;background:black;color:white;width:300px;right:0;padding:10px 5px;border-radius:5px">
 
-        <form:form modelAttribute="MANUAL_CNF" action="create_update_generate_manual_configuration_quotation">
-            <input type="hidden" name="leadId" value="${QTN_OBJ.leadEntity.leadId}" />
-            <input type="hidden" name="quotationId" value="${QTN_OBJ.quotationId}" />
-            <input type="hidden" name="manualConfigurationQuotationId"
-                value="${MANUAL_CNF.manualConfigurationQuotationId}" />
-            <!-- ########### first box  ends #########  -->
-            <!-- ########### second box  starts #########  -->
-            <div class="form_vaccmquotation_btns due_today_task_data_btnss">
-                <c:if test="${QUOTATION_EXISTS eq true}">
-                    <a id="myBtn[${filteredLeads.leadId}]"
-                        href="form_view_quotation_modal?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId}&manualConfigurationQuotationId=${MANUAL_CNF.manualConfigurationQuotationId}"
-                        target="_new"><input type="button" value="Old View / Print Quotation" /></a>
-                    <input type="submit" name="Generate Quotation" id="Generate Quotation" Value="Generate Quotation" />
-                    <a href="viewQuotation?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId }&version=${QTN_OBJ.version}"
-                        target="_new"><input type="button" value="View" /></a>
-                    <a
-                        href="downloadQuotation?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId }&version=${QTN_OBJ.version}"><input
-                            type="button" value="Download"  /> </a>
-                    <a
-                        href="form_view_email_quotation?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId }&version=${QTN_OBJ.version}"><input
-                            type="button" value="Send Email" /></a></td>
-                    <a href="view_lead_quotations_list?leadId=${QTN_OBJ.leadEntity.leadId}"><input type="button"
-                                value="List Versions" /></a>
-                </c:if>
-                <c:if test="${QUOTATION_EXISTS eq false}">
-                    <td colspan="2">
-                        <a id="myBtn[${filteredLeads.leadId}]"
-                            href="form_view_quotation_modal?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId}&manualConfigurationQuotationId=${MANUAL_CNF.manualConfigurationQuotationId}"
-                            target="_new"><input type="button" value="Old View / Print Quotation" /></a>
-                    </td>
-                    <td colspan="2"><input type="submit" name="Generate Quotation" id="Generate Quotation"
-                            Value="Generate Quotation" /></td>
-                    <td colspan="2"><a href="view_lead_quotations_list?leadId=${QTN_OBJ.leadEntity.leadId}"><input
-                                type="button" value="List Versions" /></a>
-                </c:if>
-            </div>
-            <!-- ########### second box  ends #########  -->
-            <!-- ########### third box  starts #########  -->
-            <div class="form_vaccmquotation_btns2 due_today_task_data_btnss">
-                <a
-                    href="form_view_configure_quotation_details?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId }"><input
-                        type="button" value="General Configuration Section" /></a>
-                <a href="#"><input type="button" value="Costing & Remarks Section" /></a>
-            </div>
-            <!-- ########### third box  enss #########  -->
+                           
+
+                        <!-- ###############  small box starts ###########  -->
+                        <form:form modelAttribute="QTN_OBJ" action="create_create_lead_quotation">
+
+                           
+                                <div class="form_view_aCMQuotation_fbw " style="background:#588157">
+                                    <div class="form_view_aCMQuotation_fbwls">
+                                        <label for="" class="lb">Quotation Id</label>
+                                        <p>${QTN_OBJ.quotationId}</p>
+                                    </div>
+                                    <div class="form_view_aCMQuotation_fbwls">
+                                        <label for="" class="lb">Version Id</label>
+                                        <p>${QTN_OBJ.version}</p>
+                                    </div>
+                                </div>
+                       
+                        </form:form>
+                        <!-- ###############  small box ends ###########  -->
+                        <form:form modelAttribute="MANUAL_CNF"
+                            action="create_update_generate_manual_configuration_quotation">
+
+                            <input type="hidden" name="leadId" value="${QTN_OBJ.leadEntity.leadId}" />
+                            <input type="hidden" name="quotationId" value="${QTN_OBJ.quotationId}" />
+                            <input type="hidden" name="manualConfigurationQuotationId"
+                                value="${MANUAL_CNF.manualConfigurationQuotationId}" />
+                            <form:hidden path="totalQuotationAmount" />
+                            <form:hidden path="remarks" />
+                            <!-- ###############  buttons box starts ###########  -->
+                            <div  style="border:2px solid black">
+                                <div class="form_view_aCMQuotation_btns_wrapper ">
+                                    <c:if test="${QUOTATION_EXISTS eq true}">
+                                        <a class="a"  id="myBtn[${filteredLeads.leadId}]"
+                                            href="form_view_quotation_modal?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId}&manualConfigurationQuotationId=${MANUAL_CNF.manualConfigurationQuotationId}"
+                                            target="_new"><input type="button" value="Old View / Print Quotation" /></a>
+                                        <input class="a" type="submit" name="Generate Quotation" id="Generate Quotation"
+                                            Value="Generate Quotation" />
+                                        <a class="a"  href="viewQuotation?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId }&version=${QTN_OBJ.version}"
+                                            target="_new"><input type="button" value="View" /></a>
+                                        <a class="a" 
+                                            href="downloadQuotation?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId }&version=${QTN_OBJ.version}"><input
+                                                type="button" value="Download" /></a>
+                                        <a class="a"
+                                            href="form_view_email_quotation?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId }&version=${QTN_OBJ.version}"><input
+                                                type="button" value="Send Email" /></a>
+                                        <a  class="a" href="view_lead_quotations_list?leadId=${QTN_OBJ.leadEntity.leadId}"><input
+                                                type="button" value="List Versions" /></a>
+                                    </c:if>
+                                    <c:if test="${QUOTATION_EXISTS eq false}">
+                                        <a class="a" id="myBtn[${filteredLeads.leadId}]"
+                                            href="form_view_quotation_modal?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId}&manualConfigurationQuotationId=${MANUAL_CNF.manualConfigurationQuotationId}"
+                                            target="_new"><input type="button" value="Old View / Print Quotation" /></a>
+                                        <input type="submit" name="Generate Quotation" id="Generate Quotation"
+                                            Value="Generate Quotation" />
+                                        <a class="a" href="view_lead_quotations_list?leadId=${QTN_OBJ.leadEntity.leadId}"><input
+                                                type="button" value="List Versions" /></a>
+                                    </c:if>
+                                </div>
+                            </div>
+                            <!-- ###############  buttons box ends ###########  -->
+
+                            <!-- ############### 2 buttons box starts ###########  -->
+                            <div style="border:2px solid black">
+                                <div class="form_view_aCMQuotation_btns_wrapper" style="display:flex;justify-content:center;flex-direction:column">
+                                    <a class="a" href="#"><input type="button" value="General Configuration Section" /></a>
+                                    <a class="a" href="form_view_cost_remarks_configure_quotation_details?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId }"><input
+                                            type="button" value="Costing & Remarks Section" /></a>
+                                </div>
+                            </div>
+                            <!-- ############### 2 buttons box ends ###########  -->
+</div>
+    <div class="form_vaccmquotation container">
             <!-- ########### emailer box  starts #########  -->
             <div class="form_view_send_email_quotation_emailer">
                 <div class="form_view_send_email_quotation_emailer_wrapper">

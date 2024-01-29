@@ -131,7 +131,7 @@ z-index: 5;
 			<td  style="width:30%;">
 				<table>
 				<tr height="50px">
-					<th>Supplier Name</th>
+					<th>Supplier Name </th>
 					<td>${SUPPLIER_OBJ.supplierName}</td>
 				</tr>
 				<tr height="50px">

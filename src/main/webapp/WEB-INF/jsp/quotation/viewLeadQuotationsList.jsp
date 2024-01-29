@@ -53,13 +53,13 @@
                         <div class="viewLeadQuotationsList_wrapper_data_l1">
                             <label for="">Is Qualified</label>
                             <p>
-                                <form:checkbox path="qualified" disabled="true" />
+                                <form:checkbox class="ch_c" path="qualified" disabled="true" />
                             </p>
                         </div>
                         <div class="viewLeadQuotationsList_wrapper_data_l1">
                             <label for="">Is Flagged</label>
                             <p>
-                                <form:checkbox path="flagged" disabled="true" />
+                                <form:checkbox class="ch_c" path="flagged" disabled="true" />
                             </p>
                         </div>
                         <div class="viewLeadQuotationsList_wrapper_data_l1">
@@ -120,39 +120,39 @@
                             <h1 style="text-align: left;color:#FABA08">Select Services</h1>
                             <div class="lq-sers">
                                 <div class="viewLeadQuotationsList_wrapper_data_l1">
-                                    <form:checkbox path="landPackage" name="landPackage;" disabled="true" />
+                                    <form:checkbox class="ch_c" path="landPackage" name="landPackage;" disabled="true" />
                                     <label for="">Package</label>
                                 </div>
                                 <div class="viewLeadQuotationsList_wrapper_data_l1">
-                                    <form:checkbox path="flight" name="flight" disabled="true" />
+                                    <form:checkbox class="ch_c" path="flight" name="flight" disabled="true" />
                                     <label for="">Flight</label>
                                 </div>
                                 <div class="viewLeadQuotationsList_wrapper_data_l1">
-                                    <form:checkbox path="hotel" name="hotel" disabled="true" />
+                                    <form:checkbox class="ch_c" path="hotel" name="hotel" disabled="true" />
                                     <label for="">Hotal</label>
                                 </div>
                                 <div class="viewLeadQuotationsList_wrapper_data_l1">
-                                    <form:checkbox path="transfers" name="transfers" disabled="true" />
+                                    <form:checkbox class="ch_c" path="transfers" name="transfers" disabled="true" />
                                     <label for="">Transfers</label>
                                 </div>
                                 <div class="viewLeadQuotationsList_wrapper_data_l1">
-                                    <form:checkbox path="sightseeing" name="sightseeing" disabled="true" />
+                                    <form:checkbox class="ch_c" path="sightseeing" name="sightseeing" disabled="true" />
                                     <label for="">Sightseeing</label>
                                 </div>
                                 <div class="viewLeadQuotationsList_wrapper_data_l1">
-                                    <form:checkbox path="visa" name="visa" disabled="true" />
+                                    <form:checkbox class="ch_c" path="visa" name="visa" disabled="true" />
                                     <label for="">Visa</label>
                                 </div>
                                 <div class="viewLeadQuotationsList_wrapper_data_l1">
-                                    <form:checkbox path="insurance" name="insurance" disabled="true" />
+                                    <form:checkbox class="ch_c" path="insurance" name="insurance" disabled="true" />
                                     <label for="">Insurance</label>
                                 </div>
                                 <div class="viewLeadQuotationsList_wrapper_data_l1">
-                                    <form:checkbox path="cruise" name="cruise" disabled="true" />
+                                    <form:checkbox class="ch_c" path="cruise" name="cruise" disabled="true" />
                                     <label for="">Cruise</label>
                                 </div>
                                 <div class="viewLeadQuotationsList_wrapper_data_l1">
-                                    <form:checkbox path="others" name="others" disabled="true" />
+                                    <form:checkbox class="ch_c" path="others" name="others" disabled="true" />
                                     <label for="">Others</label>
                                 </div>
                             </div>

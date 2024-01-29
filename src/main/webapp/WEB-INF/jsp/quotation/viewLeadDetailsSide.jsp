@@ -31,7 +31,7 @@
                         <font color="red"> ${Error}</font>
                     </b></div>
             <div class="createNewQuotation_wrapper_data">
-                <div class="createNewQuotation_wrapper_data_line"  style="background: #6082B6;margin-bottom:5px">
+                <div class="createNewQuotation_wrapper_data_line a"  style="margin-bottom:5px">
                     <div class="createNewQuotation_wrapper_data_l1">
                         <label for="">Lead Id</label>
                         <p>Q-${String.format("%04d",LEAD_OBJ.leadId)}-${LEAD_OBJ.leadSourceShortName }</p>
@@ -49,7 +49,7 @@
                         <p>${LEAD_OBJ.destinationName}</p>
                     </div>
                 </div>
-                <div class="createNewQuotation_wrapper_data_line"  style="background: #6082B6;margin-bottom:5px">
+                <div class="createNewQuotation_wrapper_data_line a"  style="margin-bottom:5px">
                     <div class="createNewQuotation_wrapper_data_l1">
                         <label for="">Adults</label>
                         <p>${LEAD_OBJ.adults}</p>
@@ -67,7 +67,7 @@
                         <p><fmt:formatDate value="${LEAD_OBJ.travelEndDate}" pattern="dd-MM-yyyy" /></p>
                     </div>
                 </div>
-                <div class="createNewQuotation_wrapper_data_line"  style="background: #6082B6;margin-bottom:5px">
+                <div class="createNewQuotation_wrapper_data_line a"  style="margin-bottom:5px">
                     <div class="createNewQuotation_wrapper_data_l3">
                         <label for="">Lead Source</label>
                         <p>${LEAD_OBJ.leadSourceName}</p>
@@ -82,39 +82,39 @@
                     <div class="createNewQuotation_ser">
                         <div class="createNewQuotation_ser_box">
                             <span for="">Package</span>
-                        <form:checkbox path="landPackage" name="landPackage;" disabled="true" />
+                        <form:checkbox class="ch_c" path="landPackage" name="landPackage;" disabled="true" />
                         </div>
                         <div class="createNewQuotation_ser_box">
                             <span for="">Flight</span>
-                        <form:checkbox path="flight" name="flight" disabled="true" />
+                        <form:checkbox class="ch_c" path="flight" name="flight" disabled="true" />
                         </div>
                         <div class="createNewQuotation_ser_box">
                             <span for="">Hotal</span>
-                        <form:checkbox path="hotel" name="hotel" disabled="true" />
+                        <form:checkbox class="ch_c" path="hotel" name="hotel" disabled="true" />
                         </div>
                         <div class="createNewQuotation_ser_box">
                             <span for="">Transfers</span>
-                            <form:checkbox path="transfers" name="transfers" disabled="true" />
+                            <form:checkbox class="ch_c" path="transfers" name="transfers" disabled="true" />
                         </div>
                         <div class="createNewQuotation_ser_box">
                             <span for="">Sightseeing</span>
-                        <form:checkbox path="sightseeing" name="sightseeing" disabled="true" />
+                        <form:checkbox class="ch_c" path="sightseeing" name="sightseeing" disabled="true" />
                         </div>
                         <div class="createNewQuotation_ser_box">
                             <span for="">Visa</span>
-                        <form:checkbox path="visa" name="visa" disabled="true" />
+                        <form:checkbox class="ch_c" path="visa" name="visa" disabled="true" />
                         </div>
                         <div class="createNewQuotation_ser_box">
                             <span for="">Insurance</span>
-                            <form:checkbox path="insurance" name="insurance" disabled="true" />
+                            <form:checkbox class="ch_c" path="insurance" name="insurance" disabled="true" />
                         </div>
                         <div class="createNewQuotation_ser_box">
                             <span for="">Cruise</span>
-                        <form:checkbox path="cruise" name="cruise" disabled="true" />
+                        <form:checkbox class="ch_c" path="cruise" name="cruise" disabled="true" />
                         </div>
                         <div class="createNewQuotation_ser_box">
                             <span for="">Others</span>
-                            <form:checkbox path="others" name="others" disabled="true" />
+                            <form:checkbox class="ch_c" path="others" name="others" disabled="true" />
                         </div>
                     </div>
                 </div>

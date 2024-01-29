@@ -11,7 +11,25 @@
     <title>assigned to me</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
 </head>
-<body style="background: url(${pageContext.request.contextPath}/resources/images/revamped/assin_to_me_tasks_bg.jpg);background-size: cover; background-repeat: no-repeat; background-position: center center;background-attachment: fixed;">
+<style>
+
+        body::before {
+            content: "";
+            background-image:  url(${pageContext.request.contextPath}/resources/images/revamped/assin_to_me_tasks_bg.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5; /* Adjust the opacity value as needed (0.0 to 1.0) */
+            z-index: -1;
+        }
+</style>
+<body>
 
 
     <div class="cnt_options">
@@ -95,9 +113,9 @@
                 <tr>
                     <c:forEach items="${OPEN_TASK_LIST}" var="openTaskList">
                         <tr>
-                            <td style="width:10%;">${openTaskList.taskId }</td>
-                            <td style="width:10%;">${openTaskList.taskTitle }</td>
-                            <td style="width:20%;">
+                            <td style="width:10%;border-bottom:2px solid #ffa500;border-right:2px solid #ffa500">${openTaskList.taskId }</td>
+                            <td style="width:10%;border-bottom:2px solid #ffa500;border-right:2px solid #ffa500">${openTaskList.taskTitle }</td>
+                            <td style="width:20%;border-bottom:2px solid #ffa500;border-right:2px solid #ffa500">
                                 <c:if test="${openTaskList.dealConfirmationId != 0}">
                                     UDN-${openTaskList.dealConfirmationId}
                                 </c:if>
@@ -105,10 +123,10 @@
                                     None
                                 </c:if>
                             </td>
-                            <td style="width:15%;"> ${openTaskList.taskOwnerName}</td>
-                            <td style="width:10%;">${openTaskList.taskPriority}</td>
-                            <td style="width:15%;">${localDateTimeFormat.format(openTaskList.taskDueDate)}</td>
-                            <td style="width:20%;">
+                            <td style="width:15%;border-bottom:2px solid #ffa500;border-right:2px solid #ffa500"> ${openTaskList.taskOwnerName}</td>
+                            <td style="width:10%;border-bottom:2px solid #ffa500;border-right:2px solid #ffa500">${openTaskList.taskPriority}</td>
+                            <td style="width:15%;border-bottom:2px solid #ffa500;border-right:2px solid #ffa500">${localDateTimeFormat.format(openTaskList.taskDueDate)}</td>
+                            <td style="width:20%;border-bottom:2px solid #ffa500;">
                                 <a href="view_view_my_assigned_task?taskId=${openTaskList.taskId }"><input type="button"
                                        style="color:red;background:transparent;border:none;outline:none"  value="View" /></a> |
                                 <a href="view_form_edit_my_assigned_task?taskId=${openTaskList.taskId }"><input type="button"
@@ -121,13 +139,13 @@
                 </tr>
             </tbody>
         </table>
-        <div id="pagination" align="right">
-            Page:
+        <div id="pagination" align="center" style="margin-top:10px">
+         <p style="color:#ffa500;background:black;display:inline-block;padding:2px;border-radius:2px">Page : </p>
             <c:url value="view_open_my_assigned_task_form_user" var="prev">
                 <c:param name="page" value="${page-1}" />
             </c:url>
             <c:if test="${page > 0}">
-                <a href="<c:out value="
+                <a style="background:black;padding:2px 5px;border-radius:2px;color:#ffa500" href="<c:out value="
                     ${prev}&sortBy=${sortBy}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&dateFrom=${dateFrom}&dateTo=${dateTo}&taskPriority=${taskPriority}" />"
                 class="pn prev">Prev</a>
             </c:if>
@@ -135,13 +153,13 @@
             <c:forEach begin="1" end="${maxPages}" step="1" varStatus="i">
                 <c:choose>
                     <c:when test="${(page+1) == i.index}">
-                        <span>${i.index}</span>
+                        <span style="background:black;padding:2px 5px;border-radius:2px;color:white">${i.index}</span>
                     </c:when>
                     <c:otherwise>
                         <c:url value="view_open_my_assigned_task_form_user" var="url">
                             <c:param name="page" value="${i.index-1}" />
                         </c:url>
-                        <a
+                        <a style="background:white;padding:2px 5px;border-radius:2px;color:black"
                             href='<c:out value="${url}&sortBy=${sortBy}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}" />'>${i.index}</a>
                     </c:otherwise>
                 </c:choose>
@@ -150,7 +168,7 @@
                 <c:param name="page" value="${page + 1}" />
             </c:url>
             <c:if test="${page + 1 < maxPages}">
-                <a href='<c:out value="${next}&sortBy=${sortBy}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&dateFrom=${dateFrom}&dateTo=${dateTo}&taskPriority=${taskPriority}" />'
+                <a style="background:black;padding:2px 5px;border-radius:2px;color:#ffa500" href='<c:out value="${next}&sortBy=${sortBy}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&dateFrom=${dateFrom}&dateTo=${dateTo}&taskPriority=${taskPriority}" />'
                     class="pn next">Next</a>
             </c:if>
         </div>

@@ -2129,6 +2129,7 @@ footer {
     background: black;
     color: white;
     border-radius: 10px;
+    overflow:auto;
 }
 
 .view_supplier_details_data1 {
@@ -2365,7 +2366,7 @@ footer {
 .view_task_wrapper {
     margin-top: 115px;
     padding: 20px 10px;
-    background: rgba(0, 0, 0, 0.716);
+    background: rgba(0, 0, 0, 0.9);
     color: white;
     border-radius: 10px;
 }
@@ -2739,7 +2740,7 @@ display: block;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 0.689);
+    background: rgba(0, 0, 0, 0.9);
     padding: 10px;
     border-radius: 10px;
     margin-top: 115px;
@@ -2818,7 +2819,7 @@ display: block;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 0.689);
+    background: rgba(0, 0, 0, 0.9);
     padding: 10px;
     border-radius: 10px;
     margin-top: 20px;
@@ -2838,7 +2839,7 @@ display: block;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 0.689);
+    background: rgba(0, 0, 0, 0.9);
     padding: 10px;
     border-radius: 10px;
     margin-top: 115px;
@@ -2869,7 +2870,7 @@ display: block;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 0.689);
+    background: rgba(0, 0, 0, 0.9);
     padding: 10px;
     border-radius: 10px;
     margin-top: 115px;
@@ -6878,7 +6879,7 @@ color: white;
 
 /* ########################  */
 .form_view_aCMQuotation_fb_wrp {
-    width: 600px;
+    width: 200px;
     color: white;
     text-align: center;
     border-collapse: collapse;
@@ -6899,19 +6900,32 @@ color: white;
 }
 
 .form_view_aCMQuotation_btns_wrapper {
-    width: auto;
-    color: white;
-    text-align: center;
-    border-collapse: collapse;
-    border: none;
-    background: rgba(0, 0, 0, 9);
-    padding: 10px;
-    border-radius: 10px;
-    margin: 50px auto;
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
+    align-items: center;
 }
-
+.form_view_aCMQuotation_btns_wrapper a input{
+	background:transparent;
+border:none;
+outline:none;
+text-align: center;
+cursor:pointer;
+color:white;
+transition:all 0.2s ease-in-out
+}
+.form_view_aCMQuotation_btns_wrapper input{
+	background:transparent;
+border:none;
+outline:none;
+text-align: center;
+cursor:pointer;
+color:white;
+transition:all 0.2s ease-in-out
+}
+.form_view_aCMQuotation_btns_wrapper a input:hover ,  .form_view_aCMQuotation_btns_wrapper input:hover{
+	color:orangered
+}
 
 .form_view_aCMQuotation_lb_wr {
     color: white;
@@ -6921,7 +6935,7 @@ color: white;
     background: rgba(0, 0, 0, 9);
     padding: 10px;
     border-radius: 10px;
-    margin: 50px auto;
+    margin: 0 auto;
     width: 800px;
 }
 
@@ -6986,7 +7000,6 @@ color: white;
 }
 
 .form_vaccmquotation_btns2 {
-    width: 600px;
         color: white;
         text-align: center;
         border-collapse: collapse;
@@ -7005,7 +7018,7 @@ color: white;
     background: rgba(0, 0, 0, 9);
     padding: 10px;
     border-radius: 10px;
-    margin: 50px auto;
+    margin: 0 auto;
 }
 
 /* ################# form_vaccmquotation_fbox_wrapper ########### */
@@ -7036,19 +7049,16 @@ color: white;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 9);
     padding: 10px;
     border-radius: 10px;
     margin: 50px auto;
 }
 
 .form_vaccmquotation_btns2 {
-    width: 600px;
     color: white;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 9);
     padding: 10px;
     border-radius: 10px;
     margin: 50px auto;
@@ -7063,7 +7073,7 @@ color: white;
     background: rgba(0, 0, 0, 9);
     padding: 10px;
     border-radius: 10px;
-    margin: 50px auto;
+    margin: 0 auto;
 }
 .form_view_send_emailqw_mw{
     display: flex;
@@ -7088,3 +7098,13 @@ color: white;
         border-radius: 10px;
         margin: 50px auto;
 }
+
+ .ch_c{
+ filter: invert(100%) hue-rotate(18deg) brightness(5);
+  }
+  .form:checkbox{
+	   filter: invert(100%) hue-rotate(18deg) brightness(5);
+  }
+  .deal_menu a:hover{
+	  font-size:18px;
+  }

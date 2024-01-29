@@ -53,7 +53,7 @@
                         <div class="rso container">
                             <div class="rso_wrapper">
                                 <div class="rso_wrapper_data">
-                                    <div class="rso_wrapper_data_line bc-clr">
+                                    <div class="rso_wrapper_data_line a">
                                         <div class="rso_wrapper_data_l1">
                                             <label for="" class="lb">Lead Id</label>
                                             <p>Q-${String.format("%04d",REMINDER_SERVICE.leadsRecorderObj.leadId)}-${REMINDER_SERVICE.leadsRecorderObj.leadSourceShortName
@@ -62,13 +62,13 @@
                                         <div class="rso_wrapper_data_l1">
                                             <label for="" class="lb">Is Qualified</label>
                                             <p>
-                                                <form:checkbox path="leadsRecorderObj.qualified" disabled="true" /><span class="checkmark">
+                                                <form:checkbox class="ch_c" path="leadsRecorderObj.qualified" disabled="true" /><span class="checkmark">
                                             </p>
                                         </div>
                                         <div class="rso_wrapper_data_l1">
                                             <label for="" class="lb">Is Flagged</label>
                                             <p>
-                                                <form:checkbox path="leadsRecorderObj.flagged" disabled="true" />
+                                                <form:checkbox class="ch_c" path="leadsRecorderObj.flagged" disabled="true" />
                                             </p>
                                         </div>
                                         <div class="rso_wrapper_data_l1">
@@ -76,7 +76,7 @@
                                             <p>${REMINDER_SERVICE.leadsRecorderObj.contactName}</p>
                                         </div>
                                     </div>
-                                    <div class="rso_wrapper_data_line bc-clr">
+                                    <div class="rso_wrapper_data_line a">
                                         <div class="rso_wrapper_data_l1">
                                             <label for="" class="lb">Lead Owner</label>
                                             <p>${REMINDER_SERVICE.leadsRecorderObj.leadOwnerName}2</p>
@@ -94,7 +94,7 @@
                                             <p>${REMINDER_SERVICE.leadsRecorderObj.adults}</p>
                                         </div>
                                     </div>
-                                    <div class="rso_wrapper_data_line bc-clr">
+                                    <div class="rso_wrapper_data_line a">
                                         <div class="rso_wrapper_data_l1">
                                             <label for="" class="lb">Chlidren</label>
                                             <p>${REMINDER_SERVICE.leadsRecorderObj.children}2</p>
@@ -116,7 +116,7 @@
                                             </p>
                                         </div>
                                     </div>
-                                    <div class="rso_wrapper_data_line bc-clr">
+                                    <div class="rso_wrapper_data_line a">
                                         <div class="rso_wrapper_data_l1p">
                                             <label for="" class="lb">Travel End Date</label>
                                             <p>
@@ -138,47 +138,47 @@
                                     <div class="rso_wrapper_data_line ">
                                         <div class="rso_wrapper_data_ser">
                                             <div class="rso_ser">
-                                                <form:checkbox path="leadsRecorderObj.landPackage" name="landPackage;"
+                                                <form:checkbox class="ch_c" path="leadsRecorderObj.landPackage" name="landPackage;"
                                                     disabled="true" />
                                                 <label for="">package</label>
                                             </div>
                                             <div class="rso_ser">
-                                                <form:checkbox path="leadsRecorderObj.flight" name="flight"
+                                                <form:checkbox class="ch_c" path="leadsRecorderObj.flight" name="flight"
                                                     disabled="true" />
                                                 <label for="">flight</label>
                                             </div>
                                             <div class="rso_ser">
-                                                <form:checkbox path="leadsRecorderObj.hotel" name="hotel"
+                                                <form:checkbox class="ch_c" path="leadsRecorderObj.hotel" name="hotel"
                                                     disabled="true" />
                                                 <label for="">hotal</label>
                                             </div>
                                             <div class="rso_ser">
-                                                <form:checkbox path="leadsRecorderObj.transfers" name="transfers"
+                                                <form:checkbox class="ch_c" path="leadsRecorderObj.transfers" name="transfers"
                                                     disabled="true" />
                                                 <label for="">transfers</label>
                                             </div>
                                             <div class="rso_ser">
-                                                <form:checkbox path="leadsRecorderObj.sightseeing" name="sightseeing"
+                                                <form:checkbox class="ch_c" path="leadsRecorderObj.sightseeing" name="sightseeing"
                                                     disabled="true" />
                                                 <label for="">signtseeing</label>
                                             </div>
                                             <div class="rso_ser">
-                                                <form:checkbox path="leadsRecorderObj.visa" name="visa"
+                                                <form:checkbox class="ch_c" path="leadsRecorderObj.visa" name="visa"
                                                     disabled="true" />
                                                 <label for="">visa</label>
                                             </div>
                                             <div class="rso_ser">
-                                                <form:checkbox path="leadsRecorderObj.insurance" name="insurance"
+                                                <form:checkbox class="ch_c" path="leadsRecorderObj.insurance" name="insurance"
                                                     disabled="true" />
                                                 <label for="">insurance</label>
                                             </div>
                                             <div class="rso_ser">
-                                                <form:checkbox path="leadsRecorderObj.cruise" name="cruise"
+                                                <form:checkbox class="ch_c" path="leadsRecorderObj.cruise" name="cruise"
                                                     disabled="true" />
                                                 <label for="">cruise</label>
                                             </div>
                                             <div class="rso_ser">
-                                                <form:checkbox path="leadsRecorderObj.others" name="others"
+                                                <form:checkbox class="ch_c" path="leadsRecorderObj.others" name="others"
                                                     disabled="true" />
                                                 <label for="">others</label>
                                             </div>

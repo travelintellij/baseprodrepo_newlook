@@ -33,7 +33,7 @@
         <div class="view_supplier_details_wrapper">
             <h1 style="font-size: 30px;
     color: #FFBA08;
-    margin-bottom: 10px;text-align:center"><span style="color:#00b200;font-size: 30px">Supplier Id :
+    margin-bottom: 10px;text-align:center"><span style="color:#00b200;font-size: 30px"> Supplier Id :
                     ${SUPPLIER_OBJ.supplierId}</span> </h1>
             <div align="center" style="margin:10px 0"><b>
                     <font color="#32cd32  "> ${Success} </font>
@@ -125,24 +125,24 @@
                     <div class="view_supplier_details_data_line4 a">
                         <h3 class="vsd_ser" style="color:#FFBA08;font-weight:bold">Service offered</h3>
                         <div class="view_supplier_details_data_line3_service_offered a">
-                                  Flight<form:checkbox path="flight" disabled="true" style="margin-right:15px" />
+                                  Flight<form:checkbox class="ch_c" path="flight" disabled="true" style="margin-right:15px" />
                                   hotel
-                                   <form:checkbox path="hotel" disabled="true" style="margin-right:15px"/>
+                                   <form:checkbox class="ch_c" path="hotel" disabled="true" style="margin-right:15px"/>
                                    Transfers
-                                    <form:checkbox path="transfers" disabled="true" style="margin-right:15px"/>
+                                    <form:checkbox  class="ch_c" path="transfers" disabled="true" style="margin-right:15px"/>
                                     sightseeing
-                                            <form:checkbox path="sightseeing" disabled="true" style="margin-right:15px"/>
+                                            <form:checkbox  class="ch_c" path="sightseeing" disabled="true" style="margin-right:15px"/>
                                    
                                         visa
-                                            <form:checkbox path="visa" disabled="true" style="margin-right:15px"/>
+                                            <form:checkbox  class="ch_c" path="visa" disabled="true" style="margin-right:15px"/>
                                     Insurance
-                                            <form:checkbox path="insurance" disabled="true" style="margin-right:15px"/>
+                                            <form:checkbox  class="ch_c" path="insurance" disabled="true" style="margin-right:15px"/>
                                             landPackage
-                                            <form:checkbox path="landPackage" disabled="true" style="margin-right:15px"/>
+                                            <form:checkbox class="ch_c"  path="landPackage" disabled="true" style="margin-right:15px"/>
                                    Cruise
-                                            <form:checkbox path="cruise" disabled="true" style="margin-right:15px"/>
+                                            <form:checkbox class="ch_c" path="cruise" disabled="true" style="margin-right:15px"/>
                                             others
-                                            <form:checkbox path="others" disabled="true" style="margin-right:15px"/>    
+                                            <form:checkbox class="ch_c" path="others" disabled="true" style="margin-right:15px"/>    
                         </div>
                     </div>
                  
@@ -150,7 +150,7 @@
                    <div class="view_supplier_details_data_line_com">
                         <h3 class="vsd_consoli"  style="color:#FFBA08;font-weight:bold">consolidater</h3>
                         <div class="view_supplier_details_data_line3_consoli">
-                            <form:checkbox path="consolidator" disabled="true" />
+                            <form:checkbox class="ch_c" path="consolidator" disabled="true" />
                         </div>
                     </div>
                     <div class="view_supplier_details_data_line_com">

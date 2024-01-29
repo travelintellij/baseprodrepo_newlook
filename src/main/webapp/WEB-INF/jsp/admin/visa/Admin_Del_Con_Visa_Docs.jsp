@@ -16,8 +16,25 @@
     <script	src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
      <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
 </head>
+<style>
 
-<body style="background: url(${pageContext.request.contextPath}/resources/images/revamped/delete.jpg);background-size: cover; background-repeat: no-repeat; background-position: center center;background-attachment: fixed;">
+        body::before {
+            content: "";
+            background-image:   url(${pageContext.request.contextPath}/resources/images/revamped/delete.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5; /* Adjust the opacity value as needed (0.0 to 1.0) */
+            z-index: -1;
+        }
+</style>
+<body>
     <div align="center"><b>
             <font color="green"> ${Success} </font>
             <font color="red"> ${Error}</font>
@@ -27,7 +44,7 @@
             <div class="Admin_Del_Con_Visa_Docs_wrapper">
 
                 <div class="Admin_Del_Con_Visa_Docs_wrapper_data">
-                    <div class="Admin_Del_Con_Visa_Docs_wrapper_data_li bc-clr" >
+                    <div class="Admin_Del_Con_Visa_Docs_wrapper_data_li a" >
                         <div class="Admin_Del_Con_Visa_Docs_wrapper_data_l1">
                             <label for="" class="lb">Country name</label>
                             <p>${VISA_OBJ.countryName}</p>
@@ -45,7 +62,7 @@
                             <p>${VISA_PURPOSE.get(VISA_OBJ.visaPurpose)}</p>
                         </div>
                     </div>
-                    <div class="Admin_Del_Con_Visa_Docs_wrapper_data_li bc-clr">
+                    <div class="Admin_Del_Con_Visa_Docs_wrapper_data_li a">
                         <div class="Admin_Del_Con_Visa_Docs_wrapper_data_l1">
                             <label for="" class="lb">Standrad Cost</label>
                             <p>${VISA_OBJ.standardCost}</p>
@@ -63,7 +80,7 @@
                             <p>${VISA_OBJ.processingTime} Days</p>
                         </div>
                     </div>
-                    <div class="Admin_Del_Con_Visa_Docs_wrapper_data_li bc-clr" style="width:100%">
+                    <div class="Admin_Del_Con_Visa_Docs_wrapper_data_li a" style="width:100%">
                         <div class="Admin_Del_Con_Visa_Docs_wrapper_data_l1" style="width:100%">
                             <label for="" class="lb">Remarks</label>
                             <p>${VISA_OBJ.remarks}</p>
@@ -71,7 +88,7 @@
                     </div>
                     <h1 style="color: red;font-size: 25px;">Delete Visa Document <i
                             class="fa fa-exclamation-triangle fa-lg" aria-hidden="true"></i></h1>
-                    <div class="Admin_Del_Con_Visa_Docs_wrapper_data_lower bc-clr">
+                    <div class="Admin_Del_Con_Visa_Docs_wrapper_data_lower a">
                         <div class="Admin_Del_Con_Visa_Docs_wrapper_document">
                             <label for="" class="lb">Document Id</label>
                             <p>${ORG_VISA_DOC_OBJ.visaDocId}</p>
@@ -81,7 +98,7 @@
                             <p>${ORG_VISA_DOC_OBJ.documentTitle}</p>
                         </div>
                     </div>
-                    <div class="Admin_Del_Con_Visa_Docs_wrapper_data_lower bc-clr">
+                    <div class="Admin_Del_Con_Visa_Docs_wrapper_data_lower a">
                         <div class="Admin_Del_Con_Visa_Docs_wrapper_document_des">
                             <label for="" class="lb">Document Description</label>
                             <p>${ORG_VISA_DOC_OBJ.description}</p>

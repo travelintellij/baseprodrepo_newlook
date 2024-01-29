@@ -12,9 +12,25 @@
     <title>Due today task</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
 </head>
+<style>
 
-<body
-    style="background: url(${pageContext.request.contextPath}/resources/images/revamped/due_task_bg.jpg);background-size: cover; background-repeat: no-repeat; background-position: center center;background-attachment: fixed;">
+        body::before {
+            content: "";
+            background-image:  url(${pageContext.request.contextPath}/resources/images/revamped/due_task_bg.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5; /* Adjust the opacity value as needed (0.0 to 1.0) */
+            z-index: -1;
+        }
+</style>
+<body>
 
     <div class="cnt_options">
         <a href="view_create_ticket_form_user" >Create Task</a>
@@ -30,11 +46,12 @@
     <div class="due_date_task container">
         <form:form action="view_open_due_today_task_form_user" modelAttribute="TASK_FILTER_OBJ">
             <div class="due_date_task_wrapper">
+            <h1 class="hd">Due Today</h1>
                 <input type="hidden" name="dateFrom" value="${dateFrom}" />
                 <input type="hidden" name="dateTo" value="${dateTo}" />
                 <div class="due_today_task_data">
                     <div class="due_today_task_data_l1 due_today_task_owner">
-                        <label for="">Task Owner</label> <br>
+                        <label for="">Task Owner </label> <br>
                         <select id="taskOwner" name="taskOwner" style="width: 160px;" required>
                             <option class="service-small"> -----Task Owner----</option>
                             <c:if test="${not empty ACTIVE_USERS_LIST}">
@@ -71,33 +88,33 @@
 
             <table class="due_date_task_tabel">
                 <thead>
-                    <tr>
+                    <tr style="background:#6082B6;color:black">
                         <th style="width:10%;"><a
-                             style="color:#FFBA08"   href="view_open_due_today_task_form_user?sortBy=taskId&dateFrom=${dateFrom}&dateTo=${dateTo}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}">Task
+                             style="color:black"   href="view_open_due_today_task_form_user?sortBy=taskId&dateFrom=${dateFrom}&dateTo=${dateTo}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}">Task
                                 Id</a></th>
-                        <th>Task Title</th>
+                        <th style="color:black" >Task Title</th>
                         <th><a
-                             style="color:#FFBA08"   href="view_open_due_today_task_form_user?sortBy=dealConfirmationId&dateFrom=${dateFrom}&dateTo=${dateTo}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}">Deal
+                             style="color:black"   href="view_open_due_today_task_form_user?sortBy=dealConfirmationId&dateFrom=${dateFrom}&dateTo=${dateTo}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}">Deal
                                 Associated</a></th>
                         <th><a
-                              style="color:#FFBA08"  href="view_open_due_today_task_form_user?sortBy=taskOwner&dateFrom=${dateFrom}&dateTo=${dateTo}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}">Assigned
+                              style="color:black"  href="view_open_due_today_task_form_user?sortBy=taskOwner&dateFrom=${dateFrom}&dateTo=${dateTo}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}">Assigned
                                 To</a></th>
                         <th><a
-                             style="color:#FFBA08"   href="view_open_due_today_task_form_user?sortBy=taskPriority&dateFrom=${dateFrom}&dateTo=${dateTo}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}">Priority</a>
+                             style="color:black"   href="view_open_due_today_task_form_user?sortBy=taskPriority&dateFrom=${dateFrom}&dateTo=${dateTo}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}">Priority</a>
                         </th>
                         <th><a
-                             style="color:#FFBA08"   href="view_open_due_today_task_form_user?sortBy=taskDueDate&dateFrom=${dateFrom}&dateTo=${dateTo}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}">Due
+                             style="color:black"   href="view_open_due_today_task_form_user?sortBy=taskDueDate&dateFrom=${dateFrom}&dateTo=${dateTo}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}">Due
                                 Date</a></th>
-                        <th>Action</th>
+                        <th style="color:black" >Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <c:forEach items="${OPEN_TASK_LIST}" var="openTaskList">
                     <tr>
-                        <td style="width:10%;">${openTaskList.taskId }</td>
-                        <td style="width:20%;">${openTaskList.taskTitle }</td>
-                        <td style="width:10%;">
+                        <td style="width:10%;border-bottom:2px solid #ffa500;border-right:2px solid #ffa500">${openTaskList.taskId }</td>
+                        <td style="width:10%;border-bottom:2px solid #ffa500;border-right:2px solid #ffa500">${openTaskList.taskTitle }</td>
+                        <td style="width:10%;border-bottom:2px solid #ffa500;border-right:2px solid #ffa500">
                             <c:if test="${openTaskList.dealConfirmationId != 0}">
                                 UDN-${openTaskList.dealConfirmationId}
                             </c:if>
@@ -105,16 +122,16 @@
                                 None
                             </c:if>
                         </td>
-                        <td style="width:15%;"> ${openTaskList.taskOwnerName}</td>
-                        <td style="width:10%;">${openTaskList.taskPriority}</td>
-                        <td style="width:15%;">${localDateTimeFormat.format(openTaskList.taskDueDate)}</td>
-                        <td style="width:20%;">
+                        <td style="width:10%;border-bottom:2px solid #ffa500;border-right:2px solid #ffa500"> ${openTaskList.taskOwnerName}</td>
+                        <td style="width:10%;border-bottom:2px solid #ffa500;border-right:2px solid #ffa500">${openTaskList.taskPriority}</td>
+                        <td style="width:10%;border-bottom:2px solid #ffa500;border-right:2px solid #ffa500">${localDateTimeFormat.format(openTaskList.taskDueDate)}</td>
+                        <td style="width:10%;border-bottom:2px solid #ffa500;">
                             <a href="view_view_due_today_task?taskId=${openTaskList.taskId }"><input type="button"
-                                    style="background-color: #786AAF;" value="View" /></a> |
+                                    style="background:transparent;outline:none;border:none;color:red" value="View" /></a> |
                             <a href="view_form_edit_due_today_task?taskId=${openTaskList.taskId }"><input type="button"
-                                    style="background-color: #786AAF;" value="Edit" /></a> |
+                                     style="background:transparent;outline:none;border:none;color:red" value="Edit" /></a> |
                             <a href="view_form_delete_due_today_task?taskId=${openTaskList.taskId }"><input
-                                    type="button" style="background-color: #786AAF;" value="Delete" /></a>
+                                    type="button"  style="background:transparent;outline:none;border:none;color:red" value="Delete" /></a>
                         </td>
                     </tr>
                     </c:forEach>
@@ -122,25 +139,25 @@
             </table>
 
 
-          <div id="pagination" align="right">
-				Page: 
+          <div id="pagination" align="right" style="margin-top:10px">
+				<p style="color:#ffa500;background:black;display:inline-block;padding:2px;border-radius:2px">Page : </p>
 			    <c:url value="view_open_due_today_task_form_user" var="prev">
 			       <c:param name="page" value="${page-1}"/>
 			    </c:url>
 			    <c:if test="${page > 0}">
-			        <a href="<c:out value="${prev}&sortBy=${sortBy}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&dateFrom=${dateFrom}&dateTo=${dateTo}&taskPriority=${taskPriority}" />" class="pn prev">Prev</a>
+			        <a  style="background:black;padding:2px 5px;border-radius:2px;color:#ffa500" href="<c:out value="${prev}&sortBy=${sortBy}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&dateFrom=${dateFrom}&dateTo=${dateTo}&taskPriority=${taskPriority}" />" class="pn prev">Prev</a>
 			    </c:if>
 			
 			    <c:forEach begin="1" end="${maxPages}" step="1" varStatus="i">
 			        <c:choose>
 			            <c:when test="${(page+1) == i.index}">
-			                <span>${i.index}</span>
+			                <span style="background:black;padding:2px 5px;border-radius:2px;color:white">${i.index}</span>
 			            </c:when>
 			            <c:otherwise>
 			                <c:url value="view_open_due_today_task_form_user" var="url">
 			                    <c:param name="page" value="${i.index-1}"/>
 			                </c:url>
-			                 <a href='<c:out value="${url}&sortBy=${sortBy}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}" />'>${i.index}</a>
+			                 <a style="background:white;padding:2px 5px;border-radius:2px;color:black" href='<c:out value="${url}&sortBy=${sortBy}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}" />'>${i.index}</a>
 			            </c:otherwise>
 			        </c:choose>
 			    </c:forEach>
@@ -148,7 +165,7 @@
 			        <c:param name="page" value="${page + 1}"/>
 			    </c:url>
 			    <c:if test="${page + 1 < maxPages}">
-			       <a href='<c:out value="${next}&sortBy=${sortBy}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&dateFrom=${dateFrom}&dateTo=${dateTo}&taskPriority=${taskPriority}" />' class="pn next">Next</a>
+			       <a style="background:black;padding:2px 5px;border-radius:2px;color:#ffa500" href='<c:out value="${next}&sortBy=${sortBy}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&dateFrom=${dateFrom}&dateTo=${dateTo}&taskPriority=${taskPriority}" />' class="pn next">Next</a>
 			    </c:if>
 			</div>
 
