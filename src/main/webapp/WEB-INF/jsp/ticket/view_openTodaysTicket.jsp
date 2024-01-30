@@ -147,13 +147,13 @@
             </tbody>
         </table>
 
-        <div id="pagination" align="right">
-            Page:
+        <div id="pagination" align="center" style="margin-top:10px">
+         <p style="color:#ffa500;background:black;display:inline-block;padding:2px;border-radius:2px">Page : </p>
             <c:url value="view_open_due_today_ticket_form_user" var="prev">
                 <c:param name="page" value="${page-1}" />
             </c:url>
             <c:if test="${page > 0}">
-                <a href="<c:out value="
+                <a style="background:black;padding:2px 5px;border-radius:2px;color:#ffa500" href="<c:out value="
                     ${prev}&sortBy=${sortBy}&ticketOwner=${ticketOwner}&dealConfirmationId=${dealConfirmationId}&dateFrom=${dateFrom}&dateTo=${dateTo}&ticketPriority=${ticketPriority}" />"
                 class="pn prev">Prev</a>
             </c:if>
@@ -161,13 +161,13 @@
             <c:forEach begin="1" end="${maxPages}" step="1" varStatus="i">
                 <c:choose>
                     <c:when test="${(page+1) == i.index}">
-                        <span>${i.index}</span>
+                        <span style="background:black;padding:2px 5px;border-radius:2px;color:white">${i.index}</span>
                     </c:when>
                     <c:otherwise>
                         <c:url value="view_open_due_today_ticket_form_user" var="url">
                             <c:param name="page" value="${i.index-1}" />
                         </c:url>
-                        <a
+                        <a style="background:white;padding:2px 5px;border-radius:2px;color:black"
                             href='<c:out value="${url}&sortBy=${sortBy}&ticketOwner=${ticketOwner}&dealConfirmationId=${dealConfirmationId}&ticketPriority=${ticketPriority}" />'>${i.index}</a>
                     </c:otherwise>
                 </c:choose>
@@ -176,7 +176,7 @@
                 <c:param name="page" value="${page + 1}" />
             </c:url>
             <c:if test="${page + 1 < maxPages}">
-                <a href='<c:out value="${next}&sortBy=${sortBy}&ticketOwner=${ticketOwner}&dealConfirmationId=${dealConfirmationId}&dateFrom=${dateFrom}&dateTo=${dateTo}&ticketPriority=${ticketPriority}" />'
+                <a style="background:black;padding:2px 5px;border-radius:2px;color:#ffa500" href='<c:out value="${next}&sortBy=${sortBy}&ticketOwner=${ticketOwner}&dealConfirmationId=${dealConfirmationId}&dateFrom=${dateFrom}&dateTo=${dateTo}&ticketPriority=${ticketPriority}" />'
                     class="pn next">Next</a>
             </c:if>
         </div>

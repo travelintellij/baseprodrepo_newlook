@@ -109,41 +109,41 @@
 
             <table class="due_date_task_tabel">
                 <thead>
-                    <tr>
+                    <tr style="background:#6082B6;color:black">
                         <th><a
-                           style="color:#FFBA08"     href="view_open_ticket_form_user?sortBy=ticketId&dateFrom=${dateFrom}&dateTo=${dateTo}&ticketOwner=${ticketOwner}&dealConfirmationId=${dealConfirmationId}&ticketPriority=${ticketPriority}">Ticket
+                           style="color:black"     href="view_open_ticket_form_user?sortBy=ticketId&dateFrom=${dateFrom}&dateTo=${dateTo}&ticketOwner=${ticketOwner}&dealConfirmationId=${dealConfirmationId}&ticketPriority=${ticketPriority}">Ticket
                                 Id</a></th>
-                        <th>Ticket Title</th>
-                        <th>Client Associated</th>
+                        <th  style="color:black">Ticket Title</th>
+                        <th  style="color:black">Client Associated</th>
                         <th><a
-                               style="color:#FFBA08"   href="view_open_ticket_form_user?sortBy=dealConfirmationId&dateFrom=${dateFrom}&dateTo=${dateTo}&ticketOwner=${ticketOwner}&dealConfirmationId=${dealConfirmationId}&ticketPriority=${ticketPriority}">DA</a></th>
+                               style="color:black"   href="view_open_ticket_form_user?sortBy=dealConfirmationId&dateFrom=${dateFrom}&dateTo=${dateTo}&ticketOwner=${ticketOwner}&dealConfirmationId=${dealConfirmationId}&ticketPriority=${ticketPriority}">DA</a></th>
                         <th><a
-                               style="color:#FFBA08"   href="view_open_ticket_form_user?sortBy=ticketOwner&dateFrom=${dateFrom}&dateTo=${dateTo}&ticketOwner=${ticketOwner}&dealConfirmationId=${dealConfirmationId}&ticketPriority=${ticketPriority}">AT
+                               style="color:black"   href="view_open_ticket_form_user?sortBy=ticketOwner&dateFrom=${dateFrom}&dateTo=${dateTo}&ticketOwner=${ticketOwner}&dealConfirmationId=${dealConfirmationId}&ticketPriority=${ticketPriority}">AT
                                 </a></th>
                         <th><a
-                                style="color:#FFBA08"  href="view_open_ticket_form_user?sortBy=ticketPriority&dateFrom=${dateFrom}&dateTo=${dateTo}&ticketOwner=${ticketOwner}&dealConfirmationId=${dealConfirmationId}&ticketPriority=${ticketPriority}">Priority</a>
+                                style="color:black"  href="view_open_ticket_form_user?sortBy=ticketPriority&dateFrom=${dateFrom}&dateTo=${dateTo}&ticketOwner=${ticketOwner}&dealConfirmationId=${dealConfirmationId}&ticketPriority=${ticketPriority}">Priority</a>
                         </th>
                         <th><a
-                               style="color:#FFBA08"   href="view_open_ticket_form_user?sortBy=ticketDueDate&dateFrom=${dateFrom}&dateTo=${dateTo}&ticketOwner=${ticketOwner}&dealConfirmationId=${dealConfirmationId}&ticketPriority=${ticketPriority}">Due
+                               style="color:black"   href="view_open_ticket_form_user?sortBy=ticketDueDate&dateFrom=${dateFrom}&dateTo=${dateTo}&ticketOwner=${ticketOwner}&dealConfirmationId=${dealConfirmationId}&ticketPriority=${ticketPriority}">Due
                                 Date</a></th>
-                        <th>Actions</th>
+                        <th  style="color:black">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     <c:forEach items="${OPEN_TICKET_LIST}" var="openTicketList">
                         <tr>
-                            <td style="width:7%;">${openTicketList.ticketId }</td>
-                            <td style="width:15%;">${openTicketList.ticketTitle }</td>
-                            <td style="width:15%;">${openTicketList.clientName }</td>
-                            <td style="width:7%;">
+                            <td style="width:7%;border-bottom:2px solid #ffa500;border-right:2px solid #ffa500">${openTicketList.ticketId }</td>
+                            <td style="width:15%;border-bottom:2px solid #ffa500;border-right:2px solid #ffa500">${openTicketList.ticketTitle }</td>
+                            <td style="width:15%;border-bottom:2px solid #ffa500;border-right:2px solid #ffa500">${openTicketList.clientName }</td>
+                            <td style="width:7%;border-bottom:2px solid #ffa500;border-right:2px solid #ffa500">
                                 <c:if test="${openTicketList.dealConfirmationId != 0}">
                                     ${openTicketList.dealConfirmationId}
                                 </c:if>
                             </td>
-                            <td style="width:10%;"> ${openTicketList.ticketOwnerName}</td>
-                            <td style="width:10%;">${openTicketList.ticketPriority}</td>
-                            <td style="width:15%;">${localDateTimeFormat.format(openTicketList.ticketDueDate)}</td>
-                            <td style="width:10%;">
+                            <td style="width:10%;border-bottom:2px solid #ffa500;border-right:2px solid #ffa500"> ${openTicketList.ticketOwnerName}</td>
+                            <td style="width:10%;border-bottom:2px solid #ffa500;border-right:2px solid #ffa500">${openTicketList.ticketPriority}</td>
+                            <td style="width:15%;border-bottom:2px solid #ffa500;border-right:2px solid #ffa500">${localDateTimeFormat.format(openTicketList.ticketDueDate)}</td>
+                            <td style="width:10%;border-bottom:2px solid #ffa500;">
                                 <a href="view_view_ticket?ticketId=${openTicketList.ticketId }"><input type="button"
                                         style="color:red;background:transparent;border:none;outline:none" value="View" /></a> |
                                 <a href="view_form_edit_ticket_req?ticketId=${openTicketList.ticketId }"><input
@@ -156,13 +156,13 @@
         </form:form>
 
 
-                <div id="pagination" align="right">
-                    Page:
+                <div id="pagination" align="center" style="margin-top:10px">
+               <p style="color:#ffa500;background:black;display:inline-block;padding:2px;border-radius:2px">Page : </p>
                     <c:url value="view_open_ticket_form_user" var="prev">
                         <c:param name="page" value="${page-1}" />
                     </c:url>
                     <c:if test="${page > 0}">
-                        <a href="<c:out value="
+                        <a style="background:black;padding:2px 5px;border-radius:2px;color:#ffa500" href="<c:out value="
                             ${prev}&sortBy=${sortBy}&ticketOwner=${ticketOwner}&dealConfirmationId=${dealConfirmationId}&dateFrom=${dateFrom}&dateTo=${dateTo}&ticketPriority=${ticketPriority}" />"
                         class="pn prev">Prev</a>
                     </c:if>
@@ -170,13 +170,13 @@
                     <c:forEach begin="1" end="${maxPages}" step="1" varStatus="i">
                         <c:choose>
                             <c:when test="${(page+1) == i.index}">
-                                <span>${i.index}</span>
+                                <span style="background:black;padding:2px 5px;border-radius:2px;color:white">${i.index}</span>
                             </c:when>
                             <c:otherwise>
                                 <c:url value="view_open_ticket_form_user" var="url">
                                     <c:param name="page" value="${i.index-1}" />
                                 </c:url>
-                                <a
+                                <a style="background:white;padding:2px 5px;border-radius:2px;color:black"
                                     href='<c:out value="${url}&sortBy=${sortBy}&ticketOwner=${ticketOwner}&dealConfirmationId=${dealConfirmationId}&ticketPriority=${ticketPriority}" />'>${i.index}</a>
                             </c:otherwise>
                         </c:choose>
@@ -185,7 +185,7 @@
                         <c:param name="page" value="${page + 1}" />
                     </c:url>
                     <c:if test="${page + 1 < maxPages}">
-                        <a href='<c:out value="${next}&sortBy=${sortBy}&ticketOwner=${ticketOwner}&dealConfirmationId=${dealConfirmationId}&dateFrom=${dateFrom}&dateTo=${dateTo}&ticketPriority=${ticketPriority}" />'
+                        <a style="background:black;padding:2px 5px;border-radius:2px;color:#ffa500" href='<c:out value="${next}&sortBy=${sortBy}&ticketOwner=${ticketOwner}&dealConfirmationId=${dealConfirmationId}&dateFrom=${dateFrom}&dateTo=${dateTo}&ticketPriority=${ticketPriority}" />'
                             class="pn next">Next</a>
                     </c:if>
                 </div>

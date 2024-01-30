@@ -62,7 +62,7 @@
                             <form:errors path="dealName" /><br>
                         </b>
                     </font>
-                    <h1 class="cnt-heading">Create New Ticket</h1>
+                    <h1 class="hd">Create New Ticket</h1>
                     <div class="create-new-ticket-wrapper-f-li">
                         <div class="cntd">
                             <label for="ticketTitle">Ticket Title</label><br>
