@@ -292,7 +292,7 @@
                                             <div class="form_viewDeal_wrapper_data_l1">
                                                 <label for="" >Tag Teammate</label>
                                                 <input type="text" id="dealTeams" name="dealTeams" class="form-control"
-                                                    style="width:90%" />
+                                                    style="width:90%;background:lightgray" />
                                                 <form:hidden path="teamNames" />
                                                 <form:hidden path="operatingTeams" />
                                             </div>

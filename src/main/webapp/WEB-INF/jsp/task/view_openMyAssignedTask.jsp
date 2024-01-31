@@ -159,7 +159,7 @@
                         <c:url value="view_open_my_assigned_task_form_user" var="url">
                             <c:param name="page" value="${i.index-1}" />
                         </c:url>
-                        <a style="background:white;padding:2px 5px;border-radius:2px;color:black"
+                        <a style="padding:2px 5px;border-radius:2px;color:black"
                             href='<c:out value="${url}&sortBy=${sortBy}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}" />'>${i.index}</a>
                     </c:otherwise>
                 </c:choose>

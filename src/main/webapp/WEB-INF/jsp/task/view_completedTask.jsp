@@ -91,33 +91,33 @@
 
         <table class="due_date_task_tabel">
             <thead>
-                <tr>
+                <tr style="background:#6082B6">
                     <th><a
-                       style="color: #FFBA08"     href="view_completed_task_form_user?sortBy=taskId&dateFrom=${dateFrom}&dateTo=${dateTo}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}">Task
+                       style="color: black"     href="view_completed_task_form_user?sortBy=taskId&dateFrom=${dateFrom}&dateTo=${dateTo}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}">Task
                             Id</a></th>
-                    <th>Task Title</th>
+                    <th style="color: black"  >Task Title</th>
                     <th><a
-                         style="color: #FFBA08"     href="view_completed_task_form_user?sortBy=dealConfirmationId&dateFrom=${dateFrom}&dateTo=${dateTo}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}">Deal
+                         style="color: black"     href="view_completed_task_form_user?sortBy=dealConfirmationId&dateFrom=${dateFrom}&dateTo=${dateTo}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}">Deal
                             Associated</a></th>
                     <th><a
-                        style="color: #FFBA08"     href="view_completed_task_form_user?sortBy=taskOwner&dateFrom=${dateFrom}&dateTo=${dateTo}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}">Assigned
+                        style="color: black"     href="view_completed_task_form_user?sortBy=taskOwner&dateFrom=${dateFrom}&dateTo=${dateTo}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}">Assigned
                             To</a></th>
                     <th><a
-                          style="color: #FFBA08"    href="view_completed_task_form_user?sortBy=taskPriority&dateFrom=${dateFrom}&dateTo=${dateTo}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}">Priority</a>
+                          style="color: black"    href="view_completed_task_form_user?sortBy=taskPriority&dateFrom=${dateFrom}&dateTo=${dateTo}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}">Priority</a>
                     </th>
                     <th><a
-                         style="color: #FFBA08"     href="view_completed_task_form_user?sortBy=taskDueDate&dateFrom=${dateFrom}&dateTo=${dateTo}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}">Due
+                         style="color: black"     href="view_completed_task_form_user?sortBy=taskDueDate&dateFrom=${dateFrom}&dateTo=${dateTo}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}">Due
                             Date</a></th>
-                    <th>Action</th>
+                    <th style="color: black"  >Action</th>
                 </tr>
             </thead>
             <tbody>
 
                 <c:forEach items="${OPEN_TASK_LIST}" var="openTaskList">
                     <tr>
-                        <td style="width:10%;">${openTaskList.taskId }</td>
-                        <td style="width:20%;"><strike>${openTaskList.taskTitle }</strike></td>
-                        <td style="width:10%;">
+                        <td style="width:10%;border-bottom:2px solid #ffb908cf;border-right:2px solid #ffb908cf;">${openTaskList.taskId }</td>
+                        <td style="width:20%;border-bottom:2px solid #ffb908cf;border-right:2px solid #ffb908cf;"><strike>${openTaskList.taskTitle }</strike></td>
+                        <td style="width:10%;border-bottom:2px solid #ffb908cf;border-right:2px solid #ffb908cf;">
                             <c:if test="${openTaskList.dealConfirmationId != 0}">
                                 UDN-${openTaskList.dealConfirmationId}
                             </c:if>
@@ -125,14 +125,14 @@
                                 None
                             </c:if>
                         </td>
-                        <td style="width:15%;"> ${openTaskList.taskOwnerName}</td>
-                        <td style="width:10%;">${openTaskList.taskPriority}</td>
-                        <td style="width:15%;">${localDateTimeFormat.format(openTaskList.taskDueDate)}</td>
-                        <td style="width:20%;">
+                        <td style="width:15%;border-bottom:2px solid #ffb908cf;border-right:2px solid #ffb908cf;"> ${openTaskList.taskOwnerName}</td>
+                        <td style="width:10%;border-bottom:2px solid #ffb908cf;border-right:2px solid #ffb908cf;">${openTaskList.taskPriority}</td>
+                        <td style="width:15%;border-bottom:2px solid #ffb908cf;border-right:2px solid #ffb908cf;">${localDateTimeFormat.format(openTaskList.taskDueDate)}</td>
+                        <td style="width:20%;border-bottom:2px solid #ffb908cf;padding-top:10px">
                             <a href="view_view_completed_task?taskId=${openTaskList.taskId }"><input type="button"
-                                    style="background:#32cd32;color:black;outline:none;border:none;border-radius:2px;padding:2px;margin-bottom:10px;" value="View" /></a> |
+                                    style="background:#32cd32;color:black;outline:none;border:none;border-radius:2px;padding:2px;margin-bottom:10px;" value="View" /></a> 
                             <a href="view_form_edit_completed_task?taskId=${openTaskList.taskId }"><input type="button"
-                                    style="background:#32cd32;color:black;outline:none;border:none;border-radius:2px;padding:2px;margin-bottom:10px;" value="Edit" /></a> |
+                                    style="background:#32cd32;color:black;outline:none;border:none;border-radius:2px;padding:2px;margin-bottom:10px;" value="Edit" /></a> 
                             <a href="view_form_delete_completed_task?taskId=${openTaskList.taskId }"><input
                                   style="background:red;color:white;outline:none;border:none;border-radius:2px;padding:2px;margin-bottom:10px;"   type="button" style="background-color: #786AAF;" value="Delete" /></a>
                         </td>

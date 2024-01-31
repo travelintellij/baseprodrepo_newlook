@@ -163,7 +163,7 @@
                                         <c:url value="view_view_ticket" var="url">
                                             <c:param name="page" value="${i.index-1}" />
                                         </c:url>
-                                        <a style="background:white;padding:2px 5px;border-radius:2px;color:black"
+                                        <a style="padding:2px 5px;border-radius:2px;color:black"
                                             href='<c:out value="${url}&ticketId=${TICKET_RECORDER_OBJ.ticketId}" />'>${i.index}</a>
                                     </c:otherwise>
                                 </c:choose>

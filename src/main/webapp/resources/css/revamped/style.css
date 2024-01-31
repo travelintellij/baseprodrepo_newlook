@@ -1094,7 +1094,7 @@ footer {
     color: #FABA08;
 }
 .ul-anc li  {
-    border-bottom: 2px solid #FABA08;
+ border-bottom:2px solid #FABA08;
 }
 
 .anc-i {
@@ -7108,3 +7108,38 @@ transition:all 0.2s ease-in-out
   .deal_menu a:hover{
 	  font-size:18px;
   }
+  
+  
+  /* ####################  DeleteConfirmationClient      ##################### */
+
+.DeleteConfirmationClient_wrapper {
+    color: white;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+}
+.DeleteConfirmationClient_wrapper_data_line{
+    display: flex;
+}
+.DeleteConfirmationClient_wrapper_data_l2{
+    width: 300px;
+    text-align: start;
+}
+.del_war{
+    margin: 15px 0;
+    border-radius: 10px ;
+    background: black;
+    color: white;
+}
+.del_war_hd{
+    color: red;
+    text-align: center;
+    font-size: 25px;
+}
+.del_war_p{
+    text-align: center;
+    color: orangered;
+}

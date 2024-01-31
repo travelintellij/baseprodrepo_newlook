@@ -14,8 +14,24 @@
                     <script src="<c:url value=" /resources/core/jquery.autocomplete.min.js" />"></script>
                     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
                 </head>
-
-                <body style="background: url(${pageContext.request.contextPath}/resources/images/revamped/visa_bg.jpg);background-size: cover; background-repeat: no-repeat; background-position: center center;background-attachment: fixed;">
+                <style>
+                     body::before {
+            content: "";
+            background-image:   url(${pageContext.request.contextPath}/resources/images/revamped/visa_bg.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5; /* Adjust the opacity value as needed (0.0 to 1.0) */
+            z-index: -1;
+        }
+                </style>
+                <body>
                     <div class="Admin_View_Visa_Consulate container">
                         <div class="Admin_View_Visa_Consulate_wrapper">
                             <form:form method="post" action="edit_edit_visa_consulate_master"
@@ -37,7 +53,7 @@
                                     <div class="Admin_View_Visa_Consulate_wrapepr_data_line">
                                         <div class="Admin_View_Visa_Consulate_wrapepr_data_l1">
                                             <label for="" class="lb">Visa Country Name (Embassy)</label>
-                                            <p> ${VISA_CONSULATE_OBJ.countryName }</p>
+                                            <p style="color:#32cd32;font-weight:bold"> ${VISA_CONSULATE_OBJ.countryName }</p>
                                             <input type="hidden" name="visaCountryCode" id="visaCountryCode"
                                                 value="${VISA_CONSULATE_OBJ.visaCountryCode }" />
                                         </div>

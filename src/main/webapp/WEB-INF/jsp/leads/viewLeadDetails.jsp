@@ -179,7 +179,7 @@
                         </div>
                         
                     <div class=" sub_info-client" style="margin-top:10px">
-                            <form:checkbox path="leadCreationClientInformed" disabled="true" style="width:18px;height:18px;margin-left:5px"/>
+                            <form:checkbox class="ch_c" path="leadCreationClientInformed" disabled="true" style="width:18px;height:18px;margin-left:5px"/>
                             <label for="">Client Informed (Email Sent)</label>
                         </div>
                     

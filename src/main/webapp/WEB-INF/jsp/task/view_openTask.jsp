@@ -182,7 +182,7 @@
                             <c:param name="page" value="${i.index-1}" />
                         </c:url>
                         <a
-                           style="background:black;padding:2px 5px;border-radius:2px;color:white"  href='<c:out value="${url}&sortBy=${sortBy}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}" />'>${i.index}</a>
+                          style="padding:2px 5px;border-radius:2px;color:black"  href='<c:out value="${url}&sortBy=${sortBy}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}" />'>${i.index}</a>
                     </c:otherwise>
                 </c:choose>
             </c:forEach>

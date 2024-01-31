@@ -277,9 +277,9 @@
                        
                     <div class="info-client_3" style="margin-top: 10px;">
                     <div class=" sub_info-client" >
-                        <form:checkbox path="leadCreationClientInformed" disabled="true" />
+                        <form:checkbox class="ch_c" path="leadCreationClientInformed" disabled="true" />
                         <label for="">Client Informed Earlier</label>
-                        <form:hidden path="leadCreationClientInformed" />
+                        <form:hidden  path="leadCreationClientInformed" />
                     </div>
                     <div class="sub_info-client" style="margin-left: 10px;">
                         <form:checkbox path="notifyAgain" />

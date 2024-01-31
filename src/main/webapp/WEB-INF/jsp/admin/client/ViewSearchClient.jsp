@@ -157,40 +157,53 @@
                             <i class="fa-solid fa-sliders anc-i">
                                 <div class="ul-anc">
                                     <ul>
-                                        <li>
+                                        
                                             <sec:authorize
                                                 access="hasAnyRole('ADMIN','CLIENT_VIEW','CLIENT_EDIT','CLIENT_DELETE')">
+                                                <li>
                                                 <a href="view_view_admin_client?clientId=${client.clientId}">View</a>
+                                                </li>
                                             </sec:authorize>
-                                        </li>
-                                        <li>
+                                        
+                                       
                                             <sec:authorize access="hasAnyRole('ADMIN','CLIENT_EDIT')">
+                                             <li>
                                                 <a  style="border-bottom: 2px solid #FABA08;margin:5px 0" href="view_edit_admin_client?clientId=${client.clientId}">Edit</a>
+                                                </li>
                                             </sec:authorize>
-                                        </li>
-                                        <li>
+                                        
+                                       
+                                       
                                             <sec:authorize access="! hasAnyRole('ADMIN','CLIENT_EDIT')">
+                                             <li>
                                                 <a href="view_edit_admin_client?clientId=${client.clientId}">Delete</a>
+                                                 </li>
                                             </sec:authorize>
-                                        </li>
-                                        <li>
+                                       
+                                       
                                             <sec:authorize access="! hasAnyRole('ADMIN','CLIENT_DELETE')">
+                                             <li>
                                                 <a
                                                     href="view_view_delete_client_confirmation?clientId=${client.clientId}">Delete</a>
+                                                     </li>
                                             </sec:authorize>
-                                        </li>
-                                        <li>
+                                       
+                                        
                                             <sec:authorize access="hasAnyRole('ADMIN','CLIENT_MANAGE_DOCS')">
+                                            <li>
                                                 <a
                                                     href="view_view_crud_client_docs?clientId=${client.clientId}">Docs</a>
+                                                     </li>
                                             </sec:authorize>
-                                        </li>
-                                        <li>
+                                       
+                                       
                                             <sec:authorize access="! hasAnyRole('ADMIN','CLIENT_MANAGE_DOCS')">
+                                             <li>
                                                 <a
                                                     href="view_view_crud_client_docs?clientId=${client.clientId}">Docs</a>
+                                                     </li>
                                             </sec:authorize>
-                                        </li>
+                                       
                                     </ul>
                                 </div>
                             </i>
@@ -221,7 +234,7 @@
 			                <c:url value="view_form_admin_search_client" var="url">
 			                    <c:param name="page" value="${i.index-1} "/>
 			                </c:url>
-			                 <a  style="background:black;padding:2px 5px;border-radius:2px;color:white" href='<c:out value="${url}&sortBy=${sortBy}&clientName=${clientName}&cityId=${cityId}&cityName=${cityName}&email=${email}&active=${active}" />'>${i.index}</a>
+			                 <a  style="padding:2px 5px;border-radius:2px;color:black" href='<c:out value="${url}&sortBy=${sortBy}&clientName=${clientName}&cityId=${cityId}&cityName=${cityName}&email=${email}&active=${active}" />'>${i.index}</a>
 			            </c:otherwise>
 			        </c:choose>
 			    </c:forEach>

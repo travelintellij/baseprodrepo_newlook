@@ -61,10 +61,7 @@
                         </div>
                     </div>
                     <div class="Admin_View_Visa_Consulate_wrapepr_data_line a">
-                        <div class="Admin_View_Visa_Consulate_wrapepr_data_l1">
-                            <label for="" class="lb">Email</label>
-                            <p>${VISA_CONSULATE_OBJ.email}</p>
-                        </div>
+                 
                         <div class="Admin_View_Visa_Consulate_wrapepr_data_l1">
                             <label for="" class="lb">Website</label>
                             <p>${VISA_CONSULATE_OBJ.website}</p>
@@ -78,6 +75,12 @@
                             <p>${VISA_CONSULATE_OBJ.fax}</p>
                         </div>
                     </div>
+                            <div class="Admin_View_Visa_Consulate_wrapepr_data_line a">
+                        <div class="Admin_View_Visa_Consulate_wrapepr_data_l1" >
+                            <label for="" class="lb">Email</label>
+                            <p style="width:100%">${VISA_CONSULATE_OBJ.email}</p>
+                        </div>
+                       </div>
                     <div class="due_today_task_data_btns">
                         <input type="submit" name="submit" value="Edit Consulate" />
                         <a href="view_search_visa_consulate_form">Search Visa Consulate</a>

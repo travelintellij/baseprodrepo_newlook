@@ -1,280 +1,202 @@
 <!DOCTYPE html>
-<jsp:include page="../../menu/MenuBuilder.jsp" />  
+<html lang="en">
+<jsp:include page="../../menu/MenuBuilder.jsp" />
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+    <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+        <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+            <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
-<html>
-<head>
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>DeleteConfirmationClient</title>
+                    <link rel="stylesheet" href="style.css">
+                    <script src="<c:url value=" /resources/core/jquery.1.10.2.min.js" />"></script>
+                    <script src="<c:url value=" /resources/core/jquery.autocomplete.min.js" />"></script>
+                    <link href="<c:url value=" /resources/core/main.css" />" rel="stylesheet">
+                    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
+                </head>
+                <style>
+                   body::before {
+            content: "";
+            background-image:  url(${pageContext.request.contextPath}/resources/images/revamped/lens.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5; /* Adjust the opacity value as needed (0.0 to 1.0) */
+            z-index: -1;
+        }
+                
+                </style>
+                <body>
+                <br>
+                <br>
+                <br>
+                  <br>
+                    <br>
+                    <div class="DeleteConfirmationClient container">
+                        <div class="del_war">
+                            <h1 class="del_war_hd">Confirm Delete</h1>
+                            <p class="del_war_p">You can only delete client, if there is no deal, ticket record
+                                associated with the client.<br>
+                                Please ensure manual delete of clients Deals / Tickets / Other Items and then attempt
+                                delete else delete will be
+                                failed.<br>
+                                Consider rather de-activating the client.</p>
+                        </div>
+                        <div class="DeleteConfirmationClient_wrapper">
+                            <h1 class="hd">Client Id : ${CLIENT_OBJ.clientId}</h1>
+                            <div align="center"><b>
+                                    <font color="green"> ${Success} </font>
+                                    <font color="red"> ${Error}</font>
+                                </b></div>
+                            <form:form method="post" action="delete_delete_admin_client" modelAttribute="CLIENT_OBJ">
+                                <input type="hidden" name="clientId" value="${CLIENT_OBJ.clientId}" />
+                                <div class="DeleteConfirmationClient_wrapper_data">
+                                    <div class="DeleteConfirmationClient_wrapper_data_line a">
+                                        <div class="DeleteConfirmationClient_wrapper_data_l1"
+                                            style="width: 300px;text-align:start;">
+                                            <label for="" class="lb">Client Name</label>
+                                            <p>${CLIENT_OBJ.clientName}</p>
+                                        </div>
+                                        <div class="DeleteConfirmationClient_wrapper_data_l1"
+                                            style="width:900px;text-align:start">
+                                            <label for="" class="lb">Client Address</label>
+                                            <p>${CLIENT_OBJ.address}</p>
+                                        </div>
+                                    </div>
+                                    <div class="DeleteConfirmationClient_wrapper_data_line a">
+                                        <div class="DeleteConfirmationClient_wrapper_data_l2">
+                                            <label for="" class="lb">City</label>
+                                            <p>${CLIENT_OBJ.cityName}</p>
+                                        </div>
+                                        <div class="DeleteConfirmationClient_wrapper_data_l2">
+                                            <label for="" class="lb">Country</label>
+                                            <p>${CLIENT_OBJ.countryName}</p>
+                                        </div>
+                                        <div class="DeleteConfirmationClient_wrapper_data_l2">
+                                            <label for="" class="lb">Email</label>
+                                            <p>${CLIENT_OBJ.email}</p>
+                                        </div>
+                                        <div class="DeleteConfirmationClient_wrapper_data_l2">
+                                            <label for="" class="lb">Mobile</label>
+                                            <p>${CLIENT_OBJ.mobile}</p>
+                                        </div>
+                                    </div>
+                                    <div class="DeleteConfirmationClient_wrapper_data_line a">
+                                        <div class="DeleteConfirmationClient_wrapper_data_l2">
+                                            <label for="" class="lb">Phone</label>
+                                            <p>${CLIENT_OBJ.phone}</p>
+                                        </div>
+                                        <div class="DeleteConfirmationClient_wrapper_data_l2">
+                                            <label for="" class="lb">Active</label>
+                                            <p>${CLIENT_OBJ.active}</p>
+                                        </div>
+                                        <div class="DeleteConfirmationClient_wrapper_data_l2">
+                                        </div>
+                                        <div class="DeleteConfirmationClient_wrapper_data_l2">
+                                        </div>
+                                    </div>
+                                    <div class="DeleteConfirmationClient_wrapper_data_line a">
+                                        <div class="DeleteConfirmationClient_wrapper_data_l2">
+                                            <label for="" class="lb">Company Details</label>
+                                            <p>${CLIENT_OBJ.companyDetails}</p>
+                                        </div>
+                                        <div class="DeleteConfirmationClient_wrapper_data_l2">
+                                            <label for="" class="lb">Referred By</label>
+                                            <p>${CLIENT_OBJ.referredBy}</p>
+                                        </div>
+                                        <div class="DeleteConfirmationClient_wrapper_data_l2">
+                                            <label for="" class="lb">GST Details</label>
+                                            <p>${CLIENT_OBJ.gstDetails}</p>
+                                        </div>
+                                        <div class="DeleteConfirmationClient_wrapper_data_l2">
+                                            <label for="" class="lb">Bank Details</label>
+                                            <p>${CLIENT_OBJ.bankDetails}</p>
+                                        </div>
+                                    </div>
+                                    <div class="DeleteConfirmationClient_wrapper_data_line a">
+                                        <div class="DeleteConfirmationClient_wrapper_data_l2">
+                                            <label for="" class="lb">Passport Number</label>
+                                            <p>${CLIENT_OBJ.passportNumber}</p>
+                                        </div>
+                                        <div class="DeleteConfirmationClient_wrapper_data_l2">
+                                            <label for="" class="lb">Passport Expiry</label>
+                                            <p>${CLIENT_OBJ.passportExpiry}</p>
+                                        </div>
+                                        <div class="DeleteConfirmationClient_wrapper_data_l2">
+                                            <label for="" class="lb">DOB</label>
+                                            <p>${CLIENT_OBJ.birthDate}</p>
+                                        </div>
+                                        <div class="DeleteConfirmationClient_wrapper_data_l2">
+                                            <label for="" class="lb">DOA</label>
+                                            <p>${CLIENT_OBJ.anniversaryDate}</p>
+                                        </div>
+                                    </div>
+                                    <div class="DeleteConfirmationClient_wrapper_data_line a">
+                                        <div class="DeleteConfirmationClient_wrapper_data_l2" style="width: 100%;">
+                                            <label for="" class="lb">Remarks</label>
+                                            <p>${CLIENT_OBJ.remarks}</p>
+                                        </div>
+                                    </div>
+                                    <h1 class="hd"> Personal Preferences</h1>
+                                    <div class="DeleteConfirmationClient_wrapper_data_line a">
+                                        <div class="DeleteConfirmationClient_wrapper_data_l2">
+                                            <label for="" class="lb">Hotal Preferences</label>
+                                            <p>${CLIENT_OBJ.hotelPref} Star</p>
+                                        </div>
+                                        <div class="DeleteConfirmationClient_wrapper_data_l2">
+                                            <label for="" class="lb">Cost Savy</label>
+                                            <p>${CLIENT_OBJ.costSavvy}<br>
+                                               <span style="color:orangered"> (Scale 1 to 10)</span>  </p>
+                                        </div>
+                                        <div class="DeleteConfirmationClient_wrapper_data_l2">
+                                            <label for="" class="lb">Service Savvy</label>
+                                            <p>${CLIENT_OBJ.serviceSavvy}<br>
+                                                <span style="color:orangered">  (Scale 1 to 5)</span> </p>
+                                        </div>
+                                        <div class="DeleteConfirmationClient_wrapper_data_l2">
+                                            <label for="" class="lb">Food Preferences</label>
+                                            <p>${CLIENT_OBJ.foodPref}</p>
+                                        </div>
+                                    </div>
+                                    <div class="DeleteConfirmationClient_wrapper_data_line a">
+                                        <div class="DeleteConfirmationClient_wrapper_data_l2">
+                                            <label for="" class="lb">Aggressiveness</label>
+                                            <p>${CLIENT_OBJ.aggressiveness} <br>
+                                              <span style="color:orangered">(Scale 1 to 5)</span>  </p>
+                                        </div>
+                                        <div class="DeleteConfirmationClient_wrapper_data_l2">
+                                            <label for="" class="lb">Payment Record</label>
+                                            <p>${CLIENT_OBJ.paymentRating} <br>
+                                               <span style="color:orangered"> (Scale 1 to 5)</span>  </p>
+                                        </div>
+                                        <div class="DeleteConfirmationClient_wrapper_data_l2">
+                                        </div>
+                                        <div class="DeleteConfirmationClient_wrapper_data_l2">
+                                        </div>
+                                    </div>
+                                    <div class="due_today_task_data_btnss" style="margin-top: 10px;">
+                                        <sec:authorize access="hasAnyRole('ADMIN','CLIENT_DELETE')">
+                                            <input type="submit" style="background-color: red;color: white;"
+                                                value="Confirm Delete">
+                                        </sec:authorize>
 
-<script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
-<script	src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
-<link href="<c:url value="/resources/core/main.css" />" rel="stylesheet">
+                                        <sec:authorize access="hasAnyRole('ADMIN','CLIENT_EDIT')">
+                                            <a href="view_edit_admin_client?clientId=${CLIENT_OBJ.clientId}"><input
+                                                    type="button" value="Edit Client" /></a>
+                                        </sec:authorize>
+                                        <a href="view_form_admin_search_client"><input type="button"
+                                                value="Client Listing"></a>
+                                    </div>
+                            </form:form>
+                        </div>
+                </body>
 
-<style>
-table {
-	  width: 90%;
-	  border-collapse: collapse;
-	  border: 1px solid #38678f;
-	  margin: 5px auto;
-	  background: white;
-	}
-	
-	th {
-	  background: #FFCC00;
-	  width: 40%;
-	  font-weight: heavy;
-	  text-shadow: 0 1px 0 #38678f;
-	  color: black;
-	  border: 1px solid #38678f;
-	  box-shadow: inset 0px 1px 2px #568ebd;
-	  transition: all 0.2s;
-	  
-	}
-	tr {
-	  border-bottom: 1px solid #cccccc;
-	}
-	
-	td {
-	  border-right: 1px solid #cccccc;
-	  padding: 10px;
-	  transition: all 0.2s;
-	  text-align: center;
-	}
-	
-	.heavyTable {
-	  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-	  animation: float 5s infinite;
-	}
-	input[type="radio"] {
-		display: inline-block;
-		opacity: 1;
-		width: 1em;
-		z-index: -1;
-	}
-
-select {
-	appearance: none;
-	outline: 0;
-	background: lightblue;
-	background-image: none;
-	width: 80%;
-	height: 100%;
-	color: black;
-	cursor: pointer;
-	border: 1px solid black;
-	border-radius: 3px;
-	text-indent: 2px;
-}
-
-.select {
-	position: relative;
-	display: block;
-	height: 2.5em;
-	line-height: 3;
-	overflow: hidden;
-	border-radius: .25em;
-	padding-bottom: 10px;
-	padding-top: 10px;
-}
-
-.select option.service-small {
-	font-size: 20px;
-	padding: 25px;
-	background: lightgreen;
-}
-
-
-input[type=button], input[type=submit], input[type=reset] {
-	background-color: #4CAF50;
-	border: none;
-	color: white;
-	padding: 16px 32px;
-	text-decoration: none;
-	margin: 4px 2px;
-	cursor: pointer;
-}
-
-.warning {
-    border: 10px ridge #f00;
-    background-color: #ff0;
-    padding: .3rem;
-    display: block;
-    flex-direction: column;
-}
-ul li span {
-        display: block;
-        margin-left: -0.5em;
-        color: #000;
-      }
-	</style>
-</head>
-<br>
-<br>
-<h2 align="center">
-	<input type="image" src="${pageContext.request.contextPath}/resources/images/warning.jpg" height="30" width="30"/> Confirm Delete 
-</h2>
-<div style="text-align:center">
-<div class="warning" style="width:50%;display: inline-block">
-  You can only delete client, if there is no deal, ticket record associated with the client.<br> 
-  Please ensure manual delete of clients Deals / Tickets / Other Items and then attempt delete else delete will be failed.<br>
-  Consider rather de-activating the client. 
-  </div>
-</div>
-<div align="center"><b><font color="green" > ${Success} </font><font color="red"> ${Error}</font> </b></div>
-	<body style="background-color: creamwhite;">
-	<form:form method="post" action="delete_delete_admin_client" modelAttribute="CLIENT_OBJ" >
-	<input type="hidden" name="clientId" value="${CLIENT_OBJ.clientId}" />
-	<table>
-		<tr>
-			<td  style="width:40%;">
-				<table>
-				<caption><font size="3"><b><mark>Client Id - ${CLIENT_OBJ.clientId}</mark></b></font></caption>
-				<tr>
-					<th>Client Name</th>
-					<td>${CLIENT_OBJ.clientName}</td>
-				</tr>
-				<tr>
-					<th>Client Address</th>
-					<td>${CLIENT_OBJ.address}</td>
-				</tr>
-				<tr>
-					<th>City</th>
-					<td>${CLIENT_OBJ.cityName}</td>
-				</tr>
-				<tr>
-					<th>Country</th>
-					<td>${CLIENT_OBJ.countryName}</td>
-				</tr>
-				<tr>
-					<th>Email</th>
-					<td>${CLIENT_OBJ.email}</td>
-				</tr>
-				<tr>
-					<th>Mobile</th>
-					<td>${CLIENT_OBJ.mobile}</td>
-				</tr>
-				<tr>
-					<th>Phone</th>
-					<td>${CLIENT_OBJ.phone}</td>
-				</tr>
-				<tr>
-				 <th>Active</th>
-				<td style="text-align:center">${CLIENT_OBJ.active}</td>
-				</tr>
-		
-				
-				</table>
-			</td>
-			<td  style="width:40%;">
-				<table>
-				<tr>
-					<th>Company Details</th>
-					<td>${CLIENT_OBJ.companyDetails}</td>
-				</tr>
-				<tr>
-					<th>Referred By</th>
-					<td>${CLIENT_OBJ.referredBy}</td>
-				</tr>
-				<tr>
-					<th>GST Details</th>
-					<td>${CLIENT_OBJ.gstDetails}</td>
-				</tr>
-				<tr>
-					<th>Bank Details</th>
-					<td>${CLIENT_OBJ.bankDetails}</td>
-				</tr>
-				<tr>
-					<th>Passport Number</th>
-					<td>${CLIENT_OBJ.passportNumber}</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<table>
-						<tr>
-							<th style="width:33%;">Passport Expiry</th>
-							<th style="width:33%;">DOB</th>
-							<th style="width:33%;">DOA</th>
-						</tr>
-						<tr>
-							<td style="width:33%;">${CLIENT_OBJ.passportExpiry}</td>
-							<td style="width:33%;">${CLIENT_OBJ.birthDate}</td>
-							<td style="width:33%;">${CLIENT_OBJ.anniversaryDate}</td>
-
-						</tr>
-						</table>
-					</td>
-				</tr>
-				<tr>
-					<th>Remarks</th>
-					<td>${CLIENT_OBJ.remarks}</td>
-				</tr>
-				</table>
-				</td>
-				
-				<td  style="width:20%;"> 
-				<table>
-					<tr><th colspan="2" style="background-color:steelblue;">Personal Preferences</th></tr>
-					
-					<tr><th style="background-color:steelblue;">Hotel Preferences </th> 
-					<td>
-						${CLIENT_OBJ.hotelPref} Star
-					</td>
-					</tr>
-					
-					<tr>
-						<th style="background-color:steelblue;"> Cost Savy </th>
-						<td>
-								${CLIENT_OBJ.costSavvy}<br>
-									(Scale 1 to 10) 
-						</td>
-						</tr>
-					
-					
-					<tr><th style="background-color:steelblue;"> Service Savvy</th>
-					 <td>
-					 	${CLIENT_OBJ.serviceSavvy}<br>
-      						(Scale 1 to 5)
-					</td>
-					</tr>
-					<tr><th style="background-color:steelblue;"> Food Pref.</th>
-					<td>
-						${CLIENT_OBJ.foodPref}
-					</td>
-					</tr>
-					<tr><th style="background-color:steelblue;"> Aggressiveness</th>
-					 <td>
-							${CLIENT_OBJ.aggressiveness} <br>
-      						(Scale 1 to 5)
-					</td>
-					</tr>
-					
-					<tr><th style="background-color:steelblue;">Payment Record</th>
-					 <td>
-							${CLIENT_OBJ.paymentRating} <br>
-      						(Scale 1 to 5)
-					</td>
-					</tr>
-				</table>
-				</td>
-			</tr>
-				 
-			<tr>
-					<td colspan="3" style="text-align: center;">
-						<sec:authorize access="hasAnyRole('ADMIN','CLIENT_DELETE')">
-							<input type="submit" style="width: 150px;background-color: red;" value="Confirm Delete">
-						</sec:authorize>
-						
-						<sec:authorize access="hasAnyRole('ADMIN','CLIENT_EDIT')">
-							<a href="view_edit_admin_client?clientId=${CLIENT_OBJ.clientId}"><input type="button" style="width: 140px;background-color: green;" value="Edit Client" /></a>
-						</sec:authorize>
-						<a href="view_form_admin_search_client"><input type="button" style="width: 140px;background-color: blue;" value="Client Listing"></a>
-
-					 </td>
-			</tr>
-		</table>
-	</form:form>
-</body>
 </html>
-
