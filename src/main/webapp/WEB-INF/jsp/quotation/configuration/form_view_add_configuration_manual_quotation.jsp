@@ -63,15 +63,7 @@
                     <div class="form_view_aCMQuotatioN container">
                     <br>
 
-<div style="position:absolute;background:black;color:white;width:300px;right:0;padding:10px 5px;border-radius:5px">
-
-                           
-
-                        <!-- ###############  small box starts ###########  -->
-                        <form:form modelAttribute="QTN_OBJ" action="create_create_lead_quotation">
-
-                           
-                                <div class="form_view_aCMQuotation_fbw " style="background:#588157">
+ <div class="m-d ">
                                     <div class="form_view_aCMQuotation_fbwls">
                                         <label for="" class="lb">Quotation Id</label>
                                         <p>${QTN_OBJ.quotationId}</p>
@@ -80,7 +72,17 @@
                                         <label for="" class="lb">Version Id</label>
                                         <p>${QTN_OBJ.version}</p>
                                     </div>
-                                </div>
+</div>
+
+<div style="position:absolute;background:black;color:white;width:300px;left:0;padding:10px 5px;border-radius:5px">
+
+                           
+
+                        <!-- ###############  small box starts ###########  -->
+                        <form:form modelAttribute="QTN_OBJ" action="create_create_lead_quotation">
+
+                           
+                               
                        
                         </form:form>
                         <!-- ###############  small box ends ###########  -->
@@ -228,7 +230,7 @@
                                                 <div class="form_view_aCMQuotation_lb_wr_tb_sb_body">
                                                     <div class="fvacmq">
                                                         <p class="qu_in">Display Remarks / Cancellation Policy</p>
-                                                        <p class="qu_ans">
+                                                        <div class="qu_ans">
                                                             <form:radiobutton path="flightCancellationPolicyDisplay"
                                                                 id="flightCancellationPolicyDisplayTrue"
                                                                 name="flightCancellationPolicyDisplay" value="true"
@@ -240,11 +242,13 @@
                                                                 name="flightCancellationPolicyDisplay" value="false"
                                                                 onclick="check();" /> <label
                                                                 for="flightCancellationPolicyDisplayFalse"
-                                                                class="radio">No</label>
-                                                        </p>
+                                                                class="radio">No</label> 
+                                                        </div>
+                                                        
                                                     </div>
                                                 </div>
                                             </div>
+                                            	
                                         </c:if>
                                         <c:if test="${QTN_OBJ.hotel eq true}">
                                             <div class="form_view_aCMQuotation_lb_wr_tb_sb a">
@@ -425,6 +429,7 @@
                                                                 for="sightSeeingsIncludeMasterAppendixFalse"
                                                                 class="radio">No</label>
                                                         </p>
+                                                       
                                                     </div>
                                                 </div>
                                                 <div class="form_view_aCMQuotation_lb_wr_tb_sb_body">
@@ -1012,132 +1017,132 @@
                     </div>
                     <!-- ############### last box ends ###########  -->
                     </div>
-                    <script>
-                        // Get the modal
-                        var modal = document.getElementById("myModal");
-                        // Get the button that opens the modal
-                        var btn = document.getElementById("myBtn");
-                        // Get the <span> element that closes the modal
-                        var span = document.getElementsByClassName("close")[0];
-                        function myStopsDisplay(clicked) {
-                            //alert(clicked); 
-                            $("#myModal .modal-body").load($(clicked).attr('data-load-url'));
-                            modal.style.display = "block";
-                        }
-                        // When the user clicks on <span> (x), close the modal
-                        span.onclick = function () {
-                            modal.style.display = "none";
-                        }
-                        // When the user clicks anywhere outside of the modal, close it
-                        window.onclick = function (event) {
-                            if (event.target == modal) {
-                                modal.style.display = "none";
-                            }
-                        }
+                   <script>
+// Get the modal
+var modal = document.getElementById("myModal");
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+function myStopsDisplay(clicked) { 
+	//alert(clicked); 
+	$("#myModal .modal-body").load($(clicked).attr('data-load-url'));
+	modal.style.display = "block";
+}   
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
 
-                        $(document).ready(function () {
-                            check();
-                        });
-                        function check() {
-                            if ($("input[name='flightCancellationPolicyDisplay']:checked").val() == "true") {
-                                $("#displayFlightCancellationHeader").show();
-                                $("#displayFlightCancellationTextArea").show();
-                            }
-                            if ($("input[name='flightCancellationPolicyDisplay']:checked").val() == "false") {
-                                $("#displayFlightCancellationHeader").hide();
-                                $("#displayFlightCancellationTextArea").hide();
-                            }
+$(document).ready(function() {
+	check();
+});
+function check(){
+	if ($("input[name='flightCancellationPolicyDisplay']:checked").val()=="true") {
+		$("#displayFlightCancellationHeader").show();
+		$("#displayFlightCancellationTextArea").show();
+	}
+	if ($("input[name='flightCancellationPolicyDisplay']:checked").val()=="false") {
+		$("#displayFlightCancellationHeader").hide();
+		$("#displayFlightCancellationTextArea").hide();
+	}
 
-                            if ($("input[name='hotelCancellationPolicyDisplay']:checked").val() == "true") {
-                                $("#displayHotelCancellationHeader").show();
-                                $("#displayHotelCancellationTextArea").show();
-                            }
-                            if ($("input[name='hotelCancellationPolicyDisplay']:checked").val() == "false") {
-                                $("#displayHotelCancellationHeader").hide();
-                                $("#displayHotelCancellationTextArea").hide();
-                            }
+	if ($("input[name='hotelCancellationPolicyDisplay']:checked").val()=="true") {
+		$("#displayHotelCancellationHeader").show();
+		$("#displayHotelCancellationTextArea").show();
+	}
+	if ($("input[name='hotelCancellationPolicyDisplay']:checked").val()=="false") {
+		$("#displayHotelCancellationHeader").hide();
+		$("#displayHotelCancellationTextArea").hide();
+	}
 
-                            if ($("input[name='transfersCancellationPolicyDisplay']:checked").val() == "true") {
-                                $("#displayTransfersCancellationHeader").show();
-                                $("#displayTransfersCancellationTextArea").show();
-                            }
-                            if ($("input[name='transfersCancellationPolicyDisplay']:checked").val() == "false") {
-                                $("#displayTransfersCancellationHeader").hide();
-                                $("#displayTransfersCancellationTextArea").hide();
-                            }
+	if ($("input[name='transfersCancellationPolicyDisplay']:checked").val()=="true") {
+		$("#displayTransfersCancellationHeader").show();
+		$("#displayTransfersCancellationTextArea").show();
+	}
+	if ($("input[name='transfersCancellationPolicyDisplay']:checked").val()=="false") {
+		$("#displayTransfersCancellationHeader").hide();
+		$("#displayTransfersCancellationTextArea").hide();
+	}
 
-                            if ($("input[name='sightSeeingCancellationPolicyDisplay']:checked").val() == "true") {
-                                $("#displaySigtSeeingCancellationHeader").show();
-                                $("#displaySightSeeingCancellationTextArea").show();
-                            }
-                            if ($("input[name='sightSeeingCancellationPolicyDisplay']:checked").val() == "false") {
-                                $("#displaySigtSeeingCancellationHeader").hide();
-                                $("#displaySightSeeingCancellationTextArea").hide();
-                            }
-
-
-                            if ($("input[name='visaAdditionalDetailsDisplay']:checked").val() == "true") {
-                                $("#displayVisaAdditionalHeader").show();
-                                $("#displayVisaAdditionalTextArea").show();
-                            }
-                            if ($("input[name='visaAdditionalDetailsDisplay']:checked").val() == "false") {
-                                $("#displayVisaAdditionalHeader").hide();
-                                $("#displayVisaAdditionalTextArea").hide();
-                            }
-
-                            if ($("input[name='visaCancellationPolicyDisplay']:checked").val() == "true") {
-                                $("#displayVisaCancellationHeader").show();
-                                $("#displayVisaCancellationTextArea").show();
-                            }
-                            if ($("input[name='visaCancellationPolicyDisplay']:checked").val() == "false") {
-                                $("#displayVisaCancellationHeader").hide();
-                                $("#displayVisaCancellationTextArea").hide();
-                            }
-
-                            if ($("input[name='insuranceCancellationPolicyDisplay']:checked").val() == "true") {
-                                $("#displayInsuranceCancellationHeader").show();
-                                $("#displayInsuranceCancellationTextArea").show();
-                            }
-                            if ($("input[name='insuranceCancellationPolicyDisplay']:checked").val() == "false") {
-                                $("#displayInsuranceCancellationHeader").hide();
-                                $("#displayInsuranceCancellationTextArea").hide();
-                            }
+	if ($("input[name='sightSeeingCancellationPolicyDisplay']:checked").val()=="true") {
+		$("#displaySigtSeeingCancellationHeader").show();
+		$("#displaySightSeeingCancellationTextArea").show();
+	}
+	if ($("input[name='sightSeeingCancellationPolicyDisplay']:checked").val()=="false") {
+		$("#displaySigtSeeingCancellationHeader").hide();
+		$("#displaySightSeeingCancellationTextArea").hide();
+	}
 
 
-                            if ($("input[name='cruiseCancellationPolicyDisplay']:checked").val() == "true") {
-                                $("#displayCruiseCancellationHeader").show();
-                                $("#displayCruiseCancellationTextArea").show();
-                            }
-                            if ($("input[name='cruiseCancellationPolicyDisplay']:checked").val() == "false") {
-                                $("#displayCruiseCancellationHeader").hide();
-                                $("#displayCruiseCancellationTextArea").hide();
-                            }
+	if ($("input[name='visaAdditionalDetailsDisplay']:checked").val()=="true") {
+		$("#displayVisaAdditionalHeader").show();
+		$("#displayVisaAdditionalTextArea").show();
+	}
+	if ($("input[name='visaAdditionalDetailsDisplay']:checked").val()=="false") {
+		$("#displayVisaAdditionalHeader").hide();
+		$("#displayVisaAdditionalTextArea").hide();
+	}
+
+	if ($("input[name='visaCancellationPolicyDisplay']:checked").val()=="true") {
+		$("#displayVisaCancellationHeader").show();
+		$("#displayVisaCancellationTextArea").show();
+	}
+	if ($("input[name='visaCancellationPolicyDisplay']:checked").val()=="false") {
+		$("#displayVisaCancellationHeader").hide();
+		$("#displayVisaCancellationTextArea").hide();
+	}
+
+	if ($("input[name='insuranceCancellationPolicyDisplay']:checked").val()=="true") {
+		$("#displayInsuranceCancellationHeader").show();
+		$("#displayInsuranceCancellationTextArea").show();
+	}
+	if ($("input[name='insuranceCancellationPolicyDisplay']:checked").val()=="false") {
+		$("#displayInsuranceCancellationHeader").hide();
+		$("#displayInsuranceCancellationTextArea").hide();
+	}
+	
+
+	if ($("input[name='cruiseCancellationPolicyDisplay']:checked").val()=="true") {
+		$("#displayCruiseCancellationHeader").show();
+		$("#displayCruiseCancellationTextArea").show();
+	}
+	if ($("input[name='cruiseCancellationPolicyDisplay']:checked").val()=="false") {
+		$("#displayCruiseCancellationHeader").hide();
+		$("#displayCruiseCancellationTextArea").hide();
+	}
 
 
-                            if ($("input[name='packageCancellationPolicyDisplay']:checked").val() == "true") {
-                                $("#displayTourPackageCancellationHeader").show();
-                                $("#displayTourPackageCancellationTextArea").show();
-                            }
-                            if ($("input[name='packageCancellationPolicyDisplay']:checked").val() == "false") {
-                                $("#displayTourPackageCancellationHeader").hide();
-                                $("#displayTourPackageCancellationTextArea").hide();
-                            }
+	if ($("input[name='packageCancellationPolicyDisplay']:checked").val()=="true") {
+		$("#displayTourPackageCancellationHeader").show();
+		$("#displayTourPackageCancellationTextArea").show();
+	}
+	if ($("input[name='packageCancellationPolicyDisplay']:checked").val()=="false") {
+		$("#displayTourPackageCancellationHeader").hide();
+		$("#displayTourPackageCancellationTextArea").hide();
+	}
 
 
-                            if ($("input[name='otherCancellationPolicyDisplay']:checked").val() == "true") {
-                                $("#displayOtherCancellationHeader").show();
-                                $("#displayOtherCancellationTextArea").show();
-                            }
-                            if ($("input[name='otherCancellationPolicyDisplay']:checked").val() == "false") {
-                                $("#displayOtherCancellationHeader").hide();
-                                $("#displayOtherCancellationTextArea").hide();
-                            }
+	if ($("input[name='otherCancellationPolicyDisplay']:checked").val()=="true") {
+		$("#displayOtherCancellationHeader").show();
+		$("#displayOtherCancellationTextArea").show();
+	}
+	if ($("input[name='otherCancellationPolicyDisplay']:checked").val()=="false") {
+		$("#displayOtherCancellationHeader").hide();
+		$("#displayOtherCancellationTextArea").hide();
+	}
+	
+}
 
-                        }
 
 
-
-                    </script>
+</script>
                 </body>
 
 </html>

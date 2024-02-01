@@ -6893,7 +6893,14 @@ color: white;
 .form_view_aCMQuotation_fbw {
     display: flex;
 }
-
+.m-d{
+	display: flex;
+	width:600px;
+	background:black;
+	color:white;
+	margin: 5px auto;
+	border-radius:5px;
+}
 .form_view_aCMQuotation_fbwls {
     width: 300px;
     text-align: center;

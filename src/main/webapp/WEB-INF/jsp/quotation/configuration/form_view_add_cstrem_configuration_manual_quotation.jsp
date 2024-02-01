@@ -58,16 +58,7 @@
 
 <br>
 
-
-<div style="position:absolute;background:black;color:white;width:300px;right:0;padding:10px 5px;border-radius:5px">
-
-                           
-
-                        <!-- ###############  small box starts ###########  -->
-                        <form:form modelAttribute="QTN_OBJ" action="create_create_lead_quotation">
-
-                           
-                                <div class="form_view_aCMQuotation_fbw " style="background:#588157">
+ <div class="m-d ">
                                     <div class="form_view_aCMQuotation_fbwls">
                                         <label for="" class="lb">Quotation Id</label>
                                         <p>${QTN_OBJ.quotationId}</p>
@@ -76,7 +67,17 @@
                                         <label for="" class="lb">Version Id</label>
                                         <p>${QTN_OBJ.version}</p>
                                     </div>
-                                </div>
+</div>
+
+<div style="position:absolute;background:black;color:white;width:300px;left:0;padding:10px 5px;border-radius:5px">
+
+                           
+
+                        <!-- ###############  small box starts ###########  -->
+                        <form:form modelAttribute="QTN_OBJ" action="create_create_lead_quotation">
+
+                           
+                                
                        
                         </form:form>
                         <!-- ###############  small box ends ###########  -->

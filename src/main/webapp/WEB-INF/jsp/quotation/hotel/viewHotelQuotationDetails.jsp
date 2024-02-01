@@ -111,27 +111,48 @@
         <div align="center"><b><font color="#32cd32  " > ${Success} </font><font color="red"> ${Error}</font> </b></div>
     </div>
 
-
+<div style="width:auto;display:flex;flex-direction:column;position:absolute">
 	<c:if test="${not empty QTN_OBJ.hotelVoList}">
 			<tr>
 			<td style="background-color:white;text-align:left;">
 				
 				<c:forEach var = "i" begin = "1" end = "${MAX_HOTEL_OPTION_CREATED}">
          			<c:if test="${i == QTN_OBJ.hotelOptionNo}">
-         		    	<input type="button" style="background-color: green;padding: 10px 10px;" value="Option ${i}" disabled/>
+         		    	<input type="button" style="width: 90px;
+    background: orangered;
+    color: black;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    margin: 5px 0;
+    padding: 5px 0;border:2px solid black;cursor:pointer" value="Option ${i}" disabled/>
          		    </c:if>
          		    <c:if test="${i != QTN_OBJ.hotelOptionNo}">
-         		    	<a href="form_view_hotel_quotation_details?leadId=${LEAD_OBJ.leadId }&quotationId=${QTN_OBJ.quotationId}&hotelOptionNo=${i}"><input type="button" style="background-color: grey;padding: 4px 5px;"value="Option ${i}" /></a>
+         		    	<a href="form_view_hotel_quotation_details?leadId=${LEAD_OBJ.leadId }&quotationId=${QTN_OBJ.quotationId}&hotelOptionNo=${i}"><input type="button" style="width: 90px;
+    background: gray;
+    color: black;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    margin: 5px 0;
+    padding: 5px 0;border:2px solid black;cursor:pointer" value="Option ${i}" /></a>
          		    </c:if>
       			</c:forEach>
 				<c:if test="${QTN_OBJ.converted ne true }">
-					<a href="form_view_add_hotel_option_quotation?leadId=${LEAD_OBJ.leadId }&quotationId=${QTN_OBJ.quotationId}"><input type="button" style="background-color: #786AAF;padding: 4px 5px;"value="Add Hotel Option" /></a>
+					<a href="form_view_add_hotel_option_quotation?leadId=${LEAD_OBJ.leadId }&quotationId=${QTN_OBJ.quotationId}"><input type="button" style="width: 90px;
+    background: #32cd32;
+    color: white;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    margin: 5px 0;
+    padding: 5px 0;border:2px solid black;cursor:pointer" value="Add Hotel Option" /></a>
 				</c:if>
 			</td>
 			</tr>
 
 	</c:if>
-	
+	</div>
 	<c:if test="${HTL_STOP_ACTION eq 'ADD'}">
 			<jsp:include page="form_view_add_manual_hotel_quotation.jsp" />
 		</c:if>
@@ -150,8 +171,8 @@
                 <div class="main_p container" >
                     <div class="main_p_wrapper" style="margin-top:20px">
                         <div class="main_p_wrapper_data">
-                            <h1 style="margin:10px 0">Id- ${hotelQtnObj.manualHotelQuotationId}</h1>
-                            <div class="main_p_wrapper_data_line bc-clr">
+                            <h1 style="margin:10px 0;color:#32cd32">Id- ${hotelQtnObj.manualHotelQuotationId}</h1>
+                            <div class="main_p_wrapper_data_line a">
                                 <div class="main_p_wrapper_dl ">
                                     <label for="" class="lb">City</label>
                                     <p>${hotelQtnObj.cityName }</p>
@@ -169,7 +190,7 @@
                                     <p>${hotelQtnObj.mealPlanName}</p>
                                 </div>
                             </div>
-                            <div class="main_p_wrapper_data_line bc-clr">
+                            <div class="main_p_wrapper_data_line a">
                                 <div class="main_p_wrapper_dl ">
                                     <label for="" class="lb">CheckIn Date</label>
                                     <p>
@@ -193,7 +214,7 @@
                                     <p>${hotelQtnObj.children}</p>
                                 </div>
                             </div>
-                            <div class="main_p_wrapper_data_line bc-clr">
+                            <div class="main_p_wrapper_data_line a">
                                 <div class="main_p_wrapper_dl ">
                                     <label for="" class="lb">Extra Bed</label>
                                     <p>${hotelQtnObj.extrabed}</p>
@@ -212,19 +233,19 @@
                                     <p>${hotelQtnObj.hotelStayMarkup}</p>
                                 </div>
                             </div>
-                            <div class="main_p_wrapper_data_line bc-clr">
+                            <div class="main_p_wrapper_data_line a">
                                 <div class="main_p_wrapper_dl ">
                                     <label for="" class="lb">Display Order</label>
                                     <p>${hotelQtnObj.displayOrder }</p>
                                 </div>
                             </div>
-                            <div class="main_p_wrapper_data_line bc-clr">
+                            <div class="main_p_wrapper_data_line a">
                                 <div class="main_p_wrapper_dl_rem ">
                                     <label for="" class="lb">Remarks</label>
                                     <p>${hotelQtnObj.remarks}</p>
                                 </div>
                             </div>
-                            <div class="due_today_task_data_btnss">
+                            <div class="due_today_task_data_btnss" style="margin-top:10px">
                                 <c:if test="${QTN_OBJ.converted ne true }">
                                     <a
                                         href="form_view_edit_manual_hotel_quotation?manualHotelQuotationId=${hotelQtnObj.manualHotelQuotationId}&quotationId=${QTN_OBJ.quotationId}&leadId=${QTN_OBJ.leadEntity.leadId}&hotelOptionNo=${QTN_OBJ.hotelOptionNo}"><input
@@ -240,7 +261,7 @@
                                 </c:if>
                                 <form:form action="view_lead_quotations_list">
 				<input type="hidden" name="leadId" value= "${QTN_OBJ.leadEntity.leadId}" />
-				<input type="submit" name="Version List" Value="Show Version List" />
+			
 			</form:form>
                             </div>
                         </div>
