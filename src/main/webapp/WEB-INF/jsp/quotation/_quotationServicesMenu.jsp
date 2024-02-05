@@ -10,7 +10,8 @@
 
 <div class="quotationServicesMenu_table">
 <div style="color:white">
-<a href="form_view_quotation_details?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId }"><input type="button" style="background:transparent;outline:none;border:none;width:100%;border-bottom:2px solid #F8AF51;color:white;cursor:pointer"  value="Quotation Summary" /></a>
+<a  href="form_view_quotation_details?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId }"><input type="button" style="background:transparent;outline:none;border:none;width:100%;border-bottom:2px solid orangered;color:orangered;font-weight:bold;cursor:pointer;padding:
+0 5px;border-radius:5px;background:black"  value="Quotation Summary" /></a>
 </div>
 			
 		<div class="com-q">
@@ -76,6 +77,6 @@
 	
 	
 		
-				 <a  href="form_view_configure_quotation_details?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId }"><input type="button" style="background:transparent;outline:none;border:none;width:100%;border-bottom:2px solid #F8AF51;color:white;cursor:pointer;margin-left:10px"  value="Configure / Generate" /></a>	
+				 <a  href="form_view_configure_quotation_details?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId }"><input type="button" style="background:transparent;outline:none;border:none;width:100%;border-bottom:2px solid orangered;font-weight:bold;background:black;border-radius:5px;color:orangered;cursor:pointer;margin-left:10px"  value="Configure / Generate" /></a>	
 
 </div>

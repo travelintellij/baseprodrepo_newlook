@@ -58,6 +58,9 @@
 
 <br>
 
+                       
+
+
  <div class="m-d ">
                                     <div class="form_view_aCMQuotation_fbwls">
                                         <label for="" class="lb">Quotation Id</label>
@@ -75,21 +78,9 @@
 
                         <!-- ###############  small box starts ###########  -->
                         <form:form modelAttribute="QTN_OBJ" action="create_create_lead_quotation">
-
-                           
-                                
-                       
                         </form:form>
                         <!-- ###############  small box ends ###########  -->
-                        <form:form modelAttribute="MANUAL_CNF"
-                            action="create_update_generate_manual_configuration_quotation">
 
-                            <input type="hidden" name="leadId" value="${QTN_OBJ.leadEntity.leadId}" />
-                            <input type="hidden" name="quotationId" value="${QTN_OBJ.quotationId}" />
-                            <input type="hidden" name="manualConfigurationQuotationId"
-                                value="${MANUAL_CNF.manualConfigurationQuotationId}" />
-                            <form:hidden path="totalQuotationAmount" />
-                            <form:hidden path="remarks" />
                             <!-- ###############  buttons box starts ###########  -->
                             <div  style="border:2px solid black">
                                 <div class="form_view_aCMQuotation_btns_wrapper ">
@@ -137,7 +128,15 @@
 
 
                     <div class="form_vaccmquotation container">
-     
+      <form:form modelAttribute="MANUAL_CNF"
+                            action="create_update_generate_manual_configuration_quotation">
+
+                            <input type="hidden" name="leadId" value="${QTN_OBJ.leadEntity.leadId}" />
+                            <input type="hidden" name="quotationId" value="${QTN_OBJ.quotationId}" />
+                            <input type="hidden" name="manualConfigurationQuotationId"
+                                value="${MANUAL_CNF.manualConfigurationQuotationId}" />
+                            <form:hidden path="totalQuotationAmount" />
+                            <form:hidden path="remarks" />
                             <!-- ########### forth box  starts #########  -->
                             <div class="form_vaccmquotation_lastbox">
                                 <div class="form_vaccmquotation_lastbox_wrapper">
@@ -608,7 +607,7 @@
 
                                         <tr>
                                             <td colspan="2">
-                                                <table>
+                                                <table style=";width:100%;margin-top:10px">
                                                     <fmt:setLocale value="en_IN" />
                                                     <tr>
                                                         <th colspan="2" style="background-color:blue; "></th>
@@ -683,10 +682,12 @@
 
                                     </table>
                                 </div>
+                                </div>
                                 </form:form>
                             </div>
                             <!-- ########### forth box  ends #########  -->
                     </div>
+                    
                     <div id="myModal" class="modal">
                         <!-- Modal content -->
                         <div class="modal-content">

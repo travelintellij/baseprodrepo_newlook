@@ -60,8 +60,7 @@
                 <div class="afd">
 <jsp:include page="../_quotationServicesMenu.jsp" />
 </div>
-                    <div class="form_view_aCMQuotatioN container">
-                    <br>
+
 
  <div class="m-d ">
                                     <div class="form_view_aCMQuotation_fbwls">
@@ -74,19 +73,7 @@
                                     </div>
 </div>
 
-<div style="position:absolute;background:black;color:white;width:300px;left:0;padding:10px 5px;border-radius:5px">
-
-                           
-
-                        <!-- ###############  small box starts ###########  -->
-                        <form:form modelAttribute="QTN_OBJ" action="create_create_lead_quotation">
-
-                           
-                               
-                       
-                        </form:form>
-                        <!-- ###############  small box ends ###########  -->
-                        <form:form modelAttribute="MANUAL_CNF"
+<form:form modelAttribute="MANUAL_CNF"
                             action="create_update_generate_manual_configuration_quotation">
 
                             <input type="hidden" name="leadId" value="${QTN_OBJ.leadEntity.leadId}" />
@@ -95,6 +82,11 @@
                                 value="${MANUAL_CNF.manualConfigurationQuotationId}" />
                             <form:hidden path="totalQuotationAmount" />
                             <form:hidden path="remarks" />
+              
+
+
+<div style="position:absolute;background:black;color:white;width:300px;left:0;padding:10px 5px;border-radius:5px">
+
                             <!-- ###############  buttons box starts ###########  -->
                             <div  style="border:2px solid black">
                                 <div class="form_view_aCMQuotation_btns_wrapper ">
@@ -244,11 +236,18 @@
                                                                 for="flightCancellationPolicyDisplayFalse"
                                                                 class="radio">No</label> 
                                                         </div>
-                                                        
+                                                        	
                                                     </div>
                                                 </div>
                                             </div>
-                                            	
+                                            	<tr id="displayFlightCancellationHeader">
+				<th style="background-color:lightblue;color:black;" colspan="6"> Flight Remarks / Cancellation Policy </th>
+			</tr>
+			<tr id="displayFlightCancellationTextArea">
+				<td colspan="6">
+					<form:textarea path="flightCancellationPolicy" rows="10" cols="100" />
+				</td>
+			</tr>
                                         </c:if>
                                         <c:if test="${QTN_OBJ.hotel eq true}">
                                             <div class="form_view_aCMQuotation_lb_wr_tb_sb a">
@@ -1013,11 +1012,11 @@
                                                 type="button" value="Restore Default" /></a>
                                     </div>
                                 </div>
+                        </div>
                         </form:form>
-                    </div>
+                        
                     <!-- ############### last box ends ###########  -->
-                    </div>
-                   <script>
+<script>
 // Get the modal
 var modal = document.getElementById("myModal");
 // Get the button that opens the modal
