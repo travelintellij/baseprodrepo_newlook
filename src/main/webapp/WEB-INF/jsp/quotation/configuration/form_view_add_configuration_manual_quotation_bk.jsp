@@ -776,6 +776,7 @@ window.onclick = function(event) {
 }
 
 $(document).ready(function() {
+	
 	check();
 });
 function check(){

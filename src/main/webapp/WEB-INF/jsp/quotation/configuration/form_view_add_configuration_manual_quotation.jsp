@@ -57,8 +57,8 @@
     <!-- ############# quick lead view ends here################## -->
 </div>
                 
-                <div class="afd">
-<jsp:include page="../_quotationServicesMenu.jsp" />
+<div class="afd">
+		<jsp:include page="../_quotationServicesMenu.jsp" />
 </div>
 
 
@@ -73,8 +73,7 @@
                                     </div>
 </div>
 
-<form:form modelAttribute="MANUAL_CNF"
-                            action="create_update_generate_manual_configuration_quotation">
+<form:form modelAttribute="MANUAL_CNF" action="create_update_generate_manual_configuration_quotation">
 
                             <input type="hidden" name="leadId" value="${QTN_OBJ.leadEntity.leadId}" />
                             <input type="hidden" name="quotationId" value="${QTN_OBJ.quotationId}" />
@@ -131,6 +130,9 @@
                             <!-- ############### 2 buttons box ends ###########  -->
 </div>
 
+				
+
+				
 
                             <!-- ############### last box starts ###########  -->
                             <div class="form_view_aCMQuotation_btns">
@@ -221,7 +223,7 @@
                                                 </div>
                                                 <div class="form_view_aCMQuotation_lb_wr_tb_sb_body">
                                                     <div class="fvacmq">
-                                                        <p class="qu_in">Display Remarks / Cancellation Policy</p>
+                                                        <p class="qu_in">Display Remark / Cancellation Policy</p>
                                                         <div class="qu_ans">
                                                             <form:radiobutton path="flightCancellationPolicyDisplay"
                                                                 id="flightCancellationPolicyDisplayTrue"
@@ -240,14 +242,17 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            	<tr id="displayFlightCancellationHeader">
-				<th style="background-color:lightblue;color:black;" colspan="6"> Flight Remarks / Cancellation Policy </th>
-			</tr>
-			<tr id="displayFlightCancellationTextArea">
-				<td colspan="6">
-					<form:textarea path="flightCancellationPolicy" rows="10" cols="100" />
-				</td>
-			</tr>
+							             <table>
+								             <tr id="displayFlightCancellationHeader">
+												<th style="background-color:lightblue;color:black;" colspan="6"> Flight Remarks / Cancellation Policy </th>
+											</tr>
+											<tr id="displayFlightCancellationTextArea">
+											
+												<td colspan="6">
+													<form:textarea path="flightCancellationPolicy" rows="10" cols="100" />
+												</td>
+											</tr>
+										</table>
                                         </c:if>
                                         <c:if test="${QTN_OBJ.hotel eq true}">
                                             <div class="form_view_aCMQuotation_lb_wr_tb_sb a">
@@ -971,7 +976,7 @@
                                             </div>
                                             <div class="form_view_aCMQuotation_lb_wr_tb_sb_body">
                                                 <div class="fvacmq">
-                                                    <p class="qu_in">T&C new page</p>
+                                                    <p class="qu_in">T &C new page</p>
                                                     <p class="qu_ans">
                                                         <form:radiobutton path="tncStartNewPage"
                                                             id="tncStartNewPageTrue" name="tncStartNewPage" value="true"
@@ -1013,6 +1018,10 @@
                                     </div>
                                 </div>
                         </div>
+            
+            
+                        
+                        
                         </form:form>
                         
                     <!-- ############### last box ends ###########  -->
@@ -1038,10 +1047,13 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+</script>
 
+<script>
 $(document).ready(function() {
 	check();
 });
+
 function check(){
 	if ($("input[name='flightCancellationPolicyDisplay']:checked").val()=="true") {
 		$("#displayFlightCancellationHeader").show();
