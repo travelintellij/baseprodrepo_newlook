@@ -171,7 +171,7 @@
 
                                     <div class="form_view_aCMQuotation_lb_wr_tb">
                                         <c:if test="${QTN_OBJ.flight eq true}">
-                                            <div class="form_view_aCMQuotation_lb_wr_tb_sb a">
+                                            <div class="form_view_aCMQuotation_lb_wr_tb_sb">
                                                 <div class="form_view_aCMQuotation_lb_wr_tb_sb_header">
                                                     <h1 style="text-align: center;font-size: 25px;color:#32cd32">Flight
                                                     </h1>
@@ -242,20 +242,20 @@
                                                     </div>
                                                 </div>
                                             </div>
-							             <table>
+							             <table style="width:100%" class="a">
 								             <tr id="displayFlightCancellationHeader">
 												<th style="background-color:lightblue;color:black;" colspan="6"> Flight Remarks / Cancellation Policy </th>
 											</tr>
 											<tr id="displayFlightCancellationTextArea">
 											
 												<td colspan="6">
-													<form:textarea path="flightCancellationPolicy" rows="10" cols="100" />
+													<form:textarea path="flightCancellationPolicy" rows="10" cols="84" />
 												</td>
 											</tr>
 										</table>
                                         </c:if>
                                         <c:if test="${QTN_OBJ.hotel eq true}">
-                                            <div class="form_view_aCMQuotation_lb_wr_tb_sb a">
+                                            <div class="form_view_aCMQuotation_lb_wr_tb_sb ">
                                                 <div class="form_view_aCMQuotation_lb_wr_tb_sb_header">
                                                     <h1 style="text-align: center;font-size: 25px;color:#32cd32">Hotel
                                                     </h1>
@@ -312,9 +312,22 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            
+                                             <table style="width:100%" class="a">
+                                            
+                                            <tr id="displayHotelCancellationHeader">
+				<th style="background-color:lightblue;color:black;" colspan="6"> Hotel Remarks / Cancellation Policy </th>
+			</tr>
+			<tr id="displayHotelCancellationTextArea">
+				<td colspan="6">
+					<form:textarea path="hotelCancellationPolicy" rows="10" cols="83" />
+				</td>
+			</tr>
+                                            </table>
+                                            
                                         </c:if>
                                         <c:if test="${QTN_OBJ.transfers eq true}">
-                                            <div class="form_view_aCMQuotation_lb_wr_tb_sb a">
+                                            <div class="form_view_aCMQuotation_lb_wr_tb_sb ">
                                                 <div class="form_view_aCMQuotation_lb_wr_tb_sb_header">
                                                     <h1 style="text-align: center;font-size: 25px;color:#32cd32">
                                                         Transfers</h1>
@@ -374,9 +387,19 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                             <table style="width:100%" class="a">
+                                             <tr id="displayTransfersCancellationHeader">
+				<th style="background-color:lightblue;color:black;" colspan="6"> Transfers Remarks / Cancellation Policy </th>
+			</tr>
+			<tr id="displayTransfersCancellationTextArea">
+				<td colspan="6">
+					<form:textarea path="transfersCancellationPolicy" rows="10" cols="84" />
+				</td>
+			</tr>	
+                                             <table>
                                         </c:if>
                                         <c:if test="${QTN_OBJ.sightseeing eq true}">
-                                            <div class="form_view_aCMQuotation_lb_wr_tb_sb a">
+                                            <div class="form_view_aCMQuotation_lb_wr_tb_sb ">
                                                 <div class="form_view_aCMQuotation_lb_wr_tb_sb_header">
                                                     <h1 style="text-align: center;font-size: 25px;color:#32cd32">Sight
                                                         seeing</h1>
@@ -459,9 +482,19 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                               <table style="width:100%" class="a">
+                                               	<tr id="displaySigtSeeingCancellationHeader">
+				<th style="background-color:lightblue;color:black;" colspan="6"> Sight Seeing Remarks / Cancellation Policy </th>
+			</tr>
+			<tr id="displaySightSeeingCancellationTextArea">
+				<td colspan="6">
+					<form:textarea path="sightSeeingCancellationPolicy" rows="10" cols="84" />
+				</td>
+			</tr>
+                                               </table>
                                         </c:if>
                                         <c:if test="${QTN_OBJ.visa eq true}">
-                                            <div class="form_view_aCMQuotation_lb_wr_tb_sb a">
+                                            <div class="form_view_aCMQuotation_lb_wr_tb_sb">
                                                 <div class="form_view_aCMQuotation_lb_wr_tb_sb_header">
                                                     <h1 style="text-align: center;font-size: 25px;color:#32cd32">Visa
                                                     </h1>
@@ -537,9 +570,19 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                               <table style="width:100%" class="a">
+                                               	<tr id="displayVisaCancellationHeader">
+				<th style="background-color:lightblue;color:black;" colspan="6"> Visa Remarks / Cancellation Policy </th>
+			</tr>
+			<tr id="displayVisaCancellationTextArea">
+				<td colspan="6">
+					<form:textarea path="visaCancellationPolicy" rows="10" cols="84" />
+				</td>
+			</tr>
+                                               </table>
                                         </c:if>
                                         <c:if test="${QTN_OBJ.insurance eq true}">
-                                            <div class="form_view_aCMQuotation_lb_wr_tb_sb a">
+                                            <div class="form_view_aCMQuotation_lb_wr_tb_sb ">
                                                 <div class="form_view_aCMQuotation_lb_wr_tb_sb_header">
                                                     <h1 style="text-align: center;font-size: 25px;color:#32cd32">
                                                         Insurance</h1>
@@ -599,9 +642,19 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                              <table style="width:100%" class="a">
+                                              <tr id="displayInsuranceCancellationHeader">
+				<th style="background-color:lightblue;color:black;" colspan="6"> Insurance Remarks / Cancellation Policy </th>
+			</tr>
+			<tr id="displayInsuranceCancellationTextArea">
+				<td colspan="6">
+					<form:textarea path="insuranceCancellationPolicy" rows="10" cols="84" />
+				</td>
+			</tr>
+                                              <table>
                                         </c:if>
                                         <c:if test="${QTN_OBJ.cruise eq true}">
-                                            <div class="form_view_aCMQuotation_lb_wr_tb_sb a">
+                                            <div class="form_view_aCMQuotation_lb_wr_tb_sb">
                                                 <div class="form_view_aCMQuotation_lb_wr_tb_sb_header">
                                                     <h1 style="text-align: center;font-size: 25px;color:#32cd32">Cruise
                                                     </h1>
@@ -659,9 +712,19 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                             <table style="width:100%" class="a">
+                                             	<tr id="displayCruiseCancellationHeader">
+			      	<th style="background-color:lightblue;color:black;" colspan="6"> Cruise Remarks / Cancellation Policy </th>
+			</tr>
+			<tr id="displayCruiseCancellationTextArea">
+				<td colspan="6">
+					<form:textarea path="cruiseCancellationPolicy" rows="10" cols="84" />
+				</td>
+			</tr>
+                                             </table>
                                         </c:if>
                                         <c:if test="${QTN_OBJ.tourPackage eq true}">
-                                            <div class="form_view_aCMQuotation_lb_wr_tb_sb a">
+                                            <div class="form_view_aCMQuotation_lb_wr_tb_sb ">
                                                 <div class="form_view_aCMQuotation_lb_wr_tb_sb_header">
                                                     <h1 style="text-align: center;font-size: 25px;color:#32cd32">Tour
                                                         Package</h1>
@@ -719,9 +782,19 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                              <table style="width:100%" class="a">
+                                              	<tr id="displayTourPackageCancellationHeader">
+				<th style="background-color:lightblue;color:black;" colspan="6"> Tour Package Remarks / Cancellation Policy </th>
+			</tr>
+			<tr id="displayTourPackageCancellationTextArea">
+				<td colspan="6">
+					<form:textarea path="packageCancellationPolicy" rows="10" cols="84" />
+				</td>
+			</tr>
+                                              </table>
                                         </c:if>
                                         <c:if test="${QTN_OBJ.others eq true}">
-                                            <div class="form_view_aCMQuotation_lb_wr_tb_sb a">
+                                            <div class="form_view_aCMQuotation_lb_wr_tb_sb">
                                                 <div class="form_view_aCMQuotation_lb_wr_tb_sb_header">
                                                     <h1 style="text-align: center;font-size: 25px;color:#32cd32">Others
                                                         Services</h1>
@@ -780,6 +853,16 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <table style="width:100%" class="a">
+                                            	<tr id="displayOtherCancellationHeader">
+				<th style="background-color:lightblue;color:black;" colspan="6"> Other Services Remarks / Cancellation Policy </th>
+			</tr>
+			<tr id="displayOtherCancellationTextArea">
+				<td colspan="6">
+					<form:textarea path="otherCancellationPolicy" rows="10" cols="84" />
+				</td>
+			</tr>
+                                            </table>
                                         </c:if>
                                         <div class="form_view_aCMQuotation_lb_wr_tb_sb a">
                                             <div class="form_view_aCMQuotation_lb_wr_tb_sb_header">
