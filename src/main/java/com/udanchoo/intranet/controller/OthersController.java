@@ -34,6 +34,7 @@ import com.udanchoo.intranet.entity.Udn_Hotel_Master_Entity;
 import com.udanchoo.intranet.entity.Udn_Room_Category_Entity;
 import com.udanchoo.intranet.entity.supplier.Tg_Supplier_Master_Entity;
 import com.udanchoo.intranet.exception.RecordNotFoundException;
+import com.udanchoo.intranet.model.EmailMessageVO;
 import com.udanchoo.intranet.model.SearchHotelObj;
 import com.udanchoo.intranet.model.UdnDealStatusVO;
 import com.udanchoo.intranet.model.Udn_Destinations_Master_Obj;
@@ -45,6 +46,7 @@ import com.udanchoo.intranet.model.supplier.SearchSupplierObj;
 import com.udanchoo.intranet.model.supplier.TgSupplierMasterVO;
 import com.udanchoo.intranet.service.ClientServiceImpl;
 import com.udanchoo.intranet.service.DealServiceImpl;
+import com.udanchoo.intranet.service.EmailServiceImpl;
 import com.udanchoo.intranet.service.HotelServiceImpl;
 import com.udanchoo.intranet.service.UdnCommonServicesImpl;
 import com.udanchoo.intranet.service.UserDetailsServiceImpl;
@@ -65,6 +67,9 @@ public class OthersController {
 
 	@Autowired
 	CityManagementValidator cityMgmtValidator;
+
+	@Autowired
+	EmailServiceImpl emailService;
 
 	
 	
@@ -270,6 +275,24 @@ public class OthersController {
     	return modelView;
     }
     
+    
+    @RequestMapping("view_check_email_working")
+   	public ModelAndView view_check_email_working(@ModelAttribute("EMAIL_MSG_VO") EmailMessageVO emailMsgVO, BindingResult result ) {
+    	UserDetailsObj userObj = getLoggedInUser();
+    	ModelAndView modelView = new ModelAndView("admin/others/form_email_checker");
+   	
+    	return modelView;
+    }
 
+    @PostMapping("send_send_email_check")
+    public ModelAndView send_send_email_check(@ModelAttribute("EMAIL_MSG_VO") EmailMessageVO emailMsgVO, BindingResult result,final RedirectAttributes redirectAttrib) {
+    	ModelAndView modelView = new ModelAndView("redirect:view_check_email_working");
+    	System.out.println("Email Data retrieved as : " + emailMsgVO);
+    	emailService.sendMail(emailMsgVO.getEmailToList(),emailMsgVO.getEmailMessageFrom(), emailMsgVO.getEmailSubject(),emailMsgVO.getEmailMessage());
+    	redirectAttrib.addFlashAttribute("Success", "Email is sent successfully!!");
+    	return modelView;
+    }
+
+    
     
 }

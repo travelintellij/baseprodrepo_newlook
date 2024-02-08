@@ -46,38 +46,25 @@
                             <p>Employee Section</p>
                             <ul class="topHeaderSubMenu">
                                 <li><a href="${pageContext.request.contextPath}/createNewUser"
-                                        class="hoverOnLink linkPaddingBottom">Add
-                                        User</a>
+                                        class="hoverOnLink linkPaddingBottom">Add User</a>
                                 </li>
-                                <li><a href="${pageContext.request.contextPath}/view_search_admin_user"
-                                        class="hoverOnLink">Vw /
-                                        Mod / Del</a></li>
-                                <li><a href="${pageContext.request.contextPath}/adminIncentiveReport"
-                                        class="hoverOnLink">Incentive
-                                        Reports</a></li>
+                                <li><a href="${pageContext.request.contextPath}/view_search_admin_user" class="hoverOnLink">Manage Users</a></li>
+                                <li><a href="${pageContext.request.contextPath}/adminIncentiveReport" class="hoverOnLink">Incentive Reports</a></li>
                             </ul>
                         </li>
                         <li class="tophHeaderMainLink">
                             <p>Client Section</p>
                             <ul class="topHeaderSubMenu">
-                                <li><a href="${pageContext.request.contextPath}/view_form_admin_new_client"
-                                        class="hoverOnLink">Add New
-                                        Client</a>
+                                <li><a href="${pageContext.request.contextPath}/view_form_admin_new_client" class="hoverOnLink">Add New Client</a>
                                 </li>
-                                <li><a href="${pageContext.request.contextPath}/view_form_admin_search_client"
-                                        class="hoverOnLink">Vw /
-                                        Mod / Del</a></li>
+                                <li><a href="${pageContext.request.contextPath}/view_form_admin_search_client" class="hoverOnLink">Manage Client</a></li>
                             </ul>
                         </li>
                         <li class="tophHeaderMainLink">
                             <p>Supplier Section</p>
                             <ul class="topHeaderSubMenu">
-                                <li><a href="${pageContext.request.contextPath}/view_form_admin_new_supplier"
-                                        class="hoverOnLink">Add
-                                        New Supplier</a></li>
-                                <li><a href="${pageContext.request.contextPath}/view_form_admin_search_supplier"
-                                        class="hoverOnLink">Vw /
-                                        Mod / Del</a></li>
+                                <li><a href="${pageContext.request.contextPath}/view_form_admin_new_supplier" class="hoverOnLink">Add New Supplier</a></li>
+                                <li><a href="${pageContext.request.contextPath}/view_form_admin_search_supplier" class="hoverOnLink">Manage Suppliers </a></li>
                             </ul>
                         </li>
                         <li class="tophHeaderMainLink">
@@ -85,7 +72,7 @@
                             <ul class="topHeaderSubMenu">
                                 <li><a href="view_add_hotel_chain_form" class="hoverOnLink">Add Hotel Chain</a>
                                 </li>
-                                <li><a href="view_search_hotel_chain_form" class="hoverOnLink">Manage H.Chain</a>
+                                <li><a href="view_search_hotel_chain_form" class="hoverOnLink">Manage Hotel Chain</a>
                                 </li>
                                 <li><a href="view_add_hotel_form" class="hoverOnLink">Add Hotel</a></li>
                                 <li><a href="view_search_hotel_form" class="hoverOnLink">Manage Hotels</a></li>
@@ -96,8 +83,7 @@
                             <ul class="topHeaderSubMenu">
                                 <li><a href="view_add_sightseeing_form" class="hoverOnLink">Add Sight Seeing</a>
                                 </li>
-                                <li><a href="view_search_sight_seeing_form" class="hoverOnLink">Vw /
-                                        Mod / Del</a></li>
+                                <li><a href="view_search_sight_seeing_form" class="hoverOnLink">Manage Sight Seeings </a></li>
                             </ul>
                         </li>
                         <li class="tophHeaderMainLink">
@@ -105,10 +91,10 @@
                             <ul class="topHeaderSubMenu">
                                 <li><a href="view_add_visa_form" class="hoverOnLink">Add Visa Master</a>
                                 </li>
-                                <li><a href="view_search_visa_form" class="hoverOnLink">Vw / Mod Visa</a></li>
+                                <li><a href="view_search_visa_form" class="hoverOnLink">Manage Visa</a></li>
                                 <li><a href="view_add_visa_consulate_form" class="hoverOnLink">Add V.Consulate</a>
                                 </li>
-                                <li><a href="view_search_visa_consulate_form" class="hoverOnLink">Vw / Mod V.Con</a>
+                                <li><a href="view_search_visa_consulate_form" class="hoverOnLink">Manage Consulates</a>
                                 </li>
                             </ul>
                         </li>
@@ -117,9 +103,9 @@
                             <ul class="topHeaderSubMenu">
                                 <li><a href="view_add_city_form" class="hoverOnLink">Add City</a>
                                 </li>
-                                <li><a href="view_search_city_form" class="hoverOnLink">Vw /
-                                        Mod / Del</a></li>
-                                <li><a href="view_manage_multiple_status" class="hoverOnLink">Status Mgmt</a></li>
+                                <li><a href="view_search_city_form" class="hoverOnLink">Manage City</a></li>
+                                <li><a href="view_manage_multiple_status" class="hoverOnLink">Status Management</a></li>
+                                <li><a href="view_check_email_working" class="hoverOnLink">Check Email Working</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -148,8 +134,8 @@
                 <li class="bottomHeaderLinks">
                     <p>Incentive</p>
                     <ul class="bottomSectionHeaderSubMenu">
-                        <li><a href="newincentive" class="hoverOnLink">New IncClaim</a></li>
-                        <li><a href="view_default_incentives_report" class="hoverOnLink">IncClaim Rpts</a>
+                        <li><a href="newincentive" class="hoverOnLink">New Claim</a></li>
+                        <li><a href="view_default_incentives_report" class="hoverOnLink">Claim Reports</a>
                         </li>
                     </ul>
                 </li>

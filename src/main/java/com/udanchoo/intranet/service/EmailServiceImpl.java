@@ -103,7 +103,24 @@ public class EmailServiceImpl {
     	}
     }
 	  
-	    /**
+    /**
+     * This method will send compose and send the message 
+     * */
+    public void sendMail(String to, String from, String subject, String body) 
+    {
+    	if(emailNotifyActive) {
+    		SimpleMailMessage message = new SimpleMailMessage();
+    		message.setFrom(from);
+    		message.setTo(to);
+    		message.setSubject(subject);
+    		message.setText(body);
+    		mailSender.send(message);
+    	}
+    }
+
+    
+    
+    /**
 	     * This method will send a pre-configured message
 	     * 
 	    public void sendPreConfiguredMail(String message) 
