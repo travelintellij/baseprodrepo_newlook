@@ -10,12 +10,30 @@
     <title>AdminEditUser</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
 </head>
+<style>
 
-<body style="background: url(${pageContext.request.contextPath}/resources/images/revamped/assin_to_me_tasks_bg.jpg);background-size: cover; background-repeat: no-repeat; background-position: center center;background-attachment: fixed;">
+        body::before {
+            content: "";
+            background-image: url(${pageContext.request.contextPath}/resources/images/revamped/assin_to_me_tasks_bg.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5; /* Adjust the opacity value as needed (0.0 to 1.0) */
+            z-index: -1;
+        }
+
+</style>
+<body>
 
     <div class="AdminDisplayUser container">
         <div class="AdminDisplayUser_wrapper">
-            <h1>Edit User (Id: ${USER_OBJ.userId})</h1>
+            <h1 class="hd">Edit User (Id: ${USER_OBJ.userId})</h1>
             <div class="AdminDisplayUser_wrapper_data">
                 <form:form method="post" action="edit_edit_Admin_User" modelAttribute="USER_OBJ">
                     <form:hidden path="userId" />
@@ -69,13 +87,7 @@
                                 <form:errors path="name" cssClass="error" />
                             </font>
                         </div>
-                        <div class="AdminDisplayUser_wrapper_data_l1">
-                            <label for="">Address</label>
-                            <form:textarea path="address" rows="3" maxlength="250" style="width:90%"/><br>
-                            <font color="red">
-                                <form:errors path="address" cssClass="error" />
-                            </font>
-                        </div>
+                       
                         <div class="AdminDisplayUser_wrapper_data_l1">
                             <label for="">Company Email</label>
                             <form:input path="email"  style="width:90%"/><br>
@@ -90,6 +102,14 @@
                                 <form:errors path="mobile" cssClass="error" />
                             </font>
                         </div>
+                        
+                        <div class="AdminDisplayUser_wrapper_data_l1">
+                            <label for="">Credentials Expired</label>
+                            <form:select path="credentialsExpired"  style="width:90%">
+                                <form:options items="${ACTIVE_MAP}" class="service-small" />
+                            </form:select>
+                        </div>
+                  
                     </div>
                     <div class="AdminDisplayUser_wrapper_data_line">
                         <div class="AdminDisplayUser_wrapper_data_l1">
@@ -182,17 +202,18 @@
                             </form:select>
                         </div>
                     </div>
-                    <div class="AdminDisplayUser_wrapper_data_line">
-                        <div class="AdminDisplayUser_wrapper_data_l1">
-                            <label for="">Credentials Expired</label>
-                            <form:select path="credentialsExpired"  style="width:90%">
-                                <form:options items="${ACTIVE_MAP}" class="service-small" />
-                            </form:select>
-                        </div>
-                    </div>
-                    <div class="AdminDisplayUser_wrapper_data_line">
-                        <div class="AdminDisplayUser_wrapper_data_l1">
-                            <form:textarea path="remarks" rows="2" cols="139" maxlength="1000" />
+                    
+                     <div class="AdminDisplayUser_wrapper_data_l1" style="text-align:start">
+                            <label for="">Address</label><br>
+                            <form:textarea path="address" rows="1" maxlength="250" style="width:97%"/><br>
+                            <font color="red">
+                                <form:errors path="address" cssClass="error" />
+                            </font>
+                        </div> 
+                    <div class="AdminDisplayUser_wrapper_data_line" style="width:100%">
+                        <div class="AdminDisplayUser_wrapper_data_l1"   style="width:100%">
+                         <label for="">Remarks</label><br>
+                            <form:textarea path="remarks" rows="2" style="width:97%" maxlength="1000" />
                         </div>
                     </div>
                     <div class="due_today_task_data_btns">

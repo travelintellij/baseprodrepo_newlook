@@ -45,7 +45,7 @@
                 </b></div>
             <div class="AddNewSupplierContact_wrapper_data">
                 <form:form method="post" modelAttribute="SUPPLIER_OBJ">
-                    <div class="AddNewSupplierContact_wrapper_data_line" style="margin-bottom:10px;background:#6082B6">
+                    <div class="AddNewSupplierContact_wrapper_data_line a" style="margin-bottom:10px;">
                         <div class="AddNewSupplierContact_wrapper_data_l1">
                             <label for="" style="color:#FFBA08;font-weight: bold;">Supplier Name</label>
                             <p>${SUPPLIER_OBJ.supplierName}</p>
@@ -68,13 +68,13 @@
                     <!-- ############ servies starts here ############## -->
                      <h3 style="color:#FFBA08;font-weight: bold;text-align:start">Service Offerred</h3>       
                     <div class="AddNewSupplierContact_wrapper_data_line_ser" style="display:flex;justify-content:space-between">
-                    <div><form:checkbox path="flight" disabled="true" style="margin-right:5px"/>Flight</div>
-                    <div>  <form:checkbox path="hotel" disabled="true" style="margin-left:10px;margin-right:5px"/>Hotel</div>
-                    <div><form:checkbox path="transfers" disabled="true" style="margin-left:10px;margin-right:5px"/>Transfers</div>
-                    <div> <form:checkbox path="sightseeing" disabled="true" style="margin-left:10px;margin-right:5px"/>SightSeeing</div>
-                    <div><form:checkbox path="visa" disabled="true" style="margin-left:10px;margin-right:5px"/>Visa</div>
-                    <div> <form:checkbox path="insurance" disabled="true" style="margin-left:10px;margin-right:5px"/>Insurance</div>
-                    <div> <form:checkbox path="landPackage" disabled="true" style="margin-left:10px;margin-right:5px"/>Package</div>
+                    <div><form:checkbox class="ch_c" path="flight" disabled="true" style="margin-right:5pxl;width:18px;height:18px;margin-right:5px"/>Flight</div>
+                    <div>  <form:checkbox class="ch_c" path="hotel" disabled="true" style="margin-left:10px;margin-right:5px;width:18px;height:18px;margin-right:5px"/>Hotel</div>
+                    <div><form:checkbox class="ch_c" path="transfers" disabled="true" style="margin-left:10px;margin-right:5px;width:18px;height:18px;margin-right:5px"/>Transfers</div>
+                    <div> <form:checkbox class="ch_c" path="sightseeing" disabled="true" style="margin-left:10px;margin-right:5px;width:18px;height:18px;margin-right:5px"/>SightSeeing</div>
+                    <div><form:checkbox class="ch_c" path="visa" disabled="true" style="margin-left:10px;margin-right:5px;width:18px;height:18px;margin-right:5px"/>Visa</div>
+                    <div> <form:checkbox class="ch_c" path="insurance" disabled="true" style="margin-left:10px;margin-right:5px;width:18px;height:18px;margin-right:5px"/>Insurance</div>
+                    <div> <form:checkbox class="ch_c" path="landPackage" disabled="true" style="margin-left:10px;margin-right:5px;width:18px;height:18px;margin-right:5px"/>Package</div>
   
                        
                     </div>

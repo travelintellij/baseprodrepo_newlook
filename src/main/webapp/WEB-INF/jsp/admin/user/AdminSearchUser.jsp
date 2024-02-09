@@ -143,7 +143,7 @@
                                           
                             <sec:authorize access="hasAnyRole('ADMIN','USER_VIEW','USER_EDIT','USER_DELETE')">
                                 <a href="view_view_Admin_User?userId=${user.userId}"><input type="button"
-                                        value="View" style="background:transparent;border:none;outline:none;color: white;font-weight: normal;transition: all 0.2s ease-in-out;" /></a>
+                                        value="View" /></a>
                             </sec:authorize>
 
 
@@ -152,23 +152,23 @@
                                     <c:when
                                         test="${(!fn:containsIgnoreCase(LOGGED_USER.roles, 'ADMIN')) and (user.userId eq LOGGED_USER.userId)}">
                                         <a href="view_edit_Admin_User?userId=${user.userId}"><input type="button"
-                                             style="background:transparent;border:none;outline:none;color: white;font-weight: normal;transition: all 0.2s ease-in-out;"    value="Edit"
+                                           class="user_btn"   value="Edit"
                                                 disabled /></a>
                                     </c:when>
                                     <c:when test="${fn:containsIgnoreCase(LOGGED_USER.roles, 'ADMIN')}">
                                          <a href="view_edit_Admin_User?userId=${user.userId}"><input type="button"
-                                             style="background:transparent;border:none;outline:none;color: white;font-weight: normal;transition: all 0.2s ease-in-out;"    value="Edit" /></a>
+                                           class="user_btn"    value="Edit" /></a>
                                     </c:when>
                                     <c:when
                                         test="${ (! fn:containsIgnoreCase(LOGGED_USER.roles, 'ADMIN') and fn:containsIgnoreCase(user.roles, 'ADMIN'))}">
                                          <a href="view_edit_Admin_User?userId=${user.userId}"><input type="button"
-                                             style="background:transparent;border:none;outline:none;color: white;font-weight: normal;transition: all 0.2s ease-in-out;"    value="Edit"
+                                         class="user_btn"    value="Edit"
                                                 disabled /></a>
                                     </c:when>
                                     <c:when
                                         test="${ (! fn:containsIgnoreCase(LOGGED_USER.roles, 'ADMIN') and (!fn:containsIgnoreCase(user.roles, 'ADMIN')))}">
                                        <a href="view_edit_Admin_User?userId=${user.userId}"><input type="button"
-                                             style="background:transparent;border:none;outline:none;color: white;font-weight: normal;transition: all 0.2s ease-in-out;"    value="Edit" /></a>
+                                             class="user_btn"    value="Edit" /></a>
                                     </c:when>
                                     <c:otherwise>
                                          <a href="view_edit_Admin_User?userId=${user.userId}"><input type="button"
@@ -182,13 +182,13 @@
                                         <c:when
                                             test="${ (! fn:containsIgnoreCase(LOGGED_USER.roles, 'ADMIN') and fn:containsIgnoreCase(user.roles, 'ADMIN'))}">
                                              <a href="view_view_delete_User_confirmation?userId=${user.userId}"><input
-                                                style="background:transparent;border:none;outline:none;color: white;font-weight: normal;transition: all 0.2s ease-in-out;"    type="button" 
+                                             class="user_btn"  type="button" 
                                                     value="Delete" disabled /></a>
                                         </c:when>
                                         <c:when
                                             test="${ (! fn:containsIgnoreCase(LOGGED_USER.roles, 'ADMIN') and (!fn:containsIgnoreCase(user.roles, 'ADMIN')))}">
                                              <a href="view_view_delete_User_confirmation?userId=${user.userId}"><input
-                                                style="background:transparent;border:none;outline:none;color: white;font-weight: normal;transition: all 0.2s ease-in-out;"    type="button" 
+                                              class="user_btn"      type="button" 
                                                     value="Delete" /></a>
                                         </c:when>
                                         <c:when test="${ user.deleted eq true }">
@@ -196,22 +196,22 @@
                                         </c:when>
                                         <c:otherwise>
                                              <a href="view_view_delete_User_confirmation?userId=${user.userId}"><input
-                                                style="background:transparent;border:none;outline:none;color: white;font-weight: normal;transition: all 0.2s ease-in-out;"    type="button" 
-                                                    value="Delete" /></a>
+                                                type="button" 
+                                                class="user_btn"    value="Delete" /></a>
                                         </c:otherwise>
                                     </c:choose>
                                 </c:if>
 
                                 <c:if test="${user.userId eq LOGGED_USER.userId }">
                                     <a href="view_view_delete_User_confirmation?userId=${user.userId}"><input
-                                          style="background:transparent;border:none;outline:none;color: white;font-weight: normal;transition: all 0.2s ease-in-out;"  type="button" 
+                                      class="user_btn"   class="user_btn"  type="button" 
                                             value="Delete" disabled /></a>
                                 </c:if>
                             </sec:authorize>
 
                             <sec:authorize access="hasAnyRole('ADMIN','USER_MANAGE_DOCS')">
-                                <a href="view_view_crud_user_docs?userId=${user.userId}"><input type="button"
-                                    style="background:transparent;border:none;outline:none;color: white;font-weight: normal;transition: all 0.2s ease-in-out;"    value="Docs" /></a>
+                                <a  href="view_view_crud_user_docs?userId=${user.userId}"><input type="button"
+                                  class="user_btn" value="Docs" /></a>
                             </sec:authorize>
                                         </div>
                                     </i>

@@ -58,10 +58,10 @@
                             </select>
                         </div>
                     </div>
-                    <div class="Admin_Edit_HotelChain_wrapper_li2">
-                        <div class="Admin_Edit_HotelChain_wrapper_dl1">
+                    <div class="Admin_Edit_HotelChain_wrapper_li2" style="width:100%">
+                        <div class="Admin_Edit_HotelChain_wrapper_dl1" style="width:100%">
                             <label for="">Remarks</label> <br>
-                            <textarea cols="142" rows="3" name="remarks"
+                            <textarea style="width:100%" rows="2" name="remarks"
                                 maxlength="250">${HotelChainObj.remarks}</textarea>
                         </div>
                     </div>

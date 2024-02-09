@@ -86,9 +86,7 @@
                             <label for="">Default Room Category Name</label>
                             <input type="text" name="defaultRoomCategory" value="Standard" required />
                         </div>
-                    </div>
-                    <div class="add_hotal_fli">
-                        <div class="ah-d1">
+                         <div class="ah-d1">
                             <label for="">City</label> <br>
                             <input type="text" name="cityName" id="cityName" placeholder="City Name"
                                 required />
@@ -99,17 +97,14 @@
                                 <form:errors path="cityId" cssClass="error" />
                             </font>
                         </div>
-                        <div class="ah-d1">
-                            <label for="">Address</label> <br>
-                            <textarea rows="2" cols="38" name="address"></textarea>
-                        </div>
+                    </div>
+                    <div class="add_hotal_fli">
+
                         <div class="ah-d1">
                             <label for="">Locality</label> <br>
                         <input type="text"  name="locality" id="locality" />
                         </div>
-                    </div>
-                    <div class="add_hotal_fli" >
-                        <div class="ah-d1">
+                                   <div class="ah-d1">
                             <label for="">Star Category</label>
                                 <select name="starCategory" style="width:90%;">
                                     <option value="2" class="service-small" style="background:black;color:white">
@@ -122,7 +117,7 @@
                                 
                                 </select>
                         </div>
-                        <div class="ah-d1">
+                            <div class="ah-d1">
                             <label for="">Hotel Rating</label>
                             <select name="udnServiceRating" style="width:90%">
                                 <option value="2" class="service-small" style="background:black;color:white">
@@ -134,7 +129,7 @@
                                     5 Star</option>
                             </select>
                         </div>
-                        <div class="ah-d1">
+                            <div class="ah-d1">
                             <label for="">Is Preferred</label>
                             <select name="preferred" style="width:90%">
                                 <option value="false" class="service-small" style="background:black;color:white">No</option>
@@ -143,11 +138,9 @@
                             </select>
                         </div>
                     </div>
+                    
                     <div class="add_hotal_fli">
-                        <div class="ah-d1">
-                            <label for="">Remarks</label>
-                            <textarea rows="2" cols="38" name="remarks"></textarea>
-                        </div>
+                        
                         <div class="ah-d1">
                             <label for="">Hotel Phone</label>
                             <input type="number"  name="phone" id="phone" value="0"
@@ -158,13 +151,28 @@
                         <input type="text"  name="email" id="email"
                             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" />
                         </div>
+                        <div class="ah-d1">
+                          
+                        </div>
+                        <div class="ah-d1">
+                          
+                        </div>
                     </div>
+                       <div class="ah-d1" style="width:100%">
+                            <label for="">Address</label> <br>
+                            <textarea rows="1" cols="38" name="address" style="width:96%"></textarea>
+                        </div>
+                        <div class="ah-d1" style="width:100%">
+                            <label for="">Remarks</label><br>
+                            <textarea rows="2" cols="38" name="remarks" style="width:96%"></textarea>
+                        </div>
                     <div class="add_hotal_fli">
                         <div class="ah-d1-btn">
                         <input type="submit" value="Add Hotel"/>
                         </div>
                     </div>
                 </div>
+               
             </form:form>
         </div>
     </div>

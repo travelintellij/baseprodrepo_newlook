@@ -51,8 +51,14 @@
 </div>
     
     <div class="Admin_Search_Visa container" >
-        <div class="Admin_Search_Visa_wrapper">
+      
             <h1 class="page-heading">Search Visa Master</h1>
+            <br>
+             <br>
+              <br>
+               <br>
+                <br>
+               
             <div align="center"><b>
                     <font color="green"> ${Success} </font>
                     <font color="red"> ${Error}</font>
@@ -62,7 +68,6 @@
                 <div class="Admin_Search_Visa_wrapper_data">
                     <div class="Admin_Search_Visa_wrapper_data_line">
                         <div class="Admin_Search_Visa_wrapper_data_l1">
-                            <label for="">Country name</label> <br>
                             <input  type="text" id="countryName"  name="countryName" placeholder="country name" required />
                         </div>
                         <div class="due_today_task_data_btns">
@@ -72,7 +77,9 @@
                 </div>
             </form:form>
         </div>
-    </div>
+    
+    
+    
      <div style="background:black;color: #32cd32 ;width:220px;text-align:center;border-radius:5px;margin:10px auto">${VISA_COUNT_MSG}</div>
      <c:if test="${not empty VISA_RESULT_SET}">
         <form:form modelAttribute="EMAIL_VISA_MASTER" action="view_email_visa_master_docs_form">
@@ -99,7 +106,7 @@
                     </div>
                 </div>
                 <thead>
-                    <tr>
+                    <tr style="height:50px">
                         <th>Country Name</th>
                         <th>Consulate City</th>
                         <th>Visa Profile</th>
@@ -115,17 +122,17 @@
                 <tbody>
                     <c:forEach var="visaMasterObj" items="${VISA_RESULT_SET}">
                         <tr style="border-top:2px solid #FABA08;padding-top:10px">
-                            <td>${visaMasterObj.countryName}</td>
-                            <td>${visaMasterObj.cityName}</td>
-                            <td>${VISA_PROFILE.get(visaMasterObj.profile)}</td>
-                            <td>${VISA_TYPE.get(visaMasterObj.visaType)}</td>
-                            <td>${VISA_PURPOSE.get(visaMasterObj.visaPurpose)}</td>
-                            <td>${visaMasterObj.processingTime} Days</td>
-                            <td>${visaMasterObj.standardCost}</td>
-                            <td>${visaMasterObj.standardB2bPrice}</td>
-                            <td>${visaMasterObj.standardB2cPrice}</td>
+                            <td style="border-right:2px solid #FABA08">${visaMasterObj.countryName}</td>
+                            <td style="border-right:2px solid #FABA08">${visaMasterObj.cityName}</td>
+                            <td style="border-right:2px solid #FABA08">${VISA_PROFILE.get(visaMasterObj.profile)}</td>
+                            <td style="border-right:2px solid #FABA08">${VISA_TYPE.get(visaMasterObj.visaType)}</td>
+                            <td style="border-right:2px solid #FABA08">${VISA_PURPOSE.get(visaMasterObj.visaPurpose)}</td>
+                            <td style="border-right:2px solid #FABA08">${visaMasterObj.processingTime} Days</td>
+                            <td style="border-right:2px solid #FABA08">${visaMasterObj.standardCost}</td>
+                            <td style="border-right:2px solid #FABA08">${visaMasterObj.standardB2bPrice}</td>
+                            <td style="border-right:2px solid #FABA08">${visaMasterObj.standardB2cPrice}</td>
                             <td>
-                                <input type="checkbox" id="visaIdListToEmail" name="visaIdListToEmail"
+                                <input type="checkbox" style="width:18px;height:18px" id="visaIdListToEmail" name="visaIdListToEmail"
                                     value="${visaMasterObj.visaId}"> <b>Email</b>
                             </td>
                             <td>

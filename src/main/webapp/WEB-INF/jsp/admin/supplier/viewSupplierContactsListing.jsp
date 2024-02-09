@@ -99,13 +99,13 @@
 
     <div class="vscl container">
         <div class="vscl_wrapper">
-            <h1 class="vscl_sid" style="color:red;font-size: 30px;">Supplier Id : <span style="color:#FFBA08;font-size: 30px">  ${SUPPLIER_OBJ.supplierId}</span></h1>
+            <h1 class="hd" >Supplier Id : <span class="hd">  ${SUPPLIER_OBJ.supplierId}</span></h1>
             <div class="vscl_wrapper_data">
                 <form:form method="post" action="form_view_quote_req_email_supplier" modelAttribute="EMAIL_QUOTE_OBJ">
                     <form:hidden path="supplierId" />
                     <form:hidden path="supplierName" />
                     <form:hidden path="leadId" />
-                    <div class="vscl_wrapper_data_line_1" style="margin-bottom:10px;background:#6082B6">
+                    <div class="vscl_wrapper_data_line_1 a" style="margin-bottom:10px;">
                         <div class="vscl_wrapper_data_l1">
                             <label for="" style="color:#FFBA08">Supplier Name</label>
                             <p>${SUPPLIER_OBJ.supplierName}</p>
@@ -131,10 +131,10 @@
                             <div style="display:flex;justify-content:space-between;margin:10px 0">
                                 <div><label class="container">
                                         <c:if test="${SUPPLIER_OBJ.flight eq true}">
-                                            <input type="checkbox" checked disabled />
+                                            <input type="checkbox" checked disabled style="width:18px;height:18px" class="ch_c"/>
                                         </c:if>
                                         <c:if test="${SUPPLIER_OBJ.flight eq false}">
-                                            <input type="checkbox" disabled />
+                                            <input type="checkbox" disabled style="width:18px;height:18px" class="ch_c"/>
                                         </c:if>
                                         <span class="checkmark"></span>
                                     </label>Flight
@@ -142,10 +142,10 @@
                                 <div><label class="container"
                                         style="display: inline;margin: 0 auto;margin-bottom: 20px;">
                                         <c:if test="${SUPPLIER_OBJ.hotel eq true}">
-                                            <input type="checkbox" checked disabled />
+                                            <input type="checkbox" checked disabled style="width:18px;height:18px" class="ch_c"/>
                                         </c:if>
                                         <c:if test="${SUPPLIER_OBJ.hotel eq false}">
-                                            <input type="checkbox" disabled />
+                                            <input type="checkbox" disabled style="width:18px;height:18px" class="ch_c"/>
                                         </c:if>
                                         <span class="checkmark"></span>
                                     </label>Hotel
@@ -154,10 +154,10 @@
                                     <label class="container"
                                         style="display: inline;margin: 0 auto;margin-bottom: 20px;">
                                         <c:if test="${SUPPLIER_OBJ.transfers eq true}">
-                                            <input type="checkbox" checked disabled />
+                                            <input type="checkbox" checked disabled style="width:18px;height:18px" class="ch_c"/>
                                         </c:if>
                                         <c:if test="${SUPPLIER_OBJ.transfers eq false}">
-                                            <input type="checkbox" disabled />
+                                            <input type="checkbox" disabled style="width:18px;height:18px" class="ch_c"/>
                                         </c:if>
                                         <span class="checkmark"></span>
                                     </label>Transfers
@@ -166,10 +166,10 @@
                                     <label class="container"
                                         style="display: inline;margin: 0 auto;margin-bottom: 20px;">
                                         <c:if test="${SUPPLIER_OBJ.sightseeing eq true}">
-                                            <input type="checkbox" checked disabled />
+                                            <input type="checkbox" checked disabled style="width:18px;height:18px" class="ch_c"/>
                                         </c:if>
                                         <c:if test="${SUPPLIER_OBJ.sightseeing eq false}">
-                                            <input type="checkbox" disabled />
+                                            <input type="checkbox" disabled style="width:18px;height:18px" class="ch_c"/>
                                         </c:if>
                                         <span class="checkmark"></span>
                                     </label>Sight Seeing
@@ -178,10 +178,10 @@
                                     <label class="container"
                                         style="display: inline;margin: 0 auto;margin-bottom: 20px;">
                                         <c:if test="${SUPPLIER_OBJ.visa eq true}">
-                                            <input type="checkbox" checked disabled />
+                                            <input type="checkbox" checked disabled style="width:18px;height:18px" class="ch_c"/>
                                         </c:if>
                                         <c:if test="${SUPPLIER_OBJ.visa eq false}">
-                                            <input type="checkbox" disabled />
+                                            <input type="checkbox" disabled style="width:18px;height:18px" class="ch_c"/>
                                         </c:if>
                                         <span class="checkmark"></span>
                                     </label>Visa
@@ -190,22 +190,21 @@
                                     <label class="container"
                                         style="display: inline;margin: 0 auto;margin-bottom: 20px;">
                                         <c:if test="${SUPPLIER_OBJ.insurance eq true}">
-                                            <input type="checkbox" checked disabled />
+                                            <input type="checkbox" checked disabled style="width:18px;height:18px" class="ch_c"/>
                                         </c:if>
                                         <c:if test="${SUPPLIER_OBJ.insurance eq false}">
-                                            <input type="checkbox" disabled />
+                                            <input type="checkbox" disabled style="width:18px;height:18px" class="ch_c"/>
                                         </c:if>
                                         <span class="checkmark"></span>
                                     </label>Insurance
                                 </div>
-                                <div colspan="2">
+                                <div>
                                     <label class="container"
                                         style="display: inline;margin: 0 auto;margin-bottom: 20px;">
                                         <c:if test="${SUPPLIER_OBJ.landPackage eq true}">
-                                            <input type="checkbox" checked disabled />
-                                        </c:if>
-                                        <span class="checkmark"></span>
-                                    </label>Package
+					                     <input type="checkbox" checked disabled style="width:18px;height:18px"/>
+				                         </c:if>
+                                        <span class="checkmark"></span></label>Package
                                 </div>
                         </div>
                     </div>
@@ -253,13 +252,13 @@
 
             <table class="view_task_table ">
             <thead>
-                <tr>
-                    <th style="background:#6082B6">Contact No.</th>
-                    <th style="background:#6082B6">Contact Name</th>
-                    <th style="background:#6082B6">Role</th>
-                    <th style="background:#6082B6">Mobile</th>
-                    <th style="background:#6082B6">Email</th>
-                    <th style="background:#6082B6">Action</th>
+                <tr style="height:50px;">
+                    <th style="background:#6082B6;color:black">Contact No.</th>
+                    <th style="background:#6082B6;color:black">Contact Name</th>
+                    <th style="background:#6082B6;color:black">Role</th>
+                    <th style="background:#6082B6;color:black">Mobile</th>
+                    <th style="background:#6082B6;color:black">Email</th>
+                    <th style="background:#6082B6;color:black">Action</th>
                 </tr>
                 </thead>
 
@@ -274,12 +273,12 @@
                         <td colspan="3"  style="border-bottom:2px solid #FFCF53">
                             Email To: <label class="container"
                                 style="display: inline;margin: 0 auto;margin-bottom: 20px;"><input type="checkbox"
-                                    name="emailToList" value="${contactList.email}" /> <span
+                                    name="emailToList" value="${contactList.email}" style="width:18px;height:18px"/> <span
                                     class="checkmark"></span></label>
 
                             Cc: <label class="container"
                                 style="display: inline;margin: 0 auto;margin-bottom: 20px;"><input type="checkbox"
-                                    name="emailCcList" value="${contactList.email}" /> <span
+                                    name="emailCcList" value="${contactList.email}" style="width:18px;height:18px"/> <span
                                     class="checkmark"></span></label>
                             |
                             <a class="vscl_action" id="myBtn[${contactList.supplierContactId}]" onclick="contactDisplay(this)" data-load-url="view_supplier_contact_details_modal?supplierContactId=${contactList.supplierContactId}" data-toggle="modal" data-target="#myModal" class="vscl_action"><input type="button"
@@ -312,7 +311,6 @@
 						
 						    </div>
 						    <div class="modal-footer">
-						      <h3>Powered by @TravelIntelliJ</h3>
 						    </div>
 						  </div>
 						</div>	

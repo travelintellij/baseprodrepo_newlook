@@ -12,14 +12,32 @@
     <title>Admin delete confirmation user</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
 </head>
+<style>
 
-<body   style="background: url(${pageContext.request.contextPath}/resources/images/revamped/assin_to_me_tasks_bg.jpg);background-size: cover; background-repeat: no-repeat; background-position: center center;background-attachment: fixed;">
+        body::before {
+            content: "";
+            background-image: url(${pageContext.request.contextPath}/resources/images/revamped/assin_to_me_tasks_bg.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5; /* Adjust the opacity value as needed (0.0 to 1.0) */
+            z-index: -1;
+        }
+
+</style>
+<body>
 
     <div class="AdminDisplayUser container">
         <div class="AdminDisplayUser_wrapper">
         <form:form method="post" action="delete_delete_admin_user" modelAttribute="userobj">
             <div class="AdminDisplayUser_wrapper_data">
-                <div class="AdminDisplayUser_wrapper_data_line bc-clr">
+                <div class="AdminDisplayUser_wrapper_data_line a">
                     <div class="AdminDisplayUser_wrapper_data_l1">
                         <label for="">Record Id</label>
                         <p>${userobj.userId}</p>
@@ -28,26 +46,27 @@
                         <label for="">Login Id</label>
                         <p>${userobj.username}</p>
                     </div>
-                    
-                    
-                </div>
-                <div class="AdminDisplayUser_wrapper_data_l1  bc-clr" style="text-align:start">
-                        <label for="">Password</label> <br>
-                        <p>${userobj.password}</p>
-                    </div>
-                    <div class="AdminDisplayUser_wrapper_data_l1 bc-clr" style="text-align:start">
-                        <label for="">Primary Role</label>
-                        <p>${userobj.roles}</p>
-                    </div>
-                    <div class="AdminDisplayUser_wrapper_data_l1 bc-clr"  style="text-align:start">
-                        <label for="">Address</label>
-                        <p>${userobj.address}</p>
-                    </div>
-                <div class="AdminDisplayUser_wrapper_data_line bc-clr">
-                    <div class="AdminDisplayUser_wrapper_data_l1">
+                     <div class="AdminDisplayUser_wrapper_data_l1">
                         <label for="">User Full Name</label>
                         <p>${userobj.name}</p>
                     </div>
+                    
+                    
+                </div>
+                <div class="AdminDisplayUser_wrapper_data_l1  a" style="text-align:start">
+                        <label for="">Password</label> <br>
+                        <p>${userobj.password}</p>
+                    </div>
+                    <div class="AdminDisplayUser_wrapper_data_l1 a" style="text-align:start">
+                        <label for="">Primary Role</label>
+                        <p>${userobj.roles}</p>
+                    </div>
+                    <div class="AdminDisplayUser_wrapper_data_l1 a"  style="text-align:start">
+                        <label for="">Address</label>
+                        <p>${userobj.address}</p>
+                    </div>
+                <div class="AdminDisplayUser_wrapper_data_line a">
+                   
                     
                     <div class="AdminDisplayUser_wrapper_data_l1">
                         <label for="">Company Email</label>
@@ -58,7 +77,7 @@
                         <p>${userobj.mobile}</p>
                     </div>
                 </div>
-                <div class="AdminDisplayUser_wrapper_data_line bc-clr">
+                <div class="AdminDisplayUser_wrapper_data_line a">
                     <div class="AdminDisplayUser_wrapper_data_l1">
                         <label for="">Designation</label>
                         <p>${userobj.designation}</p>
@@ -76,7 +95,7 @@
                         <p>${userobj.fixedIncentive}</p>
                     </div>
                 </div>
-                <div class="AdminDisplayUser_wrapper_data_line bc-clr">
+                <div class="AdminDisplayUser_wrapper_data_line a">
                     <div class="AdminDisplayUser_wrapper_data_l1">
                         <label for="">Pan Card</label>
                         <p>${userobj.panCard}</p>
@@ -94,7 +113,7 @@
                         <p>${userobj.gender}</p>
                     </div>
                 </div>
-                <div class="AdminDisplayUser_wrapper_data_line bc-clr">
+                <div class="AdminDisplayUser_wrapper_data_line a">
 
                     <div class="AdminDisplayUser_wrapper_data_l1">
                         <label for="">Date of Birth</label> <br>
@@ -113,13 +132,13 @@
                         <p>${userobj.personalMobile}</p>
                     </div>
                 </div>
-                <div class="AdminDisplayUser_wrapper_data_line bc-clr">
+                <div class="AdminDisplayUser_wrapper_data_line a">
                     <div class="AdminDisplayUser_wrapper_data_l1">
                         <label for="">Active</label>
                         <p>${userobj.active}</p>
                     </div>
                 </div>
-                <div class="AdminDisplayUser_wrapper_data_line bc-clr">
+                <div class="AdminDisplayUser_wrapper_data_line a">
                     <div class="AdminDisplayUser_wrapper_data_l1">
                         <label for="">Remarks</label>
                         <p>${userobj.remarks}</p>

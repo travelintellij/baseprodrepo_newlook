@@ -45,7 +45,7 @@
                         ${SUPPLIER_OBJ.supplierId})</h1>
                     <div class="editSupplierContact_info">
                         <div class="editSupplierContact_data_info">
-                            <div class="editSupplierContact_data_line_info bc-clr">
+                            <div class="editSupplierContact_data_line_info a">
                                 <div class="editSupplierContact_data_line_l1_info">
                                     <label for="" style="color: #FFBA08;font-weight:bold">Supplier Name</label>
                                     <p>${SUPPLIER_OBJ.supplierName}</p>
@@ -68,20 +68,20 @@
                                 </div>
                             </div>
                             <div class="editSupplierContact_data_line_info">
-                                <div class="edit_supp_contact_data_ser">
-                                    <h3 for="" style="color: #FFBA08;font-weight:bold;text-align:left;">Services offered
+                                <div class="edit_supp_contact_data_ser" style="width:60%">
+                                    <h3 for="" style="color: #FFBA08;font-weight:bold;text-align:left;">Services offered 
                                     </h3>
-                                    <div class="edit_supp_contact_data_servs">
-                                        <form:checkbox path="flight" disabled="true" /><span class="checkmark"></span>
+                                    <div class="edit_supp_contact_data_servs" style="display:flex;justify-content:space-between;width:100%">
+                                        <form:checkbox class="ch_c" style="width:18px;height:18px" path="flight" disabled="true" /><span class="checkmark"></span>
                                         </label>Flight
-                                        <form:checkbox path="hotel" disabled="true" style="margin-left:10px"/>
+                                        <form:checkbox  class="ch_c"  path="hotel" disabled="true" style="margin-left:10px;width:18px;height:18px"/>
                                         Hotel
-                                        <form:checkbox path="transfers" disabled="true" style="margin-left:10px"/>Transfers
-                                        <form:checkbox path="sightseeing" disabled="true" style="margin-left:10px"/>SightSeeing
-                                        <form:checkbox path="visa" disabled="true" style="margin-left:10px"/>
+                                        <form:checkbox  class="ch_c" path="transfers" disabled="true" style="margin-left:10px;width:18px;height:18px"/>Transfers
+                                        <form:checkbox  class="ch_c"  path="sightseeing" disabled="true" style="margin-left:10px;width:18px;height:18px"/>SightSeeing
+                                        <form:checkbox  class="ch_c"  path="visa" disabled="true" style="margin-left:10px;width:18px;height:18px"/>
                                         Visa
-                                        <form:checkbox path="insurance" disabled="true" style="margin-left:10px"/>Insurance
-                                        <form:checkbox path="landPackage" disabled="true" style="margin-left:10px"/>Package
+                                        <form:checkbox  class="ch_c"  path="insurance" disabled="true" style="margin-left:10px;width:18px;height:18px"/>Insurance
+                                        <form:checkbox  class="ch_c" path="landPackage" disabled="true" style="margin-left:10px;width:18px;height:18px"/>Package
                                     </div>
                                 </div>
                             </div>

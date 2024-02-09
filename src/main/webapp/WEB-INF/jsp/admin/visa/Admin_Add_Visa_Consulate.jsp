@@ -92,11 +92,7 @@
                         </div>
                     </div>
                     <div class="Admin_Add_Visa_Consulate_wrapper_data_line">
-                        <div class="Admin_Add_Visa_Consulate_wrapper_data_l1_add">
-                            <label for="">Address</label><br>
-                            <textarea rows="1" cols="67" name="address"
-                                htmlEscape="false">${VISA_CONSULATE_OBJ.address }</textarea>
-                        </div>
+                        
                         <div class="Admin_Add_Visa_Consulate_wrapper_data_l1">
                             <label for="">Website</label> <br>
                             <input type="text" id="email" name="website" value="${VISA_CONSULATE_OBJ.website }"
@@ -107,13 +103,22 @@
                             <input type="text" id="telephone" name="telephone" placeholder="telephone"
                                 value="${VISA_CONSULATE_OBJ.telephone }" />
                         </div>
-                    </div>
-                    <div class="Admin_Add_Visa_Consulate_wrapper_data_line">
-                        <div class="Admin_Add_Visa_Consulate_wrapper_data_l1">
+                           <div class="Admin_Add_Visa_Consulate_wrapper_data_l1">
                             <label for="">Fax</label> <br>
                             <input type="text" id="fax" name="fax" placeholder="fax"
                                 value="${VISA_CONSULATE_OBJ.fax }" />
                         </div>
+                         <div class="Admin_Add_Visa_Consulate_wrapper_data_l1">
+                           
+                        </div>
+                    </div>
+                    <div class="Admin_Add_Visa_Consulate_wrapper_data_line"  style="width:100%">
+                    <div class="Admin_Add_Visa_Consulate_wrapper_data_l1_add" style="width:100%">
+                            <label for="">Address</label><br>
+                            <textarea rows="1" style="width:97.5%" name="address"
+                                htmlEscape="false">${VISA_CONSULATE_OBJ.address }</textarea>
+                        </div>
+                     
                     </div>
                     <div class="due_today_task_data_btns">
                         <input type="submit" name="submit" value="Add Consulate" />

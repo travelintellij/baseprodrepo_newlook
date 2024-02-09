@@ -93,13 +93,7 @@
                                 <form:errors path="name" cssClass="error" />
                             </font>
                         </div>
-                        <div class="AdminCreateNewUser_wrapper_data_l1 add" style="width: 590px;">
-                            <label for="" style="color:white">Address</label> <br>
-                            <form:textarea path="address" rows="1" cols="66" maxlength="250" />
-                            <font color="red">
-                                <form:errors path="address" cssClass="error" />
-                            </font>
-                        </div>
+                       
                         <div class="AdminCreateNewUser_wrapper_data_l1">
                             <label for="" style="color:white">Company Email</label>
                             <form:input path="email" />
@@ -107,8 +101,8 @@
                                 <form:errors path="email" cssClass="error" />
                             </font>
                         </div>
-                    </div>
-                    <div class="AdminCreateNewUser_wrapper_data_line2">
+                        
+                         <div class="AdminCreateNewUser_wrapper_data_line2">
                         <div class="AdminCreateNewUser_wrapper_data_l1">
                             <label for="" style="color:white">Company Mobile</label>
                             <form:input path="mobile" type="number" required="required" /> <br>
@@ -117,6 +111,10 @@
                             </font>
                         </div>
                     </div>
+                        
+                    </div>
+                    
+               
                     <div class="AdminCreateNewUser_wrapper_data_line1">
                         <div class="AdminCreateNewUser_wrapper_data_l1">
                             <label for="" style="color:white">Designation</label>
@@ -182,10 +180,17 @@
                             <form:input path="personalMobile" type="number" required="required" />
                         </div>
                     </div>
+                     <div class="AdminCreateNewUser_wrapper_data_l1 add" style="width: 100%;text-align:start;">
+                            <label for="" style="color:white">Address</label> <br>
+                            <form:textarea path="address" rows="1" style="width:97.5%" maxlength="250" />
+                            <font color="red">
+                                <form:errors path="address" cssClass="error" />
+                            </font>
+                        </div>
                     <div class="AdminCreateNewUser_wrapper_data_line11">
                         <div class="AdminCreateNewUser_wrapper_data_l11" style="text-align: start;">
                             <label for="" style="color:white">Remarks</label> <br>
-                      <form:textarea path = "remarks" rows="3" cols="139"  maxlength="1000"/>
+                      <form:textarea path = "remarks" rows="3" style="width:97.5%"  maxlength="1000"/>
                         </div>
                     </div>
                     <div class="due_today_task_data_btns">

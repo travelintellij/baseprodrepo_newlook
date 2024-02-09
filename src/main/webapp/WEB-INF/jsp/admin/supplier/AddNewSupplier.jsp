@@ -219,9 +219,8 @@
                           
                         </div>
                         <div class="ansd1-ser">
-                         <form:checkbox path="others" id="Others" />
+                         <form:checkbox path="others" id="Others" style="width:18px;height:18px"/>
                             <label for="Others" class="o">Others</label>
-                           
                         </div>
 
                     </div>
@@ -263,7 +262,7 @@
                 </div>
                
                 <div class="ans-btns">
-                    <input type="submit" value="Add Supplier">
+                    <input type="submit" value="Add Supplier" style="border:none;outline:none">
                     <a href="view_form_admin_search_client">Search Supplier</a>
                 </div>
         </div>

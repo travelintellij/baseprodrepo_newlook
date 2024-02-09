@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <jsp:include page="../../menu/MenuBuilder.jsp" />
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +14,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
     <script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
     <script src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
+    <link href="<c:url value="/resources/core/main.css" />" rel="stylesheet">
 </head>
 <style>
 
@@ -108,7 +111,7 @@
                             </div>
                         </div>
                         <div class="due_today_task_data_btns">
-                                <input type="submit" name="submit" value="Update" style="color:white;background:#32cd32    "/>
+                                <input type="submit" name="submit" value="Update"/>
                                 <form:form method="post" action="view_list_visa_proceed_docs_form" modelAttribute="VISA_OBJ">
 						         <input type="hidden" name="visaId" value="${VISA_OBJ.visaId}" />
 							     <input type="submit" name="submit" value="Cancel" />
@@ -195,10 +198,10 @@
 				<td colspan="8" style="text-align:center;">
 			   <div class="due_today_task_data_btns">
 					<sec:authorize access="hasAnyRole('ADMIN','VISA_EDIT')">
-						<input type="submit" name="submit" value="Edit" />
+						<input type="submit" name="submit" value="Edit" style="cursor:pointer" />
 					</sec:authorize>
 					<sec:authorize access="! hasAnyRole('ADMIN','VISA_EDIT')">
-						<input type="button" name="submit" value="Edit" style="background-color: #dddddd;" disabled/>
+						<input type="button" name="submit" value="Edit" style="background-color: #dddddd;cursor:pointer" disabled/>
 					</sec:authorize> 
 					<a href="search_search_visa_master?countryCode=${VISA_OBJ.countryCode} " >Cancel
 				</td>
@@ -214,30 +217,33 @@
 		<div style="margin-top:-45px">
 		
 		<table border="1 px;" style="width:1500px;margin-left:-150px; border-collapse: collapse;background:black;color:white;"  align="center">
-			<tr style="height:40px;background:#6082B6">
+			<tr style="height:50px;background:#6082B6">
 				<div style="border-radius:5px;margin-bottom:20px;margin-left:400px;background:black;width:400px;text-align:center"><b><font color="#32cd32" > ${Success} </font><font color="red"> ${Error}</font> </b></div>
-				<th style="width:5%;">Document Id</th><th style="width:25%;">Document Title</th><th style="width:40%;">Document Description</th><th style="width:20%;">Action</th>
+				<th style="width:2%;color:black;text-align:center">Document Id</th>
+				<th style="width:20%;color:black;">Document Title</th>
+				<th style="width:40%;color:black">Document Description</th>
+				<th style="width:20%;color:black;text-align:center">Action</th>
 			</tr>
 			<c:forEach var="visaDocObj" items="${VISA_DOC_LIST}">
 				<c:choose>
 				<c:when test="${ORG_VISA_DOC_OBJ.visaDocId eq visaDocObj.visaDocId  && VISA_DOC_ACTION eq 'UPDATE' }">
 					<form:form modelAttribute="VISA_DOC_OBJ" action="edit_edit_visa_doc" style="display:inline;">
-					<tr><td style="width:5%;">${ORG_VISA_DOC_OBJ.visaDocId}</td>
-					<td style="width:25%;"><input style="width:300px;" type="text" id="documentTitle"  name="documentTitle" placeholder="document Title" value="${ORG_VISA_DOC_OBJ.documentTitle}" required /></td>
-					<td style="width:40%;"><textarea rows="3" cols="30" name="description" required>${ORG_VISA_DOC_OBJ.description}</textarea> </td>
+					<tr><td style="width:5%;text-align:center">${ORG_VISA_DOC_OBJ.visaDocId}</td>
+					<td style="width:25%;text-align:center"><input style="width:300px;" type="text" id="documentTitle"  name="documentTitle" placeholder="document Title" value="${ORG_VISA_DOC_OBJ.documentTitle}" required /></td>
+					<td style="width:40%;text-align:center"><textarea rows="3" cols="80" name="description" required>${ORG_VISA_DOC_OBJ.description}</textarea> </td>
 					<td style="width:20%;">
-						<table>
+						<table style="margin: 0 auto;">
 							<tr>
 								<td>
 										<input type="hidden" name="visaId" value="${VISA_OBJ.visaId}" />
 										<input type="hidden" name="visaDocId" value="${ORG_VISA_DOC_OBJ.visaDocId}" />
-										<input type="submit" name="submit" value="Update" style="color:white;background-color:#32cd32;border:2px solid black;border-radius:5px;outline:none;padding: 3px 10px;"  /> 
+										<input type="submit" name="submit" value="Update" style="color:white;background-color:#32cd32;border:2px solid black;border-radius:5px;outline:none;padding: 3px 10px;cursor:pointer"  /> 
 								</td>
 								</form:form>
 								<td style="cellspacing: 0px;">
 									<form:form modelAttribute="VISA_DOC_OBJ" action="view_list_visa_proceed_docs_form" style="display:inline;">
 										<input type="hidden" name="visaId" value="${VISA_OBJ.visaId}" />
-										<input type="submit" name="submit" value="Cancel" style="color:white;background-color:red;border:2px solid black;border-radius:5px;outline:none;padding: 3px 10px;" /> 
+										<input type="submit" name="submit" value="Cancel" style="color:white;background-color:red;border:2px solid black;border-radius:5px;outline:none;padding: 3px 10px;cursor:pointer" /> 
 									</form:form>
 								</td>
 							</tr>
@@ -246,10 +252,10 @@
 					</tr>
 				</c:when>
 				<c:otherwise>
-					<tr><td style="width:15%;">${visaDocObj.visaDocId}</td>
+					<tr><td style="width:2%;text-align:center">${visaDocObj.visaDocId}</td>
 					<td style="width:25%;">${visaDocObj.documentTitle}</td>
 					<td style="width:40%;">${visaDocObj.description}</td>
-					<td style="width:20%;">
+					<td style="width:20%;text-align:center">
 							<form:form modelAttribute="VISA_DOC_OBJ" action="view_update_visa_doc_form" style="display:inline;">
 
 									<input type="hidden" name="visaId" value="${VISA_OBJ.visaId}" />
@@ -260,10 +266,10 @@
 									<input type="image" src="${pageContext.request.contextPath}/resources/images/edit.jpg" height="20" width="20"/>
 									 -->
 									<sec:authorize access="hasAnyRole('ADMIN','VISA_EDIT')">
-										<input type="submit" style="background-color:#32cd32;color:white;border:2px solid black;border-radius:5px;outline:none;padding: 3px 10px;" value="Edit" />
+										<input type="submit" style="background-color:#32cd32;color:white;border:2px solid black;border-radius:5px;outline:none;padding: 3px 10px;cursor:pointer" value="Edit" />
 									</sec:authorize>
 									<sec:authorize access="! hasAnyRole('ADMIN','VISA_EDIT')">
-										<input type="button" style="background-color:#32cd32;color:gray;border:2px solid black;border-radius:5px;outline:none;padding: 3px 10px;" value="Edit" disabled />
+										<input type="button" style="background-color:#32cd32;color:gray;border:2px solid black;border-radius:5px;outline:none;padding: 3px 10px;cursor:pointer" value="Edit" disabled />
 									</sec:authorize>
 							</form:form>
 							<form:form modelAttribute="VISA_DOC_OBJ" action="view_delete_visa_doc_form" style="display:inline;">
@@ -273,10 +279,10 @@
 									<input type="image" src="${pageContext.request.contextPath}/resources/images/delete.jpg" height="20" width="20"/>
 									 -->
 									<sec:authorize access="hasAnyRole('ADMIN','VISA_DELETE')">
-										<input type="submit" style="color:white;background-color:red;border:2px solid black;border-radius:5px;outline:none;padding: 3px 10px;" value="Delete" />
+										<input type="submit" style="color:white;background-color:red;border:2px solid black;border-radius:5px;outline:none;padding: 3px 10px;cursor:pointer" value="Delete" />
 									</sec:authorize>
 									<sec:authorize access="! hasAnyRole('ADMIN','VISA_DELETE')">
-										<input type="button" style="color:gray;background-color:red;border:2px solid black;border-radius:5px;outline:none;padding: 3px 10px;" value="Delete" disabled/>
+										<input type="button" style="color:gray;background-color:red;border:2px solid black;border-radius:5px;outline:none;padding: 3px 10px;cursor:pointer" value="Delete" disabled/>
 									</sec:authorize>
 
 							</form:form>
@@ -287,29 +293,31 @@
 			</c:forEach>
 			<c:if test="${VISA_DOC_ACTION eq 'ADD'}">
 				<form:form modelAttribute="VISA_DOC_OBJ" action="add_add_visa_doc" style="display:inline;">
-					<tr style="background-color:black;color:white"><td>Auto Generated</td>
+					<tr style="background-color:black;color:orangered;text-align:center"><td>Auto Generated</td>
 					<td><input style="width:300px;" type="text" id="documentTitle"  name="documentTitle" placeholder="document Title" required /></td>
-					<td><textarea rows="1" cols="60" name="description" required></textarea> </td>
+					<td><textarea rows="1" cols="60" name="description" placeholder="Description" required></textarea> </td>
 					<td>
-						<table>
-							<tr>
-								<td style="width:50%;">
+						<table style="margin: 0 auto;">
+							<tr style="text-align:center" >
+						
+								<td style="text-align:center;">
 										<input type="hidden" name="visaId" value="${VISA_OBJ.visaId}" />
 										
 										<sec:authorize access="hasAnyRole('ADMIN','VISA_ADD')">
-											<input type="submit" name="submit" value="Add" style="color:white;background-color:#32cd32  ;border:2px solid black;border-radius:5px;outline:none;padding: 3px 10px;"  />
+											<input type="submit" name="submit" value="Add" style="color:white;background-color:#32cd32  ;border:2px solid black;border-radius:5px;outline:none;padding: 3px 5px;cursor:pointer"  />
 										</sec:authorize> 
 										<sec:authorize access="! hasAnyRole('ADMIN','VISA_ADD')">
-											<input type="button" name="submit" value="Add" style="color:gray;background-color:#32cd32  ;border:2px solid black;border-radius:5px;outline:none;padding: 3px 10px;"  disabled/>
+											<input type="button" name="submit" value="Add" style="color:gray;background-color:#32cd32  ;border:2px solid black;border-radius:5px;outline:none;padding: 3px 10px;cursor:pointer"  disabled/>
 										</sec:authorize>
 								</td>
 								</form:form>
-								<td style="width:50%;">
+								<td style="text-align:center">
 									<form:form modelAttribute="VISA_DOC_OBJ" action="view_list_visa_proceed_docs_form" style="display:inline;">
 										<input type="hidden" name="visaId" value="${VISA_OBJ.visaId}" />
-										<input type="submit" name="submit" value="Cancel" style="color:white;background-color:red  ;border:2px solid black;border-radius:5px;outline:none;padding: 3px 10px;" /> 
+										<input type="submit" name="submit" value="Cancel" style="color:white;background-color:red  ;border:2px solid black;border-radius:5px;outline:none;padding: 3px 10px;cursor:pointer" /> 
 									</form:form>
 								</td>
+								
 							</tr>
 						</table>
 					</td>
@@ -341,27 +349,27 @@
 		</table>
 		</c:if>
     </div>
-    <script>
-        $('#countryName').autocomplete({
-            serviceUrl: '${pageContext.request.contextPath}/getCountryList',
-            paramName: "countryName",
-            delimiter: ",",
-            onSelect: function (suggestion) {
-                cityID = suggestion.data;
-                id = cityID;
-                jQuery("#countryCode").val(cityID);
-                $('input[name=countryCode]').val(id);
-                return false;
-            },
-            transformResult: function (response) {
-                return {
-                    suggestions: $.map($.parseJSON(response), function (item) {
-                        return { value: item.countryName, data: item.countryCode };
-                    })
-
-                };
-            }
-        });
-    </script>
+<script>
+	$('#countryName').autocomplete({
+	serviceUrl: '${pageContext.request.contextPath}/getCountryList',
+	paramName: "countryName",
+	delimiter: ",",
+	onSelect: function(suggestion) {
+        cityID = suggestion.data;
+        id=cityID;
+        jQuery("#countryCode").val(cityID);
+        $('input[name=countryCode]').val(id);
+        return false;
+    },
+	transformResult: function(response) {
+        return {
+            suggestions: $.map($.parseJSON(response), function(item) {
+            	return { value: item.countryName, data: item.countryCode };
+            })
+            
+        };
+    }
+});
+</script>>
 </body>
 </html>

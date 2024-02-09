@@ -14,7 +14,7 @@
 
             <body>
                 <div class="view_supplier_details container">
-                    <div class="view_supplier_details_wrapper" style=";margin-top:-25px;background:#94d2bd;box-shadow: 0 0 10px 5px #94d2bd, 0 0 20px 10px #94d2bd">
+                    <div class="view_supplier_details_wrapper" style=";z-index:9;margin-top:25px;background:#94d2bd;box-shadow: 0 0 10px 5px #94d2bd, 0 0 20px 10px #94d2bd">
                     <h1 style="text-align:center;font-size:30px;margin-bottom:10px;color:black">Supplier Details </h1>
                         <div align="center"><b>
                                 <font color="green"> ${Success} </font>

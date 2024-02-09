@@ -204,7 +204,7 @@
                         <h3 style="color: #FFBA08;font-weight: bold;margin-bottom: 5px;margin-top:10px">
                             Services Offered</h3>
                         <div class="inside-services">
-                            <div class="ansd1-ser">
+                            <div class="ansd1-ser" >
                                 <form:checkbox path="flight" id="flight" />
                                 <label for="flight" class="flight-lab f">Flight</label>
 

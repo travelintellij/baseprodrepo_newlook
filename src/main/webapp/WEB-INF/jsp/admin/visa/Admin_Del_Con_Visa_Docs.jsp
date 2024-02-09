@@ -46,7 +46,7 @@
                 <div class="Admin_Del_Con_Visa_Docs_wrapper_data">
                     <div class="Admin_Del_Con_Visa_Docs_wrapper_data_li a" >
                         <div class="Admin_Del_Con_Visa_Docs_wrapper_data_l1">
-                            <label for="" class="lb">Country name</label>
+                            <label for="" class="lb">Country name </label>
                             <p>${VISA_OBJ.countryName}</p>
                         </div>
                         <div class="Admin_Del_Con_Visa_Docs_wrapper_data_l1">
@@ -112,7 +112,7 @@
                         <form:form modelAttribute="VISA_DOC_OBJ" action="view_list_visa_proceed_docs_form"
                             style="display:inline;">
                             <input type="hidden" name="visaId" value="${VISA_OBJ.visaId}" />
-                            <input type="submit" name="submit" value="Cancel"
+                            <input type="submit" name="submit" value="Cancel "
                                />
                         </form:form>
                     </div>

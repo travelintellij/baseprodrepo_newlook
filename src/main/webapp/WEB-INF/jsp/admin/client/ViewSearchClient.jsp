@@ -89,9 +89,9 @@
                             <input type="text" class="contact" id="email" name="email" placeholder="email"
                                 value="${SEARCH_CLIENTS.email}" />
                         </div>
-                        <div class="sc-first-li-d1 mp">
+                        <div class="sc-first-li-d1 mp" >
                             <label for="">Active</label> <br>
-                            <select id="active" name="active" class="anc-active">
+                            <select id="active" name="active" class="anc-active" >
                                 <c:if test="${active eq true }">
                                     <option value="true" selected>
                                         <c:out value="True" />
@@ -129,9 +129,9 @@
             <c:set value="${CLIENTS_LIST}" var="clientList" />
             <table class="sc-table">
                 <thead style="background:#6082B6;">
-                    <tr>
+                    <tr style="height:50px;color:black">
                         <th class="sc-th" style="width: 110px;"><a
-                                href="search_search_filtered_clients?sortBy=clientId&clientName=${clientName}&cityId=${cityId}&cityName=${cityName}&email=${email}&active=${active}" style="color:#FFBA08">Client
+                                href="search_search_filtered_clients?sortBy=clientId&clientName=${clientName}&cityId=${cityId}&cityName=${cityName}&email=${email}&active=${active}" style="color:red">Client
                                 Id</a></th>
                         <th class="sc-th" style="width:300px">Client Name</th>
                         <th class="sc-th">City</th>
@@ -168,12 +168,10 @@
                                        
                                             <sec:authorize access="hasAnyRole('ADMIN','CLIENT_EDIT')">
                                              <li>
-                                                <a  style="border-bottom: 2px solid #FABA08;margin:5px 0" href="view_edit_admin_client?clientId=${client.clientId}">Edit</a>
+                                                <a  href="view_edit_admin_client?clientId=${client.clientId}">Edit</a>
                                                 </li>
                                             </sec:authorize>
-                                        
-                                       
-                                       
+
                                             <sec:authorize access="! hasAnyRole('ADMIN','CLIENT_EDIT')">
                                              <li>
                                                 <a href="view_edit_admin_client?clientId=${client.clientId}">Delete</a>

@@ -21,7 +21,7 @@
 .modal {
 	  display: none; /* Hidden by default */
 	  position: fixed; /* Stay in place */
-	  z-index: 1; /* Sit on top */
+	  z-index: 9; /* Sit on top */
 	  padding-top: 50px; /* Location of the box */
 	  left: 0;
 	  top: 0;
@@ -36,7 +36,7 @@
 	  margin: auto;
 	  padding: 0;
 	  width: 1200px;
-	  height: 90%;
+	  height: auto;
 	  -webkit-animation-name: animatetop;
 	  -webkit-animation-duration: 0.4s;
 	  animation-name: animatetop;
@@ -184,15 +184,15 @@
     <div class="search_suppler_table">
         <table style="padding:10px 5px">
             <thead>
-                <tr style="background:#6082B6">
-                    <th style="width:6.4% ;color:#FFBA08; ">Supplier <br> Id</th>
-                    <th style="width:18.8%; color:#FFBA08 ">Supplier Name</th>
-                    <th style="width:10.2%;color:#FFBA08 ">City</th>
-                    <th style="width:23%; color:#FFBA08">Email</th>
-                    <th style="width:8.5%;color:#FFBA08 ">Mobile</th>
-                    <th style="width:14.5% ;color:#FFBA08">Destinations</th>
-                    <th style="width:10% ;color:#FFBA08">Services</th>
-                    <th  style="width:4% ;color:#FFBA08">Action</th>
+                <tr style="background:#6082B6;height:50px">
+                    <th style="width:6.4% ;color:black; ">Supplier <br> Id</th>
+                    <th style="width:18.8%; color:black ">Supplier Name</th>
+                    <th style="width:10.2%;color:black ">City</th>
+                    <th style="width:23%; color:black">Email</th>
+                    <th style="width:8.5%;color:black ">Mobile</th>
+                    <th style="width:14.5% ;color:black">Destinations</th>
+                    <th style="width:10% ;color:black">Services</th>
+                    <th  style="width:4% ;color:black">Action</th>
                 </tr>
             </thead>
             <tbody>

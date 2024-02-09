@@ -124,25 +124,54 @@
                     </div>
                     <div class="view_supplier_details_data_line4 a">
                         <h3 class="vsd_ser" style="color:#FFBA08;font-weight:bold">Service offered</h3>
-                        <div class="view_supplier_details_data_line3_service_offered a">
-                                  Flight<form:checkbox class="ch_c" path="flight" disabled="true" style="margin-right:15px" />
-                                  hotel
-                                   <form:checkbox class="ch_c" path="hotel" disabled="true" style="margin-right:15px"/>
-                                   Transfers
-                                    <form:checkbox  class="ch_c" path="transfers" disabled="true" style="margin-right:15px"/>
-                                    sightseeing
-                                            <form:checkbox  class="ch_c" path="sightseeing" disabled="true" style="margin-right:15px"/>
+                        <div class="view_supplier_details_data_line3_service_offered a vsdch">
+                        <div class="vsdchsd">
+                        <form:checkbox class="ch_c" path="flight" disabled="true" style="margin-right:15px;height:18px;width:18px" />
+                        <label>Flight</label>
+                        </div>
+                               <div class="vsdchsd">
+                                <form:checkbox class="ch_c" path="hotel" disabled="true" style="margin-right:15px;height:18px;width:18px"/>
+                               <label>Hotal</label>
+                               </div>  
+                                 
+                                  <div class="vsdchsd">
+                                    <form:checkbox  class="ch_c" path="transfers" disabled="true" style="margin-right:15px;height:18px;width:18px"/>
+                                  <label>Transfers</label>
+                                  </div>
+                                  
+                                  <div class="vsdchsd">
+                                  <form:checkbox  class="ch_c" path="sightseeing" disabled="true" style="margin-right:15px;height:18px;width:18px"/>
+                                  <label>sightseeing</label>
+                                  </div>
+                                  
+                                     <div class="vsdchsd">
+                                    <form:checkbox  class="ch_c" path="visa" disabled="true" style="margin-right:15px;height:18px;width:18px"/>
+                                   <label>visa</label>
+                                  </div>
+                                  
+                                      <div class="vsdchsd">
+<form:checkbox  class="ch_c" path="insurance" disabled="true" style="margin-right:15px;height:18px;width:18px"/>
+                                  <label> Insurance</label>
+                                  </div>  
                                    
-                                        visa
-                                            <form:checkbox  class="ch_c" path="visa" disabled="true" style="margin-right:15px"/>
-                                    Insurance
-                                            <form:checkbox  class="ch_c" path="insurance" disabled="true" style="margin-right:15px"/>
-                                            landPackage
-                                            <form:checkbox class="ch_c"  path="landPackage" disabled="true" style="margin-right:15px"/>
-                                   Cruise
-                                            <form:checkbox class="ch_c" path="cruise" disabled="true" style="margin-right:15px"/>
-                                            others
-                                            <form:checkbox class="ch_c" path="others" disabled="true" style="margin-right:15px"/>    
+                                       <div class="vsdchsd">
+                                      
+                                            <form:checkbox class="ch_c"  path="landPackage" disabled="true" style="margin-right:15px;height:18px;width:18px"/>
+                                       <label> landPackage</label>
+                                       </div>
+                                
+                                            <div class="vsdchsd">
+                                            
+                                            <form:checkbox class="ch_c" path="cruise" disabled="true" style="margin-right:15px;height:18px;width:18px"/>
+                                            <label> Cruise</label>
+                                            </div>
+                                  
+                                  <div class="vsdchsd">
+                                  
+                                            <form:checkbox class="ch_c" path="others" disabled="true" style="margin-right:15px;height:18px;width:18px"/>    
+                                  <label> others</label>       
+                                  </div>
+                                           
                         </div>
                     </div>
                  
@@ -150,7 +179,7 @@
                    <div class="view_supplier_details_data_line_com">
                         <h3 class="vsd_consoli"  style="color:#FFBA08;font-weight:bold">consolidater</h3>
                         <div class="view_supplier_details_data_line3_consoli">
-                            <form:checkbox class="ch_c" path="consolidator" disabled="true" />
+                            <form:checkbox class="ch_c" path="consolidator" disabled="true" style="height:18px;width:18px" />
                         </div>
                     </div>
                     <div class="view_supplier_details_data_line_com">
