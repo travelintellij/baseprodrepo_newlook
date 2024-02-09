@@ -333,7 +333,9 @@ public class IncentiveController {
     	Calendar calender = Calendar.getInstance();
     	try {
     		if(searchIncentiveObj.getClaimToDate()==null) {
-				dateTo = calender.getTime();
+    			//calender.set(Calendar.DAY_OF_MONTH, 1);
+    			calender.set(Calendar.DAY_OF_MONTH, calender.getActualMaximum(Calendar.DAY_OF_MONTH));
+    			dateTo = calender.getTime();
 				String strToDate = dateFilterFormat.format(dateTo); 
 				searchIncentiveObj.setClaimToDate(strToDate);
 			}else {
@@ -342,10 +344,20 @@ public class IncentiveController {
     		
     		if(searchIncentiveObj.getClaimFromDate()==null) {
 				//searchIncentiveObj.setClaimToDate(calender.getTime());
-				calender.add(Calendar.MONTH, -1);
+    			calender.set(Calendar.DAY_OF_MONTH, 1);
+				//calender.add(Calendar.MONTH, -1);
 				dateFrom = calender.getTime();
 				String strFromDate = dateFilterFormat.format(dateFrom); 
 				searchIncentiveObj.setClaimFromDate(strFromDate);
+				
+				
+				/*calender.add(Calendar.MONTH, -1);
+				dateFrom = calender.getTime();
+				String strFromDate = dateFilterFormat.format(dateFrom); 
+				searchIncentiveObj.setClaimFromDate(strFromDate);
+				*/
+
+				
 			}else {
 				dateFrom=new SimpleDateFormat("yyyy-MM-dd").parse(searchIncentiveObj.getClaimFromDate());
 			}
@@ -491,7 +503,15 @@ public class IncentiveController {
     	UserDetailsObj userObj = getLoggedInUser();
     	ModelAndView updateIncentiveView = new ModelAndView();
     	try {
-			UdnIncentiveEntity incentiveEntity = new UdnIncentiveEntity(incentiveObj);
+			
+    		System.out.println("Incentive Object is " + incentiveObj);
+    		/*if(incentiveObj.getApprovedAmount()>0 &&  incentiveObj.getStatus()==) {
+    			errors.rejectValue("sourceName", "city.error");
+    		}
+    		*/
+    		
+    		UdnIncentiveEntity incentiveEntity = new UdnIncentiveEntity(incentiveObj);
+			
 			incentiveEntity = incentiveService.createOrUpdateIncentive(incentiveEntity);
 			if(incentiveObj.isNotifyClaimant()) {
 				String emailTo = userDetailsService.findUserByID(incentiveObj.getClaimantId()).getEmail();

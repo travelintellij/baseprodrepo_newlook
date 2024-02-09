@@ -196,6 +196,7 @@
                                 <th style="width:10%;background: #6082B6;">Claim Date</th>
                                 <th style="width:10%;background: #6082B6;">Claimant</th>
                                 <th style="width:10%;background: #6082B6;">Claim Amount</th>
+                                <th style="width:10%;background: #6082B6;">Approved Amount</th>
                                 <th style="width:10%;background: #6082B6;">Claim Status</th>
                             </tr>
                             <c:if test="${not empty INCENTIVES_LIST}">
@@ -238,6 +239,7 @@
                                         </td>
                                         <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">${incentiveObj.claimantName}</td>
                                         <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">${incentiveObj.claimedAmount}</td>
+                                        <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">${incentiveObj.approvedAmount}</td>
                                         <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">${incentiveObj.claimStatusName}</td>
                                     </tr>
                                     <c:set var="totalIncentive"
