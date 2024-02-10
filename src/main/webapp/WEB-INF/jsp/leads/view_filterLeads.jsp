@@ -130,7 +130,7 @@
             <!-- ############## start of upper part ############# -->
             <div class="upperPart">
                 <input type="hidden" name="onlyLeadOwner" value="true" />
-                <h1 class="heading">Search Leads</h1>
+                <h1 class="heading" style="color:black">Search Leads</h1>
                 <div class="firstL">
                     <div class="box1 box">
                         <label for="tf">Traveling From</label><br>
@@ -273,50 +273,50 @@
            
             
             
-                <table border="1">
-                    <thead style="background:#6082B6;" >
-                        <th style="color:white" >Lead id</th>
-                        <th style="width:3%;color:white">F</th>
-                        <th style="width:3%;color:white">Q</th>
-                        <th style="width:350px;color:white">Client Name</th>
-                        <th style="color:white">Destination</th>
-                        <th style="color:white">Reference</th>
-                        <th style="color:white">Tsd</th>
-                        <th style="color:white">Ted</th>
-                        <th style="color:white">Status</th>
-                        <th style="color:white">Owner</th>
-                        <th style="color:white">Action</th>
+                <table border="1" style="color:black">
+                    <thead style="background:#6082B6;height:50px">
+                        <th style="color:black" >Lead id</th>
+                        <th style="width:3%;color:black">F</th>
+                        <th style="width:3%;color:black">Q</th>
+                        <th style="width:350px;color:black">Client Name</th>
+                        <th style="color:black">Destination</th>
+                        <th style="color:black">Reference</th>
+                        <th style="color:black">Tsd</th>
+                        <th style="color:black">Ted</th>
+                        <th style="color:black">Status</th>
+                        <th style="color:black">Owner</th>
+                        <th style="color:black">Action</th>
                     </thead>
                     <tbody>
                   	<c:forEach items="${FILTERED_LEADS_RECORDS}" var="filteredLeads">
 						<tr>
-							<td class="leadId" style="border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53;border-left:2px solid #FFCF53"">
+							<td class="leadId" style="border-bottom:2px solid black;border-right:2px solid black;border-left:2px solid black"">
 								<a style="cursor: pointer;" id="myBtn[${filteredLeads.leadId}]" onclick="myLeadDisplay(this)" data-load-url="view_lead_details_modal?leadId=${filteredLeads.leadId}" data-toggle="modal" data-target="#myModal" >
 									Q-${String.format("%04d",filteredLeads.leadId)}-${filteredLeads.leadSourceShortName }
 								</a>
 							</td>
 							<c:if test="${filteredLeads.flagged eq true}">
-								<td class="tick" style="border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53"><i class="fa-solid fa-check"></i></td>
+								<td class="tick" style="border-bottom:2px solid black;border-right:2px solid black"><i class="fa-solid fa-check"></i></td>
 							</c:if>
 							<c:if test="${filteredLeads.flagged eq false}">
-								<td class="cross" style="border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53"><i class="fa-solid fa-xmark"></i></td>
+								<td class="cross" style="border-bottom:2px solid black;border-right:2px solid black"><i class="fa-solid fa-xmark"></i></td>
 							</c:if>
 							<c:if test="${filteredLeads.qualified eq true}">
-								<td class="tick" style="border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53"><i class="fa-solid fa-check"></i></td>
+								<td class="tick" style="border-bottom:2px solid black;border-right:2px solid black"><i class="fa-solid fa-check"></i></td>
 									</c:if>
 									<c:if test="${filteredLeads.qualified eq false}">
-								<td class="cross" style="border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53"><i class="fa-solid fa-xmark"></i></td>
+								<td class="cross" style="border-bottom:2px solid black;border-right:2px solid black"><i class="fa-solid fa-xmark"></i></td>
 							</c:if>
-							<td style="border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53">${filteredLeads.contactName}</td>
-							<td style="border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53">${filteredLeads.destinationName}</td>
-							<td style="border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53">${filteredLeads.leadSourceName}</td>
-							<td style="border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53"><fmt:formatDate value="${filteredLeads.travelStartDate}" pattern="dd-MM-yyyy" /></td>
-							<td style="border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53"><fmt:formatDate value="${filteredLeads.travelEndDate}" pattern="dd-MM-yyyy" /></td>
+							<td style="border-bottom:2px solid black;border-right:2px solid black">${filteredLeads.contactName}</td>
+							<td style="border-bottom:2px solid black;border-right:2px solid black">${filteredLeads.destinationName}</td>
+							<td style="border-bottom:2px solid black;border-right:2px solid black">${filteredLeads.leadSourceName}</td>
+							<td style="border-bottom:2px solid black;border-right:2px solid black"><fmt:formatDate value="${filteredLeads.travelStartDate}" pattern="dd-MM-yyyy" /></td>
+							<td style="border-bottom:2px solid black;border-right:2px solid black"><fmt:formatDate value="${filteredLeads.travelEndDate}" pattern="dd-MM-yyyy" /></td>
 							
-							<td style="border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53">${filteredLeads.statusName}</td>
-							<td style="border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53">${filteredLeads.leadOwnerName}</td>
-							    <td class="st fili" style="border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53">
-	                               <i class="fa-solid fa-sliders st1">
+							<td style="border-bottom:2px solid black;border-right:2px solid black">${filteredLeads.statusName}</td>
+							<td style="border-bottom:2px solid black;border-right:2px solid black">${filteredLeads.leadOwnerName}</td>
+							    <td class="st fili" style="border-bottom:2px solid black;border-right:2px solid black">
+	                               <i class="fa-solid fa-sliders st1" style="color:black">
 	                                   <div class="ul" style="background:gray">
 	                                       <ul>
 	                                           <li><a href="form_view_lead_followup_details?leadId=${filteredLeads.leadId }"

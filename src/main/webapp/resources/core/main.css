@@ -72,3 +72,6 @@
 	  background-color: lightblue;
 	  color: white;
 	}
+	.modal-body{
+		padding:0
+	}

@@ -15,7 +15,8 @@
                         <script src="<c:url value=" /resources/core/jquery.autocomplete.min.js" />"></script>
                
                     </head>
-
+                    <br>
+                    <br>
                     <body>
                         <div class="form_viewDeal_modal">
                             <div class="form_viewDeal_modal_wrapper">
@@ -34,7 +35,7 @@
                                             <p>${DealObject.statusName}</p>
                                         </div>
                                         <div class="form_viewDeal_modal_wrapper_data_line">
-                                            <label for="" class="lb">Query Id</label>
+                                            <label for="" class="lb">Query Id </label>
                                             <p>${DealObject.queryId}</p>
                                         </div>
                                         <div class="form_viewDeal_modal_wrapper_data_line">
@@ -96,14 +97,14 @@
                                                                     test='${fn:contains(DealObject.serviceWorkLoadList, listValue.serviceCode)}'>
                                                                     <form:checkbox path="serviceList"
                                                                         value="${listValue.serviceCode}"
-                                                                        checked="checked" disabled="true" />
+                                                                        checked="checked" disabled="true" class="ch_c" style="width:18px;height:18px"/>
                                                                     <c:out value="${listValue.serviceName}" /><span
                                                                         class="checkmark"></span>
                                                                 </c:when>
                                                                 <c:otherwise>
                                                                     <form:checkbox path="serviceList"
                                                                         value="${listValue.serviceCode}"
-                                                                        disabled="true" />
+                                                                        disabled="true"  class="ch_c" style="width:18px;height:18px"/>
                                                                     <c:out value="${listValue.serviceName}" /><span
                                                                         class="checkmark"></span>
                                                                 </c:otherwise>

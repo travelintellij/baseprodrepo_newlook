@@ -203,11 +203,9 @@
                                 <c:forEach var="incentiveObj" items="${INCENTIVES_LIST}">
                                     <tr>
                                         <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">
-                                            <a id="myBtn[${incentiveObj.incentiveId}]" onclick="myLeadDisplay(this)"
+                                            <a style="color:blue;text-decoration:underline;cursor:pointer" id="myBtn[${incentiveObj.incentiveId}]" onclick="myLeadDisplay(this)"
                                                 data-load-url="displayIncentiveModal?incentiveId=${incentiveObj.incentiveId}"
-                                                data-toggle="modal" data-target="#myModal"><input type="button"
-                                                    style="background-color: orange;padding: 3px 4px;border:none;outline:none;cursor:pointer;border-radius:2px"
-                                                    value="${incentiveObj.incentiveId}" /></a>
+                                                data-toggle="modal" data-target="#myModal">${incentiveObj.incentiveId}</a>
 
                                             <sec:authorize access="hasAnyRole('ADMIN')">
                                                 &nbsp;&nbsp;<a style="color:#32cd32"
@@ -216,12 +214,10 @@
 
                                         </td>
                                         <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">
-                                            <a id="myBtn[${incentiveObj.dealConfirmationId}]"
+                                            <a style="color:blue;text-decoration:underline;cursor:pointer" id="myBtn[${incentiveObj.dealConfirmationId}]"
                                                 onclick="myLeadDisplay(this)"
                                                 data-load-url="view_view_deal_form_modal_free_acl?dealConfirmationId=${incentiveObj.dealConfirmationId}"
-                                                data-toggle="modal" data-target="#myModal"><input type="button"
-                                                   style="background-color: orange;padding: 3px 4px;border:none;outline:none;cursor:pointer;border-radius:2px"
-                                                    value="${incentiveObj.dealConfirmationId}" /></a>
+                                                data-toggle="modal" data-target="#myModal">${incentiveObj.dealConfirmationId}</a>
 
                                         </td>
                                         <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">${incentiveObj.guestName}</td>
@@ -244,15 +240,16 @@
                                         value="${totalIncentive + incentiveObj.claimedAmount}" />
                                 </c:forEach>
                             </c:if>
+                            <tr>
+                                <td colspan="7" style="text-align:end;margin-right:10px;"><b>
+                                        <font size="3">Total Claim &nbsp &nbsp &nbsp <br> Amount &nbsp &nbsp &nbsp &nbsp &nbsp </font>
+                                    </b></td>
+                                    <td colspan="1" style="text-align:center;color:#32cd32;font-weight:bold">
+                                    ${totalIncentive}</td>
+                            </tr>
                         </table>
                         <table style="width:20%;margin:10px auto ; background:black;color:white;border-radius:3px;padding;3px">
-                            <tr>
-                                <td colspan="7"><b>
-                                        <font size="3">Total Claim Amount </font>
-                                    </b></td>
-                                <td colspan="2" style="color:#32cd32">${totalIncentive}</td>
-
-                            </tr>
+                            
                         </table>
 
                         <div id="myModal" class="modal" style="z-index:999;margin-top:100px">

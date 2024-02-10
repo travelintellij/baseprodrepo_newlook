@@ -507,7 +507,8 @@ a {
 
 .upperPart,
 .lowerPart {
-    background: rgba(0, 0, 0, 0.9);
+    background: white;
+    color:black;
     padding: 10px;
     border-radius: 10px;
 }
@@ -530,13 +531,13 @@ a {
 }
 
 .inBtns {
-    margin-left: 40%;
+    margin-left: 40%;st1
     display: inline-block;
     width: auto;
 }
 
 label {
-    color: white;
+    color: black;
 }
 
 .inf {

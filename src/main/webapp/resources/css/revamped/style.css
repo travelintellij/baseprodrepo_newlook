@@ -6762,6 +6762,8 @@ color: white;
 }
 
 .viewIncentiveDetails_wr_dt_2 {
+	margin:0px auto;
+	width:983px;
     color: white;
     text-align: center;
     border-collapse: collapse;
@@ -7201,4 +7203,55 @@ transition:all 0.2s ease-in-out
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
+}
+/* ################### SubmitNewIncentiveClaim ##################  */
+.SubmitNewIncentiveClaim_wrapper {
+    color: white;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 115px;
+}
+
+.SubmitNewIncentiveClaim_wrapper_data {
+    display: flex;
+    justify-content: center;
+}
+
+.SubmitNewIncentiveClaim_wrapper_data_line {
+    display: flex;
+    align-items: center;
+}
+
+.SubmitNewIncentiveClaim_wrapper_dl1 {
+    width: 300px;
+    text-align: start;
+}
+
+.SubmitNewIncentiveClaim_wrapper_dl1 input {
+    width: 90%;
+}
+
+.SubmitNewIncentiveClaim_wrapper_dl2 {
+    width: 300px;
+    text-align: start;
+}
+
+.SubmitNewIncentiveClaim_wrapper_dl2 input {
+    width: 90%;
+}
+
+.claim_ques {
+    color: white;
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    background: rgba(0, 0, 0, 9);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 15px;
+    color: orangered;
 }

@@ -99,18 +99,18 @@
     <div id="myModal" class="modal">
     
         <!-- Modal content -->
-        <div class="modal-content">
+        <div class="modal-content" style="margin-top:20px;z-index:9">
             <div class="modal-header">
                 <span class="close">&times;</span>
                 <br>
                 <h2 style="text-align:center;">View Deal Details</h2>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" style="padding:0px">
     
     
             </div>
             <div class="modal-footer">
-                <h3>Powered by @TravelIntelliJ</h3>
+                <h3>Powered by @TravelIntelliJ </h3>
             </div>
         </div>
     

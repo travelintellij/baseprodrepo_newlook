@@ -23,7 +23,7 @@
 	.modal {
 	  display: none; /* Hidden by default */
 	  position: fixed; /* Stay in place */
-	  z-index: 1; /* Sit on top */
+	  z-index: 999; /* Sit on top */
 	  padding-top: 50px; /* Location of the box */
 	  left: 0;
 	  top: 0;
@@ -81,7 +81,7 @@
 	  color: white;
 	}
 	
-	.modal-body {padding: 2px 16px;}
+	
 	
 	.modal-footer {
 	  padding: 2px 16px;
@@ -114,7 +114,7 @@
                         <form:form method="post" action="edit_edit_incentive_details" modelAttribute="INCENTIVE_OBJ">
                             <form:input type="hidden" path="incentiveId" />
                             <div class="form_editIncentiveClaim_wrapper">
-                                <h1 class="hd">Update Incentive Details</h1>
+                                <h1 class="hd" style="color:#FABA08">Update Incentive Details</h1>
                                 <h2 class="hd">Incentive Id - ${INCENTIVE_OBJ.incentiveId}</h2>
                                 <div class="form_editIncentiveClaim_wrapper_data">
                                     <div class="form_editIncentiveClaim_wrapper_data_line">
@@ -153,57 +153,57 @@
                                     then your claim will
                                     rejected.</p>
                             </div>
-                            <div class="form_editIncentiveClaim_wrapper" style="width:100%">
-                                <h1 style="color:blueviolet">incentiive effort details</h1>
+                            <div class="form_editIncentiveClaim_wrapper" style="width:1000px">
+                                <h1 style="color:#FABA08">incentiive effort details</h1>
                                 <div class="viewIncentiveDetails_wr_dt_2">
                                     <div class="viewIncentiveDetails_wr_dt_line_2 a">
-                                        <p class="inc_q"> 1) Client is Referred by You ? </p>
-                                        <p class="inc_a">
+                                        <p class="inc_q" style="background:gray;padding-left:5px"> 1) Client is Referred by You ? </p>
+                                        <p class="inc_a" style="background:lightblue;color:black;text-align:center">
                                             <form:radiobutton path="question1" value="1" /> Yes
                                             <form:radiobutton path="question1" value="0" /> No
                                         </p>
                                     </div>
                                     <div class="viewIncentiveDetails_wr_dt_line_2 a">
-                                        <p class="inc_q"> 2) You took minimal support of management and were able to
+                                        <p class="inc_q" style="background:gray;padding-left:5px"> 2) You took minimal support of management and were able to
                                             handle
                                             the query alone ?
                                         </p>
-                                        <p class="inc_a">
+                                        <p class="inc_a" style="background:lightblue;color:black;text-align:center">
                                             <form:radiobutton path="question2" value="true" /> Yes
                                             <form:radiobutton path="question2" value="false" /> No
                                         </p>
                                     </div>
                                     <div class="viewIncentiveDetails_wr_dt_line_2 a">
-                                        <p class="inc_q"> 3) You responded all queries of client yourself ontime without
+                                        <p class="inc_q" style="background:gray;padding-left:5px"> 3) You responded all queries of client yourself ontime without
                                             any
                                             delay ? </p>
-                                        <p class="inc_a">
+                                        <p class="inc_a" style="background:lightblue;color:black;text-align:center">
                                             <form:radiobutton path="question3" value="Yes" /> Yes
                                             <form:radiobutton path="question3" value="No" /> No
                                         </p>
                                     </div>
                                     <div class="viewIncentiveDetails_wr_dt_line_2 a">
-                                        <p class="inc_q"> 4) You ensured and verified with management time to time for
+                                        <p class="inc_q" style="background:gray;padding-left:5px"> 4) You ensured and verified with management time to time for
                                             payment settlement ? </p>
-                                        <p class="inc_a">
+                                        <p class="inc_a" style="background:lightblue;color:black;text-align:center">
                                             <form:radiobutton path="question4" value="Yes" /> Yes
                                             <form:radiobutton path="question4" value="No" /> No
                                         </p>
                                     </div>
                                     <div class="viewIncentiveDetails_wr_dt_line_2 a">
-                                        <p class="inc_q"> 5) You ensured the vouchers were sent on time and reminder
+                                        <p class="inc_q" style="background:gray;padding-left:5px"> 5) You ensured the vouchers were sent on time and reminder
                                             call
                                             before travel is made
                                             to the client. </p>
-                                        <p class="inc_a">
+                                        <p class="inc_a" style="background:lightblue;color:black;text-align:center">
                                             <form:radiobutton path="question5" value="Yes" /> Yes
                                             <form:radiobutton path="question5" value="No" /> No
                                         </p>
                                     </div>
                                     <div class="viewIncentiveDetails_wr_dt_line_2 a">
-                                        <p class="inc_q"> 6) UdanChoo online Review achieved or decided not needed ?
+                                        <p class="inc_q" style="background:gray;padding-left:5px"> 6) UdanChoo online Review achieved or decided not needed ?
                                         </p>
-                                        <p class="inc_a">
+                                        <p class="inc_a" style="background:lightblue;color:black;text-align:center">
                                             <form:radiobutton path="question6" value="Yes" /> Yes
                                             <form:radiobutton path="question6" value="No" /> No
                                         </p>
@@ -216,16 +216,16 @@
                                 <div class="form_editIncentiveClaim_wrapper_data_p">
                                     <div class="inc_sp_l">
                                         <div class="form_editIncentiveClaim_wrapper_data_line">
-                                            <label for="">Claimed Amount</label>
+                                            <label for="" style="color:#FABA08">Claimed Amount</label>
                                             <p>${INCENTIVE_OBJ.claimedAmount}</p>
                                         </div>
                                         <div class="form_editIncentiveClaim_wrapper_data_line">
-                                            <label for="">Approved Amount</label>
+                                            <label for="" style="color:#FABA08">Approved Amount</label>
                                             <form:input type="number" path="approvedAmount" />
                                         </div>
                                         <div class="form_editIncentiveClaim_wrapper_data_line">
-                                            <label for="">Updated Claim Status</label>
-                                            <form:select path="status" required="required">
+                                            <label for="" style="color:#FABA08">Updated Claim Status</label>
+                                            <form:select path="status" required="required" style="width:90%">
                                                 <form:options items="${ACTIVE_INCENTIVE_STATUS}"
                                                     class="service-small" />
                                             </form:select>
@@ -233,13 +233,13 @@
                                     </div>
                                     <div class="inc_sp_l2">
                                         <div class="form_editIncentiveClaim_wrapper_data_line" style="width:97%">
-                                            <label for="">User Remarks</label>
-                                            <p style="background:lightpink;color:black">${INCENTIVE_OBJ.userRemarks}</p>
+                                            <label for="" style="color:#FABA08">User Remarks</label>
+                                            <p style="color:white">${INCENTIVE_OBJ.userRemarks}</p>
                                         </div>
                                         <div class="form_editIncentiveClaim_wrapper_data_line">
-                                            <label for="">Managment Remarks</label>
+                                            <label for="" style="color:#FABA08">Managment Remarks</label>
                                             <form:textarea path="managementRemarks" cols="115" rows="2"
-                                                maxlength="250" />
+                                                maxlength="250" style="resize: none;"/>
                                         </div>
 
                                     </div>
