@@ -107,19 +107,17 @@
                     <div class="due_today_task_data_btns">
                         <input type="hidden" name="visaId" value="${VISA_OBJ.visaId}" />
                         <input type="hidden" name="visaDocId" value="${ORG_VISA_DOC_OBJ.visaDocId}" />
-                        <input type="submit" name="Delete" Value="Confirm Delete"
-                            style="background-color: red; " />
-                        <form:form modelAttribute="VISA_DOC_OBJ" action="view_list_visa_proceed_docs_form"
-                            style="display:inline;">
+                        <input type="submit" name="Delete" Value="Confirm Delete" style="background-color: red; " />
+                    </form:form>
+                        <form:form modelAttribute="VISA_DOC_OBJ" action="view_list_visa_proceed_docs_form" style="display:inline;">
                             <input type="hidden" name="visaId" value="${VISA_OBJ.visaId}" />
-                            <input type="submit" name="submit" value="Cancel "
-                               />
+                            <input type="submit" name="submit" value="Cancel " />
                         </form:form>
                     </div>
                 </div>
             </div>
         </div>
-    </form:form>
+    
 </body>
 
 </html>

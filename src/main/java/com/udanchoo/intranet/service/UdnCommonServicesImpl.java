@@ -160,8 +160,10 @@ public class UdnCommonServicesImpl {
 		
 		while(itrDealStatusEntity.hasNext()) {
 			Udn_Deal_Status_Entity dealStatusEntity = (Udn_Deal_Status_Entity)itrDealStatusEntity.next();
-			UdnDealStatusVO udnDealStatusVO = new UdnDealStatusVO(dealStatusEntity);
-			udnDealStatusVOList.add(udnDealStatusVO);
+			if(dealStatusEntity.isActive()) {
+				UdnDealStatusVO udnDealStatusVO = new UdnDealStatusVO(dealStatusEntity);
+				udnDealStatusVOList.add(udnDealStatusVO);
+			}
 		}
 		return udnDealStatusVOList;
 	}
