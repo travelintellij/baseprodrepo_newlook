@@ -35,8 +35,8 @@
                 </style>
                 <body>
                     <form:form modelAttribute="userobj" action="search_search_filtered_clients">
-                        <table class="UserCRUDDocs_tabel">
-                            <thead  style="background:#6082B6">
+                        <table class="UserCRUDDocs_tabel bs">
+                            <thead  style="background:#6082B6;height:50px">
                                 <tr>
                                     <th>User ID</th>
                                     <th>User Name</th>
@@ -60,8 +60,8 @@
                         </table>
                     </form:form>
                     <!-- ############### 2nd table ############ -->
-                    <table class="UserCRUDDocs_tabel2">
-                        <tr  style="background:#6082B6">
+                    <table class="UserCRUDDocs_tabel2 bs">
+                        <tr  style="background:#6082B6;height:50px">
                             <th>S. No.</th>
                             <th>Document Name</th>
                             <th colspan="2">Action</th>
@@ -80,7 +80,7 @@
                                         <input type="hidden" name="userId" value="${userobj.userId}" />
                                         <input type="hidden" name="fileName" value="${file}" />
                                         <input type="submit" name="Download" Value="Download"
-                                            style="color: black;background-color:#32cd32 ; padding: 2px 12px;border:none;outline:none;border-radius:5px;margin-top:10px" />
+                                            style="color: black;background-color:#32cd32 ; padding: 2px 12px;border:none;outline:none;border-radius:5px;margin-top:10px;cursor:pointer" />
                                     </form:form>
 
                                 </td>
@@ -91,7 +91,7 @@
                                         <input type="hidden" name="userId" value="${userobj.userId}" />
                                         <input type="hidden" name="fileName" value="${file}" />
                                         <input type="submit" name="Delete" Value="Delete"
-                                           style="color: black;background-color:red ; padding: 2px 12px;border:none;outline:none;border-radius:5px;margin-top:10px" />
+                                           style="cursor:pointer;color: black;background-color:red ; padding: 2px 12px;border:none;outline:none;border-radius:5px;margin-top:10px" />
                                     </form:form>
 
                                 </td>
@@ -102,7 +102,7 @@
                     </table>
                     <!-- ############### 2nd table ############ -->
 
-                    <table class="UserCRUDDocs_tabel3">
+                    <table class="UserCRUDDocs_tabel3 bs">
                         <tr>
 
 

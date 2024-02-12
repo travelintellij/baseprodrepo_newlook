@@ -12,7 +12,7 @@
 </head>
 <style>
 .autocomplete-suggestions { border: 1px solid #999; background: red;overflow-y:auto}
-		.autocomplete-suggestion {padding: 2px 5px;color:white; background: black;overflow-y: auto;overflow-y:auto}
+		.autocomplete-suggestion {padding: 2px 5px;color:black; background: black;overflow-y: auto;overflow-y:auto}
 		.autocomplete-selected { background: #F0F0F0;overflow-y:auto} 
 		.autocomplete-suggestions strong { font-weight: normal; color:#FABA08;overflow-y:auto}
 		.autocomplete-group { padding: 2px 5px;overflow-y:auto}
@@ -78,7 +78,7 @@
                                 <form:errors path="passwordConfirm" cssClass="error" />
                         </div>
                         <div class="AdminCreateNewUser_wrapper_data_l1">
-                            <label for="" style="color:white">Role</label>
+                            <label for="" style="color:black">Role</label>
                             <div class="radio-btn-admin-cre-user" style="display:flex">
                              <form:radiobutton path="roleName" value="USER" checked="checked" label="User" style="width:25px;height:25px;margin-right:5px" />
                             &nbsp;&nbsp;
@@ -87,7 +87,7 @@
                     </div>
                     <div class="AdminCreateNewUser_wrapper_data_line2">
                         <div class="AdminCreateNewUser_wrapper_data_l1">
-                            <label for="" style="color:white">User Full Name</label>
+                            <label for="" style="color:black">User Full Name</label>
                             <form:input path="name" /> <br>
                             <font color="red">
                                 <form:errors path="name" cssClass="error" />
@@ -95,7 +95,7 @@
                         </div>
                        
                         <div class="AdminCreateNewUser_wrapper_data_l1">
-                            <label for="" style="color:white">Company Email</label>
+                            <label for="" style="color:black">Company Email</label>
                             <form:input path="email" />
                             <font color="red">
                                 <form:errors path="email" cssClass="error" />
@@ -104,7 +104,7 @@
                         
                          <div class="AdminCreateNewUser_wrapper_data_line2">
                         <div class="AdminCreateNewUser_wrapper_data_l1">
-                            <label for="" style="color:white">Company Mobile</label>
+                            <label for="" style="color:black">Company Mobile</label>
                             <form:input path="mobile" type="number" required="required" /> <br>
                             <font color="red">
                                 <form:errors path="mobile" cssClass="error" />
@@ -117,46 +117,46 @@
                
                     <div class="AdminCreateNewUser_wrapper_data_line1">
                         <div class="AdminCreateNewUser_wrapper_data_l1">
-                            <label for="" style="color:white">Designation</label>
+                            <label for="" style="color:black">Designation</label>
                             <form:input path="designation" /> <br>
                             <font color="red">
                                 <form:errors path="designation" cssClass="error" />
                             </font>
                         </div>
                         <div class="AdminCreateNewUser_wrapper_data_l1">
-                            <label for="" style="color:white">Type</label> <br>
+                            <label for="" style="color:black">Type</label> <br>
                             <form:select path="type" style="width:90%">
                                 <form:options items="${EMP_TYPE_MAP}" class="service-small" />
                             </form:select>
                         </div>
                         <div class="AdminCreateNewUser_wrapper_data_l1">
-                            <label for="" style="color:white">Shift</label> <br>
+                            <label for="" style="color:black">Shift</label> <br>
                             <form:select path="shift" style="width:90%">
                                 <form:options items="${EMP_SHIFT_MAP}" class="service-small" />
                             </form:select>
                         </div>
                         <div class="AdminCreateNewUser_wrapper_data_l1">
-                            <label for="" style="color:white">Fixed Incentive</label>
+                            <label for="" style="color:black">Fixed Incentive</label>
                             <form:input path="fixedIncentive" type="number" required="required" />
                         </div>
                     </div>
                     <div class="AdminCreateNewUser_wrapper_data_line1">
                         <div class="AdminCreateNewUser_wrapper_data_l1">
-                            <label for="" style="color:white">Pan Card</label>
+                            <label for="" style="color:black">Pan Card</label>
                             <form:input path="panCard" />
                         </div>
                         <div class="AdminCreateNewUser_wrapper_data_l1">
-                            <label for="" style="color:white">Aadhar Card</label>
+                            <label for="" style="color:black">Aadhar Card</label>
                             <form:input path="aadharCard" />
                         </div>
                         <div class="AdminCreateNewUser_wrapper_data_l1">
-                            <label for="" style="color:white">Marial Status</label>
+                            <label for="" style="color:black">Marial Status</label>
                             <form:select path="maritalStatus" style="width:90%"> <br>
                                 <form:options items="${MARITAL_STATUS_MAP}" class="service-small" />
                             </form:select>
                         </div>
                         <div class="AdminCreateNewUser_wrapper_data_l1">
-                            <label for="" style="color:white">Gender</label> <br>
+                            <label for="" style="color:black">Gender</label> <br>
                             <form:select path="gender" style="width:90%">
                                 <form:options items="${GENDER_MAP}" class="service-small" />
                             </form:select>
@@ -164,24 +164,24 @@
                     </div>
                     <div class="AdminCreateNewUser_wrapper_data_line1">
                         <div class="AdminCreateNewUser_wrapper_data_l1">
-                            <label for="" style="color:white">Date of Birth</label>
+                            <label for="" style="color:black">Date of Birth</label>
                             <form:input path="dob" type="date" required="required" />
                         </div>
                         <div class="AdminCreateNewUser_wrapper_data_l1">
-                            <label for="" style="color:white">Date of Joining</label>
+                            <label for="" style="color:black">Date of Joining</label>
                             <form:input path="doj" type="date" required="required" />
                         </div>
                         <div class="AdminCreateNewUser_wrapper_data_l1">
-                            <label for="" style="color:white">Personal Email</label>
+                            <label for="" style="color:black">Personal Email</label>
                             <form:input path="personalEmail" type="email" required="required" />
                         </div>
                         <div class="AdminCreateNewUser_wrapper_data_l1">
-                            <label for="" style="color:white">Personal Phone</label>
+                            <label for="" style="color:black">Personal Phone</label>
                             <form:input path="personalMobile" type="number" required="required" />
                         </div>
                     </div>
                      <div class="AdminCreateNewUser_wrapper_data_l1 add" style="width: 100%;text-align:start;">
-                            <label for="" style="color:white">Address</label> <br>
+                            <label for="" style="color:black">Address</label> <br>
                             <form:textarea path="address" rows="1" style="width:97.5%" maxlength="250" />
                             <font color="red">
                                 <form:errors path="address" cssClass="error" />
@@ -189,7 +189,7 @@
                         </div>
                     <div class="AdminCreateNewUser_wrapper_data_line11">
                         <div class="AdminCreateNewUser_wrapper_data_l11" style="text-align: start;">
-                            <label for="" style="color:white">Remarks</label> <br>
+                            <label for="" style="color:black">Remarks</label> <br>
                       <form:textarea path = "remarks" rows="3" style="width:97.5%"  maxlength="1000"/>
                         </div>
                     </div>

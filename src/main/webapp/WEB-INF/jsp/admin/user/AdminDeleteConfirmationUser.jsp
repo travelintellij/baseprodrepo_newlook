@@ -34,83 +34,84 @@
 <body>
 
     <div class="AdminDisplayUser container">
-        <div class="AdminDisplayUser_wrapper">
+        <div class="AdminDisplayUser_wrapper bs">
         <form:form method="post" action="delete_delete_admin_user" modelAttribute="userobj">
             <div class="AdminDisplayUser_wrapper_data">
+            <h1 class="hd" style="color:red">Delete User</h1>
                 <div class="AdminDisplayUser_wrapper_data_line a">
                     <div class="AdminDisplayUser_wrapper_data_l1">
                         <label for="">Record Id</label>
-                        <p>${userobj.userId}</p>
+                        <p style="color:gray">${userobj.userId}</p>
                     </div>
                     <div class="AdminDisplayUser_wrapper_data_l1">
                         <label for="">Login Id</label>
-                        <p>${userobj.username}</p>
+                        <p style="color:gray">${userobj.username}</p>
                     </div>
                      <div class="AdminDisplayUser_wrapper_data_l1">
                         <label for="">User Full Name</label>
-                        <p>${userobj.name}</p>
+                        <p style="color:gray">${userobj.name}</p>
                     </div>
                     
                     
                 </div>
                 <div class="AdminDisplayUser_wrapper_data_l1  a" style="text-align:start">
                         <label for="">Password</label> <br>
-                        <p>${userobj.password}</p>
+                        <p style="color:gray">${userobj.password}</p>
                     </div>
                     <div class="AdminDisplayUser_wrapper_data_l1 a" style="text-align:start">
                         <label for="">Primary Role</label>
-                        <p>${userobj.roles}</p>
+                        <p style="color:gray">${userobj.roles}</p>
                     </div>
                     <div class="AdminDisplayUser_wrapper_data_l1 a"  style="text-align:start">
                         <label for="">Address</label>
-                        <p>${userobj.address}</p>
+                        <p style="color:gray">${userobj.address}</p>
                     </div>
                 <div class="AdminDisplayUser_wrapper_data_line a">
                    
                     
                     <div class="AdminDisplayUser_wrapper_data_l1">
                         <label for="">Company Email</label>
-                        <p>${userobj.email}</p>
+                        <p style="color:gray">${userobj.email}</p>
                     </div>
                     <div class="AdminDisplayUser_wrapper_data_l1">
                         <label for="">Company Mobile</label>
-                        <p>${userobj.mobile}</p>
+                        <p style="color:gray">${userobj.mobile}</p>
                     </div>
                 </div>
                 <div class="AdminDisplayUser_wrapper_data_line a">
                     <div class="AdminDisplayUser_wrapper_data_l1">
                         <label for="">Designation</label>
-                        <p>${userobj.designation}</p>
+                        <p style="color:gray">${userobj.designation}</p>
                     </div>
                     <div class="AdminDisplayUser_wrapper_data_l1">
                         <label for="">Type</label>
-                        <p>${userobj.type}</p>
+                        <p style="color:gray">${userobj.type}</p>
                     </div>
                     <div class="AdminDisplayUser_wrapper_data_l1">
                         <label for="">Shift</label>
-                        <p>${userobj.shift}</p>
+                        <p style="color:gray">${userobj.shift}</p>
                     </div>
                     <div class="AdminDisplayUser_wrapper_data_l1">
                         <label for="">Fixed Incentive</label>
-                        <p>${userobj.fixedIncentive}</p>
+                        <p style="color:gray">${userobj.fixedIncentive}</p>
                     </div>
                 </div>
                 <div class="AdminDisplayUser_wrapper_data_line a">
                     <div class="AdminDisplayUser_wrapper_data_l1">
                         <label for="">Pan Card</label>
-                        <p>${userobj.panCard}</p>
+                        <p style="color:gray">${userobj.panCard}</p>
                     </div>
                     <div class="AdminDisplayUser_wrapper_data_l1">
                         <label for="">Aadhar Card</label>
-                        <p>${userobj.aadharCard}</p>
+                        <p style="color:gray">${userobj.aadharCard}</p>
                     </div>
                     <div class="AdminDisplayUser_wrapper_data_l1">
                         <label for="">Marial Status</label>
-                        <p>${userobj.maritalStatus}</p>
+                        <p style="color:gray">${userobj.maritalStatus}</p>
                     </div>
                     <div class="AdminDisplayUser_wrapper_data_l1">
                         <label for="">Gender</label>
-                        <p>${userobj.gender}</p>
+                        <p style="color:gray">${userobj.gender}</p>
                     </div>
                 </div>
                 <div class="AdminDisplayUser_wrapper_data_line a">
@@ -125,23 +126,23 @@
                     </div>
                     <div class="AdminDisplayUser_wrapper_data_l1">
                         <label for="">Personal Email</label>
-                        <p>${userobj.personalEmail}</p>
+                        <p style="color:gray">${userobj.personalEmail}</p>
                     </div>
                     <div class="AdminDisplayUser_wrapper_data_l1">
                         <label for="">Personal Mobile</label>
-                        <p>${userobj.personalMobile}</p>
+                        <p style="color:gray">${userobj.personalMobile}</p>
                     </div>
                 </div>
                 <div class="AdminDisplayUser_wrapper_data_line a">
                     <div class="AdminDisplayUser_wrapper_data_l1">
                         <label for="">Active</label>
-                        <p>${userobj.active}</p>
+                        <p style="color:gray">${userobj.active}</p>
                     </div>
                 </div>
-                <div class="AdminDisplayUser_wrapper_data_line a">
-                    <div class="AdminDisplayUser_wrapper_data_l1">
+                <div class="AdminDisplayUser_wrapper_data_line a" style="width:100%">
+                    <div class="AdminDisplayUser_wrapper_data_l1" style="width:100%">
                         <label for="">Remarks</label>
-                        <p>${userobj.remarks}</p>
+                        <p style="color:gray;width:100%">${userobj.remarks}</p>
                     </div>
                 </div>
                 <div class="due_today_task_data_btns">

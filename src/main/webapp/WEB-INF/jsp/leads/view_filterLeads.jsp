@@ -299,7 +299,7 @@
 								<td class="tick" style="border-bottom:2px solid black;border-right:2px solid black"><i class="fa-solid fa-check"></i></td>
 							</c:if>
 							<c:if test="${filteredLeads.flagged eq false}">
-								<td class="cross" style="border-bottom:2px solid black;border-right:2px solid black"><i class="fa-solid fa-xmark"></i></td>
+								<td class="cross" style="border-bottom:2px solid black;border-right:2px s olid black"><i class="fa-solid fa-xmark"></i></td>
 							</c:if>
 							<c:if test="${filteredLeads.qualified eq true}">
 								<td class="tick" style="border-bottom:2px solid black;border-right:2px solid black"><i class="fa-solid fa-check"></i></td>

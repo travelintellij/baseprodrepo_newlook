@@ -32,7 +32,7 @@
 <body>
 
     <div class="AdminDisplayUser container">
-        <div class="AdminDisplayUser_wrapper">
+        <div class="AdminDisplayUser_wrapper bs">
             <h1 class="hd">Edit User (Id: ${USER_OBJ.userId})</h1>
             <div class="AdminDisplayUser_wrapper_data">
                 <form:form method="post" action="edit_edit_Admin_User" modelAttribute="USER_OBJ">

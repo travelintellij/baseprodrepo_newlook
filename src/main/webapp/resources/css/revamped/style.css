@@ -3478,17 +3478,23 @@ transition: all 0.2s ease-in-out;
 /* #################### admin create user styling ##################### */
 
 .AdminCreateNewUser_wrapper {
-    color: white;
+    color: black;
     width: 100%;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 0.9);
+    background: white;
     padding: 10px;
     border-radius: 10px;
     margin-top: 115px;
+     box-shadow: 0 0 8px rgba(0, 0, 0, 0.5)
 }
-
+*{
+	resize:none;
+}
+.bs{
+	box-shadow: 0 0 8px rgba(0, 0, 0, 0.5)
+}
 .page-heading {
     font-size: 30px;
     color: #FFBA08;
@@ -3535,12 +3541,12 @@ transition: all 0.2s ease-in-out;
 /* #################### AdminSearchUser ################### */
 
 .AdminSearchUser_wrapper {
-    color: white;
+    color: b;
     width: 100%;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 0.9);
+    background: white;
     padding: 10px;
     border-radius: 10px;
     margin-top: 115px;
@@ -3581,17 +3587,18 @@ transition: all 0.2s ease-in-out;
     margin-top: 5px;
     border-radius: 10px;
     width: 100%;
-    background: rgba(0, 0, 0, 0.9);
+    background: white;
+    color:black
 }
 
 .admin-search-user-tabel th {
     text-align: center;
-    color: #FFBA08;
+    color: black;
 }
 
 .admin-search-user-tabel td {
     text-align: center;
-    color: white;
+    color: black;
 }
 
 .adsu {
@@ -3644,12 +3651,12 @@ transition: all 0.2s ease-in-out;
 /* ################## AdminDisplayUser ##################### */
 
 .AdminDisplayUser_wrapper {
-    color: white;
+    color: black;
     width: 100%;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 9);
+    background: white;
     padding: 10px;
     border-radius: 10px;
     margin-top: 115px;
@@ -3665,8 +3672,8 @@ transition: all 0.2s ease-in-out;
 }
 
 .AdminDisplayUser_wrapper_data_l1 label {
-    color: #FFBA08;
-    font-weight: bold;
+    color: black;
+    
 }
 
 .AdminDisplayUser_wrapper_data_l1 {
@@ -5652,37 +5659,37 @@ font-weight: bold;
 
 /* ######################  UserCRUDDocs ##################### */
 .UserCRUDDocs_tabel{
-    color: white;
+    color: black;
     width: 1200px;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 9);
+    background: white;
     padding: 10px;
     border-radius: 10px;
    margin-top: 150px;
     margin-left: 150px;
 }
 .UserCRUDDocs_tabel2{
-    color: white;
+    color: black;
      width: 600px;
      text-align: center;
      border-collapse: collapse;
      border: none;
-     background: rgba(0, 0, 0, 9);
+     background: white;
      padding: 10px;
      border-radius: 10px;
      margin-top:50px;
      margin-left:450px
 }
 .UserCRUDDocs_tabel3{
-	 color: white;
+	 color: black;
      width: 600px;
      height: 50px;
      text-align: center;
      border-collapse: collapse;
      border: none;
-     background: rgba(0, 0, 0, 9);
+     background: white;
      padding: 50px;
      border-radius: 10px;
      margin-top:50px;
