@@ -15,7 +15,10 @@
             <body>
                 <div class="view_supplier_details container">
                     <div class="view_supplier_details_wrapper" style=";z-index:9;margin-top:25px;background:#94d2bd;box-shadow: 0 0 10px 5px #94d2bd, 0 0 20px 10px #94d2bd">
-                    <h1 style="text-align:center;font-size:30px;margin-bottom:10px;color:black">Supplier Details </h1>
+                    <h1 style="text-align:center;font-size:30px;margin-bottom:10px;color:black">
+                                        <label for="" style="color:black;font-weight:bold">Supplier Name</label>
+                                        <span style="color:red">${SUPPLIER_OBJ.supplierName}</span>                                
+                     </h1>
                         <div align="center"><b>
                                 <font color="green"> ${Success} </font>
                                 <font color="red"> ${Error}</font>
@@ -30,10 +33,7 @@
                                         <label for="" style="color:Black;font-weight:bolder">Supplier Id</label>
                                         <p>${SUPPLIER_OBJ.supplierId}</p>
                                     </div>
-                                    <div class="view_supplier_details_l1">
-                                        <label for="" style="color:black;font-weight:bold">Supplier Name</label>
-                                        <p>${SUPPLIER_OBJ.supplierName}</p>
-                                    </div>
+                                    
                                     <div class="view_supplier_details_l1">
                                         <label for="" style="color:black;font-weight:bold">City</label>
                                         <p>${SUPPLIER_OBJ.cityName}</p>
@@ -81,26 +81,26 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="view_supplier_details_modal_data_line1"  style="margin-bottom:10px;background:#d8e2dc">
-                                    <div class="view_supplier_details_l1">
+                                
+                                    <div class="view_supplier_details_l1" style="margin-bottom:10px;background:#d8e2dc">
                                         <label for="" style="color:black;font-weight:bold">Address</label>
                                         <p style="color:black">
                                        ${SUPPLIER_OBJ.address}
                                         </p>
                                     </div>
-                                    <div class="view_supplier_details_l1">
+                                    <div class="view_supplier_details_l1" style="margin-bottom:10px;background:#d8e2dc">
                                         <label for="" style="color:black;font-weight:bold">Bank Details</label>
                                         <p>
                                         ${SUPPLIER_OBJ.bankDetails}
                                         </p>
                                     </div>
-                                    <div class="view_supplier_details_l1">
+                                    <div class="view_supplier_details_l1" style="margin-bottom:10px;background:#d8e2dc">
                                         <label for="" style="color:black;font-weight:bold">Remarks</label>
                                         <p>
                                         ${SUPPLIER_OBJ.remarks}
                                         </p>
                                     </div>
-                                </div>
+                              
                              
                                 <div class="view_supplier_details_data_line3"  style="margin-bottom:10px;background:#d8e2dc">
                                     <h3 class="vsd_des" style="color:black;font-weight:bold">Following Destinations are supported</h3>
@@ -114,32 +114,32 @@
                                 <div class="view_supplier_details_data_line4"  style="margin-bottom:10px;background:#d8e2dc">
                                     <div class="view_supplier_details_data_line3_service_offered" style="color:black">
                                        <h1 style="color:black;font-weight:bold"> Service Offerred</h1>
-                                                Flight <form:checkbox class="ch_c" path="flight" disabled="true"  style="margin-right:10px"/><span
+                                                Flight <form:checkbox class="ch_c" path="flight" disabled="true"  style="margin-right:10px;width:18px;height:18px"/><span
                                                             class="checkmark"></span>
                                                     
-                                                Hotel<form:checkbox class="ch_c" path="hotel" disabled="true" style="margin-right:10px;margin-left:5px" /><span
+                                                Hotel<form:checkbox class="ch_c" path="hotel" disabled="true" style="margin-right:10px;margin-left:5px;width:18px;height:18px" /><span
                                                             class="checkmark"></span>
                                                  
-                                                Transfers<form:checkbox class="ch_c" path="transfers" disabled="true" style="margin-right:10px;margin-left:5px"/><span
+                                                Transfers<form:checkbox class="ch_c" path="transfers" disabled="true" style="margin-right:10px;margin-left:5px;width:18px;height:18px"/><span
                                                             class="checkmark"></span>
                                                 
        
-                                           SightSeeing<form:checkbox class="ch_c" path="sightseeing" disabled="true" style="margin-right:10px;margin-left:5px"/><span
+                                           SightSeeing<form:checkbox class="ch_c" path="sightseeing" disabled="true" style="margin-right:10px;margin-left:5px;width:18px;height:18px"/><span
                                                             class="checkmark"></span>
                                                     
-                                               Visa<form:checkbox class="ch_c" path="visa" disabled="true" style="margin-right:10px;margin-left:5px"/><span
+                                               Visa<form:checkbox class="ch_c" path="visa" disabled="true" style="margin-right:10px;margin-left:5px;width:18px;height:18px"/><span
                                                             class="checkmark"></span>
                                                    
-                                               Insurance<form:checkbox class="ch_c" path="insurance" disabled="true" style="margin-right:10px;margin-left:5px"/><span
+                                               Insurance<form:checkbox class="ch_c" path="insurance" disabled="true" style="margin-right:10px;margin-left:5px;width:18px;height:18px"/><span
                                                             class="checkmark"></span>
                                                     
-                                           Package<form:checkbox class="ch_c" path="landPackage" disabled="true" style="margin-right:10px;margin-left:5px"/><span
+                                           Package<form:checkbox class="ch_c" path="landPackage" disabled="true" style="margin-right:10px;margin-left:5px;width:18px;height:18px"/><span
                                                             class="checkmark"></span>
                                                   
-                                                Cruise<form:checkbox class="ch_c" path="cruise" disabled="true" style="margin-right:10px;margin-left:5px"/><span
+                                                Cruise<form:checkbox class="ch_c" path="cruise" disabled="true" style="margin-right:10px;margin-left:5px;width:18px;height:18px"/><span
                                                             class="checkmark"></span>
                                               
-                                          Others <form:checkbox class="ch_c" path="others" disabled="true" style="margin-right:10px;margin-left:5px"/><span
+                                          Others <form:checkbox class="ch_c" path="others" disabled="true" style="margin-right:10px;margin-left:5px;width:18px;height:18px"/><span
                                                             class="checkmark"></span>
                                                     
                                            
@@ -152,7 +152,7 @@
                                  <div class="view_supplier_details_data_line">
                                     <h3 class="vsd_consoli" style="color:black;font-weight:bold">consolidater</h3>
                                     <div class="view_supplier_details_data_line3_consoli">
-                                        <form:checkbox path="consolidator" disabled="true" />
+                                        <form:checkbox path="consolidator" disabled="true" class="ch_c" style="width:18px;height:18px" />
                                     </div>
                                 </div>
                                 <div class="view_supplier_details_data_line">

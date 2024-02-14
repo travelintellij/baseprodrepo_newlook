@@ -36,7 +36,7 @@
 
                 <body>
                     <div class="Admin_Edit_HotelChain container">
-                        <div class="Admin_Edit_HotelChain_wrapper">
+                        <div class="Admin_Edit_HotelChain_wrapper bs">
                             <form:form method="post" action="delete_delete_hotel_chain" modelAttribute="hotelchain_obj">
                                 <input type="hidden" name="hotelChainId" value="${HotelChainObj.hotelChainId}" />
                                 <h1 style="font-size: 25px;color: red  ">Delete Hotal Chain <i
@@ -52,25 +52,25 @@
                                     <div class="Admin_Edit_HotelChain_wrapper_li a">
                                         <div class="Admin_Edit_HotelChain_wrapper_dl1">
                                             <label for="" class="lb">Hotel Chain Id</label>
-                                            <p>${HotelChainObj.hotelChainId}</p>
+                                            <p style="color:gray">${HotelChainObj.hotelChainId}</p>
                                         </div>
                                         <div class="Admin_Edit_HotelChain_wrapper_dl1">
                                             <label for="" class="lb">Hotal Chain Name</label>
-                                            <p>${HotelChainObj.hotelChainName}</p>
+                                            <p style="color:gray">${HotelChainObj.hotelChainName}</p>
                                         </div>
                                         <div class="Admin_Edit_HotelChain_wrapper_dl1">
                                             <label for="" class="lb">Active</label>
-                                            <p>${HotelChainObj.active eq true }</p>
+                                            <p style="color:gray">${HotelChainObj.active eq true }</p>
                                         </div>
                                     </div>
                                     <div class="Admin_Edit_HotelChain_wrapper_li2 a">
                                         <div class="Admin_Edit_HotelChain_wrapper_dl1">
                                             <label for="" class="lb">Remarks</label> <br>
-                                            <p>${HotelChainObj.remarks}</p>
+                                            <p style="color:gray">${HotelChainObj.remarks}</p>
                                         </div>
                                     </div>
                                     <div class="due_today_task_data_btnss" style="margin-top:20px">
-                                        <input type="submit" style="background-color:red;" value="CONFIRM DELETE">
+                                        <input type="submit" style="background-color:red;color:white" value="CONFIRM DELETE">
                                         <a href="view_search_hotel_chain_form"><input type="button" value="Cancel"></a>
                                     </div>
                                 </div>

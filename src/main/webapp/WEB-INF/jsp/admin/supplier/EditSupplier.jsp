@@ -55,7 +55,7 @@
 </div>
 
     <div class="container">
-        <div class="add-new-supplier-wrapper">
+        <div class="add-new-supplier-wrapper bs">
             <h1 class="ansupplier-heading" style="font-size: 30px;
     color: #FFBA08;
     margin-bottom: 10px;">Edit Supplier <span style="color:#32cd32  ">(Supplier Id : ${SUPPLIER_OBJ.supplierId})</span> </h1>
@@ -157,21 +157,15 @@
                 <div class="ans-last-sec">
                         <p class="ans-heading" style="text-align:start">Select destinations
                             Services</p>
-                       	<font color="red"><form:errors path="destinationNames" cssClass="error" /></font>
+                     <font color="red"><form:errors path="destinationNames" cssClass="error" /></font>
 					<div id="sscontainer" class="sscontainer">
 					<form:hidden path = "destinationNames" color="white"/>
 					<form:hidden path = "operatingDestinations"  color="white"/>
-					<input type="text" id="destinationHandling" name="destinationHandling" class="form-control"  style="width:1190px"/>
+					<input type="text" id="destinationHandling" name="destinationHandling" class="form-control"  style="width:1190px;border:1px solid black"/>
 					</div>
                     </div>
                 
-                
-                
-                
-                
-               
-                
-                
+   
                 <div class="ansd1-rem" style="width:1210px">
                         <label for="Address">Address</label><br>
                         <form:textarea path="address" rows="2" cols="10" maxlength="240" />
@@ -201,11 +195,11 @@
                     <div class="ans-left-sec">
                         <form:errors path="minOneserviceError" cssClass="error" />
                         </font>
-                        <h3 style="color: #FFBA08;font-weight: bold;margin-bottom: 5px;margin-top:10px">
+                        <h3 style="color: blue;font-weight: bold;margin-bottom: 5px;margin-top:10px">
                             Services Offered</h3>
                         <div class="inside-services">
                             <div class="ansd1-ser" >
-                                <form:checkbox path="flight" id="flight" />
+                                <form:checkbox path="flight" id="flight"/>
                                 <label for="flight" class="flight-lab f">Flight</label>
 
                             </div>
@@ -252,7 +246,7 @@
                                 <label for="" style="margin-right:5px">Consolidator</label>
                                 <form:checkbox path="consolidator" style="width: 18px;height: 18px;margin-right:8px;" />
                                 <span title="please mark consolidator if supplier is handling all above 
-                        destination as consolidator"><i class="fa-solid fa-question" style="color:#FABA08;"></i></span>
+                        destination as consolidator"><i class="fa-solid fa-question" style="color:blue;"></i></span>
                             </div>
 
                         </div>
@@ -263,7 +257,7 @@
 
                         </div>
                         <div class="ans-7-li">
-                            <h3 style="font-weight: bold;color: #FFBA08; margin-top:20px;margin-bottom:9px">
+                            <h3 style="font-weight: bold;color: blue; margin-top:20px;margin-bottom:9px">
                                 Supplier Preferences</h3>
                             <div class="supp-sec">
                                 <div class="supp-pre-sec" style="margin-right: 30px;">
@@ -271,7 +265,7 @@
                                     <form:select path="supplierRating">
                                         <form:options items="${SUPPLIER_RATING_MAP}" />
                                     </form:select>
-                                    <p style="color: pink; margin-left: -70px;">(Scale 1 to 5)</p>
+                                    <p style="color: blue; margin-left: -70px;">(Scale 1 to 5)</p>
                                 </div>
                                 <div class="supp-pre-sec">
                                     <label for="">Negotiates</label>

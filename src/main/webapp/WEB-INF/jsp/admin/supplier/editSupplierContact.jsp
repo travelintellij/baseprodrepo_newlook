@@ -37,7 +37,7 @@
 <body>
 
     <div class="editSupplierContact container">
-        <div class="editSupplierContact_wrapper">
+        <div class="editSupplierContact_wrapper bs">
 
             <div class="editSupplierContact_details">
                 <form:form method="post" modelAttribute="SUPPLIER_OBJ">
@@ -47,20 +47,20 @@
                         <div class="editSupplierContact_data_info">
                             <div class="editSupplierContact_data_line_info a">
                                 <div class="editSupplierContact_data_line_l1_info">
-                                    <label for="" style="color: #FFBA08;font-weight:bold">Supplier Name</label>
-                                    <p>${SUPPLIER_OBJ.supplierName}</p>
+                                    <label for="" style="color: black;font-weight:normal">Supplier Name</label>
+                                    <p style="color:gray">${SUPPLIER_OBJ.supplierName}</p>
                                 </div>
                                 <div class="editSupplierContact_data_line_l1_info">
-                                    <label for="" style="color: #FFBA08;font-weight:bold">Email</label>
-                                    <p>${SUPPLIER_OBJ.email}</p>
+                                    <label for="" style="color: black;font-weight:normal">Email</label>
+                                    <p style="color:gray">${SUPPLIER_OBJ.email}</p>
                                 </div>
                                 <div class="editSupplierContact_data_line_l1_info">
-                                    <label for="" style="color: #FFBA08;font-weight:bold">Mobile</label>
-                                    <p>${SUPPLIER_OBJ.mobile}</p>
+                                    <label for="" style="color: black;font-weight:normal">Mobile</label>
+                                    <p style="color:gray">${SUPPLIER_OBJ.mobile}</p>
                                 </div>
                                 <div class="editSupplierContact_data_line_l1_info">
-                                    <label for="" style="color: #FFBA08;font-weight:bold">Destinations Supported</label>
-                                    <p>
+                                    <label for="" style="color: black;font-weight:normal">Destinations Supported</label>
+                                    <p style="color:gray">
                                         <c:forEach items="${SUPPLIER_OBJ.destinations}" var="destination">
                                             ${destination.cityName},
                                         </c:forEach>
@@ -69,7 +69,7 @@
                             </div>
                             <div class="editSupplierContact_data_line_info">
                                 <div class="edit_supp_contact_data_ser" style="width:60%">
-                                    <h3 for="" style="color: #FFBA08;font-weight:bold;text-align:left;">Services offered 
+                                    <h3 for="" style="color: black;font-weight:normal;text-align:left;">Services offered 
                                     </h3>
                                     <div class="edit_supp_contact_data_servs" style="display:flex;justify-content:space-between;width:100%">
                                         <form:checkbox class="ch_c" style="width:18px;height:18px" path="flight" disabled="true" /><span class="checkmark"></span>
@@ -95,41 +95,41 @@
             <form:form method="post" action="edit_edit_supplier_contact" modelAttribute="SUPPLIER_CONTACT_OBJ">
                 <input type="hidden" name="supplierId" value="${SUPPLIER_CONTACT_OBJ.supplierEntity.supplierId}" />
                 <form:hidden path="supplierContactId" />
-                <h1 style="color: #FFBA08;font-size: 30px;">Edit Contact</h1>
+                <h1 style="color: black;font-size: 30px;">Edit Contact</h1>
                 <div class="editSupplierContact_wrapper_data">
                     <div class="editSupplierContact_wrapper_data_line">
                         <div class="editSupplierContact_wrapper_data_line1">
-                            <label for="" style="color: #FFBA08;font-weight:bold">Conatct Id</label>
+                            <label for="" style="color: black;font-weight:normal">Conatct Id</label>
                             <p>${SUPPLIER_CONTACT_OBJ.supplierContactId}</p>
                         </div>
                         <div class="editSupplierContact_wrapper_data_line1">
-                            <label for="" style="color: #FFBA08;font-weight:bold">Conatct Name</label>
+                            <label for="" style="color: black;font-weight:normal">Conatct Name</label>
                             <form:input path="contactName" name="contactName" required="required" />
                         </div>
                         <div class="editSupplierContact_wrapper_data_line1">
-                            <label for="" style="color: #FFBA08;font-weight:bold">Role</label>
+                            <label for="" style="color: black;font-weight:normal">Role</label>
                             <form:input path="role" name="role" required="required" />
                         </div>
                         <div class="editSupplierContact_wrapper_data_line1">
-                            <label for="" style="color: #FFBA08;font-weight:bold">Email</label>
+                            <label for="" style="color: black;font-weight:normal">Email</label>
                             <form:input type="email" path="email" />
                         </div>
                     </div>
                     <div class="editSupplierContact_wrapper_data_line">
                         <div class="editSupplierContact_wrapper_data_line1">
-                            <label for="" style="color: #FFBA08;font-weight:bold">Mobile</label>
+                            <label for="" style="color: black;font-weight:normal">Mobile</label>
                             <form:input type="number" path="mobile" />
                         </div>
                         <div class="editSupplierContact_wrapper_data_line1">
-                            <label for="" style="color: #FFBA08;font-weight:bold">Phone</label>
+                            <label for="" style="color: black;font-weight:normal">Phone</label>
                             <form:input type="number" path="phone" />
                         </div>
                         <div class="editSupplierContact_wrapper_data_line1">
-                            <label for="" style="color: #FFBA08;font-weight:bold">Description</label>
+                            <label for="" style="color: black;font-weight:normal">Description</label>
                             <form:input path="description" name="description" />
                         </div>
                         <div class="editSupplierContact_wrapper_data_line1">
-                            <label for="" style="color: #FFBA08;font-weight:bold">City</label>
+                            <label for="" style="color: black;font-weight:normal">City</label>
                             <form:input path="city" name="city" />
                         </div>
                     </div>

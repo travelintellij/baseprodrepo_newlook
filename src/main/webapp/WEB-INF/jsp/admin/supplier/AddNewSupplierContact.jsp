@@ -37,7 +37,7 @@
 
 <body>
     <div class="AddNewSupplierContact container">
-        <div class="AddNewSupplierContact_wrapper">
+        <div class="AddNewSupplierContact_wrapper bs">
             <h1 style="color:#00b200;font-size: 30px">(Supplier Id : ${SUPPLIER_OBJ.supplierId})</h1>
             <div align="center"><b>
                     <font color="green"> ${Success} </font>
@@ -47,26 +47,26 @@
                 <form:form method="post" modelAttribute="SUPPLIER_OBJ">
                     <div class="AddNewSupplierContact_wrapper_data_line a" style="margin-bottom:10px;">
                         <div class="AddNewSupplierContact_wrapper_data_l1">
-                            <label for="" style="color:#FFBA08;font-weight: bold;">Supplier Name</label>
-                            <p>${SUPPLIER_OBJ.supplierName}</p>
+                            <label for="" style="color:black;font-weight: normal;">Supplier Name</label>
+                            <p style="color:gray">${SUPPLIER_OBJ.supplierName}</p>
                         </div>
                         <div class="AddNewSupplierContact_wrapper_data_l1">
-                            <label for="" style="color:#FFBA08;font-weight: bold;">Email</label>
-                            <p>${SUPPLIER_OBJ.email}</p>
+                            <label for="" style="color:black;font-weight: normal;">Email</label>
+                            <p style="color:gray">${SUPPLIER_OBJ.email}</p>
                         </div>
                         <div class="AddNewSupplierContact_wrapper_data_l1">
-                            <label for="" style="color:#FFBA08;font-weight: bold;">Mobile</label>
-                            <p>${SUPPLIER_OBJ.mobile}</p>
+                            <label for="" style="color:black;font-weight: normal;">Mobile</label>
+                            <p style="color:gray">${SUPPLIER_OBJ.mobile}</p>
                         </div>
                         <div class="AddNewSupplierContact_wrapper_data_l1">
-                            <label for="" style="color:#FFBA08;font-weight: bold;">Destinations Supported</label> <br>
+                            <label for="" style="color:black;font-weight: normal;">Destinations Supported</label> <br>
                             <c:forEach items="${SUPPLIER_OBJ.destinations}" var="destination">
-                                ${destination.cityName},
+                               <span style="color:gray"> ${destination.cityName}, </span>
                             </c:forEach>
                         </div>
                     </div>
                     <!-- ############ servies starts here ############## -->
-                     <h3 style="color:#FFBA08;font-weight: bold;text-align:start">Service Offerred</h3>       
+                     <h3 style="color:black;font-weight: normal;text-align:start">Service Offerred</h3>       
                     <div class="AddNewSupplierContact_wrapper_data_line_ser" style="display:flex;justify-content:space-between">
                     <div><form:checkbox class="ch_c" path="flight" disabled="true" style="margin-right:5pxl;width:18px;height:18px;margin-right:5px"/>Flight</div>
                     <div>  <form:checkbox class="ch_c" path="hotel" disabled="true" style="margin-left:10px;margin-right:5px;width:18px;height:18px;margin-right:5px"/>Hotel</div>
@@ -88,14 +88,14 @@
                     <div class="AddNewSupplierContact_wrapper_data_form" style="margin:20px 0">
                         <input type="hidden" name="supplierId"
                             value="${SUPPLIER_CONTACT_OBJ.supplierEntity.supplierId}" />
-                        <h1 style="color:#FFBA08;font-weight: bold;font-size: 30px;">Add New Contact</h1>
+                        <h1 style="color:black;font-weight: normal;font-size: 30px;">Add New Contact</h1>
                         <div class="AddNewSupplierContact_wrapper_data_line_form_data">
                             <div class="AddNewSupplierContact_wrapper_data_form_l1">
-                                <label for="" style="color:#FFBA08;font-weight: bold;">Contact Name</label> <br>
+                                <label for="" style="color:black;font-weight: normal;">Contact Name</label> <br>
                                 <form:input path="contactName" name="contactName" required="required" />
                             </div>
                             <div class="AddNewSupplierContact_wrapper_data_form_l1">
-                                <label for="" style="color:#FFBA08;font-weight: bold;">Role</label> <br>
+                                <label for="" style="color:black;font-weight: normal;">Role</label> <br>
                                 <form:input path="role" name="role" required="required" />
                                 <font color="red">
                                     <form:errors path="role" cssClass="error" />
@@ -103,14 +103,14 @@
                                 </td>
                             </div>
                             <div class="AddNewSupplierContact_wrapper_data_form_l1">
-                                <label for="" style="color:#FFBA08;font-weight: bold;">Email</label> <br>
+                                <label for="" style="color:black;font-weight: normal;">Email</label> <br>
                                 <form:input type="email" path="email" />
                                 <font color="red">
                                     <form:errors path="email" cssClass="error" />
                                 </font>
                             </div>
                             <div class="AddNewSupplierContact_wrapper_data_form_l1">
-                                <label for="" style="color:#FFBA08;font-weight: bold;">Mobile</label> <br>
+                                <label for="" style="color:black;font-weight: normal;">Mobile</label> <br>
                                 <form:input type="number" path="mobile" />
                                 <font color="red">
                                     <form:errors path="mobile" cssClass="error" />
@@ -119,18 +119,18 @@
                         </div>
                         <div class="AddNewSupplierContact_wrapper_data_line_form_data2">
                             <div class="AddNewSupplierContact_wrapper_data_form_l1">
-                                <label for="" style="color:#FFBA08;font-weight: bold;">Phone</label> <br>
+                                <label for="" style="color:black;font-weight: normal;">Phone</label> <br>
                                 <form:input type="number" path="phone" />
                                 <font color="red">
                                     <form:errors path="phone" cssClass="error" />
                                 </font>
                             </div>
                             <div class="AddNewSupplierContact_wrapper_data_form_l1">
-                                <label for="" style="color:#FFBA08;font-weight: bold;">Description</label> <br>
+                                <label for="" style="color:black;font-weight: normal;">Description</label> <br>
                                 <form:input path="description" name="description" />
                             </div>
                             <div class="AddNewSupplierContact_wrapper_data_form_l1">
-                                <label for="" style="color:#FFBA08;font-weight: bold;">City</label> <br>
+                                <label for="" style="color:black;font-weight: normal;">City</label> <br>
                                 <form:input path="city" name="city" />
                             </div>
                         </div>

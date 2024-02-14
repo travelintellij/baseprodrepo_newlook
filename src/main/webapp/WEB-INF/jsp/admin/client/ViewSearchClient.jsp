@@ -21,7 +21,7 @@
 .autocomplete-suggestions { border: 1px solid #999; background: red;overflow-y:auto}
 		.autocomplete-suggestion {padding: 2px 5px;color:white; background: black;overflow-y: auto;overflow-y:auto}
 		.autocomplete-selected { background: #F0F0F0;overflow-y:auto} 
-		.autocomplete-suggestions strong { font-weight: normal; color:#FABA08;overflow-y:auto}
+		.autocomplete-suggestions strong { font-weight: normal; color:black;overflow-y:auto}
 		.autocomplete-group { padding: 2px 5px;overflow-y:auto}
 		.autocomplete-group strong { display: block; border-bottom: 1px solid #000;  background: black ; color:black overflow-y:auto}
 		.autocomplete-selected:hover{
@@ -54,7 +54,7 @@
     <div class="autocomplete-suggestion">...</div>
     <div class="autocomplete-suggestion">...</div>
 </div>
-        <div class="manage-client-wrapper">
+        <div class="manage-client-wrapper bs">
             <h1 class="search-clients">Search Client</h1>
             <font color="green"> ${Success} </font>
             <font color="red"> ${Error}</font>
@@ -125,35 +125,35 @@
          </div>
         
         
-           <div class="search-clients-sec">
+           <div class="search-clients-sec bs">
             <c:set value="${CLIENTS_LIST}" var="clientList" />
             <table class="sc-table">
                 <thead style="background:#6082B6;">
                     <tr style="height:50px;color:black">
                         <th class="sc-th" style="width: 110px;"><a
-                                href="search_search_filtered_clients?sortBy=clientId&clientName=${clientName}&cityId=${cityId}&cityName=${cityName}&email=${email}&active=${active}" style="color:red">Client
+                                href="search_search_filtered_clients?sortBy=clientId&clientName=${clientName}&cityId=${cityId}&cityName=${cityName}&email=${email}&active=${active}" style="color:black">Client
                                 Id</a></th>
                         <th class="sc-th" style="width:300px">Client Name</th>
                         <th class="sc-th">City</th>
                         <th class="sc-th" style="width: 120px;">Country</th>
                         <th class="sc-th">Email</th>
                         <th class="sc-th">Mobile</th>
-                        <th class="sc-th" style="width: 30px;">Active</th>
-                        <th class="sc-th" style="width: 110px;">Action</th>
+                        <th class="sc-th" style="width: 35px;">Active</th>
+                        <th class="sc-th" style="width: 105px;">Action</th>
                     </tr>
                     
                 </thead>
                 <c:forEach items="${clientList}" var="client">
                 <tbody>
                     <tr>
-                        <td  style="border-bottom:2px solid #FABA08;border-right:2px solid#FABA08;border-left:2px solid#FABA08">${client.clientId }</td>
-                        <td style="border-bottom:2px solid #FABA08;border-right:2px solid#FABA08;">${client.clientName }</td>
-                        <td  style="border-bottom:2px solid #FABA08;border-right:2px solid#FABA08;">${client.cityName }</td>
-                        <td  style="border-bottom:2px solid #FABA08;border-right:2px solid#FABA08;">${client.countryName }</td>
-                        <td  style="border-bottom:2px solid #FABA08;border-right:2px solid#FABA08;">${client.email }</td>
-                        <td  style="border-bottom:2px solid #FABA08;border-right:2px solid#FABA08;">${client.mobile }</td>
-                        <td  style="border-bottom:2px solid #FABA08;border-right:2px solid#FABA08;">${client.active }</td>
-                        <td  style="border-bottom:2px solid #FABA08;border-right:2px solid#FABA08;">
+                        <td  style="border-bottom:2px solid black;border-right:2px solid black;border-left:2px solid black">${client.clientId }</td>
+                        <td style="border-bottom:2px solid black;border-right:2px solid black;">${client.clientName }</td>
+                        <td  style="border-bottom:2px solid black;border-right:2px solid black;">${client.cityName }</td>
+                        <td  style="border-bottom:2px solid black;border-right:2px solid black;">${client.countryName }</td>
+                        <td  style="border-bottom:2px solid black;border-right:2px solid black;">${client.email }</td>
+                        <td  style="border-bottom:2px solid black;border-right:2px solid black;">${client.mobile }</td>
+                        <td  style="border-bottom:2px solid black;border-right:2px solid black;">${client.active }</td>
+                        <td  style="border-bottom:2px solid black;border-right:2px solid black;">
                             <i class="fa-solid fa-sliders anc-i">
                                 <div class="ul-anc">
                                     <ul>

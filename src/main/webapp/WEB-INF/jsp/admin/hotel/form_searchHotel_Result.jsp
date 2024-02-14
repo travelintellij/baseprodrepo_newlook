@@ -36,7 +36,7 @@
 </style>
                         <body>
                             <div class="form_searchHotel_Result container">
-                                <div class="form_searchHotel_Result_wrapper">
+                                <div class="form_searchHotel_Result_wrapper bs">
                                     <h1 style="font-size: 25px;margin: 10px 0;color: #32cd32 ;">Hotel Search</h1>
                                     <div align="center"><b>
                                             <font color="green"> ${Success} </font>
@@ -134,28 +134,28 @@
                                         <c:if test="${not empty HTL_SEARCH_RESULT}">
                                             <c:forEach var="hotelObj" items="${HTL_SEARCH_RESULT}">
                                     <tr>
-                                        <td style="width: 10%;border-bottom:2px solid #FFCF53;border-left:2px solid #FFCF53;border-right:2px solid #FFCF53">
+                                        <td style="width: 10%;border-bottom:2px solid black;border-left:2px solid black;border-right:2px solid black">
                                             ${hotelObj.hotelId}</td>
-                                        <td style="width: 20%;border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53">
+                                        <td style="width: 20%;border-bottom:2px solid black;border-right:2px solid black">
                                             ${hotelObj.hotelName}
                                         </td>
-                                        <td style="width: 15%;border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53">
+                                        <td style="width: 15%;border-bottom:2px solid black;border-right:2px solid black">
                                             ${hotelObj.locality}</td>
-                                        <td style="width: 10%;border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53">
+                                        <td style="width: 10%;border-bottom:2px solid black;border-right:2px solid black">
                                             <c:forEach var="i" begin="1" end="${hotelObj.starCategory}">
                                                 <i class="fa-solid fa-star" style="color:#d00000"></i>
                                             </c:forEach>
                                         </td>
-                                        <td style="width: 10%;border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53">
+                                        <td style="width: 10%;border-bottom:2px solid black;border-right:2px solid black">
                                             ${hotelObj.preferred}
                                         </td>
-                                        <td style="width: 10%;border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53">
+                                        <td style="width: 10%;border-bottom:2px solid black;border-right:2px solid black">
                                             <c:forEach var="i" begin="1" end="${hotelObj.udnServiceRating}">
                                                 <i class="fa-solid fa-star" style="color:#d00000"></i>
                                             </c:forEach>
                                         </td>
 
-                                        <td style="text-align:center;border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53">
+                                        <td style="text-align:center;border-bottom:2px solid black;border-right:2px solid black">
                                             <table>
                                                 <tr>
                                                     <td>
@@ -163,7 +163,7 @@
                                                             access="hasAnyRole('ADMIN','HOTEL_CREATE','HOTEL_VIEW','HOTEL_EDIT','HOTEL_DEL','ROOM_CAT_MANAGE')">
                                                             <a
                                                                 href="view_view_hotel_details?hotelId=${hotelObj.hotelId}"><input
-                                                                style="margin-left:10px;background:#32cd32 ;color:white;border-radius:3px;outline:none;padding:2px 4px"    type="button" value="View"
+                                                                style="margin-left:10px;background:#32cd32 ;color:white;border-radius:3px;outline:none;padding:2px 4px;cursor:pointer"    type="button" value="View"
                                                                     style="background-color:blue;display:inline;float:left" /></a>
                                                         </sec:authorize>
                                                     </td>
@@ -173,7 +173,7 @@
                                                                 action="view_edit_hotel_form?hotelId=${hotelObj.hotelId}"
                                                                 style="display:inline;">
                                                                 <input type="submit" value="Edit"
-                                                                 style="background:#32cd32 ;color:white;border-radius:3px;outline:none;padding:2px 4px"   style="background-color:blue;float:left" />
+                                                                 style="background:#32cd32 ;color:white;border-radius:3px;outline:none;padding:2px 4px;cursor:pointer"   style="background-color:blue;float:left" />
                                                             </form:form>
                                                         </sec:authorize>
 
@@ -182,7 +182,7 @@
                                                                 action="view_edit_hotel_form?hotelId=${hotelObj.hotelId}"
                                                                 style="display:inline;">
                                                                 <input type="submit" value="Edit"
-                                                            style="background:#32cd32 ;color:white;border-radius:3px;outline:none;padding:2px 4px"
+                                                            style="background:#32cd32 ;color:white;border-radius:3px;outline:none;padding:2px 4px;cursor:pointer"
                                                                     disabled />
                                                             </form:form>
                                                         </sec:authorize>
@@ -193,9 +193,9 @@
                                                                 action="edit_edit_hotel?hotelId=${hotelObj.hotelId}"
                                                                 style="display:inline;">
                                                                 <input type="hidden" name="action"
-                                                                style="background:#32cd32 ;color:white;border-radius:3px;outline:none;padding:2px 4px"    value="EditRoomCategory" />
+                                                                style="background:#32cd32 ;color:white;border-radius:3px;outline:none;padding:2px 4px;cursor:pointer"    value="EditRoomCategory" />
                                                                 <input type="submit" value="Edit Room Category"
-                                                                  style="background:#32cd32 ;color:white;border-radius:3px;outline:none;padding:2px 4px" />
+                                                                  style="background:#32cd32 ;color:white;border-radius:3px;outline:none;padding:2px 4px;cursor:pointer" />
                                                             </form:form>
                                                         </sec:authorize>
 
@@ -206,7 +206,7 @@
                                                                 <input type="hidden" name="action"
                                                                     value="EditRoomCategory" />
                                                                 <input type="submit" value="Edit Room Category"
-                                                                   style="background:#32cd32 ;color:white;border-radius:3px;outline:none;padding:2px 4px"
+                                                                   style="background:#32cd32 ;color:white;border-radius:3px;outline:none;padding:2px 4px;cursor:pointer"
                                                                     disabled />
                                                             </form:form>
                                                         </sec:authorize>
@@ -218,7 +218,7 @@
                                                                 <input type="hidden" name="hotelId"
                                                                     value="${hotelObj.hotelId}" />
                                                                 <input type="submit" value="Delete"
-                                                                   style="background:red ;color:white;border-radius:3px;outline:none;padding:2px 4px" />
+                                                                   style="background:red ;color:white;border-radius:3px;outline:none;padding:2px 4px;cursor:pointer" />
                                                             </form:form>
                                                         </sec:authorize>
                                                         <sec:authorize access="! hasAnyRole('ADMIN','HOTEL_DEL')">
@@ -227,7 +227,7 @@
                                                                 <input type="hidden" name="hotelId"
                                                                     value="${hotelObj.hotelId}" />
                                                                 <input type="submit" value="Delete"
-                                                                    style="background-color: #dddddd;float:left;"
+                                                                    style="background-color: #dddddd;float:left;cursor:pointer"
                                                                     disabled />
                                                             </form:form>
                                                         </sec:authorize>

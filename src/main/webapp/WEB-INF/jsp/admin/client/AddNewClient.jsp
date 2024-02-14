@@ -57,7 +57,7 @@
                 <font color="red"> ${Error}</font>
             </b></div>
                 <form:form method="post" action="create_create_admin_client" modelAttribute="CLIENT_OBJ">
-        <div class="anc-wrapper">
+        <div class="anc-wrapper bs">
             <h1 class="anc-heading">Add New Client</h1>
           
                 <div class="anc-fir-li">
@@ -180,7 +180,7 @@
                     </div>
                 </div>
         </div>
-        <div class="anc-personal-pref">
+        <div class="anc-personal-pref bs">
             <h2 class="anc-pp">Personal Prefrences</h2>
             <div class="pp-wrapper">
                 <div class="pp-d1">
@@ -222,7 +222,7 @@
                             </c:forEach>
                         </select>
                     </div>
-                    <p style="margin-top: 5px;color:pink">(Scale 1 to 10)</p>
+                    <p style="margin-top: 5px;color:blue">(Scale 1 to 10)</p>
                 </div>
                 <div class="pp-d1">
                     <label for="">Service Savvy</label><br>
@@ -243,7 +243,7 @@
                             </c:forEach>
                         </select>
                     </div>
-                    <p style="margin-top: 5px;color:pink">(Scale 1 to 5)</p>
+                    <p style="margin-top: 5px;color:blue">(Scale 1 to 5)</p>
                 </div>
                 <div class="pp-d1">
                     <label for="">Food Pref.</label><br>
@@ -279,7 +279,7 @@
                             </c:forEach>
                         </select>
                     </div>
-                    <p style="margin-top: 5px;color:pink">(Scale 1 to 5)</p>
+                    <p style="margin-top: 5px;color:blue">(Scale 1 to 5)</p>
                 </div>
                 <div class="pp-d1">
                     <label for="">Payment Record</label><br>
@@ -300,7 +300,7 @@
                             </c:forEach>
                         </select>
                     </div>
-                    <p style="margin-top: 5px;color:pink">(Scale 1 to 10)</p>
+                    <p style="margin-top: 5px;color:blue">(Scale 1 to 10)</p>
                 </div>
             </div>
             <div class="anc-btns">

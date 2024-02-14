@@ -30,7 +30,7 @@
 </style>
 <body>
     <div class="Admin_Edit_HotelChain container">
-        <div class="Admin_Edit_HotelChain_wrapper">
+        <div class="Admin_Edit_HotelChain_wrapper bs">
             <h1 style="font-size: 25px;color: #32cd32  ">Edit Hotel Chain(Id: ${HotelChainObj.hotelChainId})</h1>
             <div align="center"><b>
                     <font color="green"> ${Success} </font>
@@ -61,7 +61,7 @@
                     <div class="Admin_Edit_HotelChain_wrapper_li2" style="width:100%">
                         <div class="Admin_Edit_HotelChain_wrapper_dl1" style="width:100%">
                             <label for="">Remarks</label> <br>
-                            <textarea style="width:100%" rows="2" name="remarks"
+                            <textarea style="width:100%" rows="5" name="remarks"
                                 maxlength="250">${HotelChainObj.remarks}</textarea>
                         </div>
                     </div>

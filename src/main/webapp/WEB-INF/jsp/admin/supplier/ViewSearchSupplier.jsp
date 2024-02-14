@@ -21,8 +21,8 @@
 .modal {
 	  display: none; /* Hidden by default */
 	  position: fixed; /* Stay in place */
-	  z-index: 9; /* Sit on top */
-	  padding-top: 50px; /* Location of the box */
+	  z-index: 999; /* Sit on top */
+	  
 	  left: 0;
 	  top: 0;
 	  width: 100%; /* Full width */
@@ -56,10 +56,12 @@
 	
 	/* The Close Button */
 	.close {
-	  color: white;
-	  float: right;
+	  color: red;
+	 position:absolute;
 	  font-size: 28px;
 	  font-weight: bold;
+	  right:40px;
+	  top:20px
 	}
 	
 	.close:hover,
@@ -70,8 +72,6 @@
 	}
 	
 	.modal-header {
-	  padding: 2px 16px;
-	  background-color: lightblue;
 	  color: white;
 	}
 	
@@ -102,7 +102,7 @@
 
 <body>
     <div class="search_supplier container">
-        <div class="serach_supplier_wrapper">
+        <div class="serach_supplier_wrapper bs">
             <h1>Search Supplier </h1>
             <div align="center"><b>
                     <font color="#32cd32 "> ${Success} </font>
@@ -131,7 +131,7 @@
                     </div>
                 </div>
                 <div class="search_supplier_data_l2">
-                    <h2 class="search_supplier_ser" style=" color: #FFBA08;">Based on Services</h2>
+                    <h2 class="search_supplier_ser" style=" color: blue;">Based on Services</h2>
                     <div class="inside_ss_ser">
                         <div class="ssd2">
                             <form:checkbox path="flight" id="supp-fight" />
@@ -181,18 +181,18 @@
     </div>
   
 
-    <div class="search_suppler_table">
+    <div class="search_suppler_table bs">
         <table style="padding:10px 5px">
             <thead>
                 <tr style="background:#6082B6;height:50px">
-                    <th style="width:6.4% ;color:black; ">Supplier <br> Id</th>
+                    <th style="width:5.4% ;color:black; ">Supp Id</th>
                     <th style="width:18.8%; color:black ">Supplier Name</th>
                     <th style="width:10.2%;color:black ">City</th>
                     <th style="width:23%; color:black">Email</th>
                     <th style="width:8.5%;color:black ">Mobile</th>
                     <th style="width:14.5% ;color:black">Destinations</th>
-                    <th style="width:10% ;color:black">Services</th>
-                    <th  style="width:4% ;color:black">Action</th>
+                    <th style="width:9% ;color:black">Services</th>
+                    <th style="width:10% ;color:black">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -201,17 +201,17 @@
                     <c:forEach items="${supplierList}" var="supplier">
                         <tr style="border-bottom:2px solid green">
 
-                            <td style="width:6.4%;border-bottom:2px solid #FFBA08;border-right:2px solid #FFBA08">${supplier.supplierId }</th>
-                            <td style="width:20.8%;border-bottom:2px solid #FFBA08;border-right:2px solid #FFBA08"">${supplier.supplierName }</th>
-                            <td style="width:11.2%;border-bottom:2px solid #FFBA08;border-right:2px solid #FFBA08"">${supplier.cityName }</th>
-                            <td style="width:23%x;border-bottom:2px solid #FFBA08;border-right:2px solid #FFBA08"">${supplier.email }</th>
-                            <td style="width:8.5%;border-bottom:2px solid #FFBA08;border-right:2px solid #FFBA08"">${supplier.mobile }</th>
-                            <td  style="width:13.5%;border-bottom:2px solid #FFBA08;border-right:2px solid #FFBA08"">
+                            <td style="width:6.4%;border-bottom:2px solid black;border-right:2px solid black">${supplier.supplierId }</th>
+                            <td style="width:20.8%;border-bottom:2px solid black;border-right:2px solid black"">${supplier.supplierName }</th>
+                            <td style="width:11.2%;border-bottom:2px solid black;border-right:2px solid black"">${supplier.cityName }</th>
+                            <td style="width:23%x;border-bottom:2px solid black;border-right:2px solid black"">${supplier.email }</th>
+                            <td style="width:8.5%;border-bottom:2px solid black;border-right:2px solid black"">${supplier.mobile }</th>
+                            <td  style="width:13.5%;border-bottom:2px solid black;border-right:2px solid black"">
                                 <c:forEach items="${supplier.destinations}" var="destination">
                                     ${destination.cityName},
                                 </c:forEach>
 
-                            <td style="width:15%;border-bottom:2px solid #FFBA08;border-right:2px solid #FFBA08"">
+                            <td style="width:9%;border-bottom:2px solid black;border-right:2px solid black"">
                                 <c:if test="${supplier.flight eq true}">
                                     Flight,
                                 </c:if>
@@ -239,11 +239,11 @@
                             </td>
 
 
-                            <td class="search_supplier_iicon" style="border-bottom:2px solid #FFBA08">
+                            <td class="search_supplier_iicon" style="border-bottom:2px solid black;width:10%">
                               <i class="fa-solid fa-sliders st1">
                                     <div class="search_supplier_ul">
                                         <ul>
-                                            <li style="border-bottom: 1px solid #FFBA08;">
+                                            <li style="border-bottom: 1px solid black;">
                                                 <sec:authorize
                                                     access="hasAnyRole('ADMIN','SUPPLIER_VIEW','SUPPLIER_EDIT','SUPPLIER_DELETE')">
                                                     <a id="myBtn[${supplier.supplierId}]" onclick="contactDisplay(this)"
@@ -256,7 +256,7 @@
 
 
 
-                                            <li style="border-bottom: 1px solid #FFBA08;" >
+                                            <li style="border-bottom: 1px solid black;" >
                                                 <sec:authorize access="hasAnyRole('ADMIN','SUPPLIER_EDIT')">
                                                      <a
                                                         href="form_view_editsupplier?supplierId=${supplier.supplierId }"><input
@@ -273,7 +273,7 @@
                                             </li>
 
 
-                                            <li style="border-bottom: 1px solid #FFBA08;">
+                                            <li style="border-bottom: 1px solid black;">
                                                 <sec:authorize access="hasAnyRole('ADMIN','SUPPLIER_DELETE')">
                                                      <a id="myBtn[${supplier.supplierId }]"
                                                         onclick="contactDisplay(this)"
@@ -315,7 +315,7 @@
 			  <div class="modal-content">
 			    <div class="modal-header">
 			      <span class="close">&times;</span>
-			      <br><h2 style="text-align:center;" id="modelheaderh2">Supplier Details</h2>
+			  
 			    </div>
 			    <div class="modal-body">
 			
@@ -329,7 +329,7 @@
     </div>
 
 
-	<div id="pagination" align="center">
+	<div id="pagination" align="center" style="margin-bottom:70px">
 				<font size="3">  <span style="background:black;padding:2px 5px;border-radius:2px;color:#ffa500">Page:</span>   
 			    <c:url value="view_form_admin_search_supplier" var="prev"> 
 			       <c:param name="page" value="${page-1}"/>

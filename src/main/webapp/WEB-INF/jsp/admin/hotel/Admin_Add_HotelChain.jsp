@@ -35,7 +35,7 @@ body::before {
 
     <div class="Add-Hotal-Chain container">
         <form:form method="post" action="add_add_hotel_chain" modelAttribute="hotelchain_obj">
-            <div class="add-hotal-chain-wrapper">
+            <div class="add-hotal-chain-wrapper bs">
                 <h1>Add New Hotel Chain</h1>
                 <form action="">
                     <div class="ahc-in">

@@ -35,7 +35,7 @@
 <body>
 
     <div class="manage-hotal-chain container">
-        <div class="manage_hotal_chain_wrapper">
+        <div class="manage_hotal_chain_wrapper bs">
             <h1>Search Hotel Chain</h1>
             <div align="center" style="margin:10px 0"><b>
                     <font color="#32cd32"> ${Success} </font>
@@ -57,10 +57,10 @@
                         <label for="hoatl_active">Active</label> <br>
                         <select id="active" name="active" style="width:90%;">
                             <c:if test="${SEARCH_HOTEL_CHAIN.active eq true }">
-                                <option class="service-small" value="true" selected style="background:black;color:white">
+                                <option class="service-small" value="true" selected style="background:black;color:black">
                                     <c:out value="True"/>
                                 </option>
-                                <option class="service-small" value="false" style="background:black;color:white">
+                                <option class="service-small" value="false" style="background:black;color:black">
                                     <c:out value="False" />
                                 </option>
                             </c:if>
@@ -84,14 +84,14 @@
         </div>
         <!-- ################ table ################## -->
 
-        <table class="manage-hotal-chain-tabel">
+        <table class="manage-hotal-chain-tabel bs">
             <thead style="background:#6082B6;height:50px;">
                 <tr>
-                    <th style="width:100px;color:white">Chain No</th>
-                    <th style="color:white">Hotel Chain Name</th>
-                    <th style="color:white">Hotel Chain Remarks</th>
-                    <th style="color:white;width:100px">Active</th>
-                    <th style="color:white">Action</th>
+                    <th style="width:100px;color:black">Chain No</th>
+                    <th style="color:black">Hotel Chain Name</th>
+                    <th style="color:black">Hotel Chain Remarks</th>
+                    <th style="color:black;width:100px">Active</th>
+                    <th style="color:black">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -99,11 +99,11 @@
                     <c:if test="${not empty chainSearchList}">
                         <c:forEach var="chainObj" items="${chainSearchList}">
                 <tr>
-                    <td style="color:white;text-align:center;border-bottom:2px solid #FFBA08;border-left:2px solid #FFBA08;border-right:2px solid #FFBA08">${chainObj.hotelChainId}</td>
-                    <td  style="color:white;text-align:center;border-bottom:2px solid #FFBA08;">${chainObj.hotelChainName}</td>
-                    <td  style="color:white;text-align:center;border-bottom:2px solid #FFBA08;border-left:2px solid #FFBA08;">${chainObj.remarks}</td>
-                    <td  style="color:white;text-align:center;border-bottom:2px solid #FFBA08;border-left:2px solid #FFBA08;">${chainObj.active}</td>
-                    <td style="width:15%;text-align:center;border-bottom:2px solid #FFBA08;border-left:2px solid #FFBA08;">
+                    <td style="color:black;text-align:center;border-bottom:2px solid black;border-left:2px solid black;border-right:2px solid black">${chainObj.hotelChainId}</td>
+                    <td  style="color:black;text-align:center;border-bottom:2px solid black;">${chainObj.hotelChainName}</td>
+                    <td  style="color:black;text-align:center;border-bottom:2px solid black;border-left:2px solid black;">${chainObj.remarks}</td>
+                    <td  style="color:black;text-align:center;border-bottom:2px solid black;border-left:2px solid black;">${chainObj.active}</td>
+                    <td style="width:15%;text-align:center;border-bottom:2px solid black;border-left:2px solid black;">
 
                         <table style= "background:transparent;text-align:center">
                             <tr>
@@ -112,7 +112,7 @@
                                         <form:form id="form_update_FLT_SL" name="form_update_FLT_SL"
                                             action="view_edit_hotel_chain_form" method="POST" >
                                             <input type="hidden" name="hotelChainId" value="${chainObj.hotelChainId}" />
-                                            <input class="search-hotal-chain-actions" type="submit" value="Edit" style="border:none;outline:none;background:transparent;color:white;margin-right:-50px"/>
+                                            <input class="search-hotal-chain-actions" type="submit" value="Edit" style="border:none;outline:none;background:transparent;color:black;margin-right:-50px"/>
                                             <!-- <input type="image" src="${pageContext.request.contextPath}/resources/images/edit.jpg" height="20" width="20"/>  -->
                                         </form:form>
                                     </sec:authorize>
@@ -131,7 +131,7 @@
                                         <form:form id="form_del_FLT_SL" name="form_del_FLT_SL"
                                             action="view_delete_hotel_chain_form" method="POST" style="display:inline;">
                                             <input type="hidden" name="hotelChainId" value="${chainObj.hotelChainId}" />
-                                            <input class="search-hotal-chain-actions" type="submit" value="Delete"  style="border:none;outline:none;background:transparent;color:white;margin-right:20px"/>
+                                            <input class="search-hotal-chain-actions" type="submit" value="Delete"  style="border:none;outline:none;background:transparent;color:black;margin-right:20px"/>
                                         </form:form>
                                     </sec:authorize>
                                     <sec:authorize access="! hasAnyRole('ADMIN','HOTEL_CHAIN_DELETE')">

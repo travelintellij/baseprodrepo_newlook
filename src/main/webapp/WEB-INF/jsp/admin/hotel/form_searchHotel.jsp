@@ -54,7 +54,7 @@
 
 
     <div class="search_hotal container">
-        <div class="search_hotal_wraper">
+        <div class="search_hotal_wraper bs">
             <h1>Search Hotel</h1>
             <form:form modelAttribute="searchhotel_obj" action="search_search_hotel">
             <div class="sh-f1">

@@ -52,7 +52,7 @@
 </div>
     
     <div class="add_hotal container">
-        <div class="add_hotal_wrapper">
+        <div class="add_hotal_wrapper bs">
             <h1>Add Hotel</h1>
             <form:form method="post" action="add_add_hotel" modelAttribute="hotel_obj">
                 <div class="add_hotal_in">
@@ -164,7 +164,7 @@
                         </div>
                         <div class="ah-d1" style="width:100%">
                             <label for="">Remarks</label><br>
-                            <textarea rows="2" cols="38" name="remarks" style="width:96%"></textarea>
+                            <textarea rows="5" cols="38" name="remarks" style="width:96%"></textarea>
                         </div>
                     <div class="add_hotal_fli">
                         <div class="ah-d1-btn">

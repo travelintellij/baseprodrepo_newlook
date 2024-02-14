@@ -32,7 +32,7 @@
 </style>
 <body>
     <div class="ViewClientDetails container">
-        <div class="ViewClientDetails_wrapper">
+        <div class="ViewClientDetails_wrapper bs">
             <form:form method="post" action="edit_edit_admin_client" modelAttribute="CLIENT_OBJ">
                 <input type="hidden" name="clientId" value="${CLIENT_OBJ.clientId}" />
                 <h1 style="font-size:25px;color:#F8AF51">Edit Client</h1>
@@ -185,7 +185,7 @@
 
                         </div>
                     </div>
-                    <h2 style="color:#32cd32">Personal Prefrences</h2>
+                    <h2 style="color:blue;margin:10px 0">Personal Prefrences</h2>
                     <div class="ViewClientDetails_wrapper_data_line">
                         <div class="ViewClientDetails_wrapper_dl1">
                             <label for="" class="lb">Hotal preferences</label>
@@ -218,7 +218,7 @@
     	     							</c:if>
       								</c:forEach>
       							</select>
-									(Scale 1 to 10) 
+								<span style="color:blue">(Scale 1 to 10) </span>	
                         </div>
                         <div class="ViewClientDetails_wrapper_dl1">
                             <label for="" class="lb">Service Savy</label>
@@ -237,7 +237,7 @@
                                     </c:if>
                                 </c:forEach>
                             </select>
-                            (Scale 1 to 10)
+                           <span style="color:blue">(Scale 1 to 10) </span>	
                         </div>
                         <div class="ViewClientDetails_wrapper_dl1">
                             <label for="" class="lb">Food preferences</label>
@@ -272,7 +272,7 @@
                                     </c:if>
                                 </c:forEach>
                             </select>
-                            (Scale 1 to 5)
+                          <span style="color:blue">(Scale 1 to 10) </span>	
                         </div>
                         <div class="ViewClientDetails_wrapper_dl1" style="width:295px">
                             <label for="" class="lb">Payment Record</label>
@@ -291,7 +291,7 @@
                                     </c:if>
                                 </c:forEach>
                             </select>
-                            (Scale 1 to 5)
+                            <span style="color:blue">(Scale 1 to 10) </span>	
                         </div>
                     </div>
                     <div class="due_today_task_data_btns">

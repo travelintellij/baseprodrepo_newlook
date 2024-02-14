@@ -98,7 +98,7 @@
 
 
     <div class="vscl container">
-        <div class="vscl_wrapper">
+        <div class="vscl_wrapper bs">
             <h1 class="hd" >Supplier Id : <span class="hd">  ${SUPPLIER_OBJ.supplierId}</span></h1>
             <div class="vscl_wrapper_data">
                 <form:form method="post" action="form_view_quote_req_email_supplier" modelAttribute="EMAIL_QUOTE_OBJ">
@@ -107,26 +107,26 @@
                     <form:hidden path="leadId" />
                     <div class="vscl_wrapper_data_line_1 a" style="margin-bottom:10px;">
                         <div class="vscl_wrapper_data_l1">
-                            <label for="" style="color:#FFBA08">Supplier Name</label>
-                            <p>${SUPPLIER_OBJ.supplierName}</p>
+                            <label for="" style="color:black">Supplier Name</label>
+                            <p style="color:gray">${SUPPLIER_OBJ.supplierName}</p>
                         </div>
                         <div class="vscl_wrapper_data_l1">
-                            <label for=""  style="color:#FFBA08">Email</label>
-                            <p>${SUPPLIER_OBJ.email}</p>
+                            <label for=""  style="color:black">Email</label>
+                            <p style="color:gray">${SUPPLIER_OBJ.email}</p>
                         </div>
                         <div class="vscl_wrapper_data_l1" style="width:200px">
-                            <label for=""  style="color:#FFBA08">Mobile</label>
-                            <p>${SUPPLIER_OBJ.mobile}</p>
+                            <label for=""  style="color:black">Mobile</label>
+                            <p style="color:gray">${SUPPLIER_OBJ.mobile}</p>
                         </div>
                         <div class="vscl_wrapper_data_l1">
-                            <label for=""  style="color:#FFBA08">Destinations supported</label> <br>
+                            <label for=""  style="color:black">Destinations supported</label> <br>
                             <c:forEach items="${SUPPLIER_OBJ.destinations}" var="destination">
-                                ${destination.cityName},
+                               <span style="color:gray"> ${destination.cityName}, </span>
                             </c:forEach>
                         </div>
                     </div>
                     <div class="vscl_wrapper_data_line_2">
-                        <h1 style="color:#FFBA08">Services offered</h1>
+                        <h1 style="color:black">Services offered</h1>
                         <div class="vscl_wrapper_data_l2">
                             <div style="display:flex;justify-content:space-between;margin:10px 0">
                                 <div><label class="container">
@@ -202,7 +202,7 @@
                                     <label class="container"
                                         style="display: inline;margin: 0 auto;margin-bottom: 20px;">
                                         <c:if test="${SUPPLIER_OBJ.landPackage eq true}">
-					                     <input type="checkbox" checked disabled style="width:18px;height:18px"/>
+					                     <input class="ch_c" type="checkbox" checked disabled style="width:18px;height:18px"/>
 				                         </c:if>
                                         <span class="checkmark"></span></label>Package
                                 </div>
@@ -230,16 +230,21 @@
 
 
         <div class="container" style="display: flex;justify-content:center;margin-top: 10px;">
-            <h1 style="color: #FFCF53;background: black;padding: 10px;border-radius: 5px;">Supplier Contacts</h1>
+            <h1 class="bs" style="color: black;background:white;padding: 10px;border-radius: 5px;">Supplier Contacts</h1>
         </div>
 
-
-  
-        <div class="client_listing_tabel_div " style="background:black;text-align:center;margin-top:10px;padding-top:10px">
-            <div align="center" style="display:inline;"><b>
+<div style="margin:5px auto;width:500px">
+  <div align="center" style="isplay: inline-block;
+    background: white;
+    margin: 37px auto;
+    padding: 5px;
+    border-radius: 5px;"><b>
                     <font color="#32cd32  "> ${Success} </font>
                     <font color="red"> ${Error}</font>
                 </b></div>
+                </div>
+        <div class="client_listing_tabel_div">
+            
 
             <div class="table_div">
                 <ul class="table_div">
@@ -264,13 +269,13 @@
 
                 <c:forEach items="${SUPPLIER_OBJ.supplierContactsList}" var="contactList">
                     <tr>
-                        <td style="border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53">${contactList.supplierContactId}</td>
-                        <td  style="border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53">${contactList.contactName}</td>
-                        <td  style="border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53">${contactList.role}</td>
-                        <td  style="border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53">${contactList.mobile}</td>
-                        <td  style="border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53">${contactList.email}</td>
+                        <td style="border-bottom:2px solid black;border-right:2px solid black">${contactList.supplierContactId}</td>
+                        <td  style="border-bottom:2px solid black;border-right:2px solid black">${contactList.contactName}</td>
+                        <td  style="border-bottom:2px solid black;border-right:2px solid black">${contactList.role}</td>
+                        <td  style="border-bottom:2px solid black;border-right:2px solid black">${contactList.mobile}</td>
+                        <td  style="border-bottom:2px solid black;border-right:2px solid black">${contactList.email}</td>
 
-                        <td colspan="3"  style="border-bottom:2px solid #FFCF53">
+                        <td colspan="3"  style="border-bottom:2px solid black">
                             Email To: <label class="container"
                                 style="display: inline;margin: 0 auto;margin-bottom: 20px;"><input type="checkbox"
                                     name="emailToList" value="${contactList.email}" style="width:18px;height:18px"/> <span
@@ -282,16 +287,16 @@
                                     class="checkmark"></span></label>
                             |
                             <a class="vscl_action" id="myBtn[${contactList.supplierContactId}]" onclick="contactDisplay(this)" data-load-url="view_supplier_contact_details_modal?supplierContactId=${contactList.supplierContactId}" data-toggle="modal" data-target="#myModal" class="vscl_action"><input type="button"
-                                    value="View" style="background:transparent;border:none;outline:none"/></a>
+                                    value="View" style="background:transparent;border:none;outline:none;color:red"/></a>
                             |
                             <a
                              class="vscl_action" href="form_view_edit_supplier_contact?supplierContactId=${contactList.supplierContactId}"><input 
-                                    type="button" style="background:transparent;border:none;outline:none"
+                                    type="button" style="background:transparent;border:none;outline:none;color:red"
                                     value="Edit" /></a> |
                             <a  class="vscl_action" id="myBtn[${contactList.supplierContactId}]" onclick="contactDisplay(this)"
                                 data-load-url="view_delete_supplier_contact_confirm_modal?supplierContactId=${contactList.supplierContactId}"
                                 data-toggle="modal" data-target="#myModal" class="vscl_action"><input type="button" 
-                                    style="background:transparent;border:none;outline:none" value="Delete"/></a>
+                                    style="background:transparent;border:none;outline:none;color:red" value="Delete"/></a>
 
                         </td>
                     </tr>

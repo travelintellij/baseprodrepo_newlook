@@ -39,21 +39,21 @@
                 <font color="green"> ${Success} </font>
                 <font color="red"> ${Error}</font>
             </b></div>
-        <div class="form_supplier_request_quotation_emailer_wrapper">
+        <div class="form_supplier_request_quotation_emailer_wrapper bs">
             <h1 style="font-size: 25px;margin-bottom:10px;color:#32cd32  ;">Request Quotation</h1>
             <div class="form_supplier_request_quotation_emailer_wrapper_data">
                 <div class="form_supplier_request_quotation_emailer_wrapper_dline">
                     <div class="form_supplier_request_quotation_emailer_wrapper_dl1">
                         <label for="" class="lb">Lead Reference</label>
-                        <p>${EMAIL_QUOTE_OBJ.leadReferenceNumber }</p>
+                        <p style="color:gray">${EMAIL_QUOTE_OBJ.leadReferenceNumber }</p>
                     </div>
                     <div class="form_supplier_request_quotation_emailer_wrapper_dl1">
                         <label for="" class="lb">Client Name</label>
-                        <p>${LEAD_OBJ.contactName }</p>
+                        <p style="color:gray">${LEAD_OBJ.contactName }</p>
                     </div>
                     <div class="form_supplier_request_quotation_emailer_wrapper_dl1">
                         <label for="" class="lb">Supplier Name</label>
-                        <p>${EMAIL_QUOTE_OBJ.supplierName }</p>
+                        <p style="color:gray">${EMAIL_QUOTE_OBJ.supplierName }</p>
                     </div>
                 </div>
             </div>
@@ -61,7 +61,7 @@
             <form:hidden path="leadId" />
             <form:hidden path="supplierId" />
         </div>
-        <div class="form_supplier_request_quotation_e">
+        <div class="form_supplier_request_quotation_e bs">
             <i class="fa-solid fa-envelope fa-xl" style="color:#32cd32  "></i>
             <div class="form_supplier_request_quotation_e_wr_d">
                 <div class="form_supplier_request_quotation_e_w">

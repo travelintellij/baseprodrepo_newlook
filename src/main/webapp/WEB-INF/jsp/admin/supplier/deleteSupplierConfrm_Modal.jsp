@@ -13,8 +13,11 @@
 
 <body>
     <div class="view_supplier_details container" style="margin-top:-30px" >
-        <div class="view_supplier_details_wrapper" style="margin-top:25px;background:#94d2bd;box-shadow: 0 0 10px 5px #94d2bd, 0 0 20px 10px #94d2bd">
-        <h1 style="color:red;font-size: 30px;text-align:center">Confirm Delete<i class="fa-solid fa-triangle-exclamation fa-lg"></i></h1>
+        <div class="view_supplier_details_wrapper" style=";margin-top:25px;background:#94d2bd;box-shadow: 0 0 10px 5px #94d2bd, 0 0 20px 10px #94d2bd">
+        <h1 style="color:red;font-size: 40px;text-align:center">
+                            <label for="" style="color:black;font-weight:bold">Supplier Name</label>
+                            <span>${SUPPLIER_OBJ.supplierName}</span>                    
+        </h1>
             <div align="center"><b>
                     <font color="green"> ${Success} </font>
                     <font color="red"> ${Error}</font>
@@ -24,12 +27,8 @@
                 <div class="view_supplier_details_data">
                     <div class="view_supplier_details_modal_data_line1 vsdm_d1" style="margin-bottom:10px;background:#d8e2dc">
                         <div class="view_supplier_details_l1">
-                            <label for="" style="color:black;font-weight:bold">Supplier Id</label>
+                            <label for="" style="color:black;font-weight:bold">Supplier Id </label>
                             <p>${SUPPLIER_OBJ.supplierId}</p>
-                        </div>
-                        <div class="view_supplier_details_l1">
-                            <label for="" style="color:black;font-weight:bold">Supplier Name</label>
-                            <p>${SUPPLIER_OBJ.supplierName}</p>
                         </div>
                         <div class="view_supplier_details_l1">
                             <label for="" style="color:black;font-weight:bold">City</label>
@@ -58,6 +57,10 @@
                             <label for="" style="color:black;font-weight:bold">GST Details</label>
                             <p>${SUPPLIER_OBJ.gstDetails}</p>
                         </div>
+                        <div class="view_supplier_details_l1">
+                           
+                        </div>
+                     
                     </div>
                       <div class="view_supplier_details_l1"  style="margin-bottom:10px;background:#d8e2dc">
                             <label for="" style="color:black;font-weight:bold">Company Details</label>
