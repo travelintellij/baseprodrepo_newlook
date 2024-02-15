@@ -40,7 +40,7 @@ body::before {
 	<form:form modelAttribute="LEAD_FOLLOWUP_OBJ" action="create_create_lead_followup">
 	<input type="hidden" name= "leadId" value="${LEAD_OBJ.leadId}"/>
 	<div class="follow-up">
-        <div class="follow-up-wrapper container">
+        <div class="follow-up-wrapper  container">
             <div class="follow-up-heading" style="padding-top:5px">
                 <h1>Lead Followup</h1>
             </div>
@@ -52,11 +52,11 @@ body::before {
                         </h3>
                         <div class="follow-up-time">
                             <div class="follow-up-lead-action-time">
-                                <label for="fulat">Lead Action Time</label>
+                                <label for="fulat">Lead Action Time</label> <br>
                                 <form:input path= "followuptime" required="required" id="followuptime"/>
                             </div>
                             <div class="follow-up-next-action-time">
-                                <label for="funat">Next Action Time</label>
+                                <label for="funat">Next Action Time</label> <br>
                                 <form:input path= "nextfollowuptime" required="required" id="nextfollowuptime"/>
                             </div>
                         </div>

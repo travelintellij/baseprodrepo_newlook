@@ -54,7 +54,7 @@
   
   
     <div class="Admin_Add_Visa_Consulate container">
-        <div class="Admin_Add_Visa_Consulate_wrapper">
+        <div class="Admin_Add_Visa_Consulate_wrapper bs ">
             <h1 class="page-heading">Add Visa Consulate</h1>
             <div align="center"><b>
                     <font color="green"> ${Success} </font>

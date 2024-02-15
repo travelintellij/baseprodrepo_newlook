@@ -51,7 +51,8 @@
 
 
     <div class="Admin_Search_Visa_Consulate container">
-        <div class="Admin_Search_Visa_Consulate_wrapper">
+        <div class="Admin_Search_Visa_Consulate_wrapper bs">
+       
             <h1 class="page-heading">Search Visa Consulate</h1>
             <div align="center"><b>
                     <font color="green"> ${Success} </font>
@@ -69,22 +70,23 @@
                         <label for="">Country Name</label> <br>
                         <input type="hidden" id="countryCode" name="countryCode" />
                         <input type="text" id="countryName" name="countryName"
-                            placeholder="country name" required />
+                            placeholder="Enter country name" required  style="width:500px;height:50px;padding:5px"/>
                     </div>
-                    <div class="due_today_task_data_btns">
+                    <div class="due_today_task_data_btns" style="display:flex;align-items:center">
                     <input type="submit" name="submit" value="Search Visa Details" />
                     </div>
                 </div>
             </div>
             </form:form>
+           
         </div>
-        <div style="background:black;color: #32cd32 ;text-align:center;width:250px;margin:10px auto;border-radius:2px" >${VISA_CONSULATE_COUNT_MSG}</div>
+        <div class="bs" style="background:white;color: #32cd32 ;text-align:center;width:250px;margin:10px auto;border-radius:2px" >${VISA_CONSULATE_COUNT_MSG}</div>
         
         <c:if test="${not empty VISA_CONSULATE_RESULT_SET}">
             <form:form modelAttribute="EMAIL_VISA_MASTER" action="view_email_visa_master_docs_form">
-         <table class = "vst_wrapper container ">
+         <table class = "vst_wrapper bs container ">
         <thead>
-            <tr style="background:#6082B6">
+            <tr style="background:#6082B6;color:black;height:50px">
                 <th class="vsth">Consulate</th>
                 <th class="vsth">Country Name</th>
                 <th class="vsth">Consulate City</th>
@@ -94,12 +96,12 @@
         </thead>
         <tbody>
         <c:forEach var="visaConsulateObj" items="${VISA_CONSULATE_RESULT_SET}">
-            <tr>
-                <td>${visaConsulateObj.consulateId}</td>
-                <td>${COUNTRY_NAME}</td>
-                <td>${visaConsulateObj.cityName}</td>
-                <td>${visaConsulateObj.consulateTitle}</td>
-                <td class="vts-btn">
+            <tr >
+                <td style="border-bottom:2px solid black;border-right:2px solid black">${visaConsulateObj.consulateId}</td>
+                <td style="border-bottom:2px solid black;border-right:2px solid black">${COUNTRY_NAME}</td>
+                <td style="border-bottom:2px solid black;border-right:2px solid black">${visaConsulateObj.cityName}</td>
+                <td style="border-bottom:2px solid black;border-right:2px solid black">${visaConsulateObj.consulateTitle}</td>
+                <td class="vts-btn" style="border-bottom:2px solid black;">
                 <a href="view_view_visa_consulate?consulateId=${visaConsulateObj.consulateId}">View</a>
                 <a href="view_edit_visa_consulate_form?consulateId=${visaConsulateObj.consulateId}">Edit</a>
                 </td>

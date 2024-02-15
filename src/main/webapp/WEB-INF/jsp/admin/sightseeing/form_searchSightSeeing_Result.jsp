@@ -51,7 +51,7 @@
     <div class="autocomplete-suggestion">...</div>
 </div>
                         <div class="form_searchSightSeeing_Result container">
-                            <div class="form_searchSightSeeing_Result_wrapper">
+                            <div class="form_searchSightSeeing_Result_wrapper bs">
                                 <form:form modelAttribute="search_sight_seeing_obj" action="search_search_sight_seeing">
                                     <div class="form_searchSightSeeing_Result_wrapper_data">
                                         <div class="form_searchSightSeeing_Result_wrapper_dl">

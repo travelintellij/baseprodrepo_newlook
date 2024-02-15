@@ -17,7 +17,7 @@
 .autocomplete-suggestions { border: 1px solid #999; background: red;overflow-y:auto}
 		.autocomplete-suggestion {padding: 2px 5px;color:white; background: black;overflow-y: auto;overflow-y:auto}
 		.autocomplete-selected { background: #F0F0F0;overflow-y:auto} 
-		.autocomplete-suggestions strong { font-weight: normal; color:#FABA08;overflow-y:auto}
+		.autocomplete-suggestions strong { font-weight: normal; color:black;overflow-y:auto}
 		.autocomplete-group { padding: 2px 5px;overflow-y:auto}
 		.autocomplete-group strong { display: block; border-bottom: 1px solid #000;  background: black ; color:black overflow-y:auto}
 		.autocomplete-selected:hover{
@@ -56,22 +56,25 @@
             <br>
              <br>
               <br>
-               <br>
-                <br>
-               
-            <div align="center"><b>
+              
+              <div style="display:flex;justify-content:center">
+            <div class="bs" align="center" style="background:white;width:700px;border-radius:5px"><b>
                     <font color="green"> ${Success} </font>
                     <font color="red"> ${Error}</font>
                 </b></div>
+                </div>
+                
             <form:form method="post" action="search_search_visa_master" modelAttribute="visa_obj">
                     <input type="hidden" id="countryCode" name="countryCode" />
                 <div class="Admin_Search_Visa_wrapper_data">
-                    <div class="Admin_Search_Visa_wrapper_data_line">
+                
+                    <div class="Admin_Search_Visa_wrapper_data_line bs" style="border-radius:5px;width:700px;padding:20px;background:white">
+                        <h1 class="hd">Search Visa</h1>
                         <div class="Admin_Search_Visa_wrapper_data_l1">
-                            <input  type="text" id="countryName"  name="countryName" placeholder="country name" required />
+                            <input style="padding:5px;font-weight:40px"  type="text" id="countryName"  name="countryName" placeholder="country name" required />
                         </div>
                         <div class="due_today_task_data_btns">
-                            <input type="submit" name="submit" value="Search Visa Details" />
+                            <input type="submit" name="submit" value="Search Visa Details " />
                         </div>
                     </div>
                 </div>
@@ -80,14 +83,14 @@
     
     
     
-     <div style="background:black;color: #32cd32 ;width:220px;text-align:center;border-radius:5px;margin:10px auto">${VISA_COUNT_MSG}</div>
+     <div class="bs" style="background:white;color:#32cd32  ;width:220px;text-align:center;border-radius:5px;margin:10px auto">${VISA_COUNT_MSG}</div>
      <c:if test="${not empty VISA_RESULT_SET}">
         <form:form modelAttribute="EMAIL_VISA_MASTER" action="view_email_visa_master_docs_form">
             <input type="hidden" id="countryName" name="countryName" value="${COUNTRY_NAME}" />
             <input type="hidden" id="countryCode" name="countryCode" value="${COUNTRY_CODE}" />
 
-            <table class="vstab" style="padding:20px 10px">
-                <div class="vstab_wrap_btns">
+            <table class="vstab bs" style="padding:20px 10px">
+                <div class="vstab_wrap_btns bs">
                     <div>
                         <input type="radio" id="visaCostToIncludeList" name="visaCostToIncludeList" value="b2bcost">
                         <label for="">With B2B Cost</label>
@@ -121,16 +124,16 @@
                 </thead>
                 <tbody>
                     <c:forEach var="visaMasterObj" items="${VISA_RESULT_SET}">
-                        <tr style="border-top:2px solid #FABA08;padding-top:10px">
-                            <td style="border-right:2px solid #FABA08">${visaMasterObj.countryName}</td>
-                            <td style="border-right:2px solid #FABA08">${visaMasterObj.cityName}</td>
-                            <td style="border-right:2px solid #FABA08">${VISA_PROFILE.get(visaMasterObj.profile)}</td>
-                            <td style="border-right:2px solid #FABA08">${VISA_TYPE.get(visaMasterObj.visaType)}</td>
-                            <td style="border-right:2px solid #FABA08">${VISA_PURPOSE.get(visaMasterObj.visaPurpose)}</td>
-                            <td style="border-right:2px solid #FABA08">${visaMasterObj.processingTime} Days</td>
-                            <td style="border-right:2px solid #FABA08">${visaMasterObj.standardCost}</td>
-                            <td style="border-right:2px solid #FABA08">${visaMasterObj.standardB2bPrice}</td>
-                            <td style="border-right:2px solid #FABA08">${visaMasterObj.standardB2cPrice}</td>
+                        <tr style="border-top:2px solid black;padding-top:10px">
+                            <td style="border-right:2px solid black">${visaMasterObj.countryName}</td>
+                            <td style="border-right:2px solid black">${visaMasterObj.cityName}</td>
+                            <td style="border-right:2px solid black">${VISA_PROFILE.get(visaMasterObj.profile)}</td>
+                            <td style="border-right:2px solid black">${VISA_TYPE.get(visaMasterObj.visaType)}</td>
+                            <td style="border-right:2px solid black">${VISA_PURPOSE.get(visaMasterObj.visaPurpose)}</td>
+                            <td style="border-right:2px solid black">${visaMasterObj.processingTime} Days</td>
+                            <td style="border-right:2px solid black">${visaMasterObj.standardCost}</td>
+                            <td style="border-right:2px solid black">${visaMasterObj.standardB2bPrice}</td>
+                            <td style="border-right:2px solid black">${visaMasterObj.standardB2cPrice}</td>
                             <td>
                                 <input type="checkbox" style="width:18px;height:18px" id="visaIdListToEmail" name="visaIdListToEmail"
                                     value="${visaMasterObj.visaId}"> <b>Email</b>

@@ -41,49 +41,49 @@
         </b></div>
     <form:form method="post" action="del_del_visa_docs" modelAttribute="VISA_OBJ">
         <div class="Admin_Del_Con_Visa_Docs container">
-            <div class="Admin_Del_Con_Visa_Docs_wrapper">
+            <div class="Admin_Del_Con_Visa_Docs_wrapper bs">
 
                 <div class="Admin_Del_Con_Visa_Docs_wrapper_data">
                     <div class="Admin_Del_Con_Visa_Docs_wrapper_data_li a" >
                         <div class="Admin_Del_Con_Visa_Docs_wrapper_data_l1">
                             <label for="" class="lb">Country name </label>
-                            <p>${VISA_OBJ.countryName}</p>
+                            <p style="color:gray">${VISA_OBJ.countryName}</p>
                         </div>
                         <div class="Admin_Del_Con_Visa_Docs_wrapper_data_l1">
                             <label for="" class="lb">Visa Profile</label>
-                            <p>${VISA_PROFILE.get(VISA_OBJ.profile)}</p>
+                            <p style="color:gray">${VISA_PROFILE.get(VISA_OBJ.profile)}</p>
                         </div>
                         <div class="Admin_Del_Con_Visa_Docs_wrapper_data_l1">
                             <label for="" class="lb">Visa Type</label>
-                            <p>${VISA_TYPE.get(VISA_OBJ.visaType)}</p>
+                            <p style="color:gray">${VISA_TYPE.get(VISA_OBJ.visaType)}</p>
                         </div>
                         <div class="Admin_Del_Con_Visa_Docs_wrapper_data_l1">
                             <label for="" class="lb">Visa Purpose</label>
-                            <p>${VISA_PURPOSE.get(VISA_OBJ.visaPurpose)}</p>
+                            <p style="color:gray">${VISA_PURPOSE.get(VISA_OBJ.visaPurpose)}</p>
                         </div>
                     </div>
                     <div class="Admin_Del_Con_Visa_Docs_wrapper_data_li a">
                         <div class="Admin_Del_Con_Visa_Docs_wrapper_data_l1">
                             <label for="" class="lb">Standrad Cost</label>
-                            <p>${VISA_OBJ.standardCost}</p>
+                            <p style="color:gray">${VISA_OBJ.standardCost}</p>
                         </div>
                         <div class="Admin_Del_Con_Visa_Docs_wrapper_data_l1">
                             <label for="" class="lb">B2B Price</label>
-                            <p>${VISA_OBJ.standardB2bPrice}</p>
+                            <p style="color:gray">${VISA_OBJ.standardB2bPrice}</p>
                         </div>
                         <div class="Admin_Del_Con_Visa_Docs_wrapper_data_l1">
                             <label for="" class="lb">B2C Price</label>
-                            <p>${VISA_OBJ.standardB2cPrice}</p>
+                            <p style="color:gray">${VISA_OBJ.standardB2cPrice}</p>
                         </div>
                         <div class="Admin_Del_Con_Visa_Docs_wrapper_data_l1">
                             <label for="" class="lb">Processing Time</label>
-                            <p>${VISA_OBJ.processingTime} Days</p>
+                            <p style="color:gray">${VISA_OBJ.processingTime} Days</p>
                         </div>
                     </div>
                     <div class="Admin_Del_Con_Visa_Docs_wrapper_data_li a" style="width:100%">
                         <div class="Admin_Del_Con_Visa_Docs_wrapper_data_l1" style="width:100%">
                             <label for="" class="lb">Remarks</label>
-                            <p>${VISA_OBJ.remarks}</p>
+                            <p style="color:gray">${VISA_OBJ.remarks}</p>
                         </div>
                     </div>
                     <h1 style="color: red;font-size: 25px;">Delete Visa Document <i
@@ -91,23 +91,23 @@
                     <div class="Admin_Del_Con_Visa_Docs_wrapper_data_lower a">
                         <div class="Admin_Del_Con_Visa_Docs_wrapper_document">
                             <label for="" class="lb">Document Id</label>
-                            <p>${ORG_VISA_DOC_OBJ.visaDocId}</p>
+                            <p style="color:gray">${ORG_VISA_DOC_OBJ.visaDocId}</p>
                         </div>
                         <div class="Admin_Del_Con_Visa_Docs_wrapper_document">
                             <label for="" class="lb">Document Title</label>
-                            <p>${ORG_VISA_DOC_OBJ.documentTitle}</p>
+                            <p style="color:gray">${ORG_VISA_DOC_OBJ.documentTitle}</p>
                         </div>
                     </div>
-                    <div class="Admin_Del_Con_Visa_Docs_wrapper_data_lower a">
-                        <div class="Admin_Del_Con_Visa_Docs_wrapper_document_des">
+                    <div class="Admin_Del_Con_Visa_Docs_wrapper_data_lower a" style="width:100%;">
+                        <div class="Admin_Del_Con_Visa_Docs_wrapper_document_des" style="width:100%;">
                             <label for="" class="lb">Document Description</label>
-                            <p>${ORG_VISA_DOC_OBJ.description}</p>
+                            <p style="color:gray">${ORG_VISA_DOC_OBJ.description}</p>
                         </div>
                     </div>
                     <div class="due_today_task_data_btns">
                         <input type="hidden" name="visaId" value="${VISA_OBJ.visaId}" />
                         <input type="hidden" name="visaDocId" value="${ORG_VISA_DOC_OBJ.visaDocId}" />
-                        <input type="submit" name="Delete" Value="Confirm Delete" style="background-color: red; " />
+                        <input type="submit" name="Delete" Value="Confirm Delete" style="background-color: red;color:white " />
                     </form:form>
                         <form:form modelAttribute="VISA_DOC_OBJ" action="view_list_visa_proceed_docs_form" style="display:inline;">
                             <input type="hidden" name="visaId" value="${VISA_OBJ.visaId}" />

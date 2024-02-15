@@ -34,36 +34,37 @@
 </style>
 <body>
     <div class="Hotel_Room_Category_Update container">
-        <div class="Hotel_Room_Category_Update_wrapper">
+        <div class="Hotel_Room_Category_Update_wrapper bs">
             <h1 style="font-size: 25px;margin: 10px 0;color: #32cd32  ;">Manage Room Category</h1>
             <div align="center"><b>
                     <font color="green"> ${Success} </font>
                     <font color="red"> ${Error}</font>
                 </b></div>
             <div class="Hotel_Room_Category_Update_wrapper_data">
-                <div class="Hotel_Room_Category_Update_wrapper_dline bc-clr">
-                    <div class="Hotel_Room_Category_Update_wrapper_dl1">
+                <div class="Hotel_Room_Category_Update_wrapper_dline" style="margin:10px auto;">
+                    <div class="Hotel_Room_Category_Update_wrapper_dl1" style="text-align:start;width:100px">
                         <label for="" class="lb">Hotel Id</label>
-                        <p>${hotelId}</p>
+                        <p style="color:gray;text-align:start">${hotelId}</p>
                     </div>
-                    <div class="Hotel_Room_Category_Update_wrapper_dl1">
+                    <div class="Hotel_Room_Category_Update_wrapper_dl1" style="text-align:start">
                         <label for="" class="lb">Hotel Name</label>
-                        <p>${hotelName}</p>
+                        <p style="color:gray">${hotelName}</p>
                     </div>
-                    <div class="Hotel_Room_Category_Update_wrapper_dl1">
+                   <div class="Hotel_Room_Category_Update_wrapper_dl1" style="text-align:start; width:400px">
                         <label for="" class="lb">Address</label>
-                        <p>${address}</p>
+                        <p style="color:gray">${address}</p>
                     </div>
-                    <div class="Hotel_Room_Category_Update_wrapper_dl1">
+                    <div class="Hotel_Room_Category_Update_wrapper_dl1" style="text-align:center">
                         <label for="" class="lb">City</label>
-                        <p>${city}</p>
+                        <p style="color:gray">${city}</p>
                     </div>
                 </div>
             </div>
+             
         </div>
     </div>
-    <table class="rm-ct-up">
-        <thead style="background:#6082B6;height:40px">
+    <table class="rm-ct-up bs">
+        <thead style="background:#6082B6;height:50px">
             <tr>
                 <th>Room Category Name</th>
                 <th>Room Hierarchy</th>
@@ -86,9 +87,9 @@
                                         <input type="hidden" name="hotelId" value="${hotelId}" />
                     
                                         <tr>
-                                            <td style="width: 10%;border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53;border-left:2px solid #FFCF53""><input type="text" style="width:250px;" size="100"
+                                            <td style="width: 10%;border-bottom:2px solid black;border-right:2px solid black;border-left:2px solid black""><input type="text" style="width:250px;" size="100"
                                                     name="roomCategoryName" value="${roomCategoryObj.roomCategoryName}" required /></td>
-                                            <td style="width: 10%;border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53">
+                                            <td style="width: 10%;border-bottom:2px solid black;border-right:2px solid black">
                                                 <div class="select" style="text-align:center;">
                                                     <select id="higherCategory" name="higherCategory" style="width: 100px;">
                                                         <c:forEach var="i" begin="0" end="5">
@@ -107,18 +108,18 @@
                                                 </div>
                     
                                             </td>
-                                            <td style="width: 10%;text-align:center;border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53">
+                                            <td style="width: 10%;text-align:center;border-bottom:2px solid black;border-right:2px solid black">
                                                 <input type="text" style="width: 60px;" name="roomSize" value="${roomCategoryObj.roomSize}"
                                                     id="roomSize" size="15" pattern="[0-9.]+" /> Sq. Ft.
                                             </td>
-                                            <td style="width: 10%;text-align:center;border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53">
+                                            <td style="width: 10%;text-align:center;border-bottom:2px solid black;border-right:2px solid black">
                                                 <input type="number" style="width: 80px;" name="noOfRooms"
                                                     value="${roomCategoryObj.noOfRooms}" id="noOfRooms" size="15" pattern="[0-9.]+" />
                                             </td>
-                                            <td style="width: 30%;text-align:center;border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53">
+                                            <td style="width: 30%;text-align:center;border-bottom:2px solid black;border-right:2px solid black">
                                                 <textarea rows="3" cols="47" name="remarks">${roomCategoryObj.remarks}</textarea>
                                             </td>
-                                            <td style="width: 10%;border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53">
+                                            <td style="width: 10%;border-bottom:2px solid black;border-right:2px solid black">
                                                 <div class="select" style="width: 120px;text-align:center;">
                                                     <select name="active">
                                                         <c:if test="${roomCategoryObj.active eq true}">
@@ -132,7 +133,7 @@
                                                     </select>
                                                 </div>
                                             </td>
-                                            <td style="width: 20%;border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53">
+                                            <td style="width: 20%;border-bottom:2px solid black;border-right:2px solid black">
                                                 <input style="background-color:#32cd32;color:white;border:none;outline:none;float:left;padding:2px 4px;border-radius:3px;
                                                 margin-left:25px" type="submit" value="Update" />
                                                 <a  href="edit_edit_hotel?hotelId=${hotelId}&action=EditRoomCategory"><input
@@ -144,9 +145,9 @@
                                 </c:when>
                                 <c:otherwise>
                                     <tr>
-                                        <td style="width: 150px;border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53;border-left:2px solid #FFCF53">${roomCategoryObj.roomCategoryName}</td>
-                                        <td style="width: 100px;text-align:center;border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53;">${roomCategoryObj.higherCategory} Higher</td>
-                                        <td style="width: 140px;text-align:center; border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53;">
+                                        <td style="width: 150px;border-bottom:2px solid black;border-right:2px solid black;border-left:2px solid black">${roomCategoryObj.roomCategoryName}</td>
+                                        <td style="width: 100px;text-align:center;border-bottom:2px solid black;border-right:2px solid black;">${roomCategoryObj.higherCategory} Higher</td>
+                                        <td style="width: 140px;text-align:center; border-bottom:2px solid black;border-right:2px solid black;">
                     
                                             <c:choose>
                                                 <c:when test="${roomCategoryObj.roomSize eq 0}">
@@ -158,7 +159,7 @@
                                             </c:choose>
                     
                                         </td>
-                                        <td style="width: 100px;text-align:center;border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53;">
+                                        <td style="width: 100px;text-align:center;border-bottom:2px solid black;border-right:2px solid black;">
                                             <c:choose>
                                                 <c:when test="${roomCategoryObj.noOfRooms eq 0}">
                                                     Un-Known
@@ -168,9 +169,9 @@
                                                 </c:otherwise>
                                             </c:choose>
                                         </td>
-                                        <td style="width: 300px;border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53;">${roomCategoryObj.remarks}</td>
-                                        <td style="width: 100px;text-align:center;border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53;">${roomCategoryObj.active}</td>
-                                        <td style="width: 10%;text-align:center;border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53;">
+                                        <td style="width: 300px;border-bottom:2px solid black;border-right:2px solid black;">${roomCategoryObj.remarks}</td>
+                                        <td style="width: 100px;text-align:center;border-bottom:2px solid black;border-right:2px solid black;">${roomCategoryObj.active}</td>
+                                        <td style="width: 10%;text-align:center;border-bottom:2px solid black;border-right:2px solid black;">
                                         
                                             <form:form id="form_update_room_cat" name="form_update_room_cat"
                                                 action="view_edit_hotel_room_category_form" method="POST" style="display:inline;">
@@ -202,9 +203,9 @@
                             style="display:inline;">
                             <input type="hidden" name="hotelId" value="${hotelId}" />
                             <tr>
-                                <td style="text-align:center;border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53;border-left:2px solid #FFCF53"><input type="text" size="100" name="roomCategoryName" style="width: 200px;"
+                                <td style="text-align:center;border-bottom:2px solid black;border-right:2px solid black;border-left:2px solid black"><input type="text" size="100" name="roomCategoryName" style="width: 200px;"
                                         required /></td>
-                                <td style="width: 100px;border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53">
+                                <td style="width: 100px;border-bottom:2px solid black;border-right:2px solid black">
                                     <div class="select" style="text-align:center;">
                                         <select id="higherCategory" name="higherCategory" style="width: 100px;">
                                             <c:forEach var="i" begin="0" end="5">
@@ -216,18 +217,18 @@
                                     </div>
                     
                                 </td>
-                                <td style="width: 140px;text-align:center;border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53">
+                                <td style="width: 140px;text-align:center;border-bottom:2px solid black;border-right:2px solid black">
                                     <input type="text" style="width: 50px;" name="roomSize" value="0" id="roomSize" size="15"
                                         pattern="[0-9.]+" /> Sq. Ft.
                                 </td>
-                                <td style="width: 100px;text-align:center;border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53">
+                                <td style="width: 100px;text-align:center;border-bottom:2px solid black;border-right:2px solid black">
                                     <input type="text" style="width: 80px;" name="noOfRooms" value="0" id="noOfRooms" size="15"
                                         pattern="[0-9.]+" />
                                 </td>
-                                <td style="width: 300px;border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53">
+                                <td style="width: 300px;border-bottom:2px solid black;border-right:2px solid black">
                                     <textarea rows="3" cols="47" name="remarks"></textarea>
                                 </td>
-                                <td style="border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53">
+                                <td style="border-bottom:2px solid black;border-right:2px solid black">
                                     <div class="select" style="width: 120px;text-align:center;">
                                         <select name="active">
                                             <option value="true" class="service-small" selected>True</option>
@@ -235,7 +236,7 @@
                                         </select>
                                     </div>
                                 </td>
-                                <td style="width: 100px;text-align:center;border-bottom:2px solid #FFCF53;border-right:2px solid #FFCF53">
+                                <td style="width: 100px;text-align:center;border-bottom:2px solid black;border-right:2px solid black">
                                     <input style="background-color:#32cd32  ;color:white;border:none;outline:none;float:left;padding:2px 4px;border-radius:3px;
                                                 margin-left:15px" type="submit" value="ADD" />
                                     <a href="edit_edit_hotel?hotelId=${hotelId}&action=EditRoomCategory"><input

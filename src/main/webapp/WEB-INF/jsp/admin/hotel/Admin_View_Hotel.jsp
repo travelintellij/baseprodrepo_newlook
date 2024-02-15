@@ -33,7 +33,7 @@ body::before {
 </style>
 <body>
     <div class="Admin_View_Hotel container">
-        <div class="Admin_View_Hotel_wrapper">
+        <div class="Admin_View_Hotel_wrapper bs">
             <h1 style="font-size: 25px;color: #32cd32 ;margin: 10px 0;">Hotal Id : ${hotelMasterObj.hotelId}</h1>
             <div align="center" style="margin:10px 0"><b>
                     <font color="#32cd32 "> ${Success} </font>
@@ -43,25 +43,25 @@ body::before {
                 <div class="Admin_View_Hotel_wrapper_data_line a">
                     <div class="Admin_View_Hotel_wrapper_d1">
                         <label for="" class="lb">Hotal Chain Name</label>
-                        <p>${hotelMasterObj.hotelChainName}</p>
+                        <p style="color:gray">${hotelMasterObj.hotelChainName}</p>
                     </div>
                     <div class="Admin_View_Hotel_wrapper_d1">
                         <label for="" class="lb">Hotal Name</label>
-                        <p>${hotelMasterObj.hotelName}</p>
+                        <p style="color:gray">${hotelMasterObj.hotelName}</p>
                     </div>
                     <div class="Admin_View_Hotel_wrapper_d1">
                         <label for="" class="lb">City</label>
-                        <p>${hotelMasterObj.cityName}</p>
+                        <p style="color:gray">${hotelMasterObj.cityName}</p>
                     </div>
                     <div class="Admin_View_Hotel_wrapper_d1">
                         <label for="" class="lb">Locality</label>
-                        <p>${hotelMasterObj.locality}</p>
+                        <p style="color:gray">${hotelMasterObj.locality}</p>
                     </div>
                 </div>
                 <div class="Admin_View_Hotel_wrapper_data_line a">
                     <div class="Admin_View_Hotel_wrapper_d1">
                         <label for="" class="lb">Room Category</label>
-                        <p><c:forEach items="${hotelMasterObj.roomCategoryEntityList}" var="roomCategory">
+                        <p  style="color:gray"><c:forEach items="${hotelMasterObj.roomCategoryEntityList}" var="roomCategory">
                         
                             <li>${roomCategory.roomCategoryName}</li>
                         
@@ -69,39 +69,39 @@ body::before {
                     </div>
                     <div class="Admin_View_Hotel_wrapper_d1">
                         <label for="" class="lb">Active</label>
-                        <p>${hotelMasterObj.active}</p>
+                        <p  style="color:gray">${hotelMasterObj.active}</p>
                     </div>
                     <div class="Admin_View_Hotel_wrapper_d1">
                         <label for="" class="lb">Hotel Category</label>
-                        <p>${hotelMasterObj.starCategory} Star</p>
+                        <p  style="color:gray">${hotelMasterObj.starCategory} Star</p>
                     </div>
                     <div class="Admin_View_Hotel_wrapper_d1">
                         <label for="" class="lb">Is Prefered</label>
-                        <p>${hotelMasterObj.preferred}</p>
+                        <p  style="color:gray">${hotelMasterObj.preferred}</p>
                     </div>
                 </div>
                 <div class="Admin_View_Hotel_wrapper_data_line a">
                     <div class="Admin_View_Hotel_wrapper_d1">
                         <label for="" class="lb">Hotal Rating</label>
-                        <p>${hotelMasterObj.udnServiceRating} Star</p>
+                        <p  style="color:gray">${hotelMasterObj.udnServiceRating} Star</p>
                     </div>
                     <div class="Admin_View_Hotel_wrapper_d1">
                         <label for="" class="lb">Address</label>
-                        <p>${hotelMasterObj.address}</p>
+                        <p  style="color:gray">${hotelMasterObj.address}</p>
                     </div>
                     <div class="Admin_View_Hotel_wrapper_d1">
                         <label for="" class="lb">Phone No.</label>
-                        <p>${hotelMasterObj.phone}</p>
+                        <p  style="color:gray">${hotelMasterObj.phone}</p>
                     </div>
                     <div class="Admin_View_Hotel_wrapper_d1">
                         <label for="" class="lb">Email</label>
-                        <p>${hotelMasterObj.email}</p>
+                        <p  style="color:gray">${hotelMasterObj.email}</p>
                     </div>
                 </div>
                 <div class="Admin_View_Hotel_wrapper_data_line a">
                     <div class="Admin_View_Hotel_wrapper_d1" style="width:100%">
                         <label for="" class="lb">Remarks</label>
-                        <p>${hotelMasterObj.remarks}</p>
+                        <p  style="color:gray">${hotelMasterObj.remarks}</p>
                     </div>
                 </div>
                 <div class="due_today_task_data_btnss" style="margin-top:20px">

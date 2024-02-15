@@ -56,7 +56,7 @@
    
    
     <div class="Admin_Add_Visa container">
-        <div class="Admin_Add_Visa_wrapper">
+        <div class="Admin_Add_Visa_wrapper bs">
             <h1 class="page-heading">Add Visa</h1>
             <div align="center"><b>
                     <font color="green"> ${Success} </font>
@@ -133,19 +133,19 @@
                 <div class="Admin_Add_Visa_wrapper_data_line_remarks">
                     <div class="Admin_Add_Visa_wrapper_data_l1">
                         <label for="">Internal Remarks</label>
-                        <textarea rows="2" cols="67"
+                        <textarea rows="5" cols="67"
                             name="internalRemarks" htmlEscape="false" maxlength="1040" placeholder="Will never be shared with clients"></textarea>
                     </div>
                     <div class="Admin_Add_Visa_wrapper_data_l1">
                         <label for="">Other Costs</label>
-                        <textarea  rows="2" cols="67"
+                        <textarea  rows="5" cols="67"
                             name="otherCosts" htmlEscape="false" maxlength="1040" placeholder="Like extended validity visa options"></textarea>
                     </div>
                 </div>
                 <div class="Admin_Add_Visa_wrapper_data_line_remarks">
                     <div class="Admin_Add_Visa_wrapper_data_l1">
                         <label for="">Remarks</label>
-                        <textarea  rows="2" cols="140"
+                        <textarea  rows="5" cols="140"
                             name="remarks" htmlEscape="false" maxlength="1995"></textarea>
                     </div>
                 </div>

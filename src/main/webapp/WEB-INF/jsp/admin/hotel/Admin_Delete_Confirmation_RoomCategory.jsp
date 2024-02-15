@@ -35,38 +35,38 @@
 </style>
                 <body>
                     <div class="Admin_Delete_Confirmation_RoomCategory container">
-                        <div class="Admin_Delete_Confirmation_RoomCategory_wr">
+                        <div class="Admin_Delete_Confirmation_RoomCategory_wr bs">
                             <form:form method="post" action="delete_delete_room_category">
                                 <input type="hidden" name="roomCategoryId"
                                     value="${ROOM_CATEGORY_OBJ.roomCategoryId}" />
                                 <h1 style="font-size: 25px;color:red;margin: 10px 0;">Delete Room Category <i
                                         class="fa-solid fa-triangle-exclamation fa-lg"></i></h1>
-                                <div class="Admin_Delete_Confirmation_RoomCategory_wr_dl bc-clr">
+                                <div class="Admin_Delete_Confirmation_RoomCategory_wr_dl ">
                                     <div class="Admin_Delete_Confirmation_RoomCategory_wr_dl1">
                                         <label for="" class="lb">Room Category Id</label>
-                                        <p>${ROOM_CATEGORY_OBJ.roomCategoryId}</p>
+                                        <p style="color:gray">${ROOM_CATEGORY_OBJ.roomCategoryId}</p>
                                     </div>
                                     <div class="Admin_Delete_Confirmation_RoomCategory_wr_dl1">
                                         <label for="" class="lb">Room Category Name</label>
-                                        <p>${ROOM_CATEGORY_OBJ.roomCategoryName}</p>
+                                        <p style="color:gray">${ROOM_CATEGORY_OBJ.roomCategoryName}</p>
                                     </div>
                                     <div class="Admin_Delete_Confirmation_RoomCategory_wr_dl1">
                                         <label for="" class="lb">Hotel Name</label>
-                                        <p>${ROOM_CATEGORY_OBJ.hotelName}</p>
+                                        <p style="color:gray">${ROOM_CATEGORY_OBJ.hotelName}</p>
                                     </div>
                                     <div class="Admin_Delete_Confirmation_RoomCategory_wr_dl1">
                                         <label for="" class="lb">Active</label>
-                                        <p>${ROOM_CATEGORY_OBJ.active eq true }</p>
+                                        <p style="color:gray">${ROOM_CATEGORY_OBJ.active eq true }</p>
                                     </div>
                                 </div>
-                                <div class="Admin_Delete_Confirmation_RoomCategory_wr_dl bc-clr">
+                                <div class="Admin_Delete_Confirmation_RoomCategory_wr_dl ">
                                     <div class="Admin_Delete_Confirmation_RoomCategory_wr_dl1" style="width:100%">
                                         <label for="" class="lb">Remarks</label>
-                                        <p>${ROOM_CATEGORY_OBJ.remarks}</p>
+                                        <p style="color:gray">${ROOM_CATEGORY_OBJ.remarks}</p>
                                     </div>
                                 </div>
                                 <div class="due_today_task_data_btnss">
-                                    <input type="submit" style="background-color:red;" value="CONFIRM DELETE">
+                                    <input type="submit" style="background-color:red;color:white" value="CONFIRM DELETE">
                                     <a
                                         href="edit_edit_hotel?hotelId=${ROOM_CATEGORY_OBJ.hotelId}&action=EditRoomCategory"><input
                                              type="button" value="Cancel" /></a>

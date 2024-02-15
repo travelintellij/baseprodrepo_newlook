@@ -33,52 +33,52 @@
 </style>
 <body>
     <div class="Admin_View_Visa_Consulate container">
-        <div class="Admin_View_Visa_Consulate_wrapper">
+        <div class="Admin_View_Visa_Consulate_wrapper bs">
             <div align="center"><b>
                     <font color="green"> ${Success} </font>
                     <font color="red"> ${Error}</font>
                 </b></div>
             <form:form method="post" action="view_edit_visa_consulate_form" modelAttribute="VISA_CONSULATE_OBJ">
                 <input type="hidden" name="consulateId" value="${VISA_CONSULATE_OBJ.consulateId}" />
-                <h1 style="font-size: 20px;margin-bottom: 10px;">View Visa Consulate</h1>
+                <h1 class="hd" >View Visa Consulate</h1>
                 <div class="Admin_View_Visa_Consulate_wrapepr_data">
                     <div class="Admin_View_Visa_Consulate_wrapepr_data_line a">
                         <div class="Admin_View_Visa_Consulate_wrapepr_data_l1">
                             <label for="" class="lb">Visa Country Name (Embassy)</label>
-                            <p>${VISA_CONSULATE_OBJ.countryName}</p>
+                            <p style="color:gray">${VISA_CONSULATE_OBJ.countryName}</p>
                         </div>
                         <div class="Admin_View_Visa_Consulate_wrapepr_data_l1">
                             <label for="" class="lb">Consulate Title</label>
-                            <p>${VISA_CONSULATE_OBJ.consulateTitle}</p>
+                            <p style="color:gray">${VISA_CONSULATE_OBJ.consulateTitle}</p>
                         </div>
                         <div class="Admin_View_Visa_Consulate_wrapepr_data_l1">
                             <label for="" class="lb">Consulate city</label>
-                            <p>${VISA_CONSULATE_OBJ.cityName}</p>
+                            <p style="color:gray">${VISA_CONSULATE_OBJ.cityName}</p>
                         </div>
                         <div class="Admin_View_Visa_Consulate_wrapepr_data_l1">
                             <label for="" class="lb">Address</label>
-                            <p>${VISA_CONSULATE_OBJ.address}</p>
+                            <p style="color:gray">${VISA_CONSULATE_OBJ.address}</p>
                         </div>
                     </div>
                     <div class="Admin_View_Visa_Consulate_wrapepr_data_line a">
                  
                         <div class="Admin_View_Visa_Consulate_wrapepr_data_l1">
                             <label for="" class="lb">Website</label>
-                            <p>${VISA_CONSULATE_OBJ.website}</p>
+                            <p style="color:gray">${VISA_CONSULATE_OBJ.website}</p>
                         </div>
                         <div class="Admin_View_Visa_Consulate_wrapepr_data_l1">
                             <label for="" class="lb">Telephone</label>
-                            <p>${VISA_CONSULATE_OBJ.telephone}</p>
+                            <p style="color:gray">${VISA_CONSULATE_OBJ.telephone}</p>
                         </div>
                         <div class="Admin_View_Visa_Consulate_wrapepr_data_l1">
                             <label for="" class="lb">Fax</label>
-                            <p>${VISA_CONSULATE_OBJ.fax}</p>
+                            <p style="color:gray">${VISA_CONSULATE_OBJ.fax}</p>
                         </div>
                     </div>
                             <div class="Admin_View_Visa_Consulate_wrapepr_data_line a">
                         <div class="Admin_View_Visa_Consulate_wrapepr_data_l1" >
                             <label for="" class="lb">Email</label>
-                            <p style="width:100%">${VISA_CONSULATE_OBJ.email}</p>
+                            <p style="width:100%;color:gray">${VISA_CONSULATE_OBJ.email}</p>
                         </div>
                        </div>
                     <div class="due_today_task_data_btns">

@@ -20,13 +20,6 @@
         <div class="navbar container">
             <div class="topHeader">
           
-          
-          
-          
-   
-          
-          
-          
                 <div class="rightSec">
                     <!-- ###### start of hamburgur menu#### -->
                     <input type="checkbox" class="headerCheckbox">

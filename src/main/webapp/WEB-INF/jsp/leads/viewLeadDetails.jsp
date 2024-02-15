@@ -36,7 +36,7 @@
 
 <body >
     <div class="edit_lead container">
-        <div class="edit_lead_wrapper" style="background:black">
+        <div class="edit_lead_wrapper bs" style="background:white">
 
             <form:form modelAttribute="LEAD_OBJ" action="form_view_editlead">
                 <form:hidden path="leadId" />
@@ -119,42 +119,42 @@
                             <p>${LEAD_OBJ.statusName}</p>
                         </div>
                     </div>
-                      <label for="" style="margin-right:20px;  color: #FFBA08;font-weight: bold;">Select Services</label>
+                      <label for="" style="margin-right:20px;color: black;font-weight: bold;text-align:start">Selected Services</label>
                     <div class="edit_lead_wrapper_data_line" style=" margin-top: 10px;">
-                        <div class="edit_ser_box" style="width:100%;background:black;color:white">
+                        <div class="edit_ser_box" style="width:100%;background:lightgray;color:white">
                             <div class="ser_1" style="display:flex;align-items:center">
-                                <label for="">Flight</label>
+                                <label for="" style="color:black">Flight</label>
                                 <form:checkbox class="ch_c" path="flight" name="flight" disabled="true" style="width:18px;height:18px;margin-left:5px"/></div>
                                     <div class="ser_1" style="display:flex;align-items:center">
-                                        <label for="">Hotal</label>
+                                        <label for="" style="color:black">Hotal</label>
                                         <form:checkbox class="ch_c" path="hotel" name="hotel" disabled="true" style="width:18px;height:18px;margin-left:5px"/>
                                     </div>
                                     <div class="ser_1"  style="display:flex;align-items:center">
-                                        <label for="">Visa</label>
+                                        <label for="" style="color:black">Visa</label>
                                         <form:checkbox class="ch_c" path="visa" name="visa" disabled="true" style="width:18px;height:18px;margin-left:5px"/>
                                     </div>
                                     <div class="ser_1"  style="display:flex;align-items:center"v>
-                                        <label for="">Insurance</label>
+                                        <label for="" style="color:black">Insurance</label>
                                         <form:checkbox class="ch_c" path="insurance" name="insurance" disabled="true" style="width:18px;height:18px;margin-left:5px"/>
                                     </div>
                                     <div class="ser_1"  style="display:flex;align-items:center">
-                                        <label for="">Transfers</label>
+                                        <label for="" style="color:black">Transfers</label>
                                         <form:checkbox class="ch_c" path="transfers" name="transfers" disabled="true" style="width:18px;height:18px;margin-left:5px"/>
                                     </div>
                                     <div class="ser_1"  style="display:flex;align-items:center">
-                                        <label for="">Sightseeing</label>
+                                        <label for="" style="color:black">Sightseeing</label>
                                         <form:checkbox class="ch_c" path="sightseeing" name="sightseeing" disabled="true" style="width:18px;height:18px;margin-left:5px"/>
                                     </div>
                                     <div class="ser_1"  style="display:flex;align-items:center">
-                                        <label for="">Package</label>
+                                        <label for="" style="color:black">Package</label>
                                         <form:checkbox class="ch_c" path="landPackage" name="landPackage;" disabled="true" style="width:18px;height:18px;margin-left:5px"/>
                                     </div>
                                     <div class="ser_1"  style="display:flex;align-items:center">
-                                        <label for="">Cruise</label>
+                                        <label for="" style="color:black">Cruise</label>
                                         <form:checkbox class="ch_c" path="cruise" name="cruise" disabled="true" style="width:18px;height:18px;margin-left:5px" />
                                     </div>
                                     <div class="ser_1"  style="display:flex;align-items:center">
-                                        <label for="">Others</label>
+                                        <label for="" style="color:black">Others</label>
                                         <form:checkbox class="ch_c"  path="others" name="others" disabled="true" style="width:18px;height:18px;margin-left:5px;background:red"/>
                                     </div>
                             </div>
@@ -172,7 +172,7 @@
                         </div>
 
                         <div class="info-client view_lead_tag_team" style="margin-top: 10px;">
-                            <label for="" style="color: #FFBA08;font-weight: bold;margin-right:10px">Tag Team Mate</label>
+                            <label for="" style="color: black;margin-right:10px">Tag Team Mate</label>
                             <c:forEach items="${LEAD_OBJ.team}" var="leadteam">
                                 <li >${leadteam.name}</li> &nbsp; &nbsp; &nbsp;
                             </c:forEach>

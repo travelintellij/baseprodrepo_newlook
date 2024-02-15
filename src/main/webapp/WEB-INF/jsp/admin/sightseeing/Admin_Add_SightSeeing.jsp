@@ -52,7 +52,7 @@
 </div>
     
     <div class="Admin_Add_SightSeeing container">
-        <div class="Admin_Add_SightSeeing_wrapper">
+        <div class="Admin_Add_SightSeeing_wrapper bs">
        
             <div align="center"><b>
                     <font color="green"> ${Success} </font>

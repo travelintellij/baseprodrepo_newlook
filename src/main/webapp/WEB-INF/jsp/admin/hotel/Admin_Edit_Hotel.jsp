@@ -52,7 +52,7 @@
 </div>
                 
                     <div class="Admin_View_Hotel container">
-                        <div class="Admin_View_Hotel_wrapper">
+                        <div class="Admin_View_Hotel_wrapper bs">
                             <form:form method="post" action="edit_edit_hotel" modelAttribute="hotel_obj">
                                 <input type="hidden" name="hotelId" id="hotelId" value="${hotel_obj.hotelId}" />
                                 <h1 style="font-size: 25px;color: #32cd32 ;margin: 10px 0;">Edit Hotal </h1>
@@ -183,7 +183,7 @@
                                      <div class="Admin_View_Hotel_wrapper_data_line">
                                         <div class="Admin_View_Hotel_wrapper_d1" style="width:100%">
                                             <label for="">Remarks</label> <br>
-                                            <textarea rows="2" cols="139" name="remarks">${hotel_obj.remarks}</textarea>
+                                            <textarea rows="5" cols="139" name="remarks">${hotel_obj.remarks}</textarea>
                                         </div>
                                     </div>
                                     <div class="due_today_task_data_btnss" style="margin:10px 0">

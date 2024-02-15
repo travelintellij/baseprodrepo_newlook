@@ -51,7 +51,7 @@
 </div>
   
     <div class="searchSightSeeing container">
-        <div class="searchSightSeeing_wrapper">
+        <div class="searchSightSeeing_wrapper bs">
          <h1 style="font-size: 30px;
     color: #FFBA08;
     margin-bottom: 10px;">Search Sight Seeing </h1>

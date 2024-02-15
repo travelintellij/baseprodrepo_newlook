@@ -52,7 +52,7 @@
             <input type="hidden" name="visaPurpose" value="${VISA_OBJ.visaPurpose}" />
             <div class="admin_visa_update_fr container">
                 <div class="admin_visa_update_fr_wrapper">
-                    <h1 style="font-size: 25px;margin:15px 0;text-align: center;">Country Name: <span style="font-size: 25px;color:#32cd32  ">
+                    <h1 style="font-size: 25px;margin:15px 0;text-align: center;">Country Name rr: <span style="font-size: 25px;color:#32cd32  ">
                             ${VISA_OBJ.countryName}</span> </h1>
                     <div class="admin_visa_update_fr_wrapper_data">
                         <div class="admin_visa_update_fr_wrapper_data_line" style="margin-bottom:10px">
@@ -126,8 +126,8 @@
 			</c:when>
 			<c:otherwise>			
  			 <div class="abc_fom container">
-        <div class="abc_fom_wrapper">
-            <h1 style="font-size: 25px;margin:10px 0">Country Name : <span style="font-size: 25px;margin:10px 0">${VISA_OBJ.countryName}</span> </h1>
+        <div class="abc_fom_wrapper bs">
+            <h1 style="font-size: 25px;margin:10px 0;color:#32cd32 ">Country Name  : <span style="font-size: 25px;margin:10px 0">${VISA_OBJ.countryName}</span> </h1>
             <div class="abc_fom_wrapper_data">
                 <div class="abc_fom_wrapper_data_line a">
                     <div class="abc_fom_wrapper_data_l1">
@@ -176,8 +176,8 @@
                         <p>${VISA_OBJ.otherCosts}</p>
                     </div>
                 </div>
-                <div class="abc_fom_wrapper_data_line a">
-                    <div class="abc_fom_wrapper_data_l1_rems">
+                <div class="abc_fom_wrapper_data_line a" style="width:100%;">
+                    <div class="abc_fom_wrapper_data_l1_rems" style="width:100%">
                         <label for="" class="lb">Remarks</label>
                         <p>${VISA_OBJ.remarks}</p>
                     </div>
@@ -189,7 +189,7 @@
 		</c:choose>
 		</table>
 		
-		<div class="btn-div" style="background:black;padding-bottom:20px;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;">
+		<div class="btn-div" style="background:white;padding-bottom:20px;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;">
 		<c:if test="${VISA_MASTER_ACTION ne 'UPDATE'}">
 			<table  style="width:100%; border-collapse: collapse;"  align="center">
 			<form:form modelAttribute="VISA_OBJ" action="view_update_visa_master_form" style="display:inline;">	
@@ -216,22 +216,22 @@
 		
 		<div style="margin-top:-45px">
 		
-		<table border="1 px;" style="width:1500px;margin-left:-150px; border-collapse: collapse;background:black;color:white;"  align="center">
+		<table class="bs" border="1 px;" style="width:1500px;margin-left:-150px; border-collapse: collapse;background:white;color:black;"  align="center">
 			<tr style="height:50px;background:#6082B6">
 				<div style="border-radius:5px;margin-bottom:20px;margin-left:400px;background:black;width:400px;text-align:center"><b><font color="#32cd32" > ${Success} </font><font color="red"> ${Error}</font> </b></div>
-				<th style="width:2%;color:black;text-align:center">Document Id</th>
+				<th style="width:10%;color:black;text-align:center">Document Id</th>
 				<th style="width:20%;color:black;">Document Title</th>
 				<th style="width:40%;color:black">Document Description</th>
-				<th style="width:20%;color:black;text-align:center">Action</th>
+				<th style="width:10%;color:black;text-align:center">Action</th>
 			</tr>
 			<c:forEach var="visaDocObj" items="${VISA_DOC_LIST}">
 				<c:choose>
 				<c:when test="${ORG_VISA_DOC_OBJ.visaDocId eq visaDocObj.visaDocId  && VISA_DOC_ACTION eq 'UPDATE' }">
 					<form:form modelAttribute="VISA_DOC_OBJ" action="edit_edit_visa_doc" style="display:inline;">
-					<tr><td style="width:5%;text-align:center">${ORG_VISA_DOC_OBJ.visaDocId}</td>
+					<tr><td style="width:10%;text-align:center">${ORG_VISA_DOC_OBJ.visaDocId}</td>
 					<td style="width:25%;text-align:center"><input style="width:300px;" type="text" id="documentTitle"  name="documentTitle" placeholder="document Title" value="${ORG_VISA_DOC_OBJ.documentTitle}" required /></td>
 					<td style="width:40%;text-align:center"><textarea rows="3" cols="80" name="description" required>${ORG_VISA_DOC_OBJ.description}</textarea> </td>
-					<td style="width:20%;">
+					<td style="width:10%;">
 						<table style="margin: 0 auto;">
 							<tr>
 								<td>
@@ -293,7 +293,7 @@
 			</c:forEach>
 			<c:if test="${VISA_DOC_ACTION eq 'ADD'}">
 				<form:form modelAttribute="VISA_DOC_OBJ" action="add_add_visa_doc" style="display:inline;">
-					<tr style="background-color:black;color:orangered;text-align:center"><td>Auto Generated</td>
+					<tr style="background-color:white;color:orangered;text-align:center"><td>Auto Generated</td>
 					<td><input style="width:300px;" type="text" id="documentTitle"  name="documentTitle" placeholder="document Title" required /></td>
 					<td><textarea rows="1" cols="60" name="description" placeholder="Description" required></textarea> </td>
 					<td>

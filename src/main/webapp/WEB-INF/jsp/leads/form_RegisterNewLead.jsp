@@ -52,9 +52,9 @@
 </div>
    
     <div class="edit_lead container">
-        <div class="edit_lead_wrapper">
+        <div class="edit_lead_wrapper bs">
             <form:form modelAttribute="LEAD_OBJ" action="create_create_lead">
-                <h1 class="page-heading">Capture New Lead</h1>
+                <h1 class="page-heading">Capture New Lead </h1>
                 <caption>
                     <font color="red">
                         <form:errors path="adults" cssClass="error" />
@@ -171,7 +171,7 @@
                              </div>
                                 <div class="edit_lead_wrapper_data_l1">
                                     <label for="">Status</label>
-                                    <p>${LEAD_OBJ.statusName}</p>
+                                    <p style="color:#32cd32;font-weight:bold">${LEAD_OBJ.statusName}</p>
                                     <form:hidden path="leadStatus" />
                                 </div>
                         </div>
@@ -187,9 +187,9 @@
                             </font>
                         </caption>
                         <div style="text-align:start">
-                          <label for="" style="margin-right: 20px;   color: #FFBA08;
+                          <label for="" style="margin-right: 20px;   color: black;
     font-weight: bold;">Select Services</label></div>
-                        <div class="edit_lead_wrapper_data_line" style=" margin-top: 10px;">
+                        <div class="edit_lead_wrapper_data_line" style=" margin-top:5px;padding:10px 5px">
                             <div class="edit_ser_box" style="padding:0 5px">
                                 <div class="ser_1" style="display:flex;align-items:center">
                                     <label for="">Flight</label>
@@ -233,18 +233,18 @@
                         <div class="edit_lead_wrapper_data_l1_rem" style="margin-top: 10px;">
                             <div class="edit_lead_wrapper_data_l1_rem1">
                                 <label for="">Client Remarks</label> <br>
-                                <form:textarea path="clientRemarks" maxlength="1450" name="" id="" cols="68" rows="2" />
+                                <form:textarea path="clientRemarks" maxlength="1450" name="" id="" cols="68" rows="5" />
                             </div>
                             <div class="edit_lead_wrapper_data_l1_rem2" style="margin-left: 17px;">
                                 <label for="">Internal Remarks</label> <br>
                                 <form:textarea path="internalRemarks" maxlength="1450" name="" id="" cols="66"
-                                    rows="2" />
+                                    rows="5" />
                             </div>
                         </div>
 
                         <div class=" info-client" style="margin-top: 10px;">
                             <div class="sub_info-client">
-                                <form:checkbox path="leadCreationClientInformed" checked="checked" />
+                                <form:checkbox path="leadCreationClientInformed" checked="checked" style="width:18px;height:18px"/>
                                 <label for="">Inform client about the lead creation (email will be sent)</label>
                             </div>
                         </div>

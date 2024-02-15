@@ -100,7 +100,7 @@ header {
     position: absolute;
     left: 8px;
     display: none;
-    width: 170px;
+    width: 200px;
     height: auto;
     padding: 10px 5px;
     background: black;
@@ -1311,8 +1311,8 @@ footer {
     margin-top: 120px;
     /* border: 2px solid red; */
     padding: 10px;
-    background: rgba(0, 0, 0, 0.9);
-    color: white;
+    background: white;
+    color: black;
     border-radius: 10px;
 }
 
@@ -1332,15 +1332,16 @@ footer {
 .fwnext-todo textarea {
     height: 50px;
     width: 580px;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
-.fwaction-taken p,
-.fwnext-todo p {
-    margin: 0;
-    font-size: 21px;
+.follow-up-lead-action-time input{
+	width:310px
 }
 
+.follow-up-next-action-time input{
+	width:310px
+}
 .follow-up-p {
     margin: 0;
 }
@@ -1366,9 +1367,7 @@ footer {
     color: #FFBA08;
 }
 
-.follow-up-main-form label {
-    font-size: 21px;
-}
+
 
 .follow-up-btn a {
     display: inline-block;
@@ -1391,12 +1390,12 @@ footer {
 
 .follow-up-main-tabel table {
 	margin:60px auto;
-    color: white;
+    color: black;
     width: 1300px;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 0.689);
+    background: white;
     padding: 10px;
     border-radius: 10px;
 }
@@ -3400,12 +3399,12 @@ transition: all 0.2s ease-in-out;
 
 
 .Admin_Add_SightSeeing_wrapper {
-    color: white;
+    color: black;
     width: 100%;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 0.9);
+    background: white;
     padding: 10px;
     border-radius: 10px;
     margin-top: 115px;
@@ -3446,12 +3445,12 @@ transition: all 0.2s ease-in-out;
 /* ################# search sight seeing ############### */
 
 .searchSightSeeing_wrapper {
-    color: white;
+    color: black;
     width: 100%;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 0.8);
+    background: white;
     padding: 10px;
     border-radius: 10px;
     margin-top: 115px;
@@ -3684,12 +3683,12 @@ transition: all 0.2s ease-in-out;
 
 /* ################ Admin_Add_Visa #################### */
 .Admin_Add_Visa_wrapper{
-    color: white;
+    color: black;
     width: 100%;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 9);
+    background: white;
     padding: 10px;
     border-radius: 10px;
     margin-top: 115px;
@@ -3748,12 +3747,12 @@ transition: all 0.2s ease-in-out;
 
 /* ################ admin_add_visa_consulate ################## */
 .Admin_Add_Visa_Consulate_wrapper {
-    color: white;
+    color: black;
     width: 100%;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 9);
+    background: white;
     padding: 10px;
     border-radius: 10px;
     margin-top: 115px;
@@ -3781,14 +3780,12 @@ transition: all 0.2s ease-in-out;
 /* ###################### Admin_Search_Visa_Consulate ################# */
 
 .Admin_Search_Visa_Consulate_wrapper {
-    color: white;
+    color: black;
     width: 100%;
     text-align: center;
     border-collapse: collapse;
-    
-    
     border: none;
-    background: rgba(0, 0, 0, 9);
+    background: white;
     padding: 10px;
     border-radius: 10px;
     margin-top: 115px;
@@ -3796,8 +3793,10 @@ transition: all 0.2s ease-in-out;
 
 .Admin_Search_Visa_Consulate_wrapper_data_line {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     text-align: start;
+    width: 950px;
+    margin:10px auto
 }
 
 .Admin_Search_Visa_Consulate_wrapper_data_l1 {
@@ -4184,8 +4183,8 @@ font-weight: bold;
         /* ################### manageStatus_table ################## */
 .manageStatus_table{
     text-align: center;
-    background: rgba(0, 0, 0, 9);
-    color: white;
+    background:white;
+    color: black;
     width: 100%;
     border-radius: 10px;
         margin-top: 115px;
@@ -4347,12 +4346,12 @@ color:#249C91;
 /* ################## edit lead ################### */
 
 .edit_lead_wrapper {
-    color: white;
+    color: black;
     width: 100%;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 0.9);
+    background: white;
     padding: 10px;
     border-radius: 10px;
     margin-top: 115px;
@@ -4370,8 +4369,7 @@ color:#249C91;
 }
 
 .edit_lead_wrapper_data_line .edit_lead_wrapper_data_l1 label {
-    color: #FFBA08;
-    font-weight: bold;
+    color: black;
 }
 
 .edit_lead_wrapper_data_line .edit_lead_wrapper_data_l1 input {
@@ -4425,13 +4423,12 @@ color:#249C91;
 }
 
 .edit_lead_wrapper_data_l1_rem1 label {
-    color: #FFBA08;
-    font-weight: bold;
+    color: black;
 }
 
 .edit_lead_wrapper_data_l1_rem2 label {
-    color: #FFBA08;
-    font-weight: bold;
+    color: black;
+   
 }
 .info-client_3{
     display: flex;
@@ -5010,12 +5007,12 @@ justify-content: center;
 
 
 .viewVisaQuotationDetails_wrapper {
-    color: white;
+    color: black;
     width: 500px;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 0.689);
+    background: white;
     padding: 10px;
     border-radius: 10px;
     margin: 20px auto;
@@ -5135,12 +5132,12 @@ justify-content: center;
 /* ##################### view_visa_master_details_modal ###################### */
 
 .view_visa_master_details_modal_wrapper {
-    color: white;
+    color: black;
     width: 1200px;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 7);
+    background: white;
     padding: 10px;
     border-radius: 10px;
     margin: 0 auto;
@@ -5403,12 +5400,12 @@ font-weight: bold;
     text-align: start;
 }
 .vst_wrapper {
-    color: white;
+    color: black;
     width: 100%;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 9);
+    background:white;
     padding: 10px;
     border-radius: 10px;
     margin-top: 10px;
@@ -5416,7 +5413,7 @@ font-weight: bold;
 
 .vsth {
     font-weight: bold;
-    color: #FABA08;
+    color: black;
 }
 .vts-btn a{
 	color:red
@@ -5427,12 +5424,12 @@ font-weight: bold;
 /* ################### Admin_View_Visa_Consulate ################ */
 
 .Admin_View_Visa_Consulate_wrapper {
-    color: white;
+    color: black;
     width: 100%;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 9);
+    background: white;
     padding: 10px;
     border-radius: 10px;
     margin-top: 115px;
@@ -5451,12 +5448,12 @@ font-weight: bold;
 /* #################### vstab ################## */
 
 .vstab {
-    color: white;
+    color: black;
     width: 1500px;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 7);
+    background: white;
     padding: 10px;
     border-radius: 10px;
     margin: 0 auto;
@@ -5478,8 +5475,8 @@ font-weight: bold;
     margin:0 auto;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    background: black;
-    color: white;
+    background: white;
+    color: black;
     align-items: center;
 }
 .vstab-btn input{
@@ -5547,12 +5544,12 @@ font-weight: bold;
 
 /* ####################  Admin_Del_Con_Visa_Docs ################  */
 .Admin_Del_Con_Visa_Docs_wrapper {
-    color: white;
+    color: black;
     width: 100%;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 9);
+    background: white;
     padding: 10px;
     border-radius: 10px;
     margin-top: 115px;
@@ -5587,12 +5584,12 @@ font-weight: bold;
 /* ##################################################### */
 
 .abc_fom_wrapper{
-    color: white;
+    color: black;
         width: 100%;
         text-align: center;
         border-collapse: collapse;
         border: none;
-        background: rgba(0, 0, 0, 9);
+        background: white;
         padding: 10px;
         margin-top: 115px;
         border-top-left-radius: 10px;
@@ -6430,11 +6427,11 @@ color: white;
 }
 /* ###############Admin_View_Hotel_wrapper############# */
 .Admin_View_Hotel_wrapper {
-    color: white;
+    color: black;
         text-align: center;
         border-collapse: collapse;
         border: none;
-        background: rgba(0, 0, 0, 9);
+        background: white;
         padding: 10px;
         border-radius: 10px;
         margin-top: 115px;
@@ -6494,11 +6491,11 @@ transition: all 0.3s ease-in-out;
 }
 /* ################# hotel room category ########### */
 .Hotel_Room_Category_Update_wrapper {
-    color: white;
+    color: black;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 9);
+    background: white;
     padding: 10px;
     border-radius: 10px;
     margin-top: 115px;
@@ -6515,11 +6512,11 @@ transition: all 0.3s ease-in-out;
 
 .rm-ct-up {
     width: 95vw;
-    color: white;
+    color: black;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 9);
+    background: white;
     padding: 10px;
     border-radius: 10px;
     margin: 15px auto;
@@ -6527,11 +6524,11 @@ transition: all 0.3s ease-in-out;
 /* ############### Admin_Delete_Confirmation_RoomCategory_wr############## */
 
 .Admin_Delete_Confirmation_RoomCategory_wr {
-    color: white;
+    color: black;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 9);
+    background: white;
     padding: 10px;
     border-radius: 10px;
     margin-top: 115px;
@@ -6548,11 +6545,11 @@ transition: all 0.3s ease-in-out;
 /* ################## form_searchSightSeeing_Result  #################### */
 
 .form_searchSightSeeing_Result_wrapper {
-    color: white;
+    color: black;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 9);
+    background: white;
     padding: 10px;
     border-radius: 10px;
     margin-top: 115px;

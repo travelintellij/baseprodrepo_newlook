@@ -128,9 +128,9 @@
         
         <form:form action="view_filter_leads" modelAttribute="FILTER_LEAD_WL">
             <!-- ############## start of upper part ############# -->
-            <div class="upperPart">
+            <div class="upperPart bs">
                 <input type="hidden" name="onlyLeadOwner" value="true" />
-                <h1 class="heading" style="color:black">Search Leads</h1>
+                <h1 class="heading" style="color:#FFBA08">Search Leads</h1>
                 <div class="firstL">
                     <div class="box1 box">
                         <label for="tf">Traveling From</label><br>
@@ -268,7 +268,7 @@
             </div>
     
              <!-- ############## start of lower part ############# -->
-            <div class="lowerPart" style="padding-bottom:50px">
+            <div class="lowerPart bs" style="padding-bottom:50px">
             
            
             
@@ -299,7 +299,7 @@
 								<td class="tick" style="border-bottom:2px solid black;border-right:2px solid black"><i class="fa-solid fa-check"></i></td>
 							</c:if>
 							<c:if test="${filteredLeads.flagged eq false}">
-								<td class="cross" style="border-bottom:2px solid black;border-right:2px s olid black"><i class="fa-solid fa-xmark"></i></td>
+								<td class="cross" style="border-bottom:2px solid black;border-right:2px solid black"><i class="fa-solid fa-xmark"></i></td>
 							</c:if>
 							<c:if test="${filteredLeads.qualified eq true}">
 								<td class="tick" style="border-bottom:2px solid black;border-right:2px solid black"><i class="fa-solid fa-check"></i></td>

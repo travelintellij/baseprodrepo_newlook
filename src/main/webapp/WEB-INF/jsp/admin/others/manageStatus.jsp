@@ -41,7 +41,7 @@
                 <form:hidden path="id" id="id" />
         <table class="manageStatus_table">
             <thead>
-                <tr style="height:90px;background:#6082B6;color:black">
+                <tr style="height:50px;background:#6082B6;color:black">
                     <th style="font-size:20px;color:black">Status Type</th>
                     <th style="font-size:20px;color:black">Status Values</th>
                     <th style="font-size:20px;color:black">Action</th>
@@ -51,8 +51,8 @@
 
             <c:forEach var="statusOf" items="${STATUS_LIST_OF_MAP.keySet()}" varStatus="status">
                 <tr style="background:#DEE9BE;padding:50px">
-                    <th style="background-color:black;width:20%;color:white;border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">${status.count} : ${statusOf}</th>
-                    <td style="width:60%;background:black;border-bottom:2px solid #FABA08;border-right:2px solid #FABA08;color:white">
+                    <th style="background-color:white;width:20%;color:black;border-bottom:2px solid black;border-right:2px solid black">${status.count} : ${statusOf}</th>
+                    <td style="width:60%;background:white;border-bottom:2px solid black;border-right:2px solid black;color:white">
                         <table id="dataTable${statusOf}" style="table-layout: fixed;">
                             <tr>
                                 <th style="width:20%;color:black;background:#ffeedd;">Status Id</th>
@@ -63,8 +63,8 @@
                             <c:forEach var="statusValues" items="${ STATUS_LIST_OF_MAP.get(statusOf)}">
                            
                                 <tr>
-                                    <td style="width:20%;color:white">${statusValues.workloadStatusId }</td>
-                                    <td style="width:20%;color:white">${statusValues.workloadStatusObj }</td>
+                                    <td style="width:20%;color:black">${statusValues.workloadStatusId }</td>
+                                    <td style="width:20%;color:black">${statusValues.workloadStatusObj }</td>
             
                                     <c:choose>
                                         <c:when test="${ST_ACTION eq 'EDIT' &&  TI_STATUS.id eq statusValues.id}">
@@ -73,10 +73,10 @@
                                                     id="workloadStatusName" value="${statusValues.workloadStatusName }" /> </td>
                                             <td style="width:10%;"><input type="submit" name="UPDATE_UPDATE_STATUS" value="Submit"
                                                     onclick="toggleStatus('${statusValues.id}')"
-                                                    style="border:none;outline;none;background:#32cd32;color:white;border:2px solid black;padding:5px;border-radius:3px"  /></td>
+                                                    style="border:none;outline;none;background:#32cd32;color:black;border:2px solid black;padding:5px;border-radius:3px"  /></td>
                                         </c:when>
                                         <c:otherwise>
-                                            <td style="width:30%;color:white">${statusValues.workloadStatusName }</td>
+                                            <td style="width:30%;color:black">${statusValues.workloadStatusName }</td>
                                             <td style="width:15%;"><input class="mng-st-btn" type="submit" name="Edit Status" value="Edit"
                                                     onclick="toggleStatus('${statusValues.id}')"
                                                     style="border:2px solid black;padding:5px;border-radius:5px;outline;none;background:#32cd32;color:white" /></td>
@@ -99,41 +99,13 @@
                             </c:forEach>
                         </table>
                     </td>
-                    <td style="width:20%;background:black;color:white;border-bottom:2px solid #FABA08;color:white"><input type="button" id="addnewstatus"  value="Add New Status" class="mng-sts-btn" style="border-radius:5px;padding:5px;border:2px solid #FABA08;outline;none;background:#FABA08;color:black"
+                    <td style="width:20%;background:white;color:black;border-bottom:2px solid black;color:black"><input type="button" id="addnewstatus"  value="Add New Status" class="mng-sts-btn" style="border-radius:5px;padding:5px;border:2px solid #FABA08;outline;none;background:#FABA08;color:black"
                             onclick="addRow('dataTable${statusOf}','${workloadStatusObj}',${ STATUS_LIST_OF_MAP.get(statusOf).size()},'${ workloadStatusType}')" />
                     </td>
                 </tr>
             </c:forEach>
 
-<!-- 
 
-                <tr>
-                    <td>Type A</td>
-                    <td>
-                        <table class="manageStatus__sub_table">
-                            <thead>
-                                <tr>
-                                    <th>Status ID</th>
-                                    <th>Status Object</th>
-                                    <th>Status Name</th>
-                                    <th>Status Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Object A</td>
-                                    <td>Status Name A</td>
-                                    <td><button style="background: transparent;border:none;outline:none;color:#32cd32;margin-right:5px">Edit</button> <button style="background: transparent;border:none;outline:none;color:red">Delete</button></td>
-                                </tr>
-                                <!-- Add more rows as needed -->
-                            <!-- </tbody>
-                        </table>
-                    </td>
-                   
-                    <td><button style="background: transparent;border:none;outline:none;color: #c71585;font-weight: bold;">Add new status</button</td> -->
-                <!-- </tr> -->
-                <!-- Add more rows as needed -->
             </tbody>
         </table>
         </form:form>

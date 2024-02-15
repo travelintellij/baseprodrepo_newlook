@@ -60,7 +60,7 @@
 
 
     <div class="edit_lead container">
-        <div class="edit_lead_wrapper">
+        <div class="edit_lead_wrapper bs">
             <h1 class="page-heading">Edit Lead</h1>
             <form:form modelAttribute="LEAD_OBJ" action="edit_edit_lead">
                 <form:hidden path="leadId" />
@@ -197,42 +197,42 @@
                         </font>
                   
                     <div class="edit_lead_wrapper_data_line_ser" style=" margin-top: 10px;">
-                        <label for="" style="margin-right: 20px;   color: #FFBA08; font-weight: bold;">Select Services</label>
-                        <div class="edit_ser_box" style=" padding: 0 5px;">
+                        <label for="" style="margin-right: 20px;   color: black; font-weight: bold;">Select Services</label>
+                        <div class="edit_ser_box" style=" padding: 10px 5px;">
                             <div class="ser_1">
                                 <label for="">Flight</label>
-                                <form:checkbox path="flight" name="flight" style="width:15px;height:15px;"/>
+                                <form:checkbox path="flight" name="flight" style="width:18px;height:18px;"/>
                             </div>
                             <div class="ser_1">
                                 <label for="">Hotal</label>
-                                <form:checkbox path="hotel" name="hotel" style="width:15px;height:15px;"/>
+                                <form:checkbox path="hotel" name="hotel" style="width:18px;height:18px;"/>
                             </div>
                             <div class="ser_1">
                                 <label for="">Visa</label>
-                                <form:checkbox path="visa" name="visa" style="width:15px;height:15px;"/>
+                                <form:checkbox path="visa" name="visa" style="width:18px;height:18px;"/>
                             </div>
                             <div class="ser_1">
                                 <label for="">Insurance</label>
-                                <form:checkbox path="insurance" name="insurance" style="width:15px;height:15px;"/>
+                                <form:checkbox path="insurance" name="insurance" style="width:18px;height:18px;"/>
                             </div>
                             <div class="ser_1">
                                 <label for="">Transfers</label>
-                                <form:checkbox path="transfers" name="transfers" style="width:15px;height:15px;"/>
+                                <form:checkbox path="transfers" name="transfers" style="width:18px;height:18px;"/>
                             </div>
                             <div class="ser_1">
                                 <label for="">Sightseeing</label>
-                                <form:checkbox path="sightseeing" name="sightseeing" style="width:15px;height:15px;"/> </div>
+                                <form:checkbox path="sightseeing" name="sightseeing" style="width:18px;height:18px;"/> </div>
                                     <div class="ser_1">
                                         <label for="">Package</label>
-                                        <form:checkbox path="landPackage" name="landPackage;" style="width:15px;height:15px;" />
+                                        <form:checkbox path="landPackage" name="landPackage;" style="width:18px;height:18px;" />
                                     </div>
                                     <div class="ser_1">
                                         <label for="">Cruise</label>
-                                        <form:checkbox path="cruise" name="cruise" style="width:15px;height:15px;"/>
+                                        <form:checkbox path="cruise" name="cruise" style="width:18px;height:18px;"/>
                                     </div>
                                     <div class="ser_1">
                                         <label for="">Others</label>
-                                        <form:checkbox path="others" name="others" style="width:15px;height:15px;" />
+                                        <form:checkbox path="others" name="others" style="width:18px;height:18px;" />
                                     </div>
                             </div>
                         </div>
@@ -240,27 +240,27 @@
                         <div class="edit_lead_wrapper_data_l1_rem" style="margin-top: 10px;">
                             <div class="edit_lead_wrapper_data_l1_rem1">
                                 <label for="">Client Remarks</label> <br>
-                                <form:textarea path="clientRemarks" name="" id="" cols="68" rows="2" />
+                                <form:textarea path="clientRemarks" name="" id="" cols="68" rows="5" />
                             </div>
                             <div class="edit_lead_wrapper_data_l1_rem2" style="margin-left: 17px;">
                                 <label for="">Internal Remarks</label> <br>
-                                <form:textarea path="internalRemarks" name="" id="" cols="66" rows="2" />
+                                <form:textarea path="internalRemarks" name="" id="" cols="66" rows="5" />
                             </div>
                         </div>
 
                         <div class=" info-client" style="margin-top: 10px;">
                             <div class="sub_info-client">
-                                <input type="checkbox">
+                                <input type="checkbox" style="width:18px;height:18px">
                                 <label for="">Inform client about the lead creation (email will be sent)</label>
                             </div>
                         </div>
                        
                        
                        
-                       <p style="color: #FFBA08;font-weight: bold;margin-bottom:5px">Tag Team Mate</p>
+                       <p style="color: blue;font-weight: bold;margin-bottom:5px">Tag Team Mate</p>
                        <div style="display:flex;justify-content:center">
-                       <div id="sscontainer" class="sscontainer" style="text-align: center;background:white;color:blue;">
-					<input type="text" id="leadTeams" name="leadTeams" class="form-control" style="width:498px;"/>
+                      <div id="sscontainer" class="sscontainer" style="text-align: center;background:white;color:blue;">
+					<input type="text" id="leadTeams" name="leadTeams" class="form-control" style="width:498px;border:2px solid black"/>
 					<form:hidden path = "teamNames"  style="background:red"/>
 					<form:hidden path = "operatingTeams"  style="background:red" />
 				     </div>
@@ -282,7 +282,7 @@
                         <form:hidden  path="leadCreationClientInformed" />
                     </div>
                     <div class="sub_info-client" style="margin-left: 10px;">
-                        <form:checkbox path="notifyAgain" />
+                        <form:checkbox path="notifyAgain" style="width:18px;height:18px"/>
                         <label for="">Send Registration email again</label>
                     </div>
                 </div>

@@ -33,7 +33,7 @@
                 </style>
                 <body>
                     <div class="Admin_View_Visa_Consulate container">
-                        <div class="Admin_View_Visa_Consulate_wrapper">
+                        <div class="Admin_View_Visa_Consulate_wrapper bs">
                             <form:form method="post" action="edit_edit_visa_consulate_master"
                                 modelAttribute="VISA_CONSULATE_OBJ">
                                 <input type="hidden" name="consulateId" id="consulateId"
@@ -48,7 +48,7 @@
                                             <form:errors path="cityName" cssClass="error" />
                                     </b></font>
                                 </div>
-                                <h1 style="font-size: 20px;margin-bottom: 10px;">View Visa Consulate</h1>
+                                <h1 class="hd">Edit Visa Consulate</h1>
                                 <div class="Admin_View_Visa_Consulate_wrapepr_data">
                                     <div class="Admin_View_Visa_Consulate_wrapepr_data_line">
                                         <div class="Admin_View_Visa_Consulate_wrapepr_data_l1">
