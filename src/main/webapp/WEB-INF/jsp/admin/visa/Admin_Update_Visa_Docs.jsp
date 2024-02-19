@@ -51,26 +51,26 @@
             <input type="hidden" name="visaType" value="${VISA_OBJ.visaType}" />
             <input type="hidden" name="visaPurpose" value="${VISA_OBJ.visaPurpose}" />
             <div class="admin_visa_update_fr container">
-                <div class="admin_visa_update_fr_wrapper">
-                    <h1 style="font-size: 25px;margin:15px 0;text-align: center;">Country Name rr: <span style="font-size: 25px;color:#32cd32  ">
+                <div class="admin_visa_update_fr_wrapper bs">
+                    <h1 style="font-size: 25px;margin:15px 0;text-align: center;">Country Name : <span style="font-size: 25px;color:#32cd32  ">
                             ${VISA_OBJ.countryName}</span> </h1>
                     <div class="admin_visa_update_fr_wrapper_data">
                         <div class="admin_visa_update_fr_wrapper_data_line" style="margin-bottom:10px">
                             <div class="admin_visa_update_fr_wrapper_data_l1">
                                 <label for="" class="lb">Consulate City</label>
-                                <p>${VISA_OBJ.cityName}</p>
+                                <p style="color:gray">${VISA_OBJ.cityName}</p>
                             </div>
                             <div class="admin_visa_update_fr_wrapper_data_l1">
                                 <label for="" class="lb">Visa Profile</label>
-                                <p>${VISA_PROFILE.get(VISA_OBJ.profile)}</p>
+                                <p style="color:gray">${VISA_PROFILE.get(VISA_OBJ.profile)}</p>
                             </div>
                             <div class="admin_visa_update_fr_wrapper_data_l1">
                                 <label for="" class="lb">Visa Type</label>
-                                <p>${VISA_TYPE.get(VISA_OBJ.visaType)}</p>
+                                <p style="color:gray">${VISA_TYPE.get(VISA_OBJ.visaType)}</p>
                             </div>
                             <div class="admin_visa_update_fr_wrapper_data_l1">
                                 <label for="" class="lb">Visa Purpose</label>
-                                <p>${VISA_PURPOSE.get(VISA_OBJ.visaPurpose)}</p>
+                                <p style="color:gray">${VISA_PURPOSE.get(VISA_OBJ.visaPurpose)}</p>
                             </div>
                         </div>
                         <div class="admin_visa_update_fr_wrapper_data_line">

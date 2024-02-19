@@ -44,7 +44,7 @@
 
 
     <div class="create_by_me_tasks container">
-        <div class="created_by_me_wrapper">
+        <div class="created_by_me_wrapper bs">
             <div align="center"><b>
                     <font color="green"> ${Success} </font>
                     <font color="red"> ${Error}</font>
@@ -90,9 +90,9 @@
         </div>
 
 
-        <table class="due_date_task_tabel">
+        <table class="due_date_task_tabel bs">
             <thead>
-                <tr style="background: #6082B6">
+                <tr style="background: #6082B6;height:50px">
                     <th><a
                          style="color:black"   href="view_open_my_created_task_form_user?sortBy=taskId&dateFrom=${dateFrom}&dateTo=${dateTo}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}">Task
                             Id</a></th>

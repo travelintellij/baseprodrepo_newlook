@@ -44,7 +44,8 @@
 
 
     <div class="assin_to_me_tasks container">
-        <div class="assin_to_me_tasks_wrapper">
+        <div class="assin_to_me_tasks_wrapper bs">
+        <h1 class="hd">Assigned to me</h1>
             <div align="center"><b>
                     <font color="green"> ${Success} </font>
                     <font color="red"> ${Error}</font>
@@ -87,26 +88,26 @@
 
         <!-- ################ tabel ######################### -->
 
-        <table class="due_date_task_tabel">
-            <thead>
+        <table class="due_date_task_tabel bs">
+            <thead style="height:50px;background:#6082B6">
                 <tr>
                 <th><a
-                    style="color: #FFBA08"    href="view_open_my_assigned_task_form_user?sortBy=taskId&dateFrom=${dateFrom}&dateTo=${dateTo}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}">Task
+                    style="color: black"    href="view_open_my_assigned_task_form_user?sortBy=taskId&dateFrom=${dateFrom}&dateTo=${dateTo}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}">Task
                         Id</a></th>
-                    <th>Task Title</th>
+                    <th style="color:black">Task Title</th>
                 <th><a
-                    style="color: #FFBA08"     href="view_open_my_assigned_task_form_user?sortBy=dealConfirmationId&dateFrom=${dateFrom}&dateTo=${dateTo}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}">Deal
+                    style="color: black"     href="view_open_my_assigned_task_form_user?sortBy=dealConfirmationId&dateFrom=${dateFrom}&dateTo=${dateTo}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}">Deal
                         Associated</a></th>
                     <th><a 
-                       style="color: #FFBA08"      href="view_open_my_assigned_task_form_user?sortBy=taskOwner&dateFrom=${dateFrom}&dateTo=${dateTo}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}">Assigned
+                       style="color: black"      href="view_open_my_assigned_task_form_user?sortBy=taskOwner&dateFrom=${dateFrom}&dateTo=${dateTo}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}">Assigned
                             To</a></th>
                     <th><a
-                         style="color: #FFBA08"    href="view_open_my_assigned_task_form_user?sortBy=taskPriority&dateFrom=${dateFrom}&dateTo=${dateTo}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}">Priority</a>
+                         style="color: black"    href="view_open_my_assigned_task_form_user?sortBy=taskPriority&dateFrom=${dateFrom}&dateTo=${dateTo}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}">Priority</a>
                     </th>
                     <th><a
-                          style="color: #FFBA08"   href="view_open_my_assigned_task_form_user?sortBy=taskDueDate&dateFrom=${dateFrom}&dateTo=${dateTo}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}">Due
+                          style="color: black"   href="view_open_my_assigned_task_form_user?sortBy=taskDueDate&dateFrom=${dateFrom}&dateTo=${dateTo}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}">Due
                             Date</a></th>
-                    <th>Action</th>
+                    <th style="color:black">Action</th>
                 </tr>
             </thead>
             <tbody>

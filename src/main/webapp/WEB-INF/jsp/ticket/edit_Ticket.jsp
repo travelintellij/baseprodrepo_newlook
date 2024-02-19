@@ -15,7 +15,24 @@
 	<script src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
     <link rel="stylesheet" href="style.css">
 </head>
+<style>
+  body::before {
+            content: "";
+            background-image:  url(${pageContext.request.contextPath}/resources/images/revamped/lens.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5; /* Adjust the opacity value as needed (0.0 to 1.0) */
+            z-index: -1;
+        }
 
+</style>
 <body>
     <!-- ############# side menu bar ################## -->
     <div class="cnt_options">
@@ -30,7 +47,7 @@
 
 
     <div class="edit_Task container">
-        <div class="edit_Task_wrapper">
+        <div class="edit_Task_wrapper bs">
             <form:form action="edit_edit_ticket_form_user" modelAttribute="TICKET_RECORDER_OBJ">
                 <form:hidden path="ticketId" />
                 <div class="edit_Task_wrapper_data">
@@ -65,8 +82,8 @@
                         <div class="edit_Task_wrapper_data_l1">
                             <label for="">Due Date</label> <br>
                             
-                           <fmt:parseDate value="${TICKET_RECORDER_OBJ.ticketDueDate}" pattern="yyyy-MM-dd'T'HH:mm" var="parsedDateTime" type="both" />
-		<fmt:formatDate pattern="yyyy/MM/dd HH:mm" value="${ parsedDateTime }" var="parsedDate" />
+                           <fmt:parseDate value="${TICKET_RECORDER_OBJ.ticketDueDate}" pattern="yyyy-MM-dd'T'HH:mm" var="parsedDateTime" type="both"/>
+		<fmt:formatDate pattern="yyyy/MM/dd HH:mm" value="${ parsedDateTime }" var="parsedDate"/>
 		 
 		 
 		<input style="height: 30px; width: 180px;" id="ticketDueDate" name="ticketDueDate" value="${parsedDate}" required />

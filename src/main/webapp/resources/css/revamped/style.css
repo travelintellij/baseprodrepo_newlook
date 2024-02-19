@@ -2376,8 +2376,8 @@ footer {
 .view_task_wrapper {
     margin-top: 115px;
     padding: 20px 10px;
-    background: rgba(0, 0, 0, 0.9);
-    color: white;
+    background: white;
+    color: black;
     border-radius: 10px;
 }
 
@@ -2471,7 +2471,8 @@ footer {
 	color:red
 }
 .view_task_icon{
-	position:relative
+	position:relative;
+	color:black;
 }
 .view_task_ul {
 	display: none;
@@ -2501,14 +2502,18 @@ display: block;
 .view_task_ul li {
     border-bottom: 2px solid #dca00a;
 }
+.view_task_icon{
+	color:black
+}
 
-.view_task_icon {
-    color: red
+.view_task_icon:hover {
+    color: red;
+    cursor:pointer;
 }
 
 .view_task_icon:hover {
     cursor: pointer;
-    color: #FFBA08
+    color: red
 }
 
 
@@ -2516,12 +2521,12 @@ display: block;
 /* ############################## create new ticket ##################### */
 
 .create-new-ticket-wrapper {
-    color: white;
+    color: black;
     width: 100%;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 0.9);
+    background: white;
     padding: 8px;
     border-radius: 10px;
     margin-top: 115px;
@@ -2606,7 +2611,7 @@ display: block;
 }
 
 .cnt_options {
-    height: 46%;
+    height: auto;
     position: absolute;
     top: 0;
     left: 0;
@@ -2682,12 +2687,12 @@ display: block;
 /* ################## create new task ######################## */
 
 .create-new-task-wrapper {
-    color: white;
+    color: black;
     width: 100%;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 0.9);
+    background:white;
     padding: 30px 10px;
     border-radius: 10px;
     margin-top: 115px;
@@ -2745,12 +2750,12 @@ display: block;
 
 .due_date_task_wrapper,
 .over_due_tasks_wrapper {
-    color: white;
+    color: black;
     width: 100%;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 0.9);
+    background: white;
     padding: 10px;
     border-radius: 10px;
     margin-top: 115px;
@@ -2824,12 +2829,12 @@ display: block;
 }
 
 .due_date_task_tabel {
-    color: white;
+    color: black;
     width: 100%;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 0.9);
+    background: white;
     padding: 10px;
     border-radius: 10px;
     margin-top: 20px;
@@ -2844,12 +2849,12 @@ display: block;
 
 
 .created_by_me_wrapper {
-    color: white;
+    color: black;
     width: 100%;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 0.9);
+    background: white;
     padding: 10px;
     border-radius: 10px;
     margin-top: 115px;
@@ -2875,12 +2880,12 @@ display: block;
 
 /* ############# assigned to me (tasks) ################ */
 .assin_to_me_tasks_wrapper {
-    color: white;
+    color: black;
     width: 100%;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 0.9);
+    background: white;
     padding: 10px;
     border-radius: 10px;
     margin-top: 115px;
@@ -2902,12 +2907,12 @@ display: block;
 /* ######################## completed (tasks) ####################### */
 
 .completed_tasks_wrapper {
-    color: white;
+    color: black;
     width: 100%;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 0.689);
+    background: white;
     padding: 10px;
     border-radius: 10px;
     margin-top: 115px;
@@ -2929,12 +2934,12 @@ display: block;
 /* ################ view ticket ################## */
 
 .view_ticket_wrapper {
-    color: white;
+    color: black;
     width: 100%;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 0.9);
+    background: white;
     padding: 10px;
     border-radius: 10px;
     margin-top: 115px;
@@ -2971,12 +2976,12 @@ display: block;
 
 .due_today_ticket_wrapper,
 .over_due_ticket_wrapper {
-    color: white;
+    color: black;
     width: 100%;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 0.9);
+    background: white;
     padding: 10px;
     border-radius: 10px;
     margin-top: 115px;
@@ -3008,12 +3013,12 @@ due_today_ticket_wrapper_data_l1_1 {
 /* ################### created by me (tickets) ################### */
 
 .created_by_me_ticket_wrapper {
-    color: white;
+    color: black;
     width: 100%;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 0.9);
+    background: white;
     padding: 10px;
     border-radius: 10px;
     margin-top: 115px;
@@ -3044,12 +3049,12 @@ due_today_ticket_wrapper_data_l1_1 {
 /* ################### assigned_to_me (tickets) ###################### */
 
 .assigned_to_me_ticket_wrapper {
-    color: white;
+    color: black;
     width: 100%;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 0.9);
+    background: white;
     padding: 10px;
     border-radius: 10px;
     margin-top: 115px;
@@ -3071,12 +3076,12 @@ due_today_ticket_wrapper_data_l1_1 {
 /* ############# compleated (tickets) ################## */
 
 .compleated_ticket_wrapper {
-    color: white;
+    color: black;
     width: 100%;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 0.689);
+    background: white;
     padding: 10px;
     border-radius: 10px;
     margin-top: 115px;
@@ -3812,12 +3817,12 @@ transition: all 0.2s ease-in-out;
 /* ########### view tasks ############# */
 
 .view_Task_wrapper {
-    color: white;
+    color: black;
     width: 100%;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 9);
+    background: white;
     padding: 10px;
     border-radius: 10px;
     margin-top: 115px;
@@ -3830,7 +3835,8 @@ transition: all 0.2s ease-in-out;
 }
 
 .view_Task_wrapper_data label {
-    color: #FFBA08;
+    color: black;
+    font-weight: bold;
 }
 
 .view_Task_wrapepr_data_line,
@@ -3855,19 +3861,19 @@ transition: all 0.2s ease-in-out;
     text-align: start;
 }
 .view_Task_wrapper_data_comment_title label{
-color: #FFBA08;
+color: black;
 font-weight: bold;
 }
 
 
 /* ################### edit task #################### */
 .edit_Task_wrapper {
-    color: white;
+    color: black;
     width: 100%;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 9);
+    background: white;
     padding: 10px;
     border-radius: 10px;
     margin-top: 115px;
@@ -3928,19 +3934,20 @@ font-weight: bold;
 
 /* ################## view_confirm_delete_task ################# */
 .view_confirm_delete_task_wrapper {
-    color: white;
+    color: black;
     width: 100%;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 9);
+    background: white;
     padding: 10px;
     border-radius: 10px;
     margin-top: 115px;
 }
 
 .view_confirm_delete_task_wrapper label {
-    color: #FABA08;
+    color: black;
+    font-weight: bold;
 }
 
 .view_confirm_delete_task_wrapper_data_line {
@@ -4493,7 +4500,7 @@ color:#249C91;
     margin-left: 5px
 }
 .createNewQuotation_form_wrapper {
-    color: black
+    color: black;
     width: 100%;
     text-align: center;
     border-collapse: collapse;
@@ -4779,7 +4786,7 @@ color: black;
 }
 .viewTransfersQuotationDetails_wrapper label{
 font-weight: bold;
-    color: black
+    color: black;
     width: 300px;
     text-align: start;
 }
@@ -5627,12 +5634,12 @@ font-weight: bold;
 }
 /* ################## admin_visa_update_fr ############ */
 .admin_visa_update_fr_wrapper {
-    color: white;
+    color: black;
     width: 100%;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 9);
+    background:white;
     padding: 10px;
     border-radius: 10px;
     margin-top: 115px;
@@ -6028,11 +6035,11 @@ font-weight: bold;
 /* ############# main_p ############## */
 
 .main_p_wrapper {
-    color: white;
+    color: black;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 9);
+    background: white;
     padding: 10px;
     border-radius: 10px;
 }
@@ -6294,7 +6301,7 @@ width: 90%
     border: none;
     background: white;
     padding: 10px;
-    border-radius: 10px;
+    border-radius:5px;
 }
 
 .fli_de_wrapper_data_fli {
@@ -6885,11 +6892,11 @@ color: black;
 /* ########################################### */
 
 .form_viewDeal_modal_wrapper{
-color: white;
+color: black;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 9);
+    background: white;
     padding: 10px;
     border-radius: 10px;
    

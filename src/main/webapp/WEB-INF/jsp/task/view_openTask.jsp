@@ -50,7 +50,7 @@
 
 
     <div class="view_taask container">
-        <div class="view_task_wrapper">
+        <div class="view_task_wrapper bs">
             <div align="center"><b>
                     <font color="green"> ${Success} </font>
                     <font color="red"> ${Error}</font>
@@ -107,42 +107,42 @@
         
 
         <table class="view_task_table">
-        <thead style="background:#6082B6;">
+        <thead style="background:#6082B6;height:50px">
             <tr>
-                <th style="width:10%;"><a style="color:#FFBA08;"
+                <th style="width:10%;"><a style="color:black;"
                         href="view_open_task_form_user?sortBy=taskId&dateFrom=${dateFrom}&dateTo=${dateTo}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}">Task
                         Id</a></th>
-                <th style="width:20%;">Task Title</th>
-                <th style="width:20%;"><a style="color:#FFBA08;"
+                <th style="width:20%;color:black" >Task Title</th>
+                <th style="width:20%;"><a style="color:black;"
                         href="view_open_task_form_user?sortBy=dealConfirmationId&dateFrom=${dateFrom}&dateTo=${dateTo}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}">Deal
                         Associated</a></th>
-                <th style="width:15%;"><a style="color:#FFBA08;"
+                <th style="width:15%;"><a style="color:black;"
                         href="view_open_task_form_user?sortBy=taskOwner&dateFrom=${dateFrom}&dateTo=${dateTo}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}">Assigned
                         To</a></th>
-                <th style="width:10%;"><a style="color:#FFBA08;"
+                <th style="width:10%;"><a style="color:black;"
                         href="view_open_task_form_user?sortBy=taskPriority&dateFrom=${dateFrom}&dateTo=${dateTo}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}">Priority</a>
                 </th>
-                <th style="width:15%;"><a style="color:#FFBA08"
+                <th style="width:15%;"><a style="color:black"
                         href="view_open_task_form_user?sortBy=taskDueDate&dateFrom=${dateFrom}&dateTo=${dateTo}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}">Due
                         Date</a></th>
-                <th style="width:20%;color:#FFBA08">Action
+                <th style="width:20%;color:black">Action
             </tr>
    </thead>
             <tr>
                 <c:forEach items="${OPEN_TASK_LIST}" var="openTaskList">
             <tr>
-                <td style="border-bottom:2px solid #FFBA08;border-right:2px solid #FFBA08;border-left:2px solid #FFBA08">${openTaskList.taskId }</td>
-                <td style="border-bottom:2px solid #FFBA08;border-right:2px solid #FFBA08;">${openTaskList.taskTitle }</td>
-                <td style="border-bottom:2px solid #FFBA08;border-right:2px solid #FFBA08;">
+                <td style="border-bottom:2px solid black;border-right:2px solid black;border-left:2px solid black">${openTaskList.taskId }</td>
+                <td style="border-bottom:2px solid black;border-right:2px solid black;">${openTaskList.taskTitle }</td>
+                <td style="border-bottom:2px solid black;border-right:2px solid black;">
                     <c:if test="${openTaskList.dealConfirmationId != 0}">
                         ${openTaskList.dealConfirmationId}
                     </c:if>
                 </td>
-                <td style="border-bottom:2px solid #FFBA08;border-right:2px solid #FFBA08;"> ${openTaskList.taskOwnerName}</td>
-                <td style="border-bottom:2px solid #FFBA08;border-right:2px solid #FFBA08;">${openTaskList.taskPriority}</td>
-                <td style="border-bottom:2px solid #FFBA08;border-right:2px solid #FFBA08;">${localDateTimeFormat.format(openTaskList.taskDueDate)}</td>
-                <td style="border-bottom:2px solid #FFBA08;border-right:2px solid #FFBA08;">
-                    <i class="fa-solid fa-sliders view_task_icon">
+                <td style="border-bottom:2px solid black;border-right:2px solid black;"> ${openTaskList.taskOwnerName}</td>
+                <td style="border-bottom:2px solid black;border-right:2px solid black;">${openTaskList.taskPriority}</td>
+                <td style="border-bottom:2px solid black;border-right:2px solid black;">${localDateTimeFormat.format(openTaskList.taskDueDate)}</td>
+                <td style="border-bottom:2px solid black;border-right:2px solid black;">
+                    <i class="fa-solid fa-sliders view_task_icon" >
                         <div class="view_task_ul">
                             <ul>
                                 <li><a href="view_view_task?taskId=${openTaskList.taskId }">View</a></li>

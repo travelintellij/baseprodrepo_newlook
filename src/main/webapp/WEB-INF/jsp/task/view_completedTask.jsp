@@ -44,7 +44,7 @@
 
 
     <div class="completed_tasks container">
-        <div class="completed_tasks_wrapper">
+        <div class="completed_tasks_wrapper bs">
             <div align="center"><b>
                     <font color="green"> ${Success} </font>
                     <font color="red"> ${Error}</font>
@@ -89,7 +89,7 @@
         </div>
 
 
-        <table class="due_date_task_tabel">
+        <table class="due_date_task_tabel bs">
             <thead>
                 <tr style="background:#6082B6">
                     <th><a
@@ -115,9 +115,9 @@
 
                 <c:forEach items="${OPEN_TASK_LIST}" var="openTaskList">
                     <tr>
-                        <td style="width:10%;border-bottom:2px solid #ffb908cf;border-right:2px solid #ffb908cf;">${openTaskList.taskId }</td>
-                        <td style="width:20%;border-bottom:2px solid #ffb908cf;border-right:2px solid #ffb908cf;"><strike>${openTaskList.taskTitle }</strike></td>
-                        <td style="width:10%;border-bottom:2px solid #ffb908cf;border-right:2px solid #ffb908cf;">
+                        <td style="width:10%;border-bottom:2px solid black;border-right:2px solid black;">${openTaskList.taskId }</td>
+                        <td style="width:20%;border-bottom:2px solid black;border-right:2px solid black;"><strike>${openTaskList.taskTitle }</strike></td>
+                        <td style="width:10%;border-bottom:2px solid black;border-right:2px solid black;">
                             <c:if test="${openTaskList.dealConfirmationId != 0}">
                                 UDN-${openTaskList.dealConfirmationId}
                             </c:if>
@@ -125,10 +125,10 @@
                                 None
                             </c:if>
                         </td>
-                        <td style="width:15%;border-bottom:2px solid #ffb908cf;border-right:2px solid #ffb908cf;"> ${openTaskList.taskOwnerName}</td>
-                        <td style="width:10%;border-bottom:2px solid #ffb908cf;border-right:2px solid #ffb908cf;">${openTaskList.taskPriority}</td>
-                        <td style="width:15%;border-bottom:2px solid #ffb908cf;border-right:2px solid #ffb908cf;">${localDateTimeFormat.format(openTaskList.taskDueDate)}</td>
-                        <td style="width:20%;border-bottom:2px solid #ffb908cf;padding-top:10px">
+                        <td style="width:15%;border-bottom:2px solid black;border-right:2px solid black;"> ${openTaskList.taskOwnerName}</td>
+                        <td style="width:10%;border-bottom:2px solid black;border-right:2px solid black;">${openTaskList.taskPriority}</td>
+                        <td style="width:15%;border-bottom:2px solid black;border-right:2px solid black;">${localDateTimeFormat.format(openTaskList.taskDueDate)}</td>
+                        <td style="width:20%;border-bottom:2px solid black;padding-top:10px">
                             <a href="view_view_completed_task?taskId=${openTaskList.taskId }"><input type="button"
                                     style="background:#32cd32;color:black;outline:none;border:none;border-radius:2px;padding:2px;margin-bottom:10px;" value="View" /></a> 
                             <a href="view_form_edit_completed_task?taskId=${openTaskList.taskId }"><input type="button"

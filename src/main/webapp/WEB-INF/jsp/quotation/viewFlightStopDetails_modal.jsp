@@ -17,7 +17,7 @@
                 <div class="fli_de_wrapper">
                     <h1 style="margin:10px 0;font-size: 25px;color:#32cd32 ">Flight Stop Id- ${flightStopDetailQtnObj.fltQuotationStopId}</h1>
                     <div class="fli_de_wrapper_data">
-                        <div class="fli_de_wrapper_data_fli bc-clr">
+                        <div class="fli_de_wrapper_data_fli ">
                             <div class="fli_de_wrapper_dl1">
                                 <label for="" class="lb">Airline </label>
                                 <p>${flightStopDetailQtnObj.airlineName }</p>
@@ -28,7 +28,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="fli_de_wrapper_data_li bc-clr">
+                    <div class="fli_de_wrapper_data_li ">
                         <div class="fli_de_wrapper_dl1">
                             <label for="" class="lb">Departure</label>
                             <p>${flightStopDetailQtnObj.originCity }</p>
@@ -46,7 +46,7 @@
                             <p>${localDateTimeFormat.format(flightStopDetailQtnObj.arrivalDate )}</p>
                         </div>
                     </div>
-                    <div class="fli_de_wrapper_data_li bc-clr">
+                    <div class="fli_de_wrapper_data_li ">
                         <div class="fli_de_wrapper_dl1">
                             <label for="" class="lb">Travel Class</label>
                             <p>${flightStopDetailQtnObj.cabinClassName }</p>
@@ -74,7 +74,7 @@
                                 type="button" style="background-color:red;" value="Delete Stop" /></a>
                     </c:if>
                     <c:if test="${QTN_OBJ.converted eq true }">
-                        <a><input type="button" style="background-color:lightgray;" value="Edit Stop" /></a>
+                        <a><input type="button" style="background-color:#32cd32;color:black;" value="Edit Stop" /></a>
                         <a><input type="button" style="background-color:lightgray;" value="Delete Stop" /></a>
                     </c:if>
                     </div>

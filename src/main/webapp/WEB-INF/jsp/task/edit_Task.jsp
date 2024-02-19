@@ -49,7 +49,7 @@
 
 
     <div class="edit_Task container">
-        <div class="edit_Task_wrapper">
+        <div class="edit_Task_wrapper bs">
         <h1 class="page-heading">Edit Task</h1>
             <form:form action="edit_edit_task_form_user" modelAttribute="TASK_RECORDER_OBJ">
                 <form:hidden path="taskId" />
@@ -105,8 +105,8 @@
                     </div>
                     <div class="edit_Task_wrapper_data_line2_confom">
                         <div class="edit_Task_wrapper_data_l1">
-                            <label for="" style=" color:#FFBA08;font-weight: bold;">Inform Mate</label> <br>
-                            <form:checkbox path="notifyTaskOwner" name="transfers" />
+                            <label for="" style=" color:black;font-weight: bold;">Inform Mate</label> <br>
+                            <form:checkbox path="notifyTaskOwner" name="transfers" style="width:18px;height:18px"/>
                             <p>(if checked email will be sent to task owner)</p>
                         </div>
                     </div>

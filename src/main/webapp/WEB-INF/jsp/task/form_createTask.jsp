@@ -46,7 +46,7 @@
             <a href="view_completed_task_form_user">Completed</a>
         </div>
 
-    <div class="create-new-task-wrapper container">
+    <div class="create-new-task-wrapper bs container">
         <font color="#32cd32"> ${Success} </font>
         <font color="red"> ${Error}</font>
         <h1 class="create_new_task_title" style="font-size:30px;color: #FFBA08;margin-bottom: 10px;">Create New Task</h1>

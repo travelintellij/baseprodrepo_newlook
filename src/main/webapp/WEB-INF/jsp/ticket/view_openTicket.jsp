@@ -45,12 +45,12 @@
 
     <div class="view_ticket container">
         <form:form action="view_open_ticket_form_user" modelAttribute="TICKET_FILTER_OBJ">
-            <div class="view_ticket_wrapper">
+            <div class="view_ticket_wrapper bs">
                 <div align="center"><b>
                         <font color="green"> ${Success} </font>
                         <font color="red"> ${Error}</font>
                     </b></div>
-                <div class="view_ticket_wrapper_data">
+                <div class="view_ticket_wrapper_data ">
                     <div class="view_ticket_wrapper_data_line1">
                         <div class="view_ticket_data_l1">
                             <label for="">Ticket id</label>
@@ -107,9 +107,9 @@
 <p> <span style="color:#FFBA08">AT</span> : Assigned To</p>
 </div>
 
-            <table class="due_date_task_tabel">
+            <table class="due_date_task_tabel bs">
                 <thead>
-                    <tr style="background:#6082B6;color:black">
+                    <tr style="background:#6082B6;color:black;height:50px">
                         <th><a
                            style="color:black"     href="view_open_ticket_form_user?sortBy=ticketId&dateFrom=${dateFrom}&dateTo=${dateTo}&ticketOwner=${ticketOwner}&dealConfirmationId=${dealConfirmationId}&ticketPriority=${ticketPriority}">Ticket
                                 Id</a></th>
@@ -132,18 +132,18 @@
                 <tbody>
                     <c:forEach items="${OPEN_TICKET_LIST}" var="openTicketList">
                         <tr>
-                            <td style="width:7%;border-bottom:2px solid #ffa500;border-right:2px solid #ffa500">${openTicketList.ticketId }</td>
-                            <td style="width:15%;border-bottom:2px solid #ffa500;border-right:2px solid #ffa500">${openTicketList.ticketTitle }</td>
-                            <td style="width:15%;border-bottom:2px solid #ffa500;border-right:2px solid #ffa500">${openTicketList.clientName }</td>
-                            <td style="width:7%;border-bottom:2px solid #ffa500;border-right:2px solid #ffa500">
+                            <td style="width:7%;border-bottom:2px solid black;border-right:2px solid black">${openTicketList.ticketId }</td>
+                            <td style="width:15%;border-bottom:2px solid black;border-right:2px solid black">${openTicketList.ticketTitle }</td>
+                            <td style="width:15%;border-bottom:2px solid black;border-right:2px solid black">${openTicketList.clientName }</td>
+                            <td style="width:7%;border-bottom:2px solid black;border-right:2px solid black">
                                 <c:if test="${openTicketList.dealConfirmationId != 0}">
                                     ${openTicketList.dealConfirmationId}
                                 </c:if>
                             </td>
-                            <td style="width:10%;border-bottom:2px solid #ffa500;border-right:2px solid #ffa500"> ${openTicketList.ticketOwnerName}</td>
-                            <td style="width:10%;border-bottom:2px solid #ffa500;border-right:2px solid #ffa500">${openTicketList.ticketPriority}</td>
-                            <td style="width:15%;border-bottom:2px solid #ffa500;border-right:2px solid #ffa500">${localDateTimeFormat.format(openTicketList.ticketDueDate)}</td>
-                            <td style="width:10%;border-bottom:2px solid #ffa500;">
+                            <td style="width:10%;border-bottom:2px solid black;border-right:2px solid black"> ${openTicketList.ticketOwnerName}</td>
+                            <td style="width:10%;border-bottom:2px solid black;border-right:2px solid black">${openTicketList.ticketPriority}</td>
+                            <td style="width:15%;border-bottom:2px solid black;border-right:2px solid black">${localDateTimeFormat.format(openTicketList.ticketDueDate)}</td>
+                            <td style="width:10%;border-bottom:2px solid black;">
                                 <a href="view_view_ticket?ticketId=${openTicketList.ticketId }"><input type="button"
                                         style="color:red;background:transparent;border:none;outline:none" value="View" /></a> |
                                 <a href="view_form_edit_ticket_req?ticketId=${openTicketList.ticketId }"><input
@@ -157,12 +157,12 @@
 
 
                 <div id="pagination" align="center" style="margin-top:10px">
-               <p style="color:#ffa500;background:black;display:inline-block;padding:2px;border-radius:2px">Page : </p>
+               <p style="color:white;background:black;display:inline-block;padding:2px;border-radius:2px">Page : </p>
                     <c:url value="view_open_ticket_form_user" var="prev">
                         <c:param name="page" value="${page-1}" />
                     </c:url>
                     <c:if test="${page > 0}">
-                        <a style="background:black;padding:2px 5px;border-radius:2px;color:#ffa500" href="<c:out value="
+                        <a style="background:black;padding:2px 5px;border-radius:2px;color:black" href="<c:out value="
                             ${prev}&sortBy=${sortBy}&ticketOwner=${ticketOwner}&dealConfirmationId=${dealConfirmationId}&dateFrom=${dateFrom}&dateTo=${dateTo}&ticketPriority=${ticketPriority}" />"
                         class="pn prev">Prev</a>
                     </c:if>
@@ -185,7 +185,7 @@
                         <c:param name="page" value="${page + 1}" />
                     </c:url>
                     <c:if test="${page + 1 < maxPages}">
-                        <a style="background:black;padding:2px 5px;border-radius:2px;color:#ffa500" href='<c:out value="${next}&sortBy=${sortBy}&ticketOwner=${ticketOwner}&dealConfirmationId=${dealConfirmationId}&dateFrom=${dateFrom}&dateTo=${dateTo}&ticketPriority=${ticketPriority}" />'
+                        <a style="background:black;padding:2px 5px;border-radius:2px;color:black" href='<c:out value="${next}&sortBy=${sortBy}&ticketOwner=${ticketOwner}&dealConfirmationId=${dealConfirmationId}&dateFrom=${dateFrom}&dateTo=${dateTo}&ticketPriority=${ticketPriority}" />'
                             class="pn next">Next</a>
                     </c:if>
                 </div>

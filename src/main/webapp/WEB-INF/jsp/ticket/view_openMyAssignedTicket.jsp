@@ -43,7 +43,7 @@
     </div>
 
     <div class="assigned_to_me_ticket container">
-        <div class="assigned_to_me_ticket_wrapper">
+        <div class="assigned_to_me_ticket_wrapper bs">
             <div align="center"><b>
                     <font color="green"> ${Success} </font>
                     <font color="red"> ${Error}</font>
@@ -94,7 +94,7 @@
 
         <table class="due_date_task_tabel">
             <thead>
-                <tr style="background:#6082B6">
+                <tr style="background:#6082B6;height:50px">
                     <th><a
                          style="    color: black"   href="view_open_my_assigned_ticket_form_user?sortBy=ticketId&dateFrom=${dateFrom}&dateTo=${dateTo}&ticketOwner=${ticketOwner}&dealConfirmationId=${dealConfirmationId}&ticketPriority=${ticketPriority}">Ticket
                             Id</a></th>
@@ -117,18 +117,18 @@
             <tbody>
                 <c:forEach items="${OPEN_TICKET_LIST}" var="openTicketList">
                     <tr>
-                        <td style="width:7%;border-bottom:2px solid #ffa500;border-right:2px solid #ffa500">${openTicketList.ticketId }</td>
-                        <td style="width:15%;border-bottom:2px solid #ffa500;border-right:2px solid #ffa500">${openTicketList.ticketTitle }</td>
-                        <td style="width:15%;border-bottom:2px solid #ffa500;border-right:2px solid #ffa500">${openTicketList.clientName }</td>
-                        <td style="width:7%;border-bottom:2px solid #ffa500;border-right:2px solid #ffa500">
+                        <td style="width:7%;border-bottom:2px solid black;border-right:2px solid black">${openTicketList.ticketId }</td>
+                        <td style="width:15%;border-bottom:2px solid black;border-right:2px solid black">${openTicketList.ticketTitle }</td>
+                        <td style="width:15%;border-bottom:2px solid black;border-right:2px solid black">${openTicketList.clientName }</td>
+                        <td style="width:7%;border-bottom:2px solid black;border-right:2px solid black">
                             <c:if test="${openTicketList.dealConfirmationId != 0}">
                                 ${openTicketList.dealConfirmationId}
                             </c:if>
                         </td>
-                        <td style="width:10%;border-bottom:2px solid #ffa500;border-right:2px solid #ffa500"> ${openTicketList.ticketOwnerName}</td>
-                        <td style="width:10%;border-bottom:2px solid #ffa500;border-right:2px solid #ffa500">${openTicketList.ticketPriority}</td>
-                        <td style="width:15%;border-bottom:2px solid #ffa500;border-right:2px solid #ffa500">${localDateTimeFormat.format(openTicketList.ticketDueDate)}</td>
-                        <td style="width:10%;border-bottom:2px solid #ffa500;">
+                        <td style="width:10%;border-bottom:2px solid black;border-right:2px solid black"> ${openTicketList.ticketOwnerName}</td>
+                        <td style="width:10%;border-bottom:2px solid black;border-right:2px solid black">${openTicketList.ticketPriority}</td>
+                        <td style="width:15%;border-bottom:2px solid black;border-right:2px solid black">${localDateTimeFormat.format(openTicketList.ticketDueDate)}</td>
+                        <td style="width:10%;border-bottom:2px solid black;">
                             <a href="view_view_my_assigned_ticket?ticketId=${openTicketList.ticketId }"><input
                                     type="button" style="color:red;background:transparent;border:none;outline:none" value="View" /></a> |
                             <a href="view_form_edit_my_assigned_ticket?ticketId=${openTicketList.ticketId }"><input

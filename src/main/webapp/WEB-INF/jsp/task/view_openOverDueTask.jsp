@@ -43,13 +43,13 @@
         <form:form action="view_open_over_due_task_form_user" modelAttribute="TASK_FILTER_OBJ">
             <input type="hidden" name="dateFrom" value="${dateFrom}" />
             <input type="hidden" name="dateTo" value="${dateTo}" />
-            <div class="over_due_tasks_wrapper">
+            <div class="over_due_tasks_wrapper ">
             <h1 class="hd">Over Due</h1>
                 <div align="center"><b>
                         <font color="green"> ${Success} </font>
                         <font color="red"> ${Error}</font>
                     </b></div>
-                <div class="over_due_tasks_data">
+                <div class="over_due_tasks_data ">
                     <div class="over_due_tasks_li task_owner_viwe_task">
                         <label for="">Task Owner </label><br>
                         <select class="task_owner_viwe_task" id="taskOwner" name="taskOwner" style="width: 160px;" required>
@@ -86,7 +86,7 @@
 
             <table class="due_date_task_tabel">
                 <thead>
-                    <tr style="background:#6082B6 ">
+                    <tr style="background:#6082B6;height:50px">
                     <th><a 
                           style="color:black;"  href="view_open_over_due_task_form_user?sortBy=taskId&dateFrom=${dateFrom}&dateTo=${dateTo}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}">Task
                             Id</a></th>

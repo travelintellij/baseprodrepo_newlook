@@ -194,25 +194,25 @@ body::before {
                     <div class="add_man_pckage_wrapper_data_line">
                         <div class="add_man_pckage_wrapper_dl1_pd" style="text-align: start;">
                             <label for="">Inclusions</label> <br>
-                            <form:textarea path="inclusions" rows="15" cols="121" maxlength="2000" />
+                            <form:textarea path="inclusions" rows="15" cols="121" maxlength="20000" />
                         </div>
                     </div>
                     <div class="add_man_pckage_wrapper_data_line">
                         <div class="add_man_pckage_wrapper_dl1_pd" style="text-align: start;">
                             <label for="">Exclusions</label> <br>
-                            <form:textarea path="exclusions" rows="15" cols="121" maxlength="127" />
+                            <form:textarea path="exclusions" rows="15" cols="121" maxlength="2000" />
                         </div>
                     </div>
                     <div class="add_man_pckage_wrapper_data_line">
                         <div class="add_man_pckage_wrapper_dl1_pd" style="text-align: start;">
                             <label for="">Cancellation Policy (if left empty , it won't be printed ) </label> <br>
-                            <form:textarea path="cancellationPolicy" rows="15" cols="121" maxlength="3000" />
+                            <form:textarea path="cancellationPolicy" rows="5" cols="121" maxlength="3000" />
                         </div>
                     </div>
                     <div class="add_man_pckage_wrapper_data_line">
                         <div class="add_man_pckage_wrapper_dl1_pd" style="text-align: start;">
                             <label for="">Remarks</label> <br>
-                            <form:textarea path="remarks" rows="15" cols="121" maxlength="5000" />
+                            <form:textarea path="remarks" rows="5" cols="121" maxlength="5000" />
                         </div>
                     </div>
                     <div class="isFlight">

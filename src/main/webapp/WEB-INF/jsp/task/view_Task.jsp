@@ -50,7 +50,7 @@
 
 
     <div class="view_Task container">
-        <div class="view_Task_wrapper">
+        <div class="view_Task_wrapper bs">
             <form:form action="view_form_edit_task" modelAttribute="TASK_RECORDER_OBJ">
                 <form:hidden path="taskId" />
                 <div class="view_task_box_divide">
@@ -58,43 +58,43 @@
                         <div class="view_Task_wrapepr_data_line a" >
                             <div class="view_Task_wrapepr_data_l1">
                                 <label for="">Task Title </label>
-                                <p>${TASK_RECORDER_OBJ.taskTitle}</p>
+                                <p style="color:gray">${TASK_RECORDER_OBJ.taskTitle}</p>
                             </div>
                         </div>
                         <div class="view_Task_wrapepr_data_line2 a">
                             <div class="view_Task_wrapepr_data_l1">
                                 <label for="">Assigned to</label>
-                                <p>${TASK_RECORDER_OBJ.taskOwnerName}</p>
+                                <p style="color:gray">${TASK_RECORDER_OBJ.taskOwnerName}</p>
                             </div>
                             <div class="view_Task_wrapepr_data_l1">
                                 <label for="">Priority</label>
-                                <p>${TASK_RECORDER_OBJ.taskPriority}</p>
+                                <p style="color:gray">${TASK_RECORDER_OBJ.taskPriority}</p>
                             </div>
                         </div>
                         <div class="view_Task_wrapepr_data_line3 a">
                             <div class="view_Task_wrapepr_data_l1">
                                 <label for="">Status</label>
-                                <p>${TASK_RECORDER_OBJ.taskStatus}</p>
+                                <p style="color:gray">${TASK_RECORDER_OBJ.taskStatus}</p>
                             </div>
                             <div class="view_Task_wrapepr_data_l1">
                                 <label for="">Due Date</label>
-                                <p>${localDateTimeFormat.format(TASK_RECORDER_OBJ.taskDueDate)}</p>
+                                <p style="color:gray">${localDateTimeFormat.format(TASK_RECORDER_OBJ.taskDueDate)}</p>
                             </div>
                         </div>
                         <div class="view_Task_wrapepr_data_line4 a">
                             <div class="view_Task_wrapepr_data_l1">
                                 <label for="">Link with deal</label>
-                                <p>
+                                <p style="color:gray">
                                     <c:if test="${TASK_RECORDER_OBJ.dealConfirmationId != 0}">
                                         ${TASK_RECORDER_OBJ.dealConfirmationId}
                                     </c:if>
                                 </p>
                             </div>
                         </div>
-                        <div class="view_Task_wrapepr_data_line4 a">
-                            <div class="view_Task_wrapepr_data_l1">
+                        <div class="view_Task_wrapepr_data_line4 a" style="width:100%">
+                            <div class="view_Task_wrapepr_data_l1" style="width:100%">
                                 <label for="">Description</label>
-                                <p>${TASK_RECORDER_OBJ.taskDescription}</p>
+                                <p style="color:gray">${TASK_RECORDER_OBJ.taskDescription}</p>
                             </div>
                         </div>
                         <div class="due_today_task_data_btns">
@@ -122,14 +122,14 @@
                     <div class="view_Task_wrapper_data_comment_side">
                         <div class="view_Task_wrapper_data_comment_title">
                             <label for="">${pageContext.request.remoteUser} Says:</label><br>
-                            <textarea name="taskComment" id="taskComment" cols="70" rows="4"></textarea>
+                            <textarea name="taskComment" id="taskComment" cols="70" rows="4" style="width:100%"></textarea>
                         </div>
                         <div class="due_today_task_data_btns">
                             <input type="submit" value="Update Comments" name="Update Comments" />
                         </div>
                         <div class="commemts-sec">
                             <c:forEach items="${FILTERED_TASK_COMMENTS}" var="filteredTaskComments" >
-                            <div class="commentBox" style="background:#eaf4f4;margin:5px 0 ;border-radius:5px;">
+                            <div class="commentBox" style="background:#eaf4f4;margin:5px 0 ;border-radius:5px;border:2px solid black">
                             <div style="display:flex;">
                             <p style="padding:5px;color:#003049;display:inline-block;font-weight:bold;width:95%;text-align:start"> <span style="color:red">${filteredTaskComments.commentedBy}</span>  <br>  ${filteredTaskComments.ttComment} </p>
                             <p style="padding:5px;;display:inline-block;color:gray">  ${localDateTimeFormat.format(filteredTaskComments.lastUpdated )}</p> 

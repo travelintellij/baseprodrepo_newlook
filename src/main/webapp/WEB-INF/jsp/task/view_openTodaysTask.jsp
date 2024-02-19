@@ -45,7 +45,7 @@
 
     <div class="due_date_task container">
         <form:form action="view_open_due_today_task_form_user" modelAttribute="TASK_FILTER_OBJ">
-            <div class="due_date_task_wrapper">
+            <div class="due_date_task_wrapper bs">
             <h1 class="hd">Due Today</h1>
                 <input type="hidden" name="dateFrom" value="${dateFrom}" />
                 <input type="hidden" name="dateTo" value="${dateTo}" />
@@ -88,7 +88,7 @@
 
             <table class="due_date_task_tabel">
                 <thead>
-                    <tr style="background:#6082B6;color:black">
+                    <tr style="background:#6082B6;color:black;height:50px">
                         <th style="width:10%;"><a
                              style="color:black"   href="view_open_due_today_task_form_user?sortBy=taskId&dateFrom=${dateFrom}&dateTo=${dateTo}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}">Task
                                 Id</a></th>

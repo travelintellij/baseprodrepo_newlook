@@ -175,31 +175,31 @@
                             <div class="main_p_wrapper_data_line a">
                                 <div class="main_p_wrapper_dl ">
                                     <label for="" class="lb">City</label>
-                                    <p>${hotelQtnObj.cityName }</p>
+                                    <p style="color:gray">${hotelQtnObj.cityName }</p>
                                 </div>
                                 <div class="main_p_wrapper_dl">
                                     <label for="" class="lb">Hotal Name</label>
-                                    <p>${hotelQtnObj.cityName }</p>
+                                    <p style="color:gray">${hotelQtnObj.hotelName}</p>
                                 </div>
                                 <div class="main_p_wrapper_dl">
                                     <label for="" class="lb">Category</label>
-                                    <p>${hotelQtnObj.roomCategoryName}</p>
+                                    <p style="color:gray">${hotelQtnObj.roomCategoryName}</p>
                                 </div>
                                 <div class="main_p_wrapper_dl">
                                     <label for="" class="lb">Meal Plan</label>
-                                    <p>${hotelQtnObj.mealPlanName}</p>
+                                    <p style="color:gray">${hotelQtnObj.mealPlanName}</p>
                                 </div>
                             </div>
                             <div class="main_p_wrapper_data_line a">
                                 <div class="main_p_wrapper_dl ">
                                     <label for="" class="lb">CheckIn Date</label>
-                                    <p>
+                                    <p style="color:gray">
                                         <fmt:formatDate value="${hotelQtnObj.checkInDate}" pattern="dd-MM-yyyy" />
                                     </p>
                                 </div>
                                 <div class="main_p_wrapper_dl">
                                     <label for="" class="lb">CheckOut Date</label>
-                                    <p>
+                                    <p style="color:gray">
                                         <fmt:formatDate value="${hotelQtnObj.checkOutDate}" pattern="dd-MM-yyyy" />
                                     </p>
                                 </div>
@@ -207,42 +207,41 @@
 
                                 <div class="main_p_wrapper_dl">
                                     <label for="" class="lb">Adults</label>
-                                    <p>${hotelQtnObj.adults}</p>
+                                    <p style="color:gray">${hotelQtnObj.adults}</p>
                                 </div>
                                 <div class="main_p_wrapper_dl">
                                     <label for="" class="lb">Children</label>
-                                    <p>${hotelQtnObj.children}</p>
+                                    <p style="color:gray">${hotelQtnObj.children}</p>
                                 </div>
                             </div>
                             <div class="main_p_wrapper_data_line a">
                                 <div class="main_p_wrapper_dl ">
                                     <label for="" class="lb">Extra Bed</label>
-                                    <p>${hotelQtnObj.extrabed}</p>
+                                    <p style="color:gray">${hotelQtnObj.extrabed}</p>
                                 </div>
 
                                 <div class="main_p_wrapper_dl">
                                     <label for="" class="lb">Number of Rooms</label>
-                                    <p>${hotelQtnObj.noOfRooms}</p>
+                                    <p style="color:gray">${hotelQtnObj.noOfRooms}</p>
                                 </div>
                                 <div class="main_p_wrapper_dl">
                                     <label for="" class="lb">Total Cost</label>
-                                    <p>${hotelQtnObj.hotelStayCost}</p>
+                                    <p style="color:gray">${hotelQtnObj.hotelStayCost}</p>
                                 </div>
                                 <div class="main_p_wrapper_dl">
                                     <label for="" class="lb">Total Markup</label>
-                                    <p>${hotelQtnObj.hotelStayMarkup}</p>
-                                </div>
+                                    <p style="color:gray">${hotelQtnObj.hotelStayMarkup}</p>
+                                </div> 
                             </div>
                             <div class="main_p_wrapper_data_line a">
                                 <div class="main_p_wrapper_dl ">
                                     <label for="" class="lb">Display Order</label>
-                                    <p>${hotelQtnObj.displayOrder }</p>
+                                    <p style="color:gray">${hotelQtnObj.displayOrder }</p>
                                 </div>
                             </div>
                             <div class="main_p_wrapper_data_line a">
                                 <div class="main_p_wrapper_dl_rem ">
                                     <label for="" class="lb">Remarks</label>
-                                    <p>${hotelQtnObj.remarks}</p>
                                 </div>
                             </div>
                             <div class="due_today_task_data_btnss" style="margin-top:10px">

@@ -48,7 +48,7 @@
 
 
     <div class="view_Task container">
-        <div class="view_Task_wrapper">
+        <div class="view_Task_wrapper bs">
             <form:form action="view_form_edit_ticket" modelAttribute="TICKET_RECORDER_OBJ">
                 <form:hidden path="ticketId" />
                 <div class="view_task_box_divide">
@@ -56,33 +56,33 @@
                         <div class="view_Task_wrapepr_data_line a">
                             <div class="view_Task_wrapepr_data_l1">
                                 <label for="">Ticket Title</label>
-                                <p>${TICKET_RECORDER_OBJ.ticketTitle}</p>
+                                <p style="color:gray">${TICKET_RECORDER_OBJ.ticketTitle}</p>
                             </div>
                         </div>
                         <div class="view_Task_wrapepr_data_line2 a">
                             <div class="view_Task_wrapepr_data_l1">
                                 <label for="">Assigned to</label>
-                                <p>${TICKET_RECORDER_OBJ.ticketOwnerName}</p>
+                                <p style="color:gray">${TICKET_RECORDER_OBJ.ticketOwnerName}</p>
                             </div>
                             <div class="view_Task_wrapepr_data_l1 ">
                                 <label for="">Priority</label>
-                                <p>${TICKET_RECORDER_OBJ.ticketPriority}</p>
+                                <p style="color:gray">${TICKET_RECORDER_OBJ.ticketPriority}</p>
                             </div>
                         </div>
                         <div class="view_Task_wrapepr_data_line3 a">
                             <div class="view_Task_wrapepr_data_l1">
                                 <label for="">Status</label>
-                                <p>${TICKET_RECORDER_OBJ.ticketStatus}</p>
+                                <p style="color:gray">${TICKET_RECORDER_OBJ.ticketStatus}</p>
                             </div>
                             <div class="view_Task_wrapepr_data_l1">
                                 <label for="">Due Date</label>
-                                <p>${localDateTimeFormat.format(TICKET_RECORDER_OBJ.ticketDueDate)}</p>
+                                <p style="color:gray">${localDateTimeFormat.format(TICKET_RECORDER_OBJ.ticketDueDate)}</p>
                             </div>
                         </div>
                         <div class="view_Task_wrapepr_data_line4 a">
                             <div class="view_Task_wrapepr_data_l1">
                                 <label for="">Link with deal</label>
-                                <p>
+                                <p style="color:gray">
                                     <c:if test="${TICKET_RECORDER_OBJ.dealConfirmationId != 0}">
                                         ${TICKET_RECORDER_OBJ.dealConfirmationId}
                                     </c:if>
@@ -92,7 +92,7 @@
                         <div class="view_Task_wrapepr_data_line4 a">
                             <div class="view_Task_wrapepr_data_l1">
                                 <label for="">Description</label>
-                                <p>${TICKET_RECORDER_OBJ.ticketDescription}</p>
+                                <p style="color:gray">${TICKET_RECORDER_OBJ.ticketDescription}</p>
                             </div>
                         </div>
                         <div class="due_today_task_data_btns">
@@ -122,7 +122,7 @@
                     <!-- ############# taken code starts ########### -->
                     <div class="view_Task_wrapper_data_comment_side">
                         <div class="view_Task_wrapper_data_comment_title">
-                            <label for="" style="color:#FFBA08">${pageContext.request.remoteUser} Says:</label><br>
+                            <label for="" style="color:black">${pageContext.request.remoteUser} Says:</label><br>
                             <textarea cols="70" rows="4" name="ticketComment" style="font-size: 18px;"></textarea>
                         </div>
                         <div class="due_today_task_data_btns">
@@ -130,7 +130,7 @@
                         </div>
                         <div class="commemts-sec">
                             <c:forEach items="${FILTERED_TICKET_COMMENTS}" var="filteredTicketComments">
-                                <div class="commentBox" style="background:#cce3de;margin:5px 0 ;border-radius:5px">
+                                <div class="commentBox" style="background:#cce3de;margin:5px 0 ;border-radius:5px;border:2px solid black">
                                     <div style="display:flex;">
                                         <p
                                             style=";color:red;display:inline-block;margin-right:350px;font-weight:bold;margin-left:5px">
@@ -157,13 +157,13 @@
                             <c:forEach begin="1" end="${maxPages}" step="1" varStatus="i">
                                 <c:choose>
                                     <c:when test="${(page+1) == i.index}">
-                                        <span style="background:black;padding:2px 5px;border-radius:2px;color:red">${i.index}</span>
+                                        <span style="background:black;padding:2px 5px;border-radius:2px;color:white">${i.index}</span>
                                     </c:when>
                                     <c:otherwise>
                                         <c:url value="view_view_ticket" var="url">
                                             <c:param name="page" value="${i.index-1}" />
                                         </c:url>
-                                        <a style="padding:2px 5px;border-radius:2px;color:white"
+                                        <a style="padding:2px 5px;border-radius:2px;color:black"
                                             href='<c:out value="${url}&ticketId=${TICKET_RECORDER_OBJ.ticketId}" />'>${i.index}</a>
                                     </c:otherwise>
                                 </c:choose>

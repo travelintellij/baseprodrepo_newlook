@@ -50,7 +50,7 @@
             <a href="view_completed_ticket_form_user">Completed</a>
         </div>
 
-        <div class="create-new-ticket-wrapper">
+        <div class="create-new-ticket-wrapper bs">
             <div align="center"><b>
                     <font color="green"> ${Success} </font>
                     <font color="red"> ${Error}</font>

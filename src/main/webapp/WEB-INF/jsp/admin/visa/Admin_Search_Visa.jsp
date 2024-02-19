@@ -17,7 +17,7 @@
 .autocomplete-suggestions { border: 1px solid #999; background: red;overflow-y:auto}
 		.autocomplete-suggestion {padding: 2px 5px;color:white; background: black;overflow-y: auto;overflow-y:auto}
 		.autocomplete-selected { background: #F0F0F0;overflow-y:auto} 
-		.autocomplete-suggestions strong { font-weight: normal; color:black;overflow-y:auto}
+		.autocomplete-suggestions strong { font-weight: normal; color:#F8AF51;overflow-y:auto}
 		.autocomplete-group { padding: 2px 5px;overflow-y:auto}
 		.autocomplete-group strong { display: block; border-bottom: 1px solid #000;  background: black ; color:black overflow-y:auto}
 		.autocomplete-selected:hover{

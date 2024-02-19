@@ -48,7 +48,7 @@
 
 
     <div class="compleated_ticket container">
-        <div class="compleated_ticket_wrapper">
+        <div class="compleated_ticket_wrapper bs">
             <div align="center"><b>
                     <font color="green"> ${Success} </font>
                     <font color="red"> ${Error}</font>
@@ -113,26 +113,26 @@
         <!-- ################### table ################ -->
 
         <table class="due_date_task_tabel">
-            <thead>
+            <thead style="background:#6082B6;height:50px">
                 <tr>
                     <th><a
-                         style="color: #FFBA08;"   href="view_completed_ticket_form_user?sortBy=ticketId&dateFrom=${dateFrom}&dateTo=${dateTo}&ticketOwner=${ticketOwner}&dealConfirmationId=${dealConfirmationId}&ticketPriority=${ticketPriority}">Ticket
+                         style="color: black;"   href="view_completed_ticket_form_user?sortBy=ticketId&dateFrom=${dateFrom}&dateTo=${dateTo}&ticketOwner=${ticketOwner}&dealConfirmationId=${dealConfirmationId}&ticketPriority=${ticketPriority}">Ticket
                             Id</a></th>
-                    <th>Ticket Title</th>
-                    <th>Client Associated</th>
+                    <th style="color:black">Ticket Title</th>
+                    <th style="color:black">Client Associated</th>
                     <th><a
-                        style="color: #FFBA08;"    href="view_completed_ticket_form_user?sortBy=dealConfirmationId&dateFrom=${dateFrom}&dateTo=${dateTo}&ticketOwner=${ticketOwner}&dealConfirmationId=${dealConfirmationId}&ticketPriority=${ticketPriority}">DA
+                        style="color: black;"    href="view_completed_ticket_form_user?sortBy=dealConfirmationId&dateFrom=${dateFrom}&dateTo=${dateTo}&ticketOwner=${ticketOwner}&dealConfirmationId=${dealConfirmationId}&ticketPriority=${ticketPriority}">DA
                             </a></th>
                     <th><a
-                          style="color: #FFBA08;"  href="view_completed_ticket_form_user?sortBy=ticketOwner&dateFrom=${dateFrom}&dateTo=${dateTo}&ticketOwner=${ticketOwner}&dealConfirmationId=${dealConfirmationId}&ticketPriority=${ticketPriority}">AT
+                          style="color: black;"  href="view_completed_ticket_form_user?sortBy=ticketOwner&dateFrom=${dateFrom}&dateTo=${dateTo}&ticketOwner=${ticketOwner}&dealConfirmationId=${dealConfirmationId}&ticketPriority=${ticketPriority}">AT
                             </a></th>
                     <th><a
-                         style="color: #FFBA08;"   href="view_completed_ticket_form_user?sortBy=ticketPriority&dateFrom=${dateFrom}&dateTo=${dateTo}&ticketOwner=${ticketOwner}&dealConfirmationId=${dealConfirmationId}&ticketPriority=${ticketPriority}">Priority</a>
+                         style="color: black;"   href="view_completed_ticket_form_user?sortBy=ticketPriority&dateFrom=${dateFrom}&dateTo=${dateTo}&ticketOwner=${ticketOwner}&dealConfirmationId=${dealConfirmationId}&ticketPriority=${ticketPriority}">Priority</a>
                     </th>
                     <th><a
-                          style="color: #FFBA08;"  href="view_completed_ticket_form_user?sortBy=ticketDueDate&dateFrom=${dateFrom}&dateTo=${dateTo}&ticketOwner=${ticketOwner}&dealConfirmationId=${dealConfirmationId}&ticketPriority=${ticketPriority}">Due
+                          style="color: black;"  href="view_completed_ticket_form_user?sortBy=ticketDueDate&dateFrom=${dateFrom}&dateTo=${dateTo}&ticketOwner=${ticketOwner}&dealConfirmationId=${dealConfirmationId}&ticketPriority=${ticketPriority}">Due
                             Date</a></th>
-                    <th>Action</th>
+                    <th style="color:black">Action</th>
                 </tr>
             </thead>
             <tbody>

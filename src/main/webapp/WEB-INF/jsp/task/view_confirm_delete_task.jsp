@@ -49,41 +49,41 @@
 
 
     <div class="view_confirm_delete_task container">
-        <div class="view_confirm_delete_task_wrapper">
-            <h1 class="page-heading" style="color:red">Confirm Delete <i class="fas fa-exclamation-triangle fa-xl"></i></h1>
+        <div class="view_confirm_delete_task_wrapper bs">
+            <h1 class="page-heading" style="color:red">Confirm Delete <i class="fas fa-exclamation-triangle fa-lg"></i></h1>
             <form:form action="${action}" modelAttribute="TASK_RECORDER_OBJ">
                 <input type="hidden" name="taskId" value="${TASK_RECORDER_OBJ.taskId}" />
                 <div class="view_confirm_delete_task_wrapper_data">
                     <div class="view_confirm_delete_task_wrapper_data_line a">
                         <div class="view_confirm_delete_task_wrapper_data_l1">
                             <label for="">Task Id</label>
-                            <p>${TASK_RECORDER_OBJ.taskId}</p>
+                            <p style="color:gray">${TASK_RECORDER_OBJ.taskId}</p>
                         </div>
                         <div class="view_confirm_delete_task_wrapper_data_l1">
                             <label for="">Task Title</label>
-                            <p>${TASK_RECORDER_OBJ.taskTitle}</p>
+                            <p style="color:gray">${TASK_RECORDER_OBJ.taskTitle}</p>
                         </div>
                         <div class="view_confirm_delete_task_wrapper_data_l1">
                             <label for="">Assgined To</label>
-                            <p>${TASK_RECORDER_OBJ.taskOwnerName}</p>
+                            <p style="color:gray">${TASK_RECORDER_OBJ.taskOwnerName}</p>
                         </div>
                         <div class="view_confirm_delete_task_wrapper_data_l1">
                             <label for="">Priority</label>
-                            <p>${TASK_RECORDER_OBJ.taskPriority}</p>
+                            <p style="color:gray">${TASK_RECORDER_OBJ.taskPriority}</p>
                         </div>
                     </div>
                     <div class="view_confirm_delete_task_wrapper_data_line a">
                         <div class="view_confirm_delete_task_wrapper_data_l1">
                             <label for="">Status</label>
-                            <p>${TASK_RECORDER_OBJ.taskStatus}</p>
+                            <p style="color:gray">${TASK_RECORDER_OBJ.taskStatus}</p>
                         </div>
                         <div class="view_confirm_delete_task_wrapper_data_l1">
                             <label for="">Due Date</label>
-                            <p>${localDateTimeFormat.format(TASK_RECORDER_OBJ.taskDueDate)}</p>
+                            <p style="color:gray">${localDateTimeFormat.format(TASK_RECORDER_OBJ.taskDueDate)}</p>
                         </div>
                         <div class="view_confirm_delete_task_wrapper_data_l1_link">
                             <label for="">Link with deal</label>
-                            <p>
+                            <p style="color:gray">
                                 <c:if test="${TASK_RECORDER_OBJ.dealConfirmationId != 0}">
                                     UDN-${TASK_RECORDER_OBJ.dealConfirmationId}
                                 </c:if>
@@ -93,10 +93,10 @@
                             </p>
                         </div>
                     </div>
-                    <div class="view_confirm_delete_task_wrapper_data_line a">
-                        <div class="view_confirm_delete_task_wrapper_data_l1">
+                    <div class="view_confirm_delete_task_wrapper_data_line a" style="width:100%">
+                        <div class="view_confirm_delete_task_wrapper_data_l1" style="width:100%">
                             <label for="">Description</label>
-                            <p>${TASK_RECORDER_OBJ.taskDescription}</p>
+                            <p style="color:gray;width:100%">${TASK_RECORDER_OBJ.taskDescription}</p>
                         </div>
                     </div>
                     <div class="due_today_task_data_btns">
