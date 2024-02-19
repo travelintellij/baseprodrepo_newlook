@@ -59,7 +59,7 @@ body::before {
     <form:form modelAttribute="QTN_OBJ" action="create_create_lead_quotation">
              <div class="viewInsuranceQuotationDetails">
             <div class="viewInsuranceQuotationD_wrapper">
-                <div class="viewInsuranceQuotationD_wr_data">
+                <div class="viewInsuranceQuotationD_wr_data bs">
                     <div class="viewInsuranceQuotationD_wr_data_line">
                         <label for="" class="lb">Quotation</label>
                         <p>${QTN_OBJ.quotationId}</p>
@@ -77,16 +77,9 @@ body::before {
     
   
     
-    <div class="float-container">
-       
+   
     
-        <div class="float-child-right">
-            <div class="blue">
-    
-                <div align="center"><b>
-                        <font color="green"> ${Success} </font>
-                        <font color="red"> ${Error}</font>
-                    </b></div>
+               
               
                             <form:form modelAttribute="MANUAL_PKG" action="delete_delete_package_manual_quotation">
     
@@ -95,10 +88,14 @@ body::before {
                                 <input type="hidden" name="manualPkgQuotationId"
                                     value="${MANUAL_PKG.manualPkgQuotationId}" />
 
-                       <div class="com_page container">
+                       <div class="com_page bs container">
         <div class="com_page_wrapper" >
             <h1 style="color: #32cd32 ">Id- ${MANUAL_PKG.manualPkgQuotationId}</h1>
             <div class="com_page_wrapper_data">
+             <div align="center"><b>
+                        <font color="green"> ${Success} </font>
+                        <font color="red"> ${Error}</font>
+                    </b></div>
                 <div class="com_page_wrapper_data_line a">
                     <div class="com_page_wrapper_dl1">
                         <label for="" class="lb">City</label>
@@ -174,7 +171,7 @@ body::before {
                     </div>
                 </div>
                 <div class="due_today_task_data_btnss" style="margin-top:20px">
-                <input type="submit" name="deletePackage" id="deletePackage" Value="Confirm Delete !" />
+                <input type="submit" name="deletePackage" id="deletePackage" Value="Confirm Delete !" style="background:red;color:white"/>
                 <a href="form_view_package_quotation_details?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId}"><input
                         type="button" value="Back" /></a>
                 </div>

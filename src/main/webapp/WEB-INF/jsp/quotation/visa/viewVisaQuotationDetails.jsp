@@ -87,7 +87,7 @@
 
 <form:form modelAttribute="QTN_OBJ" action="create_create_lead_quotation">
     <div class="viewVisaQuotationDetails container">
-        <div class="viewVisaQuotationDetails_wrapper">
+        <div class="viewVisaQuotationDetails_wrapper bs">
             <div class="viewVisaQuotationDetails_wrapper_data">
                 <div class="viewVisaQuotationDetails_wrapper_data_line">
                     <div class="viewVisaQuotationDetails_wrapper_data_l1">
@@ -104,7 +104,7 @@
         </div>
         </form:form>
         
-        <div class="viewVisaQuotationDetails_wrapper2">
+        <div class="viewVisaQuotationDetails_wrapper2 bs">
             <c:if test="${VSA_ACTION ne 'SEARCH_ADD' and VSA_ACTION ne 'ADD_VISA' and VSA_ACTION ne 'EDIT_VISA' and VSA_ACTION ne 'DELETE'}">
     <div>
 		<font size="4"> <b>Add Visa to quotation.</b></font>
@@ -141,10 +141,10 @@
 			</c:when>
 			<c:otherwise>
 			  <div class="form_view_search_visa_add_quotation">
-        <div class="form_view_search_visa_add_quotation_wrapper" style="margin-top:10px">
+        <div class="form_view_search_visa_add_quotation_wrapper bs" style="margin-top:10px">
             <div class="form_view_search_visa_add_quotation_wrapper_data">
                 <div class="form_view_search_visa_add_quotation_wrapper_data_line">
-                    <div class="form_view_search_visa_add_quotation_wrapper_data_l1_h">
+                    <div class="form_view_search_visa_add_quotation_wrapper_data_l1_h" style="height:50px;background:#6082B6;padding:10px">
                         <p>Visa Country</p>
                         <p style="padding-right: 20px;">${visaQtnObj.visaCountry}</p>
                         <p style="padding-left: 80px;">Visa Consulate</p>
@@ -167,43 +167,43 @@
                     <div class="form_view_search_visa_add_quotation_wrapper_data_l1 a">
                         <div class="form_view_search_visa_add_quotation_wrapper_data_in">
                             <label for="" class="l-st">Adults</label>
-                            <p>${visaQtnObj.adults}</p>
+                            <p style="color:gray">${visaQtnObj.adults}</p>
                         </div>
                         <div class="form_view_search_visa_add_quotation_wrapper_data_in">
                             <label for="" class="l-st">Child</label>
-                           <p>${visaQtnObj.children}</p>
+                           <p style="color:gray">${visaQtnObj.children}</p>
                         </div>
                         <div class="form_view_search_visa_add_quotation_wrapper_data_in">
                             <label for="" class="l-st">Infants</label>
-                            <p>${visaQtnObj.infant}</p>
+                            <p style="color:gray">${visaQtnObj.infant}</p>
                         </div>
                         <div class="form_view_search_visa_add_quotation_wrapper_data_in">
                             <label for="" class="l-st">Display Order</label>
-                            <p>${visaQtnObj.displayOrder}</p>
+                            <p style="color:gray">${visaQtnObj.displayOrder}</p>
                         </div>
                     </div>
                     <div class="form_view_search_visa_add_quotation_wrapper_data_l1_c a">
                         <div class="form_view_search_visa_add_quotation_wrapper_data_in">
                             <label for="" class="l-st">Total Visa Cost (System)</label>
-                            <p>${visaQtnObj.systemVisaCost}</p>
+                            <p style="color:gray">${visaQtnObj.systemVisaCost}</p>
                         </div>
                         <div class="form_view_search_visa_add_quotation_wrapper_data_in">
                             <label for="" class="l-st">Total Visa Markup (System)</label>
-                            <p>${visaQtnObj.systemVisaMarkup }</p>
+                            <p style="color:gray">${visaQtnObj.systemVisaMarkup }</p>
                         </div>
                         <div class="form_view_search_visa_add_quotation_wrapper_data_in">
                             <label for="" class="l-st">New Cost (Changed Current)</label>
-                           <p>${visaQtnObj.visaCost}</p>
+                           <p style="color:gray">${visaQtnObj.visaCost}</p>
                         </div>
                         <div class="form_view_search_visa_add_quotation_wrapper_data_in">
                             <label for="" class="l-st">Quoted Markup</label>
-                            <p>${visaQtnObj.visaMarkup }</p>
+                            <p style="color:gray">${visaQtnObj.visaMarkup }</p>
                         </div>
                     </div>
                     <div class="form_view_search_visa_add_quotation_wrapper_data_l1_c a" style="margin-bottom: 20px;">
                         <div class="form_view_search_visa_add_quotation_wrapper_data_rem">
                             <label for="" class="l-st">Remarks</label> <br>
-                           <p>${visaQtnObj.remarks }</p>
+                           <p style="color:gray">${visaQtnObj.remarks }</p>
                         </div>
                     </div>
                     <div class="due_today_task_data_btns" style="margin-top: 15px;">

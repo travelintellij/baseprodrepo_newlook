@@ -21,7 +21,7 @@
 	<input type="hidden" name="manualHotelQuotationId" value= "${MANUAL_HTL.manualHotelQuotationId}" />
 	<form:hidden path="optionNo"/>
 	<input type="hidden" name="hotelOptionNo" value= "${QTN_OBJ.hotelOptionNo}" />
-    <div class="form_view_add_manual_hotel_quotation">
+    <div class="form_view_add_manual_hotel_quotation bs">
         <div class="form_view_add_manual_hotel_quotation_wrapper">
             <div class="form_view_add_manual_hotel_quo_box">
                 <label for="">City</label>
@@ -96,7 +96,7 @@
         <div class="form_view_add_manual_hotel_quotation_wrapper">
             <div class="form_view_add_manual_hotel_quo_box">
                 <label for="">Remarks</label>
-                <form:textarea path="remarks" rows="2" cols="139" maxlength="1450"/>
+                <form:textarea path="remarks" rows="5" cols="139" maxlength="1450"/>
             </div>
         </div>
         <div class="due_today_task_data_btns">

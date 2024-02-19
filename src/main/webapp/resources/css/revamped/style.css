@@ -2201,8 +2201,8 @@ footer {
 .create_new_deal_wrapper {
     margin-top: 115px;
     padding: 20px 10px;
-    background: rgba(0, 0, 0, 0.9);
-    color: white;
+    background: white;
+    color: black;
     border-radius: 10px;
 }
 
@@ -2276,8 +2276,8 @@ footer {
 .search_deal_wrapper {
     margin-top: 115px;
     padding: 20px 10px;
-    background: rgba(0, 0, 0, 0.9);
-    color: white;
+    background: white;
+    color: black;
     border-radius: 10px;
 }
 
@@ -3959,19 +3959,20 @@ font-weight: bold;
 
 /* ################### viewLeadQuotationsList ######################## */
 .viewLeadQuotationsList_wrapper {
-    color: white;
+    color: black;
     width: 100%;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 9);
+    background:white;
     padding: 10px;
     border-radius: 10px;
     margin-top: 155px;
 }
 
 .viewLeadQuotationsList_wrapper label {
-    color: #FABA08
+    color: black;
+    font-weight:bold;
 }
 
 .viewLeadQuotationsList_wrapper_data_line {
@@ -3990,7 +3991,10 @@ font-weight: bold;
 .lq-sers {
     display: flex;
 }
-
+.lq-sers .viewLeadQuotationsList_wrapper_data_l1 label{
+	color:black;
+	font-weight: normal;
+}
 .lq-sers label {
     color: white;
 }
@@ -4019,9 +4023,9 @@ font-weight: bold;
 .viewLeadQuotationsTabel {
     margin-top: 5px;
     margin-left:-150px;
-    color: white;
+    color: black;
     width: 1500px;
-    background: rgba(0, 0, 0, 9);
+    background:white;
 }
 
 .viewLeadQuotationsTabel th {
@@ -4489,12 +4493,12 @@ color:#249C91;
     margin-left: 5px
 }
 .createNewQuotation_form_wrapper {
-    color: white;
+    color: black
     width: 100%;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 7);
+    background: white;
     padding: 10px;
     border-radius: 10px;
     margin-top: 20px;
@@ -4514,8 +4518,8 @@ color:#249C91;
 }
 
 .createNewQuotation_form_wrapper_data label {
-    color: #FABA08;
-    font-weight: bold;
+    color: black;
+    font-weight: normal;
 }
 .createNewQuotation_wrapper{
 	position: relative;
@@ -4550,12 +4554,12 @@ color:#249C91;
 }
 
 .viewQuotationDetails_wrapper {
-    color: white;
+    color: black;
     width: 100%;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 7);
+    background: white;
     padding: 10px;
     border-radius: 10px;
     margin-top: 20px;
@@ -4572,7 +4576,7 @@ color:#249C91;
 
 .viewQuotationDetails_wrapper_data_l1 label {
     font-weight: bold;
-    color: #FABA08;
+    color: black;
     width: 300px;
     text-align: start;
 }
@@ -4600,7 +4604,7 @@ color:#249C91;
 
 .viewQuotationDetails_wrapper_data_line_ser_hd {
     font-weight: bold;
-    color: #FABA08;
+    color: black;
     width: 300px;
     text-align: start;
 }
@@ -4716,12 +4720,12 @@ background:red
 /* #################### form_view_add_manual_transfer_quotation  ############################ */
 
 .form_view_add_manual_transfer_quotation_wrapper{
-        color: white;
+        color: black;
         width: 100%;
         text-align: center;
         border-collapse: collapse;
         border: none;
-        background: rgba(0, 0, 0, 0.689);
+        background: white;
         padding: 10px;
         border-radius: 10px;
         
@@ -4763,19 +4767,19 @@ background:red
 /* ################# viewTransfersQuotationDetails ################## */
 
 .viewTransfersQuotationDetails_wrapper{
-color: white;
+color: black;
     width: 500px;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 0.689);
+    background:white;
     padding: 10px;
     border-radius: 10px;
     margin:0px auto;
 }
 .viewTransfersQuotationDetails_wrapper label{
 font-weight: bold;
-    color: #FABA08;
+    color: black
     width: 300px;
     text-align: start;
 }
@@ -4792,9 +4796,10 @@ font-weight: bold;
 .vtdh_btns{
 	margin:0 auto;
 	width: 500px;
-    background: rgba(0, 0, 0, 0.689);
+    background: white;
     padding: 10px;
     border-radius: 10px;
+    color:white;
 }
 .mfk{
 display: flex;
@@ -4806,12 +4811,12 @@ justify-content: center;
 /* ################## view_transfer_quotation_table ################### */
 
 .view_transfer_quotation_table_wrapper {
-    color: white;
+    color: black;
     width: 100%;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 0.9);
+    background: white;
     padding: 10px;
     border-radius: 10px;     
 }
@@ -4834,7 +4839,7 @@ justify-content: center;
 
 .view_transfer_quotation_table_wrapper_data_li label {
     font-weight: bold;
-    color: #FABA08;
+    color: black;
     width: 300px;
     text-align: start;
 }
@@ -4876,12 +4881,12 @@ justify-content: center;
 
 .sssec_wrapper {
 
-    color: white;
+    color: black;
     width: 100%;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 0.9);
+    background:white;
     padding: 10px;
     border-radius: 10px;
     margin-top: 10px;
@@ -4955,12 +4960,12 @@ justify-content: center;
 /* ########### form_view_delete_manual_sightseeing_quotation ############ */
 
 .form_view_delete_manual_wrapper{
-    color: white;
+    color: black;
     width: 100%;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 0.9);
+    background:white;
     padding: 10px;
     border-radius: 10px;
     margin-top: 0;
@@ -4975,7 +4980,7 @@ justify-content: center;
 }
 .form_view_delete_manual_wrapper_data_l1 label,.fvmwdl1 label,.form_view_delete_manual_wrapper_data_l1_id label,.form_view_delete_manual_wrapper_data_l1_rem label{
         font-weight: bold;
-            color: #FABA08;
+            color: black;
 }
 .form_view_delete_manual_wrapper_data_l1_ad{
     width: 300px;
@@ -5030,12 +5035,12 @@ justify-content: center;
         justify-content: space-around;
 }
 .viewVisaQuotationDetails_wrapper2{
-    color: white;
+    color: black;
         width: 500px;
         text-align: center;
         border-collapse: collapse;
         border: none;
-        background: rgba(0, 0, 0, 0.689);
+        background:white;
         padding: 10px;
         border-radius: 10px;
         margin:0 auto;
@@ -5045,12 +5050,12 @@ justify-content: center;
 /* ######################### form_view_search_visa_add_quotation ########################### */
 
 .form_view_search_visa_add_quotation_wrapper {
-    color: white;
+    color: black;
     width: 1200px;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 7);
+    background: white;
     padding: 10px;
     border-radius: 10px;
     margin: 80px auto;
@@ -5211,17 +5216,17 @@ font-weight: bold;
 }
 .l-st{
     font-weight: bold;
-        color: #FABA08;
+        color: black;
         width: 300px;
 }
 /* ######## sb ############ */
 .sb_wrapper{
-        color: white;
+        color:black;
         width: 500px;
         text-align: center;
         border-collapse: collapse;
         border: none;
-        background: rgba(0, 0, 0, 7);
+        background:white;
         padding: 10px;
         border-radius: 10px;
         margin-top:-30px;
@@ -5229,19 +5234,19 @@ font-weight: bold;
 }
 /* ################# visa sec table ################### */
 .visa_sec_tabel {
-    color: white;
+    color: black;
     width: 1200px;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 7);
+    background:white;
     padding: 10px;
     border-radius: 10px;
-    margin: 100px auto;
+    margin: 50px auto;
 }
 
 .vsi {
-    color: #FABA08;
+    color:black;
     position: relative;
     transition: all .2s ease-in-out;
     cursor: pointer;
@@ -5289,7 +5294,8 @@ font-weight: bold;
 
 }
 .vsh{
-    background: #00b4d8;
+    background:#6082B6;
+    height:50px;
 }
 
 
@@ -5297,39 +5303,39 @@ font-weight: bold;
 /* ######################## viewCruiseQuotationDetails ###################### */
 
 .viewCruiseQuotationDetails_wrapper {
-    color: white;
+    color: black;
     width: 1200px;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 0.9);
+    background: white;
     padding: 10px;
     border-radius: 10px;
     margin-top: 20px;
 }
 
 .viewCruiseQuotationDetailsfrm_wrapper {
-    color: white;
+    color: black;
     width: 500px;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 0.689);
+    background:white;
     padding: 10px;
     border-radius: 10px;
     margin:20px auto;
 }
 
 .viewCruiseQuotationDetailsfrm_wrapper_2 {
-    color: white;
+    color: black;
     width: 500px;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 0.689);
+    background:white;
     padding: 10px;
     border-radius: 10px;
-      margin:10px auto;
+    margin:10px auto;
 }
 
 .viewCruiseQuotationDetails_wrapper_data_line {
@@ -5347,7 +5353,7 @@ font-weight: bold;
 }
 
 .lb {
-    font-weight: bold;
+    font-weight:normal;
     color: #FABA08;
     width: 300px;
 }
@@ -5700,12 +5706,12 @@ font-weight: bold;
 
 /* ####################### rso ######################## */
 .rso_wrapper {
-    color: white;
+    color: black;
     width: 100%;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 9);
+    background: white;
     padding: 10px;
     border-radius: 10px;
     margin-top: 115px;
@@ -5742,24 +5748,24 @@ font-weight: bold;
 }
 
 .rso_table {
-    color: white;
+    color: black;
     width: 1200px;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 9);
+    background: white;
     padding: 10px;
     border-radius: 10px;
     margin-top: 20px;
 }
 
 .rso_sms {
-    color: white;
+    color: black;
     width: 800px;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 9);
+    background: white;
     padding: 10px;
     border-radius: 10px;
     margin: 20px auto;
@@ -5786,12 +5792,12 @@ font-weight: bold;
 /* ####################### viewEditQuotationDetails ############ */
 
 .viewEditQuotationDetails_wrapper{
-    color: white;
+    color:black;
         width: 1200px;
         text-align: center;
         border-collapse: collapse;
         border: none;
-        background: rgba(0, 0, 0, 9);
+        background: white;
         padding: 10px;
         border-radius: 10px;
        margin:25px auto;
@@ -5978,13 +5984,16 @@ font-weight: bold;
     /* display: flex; */
     width: 500px;
     margin: 20px auto;
-    background: black;
-    color: white;
+    background: white;
+    color: black;
     /* justify-content: space-between; */
     border-radius: 5px;
 }
 
 .viewHotelQuotationDetails_wrapper_dli {
+	
+	background:white;
+	color:black;
     width: 250px;
     padding: 10px;
 }
@@ -5992,11 +6001,11 @@ font-weight: bold;
 
 /* #########################################    */
 .form_view_add_manual_hotel_quotation{
-       color: white;
+       color: black;
         text-align: center;
         border-collapse: collapse;
         border: none;
-        background: rgba(0, 0, 0, 9);
+        background: white;
         padding: 10px;
         border-radius: 10px;
         width: 1200px;
@@ -6079,11 +6088,11 @@ display: flex;
 
 /* ##################### viewInsuranceQuotation ########### */
 .viewInsuranceQuotationD_wr_data {
-    color: white;
+    color: black;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 9);
+    background: white;
     padding: 10px;
     border-radius: 10px;
     width: 600px;
@@ -6102,11 +6111,11 @@ display: flex;
     width: 300px;
 }
 .sa-q{
-    color: white;
+        color: black;
         text-align: center;
         border-collapse: collapse;
         border: none;
-        background: rgba(0, 0, 0, 9);
+        background: white;
         padding: 10px;
         border-radius: 10px;
         width: 200px;
@@ -6114,11 +6123,11 @@ display: flex;
 }
 
 .form_view_add_manual_insurance_q_wrap {
-    color: white;
+    color: black;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 9);
+    background: white;
     padding: 10px;
     border-radius: 10px;
     margin:10px auto;
@@ -6134,12 +6143,12 @@ display: flex;
     width: 90%;
 }
 .in_mu_add_wrp{
-	     margin:2px auto;
-        color: white;
+	    margin:2px auto;
+        color: black;
         text-align: center;
         border-collapse: collapse;
         border: none;
-        background: rgba(0, 0, 0, 9);
+        background: white;
         padding: 10px;
         border-radius: 10px;
 }
@@ -6150,13 +6159,12 @@ display: flex;
     width: 300px;
     text-align: start;
 }
-
 .in_mu_add_wrp {
-    color: white;
+    color: black;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 9);
+    background: white;
     padding: 10px;
     border-radius: 10px;
 }
@@ -6174,20 +6182,20 @@ display: flex;
 .Flight_qu {
     margin: 20px auto;
     width: 700px;
-    color: white;
+    color:black;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 9);
+    background: white;
     padding: 10px;
     border-radius: 10px;
 }
 .fr_view_fli_qu_wr{
-     color: white;
+     color: black;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 9);
+    background:white;
     padding: 10px;
     border-radius: 10px;
 }
@@ -6213,11 +6221,11 @@ width: 90%
 }
 
 .oneW_wr {
-    color: white;
+    color:black;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 9);
+    background: white;
     padding: 10px;
     border-radius: 10px;
 }
@@ -6246,11 +6254,11 @@ width: 90%
 /* ################### tour package ############# */
 
 .add_man_pckage_wrapper {
-    color: white;
+    color: black;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 9);
+    background: white;
     padding: 10px;
     border-radius: 10px;
     margin-top:20px;
@@ -6267,11 +6275,11 @@ width: 90%
 }
 .pt_wrapper {
     width: 500px;
-    color: white;
+    color: black;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 9);
+    background: white;
     padding: 10px;
     border-radius: 10px;
     margin: 100px auto;
@@ -6280,13 +6288,13 @@ width: 90%
 /* #################### flight ###### */
 
 .fli_de_wrapper {
-    color: white;
+    color: black;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 9);
+    background: white;
     padding: 10px;
-    border:2px solid gray;
+    border-radius: 10px;
 }
 
 .fli_de_wrapper_data_fli {
@@ -6306,11 +6314,11 @@ width: 90%
 }
 /* #################### fli dl ########### */
 .fl_view_wrapper{
-    color: white;
+    color: black;
         text-align: center;
         border-collapse: collapse;
         border: none;
-        background: rgba(0, 0, 0, 9);
+        background: white;
         padding: 10px;
         border-radius: 10px;
         margin-top: -80px;
@@ -6324,11 +6332,11 @@ width: 90%
 }
 /* ############### com_page ############# */
 .com_page_wrapper{
-    color: white;
+       color: black;
         text-align: center;
         border-collapse: collapse;
         border: none;
-        background: rgba(0, 0, 0, 9);
+        background:white;
         padding: 10px;
         border-radius: 10px;
         margin-top: 20px;
@@ -6343,11 +6351,11 @@ width: 90%
 
 
 .form_view_add_manual_other_wrapper {
-    color: white;
+    color: black;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 9);
+    background:white;
     padding: 10px;
     border-radius: 10px;
 }
@@ -6586,13 +6594,13 @@ transition: all 0.3s ease-in-out;
 }
 .deal_table{
 	width: 100%;
-	background:black;
-	color:white;
+	background:white;
+	color:black;
 	text-align: center;
 }
 .deal_menu_icon{
 position: relative;	
-color:#FABA08;
+color:black;
 }
 .deal_menu{
 	border-radius:5px;
@@ -6624,11 +6632,11 @@ color:#FABA08;
 /* ################### form_viewDeal ############### */
 
 .form_viewDeal_wrapper {
-    color: white;
+    color: black;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 9);
+    background:white;
     padding: 10px;
     border-radius: 10px;
     margin-top: 115px;
@@ -6655,11 +6663,11 @@ color:#FABA08;
 }
 /* ##################### AdminIncentiveReportSearch ############## */
 .AdminIncentiveReportSearch_wrapper {
-    color: white;
+    color: black;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 9);
+    background: white;
     padding: 10px;
     border-radius: 10px;
     margin-top: 115px;
@@ -6684,11 +6692,11 @@ color:#FABA08;
     justify-content: space-between;
 }
 .IncentiveReportSearch_wrapper{
-    color: white;
+    color: black;
         text-align: center;
         border-collapse: collapse;
         border: none;
-        background: rgba(0, 0, 0, 9);
+        background: white;
         padding: 10px;
         border-radius: 10px;
         margin-top: 115px;
@@ -6707,11 +6715,11 @@ color:#FABA08;
 /* ################### form_view_delete_manual_visa_quotation_wrpr ############## */
 
 .form_view_delete_manual_visa_quotation_wrpr{
-color: white;
+color: black;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 9);
+    background: white;
     padding: 10px;
     border-radius: 10px;
     margin-top: 60px;
@@ -6741,11 +6749,11 @@ color: white;
 /* ############ viewIncentiveDetails ############# */
 
 .viewIncentiveDetails_wrapper {
-    color: white;
+    color: black;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 9);
+    background: white;
     padding: 10px;
     border-radius: 10px;
     margin-top: 150px;
@@ -6770,11 +6778,11 @@ color: white;
 .viewIncentiveDetails_wr_dt_2 {
 	margin:0px auto;
 	width:983px;
-    color: white;
+    color: black;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 9);
+    background: white;
     padding: 10px;
     border-radius: 10px;
     margin-top: 10px;
@@ -6798,14 +6806,13 @@ color: white;
 }
 
 .viewIncentiveDetails_wr_dt_3 {
-    color: white;
+    color: black;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 9);
-    padding: 10px;
-    border-radius: 10px;
+    background: white;
     margin-top: 10px;
+
 }
 .viewIncentiveDetails_wr_dt_3_b{
     display: flex;
@@ -6820,11 +6827,11 @@ color: white;
 	margin-top:150px;
 }
 .form_editIncentiveClaim_wrapper {
-    color: white;
+    color: black;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 9);
+    background: white;
     padding: 10px;
     border-radius: 10px;
     margin: 10px auto;
@@ -6859,11 +6866,11 @@ color: white;
 
 /* ##################################################### */
 .viewIncentiveDetails_modal_wrapper{
-    color: white;
+    color: black;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 9);
+    background: white;
     padding: 10px;
     border-radius: 10px;
     width: 100%;
@@ -7212,11 +7219,11 @@ transition:all 0.2s ease-in-out
 }
 /* ################### SubmitNewIncentiveClaim ##################  */
 .SubmitNewIncentiveClaim_wrapper {
-    color: white;
+    color: black;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 9);
+    background: white;
     padding: 10px;
     border-radius: 10px;
     margin-top: 115px;
@@ -7251,11 +7258,11 @@ transition:all 0.2s ease-in-out
 }
 
 .claim_ques {
-    color: white;
+    color: black;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 9);
+    background: white;
     padding: 10px;
     border-radius: 10px;
     margin-top: 15px;

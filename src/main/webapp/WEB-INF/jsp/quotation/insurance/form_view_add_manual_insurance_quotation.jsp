@@ -40,7 +40,7 @@
                         <input type="hidden" name="leadId" value="${QTN_OBJ.leadEntity.leadId}" />
                         <input type="hidden" name="quotationId" value="${QTN_OBJ.quotationId}" />
                         <div class="form_view_add_manual_insurance_q container">
-                            <div class="form_view_add_manual_insurance_q_wrap">
+                            <div class="form_view_add_manual_insurance_q_wrap bs">
                                 <h1>Id- ${insuranceQtnObj.manualInsuranceQuotationId}</h1>
                                 <div class="form_view_add_manual_insurance_q_wrap_d">
                                     <div class="form_view_add_manual_insurance_q_wrap_dl">
@@ -74,7 +74,7 @@
                                     <div class="form_view_add_manual_insurance_q_wrap_dl">
                                         <div class="form_view_add_manual_insurance_q_wrap_dl1">
                                             <label for="">Insurance Provider</label>
-                                            <form:select path="insuranceProvider" required="required">
+                                            <form:select path="insuranceProvider" required="required" style="width:90%">
                                                 <option class="service-small" value="" selected>Please Select</option>
                                                 <form:options items="${INSURANCE_PROVIDERS_MAP}"
                                                     class="service-small" />
@@ -129,10 +129,10 @@
                                             <form:input path="displayOrder" type="number" min="0" />
                                         </div>
                                     </div>
-                                    <div class="form_view_add_manual_insurance_q_wrap_dl">
-                                        <div class="form_view_add_manual_insurance_q_wrap_dl1">
-                                            <label for="">Remarks</label>
-                                            <form:textarea path="remarks" cols="133" rows="2" maxlength="1450" />
+                                    <div class="form_view_add_manual_insurance_q_wrap_dl" style="width:100%">
+                                        <div class="form_view_add_manual_insurance_q_wrap_dl1" style="width:100%">
+                                            <label for="">Remarks</label> <br>
+                                            <form:textarea path="remarks" cols="133" rows="5" maxlength="1450" style="width:97%"/>
                                         </div>
                                     </div>
                                     <div class="due_today_task_data_btnss">

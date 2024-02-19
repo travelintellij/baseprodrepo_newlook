@@ -36,7 +36,7 @@
 </style>
 <body>
     <div class="viewLeadQuotationsList container">
-        <div class="viewLeadQuotationsList_wrapper">
+        <div class="viewLeadQuotationsList_wrapper bs">
         <h1 class="page-heading">Quotation</h1>
             <form:form modelAttribute="LEAD_OBJ" action="form_view_editlead">
                 <form:hidden path="leadId" />
@@ -48,55 +48,55 @@
                     <div class="viewLeadQuotationsList_wrapper_data_line a" >
                         <div class="viewLeadQuotationsList_wrapper_data_l1">
                             <label for="">Lead Id</label>
-                            <p>Q-${String.format("%04d",LEAD_OBJ.leadId)}-${LEAD_OBJ.leadSourceShortName }</p>
+                            <p style="color:#32cd32;font-weight:bold">Q-${String.format("%04d",LEAD_OBJ.leadId)}-${LEAD_OBJ.leadSourceShortName }</p>
                         </div>
                         <div class="viewLeadQuotationsList_wrapper_data_l1">
                             <label for="">Is Qualified</label>
                             <p>
-                                <form:checkbox class="ch_c" path="qualified" disabled="true" />
+                                <form:checkbox class="ch_c" path="qualified" disabled="true" style="width:18px;height:18px" />
                             </p>
                         </div>
                         <div class="viewLeadQuotationsList_wrapper_data_l1">
                             <label for="">Is Flagged</label>
                             <p>
-                                <form:checkbox class="ch_c" path="flagged" disabled="true" />
+                                <form:checkbox class="ch_c" path="flagged" disabled="true"  style="width:18px;height:18px"/>
                             </p>
                         </div>
                         <div class="viewLeadQuotationsList_wrapper_data_l1">
                             <label for="">Client</label>
-                            <p>${LEAD_OBJ.contactName}</p>
+                            <p style="color:gray">${LEAD_OBJ.contactName}</p>
                         </div>
                         <div class="viewLeadQuotationsList_wrapper_data_l1">
                             <label for="">Lead Owner</label>
-                            <p>${LEAD_OBJ.leadOwnerName}</p>
+                            <p style="color:gray">${LEAD_OBJ.leadOwnerName}</p>
                         </div>
                     </div>
                     <div class="viewLeadQuotationsList_wrapper_data_line a" >
                         <div class="viewLeadQuotationsList_wrapper_data_l1">
                             <label for="">Source</label>
-                            <p>${LEAD_OBJ.sourceName}</p>
+                            <p style="color:gray">${LEAD_OBJ.sourceName}</p>
                         </div>
                         <div class="viewLeadQuotationsList_wrapper_data_l1">
                             <label for="">Destnation</label>
-                            <p>${LEAD_OBJ.destinationName}</p>
+                            <p style="color:gray">${LEAD_OBJ.destinationName}</p>
                         </div>
                         <div class="viewLeadQuotationsList_wrapper_data_l1">
                             <label for="">Adults</label>
-                            <p>${LEAD_OBJ.adults}</p>
+                            <p style="color:gray">${LEAD_OBJ.adults}</p>
                         </div>
                         <div class="viewLeadQuotationsList_wrapper_data_l1">
                             <label for="">Children</label>
-                            <p>${LEAD_OBJ.children}</p>
-                        </div>
+                            <p style="color:gray">${LEAD_OBJ.children}</p>
+                        </div> 
                         <div class="viewLeadQuotationsList_wrapper_data_l1">
                             <label for="">Age</label>
-                            <p>${LEAD_OBJ.childrenAgeInfo}</p>
+                            <p style="color:gray">${LEAD_OBJ.childrenAgeInfo}</p>
                         </div>
                     </div>
                     <div class="viewLeadQuotationsList_wrapper_data_line a">
                         <div class="viewLeadQuotationsList_wrapper_data_l1">
                             <label for="">Lead Source</label>
-                            <p>${LEAD_OBJ.leadSourceName}</p>
+                            <p style="color:gray">${LEAD_OBJ.leadSourceName}</p>
                         </div>
                         <div class="viewLeadQuotationsList_wrapper_data_l1">
                             <label for="">Travel Date</label> <br>
@@ -108,11 +108,11 @@
                         </div>
                         <div class="viewLeadQuotationsList_wrapper_data_l1">
                             <label for="">Tentative Amount</label>
-                            <p>${LEAD_OBJ.tentativeCost}</p>
+                            <p style="color:gray">${LEAD_OBJ.tentativeCost}</p>
                         </div>
                         <div class="viewLeadQuotationsList_wrapper_data_l1">
                             <label for="">Status</label>
-                            <p>${LEAD_OBJ.statusName}</p>
+                            <p style="color:gray">${LEAD_OBJ.statusName}</p>
                         </div>
                     </div>
                     <div class="viewLeadQuotationsList_wrapper_data_line">
@@ -120,39 +120,39 @@
                             <h1 style="text-align: left;color:#FABA08">Select Services</h1>
                             <div class="lq-sers">
                                 <div class="viewLeadQuotationsList_wrapper_data_l1">
-                                    <form:checkbox class="ch_c" path="landPackage" name="landPackage;" disabled="true" />
+                                    <form:checkbox class="ch_c" path="landPackage" name="landPackage;" disabled="true" style="width:18px;height:18px"/>
                                     <label for="">Package</label>
                                 </div>
                                 <div class="viewLeadQuotationsList_wrapper_data_l1">
-                                    <form:checkbox class="ch_c" path="flight" name="flight" disabled="true" />
+                                    <form:checkbox class="ch_c" path="flight" name="flight" disabled="true" style="width:18px;height:18px" />
                                     <label for="">Flight</label>
                                 </div>
                                 <div class="viewLeadQuotationsList_wrapper_data_l1">
-                                    <form:checkbox class="ch_c" path="hotel" name="hotel" disabled="true" />
+                                    <form:checkbox class="ch_c" path="hotel" name="hotel" disabled="true" style="width:18px;height:18px"/>
                                     <label for="">Hotal</label>
                                 </div>
                                 <div class="viewLeadQuotationsList_wrapper_data_l1">
-                                    <form:checkbox class="ch_c" path="transfers" name="transfers" disabled="true" />
+                                    <form:checkbox class="ch_c" path="transfers" name="transfers" disabled="true" style="width:18px;height:18px"/>
                                     <label for="">Transfers</label>
                                 </div>
                                 <div class="viewLeadQuotationsList_wrapper_data_l1">
-                                    <form:checkbox class="ch_c" path="sightseeing" name="sightseeing" disabled="true" />
+                                    <form:checkbox class="ch_c" path="sightseeing" name="sightseeing" disabled="true" style="width:18px;height:18px"/>
                                     <label for="">Sightseeing</label>
                                 </div>
                                 <div class="viewLeadQuotationsList_wrapper_data_l1">
-                                    <form:checkbox class="ch_c" path="visa" name="visa" disabled="true" />
+                                    <form:checkbox class="ch_c" path="visa" name="visa" disabled="true" style="width:18px;height:18px"/>
                                     <label for="">Visa</label>
                                 </div>
                                 <div class="viewLeadQuotationsList_wrapper_data_l1">
-                                    <form:checkbox class="ch_c" path="insurance" name="insurance" disabled="true" />
+                                    <form:checkbox class="ch_c" path="insurance" name="insurance" disabled="true" style="width:18px;height:18px"/>
                                     <label for="">Insurance</label>
                                 </div>
                                 <div class="viewLeadQuotationsList_wrapper_data_l1">
-                                    <form:checkbox class="ch_c" path="cruise" name="cruise" disabled="true" />
+                                    <form:checkbox class="ch_c" path="cruise" name="cruise" disabled="true" style="width:18px;height:18px"/>
                                     <label for="">Cruise</label>
                                 </div>
                                 <div class="viewLeadQuotationsList_wrapper_data_l1">
-                                    <form:checkbox class="ch_c" path="others" name="others" disabled="true" />
+                                    <form:checkbox class="ch_c" path="others" name="others" disabled="true" style="width:18px;height:18px"/>
                                     <label for="">Others</label>
                                 </div>
                             </div>
@@ -185,30 +185,30 @@
 
         <table class="viewLeadQuotationsTabel" >
             <thead>
-                <tr>
-                    <th style="background:#6082B6;color:white">Quotation ID</th>
-                    <th style="width:100px;background:#6082B6;color:white">Version</th>
-                    <th style="background:#6082B6;color:white">Quotation Name</th>
-                    <th style="background:#6082B6;color:white">Created Date</th>
-                    <th style="background:#6082B6;color:white">Last Edit</th>
-                    <th style="background:#6082B6;color:white">Action</th>
-                    <th style="background:#6082B6;color:white">Status</th>
+                <tr style="height:50px">
+                    <th style="background:#6082B6;color:black">Quotation ID</th>
+                    <th style="width:100px;background:#6082B6;color:black">Version</th>
+                    <th style="background:#6082B6;color:black">Quotation Name</th>
+                    <th style="background:#6082B6;color:black">Created Date</th>
+                    <th style="background:#6082B6;color:black">Last Edit</th>
+                    <th style="background:#6082B6;color:black">Action</th>
+                    <th style="background:#6082B6;color:black">Status</th>
                 </tr>
             </thead>
             <tbody>
                 <c:forEach items="${LEAD_OBJ.leadQuotationsList}" var="leadquotations">
                     <tr style=" margin-bottom: 10px">
-                        <td style="border-bottom:2px solid #FFCF53;padding:5px 0;border-right:2px solid #FFCF53" >${leadquotations.quotationId }</td>
-                        <td style="border-bottom:2px solid #FFCF53;padding:5px 0;border-right:2px solid #FFCF53">${leadquotations.version }</td>
-                        <td style="border-bottom:2px solid #FFCF53;padding:5px 0;border-right:2px solid #FFCF53">${leadquotations.quotationName}</td>
-                        <td style="border-bottom:2px solid #FFCF53;padding:5px 0;border-right:2px solid #FFCF53">
+                        <td style="border-bottom:2px solid black;padding:5px 0;border-right:2px solid black;color:black" >${leadquotations.quotationId }</td>
+                        <td style="border-bottom:2px solid black;padding:5px 0;border-right:2px solid black;color:black">${leadquotations.version }</td>
+                        <td style="border-bottom:2px solid black;padding:5px 0;border-right:2px solid black;color:black">${leadquotations.quotationName}</td>
+                        <td style="border-bottom:2px solid black;padding:5px 0;border-right:2px solid black;color:black">
                             <fmt:formatDate value="${leadquotations.createdAt }" pattern="dd-MMM-yyyy HH:MM" />
                         </td>
-                        <td style="border-bottom:2px solid #FFCF53;padding:5px 0;border-right:2px solid #FFCF53">${leadquotations.updatedAt }</td>
+                        <td style="border-bottom:2px solid black;padding:5px 0;border-right:2px solid black;color:black">${leadquotations.updatedAt }</td>
                         <c:if test="${ (leadquotations.converted ne true)  }">
                             <c:choose>
                                 <c:when test="${ (leadquotations.version gt CONVERTED_QTN.version) && (CONVERTED_QTN.version gt 0) }">
-                                    <td style="border-bottom:2px solid #FFCF53;padding:5px 0;border-right:2px solid #FFCF53">
+                                    <td style="border-bottom:2px solid black;padding:5px 0;border-right:2px solid black">
                                         <a
                                             href="form_view_quotation_details?leadId=${LEAD_OBJ.leadId }&quotationId=${leadquotations.quotationId }" style=";padding:2px 5px; border-radius:3px;background:#32cd32;color:white">View</a> |
                                         <a
@@ -223,7 +223,7 @@
                                     </td>
                                 </c:when>
                                 <c:when test="${ leadquotations.version lt CONVERTED_QTN.version  }">
-                                    <td style="border-bottom:2px solid #FFCF53;padding:5px 0;border-right:2px solid #FFCF53">
+                                    <td style="border-bottom:2px solid black;padding:5px 0;border-right:2px solid black;color:black">
                                         <a
                                             href="form_view_quotation_details?leadId=${LEAD_OBJ.leadId }&quotationId=${leadquotations.quotationId }" style=";padding:2px 5px; border-radius:3px;background:#32cd32;color:white">View</a> |
                                         <a style=";padding:2px 5px; border-radius:3px;background:#32cd32;color:white">Edit</a> |
@@ -234,7 +234,7 @@
                                     </td>
                                 </c:when>
                                 <c:otherwise>
-                                    <td style="border-bottom:2px solid #FFCF53;padding:5px 0;border-right:2px solid #FFCF53">
+                                    <td style="border-bottom:2px solid black;padding:5px 0;border-right:2px solid black">
                              
                                    
                                     <a
@@ -255,13 +255,13 @@
                                 </c:otherwise>
                             </c:choose>
 
-                            <td style="border-bottom:2px solid #FFCF53;padding:5px 0;border-right:2px solid #FFCF53">
+                            <td style="border-bottom:2px solid black;padding:5px 0;border-right:2px solid black;color:black">
                                 <Input type="button" value="Generated"
-                                   style="background:transparent;border:none;outline:none;color:white"/>
+                                   style="background:transparent;border:none;outline:none;color:black"/>
                             </td>
                         </c:if>
                         <c:if test="${ leadquotations.converted eq true }">
-                            <td style="border-bottom:2px solid #FFCF53;padding:5px 0;border-right:2px solid #FFCF53">
+                            <td style="border-bottom:2px solid black;padding:5px 0;border-right:2px solid black">
                                 <a
                                     href="form_view_quotation_details?leadId=${LEAD_OBJ.leadId }&quotationId=${leadquotations.quotationId }" style=";padding:2px 5px; border-radius:3px;background:#32cd32;color:white">View</a> |
                                 <a style=";padding:2px 5px; border-radius:3px;background:#32cd32;color:white">Edit</a> |
@@ -270,7 +270,7 @@
                                     href="form_view_duplicate_quotation_details?leadId=${LEAD_OBJ.leadId }&quotationId=${leadquotations.quotationId }" style=";padding:2px 5px; border-radius:3px;background:#32cd32;color:white">Duplicate Quotation</a> |
                                 <a style=";padding:2px 5px; border-radius:3px;background:#32cd32;color:white">Lock-And-Convert </a>
                             </td>
-                            <td style="border-bottom:2px solid #FFCF53;padding:5px 0">
+                            <td style="border-bottom:2px solid black;padding:5px 0">
                                <a style=";padding:2px 5px; border-radius:3px;background:#32cd32;color:white">CONVERTED</a>
                             </td>
                         </c:if>

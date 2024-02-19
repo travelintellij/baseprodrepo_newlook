@@ -36,10 +36,14 @@
                 <body>
                     <div class="viewIncentiveDetails container">
                         <form:form modelAttribute="INCENTIVE_OBJ">
-                            <div class="viewIncentiveDetails_wrapper">
+                            <div class="viewIncentiveDetails_wrapper" style="background:transparent">
+                            <div class="bs" style="background:white;margin:10px auto;width:800px; padding: 10px;
+    border-radius: 10px">
                                 <h1 class="hd">Incentive Claim Id - ${INCENTIVE_OBJ.incentiveId}</h1>
+                                <div style="margin:10px 0">
                                 <font color="green"> ${Success} </font>
                                 <font color="red"> ${Error}</font>
+                                </div>
                                 <div class="viewIncentiveDetails_wr_dt">
                                     <div class="viewIncentiveDetails_wr_dt_line">
                                         <label for="" class="lb">Requested By</label> <br>
@@ -57,41 +61,44 @@
                                         <p>${INCENTIVE_OBJ.guestName}</p>
                                     </div>
                                 </div>
+                                 </div>
                             </div>
-                            <div class="viewIncentiveDetails_wr_dt_2">
+                            <div class="viewIncentiveDetails_wr_dt_2 bs">
                                 <div class="viewIncentiveDetails_wr_dt_line_2 a">
-                                    <p class="inc_q"> 1) Client is Referred by You ? </p>
-                                    <p class="inc_a">${INCENTIVE_OBJ.question1}</p>
+                                    <p class="inc_q" style="background:#a2d2ff"> 1) Client is Referred by You ? </p>
+                                    <p class="inc_a" style="text-align:center;background:#bde0fe">${INCENTIVE_OBJ.question1}</p>
                                 </div>
                                 <div class="viewIncentiveDetails_wr_dt_line_2 a">
-                                    <p class="inc_q"> 2) You took minimal support of management and were able to handle
+                                    <p class="inc_q"  style="background:#a2d2ff"> 2) You took minimal support of management and were able to handle
                                         the query alone ?
                                     </p>
-                                    <p class="inc_a">${INCENTIVE_OBJ.question2}</p>
+                                    <p class="inc_a"  style="text-align:center;background:#bde0fe">${INCENTIVE_OBJ.question2}</p>
                                 </div>
                                 <div class="viewIncentiveDetails_wr_dt_line_2 a">
-                                    <p class="inc_q"> 3) You responded all queries of client yourself ontime without any
+                                    <p class="inc_q" style="background:#a2d2ff"> 3) You responded all queries of client yourself ontime without any
                                         delay ? </p>
-                                    <p class="inc_a">${INCENTIVE_OBJ.question3}</p>
+                                    <p class="inc_a" style="text-align:center;background:#bde0fe">${INCENTIVE_OBJ.question3}</p>
                                 </div>
                                 <div class="viewIncentiveDetails_wr_dt_line_2 a">
-                                    <p class="inc_q"> 4) You ensured and verified with management time to time for
+                                    <p class="inc_q"  style="background:#a2d2ff"> 4) You ensured and verified with management time to time for
                                         payment settlement ? </p>
-                                    <p class="inc_a">${INCENTIVE_OBJ.question4}</p>
+                                    <p class="inc_a" style="text-align:center;background:#bde0fe">${INCENTIVE_OBJ.question4}</p>
                                 </div>
                                 <div class="viewIncentiveDetails_wr_dt_line_2 a">
-                                    <p class="inc_q"> 5) You ensured the vouchers were sent on time and reminder call
+                                    <p class="inc_q" style="background:#a2d2ff"> 5) You ensured the vouchers were sent on time and reminder call
                                         before travel is made
                                         to the client. </p>
-                                    <p class="inc_a">${INCENTIVE_OBJ.question5}</p>
+                                    <p class="inc_a" style="text-align:center;background:#bde0fe">${INCENTIVE_OBJ.question5}</p>
                                 </div>
                                 <div class="viewIncentiveDetails_wr_dt_line_2 a">
-                                    <p class="inc_q"> 5) UdanChoo online Review achieved or decided not needed ? </p>
-                                    <p class="inc_a">${INCENTIVE_OBJ.question6}</p>
+                                    <p class="inc_q" style="background:#a2d2ff"> 5) UdanChoo online Review achieved or decided not needed ? </p>
+                                    <p class="inc_a" style="text-align:center;background:#bde0fe">${INCENTIVE_OBJ.question6}</p>
                                 </div>
                             </div>
 
-                            <div class="viewIncentiveDetails_wr_dt_3">
+                            <div class="viewIncentiveDetails_wr_dt_3" style="background:transparent">
+                           <div class="bs" style="width:983px;background:white;margin:10px auto;    padding: 10px;
+    border-radius: 10px;">
                                 <div class="viewIncentiveDetails_wr_dt_3_b a">
                                     <div class="viewIncentiveDetails_wr_dt_3_b_l3">
                                         <label for="" class="lb">Claimed Amount</label>
@@ -124,6 +131,7 @@
                                     <a href="view_default_incentives_report"><input type="button"
                                             value="View Incentive List" /></a>
                                 </div>
+                            </div>
                             </div>
                         </form:form>
                     </div>

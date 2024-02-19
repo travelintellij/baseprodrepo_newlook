@@ -77,7 +77,7 @@ body::before {
                     <form:form modelAttribute="QTN_OBJ" action="create_create_lead_quotation">
                       <div class="viewInsuranceQuotationDetails">
             <div class="viewInsuranceQuotationD_wrapper">
-                <div class="viewInsuranceQuotationD_wr_data">
+                <div class="viewInsuranceQuotationD_wr_data bs">
                     <div class="viewInsuranceQuotationD_wr_data_line">
                         <label for="" class="lb">Quotation</label>
                         <p>${QTN_OBJ.quotationId}</p>
@@ -119,7 +119,7 @@ body::before {
         <input type="hidden" name="quotationId" value="${QTN_OBJ.quotationId}" />
         <input type="hidden" name="manualFlightQuotationId" value="${MANUAL_PKG.manualPkgQuotationId}" />
         <div class="add_man_pckage" style="width:1050px;margin:0 auto" >
-            <div class="add_man_pckage_wrapper">
+            <div class="add_man_pckage_wrapper bs">
             <h1 style="margin:10px 0;font-size:25px;color:#32cd32  ">Add Package</h1>
             <div class="test">
                 <div class="add_man_pckage_wrapper_data">
@@ -188,31 +188,31 @@ body::before {
                     <div class="add_man_pckage_wrapper_data_line">
                         <div class="add_man_pckage_wrapper_dl1_pd" style="text-align: start;">
                             <label for="">Package Description</label> <br>
-                            <form:textarea path="packageDescription" rows="2" cols="121" maxlength="5000" />
+                            <form:textarea path="packageDescription" rows="15" cols="121" maxlength="5000" />
                         </div>
                     </div>
                     <div class="add_man_pckage_wrapper_data_line">
                         <div class="add_man_pckage_wrapper_dl1_pd" style="text-align: start;">
                             <label for="">Inclusions</label> <br>
-                            <form:textarea path="inclusions" rows="2" cols="121" maxlength="2000" />
+                            <form:textarea path="inclusions" rows="15" cols="121" maxlength="2000" />
                         </div>
                     </div>
                     <div class="add_man_pckage_wrapper_data_line">
                         <div class="add_man_pckage_wrapper_dl1_pd" style="text-align: start;">
                             <label for="">Exclusions</label> <br>
-                            <form:textarea path="exclusions" rows="2" cols="121" maxlength="127" />
+                            <form:textarea path="exclusions" rows="15" cols="121" maxlength="127" />
                         </div>
                     </div>
                     <div class="add_man_pckage_wrapper_data_line">
                         <div class="add_man_pckage_wrapper_dl1_pd" style="text-align: start;">
                             <label for="">Cancellation Policy (if left empty , it won't be printed ) </label> <br>
-                            <form:textarea path="cancellationPolicy" rows="2" cols="121" maxlength="3000" />
+                            <form:textarea path="cancellationPolicy" rows="15" cols="121" maxlength="3000" />
                         </div>
                     </div>
                     <div class="add_man_pckage_wrapper_data_line">
                         <div class="add_man_pckage_wrapper_dl1_pd" style="text-align: start;">
                             <label for="">Remarks</label> <br>
-                            <form:textarea path="remarks" rows="2" cols="121" maxlength="5000" />
+                            <form:textarea path="remarks" rows="15" cols="121" maxlength="5000" />
                         </div>
                     </div>
                     <div class="isFlight">

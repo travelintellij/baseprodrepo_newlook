@@ -17,83 +17,83 @@
 <body>
 
     <div class="view_transfer_quotation_table container">
-     <div class="view_transfer_quotation_table_wrapper">
+     <div class="view_transfer_quotation_table_wrapper bs">
     <form:form modelAttribute="MANUAL_TRN" action="delete_delete_transfer_manual_quotation">
 	<input type="hidden" name="leadId" value= "${QTN_OBJ.leadEntity.leadId}" />
 	<input type="hidden" name="quotationId" value= "${QTN_OBJ.quotationId}" />
 	<input type="hidden" name="manualTransferQuotationId" value= "${MANUAL_TRN.manualTransferQuotationId}" />
-            <h1 class="vtdh2">Delete transfer quotation <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+            <h1 class="vtdh2">Delete transfer quotation <i class="fa fa-exclamation-triangle fa-lg" aria-hidden="true"></i>
             </h1>
             <div class="view_transfer_quotation_table_wrapper_data a" >
                 <div class="view_transfer_quotation_table_wrapper_data_li">
-                    <label for="">Pickup City</label>
-                    <p>${MANUAL_TRN.pickUpCityName }</p>
+                    <label for="" style="color:black">Pickup City</label>
+                    <p style="color:gray">${MANUAL_TRN.pickUpCityName }</p>
                 </div>
                 <div class="view_transfer_quotation_table_wrapper_data_li">
-                    <label for="">Pickup From</label>
-                    <p>${MANUAL_TRN.pickUpFromDesc}</p>
+                    <label for=""  style="color:black">Pickup From</label>
+                    <p style="color:gray">${MANUAL_TRN.pickUpFromDesc}</p>
                 </div>
                 <div class="view_transfer_quotation_table_wrapper_data_li">
-                    <label for="">Pickup From Name</label>
-                    <p>${MANUAL_TRN.pickUpFromName}</p>
+                    <label for=""  style="color:black">Pickup From Name</label>
+                    <p style="color:gray">${MANUAL_TRN.pickUpFromName}</p>
                 </div>
                 <div class="view_transfer_quotation_table_wrapper_data_li">
-                    <label for="">Transfer Date</label>
-                    <p>
+                    <label for=""  style="color:black">Transfer Date</label>
+                    <p style="color:gray">
                         <fmt:formatDate value="${MANUAL_TRN.transferDate}" type="date" pattern="dd-MMM-yyyy"/>
                     </p>
                 </div>
             </div>
             <div class="view_transfer_quotation_table_wrapper_data a" >
                 <div class="view_transfer_quotation_table_wrapper_data_li">
-                    <label for="">Drop City</label>
-                    <p>${MANUAL_TRN.dropToCityName}</p>
+                    <label for=""  style="color:black">Drop City</label>
+                    <p style="color:gray">${MANUAL_TRN.dropToCityName}</p>
                 </div>
                 <div class="view_transfer_quotation_table_wrapper_data_li">
-                    <label for="">Drop to</label>
-                    <p>${MANUAL_TRN.dropToDesc}</p>
+                    <label for=""  style="color:black">Drop to</label>
+                    <p style="color:gray">${MANUAL_TRN.dropToDesc}</p>
                 </div>
                 <div class="view_transfer_quotation_table_wrapper_data_li">
-                    <label for="">Drop to name</label>
-                    <p>${MANUAL_TRN.dropToName}</p>
+                    <label for=""  style="color:black">Drop to name</label>
+                    <p style="color:gray">${MANUAL_TRN.dropToName}</p>
                 </div>
                 <div class="view_transfer_quotation_table_wrapper_data_li">
-                    <label for="">Transfer Type</label>
-                    <p>${MANUAL_TRN.transferTypeName}</p>
+                    <label for=""  style="color:black">Transfer Type</label>
+                    <p style="color:gray">${MANUAL_TRN.transferTypeName}</p>
                 </div>
             </div>
 
             <div class="view_transfer_quotation_table_wrapper_data a" >
                 <div class="view_transfer_quotation_table_wrapper_data_li_wrp">
                     <div class="vtq_child">
-                        <label for="">Adults</label>
-                        <p>${MANUAL_TRN.adults}</p>
+                        <label for=""  style="color:black">Adults</label>
+                        <p style="color:gray">${MANUAL_TRN.adults}</p>
                     </div>
                     <div class="vtq_child">
-                        <label for="">Children</label>
-                        <p>${MANUAL_TRN.children}</p>
+                        <label for=""  style="color:black">Children</label>
+                        <p style="color:gray">${MANUAL_TRN.children}</p>
                     </div>
                     <div class="vtq_child">
-                        <label for="">Infant</label>
-                        <p>${MANUAL_TRN.infant}</p>
+                        <label for=""  style="color:black">Infant</label>
+                        <p style="color:gray">${MANUAL_TRN.infant}</p>
                     </div>
                 </div>
                 <div class="view_transfer_quotation_table_wrapper_data_li">
-                    <label for="">Transfer Cost</label>
-                    <p>${MANUAL_TRN.transferCost}</p>
+                    <label for=""  style="color:black">Transfer Cost</label>
+                    <p style="color:gray">${MANUAL_TRN.transferCost}</p>
                 </div>
                 <div class="view_transfer_quotation_table_wrapper_data_li">
-                    <label for="">Transfer Markup</label>
-                    <p>${MANUAL_TRN.transferMarkup}</p>
+                    <label for=""  style="color:black">Transfer Markup</label>
+                    <p style="color:gray">${MANUAL_TRN.transferMarkup}</p>
                 </div>
                 <div class="view_transfer_quotation_table_wrapper_data_li">
-                    <label for="">Display order</label>
-                    <p style="display:block">${MANUAL_TRN.displayOrder }</p>
+                    <label for=""  style="color:black">Display order</label>
+                    <p style="color:gray">${MANUAL_TRN.displayOrder }</p>
                 </div>
             </div>
-            <div class="view_transfer_quotation_table_wrapper_data a" style="width:100%">
-                <label for="">Remarks</label> <br/>
-                <p>${MANUAL_TRN.remarks}</p>
+            <div class="view_transfer_quotation_table_wrapper_data_li" style="width:100%">
+                <label for=""  style="color:black">Remarks</label> <br/>
+                <p style="color:gray">${MANUAL_TRN.remarks}</p>
             </div>
             <div class="due_today_task_data_btns">
                <input type="submit" name="deleteTransfer" id="deleteTransfer" Value="Confirm Delete" />

@@ -87,7 +87,7 @@
                     
             <div class="viewInsuranceQuotationDetails">
             <div class="viewInsuranceQuotationD_wrapper">
-                <div class="viewInsuranceQuotationD_wr_data">
+                <div class="viewInsuranceQuotationD_wr_data bs">
                     <div class="viewInsuranceQuotationD_wr_data_line">
                         <label for="" class="lb">Quotation</label>
                         <p>${QTN_OBJ.quotationId}</p>
@@ -107,7 +107,7 @@
                     <div class="float-container">
                       
                         <div class="float-child-right">
-                            <div class="gender" align="center"  style="border:2px solid black;background:black;color:white;width:600px;margin:10px auto;padding:10px 0;border-radius:10px">
+                            <div class="gender bs" align="center"  style="background:white;color:black;width:600px;margin:10px auto;padding:10px 0;border-radius:10px">
                                 <input type="radio" value="oneway" id="oneway" name="flightMode"
                                     data-url="form_view_serach_flight_oneway_quotation?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId}"
                                     disabled /> <label for="oneway" class="radio">One Way</label>
@@ -129,7 +129,7 @@
 
 
                                 <div class="fr_view_fli_qu container">
-        <div class="fr_view_fli_qu_wr" style="margin-top:20px;margin-left:50px">
+        <div class="fr_view_fli_qu_wr bs" style="margin-top:20px;margin-left:50px">
             <div class="fr_view_fli_qu_wr_li_f">
                 <div class="fr_view_fli_qu_wr_d">
                     <label for="">Airline</label> <br>

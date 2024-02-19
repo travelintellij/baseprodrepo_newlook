@@ -40,7 +40,7 @@ body::before {
 	<form:form modelAttribute="LEAD_FOLLOWUP_OBJ" action="create_create_lead_followup">
 	<input type="hidden" name= "leadId" value="${LEAD_OBJ.leadId}"/>
 	<div class="follow-up">
-        <div class="follow-up-wrapper  container">
+        <div class="follow-up-wrapper bs  container">
             <div class="follow-up-heading" style="padding-top:5px">
                 <h1>Lead Followup</h1>
             </div>
@@ -81,7 +81,7 @@ body::before {
     <!-- ################## followup lead ################ -->
 
     <div class="follow-up-main-tabel" style="margin-top:60px">
-        <table>
+        <table class="bs">
             <tr style="background:#6082B6;">
               <c:if test="${LEAD_FOLLOWUP_OBJ.sortOrder eq 'ASC'}">
 				<th ><a href="form_view_lead_followup_details?leadId=${LEAD_OBJ.leadId}&sortBy=updatedBy&sortOrder=DESC" style=" color: black !important;color: #FABA08; border: none;margin-bottom: 20px; font-size: 19px">User</a></th>
@@ -114,12 +114,12 @@ body::before {
               
             </tr>
          <c:forEach items="${LEADS_FOLLOWUP_LIST}" var="filteredFollowUpList">
-		 <tr style="border-bottom:2px solid  #FABA08;;margin-bottom:20px;background:black">
-			 <td style="font-size:18px;text-align:center">${filteredFollowUpList.userName }</td>
-			 <td style="font-size:18px;text-align:center">${filteredFollowUpList.formattedFollowUpTime }</td>
-			 <td style="font-size:18px;text-align:center">${filteredFollowUpList.response}</td>
-			 <td style="font-size:18px;text-align:center">${filteredFollowUpList.formattedNextFollowUpTime}</td>
-			 <td style="font-size:18px;text-align:center">${filteredFollowUpList.nextactionplan}</td>
+		 <tr style="margin-bottom:20px;background:white">
+			 <td style="font-size:18px;text-align:center;border-bottom:2px solid black;border-right:2px solid black">${filteredFollowUpList.userName }</td>
+			 <td style="font-size:18px;text-align:center;border-bottom:2px solid black;border-right:2px solid black">${filteredFollowUpList.formattedFollowUpTime }</td>
+			 <td style="font-size:18px;text-align:center;border-bottom:2px solid black;border-right:2px solid black">${filteredFollowUpList.response}</td>
+			 <td style="font-size:18px;text-align:center;border-bottom:2px solid black;border-right:2px solid black">${filteredFollowUpList.formattedNextFollowUpTime}</td>
+			 <td style="font-size:18px;text-align:center;border-bottom:2px solid black;">${filteredFollowUpList.nextactionplan}</td>
 		 </tr>
 		 </c:forEach>
         </table>
@@ -144,7 +144,7 @@ body::before {
 			                <c:url value="form_view_lead_followup_details" var="url">
 			                    <c:param name="page" value="${i.index-1}"/>
 			                </c:url>
-			                 <a style="background:black;padding:2px 5px;border-radius:2px;color:#ffa500" href='<c:out value="${url}&leadId=${LEAD_OBJ.leadId}&sortBy=${LEAD_FOLLOWUP_OBJ.sortBy}&sortOrder=${LEAD_FOLLOWUP_OBJ.sortOrder}" />'>${i.index}</a>
+			                 <a style="background:white;padding:2px 5px;border-radius:2px;color:#ffa500" href='<c:out value="${url}&leadId=${LEAD_OBJ.leadId}&sortBy=${LEAD_FOLLOWUP_OBJ.sortBy}&sortOrder=${LEAD_FOLLOWUP_OBJ.sortOrder}" />'>${i.index}</a>
 			            </c:otherwise>
 			        </c:choose>
 			    </c:forEach>

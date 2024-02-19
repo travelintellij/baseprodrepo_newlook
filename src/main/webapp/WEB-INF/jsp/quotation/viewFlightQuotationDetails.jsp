@@ -66,14 +66,14 @@
   <form:form modelAttribute="QTN_OBJ" action="create_create_lead_quotation">
              <div class="viewInsuranceQuotationDetails">
             <div class="viewInsuranceQuotationD_wrapper">
-                <div class="viewInsuranceQuotationD_wr_data">
+                <div class="viewInsuranceQuotationD_wr_data bs">
                     <div class="viewInsuranceQuotationD_wr_data_line">
                         <label for="" class="lb">Quotation</label>
-                        <p>${QTN_OBJ.quotationId}</p>
+                        <p style="color:gray">${QTN_OBJ.quotationId}</p>
                     </div>
                     <div class="viewInsuranceQuotationD_wr_data_line">
                         <label for="" class="lb"> Version Id</label>
-                        <p>${QTN_OBJ.version}</p>
+                        <p style="color:gray">${QTN_OBJ.version}</p>
                     </div>
                 </div>
               </div>
@@ -81,7 +81,7 @@
             </form:form>
 
 
-            <div class="Flight_qu">
+            <div class="Flight_qu bs">
             <h1 style="text-align:center;font-size:20px;margin:10px 0;'">Add Flight Sectors to Quotation</h1>
             <div class="due_today_task_data_btnss">
                  <c:if test="${QTN_OBJ.converted ne true }">
@@ -125,7 +125,7 @@
                                         <tr>
                                             <td>
                                                 <c:forEach items="${QTN_OBJ.manualQuotationsVoList}" var="flightQtnObj">
-               <div class="fli_de container">
+               <div class="fli_de bs container">
              <div class="fli_de_wrapper" style="margin-top:10px" >
             <h1 style="margin:10px 0;font-size: 25px;color:#32cd32 ">Id-
             ${flightQtnObj.manualFlightQuotationId}</h1>
@@ -133,73 +133,73 @@
                 <div class="fli_de_wrapper_data_fli a">
                     <div class="fli_de_wrapper_dl1">
                         <label for="" class="lb">Airline</label>
-                        <p>${flightQtnObj.airlineName }</p>
+                        <p style="color:gray">${flightQtnObj.airlineName }</p>
                     </div>
                     <div class="fli_de_wrapper_dl1">
                         <label for="" class="lb">Flight Number</label>
-                        <p>${flightQtnObj.flightNumber }</p>
+                        <p style="color:gray">${flightQtnObj.flightNumber }</p>
                     </div>
                 </div>
             </div>
                 <div class="fli_de_wrapper_data_li a">
                     <div class="fli_de_wrapper_dl1">
                         <label for="" class="lb">Departure</label>
-                        <p>${flightQtnObj.originCity }</p>
+                        <p style="color:gray">${flightQtnObj.originCity }</p>
                     </div>
                     <div class="fli_de_wrapper_dl1">
                         <label for="" class="lb">Arrival</label>
-                        <p>${flightQtnObj.destinationCity}</p>
+                        <p style="color:gray">${flightQtnObj.destinationCity}</p>
                     </div>
                     <div class="fli_de_wrapper_dl1">
                         <label for="" class="lb">Departure Details</label>
-                        <p>${localDateTimeFormat.format(flightQtnObj.departureDate
+                        <p style="color:gray">${localDateTimeFormat.format(flightQtnObj.departureDate
                         )}</p>
                     </div>
                     <div class="fli_de_wrapper_dl1">
                         <label for="" class="lb">Arrival Details</label>
-                        <p>${localDateTimeFormat.format(flightQtnObj.arrivalDate )}</p>
+                        <p style="color:gray">${localDateTimeFormat.format(flightQtnObj.arrivalDate )}</p>
                     </div>
                 </div>
                 <div class="fli_de_wrapper_data_li a">
                     <div class="fli_de_wrapper_dl1">
                         <label for="" class="lb">Duration</label>
-                        <p>${flightQtnObj.duration }</p>
+                        <p style="color:gray">${flightQtnObj.duration }</p>
                     </div>
                     <div class="fli_de_wrapper_dl1">
                         <label for="" class="lb">Adults</label>
-                        <p>${flightQtnObj.adultCount }</p>
+                        <p style="color:gray">${flightQtnObj.adultCount }</p>
                     </div>
                     <div class="fli_de_wrapper_dl1">
                         <label for="" class="lb">Child</label>
-                        <p>${flightQtnObj.childCount }</p>
+                        <p style="color:gray">${flightQtnObj.childCount }</p>
                     </div>
                     <div class="fli_de_wrapper_dl1">
                         <label for="" class="lb">Infants</label>
-                        <p>${flightQtnObj.infantCount }</p>
+                        <p style="color:gray">${flightQtnObj.infantCount }</p>
                     </div>
                 </div>
                 <div class="fli_de_wrapper_data_li a">
                     <div class="fli_de_wrapper_dl1">
                         <label for="" class="lb">Stops</label>
-                        <p>${flightQtnObj.noOfStops }</p>
+                        <p style="color:gray">${flightQtnObj.noOfStops }</p>
                     </div>
                     <div class="fli_de_wrapper_dl1">
                         <label for="" class="lb">Travel Class</label>
-                        <p>${flightQtnObj.cabinClassName }</p>
+                        <p style="color:gray">${flightQtnObj.cabinClassName }</p>
                     </div>
                     <div class="fli_de_wrapper_dl1">
                         <label for="" class="lb">Total Flight Cost</label>
-                        <p>${flightQtnObj.flightCost}</p>
+                        <p style="color:gray">${flightQtnObj.flightCost}</p>
                     </div>
                     <div class="fli_de_wrapper_dl1">
                         <label for="" class="lb">Total Flight Markup</label>
-                        <p>${flightQtnObj.flightMarkup }</p>
+                        <p style="color:gray">${flightQtnObj.flightMarkup }</p>
                     </div>
                 </div>
                 <div class="fli_de_wrapper_data_li a">
                     <div class="fli_de_wrapper_dl1">
                         <label for="" class="lb">Display order</label>
-                        <p>${flightQtnObj.displayOrder }</p>
+                        <p style="color:gray">${flightQtnObj.displayOrder }</p>
                     </div>
                 </div>
                 <div class="due_today_task_data_btnss" style="margin-top:10px">

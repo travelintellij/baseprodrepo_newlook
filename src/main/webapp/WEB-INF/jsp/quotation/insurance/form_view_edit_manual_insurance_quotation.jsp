@@ -20,8 +20,8 @@
                         <input type="hidden" name="quotationId" value="${QTN_OBJ.quotationId}" />
                         <form:hidden path="manualInsuranceQuotationId" />
                         <div class="form_view_add_manual_insurance_q container">
-                            <div class="form_view_add_manual_insurance_q_wrap">
-                                <h1>Id- ${MANUAL_INS.manualInsuranceQuotationId}</h1>
+                            <div class="form_view_add_manual_insurance_q_wrap bs">
+                                <h1 class="hd">Id- ${MANUAL_INS.manualInsuranceQuotationId}</h1>
                                 <div class="form_view_add_manual_insurance_q_wrap_d">
                                     <div class="form_view_add_manual_insurance_q_wrap_dl">
                                         <div class="form_view_add_manual_insurance_q_wrap_dl1">
@@ -110,10 +110,10 @@
                                             <form:input path="displayOrder" type="number" min="0" />
                                         </div>
                                     </div>
-                                    <div class="form_view_add_manual_insurance_q_wrap_dl">
-                                        <div class="form_view_add_manual_insurance_q_wrap_dl1">
-                                        <label for="">Remarks</label>
-                                            <form:textarea path="remarks" cols="133" rows="2" maxlength="1450" />
+                                    <div class="form_view_add_manual_insurance_q_wrap_dl" style="width:100%">
+                                        <div class="form_view_add_manual_insurance_q_wrap_dl1" style="width:100%">
+                                        <label for="">Remarks</label> <br>
+                                            <form:textarea path="remarks" cols="133" rows="5" maxlength="1450" style="width:98%"/>
                                         </div>
                                     </div>
                                     <div class="due_today_task_data_btnss">

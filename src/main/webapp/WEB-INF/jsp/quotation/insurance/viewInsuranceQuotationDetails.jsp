@@ -65,7 +65,7 @@
 
     <div class="viewInsuranceQuotationDetails">
         <div class="viewInsuranceQuotationD_wrapper">
-            <div class="viewInsuranceQuotationD_wr_data">
+            <div class="viewInsuranceQuotationD_wr_data bs">
                 <div class="viewInsuranceQuotationD_wr_data_line">
                     <label for="" class="lb">Quotation</label>
                     <p>${QTN_OBJ.quotationId}</p>
@@ -84,7 +84,7 @@
 	
 
 		<c:if test="${INS_ACTION ne 'ADD'}">
-					<div class="sa-q">
+					<div class="sa-q bs">
         <h1>Service Actions</h1>
         <div class="due_today_task_data_btnss">
             <c:if test="${QTN_OBJ.converted ne true }">
@@ -123,83 +123,79 @@
 				<c:when test="${insuranceQtnObj.manualInsuranceQuotationId eq MANUAL_INS.manualInsuranceQuotationId  && INS_ACTION eq 'DELETE' }">
 					<jsp:include page="form_view_delete_manual_insurance_quotation.jsp" />
 				</c:when>
-				<c:otherwise>
-					
-				<br>
-				<br>
-				<br>
+				<c:otherwise>	
 				<br>
 					  <div class="in_mu_add container">
-        <div class="in_mu_add_wrp">
+        <div class="in_mu_add_wrp bs">
             <h1 style="font-size:25px;margin:10px 0;color:#32cd32 ">Id- ${insuranceQtnObj.manualInsuranceQuotationId}</h1>
             <div class="in_mu_add_wrp_d a">
                 <div class="in_mu_add_wrp_l">
                     <label for="" class="lb">Contry Name </label>
-                    <p>${insuranceQtnObj.countryName }</p>
+                    <p style="color:gray">${insuranceQtnObj.countryName }</p>
                 </div>
                 <div class="in_mu_add_wrp_l">
                     <label for="" class="lb">Insurance Name</label>
-                    <p>${insuranceQtnObj.insuranceName}</p>
+                    <p style="color:gray">${insuranceQtnObj.insuranceName}</p>
                 </div>
                 <div class="in_mu_add_wrp_l">
                     <label for="" class="lb">Start Date</label>
-                    <p><fmt:formatDate value="${insuranceQtnObj.coverageStartDate}" pattern="dd-MM-yyyy" /></p>
+                    <p style="color:gray"><fmt:formatDate value="${insuranceQtnObj.coverageStartDate}" pattern="dd-MM-yyyy" /></p>
                 </div>
                 <div class="in_mu_add_wrp_l">
                     <label for="" class="lb">End Date</label>
-                    <p><fmt:formatDate value="${insuranceQtnObj.coverageEndDate}" pattern="dd-MM-yyyy" /></p>
+                    <p style="color:gray"><fmt:formatDate value="${insuranceQtnObj.coverageEndDate}" pattern="dd-MM-yyyy" /></p>
                 </div>
             </div>
             <div class="in_mu_add_wrp_d a">
                 <div class="in_mu_add_wrp_l">
                     <label for="" class="lb">Insurance Provider</label>
-                    <p>${insuranceQtnObj.insuranceProviderName}</p>
+                    <p style="color:gray">${insuranceQtnObj.insuranceProviderName}</p>
                 </div>
                 <div class="in_mu_add_wrp_l">
                     <label for="" class="lb">Coverage Amount</label>
-                    <p>${insuranceQtnObj.coverageAmount }</p>
+                    <p style="color:gray">${insuranceQtnObj.coverageAmount }</p>
                 </div>
                 <div class="in_mu_add_wrp_l">
                     <label for="" class="lb">Coverage Currency</label>
-                    <p>${insuranceQtnObj.coverageCurrency}</p>
+                    <p style="color:gray">${insuranceQtnObj.coverageCurrency}</p>
                 </div>
                 <div class="in_mu_add_wrp_l">
                     <label for="" class="lb">Adults</label>
-                    <p>${insuranceQtnObj.adults}</p>
-                </div>
+                    <p style="color:gray">${insuranceQtnObj.adults}</p>
+                </div> 
             </div>
             <div class="in_mu_add_wrp_d a">
                 <div class="in_mu_add_wrp_l">
                     <label for="" class="lb">Children</label>
-                    <p>${insuranceQtnObj.children}</p>
+                    <p style="color:gray">${insuranceQtnObj.children}</p>
                 </div>
                 <div class="in_mu_add_wrp_l">
                     <label for="" class="lb">Infants</label>
-                    <p>${insuranceQtnObj.infant}</p>
+                    <p style="color:gray">${insuranceQtnObj.infant}</p>
                 </div>
                 <div class="in_mu_add_wrp_l">
                     <label for="" class="lb">Insurance type name</label>
-                    <p>${insuranceQtnObj.insuranceTypeName}</p>
+                    <p style="color:gray">${insuranceQtnObj.insuranceTypeName}</p>
                 </div>
                 <div class="in_mu_add_wrp_l">
                     <label for="" class="lb">Premium Cost</label>
-                    <p>${insuranceQtnObj.premiumCost}</p>
+                    <p style="color:gray">${insuranceQtnObj.premiumCost}</p>
                 </div>
             </div>
             <div class="in_mu_add_wrp_d a">
                 <div class="in_mu_add_wrp_l">
                     <label for="" class="lb">Mark up</label>
-                    <p>${insuranceQtnObj.premiumMarkup}</p>
+                    <p style="color:gray">${insuranceQtnObj.premiumMarkup}</p>
                 </div>
                 <div class="in_mu_add_wrp_l">
                     <label for="" class="lb">Display Order</label>
-                    <p>${insuranceQtnObj.displayOrder}</p>
+                    <p style="color:gray">${insuranceQtnObj.displayOrder}</p>
                 </div>
             </div>
             <div class="in_mu_add_wrp_d a">
                 <div class="in_mu_add_wrp_l" style="width:100%">
                     <label for="" class="lb">Remarks</label>
-                    <p>${insuranceQtnObj.remarks }</p>
+                    <p style="color:gray">${insuranceQtnObj.remarks }</p>
                 </div>
             </div>
             <div class="due_today_task_data_btnss" style="margin-top:20px">

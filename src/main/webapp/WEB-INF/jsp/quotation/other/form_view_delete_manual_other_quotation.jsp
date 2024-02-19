@@ -17,8 +17,8 @@
         <input type="hidden" name="quotationId" value="${QTN_OBJ.quotationId}" />
         <form:hidden path="manualOtherQuotationId" />
     <div class="form_view_add_manual_other_quotation container" style="margin-top:0">
-        <div class="form_view_add_manual_other_wrapper">
-            <h1>Id-  ${MANUAL_OTH.manualOtherQuotationId}</h1>
+        <div class="form_view_add_manual_other_wrapper bs">
+            <h1 class="hd">Id-  ${MANUAL_OTH.manualOtherQuotationId}</h1>
             <div class="form_view_add_manual_other_w_data">
                 <div class="form_view_add_manual_other_w_dline a">
                     <div class="form_view_add_manual_other_w_dl1">
@@ -52,7 +52,7 @@
                     </div>
                 </div>
                 <div class="due_today_task_data_btnss" style="margin-top:10px">
-                <input type="submit" style="background-color:red;" value="Confirm Delete" /></a>
+                <input type="submit" style="background-color:red;color:white" value="Confirm Delete" /></a>
                 <a href="form_view_other_quotation_details?quotationId=${QTN_OBJ.quotationId}&leadId=${QTN_OBJ.leadEntity.leadId}"><input
                         type="button" value="Cancel" /></a>
                 </div>

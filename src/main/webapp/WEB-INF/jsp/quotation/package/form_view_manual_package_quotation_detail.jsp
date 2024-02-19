@@ -75,7 +75,11 @@
     <!-- ############# quick lead view ends here################## -->
 </div>
 
-
+  <div align="center"><b>
+  <font color="green"> ${Success} </font>
+  <font color="red"> ${Error}</font>
+  </b></div>
+                                        
 
 
                         <div class="float-container">
@@ -84,11 +88,7 @@
                             <div class="float-child-right">
                                 <div class="blue">
 
-                                    <div align="center"><b>
-                                            <font color="green"> ${Success} </font>
-                                            <font color="red"> ${Error}</font>
-                                        </b></div>
-                                        
+                                  
                                          
                                     
                                                 <form:form modelAttribute="MANUAL_PKG"

@@ -21,9 +21,9 @@
         <input type="hidden" name="leadId" value="${QTN_OBJ.leadEntity.leadId}" />
         <input type="hidden" name="quotationId" value="${QTN_OBJ.quotationId}" />
        <div class="sb">
-        <div class="sb_wrapper">
+        <div class="sb_wrapper bs">
             <input type="text" id="countryName" name="countryName"
-                placeholder="country name" required />
+                placeholder="country name" required style="width:100%;height:40px;padding:10px"/>
             <div class="due_today_task_data_btns">
                 <input type="submit" name="submit" value="Search Visa Details" />
                 <a href="form_view_visa_quotation_details?quotationId=${QTN_OBJ.quotationId}&leadId=${QTN_OBJ.leadEntity.leadId}">Cancel</a>
@@ -37,7 +37,7 @@
     <c:if test="${not empty VISA_RESULT_SET}">
         <input type="hidden" id="countryName" name="countryName" value="${COUNTRY_NAME}" />
         <input type="hidden" id="countryCode" name="countryCode" value="${COUNTRY_CODE}" />
-        <table class="visa_sec_tabel">
+        <table class="visa_sec_tabel bs">
             <thead>
                 <tr class="vsh">
                     <th>Country Name</th>
@@ -53,13 +53,13 @@
                 <!-- Add your data rows here -->
                 <c:forEach var="visaMasterObj" items="${VISA_RESULT_SET}">
                     <tr>
-                        <td>${visaMasterObj.countryName}</td>
-                        <td>${visaMasterObj.cityName}</td>
-                        <td>${VISA_PROFILE.get(visaMasterObj.profile)}</td>
-                        <td>${VISA_TYPE.get(visaMasterObj.visaType)}</td>
-                        <td>${VISA_PURPOSE.get(visaMasterObj.visaPurpose)}</td>
-                        <td>${visaMasterObj.processingTime} Days</td>
-                        <td>
+                        <td style="border-bottom:2px solid black;border-right:2px solid black">${visaMasterObj.countryName}</td>
+                        <td style="border-bottom:2px solid black;border-right:2px solid black">${visaMasterObj.cityName}</td>
+                        <td style="border-bottom:2px solid black;border-right:2px solid black">${VISA_PROFILE.get(visaMasterObj.profile)}</td>
+                        <td style="border-bottom:2px solid black;border-right:2px solid black">${VISA_TYPE.get(visaMasterObj.visaType)}</td>
+                        <td style="border-bottom:2px solid black;border-right:2px solid black">${VISA_PURPOSE.get(visaMasterObj.visaPurpose)}</td>
+                        <td style="border-bottom:2px solid black;border-right:2px solid black">${visaMasterObj.processingTime} Days</td>
+                        <td style="border-bottom:2px solid black;">
                             <i class="fa-solid fa-sliders vsi" aria-hidden="true">
                                 <div class="vsi-ul">
                                     <ul>
@@ -95,10 +95,10 @@
             <input type="hidden" name="quotationId" value="${QTN_OBJ.quotationId}" />
             <input type="hidden" name="visaId" value="${VISA_OBJ.visaId}" />
             <div class="form_view_search_visa_add_quotation" style="margin-top:-60px">
-                <div class="form_view_search_visa_add_quotation_wrapper">
+                <div class="form_view_search_visa_add_quotation_wrapper bs">
                     <div class="form_view_search_visa_add_quotation_wrapper_data">
                         <div class="form_view_search_visa_add_quotation_wrapper_data_line">
-                            <div class="form_view_search_visa_add_quotation_wrapper_data_l1_h">
+                            <div class="form_view_search_visa_add_quotation_wrapper_data_l1_h" style="height:50px;background:#6082B6;padding:10px">
                                 <p>Visa Country</p>
                                 <p style="padding-right: 20px;">${VISA_OBJ.countryName}</p>
                                 <p style="padding-left: 80px;">Visa Consulate</p>
@@ -161,7 +161,7 @@
                                 style="margin-bottom: 20px;">
                                 <div class="form_view_search_visa_add_quotation_wrapper_data_rem">
                                     <label for="" class="lb">Remarks</label> <br>
-                                    <form:textarea path="remarks" rows="2" cols="140" maxlength="1450" />
+                                    <form:textarea path="remarks" rows="5" cols="140" maxlength="1450" />
                                 </div>
                             </div>
                             <div class="rel-btns">

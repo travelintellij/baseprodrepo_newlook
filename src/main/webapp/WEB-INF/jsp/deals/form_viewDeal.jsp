@@ -35,9 +35,9 @@ body::before {
 </style>
 <body>
 	<div class="form_viewDeal container">
-		<div class="form_viewDeal_wrapper">
+		<div class="form_viewDeal_wrapper bs">
 			<h1 style="font-size: 25px; color: #32cd32">View Deal </h1>
-			<div align="center">
+			<div align="center" style="margin:10px 0">
 				<b> <font color="green"> ${Success} </font> <font color="red">
 						${Error}</font>
 				</b>
@@ -50,57 +50,57 @@ body::before {
 					<div class="form_viewDeal_wrapper_data_line a">
 						<div class="form_viewDeal_wrapper_data_l1">
 							<label for="" class="lb">Deal Confirmation Number</label>
-							<p>UDN- ${DealObject.dealConfirmationId}</p>
+							<p style="color:#32cd32 ;font-weight:bold">UDN- ${DealObject.dealConfirmationId}</p>
 						</div>
 						<div class="form_viewDeal_wrapper_data_l1">
 							<label for="" class="lb">Deal Status</label>
-							<p>${DealObject.statusName}</p>
+							<p style="color:gray">${DealObject.statusName}</p>
 						</div>
 						<div class="form_viewDeal_wrapper_data_l1">
 							<label for="" class="lb">Query Id</label>
-							<p>${DealObject.queryId}</p>
+							<p style="color:gray">${DealObject.queryId}</p>
 						</div>
 						<div class="form_viewDeal_wrapper_data_l1">
 							<label for="" class="lb">Client Name</label>
-							<p>${DealObject.clientName}</p>
+							<p style="color:gray">${DealObject.clientName}</p>
 						</div>
 					</div>
 					<div class="form_viewDeal_wrapper_data_line a">
 						<div class="form_viewDeal_wrapper_data_l1">
 							<label for="" class="lb">Traveling From</label>
-							<p>${DealObject.travelingFromCity}</p>
+							<p style="color:gray">${DealObject.travelingFromCity}</p>
 						</div>
 						<div class="form_viewDeal_wrapper_data_l1">
 							<label for="" class="lb">Traveing To</label>
-							<p>${DealObject.travelingToCity}</p>
+							<p style="color:gray">${DealObject.travelingToCity}</p>
 						</div>
 						<div class="form_viewDeal_wrapper_data_l1">
 							<label for="" class="lb">Adults</label>
-							<p>${DealObject.adults}</p>
+							<p style="color:gray">${DealObject.adults}</p>
 						</div>
 						<div class="form_viewDeal_wrapper_data_l1">
 							<label for="" class="lb">Children</label>
-							<p>${DealObject.children}</p>
+							<p style="color:gray">${DealObject.children}</p>
 						</div>
 					</div>
 					<div class="form_viewDeal_wrapper_data_line a">
 						<div class="form_viewDeal_wrapper_data_l1">
 							<label for="" class="lb">Booking Date</label>
-							<p>
+							<p style="color:gray">
 								<fmt:formatDate value="${DealObject.bookingDate}"
 									pattern="dd-MM-yyyy" />
 							</p>
 						</div>
 						<div class="form_viewDeal_wrapper_data_l1">
 							<label for="" class="lb">Travel Start Date</label>
-							<p>
+							<p style="color:gray">
 								<fmt:formatDate value="${DealObject.travelStartDate}"
 									pattern="dd-MM-yyyy" />
 							</p>
 						</div>
 						<div class="form_viewDeal_wrapper_data_l1">
 							<label for="" class="lb">Travel End Date</label>
-							<p>
+							<p style="color:gray">
 								<fmt:formatDate value="${DealObject.travelEndDate}"
 									pattern="dd-MM-yyyy" />
 							</p>
@@ -121,13 +121,13 @@ body::before {
 													test='${fn:contains(DealObject.serviceWorkLoadList, listValue.serviceCode)}'>
 													<form:checkbox class="ch_c" path="serviceList"
 														value="${listValue.serviceCode}" checked="checked"
-														disabled="true" />
+														disabled="true" style="width:18px;height:18px"/>
 													<c:out value="${listValue.serviceName}" />
 													<span class="checkmark"></span>
 												</c:when>
 												<c:otherwise>
 													<form:checkbox class="ch_c" path="serviceList"
-														value="${listValue.serviceCode}" disabled="true" />
+														value="${listValue.serviceCode}" disabled="true"  style="width:18px;height:18px"/>
 													<c:out value="${listValue.serviceName}" />
 													<span class="checkmark"></span>
 												</c:otherwise>
@@ -149,32 +149,32 @@ body::before {
 						style="margin-top: 10px">
 						<h1 style="text-align: start;" class="lb">Deal Detailed
 							Description</h1>
-						<p style="text-align: start">${DealObject.dealDescription}</p>
+						<p style="text-align: start;color:gray">${DealObject.dealDescription}</p>
 					</div>
 
 					<div class="form_viewDeal_wrapper_data_line a">
 						<div class="form_viewDeal_wrapper_data_l1">
 							<label for="" class="lb">Deal Source</label>
-							<p>${DealObject.dealSourceName }</p>
+							<p style="color:gray">${DealObject.dealSourceName }</p>
 						</div>
 						<div class="form_viewDeal_wrapper_data_l1">
 							<label for="" class="lb">New Client</label>
-							<p>${DealObject.isNewClient}</p>
+							<p style="color:gray">${DealObject.isNewClient}</p>
 						</div>
 						<div class="form_viewDeal_wrapper_data_l1">
 							<label for="" class="lb">Projected Cost</label>
-							<p>${DealObject.projectedCost }</p>
+							<p style="color:gray">${DealObject.projectedCost }</p>
 						</div>
 						<div class="form_viewDeal_wrapper_data_l1">
 							<label for="" class="lb">Deal Value</label>
-							<p>${DealObject.sellingPrice}</p>
+							<p style="color:gray">${DealObject.sellingPrice}</p>
 						</div>
 
 					</div>
 					<div class="form_viewDeal_wrapper_data_line a">
 						<div class="form_viewDeal_wrapper_data_l1">
 							<label for="" class="lb">Cost Incurred</label>
-							<p>${DealObject.actualCost }</p>
+							<p style="color:gray">${DealObject.actualCost }</p>
 						</div>
 						<div class="form_viewDeal_wrapper_data_l1"></div>
 						<div class="form_viewDeal_wrapper_data_l1"></div>
@@ -184,12 +184,12 @@ body::before {
 					<div class="form_viewDeal_wrapper_data_line a">
 						<div class="form_viewDeal_wrapper_data_l1">
 							<label for="" class="lb">Deal Owner</label>
-							<p>${dealRecorder.dealOwnerName}</p>
+							<p style="color:gray">${dealRecorder.dealOwnerName}</p>
 						</div>
 						<div class="form_viewDeal_wrapper_data_l1">
 							<label for="" class="lb">Tag Teammate</label>
 							<c:forEach items="${DealObject.team}" var="dealteam">
-								<li>${dealteam.name}</li>
+								<li style="color:gray">${dealteam.name}</li>
 							</c:forEach>
 						</div>
 

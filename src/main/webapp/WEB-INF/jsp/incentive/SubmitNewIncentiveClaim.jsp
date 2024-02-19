@@ -192,7 +192,7 @@
                 <body>
                     <form:form method="post" action="create_create_incentive" modelAttribute="INCENTIVE_OBJ">
                         <div class="SubmitNewIncentiveClaim container">
-                            <div class="SubmitNewIncentiveClaim_wrapper">
+                            <div class="SubmitNewIncentiveClaim_wrapper bs">
                                 <h1 class="hd" style="color:#FFBA08">Incentive Claim Form</h1>
                                 <div class="SubmitNewIncentiveClaim_wrapper_data">
                                     <div class="SubmitNewIncentiveClaim_wrapper_data_line">
@@ -246,8 +246,8 @@
                             </div>
 
 
-                            <div class="claim_ques">
-                              <h2 align="center" class="hd" style="color:#FFBA08">Incentive Effort Details</h2>
+                            <div class="claim_ques bs">
+                              <h2 align="center" class="hd" style="color:black">Incentive Effort Details</h2>
                                 Please answer the following questions to justiy your claim for incentive.
                                 Please make a note that if we find any infomation marked wrong or not
                                 justified then your claim will be rejected.
@@ -341,7 +341,7 @@
                                 </tr>
                                 <tr>
                                     <td class="
-due_today_task_data_btnss" style="text-align:center;width:50%;background:black" colspan="2" >
+due_today_task_data_btnss" style="text-align:center;width:50%;background:white" colspan="2" >
                                         <input type="submit" value="Submit Claim">
                                         <a href="view_default_incentives_report"><input type="button"
                                                 value="View Incentive Listing" /></a>

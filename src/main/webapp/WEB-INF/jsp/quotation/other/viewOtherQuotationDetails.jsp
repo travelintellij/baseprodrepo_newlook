@@ -41,7 +41,7 @@
                     <form:form modelAttribute="QTN_OBJ" action="create_create_lead_quotation">
                          <div class="viewInsuranceQuotationDetails">
             <div class="viewInsuranceQuotationD_wrapper">
-                <div class="viewInsuranceQuotationD_wr_data">
+                <div class="viewInsuranceQuotationD_wr_data bs">
                     <div class="viewInsuranceQuotationD_wr_data_line">
                         <label for="" class="lb">Quotation</label>
                         <p>${QTN_OBJ.quotationId}</p>
@@ -81,11 +81,11 @@
                       
                               
                                 <c:if test="${OTH_ACTION ne 'ADD'}">
-                              <div class="btn-other-wrap" style="width:200px;border:2px solid red;margin:20px auto;color: white;
+                              <div class="btn-other-wrap bs" style="width:200px;border:2px solid red;margin:20px auto;color: black;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 9);
+    background: white;
     padding: 10px;
     border-radius: 10px;">
                             <font size="4"> <b>Services Action </b></font>
@@ -136,39 +136,39 @@
                                                      <br>
                                                       
         <div class="form_view_add_manual_other_quotation container" style="margin-top:-10px">
-        <div class="form_view_add_manual_other_wrapper">
-            <h1>Id-
+        <div class="form_view_add_manual_other_wrapper bs">
+            <h1 class="hd">Id-
                 ${otherQtnObj.manualOtherQuotationId}</h1>
             <div class="form_view_add_manual_other_w_data">
                 <div class="form_view_add_manual_other_w_dline a">
                     <div class="form_view_add_manual_other_w_dl1">
                         <label for="" class="lb">Service Name</label>
-                        <p>${otherQtnObj.serviceName }</p>
+                        <p style="color:gray">${otherQtnObj.serviceName }</p>
                     </div>
                     <div class="form_view_add_manual_other_w_dl1">
                         <label for="" class="lb">Service Details</label>
-                        <p>${otherQtnObj.serviceDetails}</p>
+                        <p style="color:gray">${otherQtnObj.serviceDetails}</p>
                     </div>
                     <div class="form_view_add_manual_other_w_dl1">
                         <label for="" class="lb">Service Date</label>
-                        <p>
+                        <p style="color:gray">
                             <fmt:formatDate value="${otherQtnObj.serviceDate}" pattern="dd-MM-yyyy" />
                         </p>
                     </div>
                     <div class="form_view_add_manual_other_w_dl1">
                         <label for="" class="lb">Service Cost</label>
 
-                        <p>${otherQtnObj.serviceCost}</p>
+                        <p style="color:gray">${otherQtnObj.serviceCost}</p>
                     </div>
                 </div>
                 <div class="form_view_add_manual_other_w_dline a">
                     <div class="form_view_add_manual_other_w_dl1" style="width:25%">
                         <label for="" class="lb">Service Markup</label>
-                        <p>${otherQtnObj.serviceMarkup}</p>
+                        <p style="color:gray">${otherQtnObj.serviceMarkup}</p>
                     </div>
                     <div class="form_view_add_manual_other_w_dl1" style="width:25%">
                         <label for="" class="lb">Display</label>
-                        <p>${otherQtnObj.displayOrder}</p>
+                        <p style="color:gray">${otherQtnObj.displayOrder}</p>
                     </div>
                 </div>
                 <div class="due_today_task_data_btnss" style="margin-top:20px">

@@ -16,7 +16,7 @@
 
 <body>
     <div class="form_view_add_manual_transfer_quotation container">
-        <div class="form_view_add_manual_transfer_quotation_wrapper" >
+        <div class="form_view_add_manual_transfer_quotation_wrapper bs" >
             <form:form modelAttribute="MANUAL_TRN" action="create_create_transfer_manual_quotation">
                 <input type="hidden" name="leadId" value="${QTN_OBJ.leadEntity.leadId}" />
                 <input type="hidden" name="quotationId" value="${QTN_OBJ.quotationId}" />
@@ -105,7 +105,7 @@
                     </div>
                     <div class="form_view_add_manual_transfer_quotation_remarks">
                         <label for="">Remarks</label> <br>
-                        <form:textarea path="remarks" cols="139" rows="2" maxlength="1450" />
+                        <form:textarea path="remarks" cols="139" rows="5" maxlength="1450" />
                     </div>
                     <div class="due_today_task_data_btns">
                         <input type="submit" name="addTransfer" id="addTransfer" Value="Add Transfer" />

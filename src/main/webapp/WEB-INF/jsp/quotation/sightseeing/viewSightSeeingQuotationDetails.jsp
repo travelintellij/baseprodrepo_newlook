@@ -60,17 +60,17 @@
 </div>
 
     <div class="viewTransfersQuotationDetails container_VTQ" ">
-        <div class="viewTransfersQuotationDetails_wrapper">
+        <div class="viewTransfersQuotationDetails_wrapper bs">
             <div class="viewTransfersQuotationDetails_wrapper_data">
             <form:form modelAttribute="QTN_OBJ" action="create_create_lead_quotation">
                 <div class="viewTransfersQuotationDetails_wrapper_data_line">
                     <div class="viewTransfersQuotationDetails_wrapper_data_l1">
                         <label for="">Quotation ID</label>
-                        <p>${QTN_OBJ.quotationId}</p>
+                        <p style="color:gray">${QTN_OBJ.quotationId}</p>
                     </div>
                     <div class="viewTransfersQuotationDetails_wrapper_data_l1">
                         <label for="">Version ID</label>
-                        <p>${QTN_OBJ.version}</p>
+                        <p style="color:gray">${QTN_OBJ.version}</p>
                     </div>
                 </div>
                 </form:form>
@@ -78,8 +78,8 @@
             </div>
         </div>
 
-        <div class="vtdh_btns" style="margin-top:10px">
-            <h1 class="vtdh">Add Transfer to Quotation</h1>
+        <div class="vtdh_btns bs" style="margin-top:10px">
+            <h1 class="vtdh">Add Sightseeing to Quotation</h1>
             <div class="due_today_task_data_btns mfk">
                <c:if test="${QTN_OBJ.converted ne true }">
 		  				<li style="display:inline-block"><a href="#">Search Transfers</a></li>
@@ -113,19 +113,19 @@
 				<c:otherwise>
 	
     <div class="sssec container">
-        <div class="sssec_wrapper">
+        <div class="sssec_wrapper bs">
         <h1 style="color:#32cd32;margin:10px">Id-  ${sightSeeingQtnObj.manualSightSeeingQuotationId}</h1>
             <div class="sssec_wrapper_data a">
                 <div class="sssec_wrapper_data_line">
                     <label for="" class="lb" style="font-weight: bold;
-    color: #FABA08;">Sight Seeing City</label>
-                   <p>${sightSeeingQtnObj.cityName} </p>
+    color: black;">Sight Seeing City</label>
+                   <p style="color:gray">${sightSeeingQtnObj.cityName} </p>
                  
                 </div>
                 <div class="sssec_wrapper_data_line">
                     <label for="" class="lb" style="font-weight: bold;
-    color: #FABA08;" >Sight Seeing Selection</label>
-                    <p><c:if test="${sightSeeingQtnObj.savedSightSeeing eq true}">
+    color: black;" >Sight Seeing Selection</label>
+                    <p style="color:gray"><c:if test="${sightSeeingQtnObj.savedSightSeeing eq true}">
 							System Based
 						</c:if>
 						<c:if test="${sightSeeingQtnObj.savedSightSeeing eq false}">
@@ -135,62 +135,62 @@
                 </div>
                 <div class="sssec_wrapper_data_line">
                     <label for="" class="lb" style="font-weight: bold;
-    color: #FABA08;">Transfer Type</label>
-                   <p>${sightSeeingQtnObj.transferTypeName} </p>
+    color: black;">Transfer Type</label>
+                   <p style="color:gray">${sightSeeingQtnObj.transferTypeName} </p>
                 </div>
                 <div class="sssec_wrapper_data_line">
                     <label for="" class="lb" style="font-weight: bold;
-    color: #FABA08;" >Sight Seeing date</label>
-                    <p><fmt:formatDate value="${sightSeeingQtnObj.sightSeeingDate}" pattern="dd-MMM-yyyy" /></p>
+    color: black;" >Sight Seeing date</label>
+                    <p style="color:gray"> <fmt:formatDate value="${sightSeeingQtnObj.sightSeeingDate}" pattern="dd-MMM-yyyy" /></p>
                 </div>
             </div>
             <div class="sssec_wrapper_data a" >
                 <div class="sssec_wrapper_data_line_fam_info">
                     <div class="fam_com_ssc">
                         <label for="" class="lb" style="font-weight: bold;
-    color: #FABA08;">Adults</label> <br>
-                       <p>${sightSeeingQtnObj.adults}</p>
+    color: black;">Adults</label> <br>
+                       <p style="color:gray">${sightSeeingQtnObj.adults}</p>
                     </div>
                     <div class="fam_com_ssc">
                         <label for="" class="lb" style="font-weight: bold;
-    color: #FABA08;">Children</label> <br>
+    color: black;">Children</label> <br>
                         <p>${sightSeeingQtnObj.children}</p>
                     </div>
                     <div class="fam_com_ssc">
                         <label for="" class="lb" style="font-weight: bold;
-    color: #FABA08;">Infant</label> <br>
-                       <p>${sightSeeingQtnObj.infant}</p>
+    color: black;">Infant</label> <br>
+                       <p style="color:gray">${sightSeeingQtnObj.infant}</p>
                     </div>
                 </div>
                 <div class="sssec_wrapper_data_line">
                     <label for="" class="lb" style="font-weight: bold;
-    color: #FABA08;">Sight Seeing Cost</label>
-                    <p>${sightSeeingQtnObj.sightSeeingCost}</p>
+    color: black;">Sight Seeing Cost</label>
+                    <p style="color:gray">${sightSeeingQtnObj.sightSeeingCost}</p>
                 </div>
                 <div class="sssec_wrapper_data_line">
                     <label for="" class="lb" style="font-weight: bold;
-    color: #FABA08;">Sight Seeing Markup</label>
-                   <p>${sightSeeingQtnObj.sightSeeingMarkup}</p>
+    color: black;">Sight Seeing Markup</label>
+                   <p style="color:gray">${sightSeeingQtnObj.sightSeeingMarkup}</p>
                 </div>
                 <div class="sssec_wrapper_data_line">
                     <label for="" class="lb" style="font-weight: bold;
-    color: #FABA08;">Display Order</label>
-                   <p>${sightSeeingQtnObj.displayOrder }</p>
+    color: black;">Display Order</label>
+                   <p style="color:gray">${sightSeeingQtnObj.displayOrder }</p>
                 </div>
             </div>
             <div class="sssec_wrapper_data a">
                 <div class="sssec_wrapper_data_line_id_name"> <br>
                     <label for="" class="lb" style="font-weight: bold;
-    color: #FABA08;">Sight Seeing ID / Sight seeing name</label>
-                   <p>${sightSeeingQtnObj.sightSeeingName}</p>
+    color: black;">Sight Seeing ID / Sight seeing name</label>
+                   <p style="color:gray">${sightSeeingQtnObj.sightSeeingName}</p>
                 </div>
             </div>
 
             <div class="sssec_wrapper_data a">
                 <div class="sssec_rem_box" style="text-align: start;">
                     <label for="" class="lb" style="font-weight: bold;
-    color: #FABA08;">Remarks</label> <br>
-                    <p>${sightSeeingQtnObj.remarks}</p>
+    color: black;">Remarks</label> <br>
+                    <p style="color:gray">${sightSeeingQtnObj.remarks}</p>
                 </div>
             </div>
             <div class="due_today_task_data_btns">

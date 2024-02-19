@@ -56,7 +56,7 @@
     <div class="autocomplete-suggestion">...</div>
 </div>
                         <div class="form_viewDeal container">
-                            <div class="form_viewDeal_wrapper">
+                            <div class="form_viewDeal_wrapper bs">
                                 <h1 style="font-size:25px;color:#32cd32 ">Edit Deal</h1>
                                 <form:form modelAttribute="dealRecorder" action="edit_workload_MainDealRecord">
                                     <input type="hidden" name="dealConfirmationId"
@@ -164,13 +164,13 @@
                                                                 test='${fn:contains(DealObject.serviceWorkLoadList, listValue.serviceCode)}'>
                                                                 <form:checkbox path="serviceList"
                                                                     value="${listValue.serviceCode}"
-                                                                    checked="checked" />
+                                                                    checked="checked" style="width:18px;height:18px"/>
                                                                 <c:out value="${listValue.serviceName}" /><span
                                                                     class="checkmark"></span>
                                                             </c:when>
                                                             <c:otherwise>
                                                                 <form:checkbox path="serviceList"
-                                                                    value="${listValue.serviceCode}" />
+                                                                    value="${listValue.serviceCode}" style="width:18px;height:18px"/>
                                                                 <c:out value="${listValue.serviceName}" /><span
                                                                     class="checkmark"></span>
                                                             </c:otherwise>
@@ -190,7 +190,7 @@
                                         </div>
                                         <div class="form_viewDeal_wrapper_data_line_des" style="margin-top:10px">
                                             <h1 style="text-align: start;">Deal Detailed Description</h1>
-                                            <textarea rows="2" cols="143"
+                                            <textarea rows="5" cols="143"
                                                 name="dealDescription">${DealObject.dealDescription}</textarea></td>
                                             </tr>
                                         </div>
@@ -292,7 +292,7 @@
                                             <div class="form_viewDeal_wrapper_data_l1">
                                                 <label for="" >Tag Teammate</label>
                                                 <input type="text" id="dealTeams" name="dealTeams" class="form-control"
-                                                    style="width:90%;background:lightgray" />
+                                                    style="width:90%;background:lightgray;border:1px solid black" />
                                                 <form:hidden path="teamNames" />
                                                 <form:hidden path="operatingTeams" />
                                             </div>

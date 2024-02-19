@@ -19,28 +19,28 @@
                         <input type="hidden" name="leadId" value="${QTN_OBJ.leadEntity.leadId}" />
                         <input type="hidden" name="quotationId" value="${QTN_OBJ.quotationId}" />
                         <form:hidden path="manualInsuranceQuotationId" />
-                        <div class="in_mu_add container">
+                        <div class="in_mu_add bs container">
                             <div class="in_mu_add_wrp" style="margin-top:20px">
-                                <h1>Id- ${MANUAL_INS.manualInsuranceQuotationId}</h1>
+                                <h1 class="hd">Id- ${MANUAL_INS.manualInsuranceQuotationId}</h1>
                                 <div class="in_mu_add_wrp_d a">
                                     <div class="in_mu_add_wrp_l">
                                         <label for="" class="lb">Contry Name</label>
-                                        <p>${MANUAL_INS.countryName }</p>
+                                        <p style="color:gray">${MANUAL_INS.countryName }</p>
                                     </div>
                                     <div class="in_mu_add_wrp_l">
                                         <label for="" class="lb">Insurance Name</label>
-                                        <p>${MANUAL_INS.insuranceName}</p>
+                                        <p style="color:gray">${MANUAL_INS.insuranceName}</p>
                                     </div>
                                     <div class="in_mu_add_wrp_l">
                                         <label for="" class="lb">Start Date</label>
-                                        <p>
+                                        <p style="color:gray">
                                             <fmt:formatDate value="${MANUAL_INS.coverageStartDate}"
                                                 pattern="dd-MM-yyyy" />
                                         </p>
                                     </div>
                                     <div class="in_mu_add_wrp_l">
                                         <label for="" class="lb">End Date</label>
-                                        <p>
+                                        <p style="color:gray">
                                             <fmt:formatDate value="${MANUAL_INS.coverageEndDate}"
                                                 pattern="dd-MM-yyyy" />
                                         </p>
@@ -50,57 +50,57 @@
                                 <div class="in_mu_add_wrp_d a">
                                     <div class="in_mu_add_wrp_l">
                                         <label for="" class="lb">Insurance Provider</label>
-                                        <p>${MANUAL_INS.insuranceProviderName}</p>
+                                        <p style="color:gray">${MANUAL_INS.insuranceProviderName}</p>
                                     </div>
                                     <div class="in_mu_add_wrp_l">
                                         <label for="" class="lb">Coverage Amount</label>
-                                        <p>${MANUAL_INS.coverageAmount }</p>
+                                        <p style="color:gray">${MANUAL_INS.coverageAmount }</p>
                                     </div>
                                     <div class="in_mu_add_wrp_l">
                                         <label for="" class="lb">Coverage Currency</label>
-                                        <p>${MANUAL_INS.coverageCurrency}</p>
+                                        <p style="color:gray">${MANUAL_INS.coverageCurrency}</p>
                                     </div>
                                     <div class="in_mu_add_wrp_l">
                                         <label for="" class="lb">Adults</label>
-                                        <p>${MANUAL_INS.adults}</p>
+                                        <p style="color:gray">${MANUAL_INS.adults}</p>
                                     </div>
                                 </div>
                                 <div class="in_mu_add_wrp_d a">
                                     <div class="in_mu_add_wrp_l">
                                         <label for="" class="lb">Children</label>
-                                        <p>${MANUAL_INS.children}</p>
+                                        <p style="color:gray">${MANUAL_INS.children}</p>
                                     </div>
                                     <div class="in_mu_add_wrp_l">
                                         <label for="" class="lb">Infants</label>
-                                        <p>${MANUAL_INS.infant}</p>
+                                        <p style="color:gray">${MANUAL_INS.infant}</p>
                                     </div>
                                     <div class="in_mu_add_wrp_l">
                                         <label for="" class="lb">Insurance type name</label>
-                                        <p>${MANUAL_INS.insuranceTypeName}</p>
+                                        <p style="color:gray">${MANUAL_INS.insuranceTypeName}</p>
                                     </div>
                                     <div class="in_mu_add_wrp_l">
                                         <label for="" class="lb">Premium Cost</label>
-                                        <p>${MANUAL_INS.premiumCost}</p>
+                                        <p style="color:gray">${MANUAL_INS.premiumCost}</p>
                                     </div>
                                 </div>
                                 <div class="in_mu_add_wrp_d a">
                                     <div class="in_mu_add_wrp_l">
                                         <label for="" class="lb">Mark up</label>
-                                        <p>${MANUAL_INS.premiumMarkup}</p>
+                                        <p style="color:gray">${MANUAL_INS.premiumMarkup}</p>
                                     </div>
                                     <div class="in_mu_add_wrp_l">
                                         <label for="" class="lb">Display Order</label>
-                                        <p>${MANUAL_INS.displayOrder}</p>
+                                        <p style="color:gray">${MANUAL_INS.displayOrder}</p>
                                     </div>
                                 </div>
                                 <div class="in_mu_add_wrp_d a">
                                     <div class="in_mu_add_wrp_l" style="width:100%">
                                         <label for="" class="lb">Remarks</label>
-                                        <p>${MANUAL_INS.remarks }</p>
+                                        <p style="color:gray">${MANUAL_INS.remarks }</p>
                                     </div>
                                 </div>
                                 <div class="due_today_task_data_btnss" style="margin-top:20px">
-                                    <input type="submit" style="background-color:red;" value="Confirm Delete" />
+                                    <input type="submit" style="background-color:red;color:white" value="Confirm Delete" />
                                     <a
                                         href="form_view_insurance_quotation_details?quotationId=${QTN_OBJ.quotationId}&leadId=${QTN_OBJ.leadEntity.leadId}"><input
                                             type="button"  value="Cancel" /></a>

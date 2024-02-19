@@ -35,7 +35,7 @@
     <div class="autocomplete-suggestion">...</div>
 </div>
     <div class="sssec container">
-        <div class="sssec_wrapper">
+        <div class="sssec_wrapper bs">
         
 <form:form modelAttribute="MANUAL_STS" action="create_create_sightseeing_manual_quotation">
 	<input type="hidden" name="leadId" value= "${QTN_OBJ.leadEntity.leadId}" />
@@ -43,13 +43,13 @@
 	<input type="hidden" name="manualSightSeeingQuotationId" value= "${MANUAL_STS.manualSightSeeingQuotationId}" />
             <div class="sssec_wrapper_data">
                 <div class="sssec_wrapper_data_line">
-                    <label for="" class="lb">Sight Seeing City</label>
+                    <label for="" class="lb" style="font-weight:normal">Sight Seeing City</label>
                     <font color="red"><form:errors path="cityName" cssClass="error" /></font>
 				<form:input path="cityName"  type="text" id="cityName"  required="required" />
 				<form:hidden path = "cityId" id="cityId" />
                 </div>
                 <div class="sssec_wrapper_data_line">
-                    <label for="" class="lb">Sight Seeing Selection</label>
+                    <label for="" class="lb" style="font-weight:normal">Sight Seeing Selection</label>
                     <div class="sssec_radio_box sssecb1">
                         <div class="sub_sssec_radio_box">
                             <label style="color:#ff6700" for="system" class="radio">system based</label>
@@ -63,7 +63,7 @@
                     </div>
                 </div>
                 <div class="sssec_wrapper_data_line">
-                    <label for="" class="lb">Transfer Type</label> </br>
+                    <label for="" class="lb" style="font-weight:normal">Transfer Type</label> </br>
                     <form:select path="transferType" required="required" style="width: 90%;">  
                 
 					<option class="service-small" value="" selected>Please Select</option>
@@ -71,42 +71,42 @@
 				</form:select>  
                 </div>
                 <div class="sssec_wrapper_data_line">
-                    <label for="" class="lb">Sight Seeing date</label>
+                    <label for="" class="lb" style="font-weight:normal">Sight Seeing date</label>
                     <form:input type="date" path="sightSeeingDate" required="required" /> 
                 </div>
             </div>
             <div class="sssec_wrapper_data">
                 <div class="sssec_wrapper_data_line_fam_info">
                     <div class="fam_com_ssc">
-                        <label for="" class="lb">Adults</label> <br>
+                        <label for="" class="lb" style="font-weight:normal">Adults</label> <br>
 				<form:input path="adults" type="number" min="0" />
 				<font color="red"><form:errors path="adults" cssClass="error" /></font>
                     </div>
                     <div class="fam_com_ssc">
-                        <label for="" class="lb">Children</label> <br>
+                        <label for="" class="lb" style="font-weight:normal">Children</label> <br>
                       <form:input path="children" type="number" min="0"/>
                     </div>
                     <div class="fam_com_ssc">
-                        <label for="" class="lb">Infant</label> <br>
+                        <label for="" class="lb" style="font-weight:normal">Infant</label> <br>
                        <form:input path="infant" type="number" min="0" />
                     </div>
                 </div>
                 <div class="sssec_wrapper_data_line">
-                    <label for="" class="lb">Sight Seeing Cost</label>
+                    <label for="" class="lb" style="font-weight:normal">Sight Seeing Cost</label>
                      <form:input path="sightSeeingCost" type="number" min="0" />
                 </div>
                 <div class="sssec_wrapper_data_line">
-                    <label for="" class="lb">Sight Seeing Markup</label>
+                    <label for="" class="lb" style="font-weight:normal">Sight Seeing Markup</label>
                    <form:input path="sightSeeingMarkup" type="number" min="0"/>
                 </div>
                 <div class="sssec_wrapper_data_line">
-                    <label for="" class="lb">Display Order</label>
+                    <label for="" class="lb" style="font-weight:normal">Display Order</label>
                    <form:input path="displayOrder" type="number" min="0"/>
                 </div>
             </div>
             <div class="sssec_wrapper_data">
                 <div class="sssec_wrapper_data_line_id_name"> <br>
-                    <label for="" class="lb">Sight Seeing ID / </br> Sight seeing name</label>
+                    <label for="" class="lb" style="font-weight:normal">Sight Seeing ID / Sight seeing name</label>
                     <font color="red"><form:errors path="sightSeeingName" cssClass="error" /></font>
 				<form:input path="sightSeeingName" style="width: 100%;height:40px;" type="text" id="sightSeeingName" required="required" onchange="considerAutoComplete()" />
 				<form:hidden path = "sightSeeingId" id="sightSeeingId" />
@@ -115,8 +115,8 @@
 
             <div class="sssec_wrapper_data">
                 <div class="sssec_rem_box" style="text-align: start;">
-                    <label for="" class="lb">Remarks</label> <br>
-                    <form:textarea path="remarks" rows="2" cols="139" maxlength="1450"/>
+                    <label for="" class="lb" style="font-weight:normal">Remarks</label> <br>
+                    <form:textarea path="remarks" rows="5" cols="139" maxlength="1450"/>
                     
                 </div>
             </div>

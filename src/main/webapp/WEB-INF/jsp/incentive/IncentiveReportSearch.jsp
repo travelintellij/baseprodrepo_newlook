@@ -44,7 +44,7 @@
 	  height: 100%; /* Full height */
 	  overflow: scroll; /* Enable scroll if needed */
 	  background-color: rgb(0,0,0); /* Fallback color */
-	  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+	  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */;
 	}
 	
 	/* Modal Content */
@@ -105,7 +105,7 @@
 
                     <body>
                         <div class="IncentiveReportSearch container">
-                            <div class="IncentiveReportSearch_wrapper">
+                            <div class="IncentiveReportSearch_wrapper bs">
                                 <form:form method="post" action="view_filter_incentives"
                                     modelAttribute="SEARCH_INCENTIVE">
                                     <input type="hidden" name="userName" value="${userName}" />
@@ -186,17 +186,17 @@
                         </div>
 
 
-                        <table style="width:1450px;margin:10px auto;text-align:center;background:black;color:white">
+                        <table class="bs" style="width:1500px;margin:10px auto;text-align:center;background:white;color:black">
                             <tr>
                                 <th style="width:10%;background: #6082B6;">Incentive Id </th>
                                 <th style="width:10%;background: #6082B6;">Deal Confirmation Id </th>
                                 <th style="width:20%;background: #6082B6;">Lead Guest Name</th>
-                                <th style="width:10%;background: #6082B6;">Travel Date</th>
-                                <th style="width:10%;background: #6082B6;">End Date</th>
+                                <th style="width:8%;background: #6082B6;">Travel Date</th>
+                                <th style="width:8%;background: #6082B6;">End Date</th>
                                 <th style="width:10%;background: #6082B6;">Claim Date</th>
-                                <th style="width:10%;background: #6082B6;">Claimant</th>
+                                <th style="width:8%;background: #6082B6;">Claimant</th>
                                 <th style="width:10%;background: #6082B6;">Claim Amount</th>
-                                <th style="width:10%;background: #6082B6;">Approved Amount</th>
+                                <th style="width:7%;background: #6082B6;">Approved Amount</th>
                                 <th style="width:10%;background: #6082B6;">Claim Status</th>
                             </tr>
                             <c:if test="${not empty INCENTIVES_LIST}">
@@ -204,7 +204,7 @@
                                 <c:forEach var="incentiveObj" items="${INCENTIVES_LIST}">
                                     <tr>
                                         <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">
-                                            <a style="color:blue;text-decoration:underline;cursor:pointer" id="myBtn[${incentiveObj.incentiveId}]" onclick="myLeadDisplay(this)"
+                                            <a style="color:blue;text-decoration:nonr;cursor:pointer" id="myBtn[${incentiveObj.incentiveId}]" onclick="myLeadDisplay(this)"
                                                 data-load-url="displayIncentiveModal?incentiveId=${incentiveObj.incentiveId}"
                                                 data-toggle="modal" data-target="#myModal">${incentiveObj.incentiveId}</a>
 
@@ -215,7 +215,7 @@
 
                                         </td>
                                         <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">
-                                            <a style="color:blue;text-decoration:underline;cursor:pointer" id="myBtn[${incentiveObj.dealConfirmationId}]"
+                                            <a style="color:blue;text-decoration:none;cursor:pointer" id="myBtn[${incentiveObj.dealConfirmationId}]"
                                                 onclick="myLeadDisplay(this)"
                                                 data-load-url="view_view_deal_form_modal_free_acl?dealConfirmationId=${incentiveObj.dealConfirmationId}"
                                                 data-toggle="modal" data-target="#myModal">${incentiveObj.dealConfirmationId}</a>
@@ -244,9 +244,9 @@
                             </c:if>
                             <tr>
                                 <td colspan="7" style="text-align:end;margin-right:10px;"><b>
-                                        <font size="3">Total Claim &nbsp &nbsp &nbsp <br> Amount &nbsp &nbsp &nbsp &nbsp &nbsp </font>
+                                        <font size="3">Total Claim Amount  </font>
                                     </b></td>
-                                    <td colspan="1" style="text-align:center;color:#32cd32;font-weight:bold">
+                                    <td colspan="1" style="text-align:center;black:#32cd32;font-weight:bold">
                                     ${totalIncentive}</td>
                             </tr>
                         </table>
@@ -260,11 +260,13 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <span class="close" style="color:red">&times;</span>
-                                    <h2 style="text-align:center;">View Details</h2>
+                                    <h2 style="text-align:center;color:black">View Details</h2>
                                 </div>
-                                <div class="modal-body" style="padding:0"></div>
+                                <div class="modal-body" style="padding:0;text-align:center">
+                                
+                                </div>
                                 <div class="modal-footer">
-                                    <h3>Powered by @TravelIntelliJ</h3>
+                                    <h3 style="color:black;text-align:center">Powered by @TravelIntelliJ</h3>
                                 </div>
                             </div>
 

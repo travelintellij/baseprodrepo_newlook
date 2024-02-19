@@ -6,14 +6,15 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
-    <link href="<c:url value=" /resources/core/main.css" />" rel="stylesheet">
+    <link href="<c:url value=" /resources/core/main.css" />
 </head>
 <body>     
-        <div class="viewIncentiveDetails_modal container">
+
+        <div class="viewIncentiveDetails_modal container" style="width:950px">
         <font color="green"> ${Success} </font>
         <font color="red"> ${Error}</font>
         <div class="viewIncentiveDetails_modal_wrapper">
-            <h1>Incentive Claim Id - ${INCENTIVE_OBJ.incentiveId}</h1>
+            <h1 class="hd">Incentive Claim Id - ${INCENTIVE_OBJ.incentiveId}</h1>
             <div class="viewIncentiveDetails_modal_wrapper_data">
                 <div class="viewIncentiveDetails_modal_wrapper_data_line">
                     <label for="" class="lb">Requested By</label>
@@ -92,14 +93,15 @@
     </div>
 </div>
 
-        </div>
-    </div>
+      
+    
+  
 
 
     <div id="myModal" class="modal">
     
         <!-- Modal content -->
-        <div class="modal-content" style="margin-top:20px;z-index:9">
+        <div class="modal-content" style="margin-top:20px;z-index:9 ">
             <div class="modal-header">
                 <span class="close">&times;</span>
                 <br>

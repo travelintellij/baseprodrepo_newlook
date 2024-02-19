@@ -18,7 +18,7 @@
                 <body>
                     <c:if test="${VSA_ACTION eq 'DELETE'}">
                         <div class="form_view_delete_manual_visa_quotation container">
-                            <div class="form_view_delete_manual_visa_quotation_wrpr">
+                            <div class="form_view_delete_manual_visa_quotation_wrpr bs">
                                 <form:form method="post" action="delete_delete_visa_manual_quotation"
                                     modelAttribute="MANUAL_VSA">
                                     <input type="hidden" name="leadId" value="${QTN_OBJ.leadEntity.leadId}" />
@@ -33,47 +33,47 @@
                                         <div class="form_view_delete_manual_visa_quotation_wrpe_data_line a">
                                             <div class="form_view_delete_manual_visa_quotation_wdl1">
                                                 <label for="" class="lb">Visa Country</label>
-                                                <p>${MANUAL_VSA.visaCountry}</p>
+                                                <p style="color:gray">${MANUAL_VSA.visaCountry}</p>
                                             </div>
                                             <div class="form_view_delete_manual_visa_quotation_wdl1">
                                                 <label for="" class="lb">Visa Consulate</label>
-                                                <p>${MANUAL_VSA.visaConsulate}</p>
+                                                <p style="color:gray">${MANUAL_VSA.visaConsulate}</p>
                                             </div>
                                             <div class="form_view_delete_manual_visa_quotation_wdl1">
                                                 <label for="" class="lb">Adults</label>
-                                                <p>${MANUAL_VSA.adults}</p>
+                                                <p style="color:gray">${MANUAL_VSA.adults}</p>
                                             </div>
                                             <div class="form_view_delete_manual_visa_quotation_wdl1">
                                                 <label for="" class="lb">Children</label>
-                                                <p>${MANUAL_VSA.children}</p>
+                                                <p style="color:gray" >${MANUAL_VSA.children}</p>
                                             </div>
                                         </div>
                                         <div class="form_view_delete_manual_visa_quotation_wrpe_data_line a">
                                             <div class="form_view_delete_manual_visa_quotation_wdl1">
                                                 <label for="" class="lb">Infants</label>
-                                                <p>${MANUAL_VSA.infant}</p>
+                                                <p style="color:gray">${MANUAL_VSA.infant}</p>
                                             </div>
                                             <div class="form_view_delete_manual_visa_quotation_wdl1">
                                                 <label for="" class="lb">Display Order</label>
-                                                <p>${MANUAL_VSA.displayOrder}</p>
+                                                <p style="color:gray">${MANUAL_VSA.displayOrder}</p>
                                             </div>
                                             <div class="form_view_delete_manual_visa_quotation_wdl1">
                                                 <label for="" class="lb">Total Visa Cost (System)</label>
-                                                <p>${MANUAL_VSA.systemVisaCost}</p>
+                                                <p style="color:gray">${MANUAL_VSA.systemVisaCost}</p>
                                             </div>
                                             <div class="form_view_delete_manual_visa_quotation_wdl1">
                                                 <label for="" class="lb">Total Visa Markup (System)</label>
-                                                <p>${MANUAL_VSA.systemVisaMarkup }</p>
+                                                <p style="color:gray">${MANUAL_VSA.systemVisaMarkup }</p>
                                             </div>
                                         </div>
                                         <div class="form_view_delete_manual_visa_quotation_wrpe_data_line a">
                                             <div class="form_view_delete_manual_visa_quotation_wdl1">
                                                 <label for="" class="lb">New Cost (Changed Current)</label>
-                                                <p>${MANUAL_VSA.visaCost}</p>
+                                                <p style="color:gray">${MANUAL_VSA.visaCost}</p>
                                             </div>
                                             <div class="form_view_delete_manual_visa_quotation_wdl1">
                                                 <label for="" class="lb">Quoted Markup</label>
-                                                <p>${MANUAL_VSA.visaMarkup }</p>
+                                                <p style="color:gray">${MANUAL_VSA.visaMarkup }</p>
                                             </div>
                                             <div class="form_view_delete_manual_visa_quotation_wdl1">
 
@@ -85,12 +85,12 @@
                                         <div class="form_view_delete_manual_visa_quotation_wrpe_data_line a">
                                             <div class="form_view_delete_manual_visa_quotation_wdl1" style="width:100%">
                                                 <label for="" class="lb">Remarks</label>
-                                                <p>${MANUAL_VSA.remarks }</p>
+                                                <p style="color:gray">${MANUAL_VSA.remarks }</p>
                                             </div>
                                         </div>
                                         <div class="due_today_task_data_btnss" style="margin-top:20px">
                                             <input type="submit" name="deleteVisa" id="deleteVisa"
-                                                Value="Confirm Delete" style="background-color:red;" />
+                                                Value="Confirm Delete" style="background-color:red;color:white" />
                                             <a
                                                 href="form_view_visa_quotation_details?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId}"><input
                                                     type="button"  value="Cancel" /></a>

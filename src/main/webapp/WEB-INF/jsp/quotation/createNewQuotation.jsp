@@ -40,16 +40,16 @@
         <form:form modelAttribute="QTN_OBJ" action="create_create_lead_quotation">
 
             <input type="hidden" name="leadId" value="${QTN_OBJ.leadEntity.leadId}" />
-            <div class="createNewQuotation_form_wrapper">
+            <div class="createNewQuotation_form_wrapper bs">
                 <div class="createNewQuotation_form_wrapper_data">
                     <div class="createNewQuotation_form_wrapper_data_line">
                         <div class="createNewQuotation_form_wrapper_data_l1">
                             <label for="">Quotation Id</label>
-                            <p>Auto Generated</p>
+                            <p style="color:#32cd32;font-weight:bold">Auto Generated</p>
                         </div>
                         <div class="createNewQuotation_form_wrapper_data_l1">
                             <label for="">Version Id</label>
-                            <p>Auto Generated</p>
+                            <p style="color:#32cd32;font-weight:bold">Auto Generated</p>
                         </div>
                         <div class="createNewQuotation_form_wrapper_data_l1">
                             <label for="">Quotation Header</label>
@@ -65,44 +65,44 @@
                             <p>sasas</p>
                         </div>
                     </div>
-                    <p style="color: #FABA08;font-weight: bold;text-align: start;">Services to be included</p>
+                    <p style="color: black;text-align: start;">Services to be included</p>
                     <div class="createNewQuotation_wrapper_data_line">
                         <div class="createNewQuotation_ser">
                             <div class="createNewQuotation_ser_box">
                                 <span for="">Package</span>
-                                <form:checkbox path="tourPackage" name="tourPackage" />
+                                <form:checkbox path="tourPackage" name="tourPackage" style="width:18px;height:18px"/>
                             </div>
                             <div class="createNewQuotation_ser_box">
                                 <span for="">Flight</span>
-                                <form:checkbox path="flight" name="flight" />
+                                <form:checkbox path="flight" name="flight" style="width:18px;height:18px"/>
                             </div>
                             <div class="createNewQuotation_ser_box">
                                 <span for="">Hotal</span>
-                                <form:checkbox path="hotel" name="hotel" /><span class="checkmark">
+                                <form:checkbox path="hotel" name="hotel" style="width:18px;height:18px"/><span class="checkmark">
                             </div>
                             <div class="createNewQuotation_ser_box">
                                 <span for="">Transfers</span>
-                                <form:checkbox path="transfers" name="transfers" />
+                                <form:checkbox path="transfers" name="transfers" style="width:18px;height:18px"/>
                             </div>
                             <div class="createNewQuotation_ser_box">
                                 <span for="">Sightseeing</span>
-                                <form:checkbox path="sightseeing" name="sightseeing" />
+                                <form:checkbox path="sightseeing" name="sightseeing" style="width:18px;height:18px"/>
                             </div>
                             <div class="createNewQuotation_ser_box">
                                 <span for="">Visa</span>
-                                <form:checkbox path="visa" name="visa" /><span class="checkmark">
+                                <form:checkbox path="visa" name="visa" style="width:18px;height:18px"/><span class="checkmark">
                             </div>
                             <div class="createNewQuotation_ser_box">
                                 <span for="">Insurance</span>
-                                <form:checkbox path="insurance" name="insurance" />
+                                <form:checkbox path="insurance" name="insurance" style="width:18px;height:18px"/>
                             </div>
                             <div class="createNewQuotation_ser_box">
                                 <span for="">Cruise</span>
-                                <form:checkbox path="cruise" name="cruise" />
+                                <form:checkbox path="cruise" name="cruise" style="width:18px;height:18px"/>
                             </div>
                             <div class="createNewQuotation_ser_box">
                                 <span for="">Others</span>
-                                <form:checkbox path="others" name="others" />
+                                <form:checkbox path="others" name="others" style="width:18px;height:18px"/>
                             </div>
                         </div>
                     </div>

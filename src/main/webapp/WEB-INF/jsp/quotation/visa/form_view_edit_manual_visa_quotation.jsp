@@ -25,7 +25,7 @@
                 <div class="form_view_search_visa_add_quotation_wrapper">
                     <div class="form_view_search_visa_add_quotation_wrapper_data">
                         <div class="form_view_search_visa_add_quotation_wrapper_data_line">
-                            <div class="form_view_search_visa_add_quotation_wrapper_data_l1_h">
+                            <div class="form_view_search_visa_add_quotation_wrapper_data_l1_h" style="height:50px;background:#6082B6;padding:10px">
                                 <p>Visa Country</p>
                                 <p style="padding-right: 20px;">${VISA_OBJ.countryName}</p>
                                 <p style="padding-left: 80px;">Visa Consulate</p>
@@ -72,7 +72,7 @@
                                     <p>${VISA_OBJ.standardCost}</p>
                                 </div>
                                 <div class="form_view_search_visa_add_quotation_wrapper_data_in">
-                                    <label for="">B2C S.Price PP | <br> B2B S.Price PP </label>
+                                    <label for="">B2C S.Price PP | B2B S.Price PP </label>
                                     <p style="background:lightpink;color:black;width:120px;padding:3px;border-radius:2px'">${VISA_OBJ.standardB2cPrice } | ${VISA_OBJ.standardB2bPrice }</p>
                                 </div>
                                 <div class="form_view_search_visa_add_quotation_wrapper_data_in">
@@ -86,9 +86,9 @@
                             </div>
                             <div class="form_view_search_visa_add_quotation_wrapper_data_l1_c"
                                 style="margin-bottom: 20px;">
-                                <div class="form_view_search_visa_add_quotation_wrapper_data_rem">
+                                <div class="form_view_search_visa_add_quotation_wrapper_data_rem" style="width:100%">
                                     <label for="">Remarks</label> <br>
-                                    <form:textarea path="remarks" rows="2" cols="103" maxlength="1450" />
+                                    <form:textarea path="remarks" rows="5" cols="103" maxlength="1450" style="width:98%"/>
                                 </div>
                             </div>
                             <div class="rel-btns">

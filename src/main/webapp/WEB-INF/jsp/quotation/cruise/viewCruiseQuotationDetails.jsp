@@ -79,19 +79,19 @@
 
     <form:form modelAttribute="QTN_OBJ" action="create_create_lead_quotation">
         <div class="viewCruiseQuotationDetailsfrm ">
-            <div class="viewCruiseQuotationDetailsfrm_wrapper">
+            <div class="viewCruiseQuotationDetailsfrm_wrapper bs">
                 <div class="viewCruiseQuotationDetailsfrm_wrapper_data">
                     <div class="viewCruiseQuotationDetailsfrm_wrapper_l1">
-                        <label for="" style=" font-weight: bold;color: #FABA08;">Quotation Id</label>
+                        <label for="" style=" font-weight: bold;color: black;">Quotation Id</label>
                         <p>${QTN_OBJ.quotationId}</p>
                     </div>
                     <div class="viewCruiseQuotationDetailsfrm_wrapper_l1">
-                        <label for="" style=" font-weight: bold;   color: #FABA08;">Version Id</label>
+                        <label for="" style=" font-weight: bold;   color: black;">Version Id</label>
                         <p>${QTN_OBJ.version}</p>
                     </div>
                 </div>
             </div>
-            <div class="viewCruiseQuotationDetailsfrm_wrapper_2">
+            <div class="viewCruiseQuotationDetailsfrm_wrapper_2 bs">
                 <h1>Add Cruise Stay To Quotation</h1>
                 <div class="due_today_task_data_btns">
                     <c:if test="${QTN_OBJ.converted ne true }">
@@ -125,77 +125,77 @@
 				<c:otherwise>
 
     <div class="viewCruiseQuotationDetails container">
-        <div class="viewCruiseQuotationDetails_wrapper">
-        <h1 style = "font-size:20px;margin-bottom:10px;color:#32cd32 ">Id-  ${cruiseQtnObj.manualCruiseQuotationId}</h1>
+        <div class="viewCruiseQuotationDetails_wrapper bs">
+        <h1 class="hd" style = "margin-bottom:10px;color:#32cd32 ">Id-  ${cruiseQtnObj.manualCruiseQuotationId}</h1>
             <div class="viewCruiseQuotationDetails_wrapper_data">
                 <div class="viewCruiseQuotationDetails_wrapper_data_line a" >
                     <div class="viewCruiseQuotationDetails_wrapper_data_l1">
                         <label for="" class="lb">City</label>
-                        <p>${cruiseQtnObj.cityName }</p>
+                        <p style="color:gray">${cruiseQtnObj.cityName }</p>
                     </div>
                     <div class="viewCruiseQuotationDetails_wrapper_data_l1 ">
                         <label for="" class="lb">Cruise Name</label>
-                        <p>${cruiseQtnObj.cruiseName}</p>
+                        <p style="color:gray">${cruiseQtnObj.cruiseName}</p>
                     </div>
                     <div class="viewCruiseQuotationDetails_wrapper_data_l1">
                         <label for="" class="lb">State Room Type</label>
-                        <p>${cruiseQtnObj.stateRoomName}</p>
+                        <p style="color:gray">${cruiseQtnObj.stateRoomName}</p>
                     </div>
                     <div class="viewCruiseQuotationDetails_wrapper_data_l1">
                         <label for="" class="lb">Cruise Provider</label>
-                        <p>${cruiseQtnObj.cruiseProviderName}</p>
+                        <p style="color:gray">${cruiseQtnObj.cruiseProviderName}</p>
                     </div>
                 </div>
                 <div class="viewCruiseQuotationDetails_wrapper_data_line a">
                     <div class="viewCruiseQuotationDetails_wrapper_data_l1">
                         <label for="" class="lb">Sailing Start Date</label>
-                        <p>
+                        <p style="color:gray">
                             <fmt:formatDate value="${cruiseQtnObj.sailingStartDate}" pattern="dd-MM-yyyy" />
                         </p>
                     </div>
                     <div class="viewCruiseQuotationDetails_wrapper_data_l1">
                         <label for="" class="lb">Sailing End Date</label>
-                        <p>
+                        <p style="color:gray">
                             <fmt:formatDate value="${cruiseQtnObj.sailingEndDate}" pattern="dd-MM-yyyy" />
                         </p>
                     </div>
                     <div class="viewCruiseQuotationDetails_wrapper_data_l1">
                         <label for="" class="lb">Adults</label>
-                        <p>${cruiseQtnObj.adults}</p>
+                        <p style="color:gray">${cruiseQtnObj.adults}</p>
                     </div>
                     <div class="viewCruiseQuotationDetails_wrapper_data_l1">
                         <label for="" class="lb">Children</label>
-                        <p>${cruiseQtnObj.children}</p>
+                        <p style="color:gray">${cruiseQtnObj.children}</p>
                     </div>
                 </div>
                 <div class="viewCruiseQuotationDetails_wrapper_data_line a">
                     <div class="viewCruiseQuotationDetails_wrapper_data_l1">
                         <label for="" class="lb">Children Age Info</label>
-                        <p>${cruiseQtnObj.childrenAgeInfo}</p>
+                        <p style="color:gray">${cruiseQtnObj.childrenAgeInfo}</p>
                     </div>
                     <div class="viewCruiseQuotationDetails_wrapper_data_l1">
                         <label for="" class="lb">No. of Decks</label>
-                        <p>${cruiseQtnObj.noOfDecks}</p>
+                        <p style="color:gray">${cruiseQtnObj.noOfDecks}</p>
                     </div>
                     <div class="viewCruiseQuotationDetails_wrapper_data_l1">
                         <label for="" class="lb">Total Cost</label>
-                        <p>${cruiseQtnObj.cruiseStayCost}</p>
+                        <p style="color:gray">${cruiseQtnObj.cruiseStayCost}</p>
                     </div>
                     <div class="viewCruiseQuotationDetails_wrapper_data_l1">
                         <label for="" class="lb">Total Markup</label>
-                        <p>${cruiseQtnObj.cruiseStayMarkup}</p>
+                        <p style="color:gray">${cruiseQtnObj.cruiseStayMarkup}</p>
                     </div>
                 </div>
                 <div class="viewCruiseQuotationDetails_wrapper_data_line a">
                     <div class="viewCruiseQuotationDetails_wrapper_data_l1">
                         <label for="" class="lb">Display Order</label>
-                        <p>${cruiseQtnObj.displayOrder}</p>
+                        <p style="color:gray">${cruiseQtnObj.displayOrder}</p>
                     </div>
                 </div>
                 <div class="viewCruiseQuotationDetails_wrapper_data_line a">
                     <div class="viewCruiseQuotationDetails_wrapper_data_l1_rem" style="text-align: start;">
                         <label for="" class="lb">Remarks</label>
-                        <p style="width:1175px">${cruiseQtnObj.remarks}</p>
+                        <p style="width:1175px;color:gray">${cruiseQtnObj.remarks}</p>
                     </div>
                 </div>
                 <div class="due_today_task_data_btns">

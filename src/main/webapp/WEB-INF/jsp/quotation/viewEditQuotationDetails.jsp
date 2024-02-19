@@ -67,8 +67,10 @@
     	<form:hidden path = "quotationId" id="quotationId" />
 	<form:hidden path = "version" id="version" />
     <div class="viewEditQuotationDetails">
-        <div class="viewEditQuotationDetails_wrapper">
+ 
+        <div class="viewEditQuotationDetails_wrapper bs">
             <div class="viewEditQuotationDetails_wrapper_data">
+               <h1 class="hd">Edit Quotation Details</h1>
                 <div class="viewEditQuotationDetails_wrapper_data_line">
                     <div class="viewEditQuotationDetails_wrapper_dl1">
                         <label for="" class="lb">Quotation Id</label>
@@ -94,61 +96,61 @@
                             <form:errors path="tourPackage" cssClass="error" />
                         </font>
                         <label for="">package</label>      
-                    <form:checkbox path="tourPackage" name="tourPackage" />
+                    <form:checkbox path="tourPackage" name="tourPackage" style="width:18px;height:18px"/>
                     </div>
                     <div class="q_sr">
                             <font color="red">
                                 <form:errors path="flight" cssClass="error" />
                             </font>
                          <label for="">flight</label>      
-                    <form:checkbox path="flight" name="flight" />
+                    <form:checkbox path="flight" name="flight" style="width:18px;height:18px"/>
                     </div>
                     <div class="q_sr">
                         <form:errors path="hotel" cssClass="error" />
                           <label for="">hotal</label>      
-                    <form:checkbox path="hotel" name="hotel" />
+                    <form:checkbox path="hotel" name="hotel" style="width:18px;height:18px"/>
                     </div>
                     <div class="q_sr">
                         <font color="red">
                             <form:errors path="transfers" cssClass="error" />
                         </font>
                            <label for="">transfers</label>      
-                    <form:checkbox path="transfers" name="transfers" />
+                    <form:checkbox path="transfers" name="transfers" style="width:18px;height:18px"/>
                     </div>
                     <div class="q_sr">
                             <font color="red">
                                 <form:errors path="sightseeing" cssClass="error" />
                             </font>
                            <label for="">signtseeing</label>      
-                    <form:checkbox path="sightseeing" name="sightseeing" />
+                    <form:checkbox path="sightseeing" name="sightseeing" style="width:18px;height:18px"/>
                     </div>
                     <div class="q_sr">
                         <font color="red">
                             <form:errors path="visa" cssClass="error" />
                         </font>
                           <label for="">visa</label>      
-                        <form:checkbox path="visa" name="visa" />
+                        <form:checkbox path="visa" name="visa" style="width:18px;height:18px"/>
                     </div>
                     <div class="q_sr">
                         <font color="red">
                             <form:errors path="insurance" cssClass="error" />
                         </font>
                            <label for="">insurance</label>      
-                    <form:checkbox path="insurance" name="insurance" />
+                    <form:checkbox path="insurance" name="insurance" style="width:18px;height:18px"/>
                     </div>
                     <div class="q_sr">
                         <font color="red">
                             <form:errors path="cruise" cssClass="error" />
                         </font>
                         <label for="">cruise</label>
-                        <form:checkbox path="cruise" name="cruise" />
+                        <form:checkbox path="cruise" name="cruise" style="width:18px;height:18px"/>
                     </div>
                     <div class="q_sr">
                             <font color="red">
                                 <form:errors path="others" cssClass="error" />
                             </font>
                          <label for="">others</label>    
-                    <form:checkbox path="others" name="others" />
+                    <form:checkbox path="others" name="others" style="width:18px;height:18px"/>
                     </div>
                 </div>
                 <div class="due_today_task_data_btns">

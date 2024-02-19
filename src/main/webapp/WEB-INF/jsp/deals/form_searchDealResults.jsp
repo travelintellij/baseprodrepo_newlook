@@ -16,7 +16,7 @@
             <div class="form_searchDealResults_wrapper_data">
                 <div class="form_searchDealResults_wdl">
                         <div align="center"><span style="background:black;color:white;padding:0 10px;margin-bottom:20px;border-radius:5px;color:#32cd32 ">Total Deals Found : ${FILTERED_DEAL_RECORDS.size()}</span></div>
-                        <table class="deal_table">
+                        <table class="deal_table bs">
                             <tr style="background:#6082B6;height:40px">
                                 <th style="width: 5%;" align="center">Deal #</th>
                                 <th style="width: 5%;" align="center">Query #</th>
@@ -31,26 +31,26 @@
                         
                             <c:forEach items="${FILTERED_DEAL_RECORDS}" var="dealObj">
                                 <tr >
-                                    <td style="width: 100px;border-bottom:2px solid #F8AF51;border-left:2px solid #F8AF51;border-right:2px solid #F8AF51">${dealObj.dealConfirmationId}</td>
-                                    <td style="width: 100px;border-bottom:2px solid #F8AF51;border-right:2px solid #F8AF51">${dealObj.queryId}</td>
-                                    <td style="width: 100px;border-bottom:2px solid #F8AF51;border-right:2px solid #F8AF51">
+                                    <td style="width: 100px;border-bottom:2px solid black;border-left:2px solid black;border-right:2px solid black">${dealObj.dealConfirmationId}</td>
+                                    <td style="width: 100px;border-bottom:2px solid black;border-right:2px solid black">${dealObj.queryId}</td>
+                                    <td style="width: 100px;border-bottom:2px solid black;border-right:2px solid black">
                                         <fmt:formatDate value="${dealObj.bookingDate}" pattern="dd-MM-yyyy" />
                                     </td>
-                                    <td style="width: 200px;border-bottom:2px solid #F8AF51;border-right:2px solid #F8AF51">${dealObj.clientName}</td>
-                                    <td style="width: 100px;border-bottom:2px solid #F8AF51;border-right:2px solid #F8AF51">
+                                    <td style="width: 200px;border-bottom:2px solid black;border-right:2px solid black">${dealObj.clientName}</td>
+                                    <td style="width: 100px;border-bottom:2px solid black;border-right:2px solid black">
                                         <fmt:formatDate value="${dealObj.travelStartDate}" pattern="dd-MM-yyyy" />
                                     </td>
                         
-                                    <td style="width: 250px;border-bottom:2px solid #F8AF51;border-right:2px solid #F8AF51">
+                                    <td style="width: 250px;border-bottom:2px solid black;border-right:2px solid black">
                                         <c:forEach var="listValue" items="${dealObj.serviceList}" varStatus="loopCounter">
                                             <img src="${pageContext.request.contextPath}/resources/images/${listValue.trim()}.jpg" height="25"
                                                 width="25">
                                         </c:forEach>
                                     </td>
                         
-                                    <td style="width: 120px;border-bottom:2px solid #F8AF51;border-right:2px solid #F8AF51">${dealObj.statusName}</td>
-                                    <td style="width: 120px;border-bottom:2px solid #F8AF51;border-right:2px solid #F8AF51">${dealObj.dealOwnerName}</td>
-                                    <td style="width: 200px;border-bottom:2px solid #F8AF51;border-right:2px solid #F8AF51">
+                                    <td style="width: 120px;border-bottom:2px solid black;border-right:2px solid black">${dealObj.statusName}</td>
+                                    <td style="width: 120px;border-bottom:2px solid black;border-right:2px solid black">${dealObj.dealOwnerName}</td>
+                                    <td style="width: 200px;border-bottom:2px solid black;border-right:2px solid black">
                                     
                                     <i class="fa-solid fa-sliders deal_menu_icon" >
                                     

@@ -63,7 +63,7 @@
     <form:form modelAttribute="QTN_OBJ" action="create_create_lead_quotation">
      <div class="viewInsuranceQuotationDetails">
             <div class="viewInsuranceQuotationD_wrapper">
-                <div class="viewInsuranceQuotationD_wr_data">
+                <div class="viewInsuranceQuotationD_wr_data bs">
                     <div class="viewInsuranceQuotationD_wr_data_line">
                         <label for="" class="lb">Quotation Id</label>
                         <p>${QTN_OBJ.quotationId}</p>
@@ -77,11 +77,9 @@
             </div>
     </form:form>
     
-    <div class="float-container">
-        <div class="float-child-right">
-            <div class="blue">
+   
         <div class="pt container" style="margin-top:-70px">
-        <div class="pt_wrapper" >
+        <div class="pt_wrapper bs" >
             <h1 style="margin:10px 0">Add Package Stay to quotation</h1>
             <div class="due_today_task_data_btnss">
                 <c:if test="${QTN_OBJ.converted ne true }">
@@ -96,71 +94,72 @@
             </div>
         </div>
     </div>
-                <div align="center"><b>
+               
+                       
+     
+       <c:forEach items="${QTN_OBJ.tourPackageVoList}" var="packageQtnObj">
+       <div class="fl_view " style="margin:0 auto;width:1200px">
+        <div class="fl_view_wrapper">
+         <div align="center" style="margin:10px auto"><b>
                         <font color="green"> ${Success} </font>
                         <font color="red"> ${Error}</font>
                     </b></div>
-                           <br>
-     
-                                <c:forEach items="${QTN_OBJ.tourPackageVoList}" var="packageQtnObj">
-                              
-       <div class="fl_view " style="margin:0 auto;width:1200px">
-        <div class="fl_view_wrapper">
-            <div class="fl_view_wrapper_data">
+            <div class="fl_view_wrapper_data bs">
                 <div class="fl_view_wrapper_data_line a">
+                  
                     <div class="fl_view_wrapper_dl">
                         <label for="" class="lb">City</label>
-                        <p>${packageQtnObj.cityName }</p>
+                        <p style="color:gray">${packageQtnObj.cityName }</p>
                     </div>
                     <div class="fl_view_wrapper_dl">
                         <label for="" class="lb">Package Name</label>
-                        <p>${packageQtnObj.packageName}</p>
+                        <p style="color:gray">${packageQtnObj.packageName}</p>
                     </div>
                     <div class="fl_view_wrapper_dl">
                         <label for="" class="lb">Start Date</label>
-                        <p><fmt:formatDate value="${packageQtnObj.startDate}" pattern="dd-MM-yyyy" /></p>
+                        <p style="color:gray"><fmt:formatDate value="${packageQtnObj.startDate}" pattern="dd-MM-yyyy" /></p>
                     </div>
                     <div class="fl_view_wrapper_dl">
                         <label for="" class="lb">End Date</label>
-                        <p><fmt:formatDate value="${packageQtnObj.endDate}" pattern="dd-MM-yyyy" /></p>
+                        <p style="color:gray"><fmt:formatDate value="${packageQtnObj.endDate}" pattern="dd-MM-yyyy" /></p>
                     </div>
                 </div>
                 <div class="fl_view_wrapper_data_line a">
                     <div class="fl_view_wrapper_dl">
                         <label for="" class="lb">Adult</label>
-                        <p>${packageQtnObj.adults}</p>
+                        <p style="color:gray">${packageQtnObj.adults}</p>
                     </div>
                     <div class="fl_view_wrapper_dl">
                         <label for="" class="lb">Children</label>
-                        <p>${packageQtnObj.children}</p>
+                        <p style="color:gray">${packageQtnObj.children}</p>
                     </div>
                     <div class="fl_view_wrapper_dl">
                         <label for="" class="lb">Infant</label>
-                        <p>${packageQtnObj.infant}</p>
+                        <p style="color:gray">${packageQtnObj.infant}</p>
                     </div>
                     <div class="fl_view_wrapper_dl">
                         <label for="" class="lb">Package Cost</label>
-                        <p>${packageQtnObj.pkgCost}</p>
+                        <p style="color:gray">${packageQtnObj.pkgCost}</p>
                     </div>
                 </div>
                 <div class="fl_view_wrapper_data_line a">
                     <div class="fl_view_wrapper_dl" style="width:25%">
                         <label for="" class="lb">Package Markup</label>
-                        <p>${packageQtnObj.pkgMarkup}</p>
+                        <p style="color:gray">${packageQtnObj.pkgMarkup}</p>
                     </div>
                     <div class="fl_view_wrapper_dl" style="width:25%">
                         <label for="" class="lb">Flight Included</label>
-                        <p>${packageQtnObj.flightIncluded}</p>
+                        <p style="color:gray">${packageQtnObj.flightIncluded}</p>
                     </div>
                     <div class="fl_view_wrapper_dl" style="width:25%">
                         <label for="" class="lb">Display Order</label>
-                        <p>${packageQtnObj.displayOrder }</p>
+                        <p style="color:gray">${packageQtnObj.displayOrder }</p>
                     </div>
                 </div>
                 <div class="fl_view_wrapper_data_line a">
                     <div class="fl_view_wrapper_dl" style="width:100%">
                         <label for="" class="lb">Remarks</label>
-                        <p>${packageQtnObj.remarks}</p>
+                        <p style="color:gray">${packageQtnObj.remarks}</p>
                     </div>
                 </div>
                 <div class="due_today_task_data_btnss" style="margin-top:20px">

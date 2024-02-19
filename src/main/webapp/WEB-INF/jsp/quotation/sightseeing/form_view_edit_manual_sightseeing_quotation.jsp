@@ -96,7 +96,7 @@
             <div class="sssec_wrapper_data">
                 <div class="sssec_rem_box" style="text-align: start;">
                     <label for="" class="lb">Remarks</label> <br>
-                    <form:textarea path="remarks" rows="2" cols="139" maxlength="1450"/>
+                    <form:textarea path="remarks" rows="5" cols="139" maxlength="1450"/>
                     
                 </div>
             </div>

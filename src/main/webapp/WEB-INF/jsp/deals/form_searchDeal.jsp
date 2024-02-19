@@ -31,7 +31,7 @@
 <body>
 
     <div class="search_deal container">
-        <div class="search_deal_wrapper">
+        <div class="search_deal_wrapper bs">
             <h1 class="search_deal_h1">
                 Search Deals 
             </h1>

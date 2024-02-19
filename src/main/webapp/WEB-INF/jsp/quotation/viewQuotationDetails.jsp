@@ -63,7 +63,7 @@
 	<input type="hidden" name="leadId" value= "${QTN_OBJ.leadEntity.leadId}" />
 	<form:hidden path = "quotationId" id="quotationId" />
     <div class="viewQuotationDetails container" style="margin-top:10px">
-        <div class="viewQuotationDetails_wrapper">
+        <div class="viewQuotationDetails_wrapper bs">
         <h1 style="font-size:25px;margin:10px 0;color:#32cd32">	Quotation Summary </h1>
             <div class="viewQuotationDetails_wrapper_data">
                 <div class="viewQuotationDetails_wrapper_data_line a">
@@ -88,39 +88,39 @@
                 <div class="viewQuotationDetails_wrapper_data_line_ser">
                     <div class="viewQuotationDetails_wrapper_data_ser">
                         <label for="">Package</label>
-                        <form:checkbox class="ch_c" path="tourPackage" name="tourPackage" disabled="true"/>
+                        <form:checkbox class="ch_c" path="tourPackage" name="tourPackage" disabled="true" style="width:18px;height:18px"/>
                     </div>
                     <div class="viewQuotationDetails_wrapper_data_ser">
                         <label for="">Flight</label>
-                       <form:checkbox class="ch_c" path="flight" name="flight"  disabled="true"/>
+                       <form:checkbox class="ch_c" path="flight" name="flight"  disabled="true" style="width:18px;height:18px"/>
                     </div>
                     <div class="viewQuotationDetails_wrapper_data_ser">
                         <label for="">Hotal</label>
-                       <form:checkbox class="ch_c" path="hotel" name="hotel" disabled="true" />
+                       <form:checkbox class="ch_c" path="hotel" name="hotel" disabled="true" style="width:18px;height:18px"/>
                     </div>
                     <div class="viewQuotationDetails_wrapper_data_ser">
                         <label for="">Transfers</label>
-                       <form:checkbox class="ch_c" path="transfers" name="transfers" disabled="true" />
+                       <form:checkbox class="ch_c" path="transfers" name="transfers" disabled="true" style="width:18px;height:18px"/>
                     </div>
                     <div class="viewQuotationDetails_wrapper_data_ser">
                         <label for="">Sightseeing</label>
-                       <form:checkbox class="ch_c" path="sightseeing" name="sightseeing" disabled="true" />
+                       <form:checkbox class="ch_c" path="sightseeing" name="sightseeing" disabled="true" style="width:18px;height:18px"/>
                     </div>
                     <div class="viewQuotationDetails_wrapper_data_ser">
                         <label for="">Visa</label>
-                        <form:checkbox class="ch_c" path="visa" name="visa" disabled="true" />
+                        <form:checkbox class="ch_c" path="visa" name="visa" disabled="true" style="width:18px;height:18px"/>
                     </div>
                     <div class="viewQuotationDetails_wrapper_data_ser">
                         <label for="">Insurance</label>
-                       <form:checkbox class="ch_c" path="insurance" name="insurance" disabled="true" />
+                       <form:checkbox class="ch_c" path="insurance" name="insurance" disabled="true" style="width:18px;height:18px"/>
                     </div>
                     <div class="viewQuotationDetails_wrapper_data_ser">
                         <label for="">Cruise</label>
-                      <form:checkbox class="ch_c" path="cruise" name="cruise"  disabled="true" />
+                      <form:checkbox class="ch_c" path="cruise" name="cruise"  disabled="true" style="width:18px;height:18px"/>
                     </div>
                     <div class="viewQuotationDetails_wrapper_data_ser">
                         <label for="">Others</label>
-                        <form:checkbox class="ch_c" path="others" name="others"  disabled="true" />
+                        <form:checkbox class="ch_c" path="others" name="others"  disabled="true" style="width:18px;height:18px"/>
                     </div>
                 </div>
                 <div class="due_today_task_data_btns">

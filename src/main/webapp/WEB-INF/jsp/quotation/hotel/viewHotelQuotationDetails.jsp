@@ -76,25 +76,25 @@
 <jsp:include page="../_quotationServicesMenu.jsp" />
 </div>
 
- <div class="viewHotelQuotationDetails">
+ <div class="viewHotelQuotationDetails ">
         <div class="viewHotelQuotationDetails_wrapper">
-            <div class="viewHotelQuotationDetails_wrapper_data">
+            <div class="viewHotelQuotationDetails_wrapper_data ">
              <form:form modelAttribute="QTN_OBJ" action="create_create_lead_quotation">
-                <div class="viewHotelQuotationDetails_wrapper_dl">
+                <div class="viewHotelQuotationDetails_wrapper_dl bs">
                     <div class="viewHotelQuotationDetails_wrapper_dli">
                         <label for="" class="lb">Quotation Id</label>
-                        <p>${QTN_OBJ.quotationId}</p>
+                        <p style="color:gray">${QTN_OBJ.quotationId}</p>
                     </div>
                     <div class="viewHotelQuotationDetails_wrapper_dli">
                         <label for="" class="lb">Version Id</label>
-                        <p>${QTN_OBJ.version}</p>
+                        <p style="color:gray">${QTN_OBJ.version}</p>
                     </div>
                 </div>
                 </form:form>
             </div>
         </div>
       
-        <div class="viewHotelQuotationDetails_hd">
+        <div class="viewHotelQuotationDetails_hd bs">
             <h2 style="font-size: 20px;">Add Hotal To Stay Quotation</h2>
             <div class="due_today_task_data_btns">
                <c:if test="${QTN_OBJ.converted ne true }">

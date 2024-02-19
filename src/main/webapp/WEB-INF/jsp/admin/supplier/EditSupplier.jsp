@@ -168,7 +168,7 @@
    
                 <div class="ansd1-rem" style="width:1210px">
                         <label for="Address">Address</label><br>
-                        <form:textarea path="address" rows="2" cols="10" maxlength="240" />
+                        <form:textarea path="address" rows="3 " cols="10" maxlength="240" />
                         <font color="red">
                             <form:errors path="address" cssClass="error" />
                         </font>
@@ -178,14 +178,14 @@
                 <div class="ans-for-li">
                     <div class="ansd1-rem">
                         <label for="cd">Bank Details</label><br>
-                        <form:textarea path="bankDetails" rows="2" cols="50" maxlength="240" />
+                        <form:textarea path="bankDetails" rows="5" cols="50" maxlength="240" />
                         <font color="red">
                             <form:errors path="bankDetails" cssClass="error" />
                         </font>
                     </div>
                     <div class="ansd1-rem">
                         <label for="Address">Remarks</label><br>
-                        <form:textarea path="remarks" rows="2" cols="50" maxlength="240" />
+                        <form:textarea path="remarks" rows="5" cols="50" maxlength="240" />
                         <font color="red">
                             <form:errors path="remarks" cssClass="error" />
                         </font>

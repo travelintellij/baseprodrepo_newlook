@@ -82,7 +82,7 @@
     
          <div class="viewInsuranceQuotationDetails">
             <div class="viewInsuranceQuotationD_wrapper">
-                <div class="viewInsuranceQuotationD_wr_data">
+                <div class="viewInsuranceQuotationD_wr_data bs">
                     <div class="viewInsuranceQuotationD_wr_data_line">
                         <label for="" class="lb">Quotation</label>
                         <p>${QTN_OBJ.quotationId}</p>
@@ -106,7 +106,7 @@
     
          
             <div class="float-child-right">
-                <div class="gender" align="center" style="border:2px solid black;background:black;color:white;width:600px;margin:10px auto;padding:10px 0;border-radius:10px"> 
+                <div class="gender bs" align="center" style="background:white;color:black;width:600px;margin:10px auto;padding:10px 0;border-radius:10px"> 
     
                     <input type="radio" value="oneway" id="oneway" name="flightMode"
                         data-url="form_view_serach_flight_oneway_quotation?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId}"
@@ -120,7 +120,7 @@
                 <div class="blue">
                 
                     <div class="oneW container">
-        <div class="oneW_wr" style="margin-top:20px;margin-left:50px">
+        <div class="oneW_wr bs" style="margin-top:20px;margin-left:50px">
             <div class="oneW_wr_d">
                 <div class="oneW_wr_d_li">
                     <label for="">Departure</label>
@@ -178,8 +178,8 @@
             </div>
             <div class="oneW_wr_d">
                 <div class="oneW_wr_d_li_ch">
-                <form:checkbox path="directFlight" value="${FLT_SRCH.directFlight}" />
-                <b>Show Direct Flight Only</b>
+                <form:checkbox path="directFlight" value="${FLT_SRCH.directFlight}" style="width:18px;height:18px"/>
+                <b style="color:orangered">Show Direct Flight Only</b>
                 </div>
             </div>
             <div class="due_today_task_data_btns">

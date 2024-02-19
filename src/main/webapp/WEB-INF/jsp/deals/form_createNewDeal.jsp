@@ -34,7 +34,7 @@
 <body>
 
     <div class="craete_new_deal container">
-        <div class="create_new_deal_wrapper">
+        <div class="create_new_deal_wrapper bs">
             <h1 class="create_new_deal_heading">
                 Create New Win
             </h1>
@@ -92,8 +92,8 @@
                                 <jsp:useBean id="status" type="javax.servlet.jsp.jstl.core.LoopTagStatus" />
                                 <td>
                                     <label class="container">
-                                        <form:checkbox path="serviceList" value="${listValue.serviceCode}" />
-                                        <c:out value="${listValue.serviceName}" />
+                                        <form:checkbox path="serviceList" value="${listValue.serviceCode}" style="width:18px;height:18px"/>
+                                        <c:out value="${listValue.serviceName}"/>
                                         <span class="checkmark"></span>
                                     </label>
                                 </td>
@@ -108,7 +108,7 @@
                     </div>
                     <div class="create_new_deal_des">
                         <h2>Deal Detailed Description</h2>
-                        <textarea name="" id="" cols="30" rows="3" style="width: 100%;border-radius:5px"></textarea>
+                        <textarea name="" id="" cols="30" rows="5" style="width: 100%;border-radius:5px"></textarea>
                     </div>
                     <div class="create_new_win_li2">
                         <div class="create_new_win_li">

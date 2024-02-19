@@ -17,7 +17,7 @@
         <input type="hidden" name="leadId" value="${QTN_OBJ.leadEntity.leadId}" />
         <input type="hidden" name="quotationId" value="${QTN_OBJ.quotationId}" />
         <div class="form_view_add_manual_other_quotation container" style="margin:15px auto">
-            <div class="form_view_add_manual_other_wrapper">
+            <div class="form_view_add_manual_other_wrapper bs">
                 <h1 style="font-size:25px;margin:10px 0;color:#32cd32">Add Service to quotation</h1>
                 <div class="form_view_add_manual_other_w_data">
                     <div class="form_view_add_manual_other_w_dline">

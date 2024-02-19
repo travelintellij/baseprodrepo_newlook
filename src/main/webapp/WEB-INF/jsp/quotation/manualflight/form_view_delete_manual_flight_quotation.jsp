@@ -41,7 +41,7 @@
                     
                      <div class="viewInsuranceQuotationDetails">
             <div class="viewInsuranceQuotationD_wrapper">
-                <div class="viewInsuranceQuotationD_wr_data">
+                <div class="viewInsuranceQuotationD_wr_data bs">
                     <div class="viewInsuranceQuotationD_wr_data_line">
                         <label for="" class="lb">Quotation</label>
                         <p>${QTN_OBJ.quotationId}</p>
@@ -91,7 +91,7 @@
         <form:hidden path="manualFlightQuotationId" />
         <input type="hidden" name="leadId" value="${QTN_OBJ.leadEntity.leadId}" />
         <input type="hidden" name="quotationId" value="${QTN_OBJ.quotationId}" />
-    <div class="fli_de container">
+    <div class="fli_de bs container">
         <div class="fli_de_wrapper" style="margin-top:10px">
             <h1 style="margin:10px 0;font-size: 25px;color:#32cd32 ">Id-
                 ${flightQtnObj.manualFlightQuotationId}</h1>
@@ -99,62 +99,62 @@
                 <div class="fli_de_wrapper_data_fli a">
                     <div class="fli_de_wrapper_dl1">
                         <label for="" class="lb">Airline</label>
-                        <p>${MANUAL_FLT.airlineName}</p>
+                        <p style="color:gray">${MANUAL_FLT.airlineName}</p>
                     </div>
                     <div class="fli_de_wrapper_dl1">
                         <label for="" class="lb">Flight Number</label>
-                        <p>${MANUAL_FLT.flightNumber}</p>
+                        <p style="color:gray">${MANUAL_FLT.flightNumber}</p>
                     </div>
                 </div>
             </div>
             <div class="fli_de_wrapper_data_li a">
                 <div class="fli_de_wrapper_dl1">
                     <label for="" class="lb">Departure</label>
-                    <p>${MANUAL_FLT.originCity}</p>
+                    <p style="color:gray">${MANUAL_FLT.originCity}</p>
                 </div>
                 <div class="fli_de_wrapper_dl1">
                     <label for="" class="lb">Arrival</label>
-                    <p>${MANUAL_FLT.destinationCity}</p>
+                    <p style="color:gray">${MANUAL_FLT.destinationCity}</p>
                 </div>
                 <div class="fli_de_wrapper_dl1">
                     <label for="" class="lb">Departure Details</label>
-                    <p>${localDateTimeFormatToEdit.format(MANUAL_FLT.departureDate)}</p>
+                    <p style="color:gray">${localDateTimeFormatToEdit.format(MANUAL_FLT.departureDate)}</p>
                 </div>
                 <div class="fli_de_wrapper_dl1">
                     <label for="" class="lb">Arrival Details</label>
-                    <p>${localDateTimeFormatToEdit.format(MANUAL_FLT.arrivalDate)}</p>
+                    <p style="color:gray">${localDateTimeFormatToEdit.format(MANUAL_FLT.arrivalDate)}</p>
                 </div>
             </div>
             <div class="fli_de_wrapper_data_li a">
                 <div class="fli_de_wrapper_dl1">
                     <label for="" class="lb">Duration</label>
-                    <p>${MANUAL_FLT.duration}</p>
+                    <p style="color:gray">${MANUAL_FLT.duration}</p>
                 </div>
                 <div class="fli_de_wrapper_dl1">
                     <label for="" class="lb">Adults</label>
-                    <p>${MANUAL_FLT.adultCount}</p>
+                    <p style="color:gray">${MANUAL_FLT.adultCount}</p>
                 </div>
                 <div class="fli_de_wrapper_dl1">
                     <label for="" class="lb">Child</label>
-                    <p>${MANUAL_FLT.childCount}</p>
+                    <p style="color:gray">${MANUAL_FLT.childCount}</p>
                 </div>
                 <div class="fli_de_wrapper_dl1">
                     <label for="" class="lb">Infants</label>
-                    <p>${MANUAL_FLT.infantCount}</p>
+                    <p style="color:gray">${MANUAL_FLT.infantCount}</p>
                 </div>
             </div>
             <div class="fli_de_wrapper_data_li a">
                 <div class="fli_de_wrapper_dl1">
                     <label for="" class="lb">Stops</label>
-                    <p>${MANUAL_FLT.noOfStops}</p>
+                    <p style="color:gray">${MANUAL_FLT.noOfStops}</p>
                 </div>
                 <div class="fli_de_wrapper_dl1">
                     <label for="" class="lb">Travel Class</label>
-                    <p>${MANUAL_FLT.cabinClassName}</p>
+                    <p style="color:gray">${MANUAL_FLT.cabinClassName}</p>
                 </div>
             </div>         
             <div class="due_today_task_data_btnss" style="margin-top:10px">
-                <input type="submit" name="deleteFlight" id="deleteFlight" style="background-color:red;" Value="Confirm Delete" />
+                <input type="submit" name="deleteFlight" id="deleteFlight" style="background-color:red;color:white" Value="Confirm Delete" />
                 <a href="form_view_flight_quotation_details?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId}"><input
                         type="button"  value="Cancel" /></a>
             </div>

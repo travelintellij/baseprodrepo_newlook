@@ -105,7 +105,7 @@
                     </div>
                     <div class="form_view_add_manual_transfer_quotation_remarks">
                         <label for="">Remarks</label> <br>
-                        <form:textarea path="remarks" cols="139" rows="2" maxlength="1450" />
+                        <form:textarea path="remarks" cols="139" rows="5" maxlength="1450" />
                     </div>
                     <div class="due_today_task_data_btns">
                         <input type="submit" name="editTransfer" id="editTransfer" Value="Update Transfer" />
