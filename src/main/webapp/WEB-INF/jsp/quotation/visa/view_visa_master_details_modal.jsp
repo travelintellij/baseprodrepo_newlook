@@ -65,16 +65,16 @@
                     </div>
                     <div class="view_visa_master_details_modal_wrapper_data_line_rem_oc a">
                         <div class="view_visa_master_details_modal_wrapper_data_rem rem_oc">
-                            <label for="">Internal Remarks(will never be shared with the client)</label>
+                            <label for="" style="color:black">Internal Remarks(will never be shared with the client)</label>
                             <p>${VISA_OBJ.internalRemarks}</p>
                         </div>
                         <div class="view_visa_master_details_modal_wrapper_data_oc rem_oc" style="width: 50%;">
-                            <label for="">Other Costs(Link extended validity visa options)</label>
+                            <label for=""  style="color:black">Other Costs(Link extended validity visa options)</label>
                             <p>${VISA_OBJ.otherCosts}</p>
                         </div>
                     </div>
                     <div class="view_visa_master_details_modal_wrapper_data_line_rem a">
-                        <label for="">Remarks</label> <br>
+                        <label for=""  style="color:black">Remarks</label> <br>
                         <p>${VISA_OBJ.remarks}</p>
                     </div>
                 </div>

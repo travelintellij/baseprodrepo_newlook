@@ -17,7 +17,7 @@
 
 <style> body::before {
             content: "";
-            background-image:  url(${pageContext.request.contextPath}/resources/images/revamped/hotal_qu.jpg);
+            background-image:  url(${pageContext.request.contextPath}/resources/images/revamped/Hotel_qu.jpg);
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center center;
@@ -95,7 +95,7 @@
         </div>
       
         <div class="viewHotelQuotationDetails_hd bs">
-            <h2 style="font-size: 20px;">Add Hotal To Stay Quotation</h2>
+            <h2 style="font-size: 20px;">Add Hotel To Stay Quotation</h2>
             <div class="due_today_task_data_btns">
                <c:if test="${QTN_OBJ.converted ne true }">
 		  				<a href="#">Search Hotel</a>
@@ -169,7 +169,7 @@
             </c:when>
             <c:otherwise>
                 <div class="main_p container" >
-                    <div class="main_p_wrapper" style="margin-top:20px">
+                    <div class="main_p_wrapper bs" style="margin-top:20px">
                         <div class="main_p_wrapper_data">
                             <h1 style="margin:10px 0;color:#32cd32">Id- ${hotelQtnObj.manualHotelQuotationId}</h1>
                             <div class="main_p_wrapper_data_line a">
@@ -178,7 +178,7 @@
                                     <p style="color:gray">${hotelQtnObj.cityName }</p>
                                 </div>
                                 <div class="main_p_wrapper_dl">
-                                    <label for="" class="lb">Hotal Name</label>
+                                    <label for="" class="lb">Hotel Name</label>
                                     <p style="color:gray">${hotelQtnObj.hotelName}</p>
                                 </div>
                                 <div class="main_p_wrapper_dl">

@@ -22,39 +22,39 @@
                             value="${MANUAL_HTL.manualHotelQuotationId}" />
                         <form:hidden path="optionNo" />
                         <div class="main_p container">
-                            <div class="main_p_wrapper" style="margin-top:100px">
+                            <div class="main_p_wrapper bs" style="margin-top:100px">
                                 <h1 style="margin:10px 0;color:red">Id - ${MANUAL_HTL.manualHotelQuotationId}</h1>
                                 <div class="main_p_wrapper_data">
-                                    <div class="main_p_wrapper_data_line bc-clr">
+                                    <div class="main_p_wrapper_data_line a">
                                         <div class="main_p_wrapper_dl ">
                                             <label for="" class="lb">City</label>
-                                            <p>${MANUAL_HTL.cityName}</p>
+                                            <p style="color:gray">${MANUAL_HTL.cityName}</p>
                                         </div>
                                         <div class="main_p_wrapper_dl">
-                                            <label for="" class="lb">Hotal Name</label>
-                                            <p>${MANUAL_HTL.hotelName}</p>
+                                            <label for="" class="lb">Hotel Name</label>
+                                            <p style="color:gray">${MANUAL_HTL.hotelName}</p>
                                         </div>
                                         <div class="main_p_wrapper_dl">
                                             <label for="" class="lb">Category</label>
-                                            <p>${MANUAL_HTL.roomCategoryName}</p>
+                                            <p style="color:gray">${MANUAL_HTL.roomCategoryName}</p>
                                         </div>
                                         <div class="main_p_wrapper_dl">
                                             <label for="" class="lb">Meal Plan</label>
-                                            <p>${MANUAL_HTL.mealPlanName}</p>
+                                            <p style="color:gray">${MANUAL_HTL.mealPlanName}</p>
                                         </div>
                                     </div>
 
-                                    <div class="main_p_wrapper_data_line bc-clr">
+                                    <div class="main_p_wrapper_data_line a">
                                         <div class="main_p_wrapper_dl ">
                                             <label for="" class="lb">CheckIn Date</label>
-                                            <p>
+                                            <p style="color:gray">
                                                 <fmt:formatDate value="${MANUAL_HTL.checkInDate}"
                                                     pattern="dd-MM-yyyy" />
                                             </p>
                                         </div>
                                         <div class="main_p_wrapper_dl">
                                             <label for="" class="lb">CheckOut Date</label>
-                                            <p>
+                                            <p style="color:gray">
                                                 <fmt:formatDate value="${MANUAL_HTL.checkOutDate}"
                                                     pattern="dd-MM-yyyy" />
                                             </p>
@@ -63,47 +63,47 @@
 
                                         <div class="main_p_wrapper_dl">
                                             <label for="" class="lb">Adults</label>
-                                            <p>${MANUAL_HTL.adults}</p>
+                                            <p style="color:gray">${MANUAL_HTL.adults}</p>
                                         </div>
                                         <div class="main_p_wrapper_dl">
                                             <label for="" class="lb">Children</label>
-                                            <p>${MANUAL_HTL.children}</p>
+                                            <p style="color:gray">${MANUAL_HTL.children}</p>
                                         </div>
                                     </div>
-                                    <div class="main_p_wrapper_data_line bc-clr">
+                                    <div class="main_p_wrapper_data_line a">
                                         <div class="main_p_wrapper_dl ">
                                             <label for="" class="lb">Extra Bed</label>
-                                            <p>${MANUAL_HTL.extrabed}</p>
+                                            <p style="color:gray">${MANUAL_HTL.extrabed}</p>
                                         </div>
 
                                         <div class="main_p_wrapper_dl">
                                             <label for="" class="lb">Number of Rooms</label>
-                                            <p>${MANUAL_HTL.noOfRooms}</p>
+                                            <p style="color:gray">${MANUAL_HTL.noOfRooms}</p>
                                         </div>
                                         <div class="main_p_wrapper_dl">
                                             <label for="" class="lb">Total Cost</label>
-                                            <p>${MANUAL_HTL.hotelStayCost}</p>
+                                            <p style="color:gray">${MANUAL_HTL.hotelStayCost}</p>
                                         </div>
                                         <div class="main_p_wrapper_dl">
                                             <label for="" class="lb">Total Markup</label>
-                                            <p>${MANUAL_HTL.hotelStayMarkup}</p>
+                                            <p style="color:gray">${MANUAL_HTL.hotelStayMarkup}</p>
                                         </div>
                                     </div>
-                                    <div class="main_p_wrapper_data_line bc-clr">
+                                    <div class="main_p_wrapper_data_line a">
                                         <div class="main_p_wrapper_dl ">
                                             <label for="" class="lb">Display Order</label>
-                                            <p>${MANUAL_HTL.displayOrder}</p>
+                                            <p style="color:gray">${MANUAL_HTL.displayOrder}</p>
                                         </div>
                                     </div>
-                                    <div class="main_p_wrapper_data_line bc-clr">
+                                    <div class="main_p_wrapper_data_line ">
                                         <div class="main_p_wrapper_dl_rem ">
                                             <label for="" class="lb">Remarks</label>
-                                            <p>${hotelQtnObj.remarks}</p>
+                                            <p style="color:gray">${hotelQtnObj.remarks}</p>
                                         </div>
                                     </div>
                                     <div class="due_today_task_data_btnss">
                                         <input type="submit" name="deleteHotel" id="deleteHotel"
-                                            Value="Confirm Delete Stay" style="background-color:red;" />
+                                            Value="Confirm Delete Stay" style="background-color:red;color:white" />
                                         <a
                                             href="form_view_hotel_quotation_details?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId}&hotelOptionNo=${QTN_OBJ.hotelOptionNo}"><input
                                                 type="button"  value="Cancel" /></a>

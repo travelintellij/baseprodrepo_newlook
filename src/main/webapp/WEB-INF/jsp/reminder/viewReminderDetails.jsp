@@ -51,7 +51,7 @@
                                 <font color="red"> ${Failure}</font>
                             </b></div>
                         <div class="rso container">
-                            <div class="rso_wrapper">
+                            <div class="rso_wrapper bs">
                                 <div class="rso_wrapper_data">
                                 <h1 class="hd">Reminder</h1>
                                     <div class="rso_wrapper_data_line a">

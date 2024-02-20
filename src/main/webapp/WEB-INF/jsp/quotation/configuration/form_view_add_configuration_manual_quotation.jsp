@@ -62,7 +62,7 @@
 </div>
 
 
- <div class="m-d ">
+ <div class="m-d bs ">
                                     <div class="form_view_aCMQuotation_fbwls">
                                         <label for="" class="lb">Quotation Id</label>
                                         <p>${QTN_OBJ.quotationId}</p>
@@ -94,9 +94,9 @@
                                             href="form_view_quotation_modal?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId}&manualConfigurationQuotationId=${MANUAL_CNF.manualConfigurationQuotationId}"
                                             target="_new"><input type="button" value="Old View / Print Quotation" /></a>
                                         <input class="a" type="submit" name="Generate Quotation" id="Generate Quotation"
-                                            Value="Generate Quotation" />
+                                            Value="Generate Quotation" style="border-bottom:2px solid gray;width:100%;text-align:start"/>
                                         <a class="a"  href="viewQuotation?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId }&version=${QTN_OBJ.version}"
-                                            target="_new"><input type="button" value="View" /></a>
+                                            target="_new"><input type="button" value="View"/></a>
                                         <a class="a" 
                                             href="downloadQuotation?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId }&version=${QTN_OBJ.version}"><input
                                                 type="button" value="Download" /></a>
@@ -137,9 +137,9 @@
                             <!-- ############### last box starts ###########  -->
                             <div class="form_view_aCMQuotation_btns">
                             
-                                <div class="form_view_aCMQuotation_lb_wr">
-                                 <p style="background:black;text-align:center;width:500px;margin:0 auto">
-                             <font color="orangered"> ${Success} </font>
+                                <div class="form_view_aCMQuotation_lb_wr bs">
+                                 <p style="background:black;text-align:center;width:500px;margin:0 auto;border-radius:5px">
+                             <font color="#32cd32"> ${Success} </font>
                                 <font color="red"> ${Error}</font></p>
                                 <h1 class="hd">Configure Quotation Parameters</h1>
                                     <div class="form_view_aCMQuotation_lb_wr_f " style="margin:10px auto">
@@ -1101,6 +1101,7 @@
                                     </div>
                                 </div>
                         </div>
+                         </div>
             
             
                         

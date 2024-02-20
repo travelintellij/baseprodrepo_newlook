@@ -30,7 +30,7 @@
 				<form:hidden path = "cityId" id="cityId" />
             </div>
             <div class="form_view_add_manual_hotel_quo_box">
-                <label for="">Hotal Name</label>
+                <label for="">Hotel Name</label>
                <font color="red"><form:errors path="hotelName" cssClass="error" /></font>
 				<form:input path="hotelName"  type="text" id="hotelName" />
 				<form:hidden path = "hotelId" id="hotelId" />

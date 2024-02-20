@@ -57,7 +57,7 @@
 </div>
 <br>
 
- <div class="m-d ">
+ <div class="m-d bs">
                                     <div class="form_view_aCMQuotation_fbwls">
                                         <label for="" class="lb">Quotation Id</label>
                                         <p>${QTN_OBJ.quotationId}</p>
@@ -96,7 +96,7 @@
                                             href="form_view_quotation_modal?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId}&manualConfigurationQuotationId=${MANUAL_CNF.manualConfigurationQuotationId}"
                                             target="_new"><input type="button" value="Old View / Print Quotation" /></a>
                                         <input class="a" type="submit" name="Generate Quotation" id="Generate Quotation"
-                                            Value="Generate Quotation" />
+                                            Value="Generate Quotation" style="border-bottom:2px solid gray;width:100%;text-align:start"/>
                                         <a class="a"  href="viewQuotation?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId }&version=${QTN_OBJ.version}"
                                             target="_new"><input type="button" value="View" /></a>
                                         <a class="a" 
@@ -134,7 +134,7 @@
     <div class="form_vaccmquotation container">
             <!-- ########### emailer box  starts #########  -->
             <div class="form_view_send_email_quotation_emailer">
-                <div class="form_view_send_email_quotation_emailer_wrapper">
+                <div class="form_view_send_email_quotation_emailer_wrapper bs">
                     <div class="form_view_send_emailqw_mw">
                     <i class="fa-solid fa-envelope fa-xl" style="margin-top:10px;color:#32cd32 "></i>
                          <div class="form_view_send_emailqw">
@@ -161,7 +161,7 @@
                          </div>
                          <div class="form_view_send_emailqw">
                          <label for="" class="lb">Massage</label> <br>
-                            <form:textarea cols="94" rows="10" path="emailMessageVo.emailMessage" htmlEscape="false" />
+                            <form:textarea cols="94" rows="15" path="emailMessageVo.emailMessage" htmlEscape="false" />
                         </div>
                          <p style="color:orangered;margin:10px auto">Quotation Attached</p>
                         <div class="due_today_task_data_btnss">

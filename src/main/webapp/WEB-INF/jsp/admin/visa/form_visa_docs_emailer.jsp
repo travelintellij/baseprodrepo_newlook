@@ -47,7 +47,7 @@
         <form:hidden path="countryName" />
         <form:hidden path="countryCode" />
         <div class="form_visa_docs_emailer container">
-            <div class="form_visa_docs_emailer_wrapper">
+            <div class="form_visa_docs_emailer_wrapper bs">
             <i class="fa-regular fa-envelope fa-2x" style="color:#32cd32 "></i>
                 <div class="form_visa_docs_emailer_wrapper_data">
                     <div class="form_visa_docs_emailer_wrapper_data_wrapper_dl">
@@ -81,12 +81,12 @@
                 </div>
             </div>
             <!-- ##################### second form goes here ######################### -->
-            <div class="form_visa_docs_emailer_wrapper_div">
+            <div class="form_visa_docs_emailer_wrapper_div bs">
                 <div class="form_visa_docs_emailer_wrapper_2">
                     <h1 style="color:#32cd32 ;margin:10px 0">Sending Visa Docs Checklist for</h1>
                     <div class="form_visa_docs_emailer_wrapper_2_data">
                         <table class="form_visa_docs_emailer_wrapper_2_tabel">
-                            <tr style="background: #6082B6">
+                            <tr style="background: #6082B6;height:50px;color:black">
                                 <th>Country</th>
                                 <th>Visa Id</th>
                                 <th>Profile</th>

@@ -61,7 +61,7 @@
                        
 
 
- <div class="m-d ">
+ <div class="m-d bs">
                                     <div class="form_view_aCMQuotation_fbwls">
                                         <label for="" class="lb">Quotation Id</label>
                                         <p>${QTN_OBJ.quotationId}</p>
@@ -89,7 +89,7 @@
                                             href="form_view_quotation_modal?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId}&manualConfigurationQuotationId=${MANUAL_CNF.manualConfigurationQuotationId}"
                                             target="_new"><input type="button" value="Old View / Print Quotation" /></a>
                                         <input class="a" type="submit" name="Generate Quotation" id="Generate Quotation"
-                                            Value="Generate Quotation" />
+                                            Value="Generate Quotation" style="border-bottom:2px solid gray;width:100%;text-align:start"/>
                                         <a class="a"  href="viewQuotation?leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId }&version=${QTN_OBJ.version}"
                                             target="_new"><input type="button" value="View" /></a>
                                         <a class="a" 
@@ -139,8 +139,8 @@
                             <form:hidden path="remarks" />
                             <!-- ########### forth box  starts #########  -->
                             <div class="form_vaccmquotation_lastbox">
-                                <div class="form_vaccmquotation_lastbox_wrapper">
-                                    <table style="width:100%;  table-layout:fixed;background-color:black;">
+                                <div class="form_vaccmquotation_lastbox_wrapper bs">
+                                    <table style="width:100%;  table-layout:fixed;background-color:white;">
                                         <c:set var="grandTotalCost" value="0" scope="page" />
                                         <c:set var="grandTotalMarkup" value="0" scope="page" />
 

@@ -4623,7 +4623,7 @@ color:#249C91;
     margin: 10px a;
     height: auto;
     padding: 20px;
-    background: #006d77;
+    background: #d1b3c4;
     color: white !important;
     display: flex;
     justify-content: center;
@@ -4632,6 +4632,7 @@ color:#249C91;
 margin-top:100px
 }
 .com-q{
+	border:2px solid red;
 	margin:0 10px;
 	color:white;
 }
@@ -5166,7 +5167,7 @@ justify-content: center;
 
 .view_visa_master_details_modal_wrapper_data_l1 label {
     font-weight: bold;
-    color: #FABA08;
+    color: black;
     width: 300px;
 }
 .view_visa_master_details_modal_wrapper_data_line_rem_oc{
@@ -5505,12 +5506,12 @@ font-weight: bold;
 
 /* ################### form_visa_docs_emailer ############### */
 .form_visa_docs_emailer_wrapper {
-    color: white;
+    color: black;
     width: 100%;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 9);
+    background: white;
     padding: 10px;
     border-radius: 10px;
     margin-top: 115px;
@@ -5541,12 +5542,12 @@ font-weight: bold;
 }
 
 .form_visa_docs_emailer_wrapper_div {
-    color: white;
+    color: black;
     width: 100%;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 9);
+    background: white;
     padding: 10px;
     border-radius: 10px;
     margin-top: 20px;
@@ -6932,8 +6933,8 @@ color: black;
 .m-d{
 	display: flex;
 	width:600px;
-	background:black;
-	color:white;
+	background:white;
+	color:black;
 	margin: 5px auto;
 	border-radius:5px;
 }
@@ -6946,22 +6947,26 @@ color: black;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    align-items: center;
+    align-items: start;
 }
 .form_view_aCMQuotation_btns_wrapper a input{
 	background:transparent;
 border:none;
 outline:none;
-text-align: center;
+text-align: start;
 cursor:pointer;
 color:white;
-transition:all 0.2s ease-in-out
+transition:all 0.2s ease-in-out;
+width:100%;
+}
+.form_view_aCMQuotation_btns_wrapper a{
+	width:100%;
+	text-align:start;
 }
 .form_view_aCMQuotation_btns_wrapper input{
 	background:transparent;
 border:none;
 outline:none;
-text-align: center;
 cursor:pointer;
 color:white;
 transition:all 0.2s ease-in-out
@@ -6971,11 +6976,11 @@ transition:all 0.2s ease-in-out
 }
 
 .form_view_aCMQuotation_lb_wr {
-    color: white;
+    color: black;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 9);
+    background: white;
     padding: 10px;
     border-radius: 10px;
     margin: 0 auto;
@@ -7054,11 +7059,11 @@ transition:all 0.2s ease-in-out
 }
 .form_vaccmquotation_lastbox_wrapper{
 	 width: 800px;
-    color: white;
+    color: black;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 9);
+    background: white;
     padding: 10px;
     border-radius: 10px;
     margin: 0 auto;
@@ -7109,11 +7114,11 @@ transition:all 0.2s ease-in-out
 
 .form_view_send_email_quotation_emailer_wrapper {
     width: 800px;
-    color: white;
+    color: black;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 9);
+    background: white;
     padding: 10px;
     border-radius: 10px;
     margin: 0 auto;

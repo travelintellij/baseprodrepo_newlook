@@ -43,13 +43,13 @@
         <form:form action="view_open_over_due_task_form_user" modelAttribute="TASK_FILTER_OBJ">
             <input type="hidden" name="dateFrom" value="${dateFrom}" />
             <input type="hidden" name="dateTo" value="${dateTo}" />
-            <div class="over_due_tasks_wrapper ">
+            <div class="over_due_tasks_wrapper bs ">
             <h1 class="hd">Over Due</h1>
                 <div align="center"><b>
                         <font color="green"> ${Success} </font>
                         <font color="red"> ${Error}</font>
                     </b></div>
-                <div class="over_due_tasks_data ">
+                <div class="over_due_tasks_data">
                     <div class="over_due_tasks_li task_owner_viwe_task">
                         <label for="">Task Owner </label><br>
                         <select class="task_owner_viwe_task" id="taskOwner" name="taskOwner" style="width: 160px;" required>
@@ -110,9 +110,9 @@
                     <tr>
                         <c:forEach items="${OPEN_TASK_LIST}" var="openTaskList">
                             <tr>
-                                <td style="width:10%;border-bottom:2px solid #ffa500;border-right:2px solid #ffa500">${openTaskList.taskId }</td>
-                                <td style="width:10%;border-bottom:2px solid #ffa500;border-right:2px solid #ffa500">${openTaskList.taskTitle }</td>
-                                <td style="width:20%;border-bottom:2px solid #ffa500;border-right:2px solid #ffa500">
+                                <td style="width:10%;border-bottom:2px solid black;border-right:2px solid black">${openTaskList.taskId }</td>
+                                <td style="width:10%;border-bottom:2px solid black;border-right:2px solid black">${openTaskList.taskTitle }</td>
+                                <td style="width:20%;border-bottom:2px solid black;border-right:2px solid black">
                                     <c:if test="${openTaskList.dealConfirmationId != 0}">
                                         UDN-${openTaskList.dealConfirmationId}
                                     </c:if>
@@ -120,12 +120,12 @@
                                         None
                                     </c:if>
                                 </td>
-                                <td style="width:15%;border-bottom:2px solid #ffa500;border-right:2px solid #ffa500"> ${openTaskList.taskOwnerName}</td>
-                                <td style="width:10%;border-bottom:2px solid #ffa500;border-right:2px solid #ffa500">${openTaskList.taskPriority}</td>
-                                <td style="width:15%;border-bottom:2px solid #ffa500;border-right:2px solid #ffa500">
+                                <td style="width:15%;border-bottom:2px solid black;border-right:2px solid black"> ${openTaskList.taskOwnerName}</td>
+                                <td style="width:10%;border-bottom:2px solid black;border-right:2px solid black">${openTaskList.taskPriority}</td>
+                                <td style="width:15%;border-bottom:2px solid black;border-right:2px solid black">
                                     <font>${localDateTimeFormat.format(openTaskList.taskDueDate)}</font>
                                 </td>
-                                <td style="width:20%;border-bottom:2px solid #ffa500;">
+                                <td style="width:20%;border-bottom:2px solid black;">
                                     <a   href="view_view_over_due_task?taskId=${openTaskList.taskId }"><input class="list_buttons" type="button" style="background:transparent;color:red;border:none;outline:none;cursor:pointer"
                                             value="View" /></a> |
                                     <a  href="view_form_edit_over_due_task?taskId=${openTaskList.taskId }"><input class="list_buttons" type="button" style="background:transparent;color:red;border:none;outline:none;cursor:pointer"

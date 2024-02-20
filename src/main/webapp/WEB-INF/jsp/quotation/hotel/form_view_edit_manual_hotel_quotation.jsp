@@ -24,6 +24,7 @@
                         <form:hidden path="optionNo" />
                         <input type="hidden" name="hotelOptionNo" value="${QTN_OBJ.hotelOptionNo}" />
                         <div class="form_view_add_manual_hotel_quotation" style="margin-top:100px">
+                        <h1 class="hd">Edit Hotel Stay</h1>
                             <div class="form_view_add_manual_hotel_quotation_wrapper">
                                 <div class="form_view_add_manual_hotel_quo_box">
                                     <label for="">City</label>
@@ -34,7 +35,7 @@
                                     <form:hidden path="cityId" id="cityId" />
                                 </div>
                                 <div class="form_view_add_manual_hotel_quo_box">
-                                    <label for="">Hotal Name</label>
+                                    <label for="">Hotel Name</label>
                                     <font color="red">
                                         <form:errors path="hotelName" cssClass="error" />
                                     </font>

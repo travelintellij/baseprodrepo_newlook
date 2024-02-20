@@ -116,9 +116,9 @@
                 <tr>
                     <c:forEach items="${OPEN_TASK_LIST}" var="openTaskList">
                 <tr>
-                    <td style="width:10%;border-bottom:2px solid #ffa500;border-right:2px solid #ffa500">${openTaskList.taskId }</td>
-                    <td style="width:10%;border-bottom:2px solid #ffa500;border-right:2px solid #ffa500">${openTaskList.taskTitle }</td>
-                    <td style="width:20%;border-bottom:2px solid #ffa500;border-right:2px solid #ffa500">
+                    <td style="width:10%;border-bottom:2px solid black;border-right:2px solid black">${openTaskList.taskId }</td>
+                    <td style="width:10%;border-bottom:2px solid black;border-right:2px solid black">${openTaskList.taskTitle }</td>
+                    <td style="width:20%;border-bottom:2px solid black;border-right:2px solid black">
                         <c:if test="${openTaskList.dealConfirmationId != 0}">
                             UDN-${openTaskList.dealConfirmationId}
                         </c:if>
@@ -126,10 +126,10 @@
                             None
                         </c:if>
                     </td>
-                    <td style="width:15%;border-bottom:2px solid #ffa500;border-right:2px solid #ffa500"> ${openTaskList.taskOwnerName}</td>
-                    <td style="width:10%;border-bottom:2px solid #ffa500;border-right:2px solid #ffa500">${openTaskList.taskPriority}</td>
-                    <td style="width:15%;border-bottom:2px solid #ffa500;border-right:2px solid #ffa500">${localDateTimeFormat.format(openTaskList.taskDueDate)}</td>
-                    <td style="width:20%;border-bottom:2px solid #ffa500;">
+                    <td style="width:15%;border-bottom:2px solid black;border-right:2px solid black"> ${openTaskList.taskOwnerName}</td>
+                    <td style="width:10%;border-bottom:2px solid black;border-right:2px solid black">${openTaskList.taskPriority}</td>
+                    <td style="width:15%;border-bottom:2px solid black;border-right:2px solid black">${localDateTimeFormat.format(openTaskList.taskDueDate)}</td>
+                    <td style="width:20%;border-bottom:2px solid black;">
                         <a href="view_view_my_created_task?taskId=${openTaskList.taskId }"><input type="button"
                          style="color:red;background:transparent;border:none;outline:none"        value="View" /></a> |
                         <a href="view_form_edit_my_created_task?taskId=${openTaskList.taskId }"><input type="button"
