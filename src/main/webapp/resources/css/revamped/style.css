@@ -4122,12 +4122,12 @@ font-weight: bold;
 /* ####################### add city styling ######################### */
 
 .Admin_Add_City_wrapper {
-    color: white;
+    color: black;
     width: 100%;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 9);
+    background:white;
     padding: 10px;
     border-radius: 10px;
     margin-top: 115px;
@@ -4148,12 +4148,12 @@ font-weight: bold;
 /* ################ view city listing styling ################ */
 
 .viewCityListing_wrapper {
-    color: white;
+    color: black;
     width: 100%;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 9);
+    background: white;
     padding: 10px;
     border-radius: 10px;
     margin-top: 115px;
@@ -6379,11 +6379,11 @@ width: 90%
 }
 /* ################### flight stop view ################# */
 .view_flight_wrapper{
-color: white;
+color: black;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 9);
+    background: white;
     padding: 10px;
     border-radius: 10px;
 }
@@ -7194,11 +7194,11 @@ transition:all 0.2s ease-in-out
 /* ################# Admin_Edit_City ############ */
 
 .Admin_Edit_City_wrapper {
-    color: white;
+    color: black;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 9);
+    background:white;
     padding: 10px;
     border-radius: 10px;
     margin-top: 115px;

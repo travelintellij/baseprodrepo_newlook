@@ -39,7 +39,7 @@
                                 <form:hidden path="countryName" id="countryName" />
                                 <form:hidden path="destinationId" />
                                 <div class="Admin_Edit_City container">
-                                    <div class="Admin_Edit_City_wrapper">
+                                    <div class="Admin_Edit_City_wrapper bs">
                                         <h1 class="hd">Edit Add City</h1>
                                         <div class="Admin_Edit_City_wrapper_data">
                                             <div class="Admin_Edit_City_wrapper_data_line">

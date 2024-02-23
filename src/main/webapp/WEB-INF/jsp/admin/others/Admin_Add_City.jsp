@@ -55,7 +55,7 @@
     
     <div class="Admin_Add_City container">
     
-        <div class="Admin_Add_City_wrapper">
+        <div class="Admin_Add_City_wrapper bs">
             <form:form method="post" action="create_create_city" modelAttribute="CITY_OBJ">
                 <form:hidden path="countryName" id="countryName" />
                 <h1 class="page-heading">Add City</h1>

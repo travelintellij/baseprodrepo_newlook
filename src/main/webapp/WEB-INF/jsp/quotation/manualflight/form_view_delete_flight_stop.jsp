@@ -18,10 +18,10 @@
 
 	
 				  <div class="fli_de container">
-                <div class="fli_de_wrapper" style="margin-top:120px">
+                <div class="fli_de_wrapper bs" style="margin-top:120px">
                     <h1 style="margin:10px 0;font-size: 25px;color:#32cd32 ">Flight Stop Id-  ${FLT_STOP.fltQuotationStopId}</h1>
                     <div class="fli_de_wrapper_data">
-                        <div class="fli_de_wrapper_data_fli bc-clr">
+                        <div class="fli_de_wrapper_data_fli a">
                             <div class="fli_de_wrapper_dl1">
                                 <label for="" class="lb">Airline</label>
                                 <p>${FLT_STOP.airlineName }</p>
@@ -32,7 +32,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="fli_de_wrapper_data_li bc-clr">
+                    <div class="fli_de_wrapper_data_li a">
                         <div class="fli_de_wrapper_dl1">
                             <label for="" class="lb">Departure</label>
                             <p>${FLT_STOP.originCity }</p>
@@ -50,7 +50,7 @@
                             <p>${localDateTimeFormatToEdit.format(FLT_STOP.arrivalDate)}</p>
                         </div>
                     </div>
-                    <div class="fli_de_wrapper_data_li bc-clr">
+                    <div class="fli_de_wrapper_data_li a">
                         <div class="fli_de_wrapper_dl1">
                             <label for="" class="lb">Travel Class</label>
                             <p>${FLT_STOP.cabinClassName }</p>
@@ -68,7 +68,7 @@
                             <p>${FLT_STOP.infantCount }</p>
                         </div>
                     </div>
-                    <div class="due_today_task_data_btnss">
+                    <div class="due_today_task_data_btnss" style="margin:10px 0">
                     <input type="submit" name="deleteFlight" id="deleteFlight" Value="Confirm Delete"  style="background-color:red;"/>
 		<a href="form_view_manage_stops_quotation?manualFlightQuotationId=${MANUAL_FLT.manualFlightQuotationId}&leadId=${QTN_OBJ.leadEntity.leadId}&quotationId=${QTN_OBJ.quotationId}"><input type="button"  value="Cancel" /></a>
                     </div>

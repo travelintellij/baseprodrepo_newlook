@@ -143,10 +143,10 @@ td {
 </style>
 <body>
     <div class="viewCityListing container">
-        <div class="viewCityListing_wrapper">
+        <div class="viewCityListing_wrapper bs">
             <form:form modelAttribute="SEARCH_CITY" action="view_search_city_form">
                 <h1 class="page-heading">Search City</h1>
-                <div align="center"><b>
+                <div align="center" style="margin:10px 0"><b>
                         <font color="green"> ${Success} </font>
                         <font color="red"> ${Error}</font>
                     </b></div>
@@ -179,7 +179,7 @@ td {
                     </div>
                 </div>
                 <div class="due_today_task_data_btns">
-                    <input type="submit" value="Apply Filter" style="background:#4CAF50"/>
+                    <input type="submit" value="Apply Filter" style="background:#32cd32"/>
                     <a href="view_search_city_form">Clear Filter</a>
                 </div>
             </form:form>
@@ -190,20 +190,20 @@ td {
         
         <div>
           <c:set value="${CITY_LIST}" var="cityList" />
-	      <table style="width:100%;text-align:center;margin-top:10px;border:none">
-			<tr style="height:40px">
-				<th style="width:5%;background-color:#6082B6;">Destination Id</th>
-				<th style="width:15%;background-color:#6082B6;">City Name</th>
-				<th style="width:10%;background-color:#6082B6;">Country Name</th>
-				<th style="width:10%;background-color:#6082B6;">Status</th>
-				<th style="width:10%;background-color:#6082B6;">Action</th>
+	      <table class="bs" style="width:100%;text-align:center;margin-top:10px;border:none;">
+			<tr style="height:50px">
+				<th style="width:5%;background-color:#6082B6;color:black">Destination Id</th>
+				<th style="width:15%;background-color:#6082B6;color:black">City Name</th>
+				<th style="width:10%;background-color:#6082B6;color:black">Country Name</th>
+				<th style="width:10%;background-color:#6082B6;color:black">Status</th>
+				<th style="width:10%;background-color:#6082B6;color:black">Action</th>
 			</tr>
 			<c:forEach items="${cityList}" var="cityRec">
-				<tr style="background:black;color:white">
-					<td style="width:5%;">${cityRec.destinationId }</td>
-					<td style="width:15%;">${cityRec.cityName }</td>
-					<td style="width:10%;">${cityRec.countryName }</td>
-					<td style="width:10%;">
+				<tr style="background:white;color:black">
+					<td style="width:5%;border:2px solid black">${cityRec.destinationId }</td>
+					<td style="width:15%;border:2px solid black">${cityRec.cityName }</td>
+					<td style="width:10%;border:2px solid black">${cityRec.countryName }</td>
+					<td style="width:10%;border:2px solid black">
 						<c:if test="${cityRec.active eq true}">
 								<input type="button" style="background-color: #32cd32;border:none;outline:none;border-radius:5px;;padding: 4px 5px;pointer-events: none;"  value="Active" />
 						</c:if>
@@ -213,7 +213,7 @@ td {
 					
 					</td>
 					
-					<td style="width:10%;">
+					<td style="width:10%;border:2px solid black">
 						<sec:authorize access="hasAnyRole('ADMIN')">
 							<a href="view_edit_city_form?destinationId=${cityRec.destinationId }"><input type="button" style="background-color: #786AAF;border:none;outline:none;border-radius:5px;;padding: 4px 5px;pointer-events: none;" value="Edit" /></a> 
 						</sec:authorize>

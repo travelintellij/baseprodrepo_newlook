@@ -156,7 +156,7 @@
                 <div class="fr_view_fli_qu_wr_d">
                     <label for="">Arrival</label> <br>
                     
-                    <input type="text" id="destinationCity" name="destinationCity" />
+                   	<form:input path="destinationCity" type="text" id="destinationCity"  />
                     <form:hidden path="airportCodeDestination" id="origin" value="0" />
                     <font color="red">
                         <form:errors path="destinationCity" cssClass="error" />

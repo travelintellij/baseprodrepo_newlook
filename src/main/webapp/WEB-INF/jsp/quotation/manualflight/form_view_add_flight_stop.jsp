@@ -27,7 +27,7 @@
 	<input type="hidden" name="quotationId" value= "${QTN_OBJ.quotationId}" />
 	<input type="hidden" name="manualFlightQuotationId" value= "${MANUAL_FLT.manualFlightQuotationId}" />
         <div class="fr_view_fli_qu container">
-            <div class="fr_view_fli_qu_wr ">
+            <div class="fr_view_fli_qu_wr bs ">
                 <div class="fr_view_fli_qu_wr_li_f">
                     <div class="fr_view_fli_qu_wr_d">
                         <label for="">Airline</label> <br>
