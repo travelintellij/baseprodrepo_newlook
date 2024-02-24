@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-<jsp:include page="../../menu/MenuBuilder.jsp" />
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<jsp:include page="../../menu/MenuBuilder.jsp" />  
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add New Supplier</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
-    <script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
-	<script src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
+   <script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
+<script	src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
+<script	src="<c:url value="/resources/core/magicsuggest.js" />"></script>
+<link href="<c:url value="/resources/core/main.css" />" rel="stylesheet">
 	<script src="https://kit.fontawesome.com/6f6addf9b0.js" crossorigin="anonymous"></script>
 </head>
 <style>
@@ -124,16 +124,17 @@
                         </font>
                     </div>
                     
-                      <div class="ans-last-sec">
+                      <div class="ans-last-sec" style=";width:300px">
                         <p class="ans-heading">Select destinations
                            Services</p>
-                        <font color="red">
+                       
+                        <input style="background:white;color:black;width:250px" type="text" id="destinationHandling" name="destinationHandling"
+                            placeholder="Select Destination Services" class="form-control" />
+                        <form:hidden path="destinationNames" />
+                        <form:hidden path="operatingDestinations" /> <br>
+                         <font color="red">
                             <form:errors path="destinationNames" cssClass="error" />
                         </font>
-                        <input style="background:white;color:black;width:250px" type="text" id="destinationHandling" name="destinationHandling"
-                            placeholder="Select Destination Services" style="width: 250px;" />
-                        <form:hidden path="destinationNames" />
-                        <form:hidden path="operatingDestinations" />
                     </div>
                     
                     
