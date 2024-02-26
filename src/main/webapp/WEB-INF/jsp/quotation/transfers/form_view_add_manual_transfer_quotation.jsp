@@ -39,7 +39,7 @@
                             </form:select>
                         </div>
                         <div class="form_view_add_manual_transfer_quotation_wrapper_data_l1">
-                            <label for="">Pickup Form Name</label>
+                            <label for="">Pickup From Name</label>
                             <form:input path="pickUpFromName" type="text" id="pickUpFromName" required="required" />
                         </div>
                         <div class="form_view_add_manual_transfer_quotation_wrapper_data_l1">

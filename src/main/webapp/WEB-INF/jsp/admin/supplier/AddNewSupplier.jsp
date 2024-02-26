@@ -9,10 +9,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add New Supplier</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
-   <script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
+    
+    
+<script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
 <script	src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
 <script	src="<c:url value="/resources/core/magicsuggest.js" />"></script>
 <link href="<c:url value="/resources/core/main.css" />" rel="stylesheet">
+
 	<script src="https://kit.fontawesome.com/6f6addf9b0.js" crossorigin="anonymous"></script>
 </head>
 <style>
@@ -40,6 +43,8 @@
             opacity: 0.5; /* Adjust the opacity value as needed (0.0 to 1.0) */
             z-index: -1;
         }
+
+        
 </style>
 <body>
    <div class="autocomplete-suggestions" style="display:none">
@@ -123,22 +128,23 @@
                             <form:errors path="phone" cssClass="error" />
                         </font>
                     </div>
-                    
-                      <div class="ans-last-sec" style=";width:300px">
-                        <p class="ans-heading">Select destinations
-                           Services</p>
-                       
-                        <input style="background:white;color:black;width:250px" type="text" id="destinationHandling" name="destinationHandling"
-                            placeholder="Select Destination Services" class="form-control" />
-                        <form:hidden path="destinationNames" />
-                        <form:hidden path="operatingDestinations" /> <br>
-                         <font color="red">
-                            <form:errors path="destinationNames" cssClass="error" />
-                        </font>
-                    </div>
-                    
-                    
                 </div>
+                
+                
+                
+               <div class="ans-last-sec" style="text-align:start">
+                        <p class="ans-heading" style="text-align:start">Select destinations
+                            Services</p>
+                     <font color="red"><form:errors path="destinationNames" cssClass="error" /></font>
+					<div id="sscontainer" class="sscontainer">
+					<form:hidden path = "destinationNames" color="white"/>
+					<form:hidden path = "operatingDestinations"  color="white"/>
+					<input type="text" id="destinationHandling" name="destinationHandling" class="form-control"  style="width:1190px;border:1px solid black"/>
+					</div>
+                    </div>
+                
+                
+                
                 <div class="ans-thir-li">
                     <div class="ansd1-rem ans-comDel">
                         <label for="cd">Company Details</label><br>
@@ -271,79 +277,78 @@
     </form:form>
 
 
-    <script type="text/javascript" defer>
+<script type="text/javascript" defer>
 
-        $(function () {
-            var ms = $('#destinationHandling').magicSuggest({
-                data: '${pageContext.request.contextPath}/getDestinationList',
-                valueField: 'id',
-                displayField: 'tagName',
-                //name: 'operatingDestinations',
-                maxDropHeight: 145,
-                maxSuggestions: 10,
-                resultAsString: true
-            });
-            //ms.addToSelection([{"id":4,"tagName":"Mumbai"},{"id":542,"tagName":"New Delhi"}]);
-
-            $(ms).on('load', function () {
-                if (this._dataSet === undefined) {
-                    this._dataSet = true;
-                    ms.addToSelection(${ SUPPLIER_OBJ.destinationNames });
-                    ms.setDataUrlParams({});
-                }
-            });
-
-
-            $(ms).on('selectionchange', function (e, m) {
-                $("#operatingDestinations").val(ms.getValue());
-            });
+$(function() {
+        var ms = $('#destinationHandling').magicSuggest({
+        	data: '${pageContext.request.contextPath}/getDestinationList',
+        	valueField: 'id',
+        	displayField: 'tagName',
+        	//name: 'operatingDestinations',
+        	maxDropHeight: 145,
+        	maxSuggestions:10,
+        	resultAsString: true
         });
-
-
-
-        $('#cityName').autocomplete({
-            serviceUrl: '${pageContext.request.contextPath}/getCityList',
-            paramName: "cityName",
-            delimiter: ",",
-            onSelect: function (suggestion) {
-                cityID = suggestion.data;
-                id = cityID;
-                jQuery("#destinationId").val(cityID);
-                $('input[name=cityId]').val(id);
-                return false;
-            },
-            transformResult: function (response) {
-                return {
-                    suggestions: $.map($.parseJSON(response), function (item) {
-                        return { value: item.cityName, data: item.destinationId };
-                    })
-
-                };
-            }
+        //ms.addToSelection([{"id":4,"tagName":"Mumbai"},{"id":542,"tagName":"New Delhi"}]);
+		
+	$(ms).on('load', function(){
+        if(this._dataSet === undefined){
+       		this._dataSet = true;
+       		ms.addToSelection(${SUPPLIER_OBJ.destinationNames});
+            ms.setDataUrlParams({});
+        }
+    });
+		
+		       	
+        $(ms).on('selectionchange', function(e,m){
+        	 $("#operatingDestinations").val(ms.getValue());
         });
+ });
 
-        $('#countryName').autocomplete({
-            serviceUrl: '${pageContext.request.contextPath}/getCountryList',
-            paramName: "countryName",
-            delimiter: ",",
-            onSelect: function (suggestion) {
-                cityID = suggestion.data;
-                id = cityID;
-                jQuery("#countryId").val(cityID);
-                $('input[name=countryId]').val(id);
-                return false;
-            },
-            transformResult: function (response) {
-                return {
-                    suggestions: $.map($.parseJSON(response), function (item) {
-                        return { value: item.countryName, data: item.destinationId };
-                    })
 
-                };
-            }
-        });
 
-    </script>
+$('#cityName').autocomplete({
+	serviceUrl: '${pageContext.request.contextPath}/getCityList',
+	paramName: "cityName",
+	delimiter: ",",
+	onSelect: function(suggestion) {
+        cityID = suggestion.data;
+        id=cityID;
+        jQuery("#destinationId").val(cityID);
+        $('input[name=cityId]').val(id);
+        return false;
+    },
+	transformResult: function(response) {
+        return {
+            suggestions: $.map($.parseJSON(response), function(item) {
+            	return { value: item.cityName, data: item.destinationId };
+            })
+            
+        };
+    }
+});
+
+$('#countryName').autocomplete({
+	serviceUrl: '${pageContext.request.contextPath}/getCountryList',
+	paramName: "countryName",
+	delimiter: ",",
+	onSelect: function(suggestion) {
+        cityID = suggestion.data;
+        id=cityID;
+        jQuery("#countryId").val(cityID);
+        $('input[name=countryId]').val(id);
+        return false;
+    },
+	transformResult: function(response) {
+        return {
+            suggestions: $.map($.parseJSON(response), function(item) {
+            	return { value: item.countryName, data: item.destinationId };
+            })
+        };
+    }
+});
+
+</script>
 
 </body>
 

@@ -32,13 +32,13 @@
                                         <div class="viewLeadDetails_modal_wrapper_dl1">
                                             <label for="" class="lb">Is Qualified</label>
                                             <p>
-                                                <form:checkbox class="ch_c" path="qualified" disabled="true" />
+                                                <form:checkbox class="ch_c" path="qualified" disabled="true" style="width:18px;height:18px"/>
                                             </p>
                                         </div>
                                         <div class="viewLeadDetails_modal_wrapper_dl1">
                                             <label for="" class="lb">Is Flagged</label>
                                             <p>
-                                                <form:checkbox class="ch_c" path="flagged" disabled="true" />
+                                                <form:checkbox class="ch_c" path="flagged" disabled="true" style="width:18px;height:18px"/>
                                             </p>
                                         </div>
                                         <div class="viewLeadDetails_modal_wrapper_dl1">
@@ -98,39 +98,39 @@
                                     <h1 style="text-align: start;" class="lb">Select Services</h1>
                                     <div class="viewLeadDetails_modal_wrapper_data_linesr a">
                                         <div class="viewLeadDetails_modal_wrapper_dser">
-                                            <form:checkbox class="ch_c" path="landPackage" name="landPackage;" disabled="true" />
+                                            <form:checkbox class="ch_c" path="landPackage" name="landPackage;" disabled="true" style="width:18px;height:18px"/>
                                             <label for="">Package</label>
                                         </div>
                                         <div class="viewLeadDetails_modal_wrapper_dser">
-                                            <form:checkbox class="ch_c" path="flight" name="flight" disabled="true" />
+                                            <form:checkbox class="ch_c" path="flight" name="flight" disabled="true" style="width:18px;height:18px"/>
                                             <label for="">Flight</label>
                                         </div>
                                         <div class="viewLeadDetails_modal_wrapper_dser">
-                                            <form:checkbox class="ch_c" path="hotel" name="hotel" disabled="true" />
+                                            <form:checkbox class="ch_c" path="hotel" name="hotel" disabled="true" style="width:18px;height:18px"/>
                                             <label for="">Hotal</label>
                                         </div>
                                         <div class="viewLeadDetails_modal_wrapper_dser">
-                                            <form:checkbox class="ch_c" path="transfers" name="transfers" disabled="true" />
+                                            <form:checkbox class="ch_c" path="transfers" name="transfers" disabled="true" style="width:18px;height:18px"/>
                                             <label for="">Transfers</label>
                                         </div>
                                         <div class="viewLeadDetails_modal_wrapper_dser">
-                                            <form:checkbox class="ch_c" path="sightseeing" name="sightseeing" disabled="true" />
+                                            <form:checkbox class="ch_c" path="sightseeing" name="sightseeing" disabled="true" style="width:18px;height:18px"/>
                                             <label for="">Sightseeing</label>
                                         </div>
                                         <div class="viewLeadDetails_modal_wrapper_dser">
-                                            <form:checkbox class="ch_c" path="visa" name="visa" disabled="true" />
+                                            <form:checkbox class="ch_c" path="visa" name="visa" disabled="true" style="width:18px;height:18px"/>
                                             <label for="">Visa</label>
                                         </div>
                                         <div class="viewLeadDetails_modal_wrapper_dser">
-                                            <form:checkbox class="ch_c" path="insurance" name="insurance" disabled="true" />
+                                            <form:checkbox class="ch_c" path="insurance" name="insurance" disabled="true" style="width:18px;height:18px"/>
                                             <label for="">Insurance</label>
                                         </div>
                                         <div class="viewLeadDetails_modal_wrapper_dser">
-                                            <form:checkbox class="ch_c" path="cruise" name="cruise" disabled="true" />
+                                            <form:checkbox class="ch_c" path="cruise" name="cruise" disabled="true" style="width:18px;height:18px"/>
                                             <label for="">Cruise</label>
                                         </div>
                                         <div class="viewLeadDetails_modal_wrapper_dser">
-                                            <form:checkbox class="ch_c" path="others" name="others" disabled="true" />
+                                            <form:checkbox class="ch_c" path="others" name="others" disabled="true" style="width:18px;height:18px"/>
                                             <label for="">Others</label>
                                         </div>
                                     </div>
@@ -156,7 +156,7 @@
                                     </div>
                                     <div class="viewLeadDetails_modal_wrapper_data_line_ci">
                                         <div class="viewLeadDetails_modal_wrapper_dlci">
-                                            <form:checkbox path="leadCreationClientInformed" disabled="true" />
+                                            <form:checkbox path="leadCreationClientInformed" disabled="true" style="width:18px;height:18px" class="ch_c"/>
                                             <label for="">Client Informed (email sent)</label>
                                         </div>
                                     </div>

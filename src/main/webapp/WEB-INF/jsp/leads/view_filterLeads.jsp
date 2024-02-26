@@ -39,6 +39,7 @@
 	  overflow: scroll; /* Enable scroll if needed */
 	  background-color: rgb(0,0,0); /* Fallback color */
 	  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+	  border-radius:10px;
 	}
 	
 	/* Modal Content */
@@ -85,9 +86,10 @@
 	.modal-header {
 	  padding: 2px 16px;
 	  color: white;
+	  background:white;
 	}
 	
-	.modal-body {padding: 2px 16px;}
+	.modal-body {padding: 2px 16px;background:white}
 	
 	.modal-footer {
 	  padding: 2px 16px;
