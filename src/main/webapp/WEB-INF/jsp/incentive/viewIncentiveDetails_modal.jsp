@@ -6,7 +6,9 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
-    <link href="<c:url value=" /resources/core/main.css" />
+   
+    <link href="<c:url value=" /resources/core/main.css" />" rel="stylesheet">
+    
 </head>
 <body>     
 
