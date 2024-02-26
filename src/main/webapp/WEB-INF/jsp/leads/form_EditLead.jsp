@@ -173,20 +173,17 @@
                         </div>
                         <div class="edit_lead_wrapper_data_l1">
                             <label for="">Status</label>
-                            <sec:authorize access="hasAnyRole('ADMIN','LEAD_MANAGER','CAN_CLOSE')">
+                            <sec:authorize access="hasAnyRole('ADMIN','CAN_CLOSE')">
                                 <div class="select">
                                     <form:select path="leadStatus" style="width:90%"
                                         required="required">
                                         <form:options items="${LEAD_STATUS_MAP}" class="service-small" />
                                     </form:select>
                                 </div>
-
                             </sec:authorize>
 
-                            <sec:authorize access="! hasAnyRole('ADMIN','LEAD_MANAGER','CAN_CLOSE')">
-
+                            <sec:authorize access="! hasAnyRole('ADMIN','CAN_CLOSE')">
                                 ${LEAD_OBJ.statusName }
-
                             </sec:authorize>
                         </div>
             
