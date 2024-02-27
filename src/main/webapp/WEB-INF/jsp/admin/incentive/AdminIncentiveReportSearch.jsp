@@ -35,19 +35,19 @@
                             modelAttribute="searchincentive">
                             <input type="hidden" name="userId" value="${userId}" />
                             <input type="hidden" name="userName" value="${userName}" />
-                            <h1 style="font-size: 25px;margin:10px 0;color:#32cd32  ">Search Incentive Claims</h1>
+                            <h1 style="font-size: 25px;margin:10px 0;color:#32cd32;font-weight:600  ">Search Incentive Claims</h1>
                             <div class="AdminIncentiveReportSearch_wrapper_data">
                                 <div class="AdminIncentiveReportSearch_wrapper_data_line">
                                     <div class="AdminIncentiveReportSearch_wrapper_dl1">
-                                        <label for="">From Date</label>
+                                        <label for="" style="font-weight:600">From Date</label>
                                         <input type="date" name="claimFromDate" />
                                     </div>
                                     <div class="AdminIncentiveReportSearch_wrapper_dl1">
-                                        <label for="">To Date</label>
+                                        <label for="" style="font-weight:600">To Date</label>
                                         <input type="date" name="claimToDate" />
                                     </div>
                                     <div class="AdminIncentiveReportSearch_wrapper_dl1">
-                                        <label for="">Claim Status</label>
+                                        <label for="" style="font-weight:600">Claim Status</label>
                                         <select id="claimStatus" name="claimStatus" style="width:90%">
                                             <option value="None">Select</option>
                                             <option value="ALL"> -----ALL----</option>
@@ -58,7 +58,7 @@
                                         </select>
                                     </div>
                                     <div class="AdminIncentiveReportSearch_wrapper_dl1">
-                                        <label for="">User Name</label>
+                                        <label for="" style="font-weight:600">User Name</label>
                                         <select id="reportOfUser" name="reportOfUser" style="width:90%">
                                             <option value="0"> -----ALL----</option>
                                             <c:if test="${not empty ActiveUsersList}">

@@ -131,7 +131,7 @@
                                                 </div>
                                             </div>
                                             <div class="IncentiveReportSearch_wrapper_dl1_r">
-                                                <label for="">From Date</label>
+                                                <label for="">From Date </label>
                                                 <form:input path="claimFromDate" type="date" required="required" />
                                             </div>
                                             <div class="IncentiveReportSearch_wrapper_dl1_r">

@@ -46,22 +46,22 @@
                 <div class="AdminSearchUser_wrapper_data">
                     <div class="AdminSearchUser_wrapper_data_line">
                         <div class="AdminSearchUser_wrapper_data_l1_id">
-                            <label for="">Id</label>
+                            <label for="" style="font-weight:600">Id</label>
                             <input type="number" class="contact" id="userId" name="userId" placeholder="userId"
                                 value="${SEARCH_USER.userId}" />
                         </div>
                         <div class="AdminSearchUser_wrapper_data_l1">
-                            <label for="">User Name</label>
+                            <label for="" style="font-weight:600">User Name</label>
                             <input type="text" class="contact" id="username" name="username" value="" size="35"
                                 placeholder="username" value="${SEARCH_USER.username}" />
                         </div>
                         <div class="AdminSearchUser_wrapper_data_l1">
-                            <label for="">Name</label>
+                            <label for="" style="font-weight:600">Name</label>
                             <input type="text" class="contact" id="name" name="name" size="35" placeholder="Name"
                                 value="${SEARCH_USER.name}" />
                         </div>
                         <div class="AdminSearchUser_wrapper_data_l1">
-                            <label for="">Joining Date Range</label>
+                            <label for="" style="font-weight:600">Joining Date Range</label>
                             <input type="date" name="joiningFromDate" value="${SEARCH_USER.joiningFromDate}" />
                         </div>
                         <div class="AdminSearchUser_wrapper_data_l1">

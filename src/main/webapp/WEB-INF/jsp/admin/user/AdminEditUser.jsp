@@ -33,7 +33,7 @@
 
     <div class="AdminDisplayUser container">
         <div class="AdminDisplayUser_wrapper bs">
-            <h1 class="hd">Edit User (Id: ${USER_OBJ.userId})</h1>
+            <h1 class="hd" style="font-weight:600">Edit User (Id: ${USER_OBJ.userId})</h1>
             <div class="AdminDisplayUser_wrapper_data">
                 <form:form method="post" action="edit_edit_Admin_User" modelAttribute="USER_OBJ">
                     <form:hidden path="userId" />
@@ -43,27 +43,27 @@
                         </b></div>
                     <div class="AdminDisplayUser_wrapper_data_line">
                         <div class="AdminDisplayUser_wrapper_data_l1">
-                            <label for="">Record Id</label>
+                            <label for="" style="font-weight:600">Record Id</label>
                             <form:input path="username" maxlength="20" style="width:90%"/>
                             <font color="red">
                                 <form:errors path="username" cssClass="error" />
                             </font>
                         </div>
                         <div class="AdminDisplayUser_wrapper_data_l1">
-                            <label for="">Password</label>
+                            <label for="" style="font-weight:600">Password</label>
                             <form:password path="password" showPassword="true" style="width:90%" />
                             <font color="red">
                                 <form:errors path="password" cssClass="error" />
                             </font>
                         </div>
                         <div class="AdminDisplayUser_wrapper_data_l1">
-                            <label for="">Confirm Password</label>
+                            <label for="" style="font-weight:600">Confirm Password</label>
                             <form:password path="passwordConfirm" showPassword="true" style="width:90%"/>
                             <form:errors path="passwordConfirm" cssClass="error" />
                             </font>
                         </div>
                         <div class="AdminDisplayUser_wrapper_data_l1">
-                            <label for="">Role</label> <br>
+                            <label for="" style="font-weight:600">Role</label> <br>
                             <c:forEach var="userRoles" items="${USER_OBJ.roles}">
                                 <c:if test="${userRoles.roleTarget eq 'PRIV' }">
                                     <c:if test="${userRoles.roleName eq 'ADMIN' }">
@@ -81,7 +81,7 @@
                     </div>
                     <div class="AdminDisplayUser_wrapper_data_line">
                         <div class="AdminDisplayUser_wrapper_data_l1">
-                            <label for="">User Full Name</label>
+                            <label for="" style="font-weight:600">User Full Name</label>
                             <form:input path="name" style="width:90%" />
                             <font color="red">
                                 <form:errors path="name" cssClass="error" />
@@ -89,14 +89,14 @@
                         </div>
                        
                         <div class="AdminDisplayUser_wrapper_data_l1">
-                            <label for="">Company Email</label>
+                            <label for="" style="font-weight:600">Company Email</label>
                             <form:input path="email"  style="width:90%"/><br>
                             <font color="red">
                                 <form:errors path="email" cssClass="error" />
                             </font>
                         </div>
                         <div class="AdminDisplayUser_wrapper_data_l1">
-                            <label for="">Company Mobile</label>
+                            <label for="" style="font-weight:600">Company Mobile</label>
                             <form:input path="mobile" type="number" required="required"  style="width:90%"/> <br>
                             <font color="red">
                                 <form:errors path="mobile" cssClass="error" />
@@ -104,7 +104,7 @@
                         </div>
                         
                         <div class="AdminDisplayUser_wrapper_data_l1">
-                            <label for="">Credentials Expired</label>
+                            <label for="" style="font-weight:600">Credentials Expired</label>
                             <form:select path="credentialsExpired"  style="width:90%">
                                 <form:options items="${ACTIVE_MAP}" class="service-small" />
                             </form:select>
@@ -113,46 +113,46 @@
                     </div>
                     <div class="AdminDisplayUser_wrapper_data_line">
                         <div class="AdminDisplayUser_wrapper_data_l1">
-                            <label for="">Designation</label>
+                            <label for="" style="font-weight:600">Designation</label>
                             <form:input path="designation"  style="width:90%"/> <br>
                             <font color="red">
                                 <form:errors path="designation" cssClass="error" />
                             </font>
                         </div>
                         <div class="AdminDisplayUser_wrapper_data_l1">
-                            <label for="">Type</label>
+                            <label for="" style="font-weight:600">Type</label>
                             <form:select path="type"  style="width:90%">
                                 <form:options items="${EMP_TYPE_MAP}" class="service-small" />
                             </form:select>
                         </div>
                         <div class="AdminDisplayUser_wrapper_data_l1">
-                            <label for="">Shift</label>
+                            <label for="" style="font-weight:600">Shift</label>
                             <form:select path="shift"  style="width:90%">
                                 <form:options items="${EMP_SHIFT_MAP}" class="service-small" />
                             </form:select>
                         </div>
                         <div class="AdminDisplayUser_wrapper_data_l1">
-                            <label for="">Fixed Incentive</label>
+                            <label for="" style="font-weight:600">Fixed Incentive</label>
                             <form:input path="fixedIncentive" type="number" required="required"  style="width:90%"/>
                         </div>
                     </div>
                     <div class="AdminDisplayUser_wrapper_data_line">
                         <div class="AdminDisplayUser_wrapper_data_l1">
-                            <label for="">Pan Card</label>
+                            <label for="" style="font-weight:600">Pan Card</label>
                             <form:input path="panCard"  style="width:90%"/>
                         </div>
                         <div class="AdminDisplayUser_wrapper_data_l1">
-                            <label for="">Aadhar Card</label>
+                            <label for="" style="font-weight:600">Aadhar Card</label>
                             <form:input path="aadharCard"  style="width:90%"/>
                         </div>
                         <div class="AdminDisplayUser_wrapper_data_l1">
-                            <label for="">Marial Status</label>
+                            <label for="" style="font-weight:600">Marial Status</label>
                             <form:select path="maritalStatus"  style="width:90%">
                                 <form:options items="${MARITAL_STATUS_MAP}" class="service-small" />
                             </form:select>
                         </div>
                         <div class="AdminDisplayUser_wrapper_data_l1">
-                            <label for="">Gender</label>
+                            <label for="" style="font-weight:600">Gender</label>
                             <form:select path="gender"  style="width:90%">
                                 <form:options items="${GENDER_MAP}" class="service-small" />
                             </form:select>
@@ -160,43 +160,43 @@
                     </div>
                     <div class="AdminDisplayUser_wrapper_data_line">
                         <div class="AdminDisplayUser_wrapper_data_l1">
-                            <label for="">Deleted</label>
+                            <label for="" style="font-weight:600">Deleted</label>
                             <form:select path="deleted"  style="width:90%">
                                 <form:options items="${ACTIVE_MAP}" class="service-small" />
                             </form:select>
                         </div>
                         <div class="AdminDisplayUser_wrapper_data_l1">
-                            <label for="">Account Locked</label>
+                            <label for="" style="font-weight:600">Account Locked</label>
                             <form:select path="accountLocked"  style="width:90%">
                                 <form:options items="${ACTIVE_MAP}" class="service-small" />
                             </form:select>
                         </div>
                         <div class="AdminDisplayUser_wrapper_data_l1">
-                            <label for="">Date of Birth</label>
+                            <label for=""style="font-weight:600">Date of Birth</label>
                             <form:input path="dob" type="date" required="required"  style="width:90%"/>
                         </div>
                         <div class="AdminDisplayUser_wrapper_data_l1">
-                            <label for="">Date of Joining</label>
+                            <label for="" style="font-weight:600">Date of Joining</label>
                             <form:input path="doj" type="date" required="required"  style="width:90%"/>
                         </div>
                     </div>
                     <div class="AdminDisplayUser_wrapper_data_line">
                         <div class="AdminDisplayUser_wrapper_data_l1">
-                            <label for="">Personal Email</label>
+                            <label for="" style="font-weight:600">Personal Email</label>
                             <form:input path="personalEmail" type="email" required="required"  style="width:90%"/>
                         </div>
                         <div class="AdminDisplayUser_wrapper_data_l1">
-                            <label for="">Personal Mobile</label>
+                            <label for="" style="font-weight:600">Personal Mobile</label>
                             <form:input path="personalMobile" type="number" required="required"  style="width:90%"/>
                         </div>
                         <div class="AdminDisplayUser_wrapper_data_l1">
-                            <label for="">Active</label>
+                            <label for="" style="font-weight:600">Active</label>
                             <form:select path="active"  style="width:90%">
                                 <form:options items="${ACTIVE_MAP}" class="service-small" />
                             </form:select>
                         </div>
                         <div class="AdminDisplayUser_wrapper_data_l1">
-                            <label for="">Account Expired</label>
+                            <label for="" style="font-weight:600">Account Expired</label>
                             <form:select path="accountExpired"  style="width:90%">
                                 <form:options items="${ACTIVE_MAP}" class="service-small" />
                             </form:select>
@@ -204,7 +204,7 @@
                     </div>
                     
                      <div class="AdminDisplayUser_wrapper_data_l1" style="text-align:start">
-                            <label for="">Address</label><br>
+                            <label for="" style="font-weight:600">Address</label><br>
                             <form:textarea path="address" rows="1" maxlength="250" style="width:97%"/><br>
                             <font color="red">
                                 <form:errors path="address" cssClass="error" />
@@ -212,7 +212,7 @@
                         </div> 
                     <div class="AdminDisplayUser_wrapper_data_line" style="width:100%">
                         <div class="AdminDisplayUser_wrapper_data_l1"   style="width:100%">
-                         <label for="">Remarks</label><br>
+                         <label for="" style="font-weight:600">Remarks</label><br>
                             <form:textarea path="remarks" rows="2" style="width:97%" maxlength="1000" />
                         </div>
                     </div>
