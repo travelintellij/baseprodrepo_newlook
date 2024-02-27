@@ -382,7 +382,7 @@ public interface UdanChooConstants {
 	}};
 	
 
-	public static int DEFAULT_PAGE_SIZE = 10;
+	public static int DEFAULT_PAGE_SIZE = 20;
 	
 	/*********************************************************************************/
 	

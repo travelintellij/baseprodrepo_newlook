@@ -93,10 +93,6 @@
                                 <td>
                                     <div class="select">
                                         <form:select path="leadOwner" required="required" style="width:90%">
-                                            <%--<form:option value="0" label=" Select Lead Owner "
-                                                class="service-small" />
-                                            <form:options items="${ACTIVE_USERS_MAP}" class="service-small" /> --%>
-
                                             <c:forEach items="${ACTIVE_USERS_MAP}" var="userMap">
                                                 <c:if test="${userMap.key eq userId }">
                                                     <option class="service-small" value="${userMap.key}" selected>
@@ -237,8 +233,7 @@
                             </div>
                             <div class="edit_lead_wrapper_data_l1_rem2" style="margin-left: 17px;">
                                 <label for="">Internal Remarks</label> <br>
-                                <form:textarea path="internalRemarks" maxlength="1450" name="" id="" cols="66"
-                                    rows="5" />
+                                <form:textarea path="internalRemarks" maxlength="1450" name="" id="" cols="66" rows="5" />
                             </div>
                         </div>
 

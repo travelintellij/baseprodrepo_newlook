@@ -238,16 +238,16 @@
                                         <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">${incentiveObj.approvedAmount}</td>
                                         <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">${incentiveObj.claimStatusName}</td>
                                     </tr>
-                                    <c:set var="totalIncentive"
-                                        value="${totalIncentive + incentiveObj.claimedAmount}" />
+                                    <c:set var="totalIncentive" value="${totalIncentive + incentiveObj.claimedAmount}" />
+                                    <c:set var="totalApproved" value="${totalApproved + incentiveObj.approvedAmount}" />
                                 </c:forEach>
                             </c:if>
                             <tr>
                                 <td colspan="7" style="text-align:end;margin-right:10px;"><b>
-                                        <font size="3">Total Claim Amount  </font>
+                                        <font size="3">Total </font>
                                     </b></td>
-                                    <td colspan="1" style="text-align:center;black:#32cd32;font-weight:bold">
-                                    ${totalIncentive}</td>
+                                    <td style="text-align:center;black:#32cd32;font-weight:bold">${totalIncentive}</td>
+                                    <td style="text-align:center;black:#32cd32;font-weight:bold">${totalApproved}</td>
                             </tr>
                         </table>
                         <table style="width:20%;margin:10px auto ; background:black;color:white;border-radius:3px;padding;3px">

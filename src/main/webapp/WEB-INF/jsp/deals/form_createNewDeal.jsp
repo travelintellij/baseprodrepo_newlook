@@ -42,33 +42,33 @@
                 <div class="create_new_win_data">
                     <div class="create_new_win_li1">
                         <div class="create_new_win_li">
-                            <label for="queary_id">Queary Id</label>
-                            <input type="text" id="queary_id" required>
+                            <label for="queary_id">Query Id</label>
+                            <input type="text" id="queryId" value="0" required>
                         </div>
                         <div class="create_new_win_li">
                             <label for="clientName">Lead Guest name</label>
-                            <input type="text" class="contact" id="clientName" name="clientName" value=""
-                                placeholder="Lead Guest Name" required>
+                            <input type="text" class="contact" id="clientName" name="clientName" value="" placeholder="Lead Guest Name" required>
+							<form:hidden path="clientId" />
                         </div>
                         <div class="create_new_win_li">
                             <label for="travelingFromCtrl">Traveling from</label>
-                            <input type="text" " name=" travelingFromCtrl" id="travelingFromCtrl"
-                                placeholder="Traveling From" vale="" required>
+                            <input type="text" " name=" travelingFromCtrl" id="travelingFromCtrl" placeholder="Traveling From" value="" required>
+                            <form:hidden path="travelingFrom" />
                         </div>
                         <div class="create_new_win_li">
                             <label for="tt">Traveling to</label>
-                            <input type="travelingToCtrl" name="travelingToCtrl" id="travelingToCtrl"
-                                placeholder="Traveling To" value="" required>
+                            <input type="travelingToCtrl" name="travelingToCtrl" id="travelingToCtrl" placeholder="Traveling To" value="" required>
+                            <form:hidden path="travelingTo" />
                         </div>
                     </div>
                     <div class="create_new_win_li2">
                         <div class="create_new_win_li">
                             <label for="adults">Adults</label>
-                            <input id="adults" type="text" id="adults" name="adults" pattern="[0-9.]+" required>
+                            <form:input path="adults" type="number" min="0" />
                         </div>
                         <div class="create_new_win_li">
                             <label for="Children">Children</label>
-                            <input id="Children" type="text" id="children" name="children" pattern="[0-9.]+" required>
+                            <form:input path="children" type="number" min="0" />
                         </div>
                         <div class="create_new_win_li">
                             <label for="bookingDate">Booking Date</label>
@@ -78,11 +78,11 @@
                     <div class="create_new_win_li2">
                         <div class="create_new_win_li">
                             <label for="tsd">Traveling Start Date</label>
-                            <input id="tsd" type="date" name="travelStartDate">
+                            <form:input id="tsd" path="travelStartDate" type="date" required="required" />
                         </div>
                         <div class="create_new_win_li">
                             <label for="ted">Traveling End Date</label>
-                            <input id="ted" type="date" name="travelEndDate">
+                            <form:input id="ted" path="travelEndDate" type="date" required="required" />
                         </div>
                     </div>
                     <div class="create_new_win_li3">
@@ -108,7 +108,7 @@
                     </div>
                     <div class="create_new_deal_des">
                         <h2>Deal Detailed Description</h2>
-                        <textarea name="" id="" cols="30" rows="5" style="width: 100%;border-radius:5px"></textarea>
+						<form:textarea path="dealDescription" maxlength="1450" cols="30" rows="5" style="width: 100%;border-radius:5px" />
                     </div>
                     <div class="create_new_win_li2">
                         <div class="create_new_win_li">
