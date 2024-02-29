@@ -14,6 +14,8 @@
 <script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
 <script	src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
 <script	src="<c:url value="/resources/core/magicsuggest.js" />"></script>
+
+<link href="resources/core/magicsuggest.css" rel="stylesheet" type="text/css">
 <link href="<c:url value="/resources/core/main.css" />" rel="stylesheet">
 
 	<script src="https://kit.fontawesome.com/6f6addf9b0.js" crossorigin="anonymous"></script>
@@ -130,11 +132,8 @@
                     </div>
                 </div>
                 
-                
-                
                <div class="ans-last-sec" style="text-align:start">
-                        <p class="ans-heading" style="text-align:start">Select destinations
-                            Services</p>
+                        <p class="ans-heading" style="text-align:start">Select Destinations Services</p>
                      <font color="red"><form:errors path="destinationNames" cssClass="error" /></font>
 					<div id="sscontainer" class="sscontainer">
 					<form:hidden path = "destinationNames" color="white"/>
