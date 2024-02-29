@@ -44,112 +44,112 @@
             <div class="ViewClientDetails_wrapper_data">
                 <div class="ViewClientDetails_wrapper_data_line a">
                     <div class="ViewClientDetails_wrapper_dl1">
-                        <label for="" class="lb">Client Name</label>
-                        <p style="color:gray">${CLIENT_OBJ.clientName}</p>
+                        <label for="" class="">Client Name</label>
+                        <p style="color:#023e8a;font-weight:600">${CLIENT_OBJ.clientName}</p>
                     </div>
                     <div class="ViewClientDetails_wrapper_dl1">
-                        <label for="" class="lb">City</label>
-                        <p style="color:gray">${CLIENT_OBJ.cityName}</p>
+                        <label for="" class="">City</label>
+                        <p style="color:#023e8a;font-weight:600">${CLIENT_OBJ.cityName}</p>
                     </div>
                     <div class="ViewClientDetails_wrapper_dl1">
-                        <label for="" class="lb">Country</label>
-                        <p style="color:gray">${CLIENT_OBJ.countryName}</p>
+                        <label for="" class="">Country</label>
+                        <p style="color:#023e8a;font-weight:600">${CLIENT_OBJ.countryName}</p>
                     </div>
                     <div class="ViewClientDetails_wrapper_dl1">
-                        <label for="" class="lb">Email</label>
-                        <p style="color:gray">${CLIENT_OBJ.email}</p>
+                        <label for="" class="">Email</label>
+                        <p style="color:#023e8a;font-weight:600">${CLIENT_OBJ.email}</p>
                     </div>
                 </div>
                 <div class="ViewClientDetails_wrapper_data_line a">
                     <div class="ViewClientDetails_wrapper_dl1_add">
-                        <label for="" class="lb">Client address</label>
-                        <p style="color:gray">${CLIENT_OBJ.address}</p>
+                        <label for="" class="">Client address</label>
+                        <p style="color:#023e8a;font-weight:600">${CLIENT_OBJ.address}</p>
                     </div>
                 </div>
                 <div class="ViewClientDetails_wrapper_data_line a">
                     <div class="ViewClientDetails_wrapper_dl1_M">
-                        <label for="" class="lb">Mobile</label>
-                        <p style="color:gray">${CLIENT_OBJ.mobile}</p>
+                        <label for="" class="">Mobile</label>
+                        <p style="color:#023e8a;font-weight:600">${CLIENT_OBJ.mobile}</p>
                     </div>
                     <div class="ViewClientDetails_wrapper_dl1">
-                        <label for="" class="lb">Phone</label>
-                        <p style="color:gray">${CLIENT_OBJ.phone}</p>
+                        <label for="" class="">Phone</label>
+                        <p style="color:#023e8a;font-weight:600">${CLIENT_OBJ.phone}</p>
                     </div>
                     <div class="ViewClientDetails_wrapper_dl1">
-                        <label for="" class="lb">Active</label>
-                        <p style="color:gray">${CLIENT_OBJ.active}</p>
+                        <label for="" class="">Active</label>
+                        <p style="color:#023e8a;font-weight:600">${CLIENT_OBJ.active}</p>
                     </div>
                 </div>
                 <div class="ViewClientDetails_wrapper_data_line a">
                     <div class="ViewClientDetails_wrapper_dl1">
-                        <label for="" class="lb">Company Details</label>
-                        <p style="color:gray">${CLIENT_OBJ.companyDetails}</p>
+                        <label for="" class="">Company Details</label>
+                        <p style="color:#023e8a;font-weight:600">${CLIENT_OBJ.companyDetails}</p>
                     </div>
                     <div class="ViewClientDetails_wrapper_dl1">
-                        <label for="" class="lb">Referred by</label>
-                        <p style="color:gray">${CLIENT_OBJ.referredBy}</p>
+                        <label for="" class="">Referred by</label>
+                        <p style="color:#023e8a;font-weight:600">${CLIENT_OBJ.referredBy}</p>
                     </div>
                     <div class="ViewClientDetails_wrapper_dl1">
-                        <label for="" class="lb">GST Details</label>
-                        <p style="color:gray">${CLIENT_OBJ.gstDetails}</p>
+                        <label for="" class="">GST Details</label>
+                        <p style="color:#023e8a;font-weight:600">${CLIENT_OBJ.gstDetails}</p>
                     </div>
                     <div class="ViewClientDetails_wrapper_dl1">
-                        <label for="" class="lb">Bank Details</label>
-                        <p style="color:gray">${CLIENT_OBJ.bankDetails}</p>
+                        <label for="" class="">Bank Details</label>
+                        <p style="color:#023e8a;font-weight:600">${CLIENT_OBJ.bankDetails}</p>
                     </div>
                 </div>
 
                 <div class="ViewClientDetails_wrapper_data_line a">
                     <div class="ViewClientDetails_wrapper_dl1">
-                        <label for="" class="lb">Passport Number</label>
-                        <p style="color:gray">${CLIENT_OBJ.passportNumber}</p>
+                        <label for="" class="">Passport Number</label>
+                        <p style="color:#023e8a;font-weight:600">${CLIENT_OBJ.passportNumber}</p>
                     </div>
                     <div class="ViewClientDetails_wrapper_dl1">
-                        <label for="" class="lb">Passport Expiry</label>
-                        <p style="color:gray">${CLIENT_OBJ.passportExpiry}</p>
+                        <label for="" class="">Passport Expiry</label>
+                        <p style="color:#023e8a;font-weight:600">${CLIENT_OBJ.passportExpiry}</p>
                     </div>
                     <div class="ViewClientDetails_wrapper_dl1">
-                        <label for="" class="lb">DOB</label>
-                        <p style="color:gray">${CLIENT_OBJ.birthDate}</p>
+                        <label for="" class="">DOB</label>
+                        <p style="color:#023e8a;font-weight:600">${CLIENT_OBJ.birthDate}</p>
                     </div>
                     <div class="ViewClientDetails_wrapper_dl1">
-                        <label for="" class="lb">DOA</label>
-                        <p style="color:gray">${CLIENT_OBJ.anniversaryDate}</p>
+                        <label for="" class="">DOA</label>
+                        <p style="color:#023e8a;font-weight:600">${CLIENT_OBJ.anniversaryDate}</p>
                     </div>
                 </div>
                 <div class="ViewClientDetails_wrapper_data_line a">
                     <div class="ViewClientDetails_wrapper_dl1_rem">
-                        <label for="" class="lb">Remarks</label>
-                        <p style="color:gray">${CLIENT_OBJ.remarks}</p>
+                        <label for="" class="">Remarks</label>
+                        <p style="color:#023e8a;font-weight:600">${CLIENT_OBJ.remarks}</p>
                     </div>
                 </div>
                 <h2 style="margin: 10px 0;color:#32cd32 ">Personal Prefrences</h2>
                 <div class="ViewClientDetails_wrapper_data_line a">
                     <div class="ViewClientDetails_wrapper_dl1">
-                        <label for="" class="lb">Hotal preferences</label>
-                        <p style="color:gray">${CLIENT_OBJ.hotelPref} Star</p>
+                        <label for="" class="" >Hotal preferences</label>
+                        <p style="color:#023e8a;font-weight:600">${CLIENT_OBJ.hotelPref} Star</p>
                     </div>
                     <div class="ViewClientDetails_wrapper_dl1">
-                        <label for="" class="lb">Cost Savy</label>
-                        <p style="color:gray">${CLIENT_OBJ.costSavvy} (Scale 1 to 10)</p>
+                        <label for="" class="">Cost Savy</label>
+                        <p style="color:#023e8a;font-weight:600">${CLIENT_OBJ.costSavvy} (Scale 1 to 10)</p>
                     </div>
                     <div class="ViewClientDetails_wrapper_dl1">
-                        <label for="" class="lb">Service Savy</label>
-                        <p style="color:gray">${CLIENT_OBJ.serviceSavvy} (Scale 1 to 5)</p>
+                        <label for="" class="">Service Savy</label>
+                        <p style="color:#023e8a;font-weight:600">${CLIENT_OBJ.serviceSavvy} (Scale 1 to 5)</p>
                     </div>
                     <div class="ViewClientDetails_wrapper_dl1">
-                        <label for="" class="lb">Food preferences</label>
-                        <p style="color:gray">${CLIENT_OBJ.foodPref}</p>
+                        <label for="" class="">Food preferences</label>
+                        <p style="color:#023e8a;font-weight:600">${CLIENT_OBJ.foodPref}</p>
                     </div>
                 </div>
                 <div class="ViewClientDetails_wrapper_data_line a">
                     <div class="ViewClientDetails_wrapper_dl1">
-                        <label for="" class="lb">Aggressivenness</label>
-                        <p style="color:gray" >${CLIENT_OBJ.aggressiveness} (Scale 1 to 5)</p>
+                        <label for="" class="">Aggressivenness</label>
+                        <p style="color:#023e8a;font-weight:600" >${CLIENT_OBJ.aggressiveness} (Scale 1 to 5)</p>
                     </div>
                     <div class="ViewClientDetails_wrapper_dl1">
-                        <label for="" class="lb">Payment Record</label>
-                        <p style="color:gray">${CLIENT_OBJ.paymentRating}
+                        <label for="" class="">Payment Record</label>
+                        <p style="color:#023e8a;font-weight:600">${CLIENT_OBJ.paymentRating}
                         (Scale 1 to 5) </p>
                     </div>
                      <div class="ViewClientDetails_wrapper_dl1">

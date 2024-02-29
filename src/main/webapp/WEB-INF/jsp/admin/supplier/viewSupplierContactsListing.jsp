@@ -108,28 +108,28 @@
                     <div class="vscl_wrapper_data_line_1 a" style="margin-bottom:10px;">
                         <div class="vscl_wrapper_data_l1">
                             <label for="" style="color:black">Supplier Name</label>
-                            <p style="color:gray">${SUPPLIER_OBJ.supplierName}</p>
+                            <p style="font-weight:600;color:#023e8a">${SUPPLIER_OBJ.supplierName}</p>
                         </div>
                         <div class="vscl_wrapper_data_l1">
                             <label for=""  style="color:black">Email</label>
-                            <p style="color:gray">${SUPPLIER_OBJ.email}</p>
+                            <p style="font-weight:600;color:#023e8a">${SUPPLIER_OBJ.email}</p>
                         </div>
                         <div class="vscl_wrapper_data_l1" style="width:200px">
                             <label for=""  style="color:black">Mobile</label>
-                            <p style="color:gray">${SUPPLIER_OBJ.mobile}</p>
+                            <p style="font-weight:600;color:#023e8a">${SUPPLIER_OBJ.mobile}</p>
                         </div>
                         <div class="vscl_wrapper_data_l1">
                             <label for=""  style="color:black">Destinations supported</label> <br>
                             <c:forEach items="${SUPPLIER_OBJ.destinations}" var="destination">
-                               <span style="color:gray"> ${destination.cityName}, </span>
+                               <span style="font-weight:600;color:#023e8a"> ${destination.cityName}, </span>
                             </c:forEach>
                         </div>
                     </div>
                     <div class="vscl_wrapper_data_line_2">
-                        <h1 style="color:black">Services offered</h1>
+                        <h1 style="color:black;font-weight:600">Services offered</h1>
                         <div class="vscl_wrapper_data_l2">
                             <div style="display:flex;justify-content:space-between;margin:10px 0">
-                                <div><label class="container">
+                                <div><label class="container" style="font-weight:600;color:#023e8a">
                                         <c:if test="${SUPPLIER_OBJ.flight eq true}">
                                             <input type="checkbox" checked disabled style="width:18px;height:18px" class="ch_c"/>
                                         </c:if>
@@ -137,7 +137,7 @@
                                             <input type="checkbox" disabled style="width:18px;height:18px" class="ch_c"/>
                                         </c:if>
                                         <span class="checkmark"></span>
-                                    </label>Flight
+                                    </label> <span style="font-weight:600;color:black">Flight</span> 
                                 </div>
                                 <div><label class="container"
                                         style="display: inline;margin: 0 auto;margin-bottom: 20px;">
@@ -148,7 +148,7 @@
                                             <input type="checkbox" disabled style="width:18px;height:18px" class="ch_c"/>
                                         </c:if>
                                         <span class="checkmark"></span>
-                                    </label>Hotel
+                                    </label> <span style="font-weight:600;color:black">Hotel</span>
                                 </div>
                                 <div>
                                     <label class="container"
@@ -160,7 +160,7 @@
                                             <input type="checkbox" disabled style="width:18px;height:18px" class="ch_c"/>
                                         </c:if>
                                         <span class="checkmark"></span>
-                                    </label>Transfers
+                                    </label><span style="font-weight:600;color:black">Transfers</span>
                                 </div>
                                 <div>
                                     <label class="container"
@@ -172,7 +172,7 @@
                                             <input type="checkbox" disabled style="width:18px;height:18px" class="ch_c"/>
                                         </c:if>
                                         <span class="checkmark"></span>
-                                    </label>Sight Seeing
+                                    </label> <span style="font-weight:600;color:black">Sight Seeing</span>
                                 </div>
                                 <div>
                                     <label class="container"
@@ -184,7 +184,7 @@
                                             <input type="checkbox" disabled style="width:18px;height:18px" class="ch_c"/>
                                         </c:if>
                                         <span class="checkmark"></span>
-                                    </label>Visa
+                                    </label> <span style="font-weight:600;color:black">Visa</span>
                                 </div>
                                 <div>
                                     <label class="container"
@@ -196,7 +196,7 @@
                                             <input type="checkbox" disabled style="width:18px;height:18px" class="ch_c"/>
                                         </c:if>
                                         <span class="checkmark"></span>
-                                    </label>Insurance
+                                    </label><span style="font-weight:600;color:black">Insurance</span>
                                 </div>
                                 <div>
                                     <label class="container"
@@ -204,7 +204,7 @@
                                         <c:if test="${SUPPLIER_OBJ.landPackage eq true}">
 					                     <input class="ch_c" type="checkbox" checked disabled style="width:18px;height:18px"/>
 				                         </c:if>
-                                        <span class="checkmark"></span></label>Package
+                                        <span class="checkmark"></span></label> <span style="font-weight:600;color:black">Package</span>
                                 </div>
                         </div>
                     </div>

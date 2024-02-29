@@ -41,11 +41,11 @@
                 <div class="Admin_Edit_HotelChain_wrapper_data">
                     <div class="Admin_Edit_HotelChain_wrapper_li">
                         <div class="Admin_Edit_HotelChain_wrapper_dl1">
-                            <label for="">Hotel Chain Name</label>
+                            <label for="" style="font-weight:600;color:black">Hotel Chain Name</label>
                             <input type="text" name="hotelChainName" value="${HotelChainObj.hotelChainName}" />
                         </div>
                         <div class="Admin_Edit_HotelChain_wrapper_dl1">
-                            <label for="">Active</label>
+                            <label for="" style="font-weight:600;color:black">Active</label>
                             <select id="active" name="active" style="width: 90%" required>
                                 <c:if test="${HotelChainObj.active eq true }">
                                     <option class="service-small" value="true" selected>Active</option>
@@ -60,7 +60,7 @@
                     </div>
                     <div class="Admin_Edit_HotelChain_wrapper_li2" style="width:100%">
                         <div class="Admin_Edit_HotelChain_wrapper_dl1" style="width:100%">
-                            <label for="">Remarks</label> <br>
+                            <label for="" style="font-weight:600;color:black">Remarks</label> <br>
                             <textarea style="width:100%" rows="5" name="remarks"
                                 maxlength="250">${HotelChainObj.remarks}</textarea>
                         </div>

@@ -52,21 +52,21 @@
                                     <div class="Admin_Edit_HotelChain_wrapper_li a">
                                         <div class="Admin_Edit_HotelChain_wrapper_dl1">
                                             <label for="" class="lb">Hotel Chain Id</label>
-                                            <p style="color:gray">${HotelChainObj.hotelChainId}</p>
+                                            <p style="font-weight:600;color:#023e8a">${HotelChainObj.hotelChainId}</p>
                                         </div>
                                         <div class="Admin_Edit_HotelChain_wrapper_dl1">
                                             <label for="" class="lb">Hotal Chain Name</label>
-                                            <p style="color:gray">${HotelChainObj.hotelChainName}</p>
+                                            <p style="font-weight:600;color:#023e8a">${HotelChainObj.hotelChainName}</p>
                                         </div>
                                         <div class="Admin_Edit_HotelChain_wrapper_dl1">
                                             <label for="" class="lb">Active</label>
-                                            <p style="color:gray">${HotelChainObj.active eq true }</p>
+                                            <p style="font-weight:600;color:#023e8a">${HotelChainObj.active eq true }</p>
                                         </div>
                                     </div>
                                     <div class="Admin_Edit_HotelChain_wrapper_li2 a">
                                         <div class="Admin_Edit_HotelChain_wrapper_dl1">
                                             <label for="" class="lb">Remarks</label> <br>
-                                            <p style="color:gray">${HotelChainObj.remarks}</p>
+                                            <p style="font-weight:600;color:#023e8a">${HotelChainObj.remarks}</p>
                                         </div>
                                     </div>
                                     <div class="due_today_task_data_btnss" style="margin-top:20px">

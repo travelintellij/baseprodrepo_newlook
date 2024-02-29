@@ -43,26 +43,26 @@
                                         class="fa-solid fa-triangle-exclamation fa-lg"></i></h1>
                                 <div class="Admin_Delete_Confirmation_RoomCategory_wr_dl ">
                                     <div class="Admin_Delete_Confirmation_RoomCategory_wr_dl1">
-                                        <label for="" class="lb">Room Category Id</label>
-                                        <p style="color:gray">${ROOM_CATEGORY_OBJ.roomCategoryId}</p>
+                                        <label for="" class="">Room Category Id</label>
+                                        <p style="font-weight:600;color:#023e8a">${ROOM_CATEGORY_OBJ.roomCategoryId}</p>
                                     </div>
                                     <div class="Admin_Delete_Confirmation_RoomCategory_wr_dl1">
-                                        <label for="" class="lb">Room Category Name</label>
-                                        <p style="color:gray">${ROOM_CATEGORY_OBJ.roomCategoryName}</p>
+                                        <label for="" class="">Room Category Name</label>
+                                        <p style="font-weight:600;color:#023e8a">${ROOM_CATEGORY_OBJ.roomCategoryName}</p>
                                     </div>
                                     <div class="Admin_Delete_Confirmation_RoomCategory_wr_dl1">
-                                        <label for="" class="lb">Hotel Name</label>
-                                        <p style="color:gray">${ROOM_CATEGORY_OBJ.hotelName}</p>
+                                        <label for="" class="">Hotel Name</label>
+                                        <p style="font-weight:600;color:#023e8a">${ROOM_CATEGORY_OBJ.hotelName}</p>
                                     </div>
                                     <div class="Admin_Delete_Confirmation_RoomCategory_wr_dl1">
-                                        <label for="" class="lb">Active</label>
-                                        <p style="color:gray">${ROOM_CATEGORY_OBJ.active eq true }</p>
+                                        <label for="" class="">Active</label>
+                                        <p style="font-weight:600;color:#023e8a">${ROOM_CATEGORY_OBJ.active eq true }</p>
                                     </div>
                                 </div>
                                 <div class="Admin_Delete_Confirmation_RoomCategory_wr_dl ">
                                     <div class="Admin_Delete_Confirmation_RoomCategory_wr_dl1" style="width:100%">
-                                        <label for="" class="lb">Remarks</label>
-                                        <p style="color:gray">${ROOM_CATEGORY_OBJ.remarks}</p>
+                                        <label for="" class="">Remarks</label>
+                                        <p style="font-weight:600;color:#023e8a">${ROOM_CATEGORY_OBJ.remarks}</p>
                                     </div>
                                 </div>
                                 <div class="due_today_task_data_btnss">

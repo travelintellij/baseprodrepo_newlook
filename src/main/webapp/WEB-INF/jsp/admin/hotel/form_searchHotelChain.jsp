@@ -44,23 +44,23 @@
             <form:form modelAttribute="SEARCH_HOTEL_CHAIN" action="search_search_hotel_chain">
                 <div class="mhc-in-l1">
                     <div class="mhc-li">
-                        <label for="hotelChainId">Hotel Chain Id</label> <br>
+                        <label for="hotelChainId" style="font-weight:600;color:black">Hotel Chain Id</label> <br>
                         <input type="number" class="contact" id="hotelChainId" name="hotelChainId"
                             value="${SEARCH_HOTEL_CHAIN.hotelChainId}" />
                     </div>
                     <div class="mhc-li">
-                        <label for="hotelChainName">Hotel Chain Name</label> <br>
+                        <label for="hotelChainName" style="font-weight:600;color:black">Hotel Chain Name</label> <br>
                         <input type="text" class="contact" id="hotelChainName" name="hotelChainName" size="35"
                             placeholder="Hotel Chain Name" value="${SEARCH_HOTEL_CHAIN.hotelChainName}" />
                     </div>
                     <div class="mhc-li">
-                        <label for="hoatl_active">Active</label> <br>
+                        <label for="hoatl_active" style="font-weight:600;color:black">Active</label> <br>
                         <select id="active" name="active" style="width:90%;">
                             <c:if test="${SEARCH_HOTEL_CHAIN.active eq true }">
-                                <option class="service-small" value="true" selected style="background:black;color:black">
+                                <option class="service-small" value="true" selected style="background:white;color:black">
                                     <c:out value="True"/>
                                 </option>
-                                <option class="service-small" value="false" style="background:black;color:black">
+                                <option class="service-small" value="false" style="background:white;color:black">
                                     <c:out value="False" />
                                 </option>
                             </c:if>

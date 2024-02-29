@@ -46,19 +46,19 @@
                                         <div class="form_searchHotel_Result_wrapper_data">
                                             <div class="form_searchHotel_Result_wrapper_data_lin">
                                                 <div class="form_searchHotel_Result_wrapper_dl1">
-                                                    <label for="">Locality</label>
+                                                    <label for=""  style="font-weight:600;color:black">Locality</label>
                                                     <input type="text" name="locality" id="locality"
                                                         placeholder="locality like"
                                                         value="${hotel_search_result.locality}" />
                                                 </div>
                                                 <div class="form_searchHotel_Result_wrapper_dl1">
-                                                    <label for="">Hotal Name</label>
+                                                    <label for=""  style="font-weight:600;color:black">Hotal Name</label>
                                                     <input type="text" name="hotelName" id="hotelName"
                                                         placeholder="Hotel Name"
                                                         value="${hotel_search_result.hotelName}" />
                                                 </div>
                                                 <div class="form_searchHotel_Result_wrapper_dl1">
-                                                    <label for="">Hotal Category</label>
+                                                    <label for=""  style="font-weight:600;color:black">Hotal Category</label>
                                                     <select name="starCategory" style="width:90%">
                                                         <option value="0" class="service-small" selected>Hotel Star
                                                             Category</option>
@@ -75,7 +75,7 @@
                                                     </select>
                                                 </div>
                                                 <div class="form_searchHotel_Result_wrapper_dl1">
-                                                    <label for="">Hotal Rating</label>
+                                                    <label for=""  style="font-weight:600;color:black">Hotal Rating</label>
                                                     <select name="udnServiceRating" style="width:90%">
                                                         <option value="0" class="service-small" selected>Select Hotel
                                                             Rating</option>
@@ -93,7 +93,7 @@
                                                 </div>
                                             </div>
                                             <div class="due_today_task_data_btnss" style="margin:10px 0">
-                                                <input style="background-color: #32cd32  ;" type="submit"
+                                                <input style="background-color: #32cd32;color:white;" type="submit"
                                                     value="Apply Filter" />
                                                 <a href="view_search_hotel_form"><input type="button"
                                                         value="Search Again" /></a>

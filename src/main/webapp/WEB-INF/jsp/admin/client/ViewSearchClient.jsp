@@ -62,22 +62,22 @@
                 <form:form modelAttribute="SEARCH_CLIENTS" action="search_search_filtered_clients">
                 <div class="sc-first-li">
                     <div class="sc-first-li-d1">
-                        <label for="clientId">Client Id</label>
+                        <label for="clientId" style="font-weight:600">Client Id</label>
                         <input type="number" class="contact" id="clientId" name="clientId" placeholder="clientId"
                             min="0" value="${SEARCH_CLIENTS.clientId}" />
                     </div>
                     <div class="sc-first-li-d1">
-                        <label for="">Client Name</label>
+                        <label for=""  style="font-weight:600">Client Name</label>
                         <input type="text" class="contact" id="clientName" name="clientName" size="35" placeholder="clientName" value="${SEARCH_CLIENTS.clientName}" />
                     </div>
                     <div class="sc-first-li-d1">
-                        <label for="">City Name</label>
+                        <label for=""  style="font-weight:600">City Name</label>
                         <input type="text" class="contact" id="cityName" name="cityName" size="35"
                             placeholder="City / Country" value="${SEARCH_CLIENTS.cityName}" />
                         <input type="hidden" name="cityId" value="${SEARCH_CLIENTS.cityId}" />
                     </div>
                     <div class="sc-first-li-d1">
-                        <label for="">Contact Number</label>
+                        <label for=""  style="font-weight:600">Contact Number</label>
                         <input type="number" class="contact" id="contactNumber" name="contactNumber" min="0" size="20"
                             placeholder="Contact Number" value="${SEARCH_CLIENTS.contactNumber}" />
                     </div>
@@ -85,12 +85,12 @@
                 <div class="search-client-form">
                     <div class="sc-first-li cli-em-sec">
                         <div class="sc-first-li-d1 mp">
-                            <label for="">Email </label> <br>
+                            <label for=""  style="font-weight:600">Email </label> <br>
                             <input type="text" class="contact" id="email" name="email" placeholder="email"
                                 value="${SEARCH_CLIENTS.email}" />
                         </div>
                         <div class="sc-first-li-d1 mp" >
-                            <label for="">Active</label> <br>
+                            <label for=""  style="font-weight:600">Active</label> <br>
                             <select id="active" name="active" class="anc-active" >
                                 <c:if test="${active eq true }">
                                     <option value="true" selected>

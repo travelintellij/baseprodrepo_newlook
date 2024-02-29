@@ -45,15 +45,15 @@
                 <div class="form_supplier_request_quotation_emailer_wrapper_dline">
                     <div class="form_supplier_request_quotation_emailer_wrapper_dl1">
                         <label for="" class="lb">Lead Reference</label>
-                        <p style="color:gray">${EMAIL_QUOTE_OBJ.leadReferenceNumber }</p>
+                        <p style="font-weight:600;color:#023e8a">${EMAIL_QUOTE_OBJ.leadReferenceNumber }</p>
                     </div>
                     <div class="form_supplier_request_quotation_emailer_wrapper_dl1">
                         <label for="" class="lb">Client Name</label>
-                        <p style="color:gray">${LEAD_OBJ.contactName }</p>
+                        <p style="font-weight:600;color:#023e8a">${LEAD_OBJ.contactName }</p>
                     </div>
                     <div class="form_supplier_request_quotation_emailer_wrapper_dl1">
                         <label for="" class="lb">Supplier Name</label>
-                        <p style="color:gray">${EMAIL_QUOTE_OBJ.supplierName }</p>
+                        <p style="font-weight:600;color:#023e8a">${EMAIL_QUOTE_OBJ.supplierName }</p>
                     </div>
                 </div>
             </div>

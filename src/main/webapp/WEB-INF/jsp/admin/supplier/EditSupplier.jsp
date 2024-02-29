@@ -67,7 +67,7 @@
                 <form:hidden path="supplierId" />
                 <div class="ans-fir-li">
                     <div class="ansd1">
-                        <label for="supp-name">Supplier Name</label><br>
+                        <label for="supp-name" style="font-weight:600">Supplier Name</label><br>
                         <form:input path="supplierName" name="supplierName" required="required" />
                         <font color="red">
                             <form:errors path="supplierName" cssClass="error" />
@@ -76,7 +76,7 @@
 
 
                     <div class="ansd1">
-                        <label for="City">City</label><br>
+                        <label for="City"  style="font-weight:600">City</label><br>
                         <form:input path="cityName" name="cityName" />
                         <form:hidden path="cityId" /><br>
                         <font color="red">
@@ -89,7 +89,7 @@
 
 
                     <div class="ansd1">
-                        <label for="con">Country</label><br>
+                        <label for="con"  style="font-weight:600">Country</label><br>
                         <form:input path="countryName" style="width:90%" /><br>
                         <form:hidden path="countryId" />
                         <font color="red">
@@ -98,7 +98,7 @@
                     </div>
 
                     <div class="ansd1">
-                        <label for="mob">Mobile</label><br>
+                        <label for="mob"  style="font-weight:600">Mobile</label><br>
                         <form:input type="number" path="mobile" />
                         <font color="red">
                             <form:errors path="mobile" cssClass="error" />
@@ -110,7 +110,7 @@
                 </div>
                 <div class="ans-sc-li">
                     <div class="ansd1">
-                        <label for="Referred-by">Referred By</label><br>
+                        <label for="Referred-by"  style="font-weight:600">Referred By</label><br>
                         <form:input path="referredBy" name="referredBy" />
                         <font color="red">
                             <form:errors path="referredBy" cssClass="error" />
@@ -118,7 +118,7 @@
                     </div>
 
                     <div class="ansd1">
-                        <label for="mail">Email</label><br>
+                        <label for="mail"  style="font-weight:600">Email</label><br>
                         <form:input type="email" path="email" />
                         <font color="red">
                             <form:errors path="email" cssClass="error" />
@@ -126,7 +126,7 @@
                     </div>
 
                     <div class="ansd1">
-                        <label for="Phone">Phone</label><br>
+                        <label for="Phone"  style="font-weight:600">Phone</label><br>
                         <form:input type="number" path="phone" />
                         <font color="red">
                             <form:errors path="phone" cssClass="error" />
@@ -134,7 +134,7 @@
                     </div>
                      <div class="ans-thir-li">
                     <div class="ansd1" >
-                        <label for="GST-Details">GST Details</label><br>
+                        <label for="GST-Details"  style="font-weight:600">GST Details</label><br>
                         <form:input path="gstDetails" name="gstDetails" style="width:90%"
                             class="contact" id="GST-Details" />
                         <font color="red">
@@ -146,7 +146,7 @@
                 </div>
                 
                 <div class="ansd1-rem ans-comDel" style="width:1210px">
-                        <label for="cd">Company Details</label><br>
+                        <label for="cd"  style="font-weight:600">Company Details</label><br>
                         <form:textarea path="companyDetails" rows="1" cols="100" maxlength="240" />
                         <font color="red">
                             <form:errors path="companyDetails" cssClass="error" />
@@ -155,7 +155,7 @@
                 
                 
                 <div class="ans-last-sec">
-                        <p class="ans-heading" style="text-align:start">Select destinations
+                        <p class="ans-heading" style="text-align:start;font-weight:600">Select destinations
                             Services</p>
                      <font color="red"><form:errors path="destinationNames" cssClass="error" /></font>
 					<div id="sscontainer" class="sscontainer">
@@ -167,7 +167,7 @@
                 
    
                 <div class="ansd1-rem" style="width:1210px">
-                        <label for="Address">Address</label><br>
+                        <label for="Address"  style="font-weight:600">Address</label><br>
                         <form:textarea path="address" rows="3 " cols="10" maxlength="240" />
                         <font color="red">
                             <form:errors path="address" cssClass="error" />
@@ -177,14 +177,14 @@
                 
                 <div class="ans-for-li">
                     <div class="ansd1-rem">
-                        <label for="cd">Bank Details</label><br>
+                        <label for="cd"  style="font-weight:600">Bank Details</label><br>
                         <form:textarea path="bankDetails" rows="5" cols="50" maxlength="240" />
                         <font color="red">
                             <form:errors path="bankDetails" cssClass="error" />
                         </font>
                     </div>
                     <div class="ansd1-rem">
-                        <label for="Address">Remarks</label><br>
+                        <label for="Address"  style="font-weight:600">Remarks</label><br>
                         <form:textarea path="remarks" rows="5" cols="50" maxlength="240" />
                         <font color="red">
                             <form:errors path="remarks" cssClass="error" />
@@ -195,47 +195,47 @@
                     <div class="ans-left-sec">
                         <form:errors path="minOneserviceError" cssClass="error" />
                         </font>
-                        <h3 style="color: blue;font-weight: bold;margin-bottom: 5px;margin-top:10px">
+                        <h3 style="color: blue;font-weight: 600;margin-bottom: 5px;margin-top:10px">
                             Services Offered</h3>
                         <div class="inside-services">
                             <div class="ansd1-ser" >
                                 <form:checkbox path="flight" id="flight"/>
-                                <label for="flight" class="flight-lab f">Flight</label>
+                                <label for="flight" class="flight-lab f"  style="font-weight:600">Flight</label>
 
                             </div>
                             <div class="ansd1-ser">
                                 <form:checkbox path="hotel" id="Hotal" />
-                                <label for="Hotal" class="h">Hotal</label>
+                                <label for="Hotal" class="h"  style="font-weight:600">Hotel</label>
 
                             </div>
                             <div class="ansd1-ser">
                                 <form:checkbox path="transfers" id="Transfers" />
-                                <label for="Transfers" class="t">Transfers</label>
+                                <label for="Transfers" class="t"  style="font-weight:600">Transfers</label>
 
                             </div>
                             <div class="ansd1-ser">
                                 <form:checkbox path="sightseeing" id="Signtseeing" />
-                                <label for="Signtseeing" class="s">Signtseeing</label>
+                                <label for="Signtseeing" class="s"  style="font-weight:600">Signtseeing</label>
 
                             </div>
                             <div class="ansd1-ser">
                                 <form:checkbox path="visa" id="Visa" />
-                                <label for="Visa" class="v">Visa</label>
+                                <label for="Visa" class="v"  style="font-weight:600">Visa</label>
 
                             </div>
                             <div class="ansd1-ser">
                                 <form:checkbox path="insurance" id="Insurence" />
-                                <label for="Insurence" class="i">Insurence</label>
+                                <label for="Insurence" class="i"  style="font-weight:600">Insurance</label>
 
                             </div>
                             <div class="ansd1-ser">
                                 <form:checkbox path="landPackage" id="Package" />
-                                <label for="Package" class="p">Package</label>
+                                <label for="Package" class="p"  style="font-weight:600">Package</label>
 
                             </div>
                             <div class="ansd1-ser">
                                 <form:checkbox path="others" id="Others" />
-                                <label for="Others" class="o">Others</label>
+                                <label for="Others" class="o"  style="font-weight:600">Others</label>
 
                             </div>
 
@@ -243,7 +243,7 @@
                         <div class="ans-last-sec" style="margin: 10px 0;">
                             <h3 class="ans-heading" style="color: #FFBA08;font-weight: normal;margin-bottom: 5px;"></h3>
                             <div class="ans-cons">
-                                <label for="" style="margin-right:5px">Consolidator</label>
+                                <label for="" style="margin-right:5px;font-weight:600">Consolidator</label>
                                 <form:checkbox path="consolidator" style="width: 18px;height: 18px;margin-right:8px;" />
                                 <span title="please mark consolidator if supplier is handling all above 
                         destination as consolidator"><i class="fa-solid fa-question" style="color:blue;"></i></span>
@@ -261,14 +261,14 @@
                                 Supplier Preferences</h3>
                             <div class="supp-sec">
                                 <div class="supp-pre-sec" style="margin-right: 30px;">
-                                    <label for="">Preferred Supplier</label>
+                                    <label for=""  style="font-weight:600">Preferred Supplier</label>
                                     <form:select path="supplierRating">
                                         <form:options items="${SUPPLIER_RATING_MAP}" />
                                     </form:select>
                                     <p style="color: blue; margin-left: -70px;">(Scale 1 to 5)</p>
                                 </div>
                                 <div class="supp-pre-sec">
-                                    <label for="">Negotiates</label>
+                                    <label for=""  style="font-weight:600">Negotiates</label>
                                     <form:select path="negotiates">
                                         <form:options items="${SUPPLIER_NEGOTIATES}" />
                                     </form:select>

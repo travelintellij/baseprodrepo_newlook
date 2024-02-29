@@ -62,7 +62,7 @@
           
                 <div class="anc-fir-li">
                     <div class="anc-cn anc-com">
-                        <label for="cn">Client Name</label>
+                        <label for="cn" style="font-weight:600">Client Name</label>
                         <input class="contact" type="text" name="clientName" value="${CLIENT_OBJ.clientName}" required
                             id="cn" />
                         <font color="red">
@@ -70,20 +70,20 @@
                         </font>
                     </div>
                      <div class="anc-cn anc-com">
-                        <label for="country">Country</label><br>
+                        <label for="country" style="font-weight:600">Country</label><br>
                         <input type="text" name="countryName" id="countryName" size="35"
                             value="${CLIENT_OBJ.countryName}" id="country" />
                         <input type="hidden" name="countryId" value="${CLIENT_OBJ.countryId}" />
                     </div>
                    
                     <div class="anc-city anc-com">
-                        <label for="cityName">City</label>
+                        <label for="cityName" style="font-weight:600">City</label>
                         <input type="text" name="cityName" id="cityName" size="35" value="${CLIENT_OBJ.cityName}" />
                         <input type="hidden" name="cityId" value="${CLIENT_OBJ.cityId}" />
                     </div>
                     
                       <div class="anc-rb anc-com">
-                        <label for="rb">Refered by</label>
+                        <label for="rb" style="font-weight:600">Refered by</label>
                         <input class="contact" type="text" name="referredBy" value="${CLIENT_OBJ.referredBy}" id="rb" />
                         <font color="red">
                             <form:errors path="referredBy" cssClass="error" />
@@ -93,7 +93,7 @@
                 </div>
                 <div class="anc-sec-li">
                    <div class="anc-phone anc-com">
-                        <label for="phone">Phone</label><br>
+                        <label for="phone" style="font-weight:600">Phone</label><br>
                         <input class="contact" type="number" name="phone" style="height:30px;" step="1"
                             value="${CLIENT_OBJ.phone}" id="phone" />
                         <font color="red">
@@ -101,7 +101,7 @@
                         </font>
                     </div>
                     <div class="anc-mail anc-com">
-                        <label for="email">Email</label><br>
+                        <label for="email" style="font-weight:600">Email</label><br>
                         <input class="contact" type="text" name="email" value="${CLIENT_OBJ.email}" id="email" />
                         <font color="red">
                             <form:errors path="email" cssClass="error" />
@@ -109,7 +109,7 @@
                     </div>
                    
                     <div class="anc-mobile anc-com">
-                        <label for="mobile">Mobile</label><br>
+                        <label for="mobile" style="font-weight:600">Mobile</label><br>
                         <input class="contact" type="number" name="mobile" style="height:30px;" step="1"
                             value="${CLIENT_OBJ.mobile}" id="mobile" />
                         <font color="red">
@@ -119,27 +119,27 @@
                 </div>
                 <div class="anc-third-li">
                     <div class="anc-passport anc-com">
-                        <label for="Passport">Passport Number</label><br>
+                        <label for="Passport" style="font-weight:600">Passport Number</label><br>
                         <input class="contact" type="text" name="passportNumber" value="${CLIENT_OBJ.passportNumber}"
                             id="Passport" />
                     </div>
                     <div class="anc-passex anc-com">
-                        <label for="passportexpiry">Passport Expiry</label><br>
+                        <label for="passportexpiry" style="font-weight:600">Passport Expiry</label><br>
                         <input type="date" name="passportExpiry" value="${CLIENT_OBJ.passportExpiry}"
                             id="passportexpiry" />
                     </div>
                     <div class="anc-DOB anc-com">
-                        <label for="DOB">DOB</label><br>
+                        <label for="DOB" style="font-weight:600">DOB</label><br>
                         <input type="date" name="birthDate" value="${CLIENT_OBJ.birthDate}" id="DOB" />
                     </div>
                     <div class="anc-DOA anc-com">
-                        <label for="DOA">DOA</label><br>
+                        <label for="DOA" style="font-weight:600">DOA</label><br>
                         <input type="date" name="anniversaryDate" value="${CLIENT_OBJ.anniversaryDate}" id="DOA" />
                     </div>
                 </div>
                 <div class="anc-forth-li">
                     <div class="anc-con-del anc-com-ta">
-                        <label for="company-des">Company Details</label><br>
+                        <label for="company-des" style="font-weight:600">Company Details</label><br>
                         <textarea rows="1" cols="5" name="companyDetails"
                             maxlength="250">${CLIENT_OBJ.companyDetails}</textarea>
                         <font color="red">
@@ -147,7 +147,7 @@
                         </font>
                     </div>
                      <div class="anc-gst anc-com">
-                        <label for="gst">GST Details</label>
+                        <label for="gst" style="font-weight:600">GST Details</label>
                         <input class="contact" type="text" name="gstDetails" value="${CLIENT_OBJ.gstDetails}"
                             id="gst" />
                         <font color="red">
@@ -155,7 +155,7 @@
                         </font>
                     </div>
                     <div class="anc-bank-des anc-com-ta">
-                        <label for="bank-des">Bank Details</label><br>
+                        <label for="bank-des" style="font-weight:600">Bank Details</label><br>
                         <textarea rows="2" cols="50" name="bankDetails"
                             maxlength="250">${CLIENT_OBJ.bankDetails}</textarea>
                         <font color="red">
@@ -165,14 +165,14 @@
                 </div>
                 <div class="anc-fif-li">
                     <div class="anc-con-ca anc-com-ta">
-                        <label for="cli-add">Client Address</label><br>
+                        <label for="cli-add" style="font-weight:600">Client Address</label><br>
                         <textarea rows="2" cols="50" name="address" maxlength="250">${CLIENT_OBJ.address}</textarea>
                         <font color="red">
                             <form:errors path="address" cssClass="error" />
                         </font>
                     </div>
                     <div class="anc-bank-des anc-com-ta">
-                        <label for="remarks">Remarks</label><br>
+                        <label for="remarks" style="font-weight:600">Remarks</label><br>
                         <textarea rows="2" cols="50" name="remarks" maxlength="250">${CLIENT_OBJ.remarks}</textarea>
                         <font color="red">
                             <form:errors path="remarks" cssClass="error" />
@@ -181,10 +181,10 @@
                 </div>
         </div>
         <div class="anc-personal-pref bs">
-            <h2 class="anc-pp">Personal Prefrences</h2>
+            <h2 class="anc-pp" >Personal Prefrences</h2>
             <div class="pp-wrapper">
                 <div class="pp-d1">
-                    <label for="">Hotel Preferences</label><br>
+                    <label for="" style="font-weight:600">Hotel Preferences</label><br>
                     <div class="anc-pref">
                         <select id="type" name="hotelPref" style="width:120px;">
                             <option class="service-small" value="0"> Please Select </option>
@@ -204,7 +204,7 @@
                     </div>
                 </div>
                 <div class="pp-d1">
-                    <label for="">Cost Savy</label><br>
+                    <label for="" style="font-weight:600">Cost Savy</label><br>
                     <div class="anc-pref">
                         <select id="type" name="costSavvy" style="width:120px;">
                             <option class="service-small" value="0"> Please Select </option>
@@ -225,7 +225,7 @@
                     <p style="margin-top: 5px;color:blue">(Scale 1 to 10)</p>
                 </div>
                 <div class="pp-d1">
-                    <label for="">Service Savvy</label><br>
+                    <label for="" style="font-weight:600">Service Savvy</label><br>
                     <div class="anc-pref">
                         <select id="type" name="serviceSavvy" style="width:120px;">
                             <option class="service-small" value="0"> Please Select </option>
@@ -246,7 +246,7 @@
                     <p style="margin-top: 5px;color:blue">(Scale 1 to 5)</p>
                 </div>
                 <div class="pp-d1">
-                    <label for="">Food Pref.</label><br>
+                    <label for="" style="font-weight:600">Food Pref.</label><br>
                     <div class="anc-pref">
                         <select id="type" name="foodPref" style="width:120px;">
                             <c:if test="${CLIENT_OBJ.foodPref eq 'nveg'}">
@@ -261,7 +261,7 @@
                     </div>
                 </div>
                 <div class="pp-d1">
-                    <label for="">Aggressiveness</label><br>
+                    <label for="" style="font-weight:600">Aggressiveness</label><br>
                     <div class="anc-pref">
                         <select id="type" name="aggressiveness" style="width:120px;">
                             <option class="service-small" value="0"> Please Select </option>
@@ -282,7 +282,7 @@
                     <p style="margin-top: 5px;color:blue">(Scale 1 to 5)</p>
                 </div>
                 <div class="pp-d1">
-                    <label for="">Payment Record</label><br>
+                    <label for="" style="font-weight:600">Payment Record</label><br>
                     <div class="anc-pref">
                         <select id="type" name="paymentRating" style="width:120px;">
                             <option class="service-small" value="0"> Please Select </option>

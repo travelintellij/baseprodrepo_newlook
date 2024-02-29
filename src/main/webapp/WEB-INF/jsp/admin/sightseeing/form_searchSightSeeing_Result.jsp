@@ -56,20 +56,20 @@
                                     <div class="form_searchSightSeeing_Result_wrapper_data">
                                         <div class="form_searchSightSeeing_Result_wrapper_dl">
                                             <div class="form_searchSightSeeing_Result_wrapper_dl1">
-                                                <label for="">City</label>
+                                                <label for=""  style="font-weight:600;color:black">City</label>
                                                 <input type="text" name="cityName" placeholder="City Name" id="cityName"
                                                     value="${sight_seeing_search_result.cityName}" />
                                                 <input type="hidden" name="cityId"
                                                     value="${sight_seeing_search_result.cityId}" />
                                             </div>
                                             <div class="form_searchSightSeeing_Result_wrapper_dl1">
-                                                <label for="">SightSeeing Name</label>
+                                                <label for=""  style="font-weight:600;color:black">SightSeeing Name</label>
                                                 <input type="text" name="sightSeeingName" id="sightSeeingName"
                                                     placeholder="Sight Seeing Name"
                                                     value="${sight_seeing_search_result.sightSeeingName}" />
                                             </div>
                                             <div class="form_searchSightSeeing_Result_wrapper_dl1">
-                                                <label for="">Duration (min/max)</label>
+                                                <label for=""  style="font-weight:600;color:black">Duration (min/max)</label>
                                                 <div class="ssd">
                                                     <input type="text" name="minDuration" id="minDuration"
                                                         value="${sight_seeing_search_result.minDuration}" style="width:40%"/>
@@ -78,7 +78,7 @@
                                                 </div>
                                             </div>
                                             <div class="form_searchSightSeeing_Result_wrapper_dl1">
-                                                <label for="">Tour Rating</label>
+                                                <label for=""  style="font-weight:600;color:black">Tour Rating</label>
                                                 <select name="tourRating" style="width:90%"> 
                                                     <option value="0" class="service-small" selected>Tour Rating
                                                     </option>

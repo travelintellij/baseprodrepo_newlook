@@ -44,19 +44,19 @@
                 <div class="Hotel_Room_Category_Update_wrapper_dline" style="margin:10px auto;">
                     <div class="Hotel_Room_Category_Update_wrapper_dl1" style="text-align:start;width:100px">
                         <label for="" class="lb">Hotel Id</label>
-                        <p style="color:gray;text-align:start">${hotelId}</p>
+                        <p style="font-weight:600;color:#023e8a;text-align:start">${hotelId}</p>
                     </div>
                     <div class="Hotel_Room_Category_Update_wrapper_dl1" style="text-align:start">
                         <label for="" class="lb">Hotel Name</label>
-                        <p style="color:gray">${hotelName}</p>
+                        <p style="font-weight:600;color:#023e8a">${hotelName}</p>
                     </div>
                    <div class="Hotel_Room_Category_Update_wrapper_dl1" style="text-align:start; width:400px">
                         <label for="" class="lb">Address</label>
-                        <p style="color:gray">${address}</p>
+                        <p style="font-weight:600;color:#023e8a">${address}</p>
                     </div>
                     <div class="Hotel_Room_Category_Update_wrapper_dl1" style="text-align:center">
                         <label for="" class="lb">City</label>
-                        <p style="color:gray">${city}</p>
+                        <p style="font-weight:600;color:#023e8a">${city}</p>
                     </div>
                 </div>
             </div>
