@@ -47,58 +47,58 @@
                     <div class="view_supplier_details_data_line1 a" >
                         <div class="view_supplier_details_l1_d">
                             <label for="" style="color:black;font-weight:normal">Supplier Name</label>
-                            <p style="color:gray">${SUPPLIER_OBJ.supplierName}</p>
+                            <p style="font-weight:600;color:#023e8a">${SUPPLIER_OBJ.supplierName}</p>
                         </div>
                         <div class="view_supplier_details_l1_d">
                             <label for="" style="color:black;font-weight:normal">City</label>
-                            <p style="color:gray">${SUPPLIER_OBJ.cityName}</p>
+                            <p style="font-weight:600;color:#023e8a">${SUPPLIER_OBJ.cityName}</p>
                         </div>
                         <div class="view_supplier_details_l1_d">
                             <label for="" style="color:black;font-weight:normal">Country</label>
-                            <p style="color:gray">${SUPPLIER_OBJ.countryName}</p>
+                            <p style="font-weight:600;color:#023e8a">${SUPPLIER_OBJ.countryName}</p>
                         </div>
                         <div class="view_supplier_details_l1_d">
                             <label for="" style="color:black;font-weight:normal">Mobile</label>
-                            <p style="color:gray">${SUPPLIER_OBJ.mobile}</p>
+                            <p style="font-weight:600;color:#023e8a">${SUPPLIER_OBJ.mobile}</p>
                         </div>
                       
                          <div class="view_supplier_details_l1_d">
                             <label for="" style="color:black;font-weight:normal">Phone</label>
-                            <p style="color:gray">${SUPPLIER_OBJ.phone}</p>
+                            <p style="font-weight:600;color:#023e8a">${SUPPLIER_OBJ.phone}</p>
                         </div>
                     </div>
                     <div class="view_supplier_details_data_line1 a">
                         
                         <div class="view_supplier_details_l1_d_max_w">
                             <label for="" style="color:black;font-weight:normal"`>Email</label>
-                            <p style="color:gray">${SUPPLIER_OBJ.email}</p>
+                            <p style="font-weight:600;color:#023e8a">${SUPPLIER_OBJ.email}</p>
                         </div>
                          <div class="view_supplier_details_l1_d_max_w">
                             <label for="" style="color:black;font-weight:normal">Referred By</label>
-                            <p style="color:gray">${SUPPLIER_OBJ.referredBy}</p>
+                            <p style="font-weight:600;color:#023e8a">${SUPPLIER_OBJ.referredBy}</p>
                         </div>
                     </div>
                        <div class="view_supplier_details_l1_d a" style="width:100%" >
                             <label for="" style="color:black;font-weight:normal">Company Details</label>
-                            <p style="color:gray">
+                            <p style="font-weight:600;color:#023e8a">
                             ${SUPPLIER_OBJ.companyDetails}
                             </p>
                         </div>
                    
                         <div class="a">
                             <label for="" style="color:black;font-weight:normal">GST Details</label>
-                            <p style="color:gray">${SUPPLIER_OBJ.gstDetails}</p>
+                            <p style="font-weight:600;color:#023e8a">${SUPPLIER_OBJ.gstDetails}</p>
                         </div>
                        
                         <div class="view_supplier_details_l1_d a" style="width:100%">
                             <label for="" style="color:black;font-weight:normal">Bank Details</label>
-                            <p style="color:gray">
+                            <p style="font-weight:600;color:#023e8a">
                             ${SUPPLIER_OBJ.bankDetails}
                             </p>
                         </div>
                         <div class="view_supplier_details_l1_d a" style="width:100%">
                             <label for="" style="color:black;font-weight:normal">Remarks</label>
-                            <p style="color:gray">
+                            <p style="font-weight:600;color:#023e8a">
                            ${SUPPLIER_OBJ.remarks}
                             </p>
                         </div>
@@ -107,7 +107,7 @@
                     
                      <div  class="a">
                             <label for="" style="color:black;font-weight:normal">Address</label>
-                            <p style="color:gray">
+                            <p style="font-weight:600;color:#023e8a">
                            ${SUPPLIER_OBJ.address}
                             </p>
                         </div>
@@ -118,7 +118,7 @@
                         <h3 class="vsd_des"  style="color:black;font-weight:normal">Following Destinations are supported</h3>
                         <div class="view_supplier_details_data_line3_destination_supported">
                             <c:forEach items="${SUPPLIER_OBJ.destinations}" var="destination">
-                               <span style="color:gray"> ${destination.cityName}, </span>
+                               <span style="font-weight:600;color:#023e8a"> ${destination.cityName}, </span>
                             </c:forEach>
                         </div>
                     </div>
@@ -131,7 +131,7 @@
                         </div>
                                <div class="vsdchsd">
                                 <form:checkbox class="ch_c" path="hotel" disabled="true" style="margin-right:15px;height:18px;width:18px"/>
-                               <label>Hotal</label>
+                               <label>Hotel</label>
                                </div>  
                                  
                                   <div class="vsdchsd">
@@ -185,14 +185,14 @@
                     <div class="view_supplier_details_data_line_com">
                         <h3 class="vsd_sp"  style="color:black;font-weight:normal">Supplier Prefrences</h3>
                         <div class="view_supplier_details_data_line3_supp_pre">
-                            <p style="color:gray">${SUPPLIER_OBJ.supplierRating} Star
+                            <p style="font-weight:600;color:#023e8a">${SUPPLIER_OBJ.supplierRating} Star
                                 (Scale 1 to 5)</p>
                         </div>
                     </div>
                     <div class="view_supplier_details_data_line_com">
                         <h3 class="vsd_sp"  style="color:black;font-weight:normal">Negotiates</h3>
                         <div class="view_supplier_details_data_line3_supp_pre">
-                            <p style="color:gray">${SUPPLIER_OBJ.negotiates}</p>
+                            <p style="font-weight:600;color:#023e8a">${SUPPLIER_OBJ.negotiates}</p>
                         </div>
                     </div>
                     </div>

@@ -42,66 +42,66 @@ body::before {
             <div class="Admin_View_Hotel_wrapper_data">
                 <div class="Admin_View_Hotel_wrapper_data_line a">
                     <div class="Admin_View_Hotel_wrapper_d1">
-                        <label for="" class="lb">Hotal Chain Name</label>
-                        <p style="color:gray">${hotelMasterObj.hotelChainName}</p>
+                        <label for="" class="">Hotal Chain Name</label>
+                        <p style="font-weight:600;color:#023e8a">${hotelMasterObj.hotelChainName}</p>
                     </div>
                     <div class="Admin_View_Hotel_wrapper_d1">
-                        <label for="" class="lb">Hotal Name</label>
-                        <p style="color:gray">${hotelMasterObj.hotelName}</p>
+                        <label for="" class="">Hotal Name</label>
+                        <p style="font-weight:600;color:#023e8a">${hotelMasterObj.hotelName}</p>
                     </div>
                     <div class="Admin_View_Hotel_wrapper_d1">
-                        <label for="" class="lb">City</label>
-                        <p style="color:gray">${hotelMasterObj.cityName}</p>
+                        <label for="" class="">City</label>
+                        <p style="font-weight:600;color:#023e8a">${hotelMasterObj.cityName}</p>
                     </div>
                     <div class="Admin_View_Hotel_wrapper_d1">
-                        <label for="" class="lb">Locality</label>
-                        <p style="color:gray">${hotelMasterObj.locality}</p>
+                        <label for="" class="">Locality</label>
+                        <p style="font-weight:600;color:#023e8a">${hotelMasterObj.locality}</p>
                     </div>
                 </div>
                 <div class="Admin_View_Hotel_wrapper_data_line a">
                     <div class="Admin_View_Hotel_wrapper_d1">
-                        <label for="" class="lb">Room Category</label>
-                        <p  style="color:gray"><c:forEach items="${hotelMasterObj.roomCategoryEntityList}" var="roomCategory">
+                        <label for="" class="">Room Category</label>
+                        <p><c:forEach items="${hotelMasterObj.roomCategoryEntityList}" var="roomCategory">
                         
-                            <li>${roomCategory.roomCategoryName}</li>
+                            <li  style="font-weight:600;color:#023e8a">${roomCategory.roomCategoryName}</li>
                         
                         </c:forEach></p>
                     </div>
                     <div class="Admin_View_Hotel_wrapper_d1">
-                        <label for="" class="lb">Active</label>
-                        <p  style="color:gray">${hotelMasterObj.active}</p>
+                        <label for="" class="">Active</label>
+                        <p  style="font-weight:600;color:#023e8a">${hotelMasterObj.active}</p>
                     </div>
                     <div class="Admin_View_Hotel_wrapper_d1">
-                        <label for="" class="lb">Hotel Category</label>
-                        <p  style="color:gray">${hotelMasterObj.starCategory} Star</p>
+                        <label for="" class="">Hotel Category</label>
+                        <p  style="font-weight:600;color:#023e8a">${hotelMasterObj.starCategory} Star</p>
                     </div>
                     <div class="Admin_View_Hotel_wrapper_d1">
-                        <label for="" class="lb">Is Prefered</label>
-                        <p  style="color:gray">${hotelMasterObj.preferred}</p>
+                        <label for="" class="">Is Prefered</label>
+                        <p  style="font-weight:600;color:#023e8a">${hotelMasterObj.preferred}</p>
                     </div>
                 </div>
                 <div class="Admin_View_Hotel_wrapper_data_line a">
                     <div class="Admin_View_Hotel_wrapper_d1">
-                        <label for="" class="lb">Hotal Rating</label>
-                        <p  style="color:gray">${hotelMasterObj.udnServiceRating} Star</p>
+                        <label for="" class="">Hotal Rating</label>
+                        <p  style="font-weight:600;color:#023e8a">${hotelMasterObj.udnServiceRating} Star</p>
                     </div>
                     <div class="Admin_View_Hotel_wrapper_d1">
-                        <label for="" class="lb">Address</label>
-                        <p  style="color:gray">${hotelMasterObj.address}</p>
+                        <label for="" class="">Address</label>
+                        <p  style="font-weight:600;color:#023e8a">${hotelMasterObj.address}</p>
                     </div>
                     <div class="Admin_View_Hotel_wrapper_d1">
-                        <label for="" class="lb">Phone No.</label>
-                        <p  style="color:gray">${hotelMasterObj.phone}</p>
+                        <label for="" class="">Phone No.</label>
+                        <p  style="font-weight:600;color:#023e8a">${hotelMasterObj.phone}</p>
                     </div>
                     <div class="Admin_View_Hotel_wrapper_d1">
-                        <label for="" class="lb">Email</label>
-                        <p  style="color:gray">${hotelMasterObj.email}</p>
+                        <label for="" class="">Email</label>
+                        <p  style="font-weight:600;color:#023e8a">${hotelMasterObj.email}</p>
                     </div>
                 </div>
                 <div class="Admin_View_Hotel_wrapper_data_line a">
                     <div class="Admin_View_Hotel_wrapper_d1" style="width:100%">
-                        <label for="" class="lb">Remarks</label>
-                        <p  style="color:gray">${hotelMasterObj.remarks}</p>
+                        <label for="" class="">Remarks</label>
+                        <p  style="font-weight:600;color:#023e8a">${hotelMasterObj.remarks}</p>
                     </div>
                 </div>
                 <div class="due_today_task_data_btnss" style="margin-top:20px">

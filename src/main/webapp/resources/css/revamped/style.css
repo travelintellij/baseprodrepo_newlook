@@ -1096,7 +1096,7 @@ footer {
 
 .anc-i {
     position: relative;
-    color: red;
+    color: black;
 }
 
 .anc-i:hover {
@@ -3605,7 +3605,7 @@ transition: all 0.2s ease-in-out;
 
 .adsu {
     position: relative;
-    color: red;
+    color: black;
 }
 
 .adsu:hover {

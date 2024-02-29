@@ -59,12 +59,12 @@
             <form:form modelAttribute="searchhotel_obj" action="search_search_hotel">
             <div class="sh-f1">
                 <div class="sh-fi-d">
-                    <label for="">City Name</label>
+                    <label for="" style="font-weight:600;color:black">City Name</label>
                     <input type="text" name="cityName" id="cityName" placeholder="City Name" />
                     <input type="hidden" name="cityId" value="0" />
                 </div>
                 <div class="sh-fi-d">
-                    <label for="">Select Hotal Chain</label>
+                    <label for="" style="font-weight:600;color:black">Select Hotal Chain</label>
                     <select name="hotelChainId">
                         <option  class="service-small" value="0" selected>-----Select Hotel Chain-----</option>
                         <c:if test="${not empty HotelChainObjList}">
@@ -76,11 +76,11 @@
                     </select>
                 </div>
                 <div class="sh-fi-d">
-                    <label for="">Locality like</label>
+                    <label for="" style="font-weight:600;color:black">Locality like</label>
                     <input type="text" name="locality" id="locality" placeholder="locality like" />
                 </div>
                 <div class="sh-fi-d">
-                    <label for="">Select preferred</label>
+                    <label for="" style="font-weight:600;color:black">Select preferred</label>
                     <select name="searchPrefer" style="width:95%">
                         <option value="0" class="service-small" selected style="background:black;color:white">Select Preferred</option>
                         <option value="1" class="service-small" style="background:black;color:white">Yes</option>
@@ -90,15 +90,15 @@
             </div>
             <div class="sh-f2">
                 <div class="sh-fi-d">
-                    <label for="">Hotal Name</label><br>
+                    <label for="" style="font-weight:600;color:black">Hotal Name</label><br>
                     <input type="text" name="hotelName" id="hotelName" placeholder="Hotel Name" />
                 </div>
                 <div class="sh-fi-d">
-                    <label for="">Hotal id</label><br>
+                    <label for="" style="font-weight:600;color:black">Hotal id</label><br>
                     <input type="text" name="hotelId" id="hotelId" placeholder="Hotel Id" pattern="[0-9.]+" />
                 </div>
                 <div class="sh-fi-d">
-                    <label for="">Select Active</label><br>
+                    <label for="" style="font-weight:600;color:black">Select Active</label><br>
                     <select name="active" style="width:95%">
                         <option value="true" class="service-small" selected style="background:black;color:white">Select Active</option>
                         <option value="true" class="service-small" style="background:black;color:white">Active</option>
@@ -106,7 +106,7 @@
                     </select>
                 </div>
                 <div class="sh-fi-d">
-                    <label for="">Hotal Star Category</label> <br>
+                    <label for="" style="font-weight:600;color:black">Hotal Star Category</label> <br>
                     <select name="starCategory" style="width:95%">
                         <option value="0" class="service-small" selected>Hotel Star Category</option>
                         <option value="2" class="service-small" style="background:black;color:white">2 Star</option>
@@ -118,7 +118,7 @@
             </div>
             <div class="sh-f3">
                 <div class="sh-fi-d">
-                    <label for="">Select Hotal Rating</label> <br>
+                    <label for="" style="font-weight:600;color:black">Select Hotal Rating</label> <br>
                     <select name="udnServiceRating" style="width:95%;">
                         <option value="0" class="service-small" selected>Select Hotel Rating</option>
                         <option value="2" class="service-small" style="background:black;color:white">2 Star</option>

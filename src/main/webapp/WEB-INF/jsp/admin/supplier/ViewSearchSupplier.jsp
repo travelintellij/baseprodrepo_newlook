@@ -112,20 +112,20 @@
                 <form:hidden path="leadId" />
                 <div class="search_supplier_data_l1">
                     <div class="ssd1">
-                        <label for="supp-id">Supplier Id</label>
+                        <label for="supp-id" style="font-weight:600">Supplier Id</label>
                         <form:input path="supplierId" name="supplierId" id="supp-id" />
                     </div>
                     <div class="ssd1">
-                        <label for="supp-name">Supplier Name</label>
+                        <label for="supp-name" style="font-weight:600">Supplier Name</label>
                         <form:input path="supplierName" name="supplierName" id="supp-name" />
                     </div>
                     <div class="ssd1">
-                        <label for="supp-city">Supplier City</label>
+                        <label for="supp-city" style="font-weight:600">Supplier City</label>
                         <form:input path="cityName" name="cityName" id="supp-city" />
                         <form:hidden path="cityId" />
                     </div>
                     <div class="ssd1">
-                        <label for="supp-city-ser">City of Service</label>
+                        <label for="supp-city-ser" style="font-weight:600">City of Service</label>
                         <form:input path="serviceCityName" name="cityName" id="supp-city-ser" />
                         <form:hidden path="serviceCityId" />
                     </div>
@@ -135,39 +135,39 @@
                     <div class="inside_ss_ser">
                         <div class="ssd2">
                             <form:checkbox path="flight" id="supp-fight" />
-                            <label for="supp-fight">Flight</label>
+                            <label for="supp-fight" style="font-weight:600">Flight</label>
                         </div>
                         <div class="ssd2">
                             <form:checkbox path="hotel" id="supp-Hotal" />
-                            <label for="supp-Hotal">Hotal</label>
+                            <label for="supp-Hotal" style="font-weight:600">Hotel</label>
                         </div>
                         <div class="ssd2">
                             <form:checkbox path="transfers" id="supp-Transfers" />
-                            <label for="supp-Transfers">Transfers</label>
+                            <label for="supp-Transfers" style="font-weight:600" >Transfers</label>
                         </div>
                         <div class="ssd2">
                             <form:checkbox path="sightseeing" id="supp-Sightseeing" />
-                            <label for="supp-Sightseeing">Sightseeing</label>
+                            <label for="supp-Sightseeing" style="font-weight:600">Sightseeing</label>
                         </div>
                         <div class="ssd2">
                             <form:checkbox path="visa" id="supp-Visa" />
-                            <label for="supp-Visa">Visa</label>
+                            <label for="supp-Visa" style="font-weight:600">Visa</label>
                         </div>
                         <div class="ssd2">
                             <form:checkbox path="insurance" id="supp-Insurence" />
-                            <label for="supp-Insurence">Insurence</label>
+                            <label for="supp-Insurence" style="font-weight:600">Insurance</label>
                         </div>
                         <div class="ssd2">
                             <form:checkbox path="landPackage" id="supp-Package" />
-                            <label for="supp-Package">Package</label>
+                            <label for="supp-Package" style="font-weight:600">Package</label>
                         </div>
                         <div class="ssd2">
                             <form:checkbox path="cruise" id="supp-Cruise" />
-                            <label for="supp-Cruise">Cruise</label>
+                            <label for="supp-Cruise" style="font-weight:600">Cruise</label>
                         </div>
                         <div class="ssd2">
                             <form:checkbox path="others" id="supp-Others" />
-                            <label for="supp-Others">Others</label>
+                            <label for="supp-Others" style="font-weight:600">Others</label>
                         </div>
                     </div>
                 </div>

@@ -59,26 +59,26 @@
             <div class="searchSightSeeing_wrapper_data">
                 <div class="searchSightSeeing_wrapper_data_line">
                     <div class="searchSightSeeing_wrapepr_data_l1">
-                        <label for="">City Name</label>
+                        <label for=""  style="font-weight:600;color:black">City Name</label>
                         <input type="text"  name="cityName" id="cityName" placeholder="City Name" required />
                         <input type="hidden" name="cityId" value="0" />
                     </div>
                     <div class="searchSightSeeing_wrapepr_data_l1">
-                        <label for="">Sight seeing name</label>
+                        <label for=""  style="font-weight:600;color:black">Sight seeing name</label>
                         <input  type="text" name="sightSeeingName" id="sightSeeingName" />
                     </div>
                     <div class="searchSightSeeing_wrapepr_data_l1">
-                        <label for="">Min duration</label>
+                        <label for=""  style="font-weight:600;color:black">Min duration</label>
                             <input type="text" name="minDuration" id="minDuration" placeholder="Min Duration (Minutes)" />
                     </div>
                     <div class="searchSightSeeing_wrapepr_data_l1">
-                        <label for="">Max duration</label>
+                        <label for=""  style="font-weight:600;color:black">Max duration</label>
                     <input type="text" name="maxDuration" id="maxDuration" placeholder="Max Duration (Minutes)" />
                     </div>
                 </div>
                 <div class="searchSightSeeing_wrapper_data_line2">
                     <div class="searchSightSeeing_wrapepr_data_l1">
-                        <label for="">Select Tour Rating</label>
+                        <label for=""  style="font-weight:600;color:black">Select Tour Rating</label>
                         <select name="tourRating" style="width:90%">
                             <option value="0" class="service-small" selected>Select Tour Rating</option>
                             <option value="2" class="service-small"> > 2 Star</option>
@@ -88,12 +88,12 @@
                         </select>
                     </div>
                     <div class="searchSightSeeing_wrapepr_data_l1">
-                        <label for="">Sight seeing id</label>
+                        <label for=""  style="font-weight:600;color:black">Sight seeing id</label>
                             <input type="text" name="sightSeeingId" id="sightSeeingId" placeholder="Sight Seeing Id"
                                 pattern="[0-9.]+" />
                     </div>
                     <div class="searchSightSeeing_wrapepr_data_l1">
-                        <label for="">In-Active</label> <br>
+                        <label for=""  style="font-weight:600;color:black">In-Active</label> <br>
                         <select name="active" style="width:90%">
                             <option value="true" class="service-small" selected>Select Active</option>
                             <option value="true" class="service-small">Active</option>

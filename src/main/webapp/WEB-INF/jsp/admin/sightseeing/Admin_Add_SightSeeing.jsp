@@ -67,45 +67,45 @@
                 <div class="Admin_Add_SightSeeing_wrapper_data">
                     <div class="Admin_Add_SightSeeing_wrapper_data_line">
                         <div class="Admin_Add_SightSeeing_wrapper_data_l1">
-                            <label for="">City</label> <br>
+                            <label for=""  style="font-weight:600;color:black">City</label> <br>
                             <input type="text" id="cityName" name="cityName" required />
                             <input type="hidden" id="cityId" name="cityId" value="0" />
                         </div>
                         <div class="Admin_Add_SightSeeing_wrapper_data_l1">
-                            <label for="">Sightseeing Name</label>
+                            <label for=""  style="font-weight:600;color:black">Sightseeing Name</label>
                             <input type="text" id="sightSeeingName" name="sightSeeingName" required />
                         </div>
                         <div class="Admin_Add_SightSeeing_wrapper_data_l1">
-                            <label for="">Tour Destination</label>
+                            <label for=""  style="font-weight:600;color:black">Tour Destination</label>
                             <input type="text" id="duration" name="duration" required />
                         </div>
                         <div class="Admin_Add_SightSeeing_wrapper_data_l1">
-                            <label for="">Departure Point</label>
+                            <label for=""  style="font-weight:600;color:black">Departure Point</label>
                             <input type="text" id="departurePoint" name="departurePoint" required />
                         </div>
                     </div>
                     <div class="Admin_Add_SightSeeing_wrapper_data_line">
                         <div class="Admin_Add_SightSeeing_wrapper_data_l2">
-                            <label for="">Reporting Point</label> <br>
+                            <label for=""  style="font-weight:600;color:black">Reporting Point</label> <br>
                             <input type="text" id="reportingPoint" name="reportingPoint" required />
                         </div>
                         <div class="Admin_Add_SightSeeing_wrapper_data_l2">
-                            <label for="">Meals</label> <br>
+                            <label for=""  style="font-weight:600;color:black">Meals</label> <br>
                             <input type="text" id="meals" name="meals" required />
                         </div>
                         <div class="Admin_Add_SightSeeing_wrapper_data_l2">
-                            <label for="">Pickup time</label> <br>
+                            <label for=""  style="font-weight:600;color:black">Pickup time</label> <br>
                             <input type="text" id="standardPickupTime" name="standardPickupTime" required />
                         </div>
                         <div class="Admin_Add_SightSeeing_wrapper_data_l2">
-                            <label for="">Drop Time</label> <br>
+                            <label for=""  style="font-weight:600;color:black">Drop Time</label> <br>
                             <input type="text" id="standardDropTime" name="standardDropTime" required />
                         </div>
                     </div>
                 </div>
                 <div class="Admin_Add_SightSeeing_wrapper_data_line">
                     <div class="Admin_Add_SightSeeing_wrapper_data_l3">
-                        <label for="">Flexible Timing</label> <br>
+                        <label for=""  style="font-weight:600;color:black">Flexible Timing</label> <br>
                         <select id="flexibleTimming" name="flexibleTimming" style="width: 90%;" required>
                             <option value="" class="service-small" selected>Select</option>
                             <option class="service-small" value="true">Option Available</option>
@@ -113,7 +113,7 @@
                         </select>
                     </div>
                     <div class="Admin_Add_SightSeeing_wrapper_data_l3">
-                        <label for="">Tour Rating</label> <br>
+                        <label for=""  style="font-weight:600;color:black">Tour Rating</label> <br>
                         <select name="tourRating" style="width: 90%;">
                             <option class="service-small" selected>Select Tour Rating</option>
                             <c:forEach var="i" begin="2" end="5">
@@ -130,18 +130,18 @@
                 </div>
                 <div class="Admin_Add_SightSeeing_wrapper_data_des">
                     <div class="Admin_Add_SightSeeing_wrapper_data_l3" style="text-align: start;">
-                        <label for="">Tour Description</label> <br>
+                        <label for=""  style="font-weight:600;color:black">Tour Description</label> <br>
                         <textarea rows="4" style="width:100%;" name="sightSeeingDescription"
                             htmlEscape="false"></textarea>
                     </div>
                 </div>
                 <div class="Admin_Add_SightSeeing_wrapper_data_des2">
                     <div class="Admin_Add_SightSeeing_wrapper_data_l3" style="text-align: start;">
-                        <label for="">Useful information</label> <br>
+                        <label for=""  style="font-weight:600;color:black">Useful information</label> <br>
                         <textarea rows="4" cols="69" name="usefulInfo"></textarea>
                     </div>
                     <div class="Admin_Add_SightSeeing_wrapper_data_l3" style="text-align: start;">
-                        <label for="">Terms and Conditions</label> <br>
+                        <label for=""  style="font-weight:600;color:black">Terms and Conditions</label> <br>
                         <textarea rows="4" cols="69" name="tnc"></textarea>
                     </div>
                 </div>

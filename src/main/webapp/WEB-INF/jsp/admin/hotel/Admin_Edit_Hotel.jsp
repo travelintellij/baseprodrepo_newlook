@@ -59,7 +59,7 @@
                                 <div class="Admin_View_Hotel_wrapper_data">
                                     <div class="Admin_View_Hotel_wrapper_data_line ">
                                         <div class="Admin_View_Hotel_wrapper_d1">
-                                            <label for="">Select Hotal Chain</label>
+                                            <label for="" style="font-weight:600;color:black">Select Hotal Chain</label>
                                             <select name="hotelChainId" style="width:90%">
                                                 <c:if test="${not empty HotelChainObjList}">
                                                     <c:forEach items="${HotelChainObjList}" var="hotelChainObj">
@@ -81,12 +81,12 @@
                                             </select>
                                         </div>
                                         <div class="Admin_View_Hotel_wrapper_d1">
-                                            <label for="">Hotal Name</label>
+                                            <label for="" style="font-weight:600;color:black">Hotal Name</label>
                                             <input type="text" name="hotelName" id="hotelName"
                                                 value="${hotel_obj.hotelName}" style="width:90%" required />
                                         </div>
                                         <div class="Admin_View_Hotel_wrapper_d1">
-                                            <label for="">City</label>
+                                            <label for="" style="font-weight:600;color:black">City</label>
                                             <input type="text" name="cityName" id="cityName"
                                                 value="${hotel_obj.cityName}" style="width:90%" required />
 
@@ -98,7 +98,7 @@
                                             </font>
                                         </div>
                                         <div class="Admin_View_Hotel_wrapper_d1">
-                                            <label for="">Locality</label>
+                                            <label for="" style="font-weight:600;color:black">Locality</label>
                                             <input type="text" name="locality" value="${hotel_obj.locality}"
                                                 id="locality" style="width:90%"/>
                                         </div>
@@ -106,7 +106,7 @@
                                     <div class="Admin_View_Hotel_wrapper_data_line ">
                  
                                         <div class="Admin_View_Hotel_wrapper_d1">
-                                            <label for="">Star Category</label>
+                                            <label for="" style="font-weight:600;color:black">Star Category</label>
                                             <select name="starCategory" style="width:90%">
                                                 <option value="0" class="service-small" selected>Hotel Star Category
                                                 </option>
@@ -122,7 +122,7 @@
                                             </select>
                                         </div>
                                         <div class="Admin_View_Hotel_wrapper_d1">
-                                            <label for="">Is Prefered</label>
+                                            <label for="" style="font-weight:600;color:black">Is Prefered</label>
                                             <select name="preferred" style="width:90%">
                                                 <c:if test="${hotel_obj.preferred eq true}">
                                                     <option value="false" class="service-small">No</option>
@@ -135,7 +135,7 @@
                                             </select>
                                         </div>
                                                <div class="Admin_View_Hotel_wrapper_d1">
-                                            <label for="">Hotal Rating</label>
+                                            <label for="" style="font-weight:600;color:black">Hotal Rating</label>
                                             <select name="udnServiceRating" style="width:90%">
                                                 <option value="0" class="service-small" selected>Select Hotel Rating
                                                 </option>
@@ -152,7 +152,7 @@
                                         </div>
                                         
                                         <div class="Admin_View_Hotel_wrapper_d1">
-                                            <label for="">Hotel Phone No.</label>
+                                            <label for="" style="font-weight:600;color:black">Hotel Phone No.</label>
                                             <input type="text" name="phone" id="phone" value="${hotel_obj.phone}"
                                                 pattern="[0-9.]+" style="width:90%"/>
                                         </div>
@@ -166,7 +166,7 @@
                                         </div>
                                     </div>
                                     <div class="Admin_View_Hotel_wrapper_d1 room-ct" style="display:flex;width:757px;margin:10px 0">
-                                            <label for="" >Room Category</label>
+                                            <label for="" style="font-weight:600;color:black">Room Category</label>
                                             <c:forEach items="${hotel_obj.roomCategoryEntityList}" var="roomCategory">
                                                 <li style="color:orangered;margin:0  42px;">${roomCategory.roomCategoryName}</li>
                                             </c:forEach>
@@ -176,13 +176,13 @@
                                         </div>
                                     <div class="Admin_View_Hotel_wrapper_data_line">
                                       <div class="Admin_View_Hotel_wrapper_d1">
-                                            <label for="">Address</label>
+                                            <label for="" style="font-weight:600;color:black">Address</label>
                                             <textarea rows="2" cols="139" name="address" >${hotel_obj.address}</textarea>
                                         </div>
                                     </div>
                                      <div class="Admin_View_Hotel_wrapper_data_line">
                                         <div class="Admin_View_Hotel_wrapper_d1" style="width:100%">
-                                            <label for="">Remarks</label> <br>
+                                            <label for="" style="font-weight:600;color:black">Remarks</label> <br>
                                             <textarea rows="5" cols="139" name="remarks">${hotel_obj.remarks}</textarea>
                                         </div>
                                     </div>

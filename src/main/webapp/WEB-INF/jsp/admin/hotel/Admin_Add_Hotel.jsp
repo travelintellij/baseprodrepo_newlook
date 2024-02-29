@@ -58,7 +58,7 @@
                 <div class="add_hotal_in">
                     <div class="add_hotal_fli">
                         <div class="ah-d1">
-                            <label for="">Select Hotel Chain</label>
+                            <label for="" style="font-weight:600;color:black">Select Hotel Chain</label>
                             <select name="hotelChainId" style="width:90%;">
                                 <c:if test="${not empty HotelChainObjList}">
                                     <c:forEach items="${HotelChainObjList}" var="hotelChainObj">
@@ -78,16 +78,16 @@
                             </select>
                         </div>
                         <div class="ah-d1">
-                            <label for="">Hotel Name</label>
+                            <label for="" style="font-weight:600;color:black">Hotel Name</label>
                             <input type="text"  name="hotelName" id="hotelName"
                                 placeholder="Hotel Name" size="140" required />
                         </div>
                         <div class="ah-d1">
-                            <label for="">Default Room Category Name</label>
+                            <label for="" style="font-weight:600;color:black">Default Room Category Name</label>
                             <input type="text" name="defaultRoomCategory" value="Standard" required />
                         </div>
                          <div class="ah-d1">
-                            <label for="">City</label> <br>
+                            <label for="" style="font-weight:600;color:black">City</label> <br>
                             <input type="text" name="cityName" id="cityName" placeholder="City Name"
                                 required />
                             
@@ -101,11 +101,11 @@
                     <div class="add_hotal_fli">
 
                         <div class="ah-d1">
-                            <label for="">Locality</label> <br>
+                            <label for="" style="font-weight:600;color:black">Locality</label> <br>
                         <input type="text"  name="locality" id="locality" />
                         </div>
                                    <div class="ah-d1">
-                            <label for="">Star Category</label>
+                            <label for="" style="font-weight:600;color:black">Star Category</label>
                                 <select name="starCategory" style="width:90%;">
                                     <option value="2" class="service-small" style="background:black;color:white">
                                         2 Star</option>
@@ -118,7 +118,7 @@
                                 </select>
                         </div>
                             <div class="ah-d1">
-                            <label for="">Hotel Rating</label>
+                            <label for="" style="font-weight:600;color:black">Hotel Rating</label>
                             <select name="udnServiceRating" style="width:90%">
                                 <option value="2" class="service-small" style="background:black;color:white">
                                     2 Star</option>
@@ -130,7 +130,7 @@
                             </select>
                         </div>
                             <div class="ah-d1">
-                            <label for="">Is Preferred</label>
+                            <label for="" style="font-weight:600;color:black">Is Preferred</label>
                             <select name="preferred" style="width:90%">
                                 <option value="false" class="service-small" style="background:black;color:white">No</option>
                                 <option value="true" class="service-small" selected style="background:black;color:white">Yes
@@ -142,12 +142,12 @@
                     <div class="add_hotal_fli">
                         
                         <div class="ah-d1">
-                            <label for="">Hotel Phone</label>
+                            <label for="" style="font-weight:600;color:black">Hotel Phone</label>
                             <input type="number"  name="phone" id="phone" value="0"
                                 pattern="[0-9.]+" />
                         </div>
                         <div class="ah-d1">
-                            <label for="">Hotel Email</label>
+                            <label for="" style="font-weight:600;color:black">Hotel Email</label>
                         <input type="text"  name="email" id="email"
                             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" />
                         </div>
@@ -159,11 +159,11 @@
                         </div>
                     </div>
                        <div class="ah-d1" style="width:100%">
-                            <label for="">Address</label> <br>
+                            <label for="" style="font-weight:600;color:black">Address</label> <br>
                             <textarea rows="1" cols="38" name="address" style="width:96%"></textarea>
                         </div>
                         <div class="ah-d1" style="width:100%">
-                            <label for="">Remarks</label><br>
+                            <label for="" style="font-weight:600;color:black">Remarks</label><br>
                             <textarea rows="5" cols="38" name="remarks" style="width:96%"></textarea>
                         </div>
                     <div class="add_hotal_fli">

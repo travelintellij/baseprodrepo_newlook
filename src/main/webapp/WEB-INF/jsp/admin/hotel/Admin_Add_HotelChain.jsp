@@ -40,11 +40,11 @@ body::before {
                 <form action="">
                     <div class="ahc-in">
                         <div class="ahc-l1">
-                            <label for="Add-hotal-Chain">Hotel Chain Name</label>
+                            <label for="Add-hotal-Chain"  style="font-weight:600;color:black">Hotel Chain Name</label>
                             <input class="contact" type="text" name="hotelChainName" value="" id="Add-hotal-Chain" />
                         </div>
                         <div class="ahc-l2">
-                            <label for="Remarks">Remarks</label>
+                            <label for="Remarks"  style="font-weight:600;color:black">Remarks</label>
                             <input type="text" id="Remarks">
                         </div>
                     </div>
