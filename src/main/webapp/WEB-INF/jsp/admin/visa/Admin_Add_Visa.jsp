@@ -66,18 +66,18 @@
             <div class="Admin_Add_Visa_wrapper_data">
                 <div class="Admin_Add_Visa_wrapper_data_line">
                     <div class="Admin_Add_Visa_wrapper_data_l1">
-                        <label for="">Country Name</label>
+                        <label for="" style="font-weight:600">Country Name</label>
                     <input  type="text" id="countryName" name="countryName" placeholder="country name" required />
                     <input type="hidden" name="countryCode" id="countryCode" />
                     </div>
                     <div class="Admin_Add_Visa_wrapper_data_l1">
-                        <label for="">Consulate City</label> <br>
+                        <label for="" style="font-weight:600">Consulate City</label> <br>
                         <select id="consulateCity" name="consulateCity" style="width:90%" required>
                             <option class="service-small" value="" selected>Please Select</option>
                         </select>
                     </div>
                     <div class="Admin_Add_Visa_wrapper_data_l1">
-                        <label for="">Visa Profile</label>
+                        <label for="" style="font-weight:600">Visa Profile</label>
                     <select name="profile" style="width:90%" required>
                         <option class="service-small" value="" selected>Please Select</option>
                         <c:if test="${not empty VISA_PROFILE}">
@@ -88,7 +88,7 @@
                     </select>
                     </div>
                     <div class="Admin_Add_Visa_wrapper_data_l1">
-                        <label for="">Visa Type</label>
+                        <label for="" style="font-weight:600">Visa Type</label>
                     <select name="visaType" style="width:90%"  required>
                         <option class="service-small" value="" selected>Please Select</option>
                         <c:if test="${not empty VISA_TYPE}">
@@ -101,7 +101,7 @@
                 </div>
                 <div class="Admin_Add_Visa_wrapper_data_line">
                     <div class="Admin_Add_Visa_wrapper_data_l1">
-                        <label for="">Visa Purpose</label>
+                        <label for="" style="font-weight:600">Visa Purpose</label>
                         <select name="visaPurpose" style="width:90%" required>
                             <option class="service-small" value="" selected>Please Select</option>
                             <c:if test="${not empty VISA_PURPOSE}">
@@ -112,39 +112,39 @@
                         </select>
                     </div>
                     <div class="Admin_Add_Visa_wrapper_data_l1">
-                        <label for="">Standard Cost</label>
+                        <label for="" style="font-weight:600">Standard Cost</label>
                     <input  type="text" name="standardCost" />
                     </div>
                     <div class="Admin_Add_Visa_wrapper_data_l1">
-                        <label for="">B2B Price</label>
+                        <label for="" style="font-weight:600">B2B Price</label>
                     <input  type="text" name="standardB2bPrice" />
                     </div>
                     <div class="Admin_Add_Visa_wrapper_data_l1">
-                        <label for="">B2C Price</label>
+                        <label for="" style="font-weight:600">B2C Price</label>
                     <input type="text" name="standardB2cPrice" />
                     </div>
                 </div>
                 <div class="Admin_Add_Visa_wrapper_data_line">
                     <div class="Admin_Add_Visa_wrapper_data_l1">
-                        <label for="">Processing Time</label><br>
+                        <label for="" style="font-weight:600">Processing Time</label><br>
                         <input type="text" name="processingTime" style="width:75%" />Days
                     </div>
                 </div>
                 <div class="Admin_Add_Visa_wrapper_data_line_remarks">
                     <div class="Admin_Add_Visa_wrapper_data_l1">
-                        <label for="">Internal Remarks</label>
+                        <label for="" style="font-weight:600">Internal Remarks</label>
                         <textarea rows="5" cols="67"
                             name="internalRemarks" htmlEscape="false" maxlength="1040" placeholder="Will never be shared with clients"></textarea>
                     </div>
                     <div class="Admin_Add_Visa_wrapper_data_l1">
-                        <label for="">Other Costs</label>
+                        <label for="" style="font-weight:600">Other Costs</label>
                         <textarea  rows="5" cols="67"
                             name="otherCosts" htmlEscape="false" maxlength="1040" placeholder="Like extended validity visa options"></textarea>
                     </div>
                 </div>
                 <div class="Admin_Add_Visa_wrapper_data_line_remarks">
                     <div class="Admin_Add_Visa_wrapper_data_l1">
-                        <label for="">Remarks</label>
+                        <label for="" style="font-weight:600">Remarks</label>
                         <textarea  rows="5" cols="140"
                             name="remarks" htmlEscape="false" maxlength="1995"></textarea>
                     </div>
