@@ -11,6 +11,7 @@ public class SearchIncentiveObj {
 	private int dealConfirmationId;
 	private String dealName;
 	private boolean blnSearchOnClaimDate;
+	private int incentiveSearchPeriodType;
 	
 	public String getClaimFromDate() {
 		return claimFromDate;
@@ -86,12 +87,21 @@ public class SearchIncentiveObj {
 	public void setBlnSearchOnClaimDate(boolean blnSearchOnClaimDate) {
 		this.blnSearchOnClaimDate = blnSearchOnClaimDate;
 	}
+	
+
+	public int getIncentiveSearchPeriodType() {
+		return incentiveSearchPeriodType;
+	}
+	public void setIncentiveSearchPeriodType(int incentiveSearchPeriodType) {
+		this.incentiveSearchPeriodType = incentiveSearchPeriodType;
+	}
 	@Override
 	public String toString() {
 		return "SearchIncentiveObj [incentiveId=" + incentiveId + ", claimFromDate=" + claimFromDate + ", claimToDate="
 				+ claimToDate + ", claimStatus=" + claimStatus + ", claimantId=" + claimantId + ", userName=" + userName
 				+ ", reportOfUser=" + reportOfUser + ", dealConfirmationId=" + dealConfirmationId + ", dealName="
-				+ dealName + ", blnSearchOnClaimDate=" + blnSearchOnClaimDate + "]";
+				+ dealName + ", blnSearchOnClaimDate=" + blnSearchOnClaimDate + ", incentiveSearchPeriodType="
+				+ incentiveSearchPeriodType + "]";
 	}
 	
 	

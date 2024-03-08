@@ -5,6 +5,8 @@ package com.udanchoo.intranet.service;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -147,9 +149,54 @@ public class IncentiveServiceImpl {
 					if(searchIncentiveObj.getClaimStatus()!=0) {
 						predicates.add(criteriaBuilder.equal(incentiveRootEntity.get("status"), searchIncentiveObj.getClaimStatus()));
 					}
-					
-					
 					if(searchIncentiveObj.getIncentiveId()==0 && searchIncentiveObj.getDealConfirmationId()==0) {
+						LocalDate currentDate = LocalDate.now();
+						LocalDate sdateFrom = null;
+						LocalDate sdateTo = null ;
+						if(searchIncentiveObj.getIncentiveSearchPeriodType()==UdanChooConstants.SEARCH_CURRENT_MONTH) {
+							sdateFrom = currentDate.withDayOfMonth(1);
+				            sdateTo = currentDate.withDayOfMonth(currentDate.lengthOfMonth());							
+						}
+						if(searchIncentiveObj.getIncentiveSearchPeriodType()==UdanChooConstants.SEARCH_PREV_MONTH) {
+							sdateFrom = currentDate.minusMonths(1).withDayOfMonth(1);
+				            sdateTo = currentDate.minusMonths(1).withDayOfMonth(currentDate.minusMonths(1).lengthOfMonth());
+						}
+						if(searchIncentiveObj.getIncentiveSearchPeriodType()==UdanChooConstants.SEARCH_CURRENT_FIN_YEAR) {
+							if (currentDate.getMonthValue() >= 4) {
+					            // If yes, set dateFrom to April 1st of the current year
+								sdateFrom = LocalDate.of(currentDate.getYear(), 4, 1);
+					            // Set dateTo to March 31st of the next year
+								sdateTo = LocalDate.of(currentDate.getYear() + 1, 3, 31);
+					        } else {
+					            // If no, set dateFrom to April 1st of the last year
+					        	sdateFrom = LocalDate.of(currentDate.getYear() - 1, 4, 1);
+					            // Set dateTo to March 31st of the current year
+					        	sdateTo = LocalDate.of(currentDate.getYear(), 3, 31);
+					        }
+						}
+						if(searchIncentiveObj.getIncentiveSearchPeriodType()==UdanChooConstants.SEARCH_PREV_FIN_YEAR) {
+							 // Check if the current month is on or after April
+					        if (currentDate.getMonthValue() >= 4) {
+					            // If yes, set dateFrom to April 1st of the last year
+					        	sdateFrom = LocalDate.of(currentDate.getYear() - 1, 4, 1);
+					            // Set dateTo to March 31st of the current year
+					        	sdateTo = LocalDate.of(currentDate.getYear(), 3, 31);
+					        } else {
+					            // If no, set dateFrom to April 1st of the year before last year
+					        	sdateFrom = LocalDate.of(currentDate.getYear() - 2, 4, 1);
+					            // Set dateTo to March 31st of the last year
+					        	sdateTo = LocalDate.of(currentDate.getYear() - 1, 3, 31);
+					        }
+						}
+						if(searchIncentiveObj.getIncentiveSearchPeriodType()==UdanChooConstants.SEARCH_DATE_RANGE) {
+							sdateFrom = LocalDate.parse(searchIncentiveObj.getClaimFromDate());
+					        sdateTo = LocalDate.parse(searchIncentiveObj.getClaimToDate());
+							
+						}
+			            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+			            searchIncentiveObj.setClaimFromDate(sdateFrom.format(formatter));
+			            searchIncentiveObj.setClaimToDate(sdateTo.format(formatter));
+
 						if(searchIncentiveObj.getClaimFromDate()!=null && searchIncentiveObj.getClaimToDate()!=null) {
 							try {
 								if(searchIncentiveObj.isBlnSearchOnClaimDate()) {

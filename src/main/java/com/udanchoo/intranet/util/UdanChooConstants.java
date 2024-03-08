@@ -75,6 +75,7 @@ public interface UdanChooConstants {
 	public static int INCENTIVE_FRESH_CREATED_STATUS=233;
 	public static int INCENTIVE_ANY_STATUS=0;
 	
+	
 	///////////////// FOR FRESH DEAL OBJ STATUS /////////////////////////
 	public static int DEAL_FRESH_CREATED_STATUS=25;
 	public static int DEAL_OBJECT_CLOSED_STATUS = 34;
@@ -579,4 +580,25 @@ public interface UdanChooConstants {
 	            put(5,"Other");
 	        }
 	    };
+	    
+	    
+	    
+	  /***************** Incentive Related Constants ****************************/
+	    static final Map<Integer, String> INCENTIVE_SEARCH_PERIOD_TYPE = new HashMap<Integer, String>(){
+			{
+				put(0,"Current Month");
+				put(1,"Previous Month");
+				put(2,"Date Range");
+				put(3,"Current Financial Year");
+				put(4,"Previous Financial Year");
+			}
+		}; 
+		
+		public static final int SEARCH_CURRENT_MONTH = 0;
+		public static final int SEARCH_PREV_MONTH= 1;
+		public static final int SEARCH_DATE_RANGE = 2;
+		public static final int SEARCH_CURRENT_FIN_YEAR= 3;
+		public static final int SEARCH_PREV_FIN_YEAR = 4;
+	
+	
 }

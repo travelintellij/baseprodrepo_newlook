@@ -375,7 +375,8 @@ public class IncentiveController {
 	   		isAdmin=true;
 	   		searchIncentiveObj.setClaimantId(0);
 	   	}
-		Page <UdnIncentiveEntity> udnIncentiveList = incentiveService.filterIncentiveRecord(page, UdanChooConstants.DEFAULT_PAGE_SIZE, sortBy, searchIncentiveObj, isAdmin);
+		System.out.println("Incentive Object is " + searchIncentiveObj);
+	    Page <UdnIncentiveEntity> udnIncentiveList = incentiveService.filterIncentiveRecord(page, UdanChooConstants.DEFAULT_PAGE_SIZE, sortBy, searchIncentiveObj, isAdmin);
 		
 		List <IncentiveObj> udnIncentiveListVO = generateFilteredIncentiveVo(udnIncentiveList);
 		mapview.addObject("INCENTIVES_LIST", udnIncentiveListVO);
@@ -390,7 +391,7 @@ public class IncentiveController {
                  Collectors.toMap(UserDetailsObj::getUserId, UserDetailsObj::getUsername));
  		activeUsersMap.put(0, "ALL");
  		mapview.addObject("ACTIVE_USERS_MAP", activeUsersMap);
- 		
+ 		mapview.addObject("INCENTIVE_SEARCH_PERIOD_TYPE", UdanChooConstants.INCENTIVE_SEARCH_PERIOD_TYPE);
  		mapview.addObject("maxPages", udnIncentiveList.getTotalPages());
     	mapview.addObject("page", page);
     	mapview.addObject("sortBy", sortBy);
@@ -417,7 +418,8 @@ public class IncentiveController {
 	   	}else {
 	   		searchIncentiveObj.setClaimantId(userObj.getUserId());
 	   	}
-    	Page <UdnIncentiveEntity> udnIncentiveList = incentiveService.filterIncentiveRecord(page,pageSize,"createdAt",searchIncentiveObj,isAdmin);
+	    System.out.println("Incentive Object is " + searchIncentiveObj);
+	    Page <UdnIncentiveEntity> udnIncentiveList = incentiveService.filterIncentiveRecord(page,pageSize,"createdAt",searchIncentiveObj,isAdmin);
     	List <IncentiveObj> udnIncentiveListVO = generateFilteredIncentiveVo(udnIncentiveList);
 		mapview.addObject("INCENTIVES_LIST", udnIncentiveListVO);
     	List<UserDetailsObj> activeUsersList = userDetailsService.findAllActiveUsers();
@@ -430,6 +432,7 @@ public class IncentiveController {
                 Collectors.toMap(UdnDealStatusVO::getWorkloadStatusId, UdnDealStatusVO::getWorkloadStatusName));
 		activeIncentiveStatusMap.put(0, "ALL");
 		mapview.addObject("ACTIVE_INCENTIVE_STATUS", activeIncentiveStatusMap);
+		mapview.addObject("INCENTIVE_SEARCH_PERIOD_TYPE", UdanChooConstants.INCENTIVE_SEARCH_PERIOD_TYPE);
     	
     	mapview.addObject("maxPages", udnIncentiveList.getTotalPages());
     	mapview.addObject("page", page);

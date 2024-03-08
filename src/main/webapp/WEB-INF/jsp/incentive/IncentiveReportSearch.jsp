@@ -131,6 +131,13 @@
                                                 </div>
                                             </div>
                                             <div class="IncentiveReportSearch_wrapper_dl1_r">
+                                                <label for="">Search Period</label>
+                                                <form:select path="incentiveSearchPeriodType" required="required" style="width:90%">
+                                                 <form:options items="${INCENTIVE_SEARCH_PERIOD_TYPE}" class="service-small" />
+                                                </form:select>
+
+                                            </div>
+                                            <div class="IncentiveReportSearch_wrapper_dl1_r">
                                                 <label for="">From Date </label>
                                                 <form:input path="claimFromDate" type="date" required="required" />
                                             </div>
@@ -281,7 +288,7 @@
                             <c:if test="${page > 0}">
                                 <a style="background:black;padding:2px 5px;border-radius:2px;color:#ffa500" href="<c:out value="
                                     ${prev}&sortBy=${sortBy}&claimFromDate=${SEARCH_INCENTIVE.claimFromDate
-                                    }&claimToDate=${SEARCH_INCENTIVE.claimToDate}&claimantId=${SEARCH_INCENTIVE.claimantId}&claimStatus=${SEARCH_INCENTIVE.claimStatus}" />"
+                                    }&claimToDate=${SEARCH_INCENTIVE.claimToDate}&claimantId=${SEARCH_INCENTIVE.claimantId}&claimStatus=${SEARCH_INCENTIVE.claimStatus}&incentiveSearchPeriodType=${SEARCH_INCENTIVE.incentiveSearchPeriodType}" />"
                                 class="pn prev">Prev</a>
                             </c:if>
 
@@ -294,8 +301,7 @@
                                         <c:url value="view_filter_incentives" var="url">
                                             <c:param name="page" value="${i.index-1}" />
                                         </c:url>
-                                        <a
-                                            href='<c:out value="${url}&sortBy=${sortBy}&claimFromDate=${SEARCH_INCENTIVE.claimFromDate }&claimToDate=${SEARCH_INCENTIVE.claimToDate}&claimantId=${SEARCH_INCENTIVE.claimantId}&claimStatus=${SEARCH_INCENTIVE.claimStatus}" />'>${i.index}</a>
+                                        <a href='<c:out value="${url}&sortBy=${sortBy}&claimFromDate=${SEARCH_INCENTIVE.claimFromDate }&claimToDate=${SEARCH_INCENTIVE.claimToDate}&claimantId=${SEARCH_INCENTIVE.claimantId}&claimStatus=${SEARCH_INCENTIVE.claimStatus}&incentiveSearchPeriodType=${SEARCH_INCENTIVE.incentiveSearchPeriodType}" />'>${i.index}</a>
                                     </c:otherwise>
                                 </c:choose>
                             </c:forEach>
@@ -303,7 +309,7 @@
                                 <c:param name="page" value="${page + 1}" />
                             </c:url>
                             <c:if test="${page + 1 < maxPages}">
-                                <a style="background:black;padding:2px 5px;border-radius:2px;color:#ffa500"  href='<c:out value="${next}&sortBy=${sortBy}&claimFromDate=${SEARCH_INCENTIVE.claimFromDate }&claimToDate=${SEARCH_INCENTIVE.claimToDate}&claimantId=${SEARCH_INCENTIVE.claimantId}&claimStatus=${SEARCH_INCENTIVE.claimStatus}" />'
+                                <a style="background:black;padding:2px 5px;border-radius:2px;color:#ffa500"  href='<c:out value="${next}&sortBy=${sortBy}&claimFromDate=${SEARCH_INCENTIVE.claimFromDate }&claimToDate=${SEARCH_INCENTIVE.claimToDate}&claimantId=${SEARCH_INCENTIVE.claimantId}&claimStatus=${SEARCH_INCENTIVE.claimStatus}&incentiveSearchPeriodType=${SEARCH_INCENTIVE.incentiveSearchPeriodType}" />'
                                     class="pn next">Next</a>
                             </c:if>
                         </div>
