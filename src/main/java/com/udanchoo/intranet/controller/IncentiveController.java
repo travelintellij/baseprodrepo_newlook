@@ -375,7 +375,7 @@ public class IncentiveController {
 	   		isAdmin=true;
 	   		searchIncentiveObj.setClaimantId(0);
 	   	}
-		System.out.println("Incentive Object is " + searchIncentiveObj);
+
 	    Page <UdnIncentiveEntity> udnIncentiveList = incentiveService.filterIncentiveRecord(page, UdanChooConstants.DEFAULT_PAGE_SIZE, sortBy, searchIncentiveObj, isAdmin);
 		
 		List <IncentiveObj> udnIncentiveListVO = generateFilteredIncentiveVo(udnIncentiveList);
@@ -418,7 +418,7 @@ public class IncentiveController {
 	   	}else {
 	   		searchIncentiveObj.setClaimantId(userObj.getUserId());
 	   	}
-	    System.out.println("Incentive Object is " + searchIncentiveObj);
+
 	    Page <UdnIncentiveEntity> udnIncentiveList = incentiveService.filterIncentiveRecord(page,pageSize,"createdAt",searchIncentiveObj,isAdmin);
     	List <IncentiveObj> udnIncentiveListVO = generateFilteredIncentiveVo(udnIncentiveList);
 		mapview.addObject("INCENTIVES_LIST", udnIncentiveListVO);
@@ -507,7 +507,6 @@ public class IncentiveController {
     	ModelAndView updateIncentiveView = new ModelAndView();
     	try {
 			
-    		System.out.println("Incentive Object is " + incentiveObj);
     		/*if(incentiveObj.getApprovedAmount()>0 &&  incentiveObj.getStatus()==) {
     			errors.rejectValue("sourceName", "city.error");
     		}

@@ -3,6 +3,7 @@ package com.udanchoo.intranet.model;
 import java.sql.Date;
 
 import com.udanchoo.intranet.entity.Udn_Deals_Recorder_Entity;
+import com.udanchoo.intranet.util.UdanChooConstants;
 
 public class SearchDealObj  {
     
@@ -17,6 +18,7 @@ public class SearchDealObj  {
     private String statusName;
     private long dealOwner;
     private boolean dateCheckFilterNeeded;
+    private int  dealSearchPeriodType;
     
     public String getStatusName() {
 		return statusName;
@@ -115,17 +117,25 @@ public class SearchDealObj  {
 		this.dealStatus = dealStatus;
 	}
 
+	
 
+	public int getDealSearchPeriodType() {
+		return dealSearchPeriodType;
+	}
+
+	public void setDealSearchPeriodType(int dealSearchPeriodType) {
+		this.dealSearchPeriodType = dealSearchPeriodType;
+	}
+
+	
+
+	@Override
 	public String toString() {
-		String attrib = " clientId -> " + this.clientId + "\n";
-		attrib = attrib + " Client Name -> " + this.clientName + "\n";
-		attrib = attrib + " Confirmation ID  -> " + this.dealConfirmationId + "\n";
-		attrib = attrib + "queryId  -> " + this.queryId + "\n";
-		attrib = attrib + " dealStatus -> " + this.dealStatus + "\n";
-		attrib = attrib + "  startDate -> " + this.startDate + "\n";
-		attrib = attrib + "endDate ->  " + this.endDate + "\n";
-		attrib = attrib + " searchOnBookingDate -> " + this.searchOnBookingDate + "\n";
-		return attrib;
+		return "SearchDealObj [dealConfirmationId=" + dealConfirmationId + ", queryId=" + queryId + ", clientId="
+				+ clientId + ", clientName=" + clientName + ", startDate=" + startDate + ", endDate=" + endDate
+				+ ", searchOnBookingDate=" + searchOnBookingDate + ", dealStatus=" + dealStatus + ", statusName="
+				+ statusName + ", dealOwner=" + dealOwner + ", dateCheckFilterNeeded=" + dateCheckFilterNeeded
+				+ ", dealSearchPeriodType=" + dealSearchPeriodType + ", searchCriteria=" + searchCriteria + "]";
 	}
 
 	public long getDealOwner() {

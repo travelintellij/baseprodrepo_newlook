@@ -260,7 +260,9 @@ public class DealController {
     	mapview.addObject("Id", userObj.getUserId());
     	//mapview.addObject("userRole", userObj.getRoles());
     	mapview.addObject("searchDealForm", searchDealForm);
+ 		mapview.addObject("DEAL_SEARCH_PERIOD_TYPE", UdanChooConstants.DEAL_SEARCH_PERIOD_TYPE);
     	
+ 		
     	//List<UdnDealStatusVO> udnDealStatusVoList = commonService.find_All_Status_Deal_Obj("DEAL_OBJ");
     	//mapview.addObject("DEAL_STATUS_LIST", udnDealStatusVoList);
     	
@@ -272,7 +274,7 @@ public class DealController {
     	
     	List dealSearchList = new ArrayList();
     	
-    	
+    	/*
     	// Get current date
     	java.util.Date currentDate = new java.util.Date();
     	// Create a Calendar object and set it to the current date
@@ -284,14 +286,41 @@ public class DealController {
     	// Convert the dates to java.sql.Date objects
     	Date currentSqlDate = new Date(currentDate.getTime());
     	Date previousMonthSqlDate = new Date(previousMonthDate.getTime());
+    	*/
+    	
+    	Calendar calendar = Calendar.getInstance();
+
+        // Set the calendar to the first day of the current month
+        calendar.set(Calendar.DAY_OF_MONTH, 1);
+
+        // Get the date for the first day of the current month
+        java.util.Date firstDayOfMonth = calendar.getTime();
+
+        // Set the calendar to the last day of the current month
+        calendar.add(Calendar.MONTH, 1); // Move to the next month
+        calendar.add(Calendar.DAY_OF_MONTH, -1); // Move to the last day of the previous month
+
+        // Get the date for the last day of the current month
+        java.util.Date lastDayOfMonth = calendar.getTime();
+
+        Date currentSqlDate = new Date(lastDayOfMonth.getTime());
+    	Date previousMonthSqlDate = new Date(firstDayOfMonth.getTime());
+    	
+    	
     	searchDealForm.setStartDate(previousMonthSqlDate);
     	searchDealForm.setEndDate(currentSqlDate);
     	searchDealForm.setSearchOnBookingDate(true);
+    	
+    	
+    	
+    	
+    	
     	searchDealBasedOnStatusAndDate(dealSearchList,searchDealForm);
     	mapview.addObject("dealSearchList",dealSearchList);
     	//mapview.setViewName("deals/form_searchDealResults");
     	mapview = view_filter_deals( "0",3, "CreatedAt",searchDealForm,result);
     	//mapview.setViewName("deals/view_filter_deals");
+    	
     	
     	return mapview;
     }
@@ -379,6 +408,7 @@ public class DealController {
 	public ModelAndView view_filter_deals( @RequestParam(defaultValue = "0") String page,@RequestParam(defaultValue = "3") Integer pageSize, @RequestParam(defaultValue = "CreatedAt") String sortBy,@ModelAttribute("FILTER_DEAL_OBJ") SearchDealObj filterDealObj,BindingResult result) {
 		pageSize = UdanChooConstants.DEFAULT_PAGE_SIZE;
 		ModelAndView modelView = new ModelAndView("deals/form_searchDealResults");
+		modelView.addObject("DEAL_SEARCH_PERIOD_TYPE", UdanChooConstants.DEAL_SEARCH_PERIOD_TYPE);
     	List<UdnDealStatusVO> udnDealStatusVoList = commonService.find_All_Status_Deal_Obj("DEAL_OBJ");
     	Map<Integer, String> dealStatusMap = (Map<Integer, String>) udnDealStatusVoList.stream().collect(
                 Collectors.toMap(UdnDealStatusVO::getWorkloadStatusId, UdnDealStatusVO::getWorkloadStatusName));

@@ -62,14 +62,25 @@
                 </div>
                 <div class="search_deals_data">
                     <div class="search_deals_data_l1 search_deal_chs">
-                        <input type="radio" value="true" id="true" name="searchOnBookingDate" checked
-                            style="display: inline-block;width: 20px;height: 20px;margin-left: -25px;margin-right:10px">
-                        <label for="true" class="radio">Booking Date</label>
+						<form:radiobutton path="searchOnBookingDate" value="true" style="display: inline-block;width: 20px;height: 20px;margin-left: -25px;margin-right:10px"/>                        
+                      <label for="true" class="radio">Booking Date</label>
+                      <!--   
+                        <input type="radio" value="true" id="true" name="searchOnBookingDate" checked style="display: inline-block;width: 20px;height: 20px;margin-left: -25px;margin-right:10px">
+                         -->
+                        
                     </div>
                     <div class="search_deals_data_l1 search_deal_chs">
-                        <input type="radio" value="false" id="false" name="searchOnBookingDate" name=""
-                            style="display: inline-block;width: 20px;height: 20px;margin-left: -25px;margin-right:10px">
+                        <form:radiobutton path="searchOnBookingDate" value="false" style="display: inline-block;width: 20px;height: 20px;margin-left: -25px;margin-right:10px"/>
+                        <!-- 
+                        <input type="radio" value="false" id="false" name="searchOnBookingDate" name="" style="display: inline-block;width: 20px;height: 20px;margin-left: -25px;margin-right:10px">
+                        -->
                         <label for="false" class="radio">Travel Date</label>
+                    </div>
+                    <div class="IncentiveReportSearch_wrapper_dl1_r">
+                        <label for="">Search Period </label>
+                        <form:select path="dealSearchPeriodType" required="required" style="width:90%">
+	                         <form:options items="${DEAL_SEARCH_PERIOD_TYPE}" class="service-small" />
+                        </form:select>
                     </div>
                     <div class="search_deals_data_l1">
                         <label for="sd">Start Date</label>

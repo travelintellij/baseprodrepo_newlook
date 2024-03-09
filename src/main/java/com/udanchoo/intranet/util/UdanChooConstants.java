@@ -601,4 +601,22 @@ public interface UdanChooConstants {
 		public static final int SEARCH_PREV_FIN_YEAR = 4;
 	
 	
+		/************************** Deal Related Constants ******************************/
+	    static final Map<Integer, String> DEAL_SEARCH_PERIOD_TYPE = new HashMap<Integer, String>(){
+				{
+					put(0,"Current Month");
+					put(1,"Previous Month");
+					put(2,"Date Range");
+					put(3,"Current Financial Year");
+					put(4,"Previous Financial Year");
+				}
+			}; 
+			
+			public static final int DEALS_CURRENT_MONTH = 0;
+			public static final int DEALS_PREV_MONTH= 1;
+			public static final int DEALS_DATE_RANGE = 2;
+			public static final int DEALS_CURRENT_FIN_YEAR= 3;
+			public static final int DEALS_PREV_FIN_YEAR = 4;
+		
+		
 }
