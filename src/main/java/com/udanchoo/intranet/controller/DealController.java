@@ -261,19 +261,14 @@ public class DealController {
     	//mapview.addObject("userRole", userObj.getRoles());
     	mapview.addObject("searchDealForm", searchDealForm);
  		mapview.addObject("DEAL_SEARCH_PERIOD_TYPE", UdanChooConstants.DEAL_SEARCH_PERIOD_TYPE);
-    	
- 		
     	//List<UdnDealStatusVO> udnDealStatusVoList = commonService.find_All_Status_Deal_Obj("DEAL_OBJ");
     	//mapview.addObject("DEAL_STATUS_LIST", udnDealStatusVoList);
     	
     	List<UdnDealStatusVO> udnDealStatusVoList = commonService.find_All_Status_Deal_Obj("DEAL_OBJ");
     	Map<Integer, String> dealStatusMap = (Map<Integer, String>) udnDealStatusVoList.stream().collect(
                 Collectors.toMap(UdnDealStatusVO::getWorkloadStatusId, UdnDealStatusVO::getWorkloadStatusName));
-    	
     	mapview.addObject("DEAL_STATUS_MAP", dealStatusMap);
-    	
     	List dealSearchList = new ArrayList();
-    	
     	/*
     	// Get current date
     	java.util.Date currentDate = new java.util.Date();
@@ -287,34 +282,23 @@ public class DealController {
     	Date currentSqlDate = new Date(currentDate.getTime());
     	Date previousMonthSqlDate = new Date(previousMonthDate.getTime());
     	*/
-    	
     	Calendar calendar = Calendar.getInstance();
 
         // Set the calendar to the first day of the current month
         calendar.set(Calendar.DAY_OF_MONTH, 1);
-
         // Get the date for the first day of the current month
         java.util.Date firstDayOfMonth = calendar.getTime();
-
         // Set the calendar to the last day of the current month
         calendar.add(Calendar.MONTH, 1); // Move to the next month
         calendar.add(Calendar.DAY_OF_MONTH, -1); // Move to the last day of the previous month
-
         // Get the date for the last day of the current month
         java.util.Date lastDayOfMonth = calendar.getTime();
-
         Date currentSqlDate = new Date(lastDayOfMonth.getTime());
     	Date previousMonthSqlDate = new Date(firstDayOfMonth.getTime());
-    	
-    	
     	searchDealForm.setStartDate(previousMonthSqlDate);
     	searchDealForm.setEndDate(currentSqlDate);
     	searchDealForm.setSearchOnBookingDate(true);
-    	
-    	
-    	
-    	
-    	
+
     	searchDealBasedOnStatusAndDate(dealSearchList,searchDealForm);
     	mapview.addObject("dealSearchList",dealSearchList);
     	//mapview.setViewName("deals/form_searchDealResults");
