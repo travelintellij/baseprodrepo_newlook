@@ -33,67 +33,71 @@
         <div class="form_convertNewDeal_wrapper">
         <h2 style="font-size:25px;margin-bottom:15px;color:#32cd32  "align="center">Confirm: Convert New Win</h2>
             <div class="form_convertNewDeal_wrapper_data">
-                <div class="form_convertNewDeal_wrapper_data_line bc-clr">
+                <div class="form_convertNewDeal_wrapper_data_line ">
                     <div class="form_convertNewDeal_wrapper_dl1">
-                        <label for="" class="lb">Queary Id</label>
-                        <p>Q-${String.format("%04d",LEAD_OBJ.leadId)}-${LEAD_OBJ.leadSourceShortName }</p>
+                        <label style="font-weight:normal" for="" class="lb" style="font-weight:normal">Queary Id</label>
+                        <p style="font-weight:800;color:#32cd32 ">Q-${String.format("%04d",LEAD_OBJ.leadId)}-${LEAD_OBJ.leadSourceShortName }</p>
                     </div>
                     <div class="form_convertNewDeal_wrapper_dl1">
-                        <label for="" class="lb">Client Name</label>
-                        <p>${LEAD_OBJ.contactName }</p>
+                        <label style="font-weight:normal" for="" class="lb" >Client Name</label>
+                        <p style="font-weight:800;color:#023e8a ">${LEAD_OBJ.contactName }</p>
                     </div>
                     <div class="form_convertNewDeal_wrapper_dl1">
-                        <label for="" class="lb">Source</label>
-                        <p>${LEAD_OBJ.sourceName}</p>
+                        <label style="font-weight:normal" for="" class="lb">Source</label>
+                        <p style="font-weight:800;color:#023e8a ">${LEAD_OBJ.sourceName}</p>
                     </div>
                     <div class="form_convertNewDeal_wrapper_dl1">
-                        <label for="" class="lb">Destination</label>
-                        <p>${LEAD_OBJ.destinationName}</p>
+                        <label style="font-weight:normal" for="" class="lb">Destination</label>
+                        <p style="font-weight:800;color:#023e8a ">${LEAD_OBJ.destinationName}</p>
                     </div>
                 </div>
-                <div class="form_convertNewDeal_wrapper_data_line bc-clr">
+                <div class="form_convertNewDeal_wrapper_data_line ">
                     <div class="form_convertNewDeal_wrapper_dl1">
-                        <label for="" class="lb">Adults</label>
-                        <p>${LEAD_OBJ.adults}</p>
+                        <label style="font-weight:normal" for="" class="lb">Adults</label>
+                        <p style="font-weight:800;color:#023e8a ">${LEAD_OBJ.adults}</p>
                     </div>
                     <div class="form_convertNewDeal_wrapper_dl1">
-                        <label for="" class="lb">Children</label>
-                        <p>${LEAD_OBJ.children}(Age ${LEAD_OBJ.childrenAgeInfo} )</p>
+                        <label style="font-weight:normal" for="" class="lb">Children</label>
+                        <p style="font-weight:800;color:#023e8a ">${LEAD_OBJ.children}(Age ${LEAD_OBJ.childrenAgeInfo} )</p>
                     </div>
                     <div class="form_convertNewDeal_wrapper_dl1">
-                        <label for="" class="lb">Booking Date</label> <br>
+                        <label style="font-weight:normal" for="" class="lb">Booking Date</label> <br>
                     <input type="date" id="bookingDate" name="bookingDate" style="width:90%" />
                     </div>
                     <div class="form_convertNewDeal_wrapper_dl1">
-                        <label for="" class="lb">Travel start date</label> <br>
+                        <label  style="font-weight:normal" for="" class="lb">Travel start date</label> <br>
+                        <p style="font-weight:800;color:#023e8a ">
                         <fmt:formatDate value="${LEAD_OBJ.travelStartDate}" pattern="dd-MMM-yyyy" />
+                        </p>
                     </div>
                 </div>
-                <div class="form_convertNewDeal_wrapper_data_line bc-clr">
+                <div class="form_convertNewDeal_wrapper_data_line ">
                     <div class="form_convertNewDeal_wrapper_dl1">
-                        <label for="" class="lb">Travel end date</label> <br>
+                        <label style="font-weight:normal" for="" class="lb">Travel end date</label> <br>
+                        <p style="font-weight:800;color:#023e8a ">
                     <fmt:formatDate value="${LEAD_OBJ.travelEndDate}" pattern="dd-MMM-yyyy" />
+                    </p>
                     </div>
                 </div>
             </div>
-            <h1 class="lb" style="text-align: start;">Services opted</h1>
+            <h1 class="lb" style="text-align: start;font-weight:normal" >Services opted</h1>
             <div class="form_convertNewDeal_wrapper_data_line">
                 <div class="form_convertNewDeal_ser">
                         <c:forEach var="listValue" items="${UdnServicesList}" varStatus="status">
                             <jsp:useBean id="status" type="javax.servlet.jsp.jstl.core.LoopTagStatus" />
                             <td>
-                                <label class="container">
+                                <label class="container" style="color:black">
                         
                                     <%-- <form:checkbox path="serviceList" value="${listValue.serviceCode}" />
                                     --%>
                         
                         
                                     <c:if test="${fn:containsIgnoreCase(UdnSoldServicesList, listValue.serviceCode)}">
-                                        <form:checkbox path="serviceList" value="${listValue.serviceCode}" checked="checked" disabled="true" />
+                                        <form:checkbox class="ch_c" style="width:18px;height:18px" path="serviceList" value="${listValue.serviceCode}" checked="checked" disabled="true" />
                                         <c:out value="${listValue.serviceName}" />
                                     </c:if>
                                     <c:if test="${not fn:containsIgnoreCase(UdnSoldServicesList, listValue.serviceCode)}">
-                                        <form:checkbox path="serviceList" value="${listValue.serviceCode}" disabled="true" />
+                                        <form:checkbox class="ch_c" style="width:18px;height:18px" path="serviceList" value="${listValue.serviceCode}" disabled="true" />
                                         <c:out value="${listValue.serviceName}" />
                                     </c:if>
                         
@@ -114,19 +118,19 @@
             </div>
                 <div class="form_convertNewDeal_wrapper_data_line">
                     <div class="form_convertNewDeal_wrapper_dl1">
-                        <label for="" class="lb">Deal Detailed Description</label> 
+                        <label style="font-weight:800" for="" class="lb">Deal Detailed Description</label> 
                         <textarea rows="2" cols="143" name="dealDescription">${LEAD_OBJ.clientRemarks.trim()}</textarea>
                     </div>
                 </div>
                 <div class="form_convertNewDeal_wrapper_data_line">
                     <div class="form_convertNewDeal_wrapper_dl1">
-                        <label for="" class="lb">Source of Deal</label> <br>
+                        <label for="" class="lb" style="font-weight:800">Source of Deal</label> <br>
                     <form:select path="dealSource" itemValue="${LEAD_OBJ.leadSource}" style="width:90%">
                         <form:options items="${PARTNERS_MAP}" />
                     </form:select>
                     </div>
                     <div class="form_convertNewDeal_wrapper_dl1">
-                        <label for="" class="lb">Business type</label>
+                        <label for="" class="lb" style="font-weight:800">Business type</label>
                         <select id="isNewClient" name="isNewClient" required style="width:90%">
                             <option value="" class="service-small">Choose Business type</option>
                             <c:if test="${DEAL_OBJ.isNewClient eq true }">
@@ -141,25 +145,25 @@
                         </select>
                     </div>
                     <div class="form_convertNewDeal_wrapper_dl1">
-                        <label for="" class="lb">Projected cost</label>
+                        <label for="" class="lb" style="font-weight:800">Projected cost</label>
                     <form:input path="projectedCost" name="projectedCost" size="15" required="required" style="width:90%"/>
                     </div>
                     <div class="form_convertNewDeal_wrapper_dl1">
-                        <label for="" class="lb">Projacted mark up</label>
+                        <label for="" class="lb" style="font-weight:800">Projacted mark up</label>
                     <form:input path="projectedMarkup" name="projectedMarkup"  size="15" required="required"  style="width:100%"/>
                     </div>
                 </div>
                 <div class="form_convertNewDeal_wrapper_data_line">
                     <div class="form_convertNewDeal_wrapper_dl1">
-                        <label for="" class="lb">Selling price</label>
+                        <label for="" class="lb" style="font-weight:800">Selling price</label>
                         <form:input path="sellingPrice" name="sellingPrice"  size="15" required="required" style="width:88%"/>
                     </div>
                 </div>
-                <p style="display: inline-block;">Inform client with confirmation code (system will send email)</p>
+                <p style="display: inline-block;color:black">Inform client with confirmation code (system will send email)</p>
                 <input type="radio" value="yes" id="yes" name="isClientInformed" checked />
-                <label for="yes" class="radio">Yes</label>
+                <label for="yes" class="radio" style="color:black">Yes</label>
                 <input type="radio" value="no" id="no" name="isClientInformed" />
-                <label for="no" class="radio">No</label>
+                <label for="no" class="radio"  style="color:black">No</label>
                 <div class="due_today_task_data_btns">
                 <button type="submit" href="/" style=" display: inline-block;
     color: white;

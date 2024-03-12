@@ -52,21 +52,21 @@ body::before {
                         </h3>
                         <div class="follow-up-time">
                             <div class="follow-up-lead-action-time">
-                                <label for="fulat">Lead Action Time</label> <br>
+                                <label for="fulat" style="font-weight:800">Lead Action Time</label> <br>
                                 <form:input path= "followuptime" required="required" id="followuptime"/>
                             </div>
                             <div class="follow-up-next-action-time">
-                                <label for="funat">Next Action Time</label> <br>
+                                <label for="funat"  style="font-weight:800" >Next Action Time</label> <br>
                                 <form:input path= "nextfollowuptime" required="required" id="nextfollowuptime"/>
                             </div>
                         </div>
                         <div class="follow-up-main-response">
                             <div class="fwaction-taken">
-                                <p>Action Taken | Client Response</p>
+                                <p  style="font-weight:800">Action Taken | Client Response</p>
                                 <form:textarea path = "response" rows = "5" cols = "40" />
                             </div>
                             <div class="fwnext-todo">
-                                <p>Next To do</p>
+                                <p style="font-weight:800">Next To do</p>
                                 <form:textarea path = "nextactionplan" rows = "5" cols = "40" />
                             </div>
                         </div>

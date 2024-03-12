@@ -135,7 +135,7 @@
                 <h1 class="heading" style="color:#FFBA08">Search Leads</h1>
                 <div class="firstL">
                     <div class="box1 box">
-                        <label for="tf">Traveling From</label><br>
+                        <label for="tf"  style="font-weight:800">Traveling From</label><br>
                         <form:input path="sourceName" name="sourceName" id="sourceName" class="inf"  />
 						<form:hidden path = "source" />
                         <font color="red">
@@ -143,7 +143,7 @@
                         </font>
                     </div>
                     <div class="box2 box">
-                        <label for="tt">Traveling To</label><br>
+                        <label for="tt"  style="font-weight:800">Traveling To</label><br>
                         
                         <form:input path="destinationName" name="destinationName" id="destinationName" class="inf"  />
                         <form:hidden path = "destination" />
@@ -164,32 +164,32 @@
                     </sec:authorize> -->
                     <div class="box3 box chflex">
                         <form:checkbox path="qualified" id="quali" />
-                        <label for="quali">Qualified</label>
+                        <label for="quali"  style="font-weight:800">Qualified</label>
                     </div>
                     <div class="box4 box chflex">
                        <form:checkbox path="flagged" id="flag" />
-                        <label for="flag">Flagged</label>
+                        <label for="flag"  style="font-weight:800">Flagged</label>
                     </div>
                     <div class="l2Box1 box" style="margin-right:22px">
-                        <label for="id">Lead id</label> <br>
+                        <label for="id"  style="font-weight:800">Lead id</label> <br>
                         <form:input path="leadId" type="number" min="0" size="35" value="" id="id" class="inf" placeholder="Lead Number" />
                     </div>
                     <div class="l2Box2 box contactName">
-                        <label for="cn">Contact Name</label> <br>
+                        <label for="cn"  style="font-weight:800">Contact Name</label> <br>
                         <form:input path="contactName"  id="contactName" name="contactName" size="35" style="width:200px;" placeholder="Contact Name" class="inf" />
                         <input type="hidden" name="contactId" value="0" />
                     </div>
                 </div>
                 <div class="secondL">
                     <div class="l3Box3 box">
-                        <label for="all">Lead Source</label> <br>
+                        <label for="all"  style="font-weight:800">Lead Source</label> <br>
                         <form:select path="leadSource" class="inf">  
 					      <form:option value="0" label="***ALL***" class="service-small"/>
 					      <form:options items = "${PARTNERS_MAP}" class="service-small"/>
 				        </form:select>  
                     </div>
                     <div class="l4Box4 box">
-                        <label for="aol">All Open Leads</label> <br>
+                        <label for="aol"  style="font-weight:800">All Open Leads</label> <br>
                         <form:select path="leadStatus" class="inf">  
 				      		<form:option value="0" label="*** All Leads ***" class="service-small"/>
 				      		<form:option value="200" label="*** All Open Leads ***" class="service-small"/>
@@ -206,7 +206,7 @@
                         </select> -->
                     </div>
                     <div class="l3Box1 box">
-                        <label for="dsc">Date Search Criteria</label> <br>
+                        <label for="dsc"  style="font-weight:800">Date Search Criteria</label> <br>
                        <form:select path="dateCriteria" class="dsc">  
 							<form:option value="0" label="Select Date Criteria" class="service-small"/>
 							<form:option value="1" label="Creation Date" class="service-small"/>
@@ -217,11 +217,11 @@
                         </font>
                     </div>
                     <div class="l3Box2 box fromBox">
-                        <label for="">From</label> <br>
+                        <label for=""  style="font-weight:800">From</label> <br>
                         <form:input path="startDate" type="date" class="inf" />
                     </div>
                     <div class="l3Box3 box tobox">
-                        <label for="">To</label> <br>
+                        <label for=""  style="font-weight:800">To</label> <br>
 						<form:input path="endDate" type="date" class="inf" />
                     </div>
                 </div>

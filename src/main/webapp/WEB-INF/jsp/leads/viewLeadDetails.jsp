@@ -44,79 +44,83 @@
                         <font color="#32cd32 "> ${Success} </font>
                         <font color="red"> ${Error}</font>
                     </b></div>
-                <h1 class="page-heading">View Lead</h1>
+                <h1 class="page-heading">View Lead </h1>
                 <div class="edit_lead_wrapper_data">
                     <div class="edit_lead_wrapper_data_line a" style="margin-top: 10px;">
                         <div class="edit_lead_wrapper_data_l1" >
                             <label for="">Lead Id</label>
-                            <p>Q-${String.format("%04d",LEAD_OBJ.leadId)}-${LEAD_OBJ.leadSourceShortName }</p>
+                            <p style="font-weight:800;color:#32cd32 ">Q-${String.format("%04d",LEAD_OBJ.leadId)}-${LEAD_OBJ.leadSourceShortName }</p>
                         </div>
                         <div class="edit_lead_wrapper_data_l1" >
                             <label for="">Lead Markers</label>
                             <div class="lead_markers_ch">
                                 <div class="sun_edit_lead">
-                                    <p for="">Is Qualified</p>
+                                    <p for="" style="font-weight:800;color:#023e8a">Is Qualified</p>
                                     <form:checkbox class="ch_c" path="qualified" disabled="true" />
                                 </div>
                                 <div class="sun_edit_lead">
-                                    <p for="">Is Flagged</p>
+                                    <p for="" style="font-weight:800;color:#023e8a">Is Flagged</p>
                                     <form:checkbox class="ch_c" path="flagged" disabled="true" />
                                 </div>
                             </div>
                         </div>
                         <div class="edit_lead_wrapper_data_l1" >
                             <label for="">Client</label> <br>
-                            <p>${LEAD_OBJ.contactName}</p>
+                            <p style="font-weight:800;color:#023e8a">${LEAD_OBJ.contactName}</p>
                         </div>
                         <div class="edit_lead_wrapper_data_l1" >
                             <label for="">Lead Owner</label>
-                            <p>${LEAD_OBJ.leadOwnerName}</p>
+                            <p style="font-weight:800;color:#023e8a">${LEAD_OBJ.leadOwnerName}</p>
                         </div>
                     </div>
                     <div class="edit_lead_wrapper_data_line a" style="margin-top: 10px">
                         <div class="edit_lead_wrapper_data_l1">
                             <label for="">Source</label>
-                            <p>${LEAD_OBJ.sourceName}</p>
+                            <p style="font-weight:800;color:#023e8a">${LEAD_OBJ.sourceName}</p>
                         </div>
                         <div class="edit_lead_wrapper_data_l1"">
                             <label for="">Destination</label>
-                            <p>${LEAD_OBJ.destinationName}</p>
+                            <p style="font-weight:800;color:#023e8a">${LEAD_OBJ.destinationName}</p>
                         </div>
                         <div class="edit_lead_wrapper_data_l1 adults_box_edit_box" >
                             <div class="adults_box_edit">
                                 <label for="">Adults</label> <br>
-                                <p>${LEAD_OBJ.adults}</p>
+                                <p style="font-weight:800;color:#023e8a">${LEAD_OBJ.adults}</p>
                             </div>
                             <div class="adults_box_edit">
                                 <label for="">Children</label> <br>
-                                <p>${LEAD_OBJ.children}</p>
+                                <p style="font-weight:800;color:#023e8a">${LEAD_OBJ.children}</p>
                             </div>
                             <div class="adults_box_edit">
                                 <label for="">Age Info</label> <br>
-                                <p>${LEAD_OBJ.childrenAgeInfo}</p>
+                                <p style="font-weight:800;color:#023e8a">${LEAD_OBJ.childrenAgeInfo}</p>
                             </div>
                         </div>
                         <div class="edit_lead_wrapper_data_l1" >
                             <label for="">Lead Source</label>
-                            <p>${LEAD_OBJ.leadSourceName}</p>
+                            <p style="font-weight:800;color:#023e8a">${LEAD_OBJ.leadSourceName}</p>
                         </div>
                     </div>
                     <div class="edit_lead_wrapper_data_line a" style="margin: 10px 0;">
                         <div class="edit_lead_wrapper_data_l1">
                             <label for="">Travel Start Date</label> <br>
+                            <p style="font-weight:800;color:#023e8a">
                             <fmt:formatDate value="${LEAD_OBJ.travelStartDate}" pattern="dd-MM-yyyy" />
+                            </p>
                         </div>
                         <div class="edit_lead_wrapper_data_l1" >
                             <label for="">Travel End Date</label> <br>
-                            <fmt:formatDate value="${LEAD_OBJ.travelEndDate}" pattern="dd-MM-yyyy" />
+                            <p style="font-weight:800;color:#023e8a">
+                            <fmt:formatDate value="${LEAD_OBJ.travelEndDate}" pattern="dd-MM-yyyy"/>
+                            </p>
                         </div>
                         <div class="edit_lead_wrapper_data_l1" >
                             <label for="">Tentative Amount</label> <br>
-                            <p>${LEAD_OBJ.tentativeCost}</p>
+                            <p style="font-weight:800;color:#023e8a">${LEAD_OBJ.tentativeCost}</p>
                         </div>
                         <div class="edit_lead_wrapper_data_l1">
                             <label for="">Status</label>
-                            <p>${LEAD_OBJ.statusName}</p>
+                            <p style="font-weight:800;color:#023e8a">${LEAD_OBJ.statusName}</p>
                         </div>
                     </div>
                       <label for="" style="margin-right:20px;color: black;font-weight: bold;text-align:start">Selected Services</label>
@@ -163,18 +167,18 @@
                         <div class="edit_lead_wrapper_data_l1_rem a" style="margin-top: 10px;">
                             <div class="edit_lead_wrapper_data_l1_rem1" style="width:50%;">
                                 <label for="">Client Remarks</label> <br>
-                                <p>${LEAD_OBJ.clientRemarks}</p>
+                                <p style="font-weight:800;color:#023e8a">${LEAD_OBJ.clientRemarks}</p>
                             </div>
                             <div class="edit_lead_wrapper_data_l1_rem2" style="margin-left: 17px;width:50%">
                                 <label for="">Internal Remarks</label> <br>
-                                <p>${LEAD_OBJ.internalRemarks}</p>
+                                <p style="font-weight:800;color:#023e8a">${LEAD_OBJ.internalRemarks}</p>
                             </div>
                         </div>
 
                         <div class="info-client view_lead_tag_team" style="margin-top: 10px;">
                             <label for="" style="color: black;margin-right:10px">Tag Team Mate</label>
                             <c:forEach items="${LEAD_OBJ.team}" var="leadteam">
-                                <li >${leadteam.name}</li> &nbsp; &nbsp; &nbsp;
+                                <li style="font-weight:800;color:#023e8a">${leadteam.name}</li> &nbsp; &nbsp; &nbsp;
                             </c:forEach>
                         </div>
                         

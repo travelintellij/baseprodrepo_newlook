@@ -70,11 +70,11 @@
                 <div class="edit_lead_wrapper_data">
                     <div class="edit_lead_wrapper_data_line" style="margin-top: 10px;">
                         <div class="edit_lead_wrapper_data_l1">
-                            <label for="">Lead Id</label>
+                            <label for="" style="font-weight:800">Lead Id</label>
                             <p>Q-${String.format("%04d",LEAD_OBJ.leadId)}-${LEAD_OBJ.leadSourceShortName }</p>
                         </div>
                         <div class="edit_lead_wrapper_data_l1">
-                            <label for="">Lead Markers</label>
+                            <label for="" style="font-weight:800">Lead Markers</label>
                             <div class="lead_markers_ch">
                                 <div class="sun_edit_lead">
                                     <p >Is Qualified</p>
@@ -87,7 +87,7 @@
                             </div>
                         </div>
                         <div class="edit_lead_wrapper_data_l1">
-                            <label for="">Contact</label> <br>
+                            <label for="" style="font-weight:800">Contact</label> <br>
                             <form:input path="contactName" name="contactName" />
                             <form:hidden path="contactId" />
                             <font color="red">
@@ -95,7 +95,7 @@
                             </font>
                         </div>
                         <div class="edit_lead_wrapper_data_l1">
-                            <label for="">Lead Owner</label>
+                            <label for="" style="font-weight:800">Lead Owner</label>
                             <sec:authorize access="hasAnyRole('ADMIN','LEAD_MANAGER')">
                                 <td>
                                     <div class="select" >
@@ -115,7 +115,7 @@
                     </div>
                     <div class="edit_lead_wrapper_data_line" style="margin-top: 10px;">
                         <div class="edit_lead_wrapper_data_l1">
-                            <label for="">Source</label>
+                            <label for="" style="font-weight:800">Source</label>
                             <form:input path="sourceName" name="sourceName" />
                             <form:hidden path="source" />
                             <div style="margin-left:-10px">
@@ -125,7 +125,7 @@
                             </div>
                         </div>
                         <div class="edit_lead_wrapper_data_l1">
-                            <label for="">Destination</label>
+                            <label for="" style="font-weight:800">Destination</label>
                             <form:input path="destinationName" />
                             <form:hidden path="destination" />
                             <font color="red">
@@ -134,20 +134,20 @@
                         </div>
                         <div class="edit_lead_wrapper_data_l1 adults_box_edit_box">
                             <div class="adults_box_edit">
-                                <label for="">Adults</label> <br>
+                                <label for="" style="font-weight:800">Adults</label> <br>
                                 <form:input path="adults" type="number" min="0" />
                             </div>
                             <div class="adults_box_edit">
-                                <label for="">Children</label> <br>
+                                <label for="" style="font-weight:800">Children</label> <br>
                                 <form:input path="children" type="number" min="0" />
                             </div>
                             <div class="adults_box_edit">
-                                <label for="">Age Info</label> <br>
+                                <label for="" style="font-weight:800">Age Info</label> <br>
                                 <form:input path="childrenAgeInfo" />
                             </div>
                         </div>
                         <div class="edit_lead_wrapper_data_l1">
-                            <label for="">Lead Source</label>
+                            <label for="" style="font-weight:800">Lead Source</label>
                             <form:select path="leadSource" style="width:90%">
                                 <form:options items="${PARTNERS_MAP}" />
                             </form:select>
@@ -155,11 +155,11 @@
                     </div>
                     <div class="edit_lead_wrapper_data_line" style="margin-top: 10px;">
                         <div class="edit_lead_wrapper_data_l1">
-                            <label for="">Travel Start Date</label>
+                            <label for="" style="font-weight:800">Travel Start Date</label>
                             <form:input path="travelStartDate" type="date" required="required" />
                         </div>
                         <div class="edit_lead_wrapper_data_l1">
-                            <label for="">Travel End Date</label>
+                            <label for="" style="font-weight:800">Travel End Date</label>
                             <form:input path="travelEndDate" type="date" required="required" />
                              <div align="center">
                             <p style="margin-left:-22px;color:red">
@@ -168,11 +168,11 @@
                         </div>
                         </div>
                         <div class="edit_lead_wrapper_data_l1">
-                            <label for="">Tentative Amount</label> <br>
+                            <label for="" style="font-weight:800">Tentative Amount</label> <br>
                             <form:input path="tentativeCost" type="number" min="100" />
                         </div>
                         <div class="edit_lead_wrapper_data_l1">
-                            <label for="">Status</label>
+                            <label for="" style="font-weight:800" >Status</label>
                             <sec:authorize access="hasAnyRole('ADMIN','CAN_CLOSE')">
                                 <div class="select">
                                     <form:select path="leadStatus" style="width:90%"
@@ -197,38 +197,38 @@
                         <label for="" style="margin-right: 20px;   color: black; font-weight: bold;">Select Services</label>
                         <div class="edit_ser_box" style=" padding: 10px 5px;">
                             <div class="ser_1">
-                                <label for="">Flight</label>
+                                <label for="" style="font-weight:800">Flight</label>
                                 <form:checkbox path="flight" name="flight" style="width:18px;height:18px;"/>
                             </div>
                             <div class="ser_1">
-                                <label for="">Hotal</label>
+                                <label for="" style="font-weight:800">Hotel</label>
                                 <form:checkbox path="hotel" name="hotel" style="width:18px;height:18px;"/>
                             </div>
                             <div class="ser_1">
-                                <label for="">Visa</label>
+                                <label for="" style="font-weight:800">Visa</label>
                                 <form:checkbox path="visa" name="visa" style="width:18px;height:18px;"/>
                             </div>
                             <div class="ser_1">
-                                <label for="">Insurance</label>
+                                <label for="" style="font-weight:800">Insurance</label>
                                 <form:checkbox path="insurance" name="insurance" style="width:18px;height:18px;"/>
                             </div>
                             <div class="ser_1">
-                                <label for="">Transfers</label>
+                                <label for="" style="font-weight:800">Transfers</label>
                                 <form:checkbox path="transfers" name="transfers" style="width:18px;height:18px;"/>
                             </div>
                             <div class="ser_1">
-                                <label for="">Sightseeing</label>
+                                <label for="" style="font-weight:800">Sightseeing</label>
                                 <form:checkbox path="sightseeing" name="sightseeing" style="width:18px;height:18px;"/> </div>
                                     <div class="ser_1">
-                                        <label for="">Package</label>
+                                        <label for="" style="font-weight:800">Package</label>
                                         <form:checkbox path="landPackage" name="landPackage;" style="width:18px;height:18px;" />
                                     </div>
                                     <div class="ser_1">
-                                        <label for="">Cruise</label>
+                                        <label for="" style="font-weight:800">Cruise</label>
                                         <form:checkbox path="cruise" name="cruise" style="width:18px;height:18px;"/>
                                     </div>
                                     <div class="ser_1">
-                                        <label for="">Others</label>
+                                        <label for="" style="font-weight:800">Others</label>
                                         <form:checkbox path="others" name="others" style="width:18px;height:18px;" />
                                     </div>
                             </div>
@@ -236,11 +236,11 @@
 
                         <div class="edit_lead_wrapper_data_l1_rem" style="margin-top: 10px;">
                             <div class="edit_lead_wrapper_data_l1_rem1">
-                                <label for="">Client Remarks</label> <br>
+                                <label for="" style="font-weight:800">Client Remarks</label> <br>
                                 <form:textarea path="clientRemarks" name="" id="" cols="68" rows="5" />
                             </div>
                             <div class="edit_lead_wrapper_data_l1_rem2" style="margin-left: 17px;">
-                                <label for="">Internal Remarks</label> <br>
+                                <label for="" style="font-weight:800">Internal Remarks</label> <br>
                                 <form:textarea path="internalRemarks" name="" id="" cols="66" rows="5" />
                             </div>
                         </div>
@@ -274,9 +274,9 @@
                        
                     <div class="info-client_3" style="margin-top: 10px;">
                     <div class=" sub_info-client" >
-                        <form:checkbox class="ch_c" path="leadCreationClientInformed" disabled="true" />
+                        <form:checkbox class="ch_c" path="leadCreationClientInformed" disabled="true"  style="width:18px;height:18px"/>
                         <label for="">Client Informed Earlier</label>
-                        <form:hidden  path="leadCreationClientInformed" />
+                        <form:hidden  path="leadCreationClientInformed"/>
                     </div>
                     <div class="sub_info-client" style="margin-left: 10px;">
                         <form:checkbox path="notifyAgain" style="width:18px;height:18px"/>

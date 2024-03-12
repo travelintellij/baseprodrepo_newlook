@@ -33,6 +33,9 @@
             opacity: 0.5; /* Adjust the opacity value as needed (0.0 to 1.0) */
             z-index: -1;
         }
+        label{
+        font-weight:normal;
+        }
 </style>
 <body>
     <div class="viewLeadQuotationsList container">
@@ -47,7 +50,7 @@
                 <div class="viewLeadQuotationsList_wrapper_data">
                     <div class="viewLeadQuotationsList_wrapper_data_line a" >
                         <div class="viewLeadQuotationsList_wrapper_data_l1">
-                            <label for="">Lead Id</label>
+                            <label for="" style="font-weight:normal">Lead Id</label>
                             <p style="color:#32cd32;font-weight:bold">Q-${String.format("%04d",LEAD_OBJ.leadId)}-${LEAD_OBJ.leadSourceShortName }</p>
                         </div>
                         <div class="viewLeadQuotationsList_wrapper_data_l1">

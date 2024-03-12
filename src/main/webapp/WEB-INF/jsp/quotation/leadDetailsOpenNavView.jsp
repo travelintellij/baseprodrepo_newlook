@@ -81,39 +81,39 @@
             <h2 class="fupp-srh">Services Requested</h2>
             <div class="fupp-sr">
                 <h3>package</h3>
-                <form:checkbox class="ch_c" path="landPackage" name="landPackage;" disabled="true" style="background-color: red;" />
+                <form:checkbox class="ch_c" path="landPackage" name="landPackage;" disabled="true" style="width:18px;height:18px" />
             </div>
             <div class="fupp-sr">
                 <h3>flight</h3>
-                <form:checkbox class="ch_c" path="flight" name="flight" disabled="true" />
+                <form:checkbox class="ch_c" path="flight" name="flight" disabled="true" style="width:18px;height:18px" />
             </div>
             <div class="fupp-sr">
-                <h3>Hotal</h3>
-                <form:checkbox class="ch_c" path="hotel" name="hotel" disabled="true" />
+                <h3>Hotel</h3>
+                <form:checkbox class="ch_c" path="hotel" name="hotel" disabled="true" style="width:18px;height:18px"/>
             </div>
             <div class="fupp-sr">
                 <h3>Transfers</h3>
-            <form:checkbox class="ch_c" path="transfers" name="transfers" disabled="true" />
+            <form:checkbox class="ch_c" path="transfers" name="transfers" disabled="true" style="width:18px;height:18px"/>
             </div>
             <div class="fupp-sr">
                 <h3>sightseeing</h3>
-                <form:checkbox class="ch_c" path="sightseeing" name="sightseeing" disabled="true" />
+                <form:checkbox class="ch_c" path="sightseeing" name="sightseeing" disabled="true" style="width:18px;height:18px"/>
             </div>
             <div class="fupp-sr">
                 <h3>visa</h3>
-                <form:checkbox class="ch_c" path="visa" name="visa" disabled="true" />
+                <form:checkbox class="ch_c" path="visa" name="visa" disabled="true" style="width:18px;height:18px"/>
             </div>
             <div class="fupp-sr">
-                <h3>insurence</h3>
-                <form:checkbox class="ch_c" path="insurance" name="insurance" disabled="true" />
+                <h3>insurance</h3>
+                <form:checkbox class="ch_c" path="insurance" name="insurance" disabled="true" style="width:18px;height:18px"/>
             </div>
             <div class="fupp-sr">
                 <h3>cruise</h3>
-            <form:checkbox class="ch_c" path="cruise" name="cruise" disabled="true" />
+            <form:checkbox class="ch_c" path="cruise" name="cruise" disabled="true" style="width:18px;height:18px"/>
             </div>
             <div class="fupp-sr">
                 <h3>others</h3>
-                <form:checkbox class="ch_c" path="others" name="others" disabled="true" />
+                <form:checkbox class="ch_c" path="others" name="others" disabled="true" style="width:18px;height:18px"/>
             </div>
         </div>
         <div class="fupp-5th-line ab" >

@@ -25,61 +25,61 @@
                                 <div class="viewLeadDetails_modal_wrapper_data">
                                     <div class="viewLeadDetails_modal_wrapper_data_line a">
                                         <div class=" viewLeadDetails_modal_wrapper_dl1">
-                                            <label for="" class="lb">Lead Id</label>
-                                            <p>Q-${String.format("%04d",LEAD_OBJ.leadId)}-${LEAD_OBJ.leadSourceShortName
+                                            <label for="" class=""  style="font-weight:normal">Lead Id</label>
+                                            <p style="font-weight:800;color:#32cd32">Q-${String.format("%04d",LEAD_OBJ.leadId)}-${LEAD_OBJ.leadSourceShortName
                                                 }</p>
                                         </div>
                                         <div class="viewLeadDetails_modal_wrapper_dl1">
-                                            <label for="" class="lb">Is Qualified</label>
+                                            <label for="" class="">Is Qualified</label>
                                             <p>
                                                 <form:checkbox class="ch_c" path="qualified" disabled="true" style="width:18px;height:18px"/>
                                             </p>
                                         </div>
                                         <div class="viewLeadDetails_modal_wrapper_dl1">
-                                            <label for="" class="lb">Is Flagged</label>
+                                            <label for="" class="">Is Flagged</label>
                                             <p>
                                                 <form:checkbox class="ch_c" path="flagged" disabled="true" style="width:18px;height:18px"/>
                                             </p>
                                         </div>
                                         <div class="viewLeadDetails_modal_wrapper_dl1">
-                                            <label for="" class="lb">Client</label>
-                                            <p>${LEAD_OBJ.contactName}</p>
+                                            <label for="" >Client</label>
+                                            <p style="color:#023e8a;font-weight:800">${LEAD_OBJ.contactName}</p>
                                         </div>
                                     </div>
                                     <div class="viewLeadDetails_modal_wrapper_data_line a">
                                         <div class="viewLeadDetails_modal_wrapper_dl1">
-                                            <label for="" class="lb">Lead Owner</label>
-                                            <p>${LEAD_OBJ.leadOwnerName}</p>
+                                            <label for="" class="">Lead Owner</label>
+                                            <p style="color:#023e8a;font-weight:800">${LEAD_OBJ.leadOwnerName}</p>
                                         </div>
                                         <div class="viewLeadDetails_modal_wrapper_dl1">
-                                            <label for="" class="lb">Source</label>
-                                            <p>${LEAD_OBJ.sourceName}</p>
+                                            <label for="" class="">Source</label>
+                                            <p style="color:#023e8a;font-weight:800">${LEAD_OBJ.sourceName}</p>
                                         </div>
                                         <div class="viewLeadDetails_modal_wrapper_dl1">
-                                            <label for="" class="lb">Destination</label>
-                                            <p>${LEAD_OBJ.destinationName}</p>
+                                            <label for="" class="">Destination</label>
+                                            <p style="color:#023e8a;font-weight:800">${LEAD_OBJ.destinationName}</p>
                                         </div>
                                         <div class="viewLeadDetails_modal_wrapper_dl1">
-                                            <label for="" class="lb">Adults</label>
-                                            <p>${LEAD_OBJ.adults}</p>
+                                            <label for="" class="">Adults</label>
+                                            <p style="color:#023e8a;font-weight:800">${LEAD_OBJ.adults}</p>
                                         </div>
                                     </div>
                                     <div class="viewLeadDetails_modal_wrapper_data_line a">
                                         <div class="viewLeadDetails_modal_wrapper_dl1">
-                                            <label for="" class="lb">Children</label>
-                                            <p>${LEAD_OBJ.children}</p>
+                                            <label for="" class="">Children</label>
+                                            <p style="color:#023e8a;font-weight:800">${LEAD_OBJ.children}</p>
                                         </div>
                                         <div class="viewLeadDetails_modal_wrapper_dl1">
-                                            <label for="" class="lb">Age</label>
-                                            <p>${LEAD_OBJ.childrenAgeInfo}</p>
+                                            <label for="" class="">Age</label>
+                                            <p style="color:#023e8a;font-weight:800">${LEAD_OBJ.childrenAgeInfo}</p>
                                         </div>
                                         <div class="viewLeadDetails_modal_wrapper_dl1">
-                                            <label for="" class="lb">Lead Source</label>
-                                            <p>${LEAD_OBJ.leadSourceName}</p>
+                                            <label for="" class="">Lead Source</label>
+                                            <p style="color:#023e8a;font-weight:800">${LEAD_OBJ.leadSourceName}</p>
                                         </div>
                                         <div class="viewLeadDetails_modal_wrapper_dl1">
-                                            <label for="" class="lb">Travel start date</label>
-                                            <p>
+                                            <label for="" class="">Travel start date</label>
+                                            <p style="color:#023e8a;font-weight:800">
                                                 <fmt:formatDate value="${LEAD_OBJ.travelStartDate}"
                                                     pattern="dd-MM-yyyy" />
                                             </p>
@@ -87,15 +87,15 @@
                                     </div>
                                     <div class="viewLeadDetails_modal_wrapper_data_line a">
                                         <div class="viewLeadDetails_modal_wrapper_dl1">
-                                            <label for="" class="lb">Tentative Amount</label>
-                                            <p>${LEAD_OBJ.tentativeCost}</p>
+                                            <label for="" class="">Tentative Amount</label>
+                                            <p style="color:#023e8a;font-weight:800">${LEAD_OBJ.tentativeCost}</p>
                                         </div>
                                         <div class="viewLeadDetails_modal_wrapper_dl1">
-                                            <label for="" class="lb">Status</label>
-                                            <p>${LEAD_OBJ.statusName}</p>
+                                            <label for="" class="">Status</label>
+                                            <p style="color:#023e8a;font-weight:800">${LEAD_OBJ.statusName}</p>
                                         </div>
                                     </div>
-                                    <h1 style="text-align: start;" class="lb">Select Services</h1>
+                                    <h1 style="text-align: start;" class="">Select Services</h1>
                                     <div class="viewLeadDetails_modal_wrapper_data_linesr a">
                                         <div class="viewLeadDetails_modal_wrapper_dser">
                                             <form:checkbox class="ch_c" path="landPackage" name="landPackage;" disabled="true" style="width:18px;height:18px"/>
@@ -107,7 +107,7 @@
                                         </div>
                                         <div class="viewLeadDetails_modal_wrapper_dser">
                                             <form:checkbox class="ch_c" path="hotel" name="hotel" disabled="true" style="width:18px;height:18px"/>
-                                            <label for="">Hotal</label>
+                                            <label for="">Hotel</label>
                                         </div>
                                         <div class="viewLeadDetails_modal_wrapper_dser">
                                             <form:checkbox class="ch_c" path="transfers" name="transfers" disabled="true" style="width:18px;height:18px"/>
@@ -136,21 +136,21 @@
                                     </div>
                                     <div class="viewLeadDetails_modal_wrapper_data_line a">
                                         <div class="viewLeadDetails_modal_wrapper_dl1rem" style="text-align: start;">
-                                            <label for="" class="lb">Remarks</label>
-                                            <p>${LEAD_OBJ.clientRemarks}</p>
+                                            <label for="" class="">Remarks</label>
+                                            <p style="color:#023e8a;font-weight:800">${LEAD_OBJ.clientRemarks}</p>
                                         </div>
                                     </div>
                                     <div class="viewLeadDetails_modal_wrapper_data_line a">
                                         <div class="viewLeadDetails_modal_wrapper_dl1rem" style="text-align: start;">
-                                            <label for="" class="lb">Internal Remarks</label>
-                                            <p>${LEAD_OBJ.internalRemarks}</p>
+                                            <label for="" class="">Internal Remarks</label>
+                                            <p style="color:#023e8a;font-weight:800">${LEAD_OBJ.internalRemarks}</p>
                                         </div>
                                     </div>
                                     <div class="viewLeadDetails_modal_wrapper_data_line a">
                                         <div class="viewLeadDetails_modal_wrapper_dl1rem" style="text-align: start;">
-                                            <label for="" class="lb">Tagged team mates</label>
+                                            <label for="" class="">Tagged team mates</label>
                                             <c:forEach items="${LEAD_OBJ.team}" var="leadteam">
-                                                <li>${leadteam.name}</li>
+                                                <li style="color:#023e8a;font-weight:800">${leadteam.name}</li>
                                             </c:forEach>
                                         </div>
                                     </div>
