@@ -22,7 +22,7 @@
  </div>
  
  
-        <div class="createNewQuotation_wrapper">
+        <div class="createNewQuotation_wrapper bs">
             <h1 class="page-heading">Create Quotation</h1>
             <form:form modelAttribute="LEAD_OBJ" action="form_view_editlead">
                 <form:hidden path="leadId" />
@@ -33,88 +33,88 @@
             <div class="createNewQuotation_wrapper_data">
                 <div class="createNewQuotation_wrapper_data_line a"  style="margin-bottom:5px">
                     <div class="createNewQuotation_wrapper_data_l1">
-                        <label for="">Lead Id</label>
-                        <p>Q-${String.format("%04d",LEAD_OBJ.leadId)}-${LEAD_OBJ.leadSourceShortName }</p>
+                        <label for="" style="color:black;font-weight:normal">Lead Id</label>
+                        <p style="font-weight:800;color:#023e8a">Q-${String.format("%04d",LEAD_OBJ.leadId)}-${LEAD_OBJ.leadSourceShortName }</p>
                     </div>
                     <div class="createNewQuotation_wrapper_data_l1">
-                        <label for="">Client</label>
-                        <p>${LEAD_OBJ.contactName}</p>
+                        <label for="" style="color:black;font-weight:normal">Client</label>
+                        <p style="font-weight:800;color:#023e8a">${LEAD_OBJ.contactName}</p>
                     </div>
                     <div class="createNewQuotation_wrapper_data_l1">
-                        <label for="">Source</label>
-                        <p>${LEAD_OBJ.sourceName}</p>
+                        <label for="" style="color:black;font-weight:normal">Source</label>
+                        <p style="font-weight:800;color:#023e8a">${LEAD_OBJ.sourceName}</p>
                     </div>
                     <div class="createNewQuotation_wrapper_data_l1">
-                        <label for="">Destination</label>
-                        <p>${LEAD_OBJ.destinationName}</p>
+                        <label for="" style="color:black;font-weight:normal">Destination</label>
+                        <p style="font-weight:800;color:#023e8a">${LEAD_OBJ.destinationName}</p>
                     </div>
                 </div>
                 <div class="createNewQuotation_wrapper_data_line a"  style="margin-bottom:5px">
                     <div class="createNewQuotation_wrapper_data_l1">
-                        <label for="">Adults</label>
-                        <p>${LEAD_OBJ.adults}</p>
+                        <label for="" style="color:black;font-weight:normal">Adults</label>
+                        <p style="font-weight:800;color:#023e8a">${LEAD_OBJ.adults}</p>
                     </div>
                     <div class="createNewQuotation_wrapper_data_l1">
-                        <label for="">Children</label>
-                        <p>${LEAD_OBJ.children} (Age ${LEAD_OBJ.childrenAgeInfo} )</p>
+                        <label for="" style="color:black;font-weight:normal">Children</label>
+                        <p style="font-weight:800;color:#023e8a">${LEAD_OBJ.children} (Age ${LEAD_OBJ.childrenAgeInfo} )</p>
                     </div>
                     <div class="createNewQuotation_wrapper_data_l1">
-                        <label for="">Travel Start Date</label>
-                        <p><fmt:formatDate value="${LEAD_OBJ.travelStartDate}" pattern="dd-MM-yyyy" /></p>
+                        <label for="" style="color:black;font-weight:normal">Travel Start Date</label>
+                        <p style="font-weight:800;color:#023e8a"><fmt:formatDate value="${LEAD_OBJ.travelStartDate}" pattern="dd-MM-yyyy" /></p>
                     </div>
                     <div class="createNewQuotation_wrapper_data_l1">
-                        <label for="">Travel End Date</label>
-                        <p><fmt:formatDate value="${LEAD_OBJ.travelEndDate}" pattern="dd-MM-yyyy" /></p>
-                    </div>
+                        <label for="" style="color:black;font-weight:normal">Travel End Date</label>
+                        <p style="font-weight:800;color:#023e8a"><fmt:formatDate value="${LEAD_OBJ.travelEndDate}" pattern="dd-MM-yyyy" /></p>
+                    </div> 
                 </div>
                 <div class="createNewQuotation_wrapper_data_line a"  style="margin-bottom:5px">
                     <div class="createNewQuotation_wrapper_data_l3">
-                        <label for="">Lead Source</label>
-                        <p>${LEAD_OBJ.leadSourceName}</p>
+                        <label for="" style="color:black;font-weight:normal">Lead Source</label>
+                        <p style="font-weight:800;color:#023e8a">${LEAD_OBJ.leadSourceName}</p>
                     </div>
                     <div class="createNewQuotation_wrapper_data_l3">
-                        <label for="">Status</label>
-                        <p>${LEAD_OBJ.statusName}</p>
+                        <label for="" style="color:black;font-weight:normal">Status</label>
+                        <p style="font-weight:800;color:#023e8a">${LEAD_OBJ.statusName}</p>
                     </div>
                 </div>
-                <p style="color: #FABA08;font-weight: bold;text-align: start;">Services Requested</p>
+                <p style="color: black;font-weight: normal;text-align: start;">Services Requested</p>
                 <div class="createNewQuotation_wrapper_data_line">
                     <div class="createNewQuotation_ser">
                         <div class="createNewQuotation_ser_box">
-                            <span for="">Package</span>
-                        <form:checkbox class="ch_c" path="landPackage" name="landPackage;" disabled="true" />
+                            <span for="" style="color:black;font-weight:normal">Package</span>
+                        <form:checkbox class="ch_c" path="landPackage" name="landPackage;" disabled="true" style="width:18px;height:18px"/>
                         </div>
                         <div class="createNewQuotation_ser_box">
-                            <span for="">Flight</span>
-                        <form:checkbox class="ch_c" path="flight" name="flight" disabled="true" />
+                            <span for="" style="color:black;font-weight:normal">Flight</span>
+                        <form:checkbox class="ch_c" path="flight" name="flight" disabled="true" style="width:18px;height:18px"/>
                         </div>
                         <div class="createNewQuotation_ser_box">
-                            <span for="">Hotal</span>
-                        <form:checkbox class="ch_c" path="hotel" name="hotel" disabled="true" />
+                            <span for="" style="color:black;font-weight:normal">Hotal</span>
+                        <form:checkbox class="ch_c" path="hotel" name="hotel" disabled="true" style="width:18px;height:18px"/>
                         </div>
                         <div class="createNewQuotation_ser_box">
-                            <span for="">Transfers</span>
-                            <form:checkbox class="ch_c" path="transfers" name="transfers" disabled="true" />
+                            <span for="" style="color:black;font-weight:normal">Transfers</span>
+                            <form:checkbox class="ch_c" path="transfers" name="transfers" disabled="true" style="width:18px;height:18px"/>
                         </div>
                         <div class="createNewQuotation_ser_box">
-                            <span for="">Sightseeing</span>
-                        <form:checkbox class="ch_c" path="sightseeing" name="sightseeing" disabled="true" />
+                            <span for="" style="color:black;font-weight:normal">Sightseeing</span>
+                        <form:checkbox class="ch_c" path="sightseeing" name="sightseeing" disabled="true" style="width:18px;height:18px"/>
                         </div>
                         <div class="createNewQuotation_ser_box">
-                            <span for="">Visa</span>
-                        <form:checkbox class="ch_c" path="visa" name="visa" disabled="true" />
+                            <span for="" style="color:black;font-weight:normal">Visa</span>
+                        <form:checkbox class="ch_c" path="visa" name="visa" disabled="true" style="width:18px;height:18px"/>
                         </div>
                         <div class="createNewQuotation_ser_box">
-                            <span for="">Insurance</span>
-                            <form:checkbox class="ch_c" path="insurance" name="insurance" disabled="true" />
+                            <span for="" style="color:black;font-weight:normal">Insurance</span>
+                            <form:checkbox class="ch_c" path="insurance" name="insurance" disabled="true" style="width:18px;height:18px"/>
                         </div>
                         <div class="createNewQuotation_ser_box">
-                            <span for="">Cruise</span>
-                        <form:checkbox class="ch_c" path="cruise" name="cruise" disabled="true" />
+                            <span for="" style="color:black;font-weight:normal">Cruise</span>
+                        <form:checkbox class="ch_c" path="cruise" name="cruise" disabled="true" style="width:18px;height:18px"/>
                         </div>
                         <div class="createNewQuotation_ser_box">
-                            <span for="">Others</span>
-                            <form:checkbox class="ch_c" path="others" name="others" disabled="true" />
+                            <span for="" style="color:black;font-weight:normal">Others</span>
+                            <form:checkbox class="ch_c" path="others" name="others" disabled="true" style="width:18px;height:18px"/>
                         </div>
                     </div>
                 </div>

@@ -54,73 +54,77 @@
                             <p style="color:#32cd32;font-weight:bold">Q-${String.format("%04d",LEAD_OBJ.leadId)}-${LEAD_OBJ.leadSourceShortName }</p>
                         </div>
                         <div class="viewLeadQuotationsList_wrapper_data_l1">
-                            <label for="">Is Qualified</label>
+                            <label for="" style="font-weight:normal">Is Qualified</label>
                             <p>
                                 <form:checkbox class="ch_c" path="qualified" disabled="true" style="width:18px;height:18px" />
                             </p>
                         </div>
                         <div class="viewLeadQuotationsList_wrapper_data_l1">
-                            <label for="">Is Flagged</label>
+                            <label for="" style="font-weight:normal">Is Flagged</label>
                             <p>
                                 <form:checkbox class="ch_c" path="flagged" disabled="true"  style="width:18px;height:18px"/>
                             </p>
                         </div>
                         <div class="viewLeadQuotationsList_wrapper_data_l1">
-                            <label for="">Client</label>
-                            <p style="color:gray">${LEAD_OBJ.contactName}</p>
+                            <label for=""  style="font-weight:normal">Client</label>
+                            <p style="color:#023e8a;font-weight:800">${LEAD_OBJ.contactName}</p>
                         </div>
                         <div class="viewLeadQuotationsList_wrapper_data_l1">
-                            <label for="">Lead Owner</label>
-                            <p style="color:gray">${LEAD_OBJ.leadOwnerName}</p>
+                            <label for="" style="font-weight:normal">Lead Owner</label>
+                            <p style="color:#023e8a;font-weight:800">${LEAD_OBJ.leadOwnerName}</p>
                         </div>
                     </div>
                     <div class="viewLeadQuotationsList_wrapper_data_line a" >
                         <div class="viewLeadQuotationsList_wrapper_data_l1">
-                            <label for="">Source</label>
-                            <p style="color:gray">${LEAD_OBJ.sourceName}</p>
+                            <label for="" style="font-weight:normal">Source</label>
+                            <p style="color:#023e8a;font-weight:800">${LEAD_OBJ.sourceName}</p>
                         </div>
                         <div class="viewLeadQuotationsList_wrapper_data_l1">
-                            <label for="">Destnation</label>
-                            <p style="color:gray">${LEAD_OBJ.destinationName}</p>
+                            <label for="" style="font-weight:normal">Destnation</label>
+                            <p style="color:#023e8a;font-weight:800">${LEAD_OBJ.destinationName}</p>
                         </div>
                         <div class="viewLeadQuotationsList_wrapper_data_l1">
-                            <label for="">Adults</label>
-                            <p style="color:gray">${LEAD_OBJ.adults}</p>
+                            <label for="" style="font-weight:normal">Adults</label>
+                            <p style="color:#023e8a;font-weight:800">${LEAD_OBJ.adults}</p>
                         </div>
                         <div class="viewLeadQuotationsList_wrapper_data_l1">
-                            <label for="">Children</label>
-                            <p style="color:gray">${LEAD_OBJ.children}</p>
+                            <label for="" style="font-weight:normal">Children</label>
+                            <p style="color:#023e8a;font-weight:800">${LEAD_OBJ.children}</p>
                         </div> 
                         <div class="viewLeadQuotationsList_wrapper_data_l1">
-                            <label for="">Age</label>
-                            <p style="color:gray">${LEAD_OBJ.childrenAgeInfo}</p>
+                            <label for="" style="font-weight:normal">Age</label>
+                            <p style="color:#023e8a;font-weight:800">${LEAD_OBJ.childrenAgeInfo}</p>
                         </div>
                     </div>
                     <div class="viewLeadQuotationsList_wrapper_data_line a">
                         <div class="viewLeadQuotationsList_wrapper_data_l1">
-                            <label for="">Lead Source</label>
-                            <p style="color:gray">${LEAD_OBJ.leadSourceName}</p>
+                            <label for="" style="font-weight:normal">Lead Source</label>
+                            <p style="color:#023e8a;font-weight:800">${LEAD_OBJ.leadSourceName}</p>
                         </div>
                         <div class="viewLeadQuotationsList_wrapper_data_l1">
-                            <label for="">Travel Date</label> <br>
+                            <label for="" style="font-weight:normal">Travel Date</label> <br>
+                            <p style="color:#023e8a;font-weight:800">
                             <fmt:formatDate value="${LEAD_OBJ.travelStartDate}" pattern="dd-MM-yyyy" />
+                            </p>
                         </div>
                         <div class="viewLeadQuotationsList_wrapper_data_l1">
-                            <label for="">Travel End Date</label> <br>
+                            <label for="" style="font-weight:normal">Travel End Date</label> <br>
+                            <p style="color:#023e8a;font-weight:800">
                             <fmt:formatDate value="${LEAD_OBJ.travelEndDate}" pattern="dd-MM-yyyy" />
+                            </p>
                         </div>
                         <div class="viewLeadQuotationsList_wrapper_data_l1">
-                            <label for="">Tentative Amount</label>
-                            <p style="color:gray">${LEAD_OBJ.tentativeCost}</p>
+                            <label for="" style="font-weight:normal">Tentative Amount</label>
+                            <p style="color:#023e8a;font-weight:800"">${LEAD_OBJ.tentativeCost}</p>
                         </div>
                         <div class="viewLeadQuotationsList_wrapper_data_l1">
-                            <label for="">Status</label>
-                            <p style="color:gray">${LEAD_OBJ.statusName}</p>
+                            <label for="" style="font-weight:normal">Status</label>
+                            <p style="color:#023e8a;font-weight:800">${LEAD_OBJ.statusName}</p>
                         </div>
                     </div>
                     <div class="viewLeadQuotationsList_wrapper_data_line">
                         <div class="leadQ-ser">
-                            <h1 style="text-align: left;color:#FABA08">Select Services</h1>
+                            <h1 style="text-align: left;font-weight:normal">Select Services</h1>
                             <div class="lq-sers">
                                 <div class="viewLeadQuotationsList_wrapper_data_l1">
                                     <form:checkbox class="ch_c" path="landPackage" name="landPackage;" disabled="true" style="width:18px;height:18px"/>

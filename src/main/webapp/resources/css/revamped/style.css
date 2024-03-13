@@ -4453,7 +4453,7 @@ color:#249C91;
     text-align: center;
     border-collapse: collapse;
     border: none;
-    background: rgba(0, 0, 0, 7);
+    background:white;
     padding: 10px;
     border-radius: 10px;
     margin-top: 165px;
@@ -7276,3 +7276,222 @@ transition:all 0.2s ease-in-out
     margin-top: 15px;
     color: orangered;
 }
+
+
+
+/* ################### leadStyle starts here ##################  */
+
+.searchLeads {
+    margin-top: 115px;
+    margin-bottom: 20px;
+}
+
+.heading {
+    text-align: center;
+    font-size: 25px;
+    color: #FABA08;
+}
+
+.upperPart,
+.lowerPart {
+    background: white;
+    color:black;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.firstL {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: -9px;
+}
+.secondL {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.thirdL {
+
+    display: flex;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+.inBtns {
+    margin-left: 40%;
+    display: inline-block;
+    width: auto;
+}
+
+label {
+    color: black;
+}
+
+.inf {
+    width: 200px;
+}
+
+.box {
+    margin-right: 20px;
+}
+
+.btn {
+    border: none;
+    outline: none;
+    display: inline-block;
+    color: white;
+    width: auto;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: #ffb908cf;
+    color: black;
+    transition: all 0.3s ease-in-out;
+}
+
+.chflex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    margin-right:10px
+}
+
+#quali,
+#flag {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+
+}
+
+.btn:hover {
+    cursor: pointer;
+    background: #FFBA08;
+}
+
+.fromBox {
+    margin-left: 0;
+}
+
+.btns {
+    margin-top: 8px;
+}
+
+
+/* ############## lead style tabel styling ############## */
+table {
+    width: 100%;
+    border: none;
+    border-collapse: collapse;
+}
+
+
+
+th {
+    color: #FABA08;
+    border: none;
+    margin-bottom: 20px;
+    font-size: 19px;
+}
+
+td {
+    margin-top: 40px;
+    text-align: center;
+    border: none;
+}
+
+.leadId {
+    color: red;
+}
+
+.st i {
+    color: #FABA08;
+}
+
+.tick {
+    color: #32CD32;
+}
+
+.cross {
+    color: red;
+}
+
+.ul {
+    display: none;
+    padding: 5px;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.885);
+    border-radius: 10px;
+    width: 160px;
+    right: 16px;
+    transition: all 0.3s ease-in-out;
+    top: -1px;
+    z-index: 1;
+    padding: 10px
+}
+
+.pop-up {
+    font-weight: normal;
+}
+
+
+.ul ul li a:hover {
+    color: #FABA08;
+    /* font-size: medium */
+    font-size: 18px;
+}
+
+.ul ul li {
+    border-bottom: 1px solid #FABA08;
+}
+
+i {
+    position: relative;
+}
+
+
+.fili i:hover {
+    color: red;
+    cursor: pointer;
+}
+
+i:hover .ul {
+    display: block;
+}
+
+.ul ul li {
+    list-style: none;
+}
+
+.ul ul li a {
+    text-decoration: none;
+    color: white;
+}
+
+
+.dsc {
+    width: 200px;
+}
+.lowerPart{color: white;
+    margin: 10px auto;
+    width: 1400px;
+    }
+    
+.full-names{
+	color: white;
+	display: flex;
+	background: black;
+	padding: 5px 10px;
+	border-radius: 5px;
+	margin-top:-10px
+}
+.full-names p {
+	margin-right:10px;
+	font-weight:bold
+}
+.full-names span {
+	color:#FABA08;
+}
+
+/* ############## lead style styling ends here ############## */
+
