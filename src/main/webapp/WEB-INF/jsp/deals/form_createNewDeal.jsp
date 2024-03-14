@@ -129,7 +129,7 @@
                     <div class="create_new_win_li2">
                         <div class="create_new_win_li">
                             <label for="sod">Please select Source of Deal</label>
-                            <select name="dealSource" required>
+                            <select name="dealSource" style="width:90%" required>
                                 <option value="" class="service-small" selected>Choose Deal Source</option>
                                 <c:if test="${not empty DEAL_SOURCE}">
                                     <c:forEach items="${DEAL_SOURCE}" var="agentObj">
@@ -141,7 +141,7 @@
                         </div>
                         <div class="create_new_win_li">
                             <label for="bt">Please select Business Type</label>
-                            <select id="isNewClient" name="isNewClient" required>
+                            <select id="isNewClient" name="isNewClient" style="width:90%" required>
                                 <option value="" class="service-small">Choose Business type</option>
                                 <option value="true" class="service-small">New Client</option>
                                 <option value="false" class="service-small">Existing Client</option>
@@ -158,6 +158,19 @@
                                 placeholder="Selling Price" required>
                         </div>
                     </div>
+                      <div class="create_new_win_li2">
+                     <div class="create_new_win_li" style="width:300px">
+                            <label for="sellingPrice">Deal Owner</label>
+                            <select id="myDropdown" style="width:90%">
+  <option value="option1">Option 1</option>
+  <option value="option2">Option 2</option>
+  <option value="option3">Option 3</option>
+  <option value="option4">Option 4</option>
+</select>
+</div>
+</div>
+                         
+                        </div>
                     <div class="cr-new-deal_infor_client">
                         <p style="color:orangered">Inform Client With Confirmation Code (system will send email)
                             <span> <input type="radio" value="yes" id="yes" name="isClientInformed" checked> <label
