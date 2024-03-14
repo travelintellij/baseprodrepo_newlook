@@ -41,16 +41,32 @@
             <form:form modelAttribute="dealRecorder" action="create_workload_MainDealRecord">
                 <div class="create_new_win_data">
                     <div class="create_new_win_li1">
+                    <div class="create_new_win_li">
+                            <label for="queary_id">Deal Confirmation Number</label>
+                           <p style="color:orangered;font-weight:bold">Auto Generated</p>
+                        </div>
+                         <div class="create_new_win_li">
+                            <label for="ted">Deal Status</label>
+<select id="myDropdown" style="width:90%">
+  <option value="option1">Option 1</option>
+  <option value="option2">Option 2</option>
+  <option value="option3">Option 3</option>
+  <option value="option4">Option 4</option>
+</select>
+                        </div>
                         <div class="create_new_win_li">
                             <label for="queary_id">Query Id</label>
                             <input type="text" id="queryId" value="0" required>
                         </div>
+                        
                         <div class="create_new_win_li">
-                            <label for="clientName">Lead Guest name</label>
+                            <label for="clientName">Client Name</label>
                             <input type="text" class="contact" id="clientName" name="clientName" value="" placeholder="Lead Guest Name" required>
 							<form:hidden path="clientId" />
                         </div>
-                        <div class="create_new_win_li">
+                    </div>
+                    <div class="create_new_win_li2">
+                      <div class="create_new_win_li">
                             <label for="travelingFromCtrl">Traveling from</label>
                             <input type="text" " name=" travelingFromCtrl" id="travelingFromCtrl" placeholder="Traveling From" value="" required>
                             <form:hidden path="travelingFrom" />
@@ -60,8 +76,6 @@
                             <input type="travelingToCtrl" name="travelingToCtrl" id="travelingToCtrl" placeholder="Traveling To" value="" required>
                             <form:hidden path="travelingTo" />
                         </div>
-                    </div>
-                    <div class="create_new_win_li2">
                         <div class="create_new_win_li">
                             <label for="adults">Adults</label>
                             <form:input path="adults" type="number" min="0" />
@@ -70,12 +84,13 @@
                             <label for="Children">Children</label>
                             <form:input path="children" type="number" min="0" />
                         </div>
-                        <div class="create_new_win_li">
+             
+                    </div>
+                    <div class="create_new_win_li2">
+                      <div class="create_new_win_li">
                             <label for="bookingDate">Booking Date</label>
                             <input type="date" id="bookingDate" name="bookingDate">
                         </div>
-                    </div>
-                    <div class="create_new_win_li2">
                         <div class="create_new_win_li">
                             <label for="tsd">Traveling Start Date</label>
                             <form:input id="tsd" path="travelStartDate" type="date" required="required" />
@@ -84,6 +99,7 @@
                             <label for="ted">Traveling End Date</label>
                             <form:input id="ted" path="travelEndDate" type="date" required="required" />
                         </div>
+                        
                     </div>
                     <div class="create_new_win_li3">
                         <h2 class="new_deal_ser_package_h2">Please check the services confirmed</h2>
@@ -143,7 +159,7 @@
                         </div>
                     </div>
                     <div class="cr-new-deal_infor_client">
-                        <p>Inform Client With Confirmation Code (system will send email)
+                        <p style="color:orangered">Inform Client With Confirmation Code (system will send email)
                             <span> <input type="radio" value="yes" id="yes" name="isClientInformed" checked> <label
                                     for="yes" class="radio">Yes</label><input type="radio" value="no" id="no"
                                     name="isClientInformed" style="margin-left: 10px;">No<label for="no"

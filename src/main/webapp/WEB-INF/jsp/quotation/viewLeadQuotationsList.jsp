@@ -136,7 +136,7 @@
                                 </div>
                                 <div class="viewLeadQuotationsList_wrapper_data_l1">
                                     <form:checkbox class="ch_c" path="hotel" name="hotel" disabled="true" style="width:18px;height:18px"/>
-                                    <label for="">Hotal</label>
+                                    <label for="">Hotel</label>
                                 </div>
                                 <div class="viewLeadQuotationsList_wrapper_data_l1">
                                     <form:checkbox class="ch_c" path="transfers" name="transfers" disabled="true" style="width:18px;height:18px"/>

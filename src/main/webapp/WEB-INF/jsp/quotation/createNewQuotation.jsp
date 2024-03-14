@@ -77,7 +77,7 @@
                                 <form:checkbox path="flight" name="flight" style="width:18px;height:18px"/>
                             </div>
                             <div class="createNewQuotation_ser_box">
-                                <span for="">Hotal</span>
+                                <span for="">Hotel</span>
                                 <form:checkbox path="hotel" name="hotel" style="width:18px;height:18px"/><span class="checkmark">
                             </div>
                             <div class="createNewQuotation_ser_box">

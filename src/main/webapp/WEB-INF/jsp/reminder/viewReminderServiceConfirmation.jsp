@@ -48,82 +48,82 @@
                                 <div class="rso_wrapper_data">
                                     <div class="rso_wrapper_data_line a">
                                         <div class="rso_wrapper_data_l1">
-                                            <label for="" class="lb">Lead Id</label>
+                                            <label for="" class="">Lead Id</label>
                                             <p style="color:#32cd32;font-weight:bold">Q-${String.format("%04d",REMINDER_SERVICE.leadsRecorderObj.leadId)}-${REMINDER_SERVICE.leadsRecorderObj.leadSourceShortName
                                             }</p>
                                         </div>
                                         <div class="rso_wrapper_data_l1">
-                                            <label for="" class="lb">Is Qualified</label>
+                                            <label for="" class="">Is Qualified</label>
                                             <p>
                                                 <form:checkbox class="ch_c" path="leadsRecorderObj.qualified" disabled="true" style="width:18px;height:18px"/>
                                             </p>
                                         </div>
                                         <div class="rso_wrapper_data_l1">
-                                            <label for="" class="lb">Is Flagged</label>
+                                            <label for="" class="">Is Flagged</label>
                                             <p>
                                             <form:checkbox class="ch_c" path="leadsRecorderObj.flagged" disabled="true"  style="width:18px;height:18px"/>
                                             </p>
                                         </div>
                                         <div class="rso_wrapper_data_l1">
-                                            <label for="" class="lb">Client</label>
-                                            <p style="color:gray">${REMINDER_SERVICE.leadsRecorderObj.contactName}</p>
+                                            <label for="" class="">Client</label>
+                                            <p style="font-weight:800;color:#023e8a">${REMINDER_SERVICE.leadsRecorderObj.contactName}</p>
                                         </div>
                                     </div>
                                     <div class="rso_wrapper_data_line a">
                                         <div class="rso_wrapper_data_l1">
-                                            <label for="" class="lb">Lead Owner</label>
-                                            <p style="color:gray">${REMINDER_SERVICE.leadsRecorderObj.leadOwnerName}</p>
+                                            <label for="" class="">Lead Owner</label>
+                                            <p style="font-weight:800;color:#023e8a">${REMINDER_SERVICE.leadsRecorderObj.leadOwnerName}</p>
                                         </div>
                                         <div class="rso_wrapper_data_l1">
-                                            <label for="" class="lb">Source</label>
-                                            <p style="color:gray">${REMINDER_SERVICE.leadsRecorderObj.sourceName}</p>
+                                            <label for="" class="">Source</label>
+                                            <p style="font-weight:800;color:#023e8a">${REMINDER_SERVICE.leadsRecorderObj.sourceName}</p>
                                         </div>
                                         <div class="rso_wrapper_data_l1">
-                                            <label for="" class="lb">Destination</label>
-                                            <p style="color:gray">${REMINDER_SERVICE.leadsRecorderObj.destinationName}</p>
+                                            <label for="" class="">Destination</label>
+                                            <p style="font-weight:800;color:#023e8a">${REMINDER_SERVICE.leadsRecorderObj.destinationName}</p>
                                         </div>
                                         <div class="rso_wrapper_data_l1">
-                                            <label for="" class="lb">Adults</label>
-                                            <p style="color:gray">${REMINDER_SERVICE.leadsRecorderObj.adults}</p>
+                                            <label for="" class="">Adults</label>
+                                            <p style="font-weight:800;color:#023e8a">${REMINDER_SERVICE.leadsRecorderObj.adults}</p>
                                         </div>
                                     </div>
                                     <div class="rso_wrapper_data_line a">
                                         <div class="rso_wrapper_data_l1">
-                                            <label for="" class="lb">Chlidren</label>
-                                            <p style="color:gray">${REMINDER_SERVICE.leadsRecorderObj.children}</p>
+                                            <label for="" class="">Chlidren</label>
+                                            <p style="font-weight:800;color:#023e8a">${REMINDER_SERVICE.leadsRecorderObj.children}</p>
                                         </div>
                                         <div class="rso_wrapper_data_l1">
-                                            <label for="" class="lb">Age</label>
-                                            <p style="color:gray">${REMINDER_SERVICE.leadsRecorderObj.childrenAgeInfo}</p>
+                                            <label for="" class="">Age</label>
+                                            <p style="font-weight:800;color:#023e8a">${REMINDER_SERVICE.leadsRecorderObj.childrenAgeInfo}</p>
                                         </div>
                                         <div class="rso_wrapper_data_l1">
-                                            <label for="" class="lb">Lead Source</label>
-                                            <p style="color:gray">${REMINDER_SERVICE.leadsRecorderObj.leadSourceName}</p>
+                                            <label for="" class="">Lead Source</label>
+                                            <p style="font-weight:800;color:#023e8a">${REMINDER_SERVICE.leadsRecorderObj.leadSourceName}</p>
                                         </div>
                                         <div class="rso_wrapper_data_l1">
-                                            <label for="" class="lb">Travel Start Date</label>
-                                            <p style="color:gray">
+                                            <label for="" class="">Travel Start Date</label>
+                                            <p style="font-weight:800;color:#023e8a">
                                             <fmt:formatDate value="${REMINDER_SERVICE.leadsRecorderObj.travelStartDate}" pattern="dd-MM-yyyy" />
                                             </p>
                                         </div>
                                     </div>
                                     <div class="rso_wrapper_data_line a">
                                         <div class="rso_wrapper_data_l1p">
-                                            <label for="" class="lb">Travel End Date</label>
-                                            <p style="color:gray">
+                                            <label for="" class="">Travel End Date</label>
+                                            <p style="font-weight:800;color:#023e8a">
                                                 <fmt:formatDate value="${REMINDER_SERVICE.leadsRecorderObj.travelEndDate}" pattern="dd-MM-yyyy" />
                                             </p>
                                         </div>
                                         <div class="rso_wrapper_data_l1p">
-                                            <label for="" class="lb">Tentative Amount</label>
-                                            <p style="color:gray">${REMINDER_SERVICE.leadsRecorderObj.tentativeCost}</p>
+                                            <label for="" class="">Tentative Amount</label>
+                                            <p style="font-weight:800;color:#023e8a">${REMINDER_SERVICE.leadsRecorderObj.tentativeCost}</p>
                                         </div>
                                         <div class="rso_wrapper_data_l1p">
-                                            <label for="" class="lb">Status</label>
-                                            <p style="color:gray">${REMINDER_SERVICE.leadsRecorderObj.statusName}</p>
+                                            <label for="" class="">Status</label>
+                                            <p style="font-weight:800;color:#023e8a">${REMINDER_SERVICE.leadsRecorderObj.statusName}</p>
                                         </div>
                                     </div>
-                                    <h1 style="text-align: start;" class="lb">Services requested</h1>
+                                    <h1 style="text-align: start;" class="">Services requested</h1>
                                     <div class="rso_wrapper_data_line ">
                                         <div class="rso_wrapper_data_ser">
                                             <div class="rso_ser">
@@ -139,7 +139,7 @@
                                             <div class="rso_ser">
                                                 <form:checkbox class="ch_c" path="leadsRecorderObj.hotel" name="hotel"
                                                     disabled="true"  style="width:18px;height:18px"/>
-                                                <label for="">hotal</label>
+                                                <label for="">hotel</label>
                                             </div>
                                             <div class="rso_ser">
                                                 <form:checkbox class="ch_c" path="leadsRecorderObj.transfers" name="transfers"
