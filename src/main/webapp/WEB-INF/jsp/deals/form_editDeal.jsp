@@ -17,8 +17,7 @@
                         <script src="<c:url value="/resources/core/magicsuggest.js" />"></script>
                         <link rel="stylesheet" href="style.css">
                         <link href="resources/core/magicsuggest.css" rel="stylesheet" type="text/css">
-                        <link rel="stylesheet"
-                            href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
+                        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
                     </head>
                     <style>
                       body::before {
@@ -50,17 +49,16 @@
                     </style>
                     <body>
                     <div class="autocomplete-suggestions" style="display:none">
-    <div class="autocomplete-group" ><strong>NHL</strong></div>
-    <div class="autocomplete-suggestion autocomplete-selected" >...</div>
-    <div class="autocomplete-suggestion">...</div>
-    <div class="autocomplete-suggestion">...</div>
-</div>
+				    <div class="autocomplete-group" ><strong>NHL</strong></div>
+				    <div class="autocomplete-suggestion autocomplete-selected" >...</div>
+				    <div class="autocomplete-suggestion">...</div>
+				    <div class="autocomplete-suggestion">...</div>
+			</div>
                         <div class="form_viewDeal container">
                             <div class="form_viewDeal_wrapper bs">
                                 <h1 style="font-size:25px;color:#32cd32 ">Edit Deal</h1>
                                 <form:form modelAttribute="dealRecorder" action="edit_workload_MainDealRecord">
-                                    <input type="hidden" name="dealConfirmationId"
-                                        value="${DealObject.dealConfirmationId}" />
+                                    <input type="hidden" name="dealConfirmationId" value="${DealObject.dealConfirmationId}" />
                                     <div class="form_viewDeal_wrapper_data">
                                         <div class="form_viewDeal_wrapper_data_line">
                                             <div class="form_viewDeal_wrapper_data_l1">
@@ -306,50 +304,19 @@
 
                                         </div>
                                         <div class="due_today_task_data_btnss" style="margin-top:10px;display:flex;justify-content:center" >
-                                           <button style=" display: inline-block;
-    color: white;
-    width: auto;
-    padding: 10px 15px;
-    border-radius: 10px;
-    background:  #32cd32  ;
-    color: black;
-    transition: all 0.3s ease-in-out;
-    outline: none;
-    border: none;
-    margin-right: 5px;" type="submit" href="/">Update Deal</button>
+                                           <button style=" display: inline-block; color: white;width: auto;padding: 10px 15px;border-radius: 10px;background:  #32cd32  ;color: black;transition: all 0.3s ease-in-out;outline: none;border: none;margin-right: 5px;" type="submit" href="/">Update Deal</button>
                                             <form:form action="view_view_deal_form">
-                                                            <input type="hidden" name="dealConfirmationId"
-                                                                value="${DealObject.dealConfirmationId}" />
-                                                            <div style="display:inline-block">
-                                                                <button style=" display: inline-block; color: white;width: auto; padding: 10px 15px;
-    border-radius: 10px;
-    background: red;
-    color: white;
-    transition: all 0.3s ease-in-out;
-    outline: none;
-    border: none;
-    margin-right: 5px;" type="submit" href="/"
-                                                                    color="green">Cancel</button>
-                                                            </div>
+                                                <input type="hidden" name="dealConfirmationId" value="${DealObject.dealConfirmationId}" />
+                                                <div style="display:inline-block">
+                                                	<button style=" display: inline-block; color: white;width: auto; padding: 10px 15px;border-radius: 10px;background: red;color: white;transition: all 0.3s ease-in-out;outline: none;border: none;margin-right: 5px;" type="submit" href="/" color="green">Cancel</button>
+                                                </div>
                                            </form:form>
-                                           <form:form action="view_workload_createNewWorkLoadForm"
-                                                            target="_blank">
-                                                            <input type="hidden" name="dealConfirmationId"
-                                                                value="${DealObject.dealConfirmationId}" />
-                                                            <div style="display:inline-block">
-                                                                <button style=" display: inline-block;
-    color: white;
-    width: auto;
-    padding: 10px 15px;
-    border-radius: 10px;
-    background: #ffb908cf;
-    color: black;
-    transition: all 0.3s ease-in-out;
-    outline: none;
-    border: none;
-    margin-right: 5px;" type="submit" href="/">View WorkLoad</button>
-                                                            </div>
-                                                        </form:form>
+                                           <form:form action="view_workload_createNewWorkLoadForm" target="_blank">
+												<input type="hidden" name="dealConfirmationId" value="${DealObject.dealConfirmationId}" />
+                                                <div style="display:inline-block"> 
+                                                	<button style=" display: inline-block;color: white;width: auto;padding: 10px 15px;border-radius: 10px;background: #ffb908cf;color: black;transition: all 0.3s ease-in-out;outline: none;border: none;margin-right: 5px;" type="submit" href="/">View WorkLoad</button>
+                                                </div>
+                                           </form:form>
                                         </div>
                                     </div>
                                 </form:form>

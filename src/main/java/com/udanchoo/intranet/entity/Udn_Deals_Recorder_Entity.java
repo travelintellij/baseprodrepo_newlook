@@ -179,7 +179,7 @@ public class Udn_Deals_Recorder_Entity extends AuditModel {
 		this.isNewClient=dealRecorderObj.getIsNewClient();
 		this.travelEndDate=dealRecorderObj.getTravelEndDate();
 		this.travelStartDate=dealRecorderObj.getTravelStartDate();
-		//this.dealOwner = dealRecorderObj.getDealOwner();
+		this.dealOwner = dealRecorderObj.getDealOwner();
 		this.bookingDate = dealRecorderObj.getBookingDate();
 		this.adults = dealRecorderObj.getAdults();
 		this.children =dealRecorderObj.getChildren(); 

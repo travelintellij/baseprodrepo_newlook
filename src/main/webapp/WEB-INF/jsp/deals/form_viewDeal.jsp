@@ -198,24 +198,24 @@ body::before {
 
 					</div>
 			</form:form>
-			<div class="due_today_task_data_btnss"
-				style="display: flex; justify-content: center; margin-top: 20px">
+			<div class="due_today_task_data_btnss" style="display: flex; justify-content: center; margin-top: 20px">
 				<form:form action="view_edit_deal_form">
-					<input type="hidden" name="dealConfirmationId"
-						value="${DealObject.dealConfirmationId}" />
+					<input type="hidden" name="dealConfirmationId" value="${DealObject.dealConfirmationId}" />
 					<div class="btn-block">
-						<button
-							style="display: inline-block; color: white; width: auto; padding: 10px 15px; border-radius: 10px; background: #32cd32; cursor: pointer; color: black; transition: all 0.3s ease-in-out; outline: none; border: none; margin-right: 5px;"
-							type="submit" href="/">Edit Deal</button>
+						<button style="display: inline-block; color: white; width: auto; padding: 10px 15px; border-radius: 10px; background: #32cd32; cursor: pointer; color: black; transition: all 0.3s ease-in-out; outline: none; border: none; margin-right: 5px;" type="submit" href="/">Edit Deal</button>
 					</div>
 				</form:form>
+				<div class="btn-block">
+					<a href="view_deal_searchDealForm" > 
+						<button style="display: inline-block; color: white; width: auto; padding: 10px 15px; border-radius: 10px; background: #ffb908cf; color: black; cursor: pointer; transition: all 0.3s ease-in-out; outline: none; border: none; margin-right: 5px;" type="button" href="/">List Deals</button>
+					</a>
+				</div>
+				
+				
 				<form:form action="view_workload_createNewWorkLoadForm" target="_blank">
-					<input type="hidden" name="dealConfirmationId"
-						value="${DealObject.dealConfirmationId}" />
+					<input type="hidden" name="dealConfirmationId" value="${DealObject.dealConfirmationId}" />
 					<div>
-						<button
-							style="display: inline-block; color: white; width: auto; padding: 10px 15px; border-radius: 10px; background: #ffb908cf; color: black; cursor: pointer; transition: all 0.3s ease-in-out; outline: none; border: none; margin-right: 5px;"
-							type="submit" href="/">View WorkLoad</button>
+						<button style="display: inline-block; color: white; width: auto; padding: 10px 15px; border-radius: 10px; background: #ffb908cf; color: black; cursor: pointer; transition: all 0.3s ease-in-out; outline: none; border: none; margin-right: 5px;" type="submit" href="/">View WorkLoad</button>
 					</div>
 			</div>
 		</div>

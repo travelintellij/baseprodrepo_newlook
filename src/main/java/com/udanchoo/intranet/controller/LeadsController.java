@@ -188,7 +188,7 @@ public class LeadsController {
                 Collectors.toMap(UdnDealStatusVO::getWorkloadStatusId, UdnDealStatusVO::getWorkloadStatusName));
 		modelView.addObject("LEAD_STATUS_MAP", leadStatusMap);
 		
-		
+		leadRecorderVO.setLeadOwnerName(userService.findUserByID(leadRecorderVO.getLeadOwner()).getUsername());
     	modelView.setViewName("leads/form_EditLead");
     	return modelView;
     }

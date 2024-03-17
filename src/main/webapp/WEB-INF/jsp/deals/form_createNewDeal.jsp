@@ -4,6 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <head>
     <meta charset="UTF-8">
@@ -47,12 +48,9 @@
                         </div>
                          <div class="create_new_win_li">
                             <label for="ted">Deal Status</label>
-<select id="myDropdown" style="width:90%">
-  <option value="option1">Option 1</option>
-  <option value="option2">Option 2</option>
-  <option value="option3">Option 3</option>
-  <option value="option4">Option 4</option>
-</select>
+							<form:select path="dealStatus"  style="width:90%">
+                                <form:options items="${DEAL_STATUS_MAP}" />
+                            </form:select>
                         </div>
                         <div class="create_new_win_li">
                             <label for="queary_id">Query Id</label>
@@ -133,8 +131,7 @@
                                 <option value="" class="service-small" selected>Choose Deal Source</option>
                                 <c:if test="${not empty DEAL_SOURCE}">
                                     <c:forEach items="${DEAL_SOURCE}" var="agentObj">
-                                        <option value="${ agentObj.partnerId}" class="service-small">${
-                                            agentObj.partnerName}</option>
+                                        <option value="${ agentObj.partnerId}" class="service-small">${agentObj.partnerName}</option>
                                     </c:forEach>
                                 </c:if>
                             </select>
@@ -159,18 +156,22 @@
                         </div>
                     </div>
                       <div class="create_new_win_li2">
-                     <div class="create_new_win_li" style="width:300px">
+                  	   <div class="create_new_win_li" style="width:300px">
                             <label for="sellingPrice">Deal Owner</label>
-                            <select id="myDropdown" style="width:90%">
-  <option value="option1">Option 1</option>
-  <option value="option2">Option 2</option>
-  <option value="option3">Option 3</option>
-  <option value="option4">Option 4</option>
-</select>
-</div>
-</div>
+	                       <sec:authorize access="hasAnyRole('ADMIN','DEAL_MANAGER')">
+								<div class="select">
+                                <form:select path="dealOwner" style="width:90%" required="required">
+                                	<form:options items="${ACTIVE_USERS_MAP}" class="service-small" />
+                                 </form:select>
+                                 </div>
+                            </sec:authorize>
+                            <sec:authorize access="! hasAnyRole('ADMIN','DEAL_MANAGER')">
+                                    ${dealRecorder.dealOwnerName}
+                            </sec:authorize>
+							</div>
+					</div>
                          
-                        </div>
+                    </div>
                     <div class="cr-new-deal_infor_client">
                         <p style="color:orangered">Inform Client With Confirmation Code (system will send email)
                             <span> <input type="radio" value="yes" id="yes" name="isClientInformed" checked> <label

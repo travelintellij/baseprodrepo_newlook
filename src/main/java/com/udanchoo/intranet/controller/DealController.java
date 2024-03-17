@@ -144,7 +144,16 @@ public class DealController {
     	List udnDestinationList = commonService.listAllActiveDestinations();
     	mapview.addObject("UdnDestinationsList", udnDestinationList);
     	
-    	mapview.addObject("dealRecorder",dealRecorder);
+     	List<UdnDealStatusVO> udnDealStatusVoList = commonService.find_All_Status_Deal_Obj("DEAL_OBJ");
+    	Map<Integer, String> dealStatusMap = (Map<Integer, String>) udnDealStatusVoList.stream().collect(
+                Collectors.toMap(UdnDealStatusVO::getWorkloadStatusId, UdnDealStatusVO::getWorkloadStatusName));
+    	mapview.addObject("DEAL_STATUS_MAP", dealStatusMap);
+    	
+    	List<UserDetailsObj> activeUsersList = userDetailsService.findAllActiveUsers();
+ 		Map<Integer, String> activeUsersMap = (Map<Integer, String>) activeUsersList.stream().collect(
+                 Collectors.toMap(UserDetailsObj::getUserId, UserDetailsObj::getUsername));
+ 		mapview.addObject("ACTIVE_USERS_MAP", activeUsersMap);
+    	//mapview.addObject("dealRecorder",dealRecorder);
 		
     	return mapview;
     }
@@ -154,9 +163,8 @@ public class DealController {
     public ModelAndView createMainDealRecord(@Valid Udn_Deals_Recorder_Obj dealRecorderObj) {
         //System.out.println("Deal Object Received is " + dealRecorderObj);
         UserDetailsObj user = getLoggedInUser();
-        dealRecorderObj.setDealOwner(user.getUserId());
         Udn_Deals_Recorder_Entity dealRecordEntity = new Udn_Deals_Recorder_Entity(dealRecorderObj);
-        dealRecordEntity.setDealOwner(user.getUserId());
+        //dealRecordEntity.setDealOwner(user.getUserId());
         String serviceEmailList="";
         for (int i=0;i<dealRecorderObj.getServiceList().length;i++) {
     		Udn_Deal_Services_Entity serviceMapEntity = new Udn_Deal_Services_Entity();

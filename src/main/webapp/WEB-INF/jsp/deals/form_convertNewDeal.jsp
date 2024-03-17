@@ -7,6 +7,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,6 +36,16 @@
             <div class="form_convertNewDeal_wrapper_data">
                 <div class="form_convertNewDeal_wrapper_data_line ">
                     <div class="form_convertNewDeal_wrapper_dl1">
+                            <label for="queary_id">Deal Confirmation Number</label>
+                           <p style="color:orangered;font-weight:bold">Auto Generated</p>
+                    </div>
+                    <div class="form_convertNewDeal_wrapper_dl1">
+                          <label for="ted">Deal Status</label>
+						 <form:select path="dealStatus"  style="width:90%">
+                              <form:options items="${DEAL_STATUS_MAP}" />
+                          </form:select>
+                      </div>
+                    <div class="form_convertNewDeal_wrapper_dl1">
                         <label style="font-weight:normal" for="" class="lb" style="font-weight:normal">Queary Id</label>
                         <p style="font-weight:800;color:#32cd32 ">Q-${String.format("%04d",LEAD_OBJ.leadId)}-${LEAD_OBJ.leadSourceShortName }</p>
                     </div>
@@ -42,6 +53,8 @@
                         <label style="font-weight:normal" for="" class="lb" >Client Name</label>
                         <p style="font-weight:800;color:#023e8a ">${LEAD_OBJ.contactName }</p>
                     </div>
+                </div>
+                <div class="form_convertNewDeal_wrapper_data_line ">
                     <div class="form_convertNewDeal_wrapper_dl1">
                         <label style="font-weight:normal" for="" class="lb">Source</label>
                         <p style="font-weight:800;color:#023e8a ">${LEAD_OBJ.sourceName}</p>
@@ -50,8 +63,7 @@
                         <label style="font-weight:normal" for="" class="lb">Destination</label>
                         <p style="font-weight:800;color:#023e8a ">${LEAD_OBJ.destinationName}</p>
                     </div>
-                </div>
-                <div class="form_convertNewDeal_wrapper_data_line ">
+
                     <div class="form_convertNewDeal_wrapper_dl1">
                         <label style="font-weight:normal" for="" class="lb">Adults</label>
                         <p style="font-weight:800;color:#023e8a ">${LEAD_OBJ.adults}</p>
@@ -60,6 +72,8 @@
                         <label style="font-weight:normal" for="" class="lb">Children</label>
                         <p style="font-weight:800;color:#023e8a ">${LEAD_OBJ.children}(Age ${LEAD_OBJ.childrenAgeInfo} )</p>
                     </div>
+                </div>
+                <div class="form_convertNewDeal_wrapper_data_line ">
                     <div class="form_convertNewDeal_wrapper_dl1">
                         <label style="font-weight:normal" for="" class="lb">Booking Date</label> <br>
                     <input type="date" id="bookingDate" name="bookingDate" style="width:90%" />
@@ -70,8 +84,7 @@
                         <fmt:formatDate value="${LEAD_OBJ.travelStartDate}" pattern="dd-MMM-yyyy" />
                         </p>
                     </div>
-                </div>
-                <div class="form_convertNewDeal_wrapper_data_line ">
+                    
                     <div class="form_convertNewDeal_wrapper_dl1">
                         <label style="font-weight:normal" for="" class="lb">Travel end date</label> <br>
                         <p style="font-weight:800;color:#023e8a ">
@@ -140,24 +153,40 @@
                             <c:if test="${DEAL_OBJ.isNewClient ne true }">
                                 <option value="true" class="service-small">New Client</option>
                                 <option value="false" class="service-small" selected>Existing Client</option>
-                        
                             </c:if>
                         </select>
                     </div>
                     <div class="form_convertNewDeal_wrapper_dl1">
                         <label for="" class="lb" style="font-weight:800">Projected cost</label>
-                    <form:input path="projectedCost" name="projectedCost" size="15" required="required" style="width:90%"/>
+                    	<form:input path="projectedCost" name="projectedCost" size="15" required="required" style="width:90%"/>
                     </div>
-                    <div class="form_convertNewDeal_wrapper_dl1">
-                        <label for="" class="lb" style="font-weight:800">Projacted mark up</label>
-                    <form:input path="projectedMarkup" name="projectedMarkup"  size="15" required="required"  style="width:100%"/>
-                    </div>
-                </div>
-                <div class="form_convertNewDeal_wrapper_data_line">
                     <div class="form_convertNewDeal_wrapper_dl1">
                         <label for="" class="lb" style="font-weight:800">Selling price</label>
                         <form:input path="sellingPrice" name="sellingPrice"  size="15" required="required" style="width:88%"/>
                     </div>
+                    
+                </div>
+                <div class="form_convertNewDeal_wrapper_data_line">
+                    <div class="form_convertNewDeal_wrapper_dl1" style="width:300px">
+                        <label for="" class="lb" style="font-weight:800">Deal Owner</label>
+	                    <sec:authorize access="hasAnyRole('ADMIN','DEAL_MANAGER')">
+							<div class="select">
+	                            <form:select path="dealOwner" style="width:90%" required="required">
+	                            	<form:options items="${ACTIVE_USERS_MAP}" class="service-small" />
+	                             </form:select>
+	                         </div>
+	                    </sec:authorize>
+	                    <sec:authorize access="! hasAnyRole('ADMIN','DEAL_MANAGER')">
+							<p style="font-weight:800;color:#023e8a ">${LEAD_OBJ.leadOwnerName}</p>	                    		
+	                    </sec:authorize>
+	                    
+					</div>
+                    
+                    <div class="form_convertNewDeal_wrapper_dl1">
+                        <label for="" class="lb" style="font-weight:800">Projected mark up</label>
+                    	<form:input path="projectedMarkup" name="projectedMarkup"  size="15" required="required"  style="width:90%"/>
+                    </div>
+                    
                 </div>
                 <p style="display: inline-block;color:black">Inform client with confirmation code (system will send email)</p>
                 <input type="radio" value="yes" id="yes" name="isClientInformed" checked />

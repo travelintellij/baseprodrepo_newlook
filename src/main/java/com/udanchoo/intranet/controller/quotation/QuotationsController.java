@@ -56,6 +56,7 @@ import com.udanchoo.intranet.entity.quotation.Udn_Manual_Visa_Quotation_Entity;
 import com.udanchoo.intranet.model.ClientObj;
 import com.udanchoo.intranet.model.Tag;
 import com.udanchoo.intranet.model.Tg_B2bPartner_Obj;
+import com.udanchoo.intranet.model.UdnDealStatusVO;
 import com.udanchoo.intranet.model.Udn_Deals_Recorder_Obj;
 import com.udanchoo.intranet.model.UserDetailsObj;
 import com.udanchoo.intranet.model.api.flight.Tg_Flt_Airport_Obj;
@@ -930,8 +931,17 @@ public class QuotationsController<Resource> {
 	    	 dealRecorder.setTravelingTo(leadRecorderObj.getDestination());
 	    	 dealRecorder.setAdults(leadRecorderObj.getAdults());
 	    	 dealRecorder.setChildren(leadRecorderObj.getChildren());
-	    	 
-	    	 
+	    	 dealRecorder.setDealOwner(leadRecorderObj.getLeadOwner());
+	      	List<UdnDealStatusVO> udnDealStatusVoList = commonService.find_All_Status_Deal_Obj("DEAL_OBJ");
+	    	Map<Integer, String> dealStatusMap = (Map<Integer, String>) udnDealStatusVoList.stream().collect(
+	                Collectors.toMap(UdnDealStatusVO::getWorkloadStatusId, UdnDealStatusVO::getWorkloadStatusName));
+	    	mapview.addObject("DEAL_STATUS_MAP", dealStatusMap);
+	    	
+	    	List<UserDetailsObj> activeUsersList = userDetailsService.findAllActiveUsers();
+	 		Map<Integer, String> activeUsersMap = (Map<Integer, String>) activeUsersList.stream().collect(
+	                 Collectors.toMap(UserDetailsObj::getUserId, UserDetailsObj::getUsername));
+	 		mapview.addObject("ACTIVE_USERS_MAP", activeUsersMap);
+			leadRecorderObj.setLeadOwnerName(userService.findUserByID(leadRecorderObj.getLeadOwner()).getUsername());
 		}
     	 
     	return mapview;

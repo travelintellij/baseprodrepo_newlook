@@ -99,8 +99,7 @@
                             <sec:authorize access="hasAnyRole('ADMIN','LEAD_MANAGER')">
                                 <td>
                                     <div class="select" >
-                                        <form:select path="leadOwner" style="width:90%"
-                                            required="required">
+                                        <form:select path="leadOwner" style="width:90%" required="required">
                                             <form:options items="${ACTIVE_USERS_MAP}" class="service-small" />
                                         </form:select>
                                     </div>
@@ -108,7 +107,8 @@
                             </sec:authorize>
                             <sec:authorize access="! hasAnyRole('ADMIN','LEAD_MANAGER')">
                                 <td style="background-color:#66ff00;">
-                                    ${userName }
+                                    <form:hidden path="leadOwner" />
+                                    ${LEAD_OBJ.leadOwnerName }
                                 </td>
                             </sec:authorize>
                         </div>
