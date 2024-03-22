@@ -31,6 +31,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.udanchoo.intranet.constant.incentive.ClaimOption;
 import com.udanchoo.intranet.entity.UdnIncentiveEntity;
 import com.udanchoo.intranet.entity.Udn_Deals_Recorder_Entity;
 import com.udanchoo.intranet.entity.leads.Tg_Leads_Recorder_Entity;
@@ -49,6 +50,8 @@ import com.udanchoo.intranet.service.IncentiveServiceImpl;
 import com.udanchoo.intranet.service.UdnCommonServicesImpl;
 import com.udanchoo.intranet.service.UserDetailsServiceImpl;
 import com.udanchoo.intranet.util.UdanChooConstants;
+import com.udanchoo.intranet.validator.IncentiveValidator;
+import com.udanchoo.intranet.validator.LeadValidator;
 
 
 @Controller
@@ -58,6 +61,9 @@ public class IncentiveController {
 	
 	@Autowired
 	UserDetailsServiceImpl userDetailsService;
+	
+	@Autowired
+    private IncentiveValidator incentiveValidator;
 	
 	@Autowired
 	IncentiveServiceImpl incentiveService;
@@ -108,11 +114,7 @@ public class IncentiveController {
                  Collectors.toMap(UserDetailsObj::getUserId, UserDetailsObj::getUsername));
  		mapview.addObject("ACTIVE_USERS_MAP", activeUsersMap);
     	//mapview.addObject("userRole", userObj.getRoles());
-    	
-    	
     	return mapview;
-    	
-    	
     }
     
     
@@ -124,12 +126,23 @@ public class IncentiveController {
 		mapview.addObject("userName",userObj.getUsername());
 		//mapview.addObject("userRole",userObj.getRoles());
 		
+		incentiveValidator.validate(incentiveObj, result);
 		if(result.hasErrors()) {
 			mapview.addObject("userId", incentiveObj.getClaimantId());
     		mapview.setViewName("incentive/SubmitNewIncentiveClaim");
       		return mapview; 
     	}
     	else {
+    		System.out.println("Incentive option Outside is " + incentiveObj.getClaimOption());
+    		if (incentiveObj.getClaimOption() == ClaimOption.INCENTIVE) {
+                System.out.println("Incentive Option is selected");
+    			// Call a service or perform calculations for claiming incentive
+            } else if (incentiveObj.getClaimOption()  == ClaimOption.TARGET_AMOUNT) {
+            	System.out.println("Target Amount Option is selected");
+            	// Call a service or perform calculations for claiming target amount
+                //return "redirect:/targetAmountPage";
+            }
+    		
     		UdnIncentiveEntity entity = new UdnIncentiveEntity(incentiveObj);
     		
 			try {
@@ -418,7 +431,6 @@ public class IncentiveController {
 	   	}else {
 	   		searchIncentiveObj.setClaimantId(userObj.getUserId());
 	   	}
-
 	    Page <UdnIncentiveEntity> udnIncentiveList = incentiveService.filterIncentiveRecord(page,pageSize,"createdAt",searchIncentiveObj,isAdmin);
     	List <IncentiveObj> udnIncentiveListVO = generateFilteredIncentiveVo(udnIncentiveList);
 		mapview.addObject("INCENTIVES_LIST", udnIncentiveListVO);

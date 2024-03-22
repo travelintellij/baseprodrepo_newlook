@@ -42,7 +42,7 @@
             <form:form modelAttribute="dealRecorder" action="create_workload_MainDealRecord">
                 <div class="create_new_win_data">
                     <div class="create_new_win_li1">
-                    <div class="create_new_win_li">
+                    	<div class="create_new_win_li">
                             <label for="queary_id">Deal Confirmation Number</label>
                            <p style="color:orangered;font-weight:bold">Auto Generated</p>
                         </div>

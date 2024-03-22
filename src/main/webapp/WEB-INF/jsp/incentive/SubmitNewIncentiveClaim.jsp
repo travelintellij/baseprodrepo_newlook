@@ -225,10 +225,7 @@
                                         </div>
                                         <div class="SubmitNewIncentiveClaim_wrapper_dl2">
                                             <label for="">Deal ID</label> <br>
-                                            <input class="form-control search-slt" type="text" name="dealName"
-                                                id="dealName"
-                                                placeholder="Deal Search - Enter Only numeric Deal # or Client Name "
-                                                required />
+                                            <form:input path="dealName" name="dealName" class="form-control search-slt" id="dealName" placeholder="Deal Search - Enter Only numeric Deal # or Client Name " />
                                             <form:hidden path="dealConfirmationId" />
                                             <br>
                                             <font color="red">
@@ -326,18 +323,16 @@
                               <tr>
     <th style="color:black"> <p> Claim Type </p></th>
     <td>
-      <input type="radio" id="incentive" name="claimType" value="Incentive">
-      <label for="incentive">Incentive</label>
-   &nbsp; &nbsp; &nbsp;
-      <input type="radio" id="target" name="claimType" value="Target" checked>
-      <label for="target">Target</label>
+    	<font color="red"><form:errors path="claimOption" cssClass="error" /></font>
+       <form:radiobutton path="claimOption" id="incentive" value="INCENTIVE"/><label for="incentive">Incentive</label>&nbsp; &nbsp; &nbsp;
+       <form:radiobutton path="claimOption" id="targetAmount" value="TARGET_AMOUNT"/><label for="target">Target</label>
     </td>
   </tr>
                                 <tr>
                                     <th style="color:black"><p> Claimed Amount </p></th>
-                                    <td style="text-align:left;color:black">INR &nbsp;<input
-                                            style="height:30px;width: 100px;" class="contact" type="number"
-                                            name="claimedAmount" value="0" required /><br>
+                                    <td style="text-align:left;color:black">INR &nbsp;
+									<form:input path="claimedAmount" type="number" min="20" class="contact" style="height:30px;width: 100px;" />                                    
+                                    <br>
                                         <font color="red">
                                             <form:errors path="claimedAmount" cssClass="error" />
                                         </font>

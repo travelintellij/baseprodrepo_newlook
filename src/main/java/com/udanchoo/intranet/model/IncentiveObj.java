@@ -4,18 +4,19 @@ package com.udanchoo.intranet.model;
 
 import java.util.Date;
 
+import com.udanchoo.intranet.constant.incentive.ClaimOption;
 import com.udanchoo.intranet.entity.UdnIncentiveEntity;
 
 public class IncentiveObj extends UdnIncentiveEntity {
 
-	
 	private Date travelStartDate;
 	private Date travelEndDate;
 	private String claimantName;
 	private String guestName;
 	private String claimStatusName;
 	private boolean notifyClaimant;
-
+	private ClaimOption claimOption;
+	private String dealName;
 	
 	public IncentiveObj() {
 		
@@ -133,8 +134,26 @@ public class IncentiveObj extends UdnIncentiveEntity {
 
 
 
-	
-	
+	public ClaimOption getClaimOption() {
+		return claimOption;
+	}
+
+	public void setClaimOption(ClaimOption claimOption) {
+		this.claimOption = claimOption;
+	}
+
+
+
+	public String getDealName() {
+		return dealName;
+	}
+
+
+
+	public void setDealName(String dealName) {
+		this.dealName = dealName;
+	}
  	
+
 	
 }

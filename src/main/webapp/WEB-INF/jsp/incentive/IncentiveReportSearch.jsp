@@ -149,10 +149,8 @@
                                         <div class="IncentiveReportSearch_wrapper_data_line" style="margin-top:20px">
                                             <div class="IncentiveReportSearch_wrapper_dl1_r">
                                                 <label for="">Deal Confirmation No</label>
-                                                <input class="form-control search-slt" type="text" name="dealName"
-                                                    id="dealName" placeholder="Deal Search keyword " />
-                                                <input type="hidden" id="dealConfirmationId"
-                                                    name="dealConfirmationId" />
+                                                <form:input path="dealName" placeholder="Deal Search keyword " class="form-control search-slt" />
+                                                <form:hidden path="dealConfirmationId" />
                                             </div>
                                             <div class="IncentiveReportSearch_wrapper_dl1_r">
                                                 <label for="">Claim Status</label>
