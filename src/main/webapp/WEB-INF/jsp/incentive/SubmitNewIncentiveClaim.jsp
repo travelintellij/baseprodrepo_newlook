@@ -141,10 +141,10 @@
                     }
 
                     th {
-                        background: #386641;
+                        background: lightgray;
                         height: 40px;
                         width: 40%;
-                        font-weight: heavy;
+                        font-weight: normal;
                         text-shadow: 0 1px 0 #38678f;
                         color: white;
                         border: 1px solid white;
@@ -248,18 +248,19 @@
 
                             <div class="claim_ques bs">
                               <h2 align="center" class="hd" style="color:black">Incentive Effort Details</h2>
-                                Please answer the following questions to justiy your claim for incentive.
+                               <p style="text-align:start"> Please answer the following questions to justiy your claim for incentive.
                                 Please make a note that if we find any infomation marked wrong or not
-                                justified then your claim will be rejected.
+                                justified then your claim will be rejected. </p>
                             </div>
 
 
                           
-                            <table style="background-color:#588157;width:1200px">
+                            <table style="background-color:lightgray;width:1200px">
                                 <tr>
                                     <th style="width:5%;color:black">1</th>
-                                    <th style="width:65%; padding: 5px;text-align:left;color:black">Client is Referred by
-                                        You ?
+                                    <th style="width:65%; padding: 5px;text-align:left;color:black">
+                                   <p> Client is Referred by
+                                        You ? </p>
                                         <form:errors path="question1" cssClass="error" />
                                     </th>
                                     <td> <input type="radio" name="question1" value="yes"> Yes
@@ -269,59 +270,71 @@
                                 </tr>
                                 <tr>
                                     <th style="width:5%;color:black">2</th>
-                                    <th style="width:50%; padding: 5px;text-align:left;color:black">You took minimal
+                                    <th style="width:50%; padding: 5px;text-align:left;color:black"> <p>You took minimal
                                         support of management
                                         and were
                                         able to
-                                        handle the query alone ? </th>
+                                        handle the query alone ? </p></th>
                                     <td><input type="radio" name="question2" value="yes">Yes</td>
                                     <td> <input type="radio" name="question2" value="no" checked>No </td>
                                 </tr>
                                 <tr>
                                     <th style="width:5%;color:black">3</th>
-                                    <th style="width:50%; padding: 5px;text-align:left;color:black">You responded all
+                                    <th style="width:50%; padding: 5px;text-align:left;color:black"><p> You responded all
                                         queries of client
                                         yourself ontime
                                         without
-                                        any delay ? </th>
+                                        any delay ? </p></th>
                                     <td><input type="radio" name="question3" value="yes">Yes</td>
                                     <td> <input type="radio" name="question3" value="no" checked>No </td>
                                 </tr>
                                 <tr>
                                     <th style="width:5%;color:black">4</th>
-                                    <th style="width:50%; padding: 5px;text-align:left;color:black">You ensured and
+                                    <th style="width:50%; padding: 5px;text-align:left;color:black"><p> You ensured and
                                         verified with management
                                         time to
                                         time for
-                                        payment settlement ? </th>
+                                        payment settlement ? </p> </th>
                                     <td><input type="radio" name="question4" value="yes">Yes</td>
                                     <td> <input type="radio" name="question4" value="no" checked>No </td>
                                 </tr>
                                 <tr>
                                     <th style="width:5%;color:black">5</th>
-                                    <th style="width:50%; padding: 5px;text-align:left;color:black">You ensured Vouchers
+                                    <th style="width:50%; padding: 5px;text-align:left;color:black"> <p>You ensured Vouchers
                                         Shared, Invoices
                                         Collected and
                                         all
-                                        settled with the deal ? </th>
+                                        settled with the deal ? </p> </th>
                                     <td><input type="radio" name="question5" value="yes">Yes</td>
                                     <td> <input type="radio" name="question5" value="no" checked>No </td>
                                 </tr>
                                 <tr>
                                     <th style="width:5%;color:black">6</th>
-                                    <th style="width:50%; padding: 5px;text-align:left;color:black">UdanChoo online
+                                    <th style="width:50%; padding: 5px;text-align:left;color:black"><p> UdanChoo online
                                         Review achieved or
                                         decided not
-                                        needed ?
+                                        needed ? </p>
                                     </th>
                                     <td><input type="radio" name="question6" value="yes">Yes</td>
                                     <td> <input type="radio" name="question6" value="no" checked>No </td>
                                 </tr>
                             </table>
 
-                            <table style="background-color:rgb(88,129,87);width:1200px">
+
+
+                            <table style="background-color:lightgray;width:1200px">
+                              <tr>
+    <th style="color:black"> <p> Claim Type </p></th>
+    <td>
+      <input type="radio" id="incentive" name="claimType" value="Incentive">
+      <label for="incentive">Incentive</label>
+   &nbsp; &nbsp; &nbsp;
+      <input type="radio" id="target" name="claimType" value="Target" checked>
+      <label for="target">Target</label>
+    </td>
+  </tr>
                                 <tr>
-                                    <th style="color:black"><b>Claimed Amount </b></th>
+                                    <th style="color:black"><p> Claimed Amount </p></th>
                                     <td style="text-align:left;color:black">INR &nbsp;<input
                                             style="height:30px;width: 100px;" class="contact" type="number"
                                             name="claimedAmount" value="0" required /><br>
@@ -331,7 +344,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th style="color:black"><b>User Remarks </b></th>
+                                    <th style="color:black"><p> User Remarks </p></th>
                                     <td style="text-align:left;"><textarea rows="2" cols="75" name="userRemarks"
                                             maxlength="250" style="resize: none;"></textarea><br>
                                         <font color="red">
