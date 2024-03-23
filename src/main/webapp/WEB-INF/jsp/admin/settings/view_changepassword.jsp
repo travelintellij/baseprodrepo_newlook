@@ -42,21 +42,21 @@
                     <div class="view_changepassword_wrapper_data_line">
                         <div class="view_changepassword_wrapper_data_l1">
                             <label for="">Current Password</label> <br>
-                            <input type="password" name="currentPassword" maxlength="20" required />
+                            <input type="password" name="currentPassword" maxlength="20" placeholder="Current Password" required />
                             <font color="red">
                                 <form:errors path="currentPassword" cssClass="error" />
                             </font>
                         </div>
                         <div class="view_changepassword_wrapper_data_l1">
                             <label for="">New Password</label> <br>
-                            <input type="password" name="changedPassword" minlength="8" maxlength="20" required />
+                            <input type="password" name="changedPassword" minlength="8" maxlength="20" Placeholder="New Password" required />
                             <font color="red">
                                 <form:errors path="changedPassword" cssClass="error" />
                             </font>
                         </div>
                         <div class="view_changepassword_wrapper_data_l1">
                             <label for="">Confirm Password</label> <br>
-                            <input type="password" name="passwordConfirm" minlength="8" maxlength="20" required />
+                            <input type="password" name="passwordConfirm" minlength="8" maxlength="20" Placeholder="Confirm Password"  required />
                         </div>
                     </div>
                     <div class="due_today_task_data_btns">
