@@ -170,7 +170,6 @@
                                                                     class="service-small" />
                                                             </form:select>
                                                         </div>
-
                                                 </sec:authorize>
                                                 <sec:authorize access="!hasAnyRole('ADMIN')">
                                                     ${userName}
@@ -193,16 +192,17 @@
 
                         <table class="bs" style="width:1500px;margin:10px auto;text-align:center;background:white;color:black">
                             <tr>
-                                <th style="width:10%;background: #6082B6;">Incentive Id </th>
-                                <th style="width:10%;background: #6082B6;">Deal Confirmation Id </th>
-                                <th style="width:20%;background: #6082B6;">Lead Guest Name</th>
-                                <th style="width:8%;background: #6082B6;">Travel Date</th>
-                                <th style="width:8%;background: #6082B6;">End Date</th>
-                                <th style="width:10%;background: #6082B6;">Claim Date</th>
-                                <th style="width:8%;background: #6082B6;">Claimant</th>
-                                <th style="width:10%;background: #6082B6;">Claim Amount</th>
-                                <th style="width:7%;background: #6082B6;">Approved Amount</th>
-                                <th style="width:10%;background: #6082B6;">Claim Status</th>
+                                <th style="height:50px;width:10%;background: #6082B6;">Incentive Id </th>
+                                <th style="height:50px;width:10%;background: #6082B6;">Deal Id </th>
+                                <th style="height:50px;width:15%;background: #6082B6;">Lead Guest Name</th>
+                                <th style="height:50px;width:8%;background: #6082B6;">Start Date</th>
+                                <th style="height:50px;width:8%;background: #6082B6;">End Date</th>
+                                <th style="height:50px;width:8%;background: #6082B6;">Claim Date</th>
+                                <th style="height:50px;width:8%;background: #6082B6;">Claimant</th>
+                                <th style="height:50px;width:10%;background: #6082B6;">Claim Type</th>
+                                <th style="height:50px;width:7%;background: #6082B6;">Claim</th>
+                                <th style="height:50px;width:7%;background: #6082B6;">Approved</th>
+                                <th style="height:50px;width:10%;background: #6082B6;">Claim Status</th>
                             </tr>
                             <c:if test="${not empty INCENTIVES_LIST}">
                                 <c:set var="totalIncentive" value="${0}" />
@@ -214,8 +214,8 @@
                                                 data-toggle="modal" data-target="#myModal">${incentiveObj.incentiveId}</a>
 
                                             <sec:authorize access="hasAnyRole('ADMIN')">
-                                                &nbsp;&nbsp;<a style="color:#32cd32"
-                                                    href="form_view_editIncentive?incentiveId=${incentiveObj.incentiveId}">Edit</a>
+                                                &nbsp;&nbsp;
+                                                <a style="color:#32cd32" href="form_view_editIncentive?incentiveId=${incentiveObj.incentiveId}">Edit</a>
                                             </sec:authorize>
 
                                         </td>
@@ -239,6 +239,7 @@
                                             <fmt:formatDate value="${incentiveObj.createdAt}" pattern="dd-MM-yyyy" />
                                         </td>
                                         <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">${incentiveObj.claimantName}</td>
+                                        <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">${incentiveObj.claimOption} </td>
                                         <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">${incentiveObj.claimedAmount}</td>
                                         <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">${incentiveObj.approvedAmount}</td>
                                         <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">${incentiveObj.claimStatusName}</td>

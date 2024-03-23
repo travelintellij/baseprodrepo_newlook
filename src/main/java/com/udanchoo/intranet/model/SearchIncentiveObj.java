@@ -1,5 +1,7 @@
 package com.udanchoo.intranet.model;
 
+import com.udanchoo.intranet.constant.incentive.ClaimOption;
+
 public class SearchIncentiveObj {
 	private long incentiveId;
 	private String claimFromDate;
@@ -12,6 +14,7 @@ public class SearchIncentiveObj {
 	private String dealName;
 	private boolean blnSearchOnClaimDate;
 	private int incentiveSearchPeriodType;
+	private ClaimOption claimOption;
 	
 	public String getClaimFromDate() {
 		return claimFromDate;
@@ -102,6 +105,12 @@ public class SearchIncentiveObj {
 				+ ", reportOfUser=" + reportOfUser + ", dealConfirmationId=" + dealConfirmationId + ", dealName="
 				+ dealName + ", blnSearchOnClaimDate=" + blnSearchOnClaimDate + ", incentiveSearchPeriodType="
 				+ incentiveSearchPeriodType + "]";
+	}
+	public ClaimOption getClaimOption() {
+		return claimOption;
+	}
+	public void setClaimOption(ClaimOption claimOption) {
+		this.claimOption = claimOption;
 	}
 	
 	

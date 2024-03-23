@@ -36,12 +36,12 @@ import com.udanchoo.intranet.entity.UdnIncentiveEntity;
 import com.udanchoo.intranet.entity.Udn_Deals_Recorder_Entity;
 import com.udanchoo.intranet.entity.leads.Tg_Leads_Recorder_Entity;
 import com.udanchoo.intranet.exception.RecordNotFoundException;
-import com.udanchoo.intranet.model.IncentiveObj;
 import com.udanchoo.intranet.model.SearchIncentiveObj;
 import com.udanchoo.intranet.model.Tag;
 import com.udanchoo.intranet.model.UdnDealStatusVO;
 import com.udanchoo.intranet.model.Udn_Deals_Recorder_Obj;
 import com.udanchoo.intranet.model.UserDetailsObj;
+import com.udanchoo.intranet.model.incentive.IncentiveObj;
 import com.udanchoo.intranet.model.leads.TgLeadsRecorderVO;
 import com.udanchoo.intranet.service.ClientServiceImpl;
 import com.udanchoo.intranet.service.DealServiceImpl;
@@ -137,7 +137,7 @@ public class IncentiveController {
     		if (incentiveObj.getClaimOption() == ClaimOption.INCENTIVE) {
                 System.out.println("Incentive Option is selected");
     			// Call a service or perform calculations for claiming incentive
-            } else if (incentiveObj.getClaimOption()  == ClaimOption.TARGET_AMOUNT) {
+            } else if (incentiveObj.getClaimOption()  == ClaimOption.TARGET) {
             	System.out.println("Target Amount Option is selected");
             	// Call a service or perform calculations for claiming target amount
                 //return "redirect:/targetAmountPage";
@@ -390,6 +390,8 @@ public class IncentiveController {
 	   	}
 
 	    Page <UdnIncentiveEntity> udnIncentiveList = incentiveService.filterIncentiveRecord(page, UdanChooConstants.DEFAULT_PAGE_SIZE, sortBy, searchIncentiveObj, isAdmin);
+	    
+	    
 		
 		List <IncentiveObj> udnIncentiveListVO = generateFilteredIncentiveVo(udnIncentiveList);
 		mapview.addObject("INCENTIVES_LIST", udnIncentiveListVO);

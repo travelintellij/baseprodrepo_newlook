@@ -325,7 +325,7 @@
     <td>
     	<font color="red"><form:errors path="claimOption" cssClass="error" /></font>
        <form:radiobutton path="claimOption" id="incentive" value="INCENTIVE"/><label for="incentive">Incentive</label>&nbsp; &nbsp; &nbsp;
-       <form:radiobutton path="claimOption" id="targetAmount" value="TARGET_AMOUNT"/><label for="target">Target</label>
+       <form:radiobutton path="claimOption" id="targetAmount" value="TARGET"/><label for="target">Target</label>
     </td>
   </tr>
                                 <tr>
@@ -340,8 +340,10 @@
                                 </tr>
                                 <tr>
                                     <th style="color:black"><p> User Remarks </p></th>
-                                    <td style="text-align:left;"><textarea rows="2" cols="75" name="userRemarks"
-                                            maxlength="250" style="resize: none;"></textarea><br>
+                                    <td style="text-align:left;">
+                                    
+                                    <form:textarea path="userRemarks" maxlength="250" id="userRemarks" cols="75" rows="2" style="resize: none;" /><br>
+                                    
                                         <font color="red">
                                             <form:errors path="userRemarks" cssClass="error" />
                                         </font>

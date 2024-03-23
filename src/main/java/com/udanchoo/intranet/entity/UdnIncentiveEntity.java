@@ -5,14 +5,14 @@ import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.Valid;
 
-import org.springframework.data.annotation.CreatedDate;
-
-import com.udanchoo.intranet.model.IncentiveObj;
+import com.udanchoo.intranet.constant.incentive.ClaimOption;
+import com.udanchoo.intranet.model.incentive.IncentiveObj;
 
 
 
@@ -36,6 +36,10 @@ public class UdnIncentiveEntity extends AuditModel {
 	protected int approvedAmount;
 	protected String userRemarks;
 	protected String managementRemarks;
+	
+	@Enumerated(EnumType.STRING)
+    @Column(name = "claimOption", nullable = false)
+	protected ClaimOption claimOption;
 	
 	protected Date responseDate;
 	protected int status;
@@ -63,6 +67,7 @@ public class UdnIncentiveEntity extends AuditModel {
 		//this.requestedDate = incentiveObj.getRequestedDate();
 		this.responseDate = incentiveObj.getResponseDate();
 		this.status = incentiveObj.getStatus();
+		this.claimOption=incentiveObj.getClaimOption();
 	}
 	public Long getIncentiveId() {
 		return incentiveId;
@@ -119,9 +124,7 @@ public class UdnIncentiveEntity extends AuditModel {
 		this.question6 = question6;
 	}
 	
-	
-	
-	
+
 	public int getClaimedAmount() {
 		return claimedAmount;
 	}
@@ -155,10 +158,6 @@ public class UdnIncentiveEntity extends AuditModel {
 		this.responseDate = responseDate;
 	}
 	
-	
-	
-	
-	
 	public int getStatus() {
 		return status;
 	}
@@ -167,14 +166,24 @@ public class UdnIncentiveEntity extends AuditModel {
 		this.status = status;
 	}
 
+	
+
 	@Override
 	public String toString() {
 		return "UdnIncentiveEntity [incentiveId=" + incentiveId + ", dealConfirmationId=" + dealConfirmationId
 				+ ", claimantId=" + claimantId + ", question1=" + question1 + ", question2=" + question2
 				+ ", question3=" + question3 + ", question4=" + question4 + ", question5=" + question5 + ", question6="
 				+ question6 + ", claimedAmount=" + claimedAmount + ", approvedAmount=" + approvedAmount
-				+ ", userRemarks=" + userRemarks + ", managementRemarks=" + managementRemarks + ", requestedDate="
-				+ getCreatedAt() + ", responseDate=" + responseDate + ", status=" + status + "]";
+				+ ", userRemarks=" + userRemarks + ", managementRemarks=" + managementRemarks + ", claimOption="
+				+ claimOption + ", responseDate=" + responseDate + ", status=" + status + "]";
+	}
+
+	public ClaimOption getClaimOption() {
+		return claimOption;
+	}
+
+	public void setClaimOption(ClaimOption claimOption) {
+		this.claimOption = claimOption;
 	}
 	
 	

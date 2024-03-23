@@ -1,0 +1,12 @@
+CREATE TABLE employee_target_mapping (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    userid INT NOT NULL,
+    financial_year VARCHAR(10) NOT NULL,
+    target_amount DECIMAL(10, 2) NOT NULL,
+    incentive_amount DECIMAL(10, 2) NOT NULL,
+    UNIQUE KEY unique_mapping (userid, financial_year, target_amount),
+    FOREIGN KEY (userid) REFERENCES udnteam(userid)
+);
+
+ALTER TABLE `udanchoodb`.`udnincentive` 
+ADD COLUMN `claimOption` ENUM('INCENTIVE', 'TARGET') NOT NULL AFTER `updated_at`;

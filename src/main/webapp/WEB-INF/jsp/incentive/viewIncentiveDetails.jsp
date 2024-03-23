@@ -121,15 +121,15 @@
                                 </div>
                                 <div class="viewIncentiveDetails_wr_dt_3_b a">
                                     <div class="viewIncentiveDetails_wr_dt_3_b_l3">
-                                        <label for="" class="lb">Managment Remarks</label>
+                                        <label for="" class="lb">Management Remarks</label>
                                         <p>${INCENTIVE_OBJ.managementRemarks}</p>
                                     </div>
                                 </div>
                                 <div class="due_today_task_data_btnss" style="margin-top:20px">
-                                    <a href="form_view_editIncentive?incentiveId=${INCENTIVE_OBJ.incentiveId}"><input
-                                            type="button" style="background: #32cd32;" value="Edit Claim" /></a>
-                                    <a href="view_default_incentives_report"><input type="button"
-                                            value="View Incentive List" /></a>
+                                    <sec:authorize access="hasAnyRole('ADMIN')" >
+                                    	<a href="form_view_editIncentive?incentiveId=${INCENTIVE_OBJ.incentiveId}"><input type="button" style="background: #32cd32;" value="Edit Claim" /></a>
+                                    </sec:authorize>
+                                    <a href="view_default_incentives_report"><input type="button" value="View Incentive List" /></a>
                                 </div>
                             </div>
                             </div>

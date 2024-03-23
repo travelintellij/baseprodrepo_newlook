@@ -1,4 +1,4 @@
-package com.udanchoo.intranet.model;
+package com.udanchoo.intranet.model.incentive;
 
 
 
@@ -59,6 +59,7 @@ public class IncentiveObj extends UdnIncentiveEntity {
 		this.responseDate = incentiveEntity.getResponseDate();
 		this.status = incentiveEntity.getStatus();
 		this.setCreatedAt(incentiveEntity.getCreatedAt());
+		this.claimOption=incentiveEntity.getClaimOption();
 	}
 
 

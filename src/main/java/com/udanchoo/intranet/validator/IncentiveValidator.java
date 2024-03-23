@@ -5,8 +5,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-import com.udanchoo.intranet.model.IncentiveObj;
-import com.udanchoo.intranet.model.leads.TgLeadsRecorderVO;
+import com.udanchoo.intranet.model.incentive.IncentiveObj;
 import com.udanchoo.intranet.service.ClientServiceImpl;
 import com.udanchoo.intranet.service.UdnCommonServicesImpl;
 
