@@ -2,16 +2,18 @@ package com.udanchoo.intranet.entity;
 
 import javax.persistence.*;
 
+import com.udanchoo.intranet.model.incentive.TIEmployeeIncentiveDashboardVO;
+
 @Entity
 @Table(name = "employee_target_mapping")
-public class EmployeeTargetMapping {
+public class EmployeeTargetMappingEntity extends AuditModel{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "userid")
-    private Long userId;
+    private int userId;
 
     @Column(name = "financial_year")
     private String financialYear;
@@ -32,15 +34,16 @@ public class EmployeeTargetMapping {
         this.id = id;
     }
 
-    public Long getUserId() {
-        return userId;
-    }
+ 
+    public int getUserId() {
+		return userId;
+	}
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
 
-    public String getFinancialYear() {
+	public String getFinancialYear() {
         return financialYear;
     }
 
@@ -62,5 +65,13 @@ public class EmployeeTargetMapping {
 
     public void setIncentiveAmount(double incentiveAmount) {
         this.incentiveAmount = incentiveAmount;
+    }
+    
+    public EmployeeTargetMappingEntity(TIEmployeeIncentiveDashboardVO employeeIncVO) {
+    	this.userId = employeeIncVO.getUserId();
+    	this.financialYear=employeeIncVO.getSelectedFinancialYear();
+    	this.targetAmount=employeeIncVO.getTargetAmount();
+    	this.incentiveAmount=employeeIncVO.getIncentiveAmount();
+    	
     }
 }

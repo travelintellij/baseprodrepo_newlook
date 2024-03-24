@@ -42,7 +42,8 @@
                                         class="hoverOnLink linkPaddingBottom">Add User</a>
                                 </li>
                                 <li><a href="${pageContext.request.contextPath}/view_search_admin_user" class="hoverOnLink">Manage Users</a></li>
-                                <li><a href="${pageContext.request.contextPath}/adminIncentiveReport" class="hoverOnLink">Incentive Reports</a></li>
+                                <li><a href="${pageContext.request.contextPath}/adminIncentiveReport" class="hoverOnLink">Incentive Report</a></li>
+                               
                             </ul>
                         </li>
                         <li class="tophHeaderMainLink">
@@ -85,7 +86,7 @@
                                 <li><a href="view_add_visa_form" class="hoverOnLink">Add Visa Master</a>
                                 </li>
                                 <li><a href="view_search_visa_form" class="hoverOnLink">Manage Visa</a></li>
-                                <li><a href="view_add_visa_consulate_form" class="hoverOnLink">Add V.Consulate</a>
+                                <li><a href="view_add_visa_consulate_form" class="hoverOnLink">Add Visa Consulate</a>
                                 </li>
                                 <li><a href="view_search_visa_consulate_form" class="hoverOnLink">Manage Consulates</a>
                                 </li>
@@ -129,6 +130,7 @@
                     <ul class="bottomSectionHeaderSubMenu">
                         <li><a href="newincentive" class="hoverOnLink">New Claim</a></li>
                         <li><a href="view_default_incentives_report" class="hoverOnLink">Claim Reports</a>
+                         <li><a href="adminManageTarget" class="hoverOnLink">Manage Targets</a></li>
                         </li>
                     </ul>
                 </li>

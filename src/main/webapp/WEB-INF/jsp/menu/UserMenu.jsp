@@ -192,13 +192,14 @@
                         <p>Incentive</p>
                         <ul class="bottomSectionHeaderSubMenu">
                             <sec:authorize access="hasRole('INCENTIVE_CAN_CLAIM')">
-                                <li><a href="newincentive" class="hoverOnLink">New IncClaim</a>
+                                <li><a href="newincentive" class="hoverOnLink">New Claim</a>
                             </sec:authorize>
+                         
                     </li>
-                    <li><a href="view_default_incentives_report" class="hoverOnLink">Incen Rpts</a></li>
-            </ul>
-            </li>
-            </sec:authorize>
+                    <li><a href="view_default_incentives_report" class="hoverOnLink">Incentive Reports</a></li>
+            		</ul>
+            		</li>
+            	</sec:authorize>
 
             <li><a href="${pageContext.request.contextPath}/logout" class="signOut">Sign out</a></li>
             </ul>

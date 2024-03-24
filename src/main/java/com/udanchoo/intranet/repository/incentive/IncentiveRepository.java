@@ -1,4 +1,4 @@
-package com.udanchoo.intranet.repository;
+package com.udanchoo.intranet.repository.incentive;
 
 
 import java.util.Date;

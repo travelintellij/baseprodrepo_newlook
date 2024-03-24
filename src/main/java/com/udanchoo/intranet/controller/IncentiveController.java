@@ -4,6 +4,8 @@ package com.udanchoo.intranet.controller;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -12,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +24,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,6 +36,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.udanchoo.intranet.constant.incentive.ClaimOption;
+import com.udanchoo.intranet.entity.EmployeeTargetMappingEntity;
 import com.udanchoo.intranet.entity.UdnIncentiveEntity;
 import com.udanchoo.intranet.entity.Udn_Deals_Recorder_Entity;
 import com.udanchoo.intranet.entity.leads.Tg_Leads_Recorder_Entity;
@@ -42,6 +47,7 @@ import com.udanchoo.intranet.model.UdnDealStatusVO;
 import com.udanchoo.intranet.model.Udn_Deals_Recorder_Obj;
 import com.udanchoo.intranet.model.UserDetailsObj;
 import com.udanchoo.intranet.model.incentive.IncentiveObj;
+import com.udanchoo.intranet.model.incentive.TIEmployeeIncentiveDashboardVO;
 import com.udanchoo.intranet.model.leads.TgLeadsRecorderVO;
 import com.udanchoo.intranet.service.ClientServiceImpl;
 import com.udanchoo.intranet.service.DealServiceImpl;
@@ -575,10 +581,166 @@ public class IncentiveController {
 				result.add(dealTag);
 			}
 		} catch (RecordNotFoundException e) {
-			// TODO Auto-generated catch block
+			//TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		return result;
 	}
+    
+    
+    @RequestMapping("/adminManageTarget")
+    public ModelAndView adminManageTarget(@RequestParam(defaultValue = "0") Integer page,@RequestParam(defaultValue = "3") Integer pageSize, @RequestParam(defaultValue = "CreatedAt") String sortBy,@ModelAttribute("SEARCH_INCENTIVE") @Valid SearchIncentiveObj searchIncentiveObj, BindingResult result) {
+        UserDetailsObj userObj = getLoggedInUser();
+        searchIncentiveObj.setClaimantId(userObj.getUserId());
+        ModelAndView mapview = new ModelAndView();
+    	mapview.addObject("userName", userObj.getUsername());
+    	mapview.addObject("userId", userObj.getUserId());
+    	mapview.setViewName("incentive/viewIncentiveDashboard");
+    	searchIncentiveObj.setClaimStatus(UdanChooConstants.INCENTIVE_ANY_STATUS);
+    	Date dateFrom = null;
+    	Date dateTo = null ;
+    	Calendar calender = Calendar.getInstance();
+    	try {
+    		if(searchIncentiveObj.getClaimToDate()==null) {
+    			//calender.set(Calendar.DAY_OF_MONTH, 1);
+    			calender.set(Calendar.DAY_OF_MONTH, calender.getActualMaximum(Calendar.DAY_OF_MONTH));
+    			dateTo = calender.getTime();
+				String strToDate = dateFilterFormat.format(dateTo); 
+				searchIncentiveObj.setClaimToDate(strToDate);
+			}else {
+				dateTo = new SimpleDateFormat("yyyy-MM-dd").parse(searchIncentiveObj.getClaimToDate());
+			}
+    		
+    		if(searchIncentiveObj.getClaimFromDate()==null) {
+				//searchIncentiveObj.setClaimToDate(calender.getTime());
+    			calender.set(Calendar.DAY_OF_MONTH, 1);
+				//calender.add(Calendar.MONTH, -1);
+				dateFrom = calender.getTime();
+				String strFromDate = dateFilterFormat.format(dateFrom); 
+				searchIncentiveObj.setClaimFromDate(strFromDate);
+				
+				
+				/*calender.add(Calendar.MONTH, -1);
+				dateFrom = calender.getTime();
+				String strFromDate = dateFilterFormat.format(dateFrom); 
+				searchIncentiveObj.setClaimFromDate(strFromDate);
+				*/
+
+				
+			}else {
+				dateFrom=new SimpleDateFormat("yyyy-MM-dd").parse(searchIncentiveObj.getClaimFromDate());
+			}
+    		
+			
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//searchIncentiveObj.setClaimFromDate(calender.getTime());
+		//List <UdnIncentiveEntity> udnIncentiveList = incentiveService.findDefaultIncentiveSearchRecords(dateFrom,dateTo);
+		
+		boolean isAdmin=false;
+	    if(userObj.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"))) {
+	   		isAdmin=true;
+	   		searchIncentiveObj.setClaimantId(0);
+	   	}
+
+	    Page <UdnIncentiveEntity> udnIncentiveList = incentiveService.filterIncentiveRecord(page, UdanChooConstants.DEFAULT_PAGE_SIZE, sortBy, searchIncentiveObj, isAdmin);
+	    
+	    
+		
+		List <IncentiveObj> udnIncentiveListVO = generateFilteredIncentiveVo(udnIncentiveList);
+		mapview.addObject("INCENTIVES_LIST", udnIncentiveListVO);
+		List<UdnDealStatusVO> incentive_wl_statusList = commonService.find_All_Status_Deal_Obj(UdanChooConstants.WORKLOAD_INCENTIVE_OBJ);
+		Map<Integer, String> activeIncentiveStatusMap = (Map<Integer, String>) incentive_wl_statusList.stream().collect(
+                Collectors.toMap(UdnDealStatusVO::getWorkloadStatusId, UdnDealStatusVO::getWorkloadStatusName));
+		activeIncentiveStatusMap.put(0, "ALL");
+		mapview.addObject("ACTIVE_INCENTIVE_STATUS", activeIncentiveStatusMap);
+
+    	List<UserDetailsObj> activeUsersList = userDetailsService.findAllActiveUsers();
+ 		Map<Integer, String> activeUsersMap = (Map<Integer, String>) activeUsersList.stream().collect(
+                 Collectors.toMap(UserDetailsObj::getUserId, UserDetailsObj::getUsername));
+ 		activeUsersMap.put(0, "ALL");
+ 		mapview.addObject("ACTIVE_USERS_MAP", activeUsersMap);
+ 		mapview.addObject("INCENTIVE_SEARCH_PERIOD_TYPE", UdanChooConstants.INCENTIVE_SEARCH_PERIOD_TYPE);
+ 		mapview.addObject("maxPages", udnIncentiveList.getTotalPages());
+    	mapview.addObject("page", page);
+    	mapview.addObject("sortBy", sortBy);
+    	return mapview;
+    }
+    
+    @RequestMapping("/addnewtarget")
+   	public ModelAndView addnewtarget(@ModelAttribute("TARGET_OBJ") TIEmployeeIncentiveDashboardVO targetObj,BindingResult result) {
+    	Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    	String username;
+    	if (principal instanceof UserDetails) {
+    	   username = ((UserDetails)principal).getUsername();
+    	} else {
+    	   username = principal.toString();
+    	}
+     	UserDetailsObj userObj = (UserDetailsObj) userDetailsService.loadUserByUsername(username);
+    	ModelAndView mapview = new ModelAndView("incentive/addNewTarget");
+    	List<UserDetailsObj> activeUsersList = userDetailsService.findAllActiveUsers();
+ 		Map<Integer, String> activeUsersMap = (Map<Integer, String>) activeUsersList.stream().collect(
+                 Collectors.toMap(UserDetailsObj::getUserId, UserDetailsObj::getUsername));
+ 		mapview.addObject("ACTIVE_USERS_MAP", activeUsersMap);
+ 		mapview.addObject("FINANCIAL_YEARS_LIST", getFinancialYearsList(targetObj));
+    	return mapview;
+    }
+    
+    
+    private List<String> getFinancialYearsList(TIEmployeeIncentiveDashboardVO targetVIncentiveO) {
+    	 // Get the current system date
+        LocalDate currentDate = LocalDate.now();
+
+        // Calculate the starting year of the financial year cycle
+        int startYear = currentDate.getMonthValue() >= Month.APRIL.getValue() ? currentDate.getYear() : currentDate.getYear() - 1;
+
+        // Create a list to store financial years
+        List<String> financialYears = new ArrayList<>();
+
+        // Add previous 3 years, current year, and next year to the list
+        for (int i = -3; i <= 1; i++) {
+            int year = startYear + i;
+            String financialYear = year + "-" + (year + 1);
+            if(i==0) {
+            	targetVIncentiveO.setSelectedFinancialYear(financialYear);
+            }
+            financialYears.add(financialYear);
+            
+        }
+        return financialYears;
+    }
+    
+    @Transactional
+ 	@PostMapping("create_create_target")
+ 	public ModelAndView create_create_lead(@ModelAttribute("TARGET_OBJ") TIEmployeeIncentiveDashboardVO targetObj,  BindingResult result,final RedirectAttributes redirectAttrib ) {
+ 		UserDetailsObj userObj = getLoggedInUser();
+ 		ModelAndView modelView = new ModelAndView();
+ 		if(incentiveService.existsByUserIdAndFinancialYearAndTargetAmount(targetObj)) {
+ 			result.addError(new ObjectError("userId", "Target Already Exist for user. "));
+ 		}
+ 		if(result.hasErrors()) {
+ 		 	modelView.setViewName("forward:addnewtarget");
+ 		 	return modelView;
+ 		}else {
+ 			EmployeeTargetMappingEntity tgLeadEntity = new EmployeeTargetMappingEntity(targetObj);
+ 			//below is the temporary code and need to be deleted and uncomment the saveLead part. 
+ 			//tgLeadEntity.setLeadId(7l);
+ 			try {
+				incentiveService.createOrUpdateTarget(tgLeadEntity);
+			} catch (RecordNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+ 		
+ 			redirectAttrib.addFlashAttribute("Success", "Target Record is updated Successfully..");
+ 			modelView.setViewName("redirect:adminManageTarget");
+ 		
+ 			//write email code here. 
+ 		}
+ 		return modelView; 
+ 	 }
+    
 }

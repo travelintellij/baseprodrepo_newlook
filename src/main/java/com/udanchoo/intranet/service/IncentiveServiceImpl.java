@@ -28,6 +28,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import com.udanchoo.intranet.entity.EmployeeTargetMappingEntity;
 import com.udanchoo.intranet.entity.UdnClientEntity;
 import com.udanchoo.intranet.entity.UdnIncentiveEntity;
 import com.udanchoo.intranet.entity.Udn_Airline_Master_Entity;
@@ -38,10 +39,12 @@ import com.udanchoo.intranet.entity.supplier.Tg_Supplier_Destinations_Map_Entity
 import com.udanchoo.intranet.exception.RecordNotFoundException;
 import com.udanchoo.intranet.model.SearchIncentiveObj;
 import com.udanchoo.intranet.model.Udn_Deals_Recorder_Obj;
+import com.udanchoo.intranet.model.incentive.TIEmployeeIncentiveDashboardVO;
 import com.udanchoo.intranet.model.leads.FilterLeadObj;
 import com.udanchoo.intranet.repository.CommonRepository;
 import com.udanchoo.intranet.repository.DealRepository;
-import com.udanchoo.intranet.repository.IncentiveRepository;
+import com.udanchoo.intranet.repository.incentive.EmployeeTargetMappingRepository;
+import com.udanchoo.intranet.repository.incentive.IncentiveRepository;
 import com.udanchoo.intranet.util.UdanChooConstants;
 
 
@@ -51,6 +54,9 @@ public class IncentiveServiceImpl {
 
 	@Autowired
 	IncentiveRepository incentiveRepository;
+	
+	@Autowired
+	EmployeeTargetMappingRepository employeeTargetRepository;
 	
 	@Autowired
 	DealServiceImpl dealService;
@@ -362,4 +368,17 @@ public class IncentiveServiceImpl {
 			System.out.println("Returned Deal Size is " + filteredDealsRecorderEntity.size());
 			return filteredDealsRecorderEntity;
 		}
+
+	   public EmployeeTargetMappingEntity createOrUpdateTarget(EmployeeTargetMappingEntity targetEntity) throws RecordNotFoundException 
+	    {
+		   targetEntity = employeeTargetRepository.save(targetEntity);
+		   return targetEntity;
+		 
+	    } 
+	   
+	   public boolean existsByUserIdAndFinancialYearAndTargetAmount(TIEmployeeIncentiveDashboardVO targetObj) {
+		   return employeeTargetRepository.existsByUserIdAndFinancialYearAndTargetAmount(targetObj.getUserId(), targetObj.getSelectedFinancialYear(), targetObj.getTargetAmount());
+	   }
+
+
 }
