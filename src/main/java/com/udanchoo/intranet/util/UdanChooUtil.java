@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.sql.Date;
 import java.text.DateFormatSymbols;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
@@ -119,4 +120,52 @@ public class UdanChooUtil {
         }
         return properties;
     }
+    
+    public static String getCurrentFinancialYear() {
+        LocalDate currentDate = LocalDate.now();
+        int year = currentDate.getYear();
+        int month = currentDate.getMonthValue();
+        String financialYear;
+
+        if (month >= 4) { // Financial year starts from April
+            financialYear = year + "-" + (year + 1);
+        } else {
+            financialYear = (year - 1) + "-" + year;
+        }
+
+        return financialYear;
+    }
+    
+    public static String validateFinancialYearFormat(String financialYear) {
+        if (financialYear == null || financialYear.isEmpty() || !financialYear.matches("\\d{4}-\\d{4}")) {
+            return getCurrentFinancialYear();
+        }
+
+        return financialYear;
+    }
+    
+    public static Date getStartDayOfFinancialYear(String financialYear) {
+        if (financialYear == null || !financialYear.matches("\\d{4}-\\d{4}")) {
+            throw new IllegalArgumentException("Invalid financial year format");
+        }
+
+        String[] years = financialYear.split("-");
+        int startYear = Integer.parseInt(years[0]);
+        LocalDate startDayOfFinancialYear = LocalDate.of(startYear, 4, 1); // Assuming financial year starts from April 1st
+
+        return Date.valueOf(startDayOfFinancialYear);
+    }
+    
+    public static Date getLastDayOfFinancialYear(String financialYear) {
+        if (financialYear == null || !financialYear.matches("\\d{4}-\\d{4}")) {
+            throw new IllegalArgumentException("Invalid financial year format");
+        }
+
+        String[] years = financialYear.split("-");
+        int endYear = Integer.parseInt(years[1]);
+        LocalDate lastDayOfFinancialYear = LocalDate.of(endYear, 3, 31); // Assuming financial year ends on March 31st
+
+        return Date.valueOf(lastDayOfFinancialYear);
+    }
+    
 }

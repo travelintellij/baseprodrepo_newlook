@@ -8,7 +8,12 @@ import com.udanchoo.intranet.model.incentive.TIEmployeeIncentiveDashboardVO;
 @Table(name = "employee_target_mapping")
 public class EmployeeTargetMappingEntity extends AuditModel{
 
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -16,7 +21,7 @@ public class EmployeeTargetMappingEntity extends AuditModel{
     private int userId;
 
     @Column(name = "financial_year")
-    private String financialYear;
+    protected String financialYear;
 
     @Column(name = "target_amount")
     private double targetAmount;
@@ -24,6 +29,11 @@ public class EmployeeTargetMappingEntity extends AuditModel{
     @Column(name = "incentive_amount")
     private double incentiveAmount;
 
+    
+    public EmployeeTargetMappingEntity() {
+    	
+    }
+    
     // Getters and setters
     
     public Long getId() {
@@ -74,4 +84,13 @@ public class EmployeeTargetMappingEntity extends AuditModel{
     	this.incentiveAmount=employeeIncVO.getIncentiveAmount();
     	
     }
+
+	@Override
+	public String toString() {
+		return "EmployeeTargetMappingEntity [id=" + id + ", userId=" + userId + ", financialYear=" + financialYear
+				+ ", targetAmount=" + targetAmount + ", incentiveAmount=" + incentiveAmount + "]";
+	}
+    
+	
+    
 }

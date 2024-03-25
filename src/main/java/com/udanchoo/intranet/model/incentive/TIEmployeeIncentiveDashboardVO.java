@@ -8,6 +8,7 @@ public class TIEmployeeIncentiveDashboardVO {
 	public int approvedTarget;
 	public int pendingApprovalTarget;
 	public int incentiveAmount;
+	public String userName;
 	
 	
 	public int getUserId() {
@@ -60,6 +61,12 @@ public class TIEmployeeIncentiveDashboardVO {
 				+ ", currentFinancialYear=" + currentFinancialYear + ", targetAmount=" + targetAmount
 				+ ", approvedTarget=" + approvedTarget + ", pendingApprovalTarget=" + pendingApprovalTarget
 				+ ", incentiveAmount=" + incentiveAmount + "]";
+	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	

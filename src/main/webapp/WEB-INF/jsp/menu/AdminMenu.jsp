@@ -130,7 +130,7 @@
                     <ul class="bottomSectionHeaderSubMenu">
                         <li><a href="newincentive" class="hoverOnLink">New Claim</a></li>
                         <li><a href="view_default_incentives_report" class="hoverOnLink">Claim Reports</a>
-                         <li><a href="adminManageTarget" class="hoverOnLink">Manage Targets</a></li>
+                         <li><a href="view_filter_employee_target" class="hoverOnLink">Manage Targets</a></li>
                         </li>
                     </ul>
                 </li>

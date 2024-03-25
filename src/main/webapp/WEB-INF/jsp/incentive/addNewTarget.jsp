@@ -194,9 +194,7 @@
                         <div class="SubmitNewIncentiveClaim container">
                             <div class="SubmitNewIncentiveClaim_wrapper bs">
                             	<h2 align="center" class="hd" style="color:black">Add New Target</h2><br>
-                              <font color="red">hello
-                                <form:errors path="userId" />
-                            </font>
+                              <font color="red"><form:errors path="userId" /></font>
                             </div>
                             
                            
@@ -251,7 +249,7 @@
                                 <tr>
                                     <td class="due_today_task_data_btnss" style="text-align:center;width:50%;background:white" colspan="2" >
                                         <input type="submit" value="Submit Target">
-                                        <a href="view_default_incentives_report"><input type="button" value="View Target Listing" /></a>
+                                        <a href="view_filter_employee_target"><input type="button" value="View Target Listing" /></a>
                                     </td>
                                 </tr>
                             </table>

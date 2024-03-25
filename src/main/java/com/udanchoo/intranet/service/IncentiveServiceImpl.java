@@ -380,5 +380,46 @@ public class IncentiveServiceImpl {
 		   return employeeTargetRepository.existsByUserIdAndFinancialYearAndTargetAmount(targetObj.getUserId(), targetObj.getSelectedFinancialYear(), targetObj.getTargetAmount());
 	   }
 
-
+	public Page<EmployeeTargetMappingEntity> filterTargetRecord(int pageNo, int pageSize,String sorting,TIEmployeeIncentiveDashboardVO targetObj,boolean isAdmin ){
+		Pageable paging = PageRequest.of(pageNo, pageSize,Sort.by(sorting));
+		boolean isLeadAdmin=false;
+		Page<EmployeeTargetMappingEntity> filteredTargetList = employeeTargetRepository.findAll(new Specification<EmployeeTargetMappingEntity>() {
+			private static final long serialVersionUID = 1L;
+			@Override
+			public Predicate toPredicate(Root<EmployeeTargetMappingEntity> targetRootEntity, CriteriaQuery< ?> query, CriteriaBuilder criteriaBuilder) {
+				//CriteriaQuery<Udn_Deals_Recorder_Entity> criteriaQueryDeal = criteriaBuilder.createQuery(Udn_Deals_Recorder_Entity.class);
+				List<Predicate> predicates = new ArrayList<>();
+				if(targetObj.getUserId()!=0) {
+					predicates.add(criteriaBuilder.equal(targetRootEntity.get("userId"), targetObj.getUserId()));
+				}
+				predicates.add(criteriaBuilder.equal(targetRootEntity.get("financialYear"), targetObj.getSelectedFinancialYear()));
+				return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
+			}
+		},paging);
+		
+		for (EmployeeTargetMappingEntity employeeEntity : filteredTargetList.getContent()) {
+	           System.out.println(employeeEntity);
+	    }
+		
+		
+		return filteredTargetList;
+	}
+	
+	
+	public List<UdnIncentiveEntity>  searchIncentiveDealsBasedOnFinancialYear(EmployeeTargetMappingEntity targetRootEntity) {	
+	    
+		
+		List<UdnIncentiveEntity> filteredDealsRecorderEntity = incentiveRepository.findAll(new Specification<UdnIncentiveEntity>() {
+			@Override
+			public Predicate toPredicate(Root<UdnIncentiveEntity> dealRootEntity, CriteriaQuery< ?> query, CriteriaBuilder criteriaBuilder) {
+				List<Predicate> finalIncentivePredicate = new ArrayList<>();
+				
+				
+				return criteriaBuilder.and(finalIncentivePredicate.toArray(new Predicate[0]));
+			}
+		});
+		System.out.println("Returned Deal Size is " + filteredDealsRecorderEntity.size());
+		return filteredDealsRecorderEntity;
+	}
+	
 }

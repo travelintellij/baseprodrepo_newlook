@@ -35,6 +35,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.itextpdf.text.log.SysoCounter;
 import com.udanchoo.intranet.constant.incentive.ClaimOption;
 import com.udanchoo.intranet.entity.EmployeeTargetMappingEntity;
 import com.udanchoo.intranet.entity.UdnIncentiveEntity;
@@ -56,6 +57,7 @@ import com.udanchoo.intranet.service.IncentiveServiceImpl;
 import com.udanchoo.intranet.service.UdnCommonServicesImpl;
 import com.udanchoo.intranet.service.UserDetailsServiceImpl;
 import com.udanchoo.intranet.util.UdanChooConstants;
+import com.udanchoo.intranet.util.UdanChooUtil;
 import com.udanchoo.intranet.validator.IncentiveValidator;
 import com.udanchoo.intranet.validator.LeadValidator;
 
@@ -589,67 +591,27 @@ public class IncentiveController {
 	}
     
     
-    @RequestMapping("/adminManageTarget")
-    public ModelAndView adminManageTarget(@RequestParam(defaultValue = "0") Integer page,@RequestParam(defaultValue = "3") Integer pageSize, @RequestParam(defaultValue = "CreatedAt") String sortBy,@ModelAttribute("SEARCH_INCENTIVE") @Valid SearchIncentiveObj searchIncentiveObj, BindingResult result) {
+    @RequestMapping("/view_filter_employee_target")
+    public ModelAndView view_filter_employee_target(@RequestParam(defaultValue = "0") Integer page,@RequestParam(defaultValue = "3") Integer pageSize, @RequestParam(defaultValue = "CreatedAt") String sortBy,@ModelAttribute("TARGET_OBJ") TIEmployeeIncentiveDashboardVO targetObj, BindingResult result) {
         UserDetailsObj userObj = getLoggedInUser();
-        searchIncentiveObj.setClaimantId(userObj.getUserId());
         ModelAndView mapview = new ModelAndView();
-    	mapview.addObject("userName", userObj.getUsername());
-    	mapview.addObject("userId", userObj.getUserId());
     	mapview.setViewName("incentive/viewIncentiveDashboard");
-    	searchIncentiveObj.setClaimStatus(UdanChooConstants.INCENTIVE_ANY_STATUS);
-    	Date dateFrom = null;
-    	Date dateTo = null ;
-    	Calendar calender = Calendar.getInstance();
-    	try {
-    		if(searchIncentiveObj.getClaimToDate()==null) {
-    			//calender.set(Calendar.DAY_OF_MONTH, 1);
-    			calender.set(Calendar.DAY_OF_MONTH, calender.getActualMaximum(Calendar.DAY_OF_MONTH));
-    			dateTo = calender.getTime();
-				String strToDate = dateFilterFormat.format(dateTo); 
-				searchIncentiveObj.setClaimToDate(strToDate);
-			}else {
-				dateTo = new SimpleDateFormat("yyyy-MM-dd").parse(searchIncentiveObj.getClaimToDate());
-			}
-    		
-    		if(searchIncentiveObj.getClaimFromDate()==null) {
-				//searchIncentiveObj.setClaimToDate(calender.getTime());
-    			calender.set(Calendar.DAY_OF_MONTH, 1);
-				//calender.add(Calendar.MONTH, -1);
-				dateFrom = calender.getTime();
-				String strFromDate = dateFilterFormat.format(dateFrom); 
-				searchIncentiveObj.setClaimFromDate(strFromDate);
-				
-				
-				/*calender.add(Calendar.MONTH, -1);
-				dateFrom = calender.getTime();
-				String strFromDate = dateFilterFormat.format(dateFrom); 
-				searchIncentiveObj.setClaimFromDate(strFromDate);
-				*/
-
-				
-			}else {
-				dateFrom=new SimpleDateFormat("yyyy-MM-dd").parse(searchIncentiveObj.getClaimFromDate());
-			}
-    		
-			
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		//searchIncentiveObj.setClaimFromDate(calender.getTime());
-		//List <UdnIncentiveEntity> udnIncentiveList = incentiveService.findDefaultIncentiveSearchRecords(dateFrom,dateTo);
-		
 		boolean isAdmin=false;
 	    if(userObj.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"))) {
 	   		isAdmin=true;
-	   		searchIncentiveObj.setClaimantId(0);
+	   		
 	   	}
-
-	    Page <UdnIncentiveEntity> udnIncentiveList = incentiveService.filterIncentiveRecord(page, UdanChooConstants.DEFAULT_PAGE_SIZE, sortBy, searchIncentiveObj, isAdmin);
+	    
+	    targetObj.setSelectedFinancialYear(UdanChooUtil.validateFinancialYearFormat(targetObj.getSelectedFinancialYear()));
 	    
 	    
-		
+	    Page <EmployeeTargetMappingEntity> udnTargetList = incentiveService.filterTargetRecord(page, UdanChooConstants.DEFAULT_PAGE_SIZE, sortBy, targetObj, isAdmin);
+	    
+        for (EmployeeTargetMappingEntity employeeEntity : udnTargetList.getContent()) {
+           System.out.println(employeeEntity);
+        }
+	    
+		/*
 		List <IncentiveObj> udnIncentiveListVO = generateFilteredIncentiveVo(udnIncentiveList);
 		mapview.addObject("INCENTIVES_LIST", udnIncentiveListVO);
 		List<UdnDealStatusVO> incentive_wl_statusList = commonService.find_All_Status_Deal_Obj(UdanChooConstants.WORKLOAD_INCENTIVE_OBJ);
@@ -664,9 +626,10 @@ public class IncentiveController {
  		activeUsersMap.put(0, "ALL");
  		mapview.addObject("ACTIVE_USERS_MAP", activeUsersMap);
  		mapview.addObject("INCENTIVE_SEARCH_PERIOD_TYPE", UdanChooConstants.INCENTIVE_SEARCH_PERIOD_TYPE);
- 		mapview.addObject("maxPages", udnIncentiveList.getTotalPages());
+ 		//mapview.addObject("maxPages", udnIncentiveList.getTotalPages());
     	mapview.addObject("page", page);
     	mapview.addObject("sortBy", sortBy);
+    	*/
     	return mapview;
     }
     
@@ -713,16 +676,19 @@ public class IncentiveController {
         return financialYears;
     }
     
+    
+    
     @Transactional
  	@PostMapping("create_create_target")
  	public ModelAndView create_create_lead(@ModelAttribute("TARGET_OBJ") TIEmployeeIncentiveDashboardVO targetObj,  BindingResult result,final RedirectAttributes redirectAttrib ) {
  		UserDetailsObj userObj = getLoggedInUser();
  		ModelAndView modelView = new ModelAndView();
  		if(incentiveService.existsByUserIdAndFinancialYearAndTargetAmount(targetObj)) {
- 			result.addError(new ObjectError("userId", "Target Already Exist for user. "));
+ 			//result.addError(new ObjectError("userId", "lead.city.error"));
+ 			result.rejectValue("userId","target.exist");
  		}
  		if(result.hasErrors()) {
- 		 	modelView.setViewName("forward:addnewtarget");
+ 		 	modelView= addnewtarget(targetObj,result); 
  		 	return modelView;
  		}else {
  			EmployeeTargetMappingEntity tgLeadEntity = new EmployeeTargetMappingEntity(targetObj);
@@ -736,7 +702,7 @@ public class IncentiveController {
 			}
  		
  			redirectAttrib.addFlashAttribute("Success", "Target Record is updated Successfully..");
- 			modelView.setViewName("redirect:adminManageTarget");
+ 			modelView.setViewName("redirect:view_filter_employee_target");
  		
  			//write email code here. 
  		}
