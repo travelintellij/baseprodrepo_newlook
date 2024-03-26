@@ -14,6 +14,7 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Optional;
 
+import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
@@ -46,6 +47,7 @@ import com.udanchoo.intranet.repository.DealRepository;
 import com.udanchoo.intranet.repository.incentive.EmployeeTargetMappingRepository;
 import com.udanchoo.intranet.repository.incentive.IncentiveRepository;
 import com.udanchoo.intranet.util.UdanChooConstants;
+import com.udanchoo.intranet.util.UdanChooUtil;
 
 
 
@@ -72,6 +74,9 @@ public class IncentiveServiceImpl {
 	
 	@Autowired
 	DealRepository dealRepository;
+	
+	@Autowired
+    private EntityManager entityManager;
 
 		public List<UdnIncentiveEntity> listAll() throws RecordNotFoundException  {
 			List listIncentives = incentiveRepository.findAll();
@@ -382,7 +387,6 @@ public class IncentiveServiceImpl {
 
 	public Page<EmployeeTargetMappingEntity> filterTargetRecord(int pageNo, int pageSize,String sorting,TIEmployeeIncentiveDashboardVO targetObj,boolean isAdmin ){
 		Pageable paging = PageRequest.of(pageNo, pageSize,Sort.by(sorting));
-		boolean isLeadAdmin=false;
 		Page<EmployeeTargetMappingEntity> filteredTargetList = employeeTargetRepository.findAll(new Specification<EmployeeTargetMappingEntity>() {
 			private static final long serialVersionUID = 1L;
 			@Override
@@ -398,7 +402,8 @@ public class IncentiveServiceImpl {
 		},paging);
 		
 		for (EmployeeTargetMappingEntity employeeEntity : filteredTargetList.getContent()) {
-	           System.out.println(employeeEntity);
+			searchIncentiveDealsBasedOnFinancialYear(employeeEntity);
+			//System.out.println(employeeEntity);
 	    }
 		
 		
@@ -407,18 +412,28 @@ public class IncentiveServiceImpl {
 	
 	
 	public List<UdnIncentiveEntity>  searchIncentiveDealsBasedOnFinancialYear(EmployeeTargetMappingEntity targetRootEntity) {	
-	    
 		
 		List<UdnIncentiveEntity> filteredDealsRecorderEntity = incentiveRepository.findAll(new Specification<UdnIncentiveEntity>() {
 			@Override
-			public Predicate toPredicate(Root<UdnIncentiveEntity> dealRootEntity, CriteriaQuery< ?> query, CriteriaBuilder criteriaBuilder) {
+			public Predicate toPredicate(Root<UdnIncentiveEntity> incentiveRootEntity, CriteriaQuery< ?> query, CriteriaBuilder criteriaBuilder) {
 				List<Predicate> finalIncentivePredicate = new ArrayList<>();
-				
-				
+				Root<Udn_Deals_Recorder_Entity> dealRootEntity= query.from(Udn_Deals_Recorder_Entity.class);
+				query.distinct(true);
+				java.sql.Date travelDateFrom= UdanChooUtil.getStartDayOfFinancialYear(targetRootEntity.getFinancialYear());
+				java.sql.Date travelDateTo = UdanChooUtil.getLastDayOfFinancialYear(targetRootEntity.getFinancialYear());
+				Root<Udn_Deals_Recorder_Entity> rootDealsEntity = query.from(Udn_Deals_Recorder_Entity.class);
+				Predicate predicateCommonDeal =criteriaBuilder.equal(rootDealsEntity.get("dealConfirmationId"),incentiveRootEntity.get("dealConfirmationId"));
+				Predicate predicateEndDateLesser =criteriaBuilder.between(rootDealsEntity.get("travelEndDate"),travelDateFrom,travelDateTo);
+				Predicate finalDealEndDatePredicate = criteriaBuilder.and(predicateEndDateLesser,predicateCommonDeal);
+				finalIncentivePredicate.add(finalDealEndDatePredicate); 
+				finalIncentivePredicate.add(predicateCommonDeal);
 				return criteriaBuilder.and(finalIncentivePredicate.toArray(new Predicate[0]));
 			}
 		});
 		System.out.println("Returned Deal Size is " + filteredDealsRecorderEntity.size());
+		for (UdnIncentiveEntity element : filteredDealsRecorderEntity) {
+            System.out.println(element);
+        }
 		return filteredDealsRecorderEntity;
 	}
 	

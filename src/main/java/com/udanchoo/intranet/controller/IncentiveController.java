@@ -601,15 +601,13 @@ public class IncentiveController {
 	   		isAdmin=true;
 	   		
 	   	}
-	    
 	    targetObj.setSelectedFinancialYear(UdanChooUtil.validateFinancialYearFormat(targetObj.getSelectedFinancialYear()));
-	    
-	    
 	    Page <EmployeeTargetMappingEntity> udnTargetList = incentiveService.filterTargetRecord(page, UdanChooConstants.DEFAULT_PAGE_SIZE, sortBy, targetObj, isAdmin);
+        
 	    
-        for (EmployeeTargetMappingEntity employeeEntity : udnTargetList.getContent()) {
+	    /*for (EmployeeTargetMappingEntity employeeEntity : udnTargetList.getContent()) {
            System.out.println(employeeEntity);
-        }
+        }*/
 	    
 		/*
 		List <IncentiveObj> udnIncentiveListVO = generateFilteredIncentiveVo(udnIncentiveList);
@@ -680,7 +678,7 @@ public class IncentiveController {
     
     @Transactional
  	@PostMapping("create_create_target")
- 	public ModelAndView create_create_lead(@ModelAttribute("TARGET_OBJ") TIEmployeeIncentiveDashboardVO targetObj,  BindingResult result,final RedirectAttributes redirectAttrib ) {
+ 	public ModelAndView create_create_target(@ModelAttribute("TARGET_OBJ") TIEmployeeIncentiveDashboardVO targetObj,  BindingResult result,final RedirectAttributes redirectAttrib ) {
  		UserDetailsObj userObj = getLoggedInUser();
  		ModelAndView modelView = new ModelAndView();
  		if(incentiveService.existsByUserIdAndFinancialYearAndTargetAmount(targetObj)) {
