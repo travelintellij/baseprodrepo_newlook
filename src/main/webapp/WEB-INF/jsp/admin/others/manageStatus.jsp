@@ -55,10 +55,10 @@
                     <td style="width:60%;background:white;border-bottom:2px solid black;border-right:2px solid black;color:white">
                         <table id="dataTable${statusOf}" style="table-layout: fixed;">
                             <tr>
-                                <th style="width:20%;color:black;background:#ffeedd;">Status Id</th>
+                                <th style="width:10%;color:black;background:#ffeedd;">Status Id</th>
                                 <th style="width:20%;color:black;background:#ffeedd;">Status Object</th>
                                 <th style="width:30%;color:black;background:#ffeedd;">Status Name</th>
-                                <th colspan="2" style="width:30%;color:black;background:#ffeedd;">Status Action</th>
+                                <th colspan="2" style="width:50%;color:black;background:#ffeedd;">Status Action</th>
                             </tr>
                             <c:forEach var="statusValues" items="${ STATUS_LIST_OF_MAP.get(statusOf)}">
                            
@@ -68,7 +68,7 @@
             
                                     <c:choose>
                                         <c:when test="${ST_ACTION eq 'EDIT' &&  TI_STATUS.id eq statusValues.id}">
-                                            <td id="updatestatus" style="width:30%;"><input name="workloadStatusName"
+                                            <td id="updatestatus" style="width:20%;"><input name="workloadStatusName"
                                                     style="width: 450px;height:40px;" maxlength="45" type="text"
                                                     id="workloadStatusName" value="${statusValues.workloadStatusName }" /> </td>
                                             <td style="width:10%;"><input type="submit" name="UPDATE_UPDATE_STATUS" value="Submit"
