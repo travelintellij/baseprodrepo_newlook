@@ -95,12 +95,30 @@
             z-index: -1;
         }
 
+.autocomplete-suggestions { border: 1px solid #999; background: red;overflow-y:auto}
+		.autocomplete-suggestion {padding: 2px 5px;color:white; background: black;overflow-y: auto;overflow-y:auto}
+		.autocomplete-selected { background: #F0F0F0;overflow-y:auto} 
+		.autocomplete-suggestions strong { font-weight: normal; color:#FABA08;overflow-y:auto}
+		.autocomplete-group { padding: 2px 5px;overflow-y:auto}
+		.autocomplete-group strong { display: block; border-bottom: 1px solid #000;  background: black ; color:black overflow-y:auto}
+		.autocomplete-selected:hover{
+		color:black
+		}
 	
 
 </style>
 
 
 <body>
+
+<div class="autocomplete-suggestions" style="display:none">
+    <div class="autocomplete-group" ><strong>NHL</strong></div>
+    <div class="autocomplete-suggestion autocomplete-selected" >...</div>
+    <div class="autocomplete-suggestion">...</div>
+    <div class="autocomplete-suggestion">...</div>
+</div>
+
+
     <div class="search_supplier container">
         <div class="serach_supplier_wrapper bs">
             <h1>Search Supplier </h1>
@@ -117,17 +135,17 @@
                     </div>
                     <div class="ssd1">
                         <label for="supp-name" style="font-weight:600">Supplier Name</label>
-                        <form:input path="supplierName" name="supplierName" id="supp-name" />
+                   	<form:input path="supplierName" name="supplierName" />
                     </div>
                     <div class="ssd1">
                         <label for="supp-city" style="font-weight:600">Supplier City</label>
-                        <form:input path="cityName" name="cityName" id="supp-city" />
-                        <form:hidden path="cityId" />
+                       	<form:input path="cityName" name="cityName" />
+					<form:hidden path = "cityId" />
                     </div>
                     <div class="ssd1">
                         <label for="supp-city-ser" style="font-weight:600">City of Service</label>
-                        <form:input path="serviceCityName" name="cityName" id="supp-city-ser" />
-                        <form:hidden path="serviceCityId" />
+                      <form:input path="serviceCityName" name="cityName" style="height:30px;width:200px;margin: auto;"/>
+					<form:hidden path = "serviceCityId" />
                     </div>
                 </div>
                 <div class="search_supplier_data_l2">
@@ -188,10 +206,10 @@
                     <th style="width:5.4% ;color:black; ">Supp Id</th>
                     <th style="width:18.8%; color:black ">Supplier Name</th>
                     <th style="width:10.2%;color:black ">City</th>
-                    <th style="width:23%; color:black">Email</th>
+                    <th style="width:20%; color:black">Email</th>
                     <th style="width:8.5%;color:black ">Mobile</th>
-                    <th style="width:14.5% ;color:black">Destinations</th>
-                    <th style="width:9% ;color:black">Services</th>
+                    <th style="width:.5% ;color:black">Destination</th>
+                    <th style="width:31% ;color:black">Services</th>
                     <th style="width:10% ;color:black">Action</th>
                 </tr>
             </thead>
@@ -204,14 +222,24 @@
                             <td style="width:6.4%;border-bottom:2px solid black;border-right:2px solid black">${supplier.supplierId }</th>
                             <td style="width:20.8%;border-bottom:2px solid black;border-right:2px solid black"">${supplier.supplierName }</th>
                             <td style="width:11.2%;border-bottom:2px solid black;border-right:2px solid black"">${supplier.cityName }</th>
-                            <td style="width:23%x;border-bottom:2px solid black;border-right:2px solid black"">${supplier.email }</th>
+                            <td style="width:20%;border-bottom:2px solid black;border-right:2px solid black"">${supplier.email }</th>
                             <td style="width:8.5%;border-bottom:2px solid black;border-right:2px solid black"">${supplier.mobile }</th>
-                            <td  style="width:13.5%;border-bottom:2px solid black;border-right:2px solid black"">
-                                <c:forEach items="${supplier.destinations}" var="destination">
-                                    ${destination.cityName},
-                                </c:forEach>
+                            <td  style="width:.5%%;border-bottom:2px solid black;border-right:2px solid black"">
+                               
+                             
+                               <div class="locdev">
+                               <img src="${pageContext.request.contextPath}/resources/images/revamped/loco.png" alt="alternate-text" style="height:40px;cursor:pointer">
+                               
 
-                            <td style="width:9%;border-bottom:2px solid black;border-right:2px solid black"">
+<span class="locdevhi">
+<c:forEach items="${supplier.destinations}" var="destination">
+${destination.cityName},
+</c:forEach>
+</span>
+
+                               </div>
+
+                            <td style="width:31%;border-bottom:2px solid black;border-right:2px solid black"">
                                 <c:if test="${supplier.flight eq true}">
                                     Flight,
                                 </c:if>
