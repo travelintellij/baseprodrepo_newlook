@@ -1,5 +1,7 @@
 package com.udanchoo.intranet.model.incentive;
 
+import com.udanchoo.intranet.entity.EmployeeTargetMappingEntity;
+
 public class TIEmployeeIncentiveDashboardVO {
 	public int userId;
 	public String selectedFinancialYear;
@@ -68,8 +70,12 @@ public class TIEmployeeIncentiveDashboardVO {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-
-	
-	
+	public void updateTargetDashboardVOFromEntity(EmployeeTargetMappingEntity targetMapping) {
+		this.userId = targetMapping.getUserId();
+		this.selectedFinancialYear = targetMapping.getFinancialYear();
+		this.currentFinancialYear = targetMapping.getFinancialYear();
+		this.targetAmount = targetMapping.getTargetAmount();
+		this.incentiveAmount = targetMapping.getIncentiveAmount();
+	}
 
 }

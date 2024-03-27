@@ -24,10 +24,10 @@ public class EmployeeTargetMappingEntity extends AuditModel{
     protected String financialYear;
 
     @Column(name = "target_amount")
-    private double targetAmount;
+    private int targetAmount;
 
     @Column(name = "incentive_amount")
-    private double incentiveAmount;
+    private int incentiveAmount;
 
     
     public EmployeeTargetMappingEntity() {
@@ -61,19 +61,19 @@ public class EmployeeTargetMappingEntity extends AuditModel{
         this.financialYear = financialYear;
     }
 
-    public double getTargetAmount() {
+    public int getTargetAmount() {
         return targetAmount;
     }
 
-    public void setTargetAmount(double targetAmount) {
+    public void setTargetAmount(int targetAmount) {
         this.targetAmount = targetAmount;
     }
 
-    public double getIncentiveAmount() {
+    public int getIncentiveAmount() {
         return incentiveAmount;
     }
 
-    public void setIncentiveAmount(double incentiveAmount) {
+    public void setIncentiveAmount(int incentiveAmount) {
         this.incentiveAmount = incentiveAmount;
     }
     

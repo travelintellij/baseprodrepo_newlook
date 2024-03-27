@@ -113,6 +113,7 @@
                     
                         <form:form method="post" action="edit_edit_incentive_details" modelAttribute="INCENTIVE_OBJ">
                             <form:input type="hidden" path="incentiveId" />
+                            <form:input type="hidden" path="claimOption" />
                             <div class="form_editIncentiveClaim_wrapper bs">
                                 <h1 class="hd" style="color:black">Update Incentive Details</h1>
                                 <h2 class="hd">Incentive Id - ${INCENTIVE_OBJ.incentiveId}</h2>

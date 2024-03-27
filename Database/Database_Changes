@@ -1,4 +1,10 @@
 ALTER TABLE `udanchoodb`.`employee_target_mapping` 
+CHANGE COLUMN `target_amount` `target_amount` INT NOT NULL ,
+CHANGE COLUMN `incentive_amount` `incentive_amount` INT NOT NULL ;
+
+
+
+ALTER TABLE `udanchoodb`.`employee_target_mapping` 
 ADD COLUMN `created_at` TIMESTAMP NULL AFTER `incentive_amount`,
 ADD COLUMN `updated_at` TIMESTAMP NULL AFTER `created_at`;
 

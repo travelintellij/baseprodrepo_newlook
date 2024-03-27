@@ -123,7 +123,7 @@
                                 <th style="height:50px;width:10%;background: #6082B6;">User Id </th>
                                 <th style="height:50px;width:20%;background: #6082B6;">User Name</th>
                                 <th style="height:50px;width:10%;background: #6082B6;">Financial Year</th>
-                                <th style="height:50px;width:10%;background: #6082B6;">Min Target</th>
+                                <th style="height:50px;width:10%;background: #6082B6;">Target</th>
                                 <th style="height:50px;width:10%;background: #6082B6;">Incentive</th>
                                 <th style="height:50px;width:10%;background: #6082B6;">Approved </th>
                                 <th style="height:50px;width:12%;background: #6082B6;">Pending Approval</th>
@@ -131,48 +131,28 @@
                                 <th style="height:50px;width:10%;background: #6082B6;">Action</th>
                                 
                             </tr>
-                            <c:if test="${not empty INCENTIVES_LIST}">
-                                <c:set var="totalIncentive" value="${0}" />
-                                <c:forEach var="incentiveObj" items="${INCENTIVES_LIST}">
-                                    <tr>
-                                        <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">
-                                            <a style="color:blue;text-decoration:nonr;cursor:pointer" id="myBtn[${incentiveObj.incentiveId}]" onclick="myLeadDisplay(this)"
-                                                data-load-url="displayIncentiveModal?incentiveId=${incentiveObj.incentiveId}"
-                                                data-toggle="modal" data-target="#myModal">${incentiveObj.incentiveId}</a>
-
-                                            <sec:authorize access="hasAnyRole('ADMIN')">
-                                                &nbsp;&nbsp;
-                                                <a style="color:#32cd32" href="form_view_editIncentive?incentiveId=${incentiveObj.incentiveId}">Edit</a>
-                                            </sec:authorize>
-
-                                        </td>
-                                        <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">
-                                            <a style="color:blue;text-decoration:none;cursor:pointer" id="myBtn[${incentiveObj.dealConfirmationId}]"
-                                                onclick="myLeadDisplay(this)"
-                                                data-load-url="view_view_deal_form_modal_free_acl?dealConfirmationId=${incentiveObj.dealConfirmationId}"
-                                                data-toggle="modal" data-target="#myModal">${incentiveObj.dealConfirmationId}</a>
-
-                                        </td>
-                                        <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">${incentiveObj.guestName}</td>
-                                        <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">
-                                            <fmt:formatDate value="${incentiveObj.travelStartDate}"
-                                                pattern="dd-MM-yyyy" />
-                                        </td>
-                                        <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">
-                                            <fmt:formatDate value="${incentiveObj.travelEndDate}"
-                                                pattern="dd-MM-yyyy" />
-                                        </td>
-                                        <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">
-                                            <fmt:formatDate value="${incentiveObj.createdAt}" pattern="dd-MM-yyyy" />
-                                        </td>
-                                        <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">${incentiveObj.claimantName}</td>
-                                   <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">${incentiveObj.claimantName}</td>
-                                   <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">${incentiveObj.claimantName}</td>
-                                   
-                                    </tr>
-                                    
-                                </c:forEach>
-                            </c:if>
+							<c:forEach items="${TARGET_LIST}" var="filteredTarget">        
+								<tr>
+                                    <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">${filteredTarget.userId}</td>
+                                    <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">${filteredTarget.userName}</td>
+                                    <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">	${filteredTarget.selectedFinancialYear}</td>
+                                    <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">	${filteredTarget.targetAmount}</td>
+                                    <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">	${filteredTarget.incentiveAmount}</td>
+                                    <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">${filteredTarget.approvedTarget}</td>
+                                    <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">${filteredTarget.pendingApprovalTarget}</td>
+                               		<td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">
+                               			<c:if test="${filteredTarget.approvedTarget ge filteredTarget.targetAmount}">
+                               				<b><font color="green">Success</font></b>
+                               			</c:if>
+                               			<c:if test="${filteredTarget.approvedTarget lt filteredTarget.targetAmount}">
+                               				<b><font color="red">Pending</font></b> 
+                               			</c:if>
+                               		</td>
+                               		<td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">Action</td>
+                               
+ 								</tr>
+                            </c:forEach>
+                            
                            
                         </table>
                         <table style="width:20%;margin:10px auto ; background:black;color:white;border-radius:3px;padding;3px">
@@ -196,6 +176,7 @@
                             </div>
 
                         </div>
+
 
 
                         <div id="pagination" align="center">

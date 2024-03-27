@@ -9,6 +9,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -29,6 +31,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import com.udanchoo.intranet.constant.incentive.ClaimOption;
+import com.udanchoo.intranet.constant.incentive.IncentiveTargetStatus;
 import com.udanchoo.intranet.entity.EmployeeTargetMappingEntity;
 import com.udanchoo.intranet.entity.UdnClientEntity;
 import com.udanchoo.intranet.entity.UdnIncentiveEntity;
@@ -76,7 +80,9 @@ public class IncentiveServiceImpl {
 	DealRepository dealRepository;
 	
 	@Autowired
-    private EntityManager entityManager;
+	UserDetailsServiceImpl userService;
+	
+	
 
 		public List<UdnIncentiveEntity> listAll() throws RecordNotFoundException  {
 			List listIncentives = incentiveRepository.findAll();
@@ -370,7 +376,7 @@ public class IncentiveServiceImpl {
 					return criteriaBuilder.and(finalIncentivePredicate.toArray(new Predicate[0]));
 				}
 			});
-			System.out.println("Returned Deal Size is " + filteredDealsRecorderEntity.size());
+			//System.out.println("Returned Deal Size is " + filteredDealsRecorderEntity.size());
 			return filteredDealsRecorderEntity;
 		}
 
@@ -385,7 +391,8 @@ public class IncentiveServiceImpl {
 		   return employeeTargetRepository.existsByUserIdAndFinancialYearAndTargetAmount(targetObj.getUserId(), targetObj.getSelectedFinancialYear(), targetObj.getTargetAmount());
 	   }
 
-	public Page<EmployeeTargetMappingEntity> filterTargetRecord(int pageNo, int pageSize,String sorting,TIEmployeeIncentiveDashboardVO targetObj,boolean isAdmin ){
+	public List<TIEmployeeIncentiveDashboardVO> filterTargetRecord(int pageNo, int pageSize,String sorting,TIEmployeeIncentiveDashboardVO targetObj,boolean isAdmin ){
+		
 		Pageable paging = PageRequest.of(pageNo, pageSize,Sort.by(sorting));
 		Page<EmployeeTargetMappingEntity> filteredTargetList = employeeTargetRepository.findAll(new Specification<EmployeeTargetMappingEntity>() {
 			private static final long serialVersionUID = 1L;
@@ -401,13 +408,49 @@ public class IncentiveServiceImpl {
 			}
 		},paging);
 		
+		List<TIEmployeeIncentiveDashboardVO> dashboardVoList = new ArrayList();
 		for (EmployeeTargetMappingEntity employeeEntity : filteredTargetList.getContent()) {
-			searchIncentiveDealsBasedOnFinancialYear(employeeEntity);
+			TIEmployeeIncentiveDashboardVO dashBoardVO = new TIEmployeeIncentiveDashboardVO();
+			dashBoardVO.updateTargetDashboardVOFromEntity(employeeEntity);
+			int approvedTotal=0;
+			int claimedButNotApproved = 0;
+			List<UdnIncentiveEntity> incentiveList = searchIncentiveDealsBasedOnFinancialYear(employeeEntity);
+			for (UdnIncentiveEntity incentiveEntity : incentiveList) {
+				if(employeeEntity.getUserId()==incentiveEntity.getClaimantId()) {
+					if(incentiveEntity.getStatus()==IncentiveTargetStatus.APPROVED.getCode() || incentiveEntity.getStatus()==IncentiveTargetStatus.PARTIALLYAPPROVED.getCode()) {
+						approvedTotal = approvedTotal + incentiveEntity.getApprovedAmount();
+					}
+					else if(incentiveEntity.getStatus()==IncentiveTargetStatus.CLAIMED.getCode() ) {
+						claimedButNotApproved = claimedButNotApproved + incentiveEntity.getClaimedAmount();
+					}
+				}
+	        }
+			dashBoardVO.setApprovedTarget(approvedTotal);
+			dashBoardVO.setPendingApprovalTarget(claimedButNotApproved);
+			dashBoardVO.setUserName(userService.findUserByID(dashBoardVO.getUserId()).getUsername());
+			dashboardVoList.add(dashBoardVO);
 			//System.out.println(employeeEntity);
 	    }
 		
 		
-		return filteredTargetList;
+		return sortDashBoardVOList(dashboardVoList);
+	}
+	
+	public List sortDashBoardVOList(List<TIEmployeeIncentiveDashboardVO> dashboardVoList) {
+		 Collections.sort(dashboardVoList, new Comparator<TIEmployeeIncentiveDashboardVO>() {
+	            @Override
+	            public int compare(TIEmployeeIncentiveDashboardVO o1, TIEmployeeIncentiveDashboardVO o2) {
+	                // First compare by userId
+	                int userIdComparison = Integer.compare(o1.getUserId(), o2.getUserId());
+	                if (userIdComparison != 0) {
+	                    return userIdComparison;
+	                }
+
+	                // If userIds are equal, compare by targetAmount
+	                return Double.compare(o1.getTargetAmount(), o2.getTargetAmount());
+	            }
+	        });
+		return dashboardVoList;
 	}
 	
 	
@@ -424,16 +467,18 @@ public class IncentiveServiceImpl {
 				Root<Udn_Deals_Recorder_Entity> rootDealsEntity = query.from(Udn_Deals_Recorder_Entity.class);
 				Predicate predicateCommonDeal =criteriaBuilder.equal(rootDealsEntity.get("dealConfirmationId"),incentiveRootEntity.get("dealConfirmationId"));
 				Predicate predicateEndDateLesser =criteriaBuilder.between(rootDealsEntity.get("travelEndDate"),travelDateFrom,travelDateTo);
+				Predicate predicateTargetOnly =criteriaBuilder.equal(incentiveRootEntity.get("claimOption"),ClaimOption.TARGET);
 				Predicate finalDealEndDatePredicate = criteriaBuilder.and(predicateEndDateLesser,predicateCommonDeal);
 				finalIncentivePredicate.add(finalDealEndDatePredicate); 
 				finalIncentivePredicate.add(predicateCommonDeal);
+				finalIncentivePredicate.add(predicateTargetOnly);
 				return criteriaBuilder.and(finalIncentivePredicate.toArray(new Predicate[0]));
 			}
 		});
-		System.out.println("Returned Deal Size is " + filteredDealsRecorderEntity.size());
-		for (UdnIncentiveEntity element : filteredDealsRecorderEntity) {
+		//System.out.println("Returned Deal Size is " + filteredDealsRecorderEntity.size());
+		/*for (UdnIncentiveEntity element : filteredDealsRecorderEntity) {
             System.out.println(element);
-        }
+        }*/
 		return filteredDealsRecorderEntity;
 	}
 	

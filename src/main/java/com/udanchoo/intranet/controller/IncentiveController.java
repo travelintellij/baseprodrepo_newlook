@@ -602,12 +602,12 @@ public class IncentiveController {
 	   		
 	   	}
 	    targetObj.setSelectedFinancialYear(UdanChooUtil.validateFinancialYearFormat(targetObj.getSelectedFinancialYear()));
-	    Page <EmployeeTargetMappingEntity> udnTargetList = incentiveService.filterTargetRecord(page, UdanChooConstants.DEFAULT_PAGE_SIZE, sortBy, targetObj, isAdmin);
+	    List <TIEmployeeIncentiveDashboardVO> udnTargetList = incentiveService.filterTargetRecord(page, UdanChooConstants.DEFAULT_PAGE_SIZE, sortBy, targetObj, isAdmin);
         
-	    
-	    /*for (EmployeeTargetMappingEntity employeeEntity : udnTargetList.getContent()) {
+	    mapview.addObject("TARGET_LIST",udnTargetList); 
+	    for (TIEmployeeIncentiveDashboardVO employeeEntity : udnTargetList) {
            System.out.println(employeeEntity);
-        }*/
+        }
 	    
 		/*
 		List <IncentiveObj> udnIncentiveListVO = generateFilteredIncentiveVo(udnIncentiveList);
