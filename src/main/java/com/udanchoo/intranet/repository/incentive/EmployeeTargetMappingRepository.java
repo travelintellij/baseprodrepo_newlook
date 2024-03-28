@@ -5,10 +5,10 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
 import com.udanchoo.intranet.entity.EmployeeTargetMappingEntity;
 
-public interface EmployeeTargetMappingRepository extends JpaRepository<EmployeeTargetMappingEntity, Long>,JpaSpecificationExecutor {
+public interface EmployeeTargetMappingRepository extends JpaRepository<EmployeeTargetMappingEntity, Integer>,JpaSpecificationExecutor {
 
     boolean existsByUserIdAndFinancialYearAndTargetAmount(int userId, String financialYear, int targetAmount);
-
+ 
     // Add custom query methods if needed
 }
 

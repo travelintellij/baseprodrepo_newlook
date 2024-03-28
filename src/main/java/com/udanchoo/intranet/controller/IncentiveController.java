@@ -601,13 +601,11 @@ public class IncentiveController {
 	   		isAdmin=true;
 	   		
 	   	}
-	    targetObj.setSelectedFinancialYear(UdanChooUtil.validateFinancialYearFormat(targetObj.getSelectedFinancialYear()));
+	    targetObj.setFinancialYear(UdanChooUtil.validateFinancialYearFormat(targetObj.getFinancialYear()));
 	    List <TIEmployeeIncentiveDashboardVO> udnTargetList = incentiveService.filterTargetRecord(page, UdanChooConstants.DEFAULT_PAGE_SIZE, sortBy, targetObj, isAdmin);
         
 	    mapview.addObject("TARGET_LIST",udnTargetList); 
-	    for (TIEmployeeIncentiveDashboardVO employeeEntity : udnTargetList) {
-           System.out.println(employeeEntity);
-        }
+
 	    
 		/*
 		List <IncentiveObj> udnIncentiveListVO = generateFilteredIncentiveVo(udnIncentiveList);
@@ -666,7 +664,8 @@ public class IncentiveController {
             int year = startYear + i;
             String financialYear = year + "-" + (year + 1);
             if(i==0) {
-            	targetVIncentiveO.setSelectedFinancialYear(financialYear);
+            	//targetVIncentiveO.setSelectedFinancialYear(financialYear);
+            	targetVIncentiveO.setFinancialYear(financialYear);
             }
             financialYears.add(financialYear);
             
@@ -706,5 +705,25 @@ public class IncentiveController {
  		}
  		return modelView; 
  	 }
+    
+    
+    @Transactional
+    @PostMapping(value = "form_view_edit_target", params = "Edit_Target")
+ 	public ModelAndView form_view_edit_target(@ModelAttribute("TARGET_OBJ") TIEmployeeIncentiveDashboardVO targetObj,  BindingResult result) {
+ 		ModelAndView modelView = new ModelAndView();
+		EmployeeTargetMappingEntity tgLeadEntity = incentiveService.findTargetRecordById(targetObj.getId()); 
+		targetObj.updateTargetDashboardVOFromEntity(tgLeadEntity);
+		//below is the temporary code and need to be deleted and uncomment the saveLead part. 
+		//tgLeadEntity.setLeadId(7l);
+		try {
+			incentiveService.createOrUpdateTarget(tgLeadEntity);
+		} catch (RecordNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		modelView.setViewName("view_editTarget");
+ 		return modelView; 
+ 	 }
+    
     
 }

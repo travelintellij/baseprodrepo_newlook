@@ -101,6 +101,18 @@
 	  background-color: lightblue;
 	  color: white;
 	}
+	
+	
+    
+    .menu-submit-button {
+        border: none; /* Remove border */
+        background: none; /* Remove background */
+        padding: 0; /* Remove padding */
+        color: white; /* Text color */
+        text-decoration: underline; /* Underline text */
+        cursor: pointer; /* Show cursor as pointer on hover */
+    }
+
 </style>
 
                     <body>
@@ -135,7 +147,7 @@
 								<tr>
                                     <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">${filteredTarget.userId}</td>
                                     <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">${filteredTarget.userName}</td>
-                                    <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">	${filteredTarget.selectedFinancialYear}</td>
+                                    <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">	${filteredTarget.financialYear}</td>
                                     <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">	${filteredTarget.targetAmount}</td>
                                     <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">	${filteredTarget.incentiveAmount}</td>
                                     <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">${filteredTarget.approvedTarget}</td>
@@ -148,7 +160,22 @@
                                				<b><font color="red">Pending</font></b> 
                                			</c:if>
                                		</td>
-                               		<td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">Action</td>
+                               		<td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">
+                               		  <i class="fa-solid fa-sliders st1" style="color:black">
+	                                   <div class="ul" style="background:gray">
+	                                       <ul>
+
+	                                           <li>
+	                                           <form:form id="form_edit_target" modelAttribute="TARGET_OBJ" name="form_edit_target" action="form_view_edit_target" method="POST" style="display:inline;">
+	                                           		<form:input type="hidden" path="id" />
+	                                           		<input type="Submit" value="Edit" name="Edit_Target" class="menu-submit-button">
+	                                           </form:form>
+	                                           </li>
+	                                           <li><a href="view_form_search_supplier_quote?leadId=${filteredLeads.leadId }" class="pop-up">Delete</a></li>
+	                                       </ul>
+	                                   </div>
+	                               </i>
+                               		</td>
                                
  								</tr>
                             </c:forEach>

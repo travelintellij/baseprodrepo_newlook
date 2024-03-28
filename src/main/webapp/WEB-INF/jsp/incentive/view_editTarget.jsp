@@ -10,7 +10,7 @@
                 <head>
                     <meta charset="UTF-8">
                     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <title>Add New Target</title>
+                    <title>Edit Target</title>
                     <link rel="stylesheet" href="style.css">
                     <script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
                     <script src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
@@ -219,7 +219,7 @@
                                     </th>
                                     <td> 
                                        <div class="select">
-                                          	<form:select path="financialYear"  style="width:90%">
+                                          	<form:select path="selectedFinancialYear"  style="width:90%">
 	                           					<form:options items="${FINANCIAL_YEARS_LIST}" />
 	                       					</form:select>
                                          </div>

@@ -15,19 +15,19 @@ public class EmployeeTargetMappingEntity extends AuditModel{
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	protected Integer id;
 
     @Column(name = "userid")
-    private int userId;
+    protected int userId;
 
     @Column(name = "financial_year")
     protected String financialYear;
 
     @Column(name = "target_amount")
-    private int targetAmount;
+    protected int targetAmount;
 
     @Column(name = "incentive_amount")
-    private int incentiveAmount;
+    protected int incentiveAmount;
 
     
     public EmployeeTargetMappingEntity() {
@@ -36,11 +36,11 @@ public class EmployeeTargetMappingEntity extends AuditModel{
     
     // Getters and setters
     
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -78,8 +78,9 @@ public class EmployeeTargetMappingEntity extends AuditModel{
     }
     
     public EmployeeTargetMappingEntity(TIEmployeeIncentiveDashboardVO employeeIncVO) {
+    	this.id=employeeIncVO.getId();
     	this.userId = employeeIncVO.getUserId();
-    	this.financialYear=employeeIncVO.getSelectedFinancialYear();
+    	this.financialYear=employeeIncVO.getFinancialYear();
     	this.targetAmount=employeeIncVO.getTargetAmount();
     	this.incentiveAmount=employeeIncVO.getIncentiveAmount();
     	

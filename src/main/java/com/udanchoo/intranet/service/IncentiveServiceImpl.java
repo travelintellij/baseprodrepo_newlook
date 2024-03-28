@@ -388,7 +388,7 @@ public class IncentiveServiceImpl {
 	    } 
 	   
 	   public boolean existsByUserIdAndFinancialYearAndTargetAmount(TIEmployeeIncentiveDashboardVO targetObj) {
-		   return employeeTargetRepository.existsByUserIdAndFinancialYearAndTargetAmount(targetObj.getUserId(), targetObj.getSelectedFinancialYear(), targetObj.getTargetAmount());
+		   return employeeTargetRepository.existsByUserIdAndFinancialYearAndTargetAmount(targetObj.getUserId(), targetObj.getFinancialYear(), targetObj.getTargetAmount());
 	   }
 
 	public List<TIEmployeeIncentiveDashboardVO> filterTargetRecord(int pageNo, int pageSize,String sorting,TIEmployeeIncentiveDashboardVO targetObj,boolean isAdmin ){
@@ -403,7 +403,7 @@ public class IncentiveServiceImpl {
 				if(targetObj.getUserId()!=0) {
 					predicates.add(criteriaBuilder.equal(targetRootEntity.get("userId"), targetObj.getUserId()));
 				}
-				predicates.add(criteriaBuilder.equal(targetRootEntity.get("financialYear"), targetObj.getSelectedFinancialYear()));
+				predicates.add(criteriaBuilder.equal(targetRootEntity.get("financialYear"), targetObj.getFinancialYear()));
 				return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
 			}
 		},paging);
@@ -429,7 +429,7 @@ public class IncentiveServiceImpl {
 			dashBoardVO.setPendingApprovalTarget(claimedButNotApproved);
 			dashBoardVO.setUserName(userService.findUserByID(dashBoardVO.getUserId()).getUsername());
 			dashboardVoList.add(dashBoardVO);
-			//System.out.println(employeeEntity);
+			System.out.println(employeeEntity);
 	    }
 		
 		
@@ -480,6 +480,11 @@ public class IncentiveServiceImpl {
             System.out.println(element);
         }*/
 		return filteredDealsRecorderEntity;
+	}
+	
+	public EmployeeTargetMappingEntity findTargetRecordById(int targetRecordId) {
+		return employeeTargetRepository.findById(targetRecordId).get();
+		
 	}
 	
 }
