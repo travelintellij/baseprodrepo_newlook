@@ -605,9 +605,6 @@ public class IncentiveController {
 	    List <TIEmployeeIncentiveDashboardVO> udnTargetList = incentiveService.filterTargetRecord(page, UdanChooConstants.DEFAULT_PAGE_SIZE, sortBy, targetObj, isAdmin);
         
 	    mapview.addObject("TARGET_LIST",udnTargetList); 
-	    for (TIEmployeeIncentiveDashboardVO employeeEntity : udnTargetList) {
-           System.out.println(employeeEntity);
-        }
 	    
 		/*
 		List <IncentiveObj> udnIncentiveListVO = generateFilteredIncentiveVo(udnIncentiveList);

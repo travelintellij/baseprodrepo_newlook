@@ -282,6 +282,7 @@
                                                 </sec:authorize>
                                                 <sec:authorize access="! hasAnyRole('ADMIN','DEAL_MANAGER')">
                                                     <td>
+                                                        <form:hidden path="dealOwner" />
                                                         ${dealRecorder.dealOwnerName}
                                                     </td>
 
