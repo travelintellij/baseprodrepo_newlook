@@ -428,11 +428,20 @@ public class IncentiveServiceImpl {
 			dashBoardVO.setApprovedTarget(approvedTotal);
 			dashBoardVO.setPendingApprovalTarget(claimedButNotApproved);
 			dashBoardVO.setUserName(userService.findUserByID(dashBoardVO.getUserId()).getUsername());
-			dashboardVoList.add(dashBoardVO);
-			System.out.println(employeeEntity);
+			if(targetObj.getStatus()==UdanChooConstants.TARGET_MET_SUCCESS) {
+				if(dashBoardVO.getApprovedTarget() >= dashBoardVO.getTargetAmount()) {
+					dashboardVoList.add(dashBoardVO);
+				}
+			}
+			else if(targetObj.getStatus()==UdanChooConstants.TARGET_MET_FAIL) {
+				if(dashBoardVO.getApprovedTarget() < dashBoardVO.getTargetAmount()) {
+					dashboardVoList.add(dashBoardVO);
+				}
+			}
+			else {
+				dashboardVoList.add(dashBoardVO);
+			}
 	    }
-		
-		
 		return sortDashBoardVOList(dashboardVoList);
 	}
 	
@@ -487,4 +496,35 @@ public class IncentiveServiceImpl {
 		
 	}
 	
+   public boolean deleteTarget(int targetMappingId) {
+	  try {
+		  employeeTargetRepository.deleteById(targetMappingId);	
+		  if(getTargetMappingById(targetMappingId)!=null) {
+				return false;
+			}
+	  } 
+	  catch (RecordNotFoundException e) {
+		return true;
+	  }
+	  catch(org.springframework.dao.DataIntegrityViolationException diEx) {
+		  return false;
+	  }
+	  return true;
+   }
+   
+   public EmployeeTargetMappingEntity getTargetMappingById(int id) throws RecordNotFoundException 
+   {
+       Optional<EmployeeTargetMappingEntity> targetMappingEntity = employeeTargetRepository.findById(id);
+       if(targetMappingEntity.isPresent()) {
+           return targetMappingEntity.get();
+       } else {
+           throw new RecordNotFoundException("No Client record exist for given id");
+       }
+   }
+	
+   public boolean incentiveExistsByDealIdAndUserIdAndClaimOption(long dealConfirmationId,int claimantId,ClaimOption claimOption) {
+	   System.out.println("Claim option provided is " + claimOption);
+	   return incentiveRepository.existsByDealConfirmationIdAndClaimantIdAndClaimOption(dealConfirmationId, claimantId,claimOption);
+   }
+   
 }

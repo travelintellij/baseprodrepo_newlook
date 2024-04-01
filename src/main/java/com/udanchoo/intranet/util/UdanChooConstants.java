@@ -599,7 +599,17 @@ public interface UdanChooConstants {
 		public static final int SEARCH_DATE_RANGE = 2;
 		public static final int SEARCH_CURRENT_FIN_YEAR= 3;
 		public static final int SEARCH_PREV_FIN_YEAR = 4;
-	
+		
+		 static final Map<Integer, String> TARGET_STATUS = new HashMap<Integer, String>(){
+				{
+					put(0,"All");
+					put(1,"Success");
+					put(2,"Pending");
+				}
+			}; 
+			public static final int TARGET_ALL = 0;
+			public static final int TARGET_MET_SUCCESS= 1;
+			public static final int TARGET_MET_FAIL = 2;
 	
 		/************************** Deal Related Constants ******************************/
 	    static final Map<Integer, String> DEAL_SEARCH_PERIOD_TYPE = new HashMap<Integer, String>(){

@@ -504,7 +504,7 @@ public class DealController {
 	//@RequestMapping("/workload/view_edit_deal_form")
 	@RequestMapping("/view_edit_deal_form")
 	   	public ModelAndView view_edit_deal_form(@RequestParam("dealConfirmationId") long dealConfirmationId,@ModelAttribute("dealRecorder") Udn_Deals_Recorder_Obj dealRecorder, BindingResult result) {
-	    System.out.println("Deal Recorder Object is " + dealRecorder);	
+	    //System.out.println("Deal Recorder Object is " + dealRecorder);	
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 	    	String username;
 	    	if (principal instanceof UserDetails) {

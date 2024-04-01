@@ -10,7 +10,7 @@
                 <head>
                     <meta charset="UTF-8">
                     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <title>Edit Target</title>
+                    <title>Add New Target</title>
                     <link rel="stylesheet" href="style.css">
                     <script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
                     <script src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
@@ -190,14 +190,13 @@
                 </style>
 
                 <body>
-                    <form:form method="post" action="create_create_target" modelAttribute="TARGET_OBJ">
+                    <form:form method="post" action="delete_delete_target" modelAttribute="TARGET_OBJ">
                         <div class="SubmitNewIncentiveClaim container">
                             <div class="SubmitNewIncentiveClaim_wrapper bs">
-                            	<h2 align="center" class="hd" style="color:black">Add New Target</h2><br>
+                            	<h2 align="center" class="hd" style="color:black;background-color:#FF474C;">Confirm Delete Target</h2><br>
                               <font color="red"><form:errors path="userId" /></font>
                             </div>
-                            
-                           
+                            <form:hidden path="id" />
                             <table style="background-color:lightgray;width:600px">
                                 <tr>
                                     <th style="width:5%;color:black">1</th>
@@ -205,11 +204,7 @@
                                    		<p> User Name</p>
                                     </th>
                                     <td> 
-                                       <div class="select">
-                                          	<form:select path="userId"  style="width:90%">
-	                           					<form:options items="${ACTIVE_USERS_MAP}" />
-	                       					</form:select>
-                                         </div>
+                                    		${TARGET_OBJ.userName}
                                     </td>
                                 </tr>
                                 <tr>
@@ -218,11 +213,7 @@
                                    		<p> Financial Year</p>
                                     </th>
                                     <td> 
-                                       <div class="select">
-                                          	<form:select path="selectedFinancialYear"  style="width:90%">
-	                           					<form:options items="${FINANCIAL_YEARS_LIST}" />
-	                       					</form:select>
-                                         </div>
+                                    ${TARGET_OBJ.financialYear}
                                     </td>
                                 </tr>
                                 <tr>
@@ -231,7 +222,7 @@
                                    		<p> Target Amount</p>
                                     </th>
                                     <td> 
-                                     	 <form:input path="targetAmount" type="number" min="100" />
+                                     	 ${TARGET_OBJ.targetAmount}
                                     </td>
                                 </tr>
                                 <tr>
@@ -240,7 +231,7 @@
                                    		<p> Incentive Amount</p>
                                     </th>
                                     <td> 
-                                     	 <form:input path="incentiveAmount" type="number" min="100" />
+                                     	 ${TARGET_OBJ.incentiveAmount}
                                     </td>
                                 </tr>
                             </table>
@@ -248,7 +239,7 @@
                            
                                 <tr>
                                     <td class="due_today_task_data_btnss" style="text-align:center;width:50%;background:white" colspan="2" >
-                                        <input type="submit" value="Submit Target">
+                                        <input type="submit" value="Delete Target" style="background-color:#FF474C;">
                                         <a href="view_filter_employee_target"><input type="button" value="View Target Listing" /></a>
                                     </td>
                                 </tr>

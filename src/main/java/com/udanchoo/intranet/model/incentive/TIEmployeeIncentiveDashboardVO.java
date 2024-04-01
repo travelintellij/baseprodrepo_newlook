@@ -13,7 +13,7 @@ public class TIEmployeeIncentiveDashboardVO extends  EmployeeTargetMappingEntity
 
 	public String userName; 
 	
-	
+	public int status;
 
 
 	public int getApprovedTarget() {
@@ -32,6 +32,12 @@ public class TIEmployeeIncentiveDashboardVO extends  EmployeeTargetMappingEntity
 
 	
 
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
+	}
 	public String getUserName() {
 		return userName;
 	}

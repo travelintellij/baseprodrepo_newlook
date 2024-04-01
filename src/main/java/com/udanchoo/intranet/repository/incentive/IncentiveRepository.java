@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
 
+import com.udanchoo.intranet.constant.incentive.ClaimOption;
 import com.udanchoo.intranet.entity.UdnIncentiveEntity;
 
 @Repository
@@ -30,5 +31,6 @@ public interface IncentiveRepository extends JpaRepository<UdnIncentiveEntity,Lo
 	UdnIncentiveEntity findByDealConfirmationIdAndClaimantId(long dealConfirmationId,long claimantId);
 	
 	boolean existsByDealConfirmationIdAndClaimantId(long dealConfirmationId, int claimantId);
+	boolean existsByDealConfirmationIdAndClaimantIdAndClaimOption(long dealConfirmationId, int claimantId,ClaimOption claimOption);
 	
 } 

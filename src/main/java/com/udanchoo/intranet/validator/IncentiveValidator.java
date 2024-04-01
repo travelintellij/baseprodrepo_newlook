@@ -7,6 +7,8 @@ import org.springframework.validation.Validator;
 
 import com.udanchoo.intranet.model.incentive.IncentiveObj;
 import com.udanchoo.intranet.service.ClientServiceImpl;
+import com.udanchoo.intranet.service.DealServiceImpl;
+import com.udanchoo.intranet.service.IncentiveServiceImpl;
 import com.udanchoo.intranet.service.UdnCommonServicesImpl;
 
 
@@ -16,10 +18,8 @@ import com.udanchoo.intranet.service.UdnCommonServicesImpl;
 public class IncentiveValidator implements Validator {
 	 
 	@Autowired
-	UdnCommonServicesImpl commonService;
+	IncentiveServiceImpl incentiveService;
 	
-	@Autowired
-	ClientServiceImpl clientService;
 	
 	@Override
 	public boolean supports(Class<?> clazz) {
@@ -32,6 +32,13 @@ public class IncentiveValidator implements Validator {
 		if(incentiveRecorderVO.getClaimOption()==null) {
 			errors.rejectValue("claimOption", "incentive.type.error");
 		}
+		if(incentiveRecorderVO.getDealConfirmationId()==0) {
+			errors.rejectValue("dealConfirmationId", "deal.missing.error");
+		}
+		if(incentiveService.incentiveExistsByDealIdAndUserIdAndClaimOption(incentiveRecorderVO.getDealConfirmationId(), incentiveRecorderVO.getClaimantId(),incentiveRecorderVO.getClaimOption())) {
+			errors.rejectValue("claimantId", "incentive.duplicate.error");
+		}
+		
 	}
  
 }

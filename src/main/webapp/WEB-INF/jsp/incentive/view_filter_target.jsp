@@ -10,7 +10,7 @@
                 <head>
                     <meta charset="UTF-8">
                     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <title>SubmitNewIncentiveClaim</title>
+                    <title>Add New Target</title>
                     <link rel="stylesheet" href="style.css">
                     <script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
                     <script src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
@@ -190,175 +190,60 @@
                 </style>
 
                 <body>
-                    <form:form method="post" action="create_create_incentive" modelAttribute="INCENTIVE_OBJ">
-                        
+                    <form:form method="post" action="view_filter_employee_target" modelAttribute="TARGET_OBJ">
                         <div class="SubmitNewIncentiveClaim container">
                             <div class="SubmitNewIncentiveClaim_wrapper bs">
-                                <h1 class="hd" style="color:#FFBA08">Incentive Claim Form</h1>
-                        		<font color="red">
-                                	<form:errors path="dealConfirmationId" cssClass="error" />
-                                	<form:errors path="claimantId" cssClass="error" />
-                                </font>
-                                <div class="SubmitNewIncentiveClaim_wrapper_data">
-                                    <div class="SubmitNewIncentiveClaim_wrapper_data_line">
-                                        <div class="SubmitNewIncentiveClaim_wrapper_dl1">
-                                            <label for="">Incentive Claimant</label> <br>
-                                            <sec:authorize access="hasAnyRole('ADMIN')">
-											
-                                                <div class="select">
-                                                    <form:select path="claimantId" required="required" style="width:90%">
-                                                        <c:forEach items="${ACTIVE_USERS_MAP}" var="userMap">
-                                                            <c:if test="${userMap.key eq claimantId }">
-                                                                <option class="service-small" value="${userMap.key}"
-                                                                    selected>${userMap.value}</option>
-                                                            </c:if>
-                                                            <c:if test="${userMap.key ne claimantId }">
-                                                                <option class="service-small" value="${userMap.key}">
-                                                                    ${userMap.value}</option>
-                                                            </c:if>
-                                                        </c:forEach>
-                                                    </form:select>
-                                                </div>
-
-                                            </sec:authorize>
-
-                                            <sec:authorize access="! hasAnyRole('ADMIN')">
-                                                <form:input type="hidden" path="claimantId" value="${userId}" />
-                                                ${userName }
-
-                                            </sec:authorize>
-                                        </div>
-                                        
-                                        <div class="SubmitNewIncentiveClaim_wrapper_dl2">
-                                            <label for="">Deal ID</label> <br>
-                                            <form:input path="dealName" name="dealName" class="form-control search-slt" id="dealName" placeholder="Deal Search - Enter Only numeric Deal # or Client Name " />
-                                            <form:hidden path="dealConfirmationId" />
-                                            <br>
-                                           
-                                        </div>
-                                        <div class="due_today_task_data_bt SubmitNewIncentiveClaim_btn">
-                                            <a id="myBtn[${filteredLeads.leadId}]" onclick="myLeadDisplay(this)"
-                                                data-load-url="view_view_deal_form_modal" data-toggle="modal"
-                                                data-target="#myModal"><input type="button"
-                                                value="View Lead Details" style="border-radius:5px;margin-bottom:-10px;background:#FFBA08"/></a>
-                                        </div>
-                                    </div>
-                                </div>
+                            	<h2 align="center" class="hd" style="color:black">Filter Target</h2><br>
                             </div>
-
-
-                            <div class="claim_ques bs">
-                              <h2 align="center" class="hd" style="color:black">Incentive Effort Details</h2>
-                               <p style="text-align:start"> Please answer the following questions to justiy your claim for incentive.
-                                Please make a note that if we find any infomation marked wrong or not
-                                justified then your claim will be rejected. </p>
-                            </div>
-
-
-                          
-                            <table style="background-color:lightgray;width:1200px">
+                            <table style="background-color:lightgray;width:600px">
                                 <tr>
                                     <th style="width:5%;color:black">1</th>
                                     <th style="width:65%; padding: 5px;text-align:left;color:black">
-                                   <p> Client is Referred by
-                                        You ? </p>
-                                        <form:errors path="question1" cssClass="error" />
+                                   		<p> User Name</p>
                                     </th>
-                                    <td> <input type="radio" name="question1" value="yes"> Yes
-
+                                    <td> 
+                                       <div class="select">
+                                          	<form:select path="userId"  style="width:90%">
+	                           					<option class="service-small" value="0" selected>All-Users</option>
+	                           					<form:options items="${ACTIVE_USERS_MAP}" />
+	                       					</form:select>
+                                         </div>
                                     </td>
-                                    <td> <input type="radio" name="question1" value="no" checked> No</td>
                                 </tr>
                                 <tr>
                                     <th style="width:5%;color:black">2</th>
-                                    <th style="width:50%; padding: 5px;text-align:left;color:black"> <p>You took minimal
-                                        support of management
-                                        and were
-                                        able to
-                                        handle the query alone ? </p></th>
-                                    <td><input type="radio" name="question2" value="yes">Yes</td>
-                                    <td> <input type="radio" name="question2" value="no" checked>No </td>
-                                </tr>
-                                <tr>
-                                    <th style="width:5%;color:black">3</th>
-                                    <th style="width:50%; padding: 5px;text-align:left;color:black"><p> You responded all
-                                        queries of client
-                                        yourself ontime
-                                        without
-                                        any delay ? </p></th>
-                                    <td><input type="radio" name="question3" value="yes">Yes</td>
-                                    <td> <input type="radio" name="question3" value="no" checked>No </td>
-                                </tr>
-                                <tr>
-                                    <th style="width:5%;color:black">4</th>
-                                    <th style="width:50%; padding: 5px;text-align:left;color:black"><p> You ensured and
-                                        verified with management
-                                        time to
-                                        time for
-                                        payment settlement ? </p> </th>
-                                    <td><input type="radio" name="question4" value="yes">Yes</td>
-                                    <td> <input type="radio" name="question4" value="no" checked>No </td>
-                                </tr>
-                                <tr>
-                                    <th style="width:5%;color:black">5</th>
-                                    <th style="width:50%; padding: 5px;text-align:left;color:black"> <p>You ensured Vouchers
-                                        Shared, Invoices
-                                        Collected and
-                                        all
-                                        settled with the deal ? </p> </th>
-                                    <td><input type="radio" name="question5" value="yes">Yes</td>
-                                    <td> <input type="radio" name="question5" value="no" checked>No </td>
-                                </tr>
-                                <tr>
-                                    <th style="width:5%;color:black">6</th>
-                                    <th style="width:50%; padding: 5px;text-align:left;color:black"><p> UdanChoo online
-                                        Review achieved or
-                                        decided not
-                                        needed ? </p>
+                                    <th style="width:65%; padding: 5px;text-align:left;color:black">
+                                   		<p> Financial Year</p>
                                     </th>
-                                    <td><input type="radio" name="question6" value="yes">Yes</td>
-                                    <td> <input type="radio" name="question6" value="no" checked>No </td>
+                                    <td> 
+                                       <div class="select">
+                                          	<form:select path="financialYear"  style="width:90%">
+	                           					<form:options items="${FINANCIAL_YEARS_LIST}" />
+	                       					</form:select>
+                                         </div>
+                                    </td>
                                 </tr>
+                                 <tr>
+                                    <th style="width:5%;color:black">2</th>
+                                    <th style="width:65%; padding: 5px;text-align:left;color:black">
+                                   		<p> Status</p>
+                                    </th>
+                                    <td> 
+                                       <div class="select">
+                                          	<form:select path="status"  style="width:90%">
+	                           					<form:options items="${TARGET_STATUS_LIST}" />
+	                       					</form:select>
+                                         </div>
+                                    </td>
+                                </tr>
+								
                             </table>
-
-
-
-                            <table style="background-color:lightgray;width:1200px">
-                              <tr>
-    <th style="color:black"> <p> Claim Type </p></th>
-    <td>
-    	<font color="red"><form:errors path="claimOption" cssClass="error" /></font>
-       <form:radiobutton path="claimOption" id="incentive" value="INCENTIVE"/><label for="incentive">Incentive</label>&nbsp; &nbsp; &nbsp;
-       <form:radiobutton path="claimOption" id="targetAmount" value="TARGET"/><label for="target">Target</label>
-    </td>
-  </tr>
+                            <table style="background-color:lightgray;width:600px">
+                           
                                 <tr>
-                                    <th style="color:black"><p> Claimed Amount </p></th>
-                                    <td style="text-align:left;color:black">INR &nbsp;
-									<form:input path="claimedAmount" type="number" min="20" class="contact" style="height:30px;width: 100px;" />                                    
-                                    <br>
-                                        <font color="red">
-                                            <form:errors path="claimedAmount" cssClass="error" />
-                                        </font>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th style="color:black"><p> User Remarks </p></th>
-                                    <td style="text-align:left;">
-                                    
-                                    <form:textarea path="userRemarks" maxlength="250" id="userRemarks" cols="75" rows="2" style="resize: none;" /><br>
-                                    
-                                        <font color="red">
-                                            <form:errors path="userRemarks" cssClass="error" />
-                                        </font>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="
-due_today_task_data_btnss" style="text-align:center;width:50%;background:white" colspan="2" >
-                                        <input type="submit" value="Submit Claim">
-                                        <a href="view_default_incentives_report"><input type="button"
-                                                value="View Incentive Listing" /></a>
+                                    <td class="due_today_task_data_btnss" style="text-align:center;width:50%;background:white" colspan="2" >
+                                        <input type="submit" value="Filter Target">
+                                        <a href="view_filter_employee_target"><input type="button" value="View Target Listing" /></a>
                                     </td>
                                 </tr>
                             </table>

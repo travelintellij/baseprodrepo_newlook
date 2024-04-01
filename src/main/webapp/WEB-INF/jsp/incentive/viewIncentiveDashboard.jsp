@@ -118,7 +118,7 @@
                     <body>
                         <div class="IncentiveReportSearch container">
                             <div class="IncentiveReportSearch_wrapper bs">
-                                 <a href="<c:url value="/filter/view"/>">
+                                 <a href="<c:url value="/form_view_filter_target"/>">
         							<img class="filter-button" src="${pageContext.request.contextPath}/resources/images/revamped/filter.jpg" alt="Filter" width="20" height="20">
     							</a>
     							 <a href="<c:url value="/addnewtarget"/>">
@@ -164,14 +164,18 @@
                                		  <i class="fa-solid fa-sliders st1" style="color:black">
 	                                   <div class="ul" style="background:gray">
 	                                       <ul>
-
 	                                           <li>
 	                                           <form:form id="form_edit_target" modelAttribute="TARGET_OBJ" name="form_edit_target" action="form_view_edit_target" method="POST" style="display:inline;">
-	                                           		<form:input type="hidden" path="id" />
+	                                           		<input type="hidden" name="id" value="${filteredTarget.id}">
 	                                           		<input type="Submit" value="Edit" name="Edit_Target" class="menu-submit-button">
 	                                           </form:form>
 	                                           </li>
-	                                           <li><a href="view_form_search_supplier_quote?leadId=${filteredLeads.leadId }" class="pop-up">Delete</a></li>
+	                                           <li>
+	                                           <form:form id="form_edit_target" modelAttribute="TARGET_OBJ" name="form_delete_target" action="form_view_delete_target" method="POST" style="display:inline;">
+	                                           		<input type="hidden" name="id" value="${filteredTarget.id}">
+	                                           		<input type="Submit" value="Delete" name="Delete_Target" class="menu-submit-button">
+	                                           </form:form>
+	                                           </li>
 	                                       </ul>
 	                                   </div>
 	                               </i>

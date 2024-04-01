@@ -9,6 +9,7 @@ import java.time.Month;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -37,11 +38,13 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.itextpdf.text.log.SysoCounter;
 import com.udanchoo.intranet.constant.incentive.ClaimOption;
+import com.udanchoo.intranet.constant.incentive.IncentiveTargetStatus;
 import com.udanchoo.intranet.entity.EmployeeTargetMappingEntity;
 import com.udanchoo.intranet.entity.UdnIncentiveEntity;
 import com.udanchoo.intranet.entity.Udn_Deals_Recorder_Entity;
 import com.udanchoo.intranet.entity.leads.Tg_Leads_Recorder_Entity;
 import com.udanchoo.intranet.exception.RecordNotFoundException;
+import com.udanchoo.intranet.model.ClientObj;
 import com.udanchoo.intranet.model.SearchIncentiveObj;
 import com.udanchoo.intranet.model.Tag;
 import com.udanchoo.intranet.model.UdnDealStatusVO;
@@ -133,15 +136,15 @@ public class IncentiveController {
     	ModelAndView mapview = new ModelAndView();
 		mapview.addObject("userName",userObj.getUsername());
 		//mapview.addObject("userRole",userObj.getRoles());
-		
 		incentiveValidator.validate(incentiveObj, result);
 		if(result.hasErrors()) {
-			mapview.addObject("userId", incentiveObj.getClaimantId());
+			/*mapview.addObject("userId", incentiveObj.getClaimantId());
     		mapview.setViewName("incentive/SubmitNewIncentiveClaim");
+    		*/
+			mapview = newIncentiveFormDisplay(incentiveObj,result);
       		return mapview; 
     	}
     	else {
-    		System.out.println("Incentive option Outside is " + incentiveObj.getClaimOption());
     		if (incentiveObj.getClaimOption() == ClaimOption.INCENTIVE) {
                 System.out.println("Incentive Option is selected");
     			// Call a service or perform calculations for claiming incentive
@@ -605,11 +608,7 @@ public class IncentiveController {
 	    List <TIEmployeeIncentiveDashboardVO> udnTargetList = incentiveService.filterTargetRecord(page, UdanChooConstants.DEFAULT_PAGE_SIZE, sortBy, targetObj, isAdmin);
         
 	    mapview.addObject("TARGET_LIST",udnTargetList); 
-<<<<<<< HEAD
-=======
 
->>>>>>> 3c7735fadb7247e732327365566805ec360cb4f0
-	    
 		/*
 		List <IncentiveObj> udnIncentiveListVO = generateFilteredIncentiveVo(udnIncentiveList);
 		mapview.addObject("INCENTIVES_LIST", udnIncentiveListVO);
@@ -713,20 +712,104 @@ public class IncentiveController {
     @Transactional
     @PostMapping(value = "form_view_edit_target", params = "Edit_Target")
  	public ModelAndView form_view_edit_target(@ModelAttribute("TARGET_OBJ") TIEmployeeIncentiveDashboardVO targetObj,  BindingResult result) {
- 		ModelAndView modelView = new ModelAndView();
-		EmployeeTargetMappingEntity tgLeadEntity = incentiveService.findTargetRecordById(targetObj.getId()); 
+    	ModelAndView modelView = addnewtarget(targetObj,result);
+    	EmployeeTargetMappingEntity tgLeadEntity = incentiveService.findTargetRecordById(targetObj.getId()); 
 		targetObj.updateTargetDashboardVOFromEntity(tgLeadEntity);
 		//below is the temporary code and need to be deleted and uncomment the saveLead part. 
 		//tgLeadEntity.setLeadId(7l);
-		try {
+		/*try {
 			incentiveService.createOrUpdateTarget(tgLeadEntity);
 		} catch (RecordNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		modelView.setViewName("view_editTarget");
+		}*/
+		modelView.setViewName("incentive/view_edit_target");
  		return modelView; 
  	 }
     
+    @Transactional
+ 	@PostMapping("edit_edit_target")
+ 	public ModelAndView edit_edit_target(@ModelAttribute("TARGET_OBJ") TIEmployeeIncentiveDashboardVO targetObj,  BindingResult result,final RedirectAttributes redirectAttrib ) {
+ 		UserDetailsObj userObj = getLoggedInUser();
+ 		ModelAndView modelView = new ModelAndView();
+ 		if(result.hasErrors()) {
+ 		 	modelView= form_view_edit_target(targetObj,result); 
+ 		 	return modelView;
+ 		}else {
+ 			EmployeeTargetMappingEntity tgLeadEntity = new EmployeeTargetMappingEntity(targetObj);
+ 			//below is the temporary code and need to be deleted and uncomment the saveLead part. 
+ 			//tgLeadEntity.setLeadId(7l);
+ 			try {
+				incentiveService.createOrUpdateTarget(tgLeadEntity);
+			} catch (RecordNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+ 		
+ 			redirectAttrib.addFlashAttribute("Success", "Target Record is updated Successfully..");
+ 			modelView.setViewName("redirect:view_filter_employee_target");
+ 		
+ 			//write email code here. 
+ 		}
+ 		return modelView; 
+ 	 }
+    
+    @Transactional
+    @PostMapping(value = "form_view_delete_target", params = "Delete_Target")
+ 	public ModelAndView form_view_delete_target(@ModelAttribute("TARGET_OBJ") TIEmployeeIncentiveDashboardVO targetObj,  BindingResult result) {
+    	ModelAndView modelView = addnewtarget(targetObj,result);
+    	EmployeeTargetMappingEntity tgLeadEntity = incentiveService.findTargetRecordById(targetObj.getId()); 
+		targetObj.updateTargetDashboardVOFromEntity(tgLeadEntity);
+		targetObj.setUserName(userDetailsService.findUserByID(targetObj.getUserId()).getUsername());
+		modelView.setViewName("incentive/view_delete_target");
+ 		return modelView; 
+ 	 }
+    
+    
+    @PostMapping("delete_delete_target")
+	public ModelAndView delete_delete_target(@ModelAttribute("TARGET_OBJ") @Valid TIEmployeeIncentiveDashboardVO targetObj, final RedirectAttributes redirectAttrib) {
+       	boolean isSuccess = false;
+       	try {
+       		if(incentiveService.deleteTarget(targetObj.getId())) {
+       			isSuccess=true;
+       		}
+       		else {
+       			isSuccess=false;
+       		}
+   		} catch (Exception e) {
+   			e.printStackTrace();
+   			isSuccess = false;
+   		}
+       	
+       	ModelAndView mapview = new ModelAndView();
+       	if(isSuccess) {
+       		redirectAttrib.addFlashAttribute("Success", "Target Record Deleted Successfully. !!");
+       		mapview.setViewName("redirect:view_filter_employee_target");
+       	}else {
+       		//mapview.addObject("Error", "Error: Deleting the User. Please contact administrator!! ");
+       		redirectAttrib.addFlashAttribute("Error", "Error: Deleting the Target. Please contact administrator!! ");
+       	}
+       	return mapview;
+	  }
+    
+    @RequestMapping("/form_view_filter_target")
+   	public ModelAndView form_view_filter_target(@ModelAttribute("TARGET_OBJ") TIEmployeeIncentiveDashboardVO targetObj,BindingResult result) {
+    	Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    	String username;
+    	if (principal instanceof UserDetails) {
+    	   username = ((UserDetails)principal).getUsername();
+    	} else {
+    	   username = principal.toString();
+    	}
+     	UserDetailsObj userObj = (UserDetailsObj) userDetailsService.loadUserByUsername(username);
+    	ModelAndView mapview = new ModelAndView("incentive/view_filter_target");
+    	List<UserDetailsObj> activeUsersList = userDetailsService.findAllActiveUsers();
+ 		Map<Integer, String> activeUsersMap = (Map<Integer, String>) activeUsersList.stream().collect(
+                 Collectors.toMap(UserDetailsObj::getUserId, UserDetailsObj::getUsername));
+ 		mapview.addObject("ACTIVE_USERS_MAP", activeUsersMap);
+ 		mapview.addObject("FINANCIAL_YEARS_LIST", getFinancialYearsList(targetObj));
+ 		mapview.addObject("TARGET_STATUS_LIST", UdanChooConstants.TARGET_STATUS);
+    	return mapview;
+    }
     
 }
