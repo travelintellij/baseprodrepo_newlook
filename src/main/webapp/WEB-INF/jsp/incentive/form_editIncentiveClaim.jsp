@@ -105,15 +105,9 @@
         }
                 </style>
                 <body>
-                
                     <div class="form_editIncentiveClaim container">
-                    
-                    
-                   
-                    
                         <form:form method="post" action="edit_edit_incentive_details" modelAttribute="INCENTIVE_OBJ">
                             <form:input type="hidden" path="incentiveId" />
-                            <form:input type="hidden" path="claimOption" />
                             <div class="form_editIncentiveClaim_wrapper bs">
                                 <h1 class="hd" style="color:black">Update Incentive Details</h1>
                                 <h2 class="hd">Incentive Id - ${INCENTIVE_OBJ.incentiveId}</h2>
@@ -127,12 +121,9 @@
                                                     <form:options items="${ACTIVE_USERS_MAP}" class="service-small" />
                                                 </form:select>
                                             </div>
-
                                         </sec:authorize>
                                         <sec:authorize access="! hasAnyRole('ADMIN')">
-
                                             ${INCENTIVE_OBJ.claimantName }
-
                                         </sec:authorize>
                                     </div>
                                     <div class="form_editIncentiveClaim_wrapper_data_line">
@@ -165,9 +156,7 @@
                                         </p>
                                     </div>
                                     <div class="viewIncentiveDetails_wr_dt_line_2 a">
-                                        <p class="inc_q" style="background:#a2d2ff;padding-left:5px"> 2) You took minimal support of management and were able to
-                                            handle
-                                            the query alone ?
+                                        <p class="inc_q" style="background:#a2d2ff;padding-left:5px"> 2) You took minimal support of management and were able to handle the query alone ?
                                         </p>
                                         <p class="inc_a" style="background:#bde0fe;color:black;text-align:center">
                                             <form:radiobutton path="question2" value="true" /> Yes
@@ -214,7 +203,11 @@
                             <div class="form_editIncentiveClaim_wrapper">
                                 <form:input type="hidden" path="claimedAmount" />
                                 <form:input type="hidden" path="userRemarks" />
+								<form:radiobutton path="claimOption" id="incentive" value="INCENTIVE"/><label for="incentive">Incentive</label>&nbsp;&nbsp;&nbsp;&nbsp;
+								<form:radiobutton path="claimOption" id="targetAmount" value="TARGET"/><label for="target">Target</label>
+
                                 <div class="form_editIncentiveClaim_wrapper_data_p">
+
                                     <div class="inc_sp_l">
                                         <div class="form_editIncentiveClaim_wrapper_data_line">
                                             <label for="" style="color:black;">Claimed Amount</label>

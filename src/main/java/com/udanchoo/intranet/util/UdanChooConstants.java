@@ -610,6 +610,15 @@ public interface UdanChooConstants {
 			public static final int TARGET_ALL = 0;
 			public static final int TARGET_MET_SUCCESS= 1;
 			public static final int TARGET_MET_FAIL = 2;
+			
+		 static final Map<String, String> CLAIMOPTION = new HashMap<String, String>(){
+				{
+					put("All","All");
+					put("TARGET","TARGET");
+					put("INCENTIVE","INCENTIVE");
+				}
+			}; 
+
 	
 		/************************** Deal Related Constants ******************************/
 	    static final Map<Integer, String> DEAL_SEARCH_PERIOD_TYPE = new HashMap<Integer, String>(){

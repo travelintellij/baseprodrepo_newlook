@@ -352,6 +352,8 @@ public class IncentiveController {
     	mapview.addObject("userId", userObj.getUserId());
     	mapview.setViewName("incentive/IncentiveReportSearch");
     	searchIncentiveObj.setClaimStatus(UdanChooConstants.INCENTIVE_ANY_STATUS);
+    	//mapview.addObject("CLAIM_OPTION", UdanChooConstants.CLAIMOPTION);
+    	
     	Date dateFrom = null;
     	Date dateTo = null ;
     	Calendar calender = Calendar.getInstance();
@@ -365,7 +367,6 @@ public class IncentiveController {
 			}else {
 				dateTo = new SimpleDateFormat("yyyy-MM-dd").parse(searchIncentiveObj.getClaimToDate());
 			}
-    		
     		if(searchIncentiveObj.getClaimFromDate()==null) {
 				//searchIncentiveObj.setClaimToDate(calender.getTime());
     			calender.set(Calendar.DAY_OF_MONTH, 1);
@@ -373,37 +374,21 @@ public class IncentiveController {
 				dateFrom = calender.getTime();
 				String strFromDate = dateFilterFormat.format(dateFrom); 
 				searchIncentiveObj.setClaimFromDate(strFromDate);
-				
-				
-				/*calender.add(Calendar.MONTH, -1);
-				dateFrom = calender.getTime();
-				String strFromDate = dateFilterFormat.format(dateFrom); 
-				searchIncentiveObj.setClaimFromDate(strFromDate);
-				*/
-
-				
 			}else {
 				dateFrom=new SimpleDateFormat("yyyy-MM-dd").parse(searchIncentiveObj.getClaimFromDate());
 			}
-    		
-			
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		//searchIncentiveObj.setClaimFromDate(calender.getTime());
 		//List <UdnIncentiveEntity> udnIncentiveList = incentiveService.findDefaultIncentiveSearchRecords(dateFrom,dateTo);
-		
 		boolean isAdmin=false;
 	    if(userObj.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"))) {
 	   		isAdmin=true;
 	   		searchIncentiveObj.setClaimantId(0);
 	   	}
-
 	    Page <UdnIncentiveEntity> udnIncentiveList = incentiveService.filterIncentiveRecord(page, UdanChooConstants.DEFAULT_PAGE_SIZE, sortBy, searchIncentiveObj, isAdmin);
-	    
-	    
-		
 		List <IncentiveObj> udnIncentiveListVO = generateFilteredIncentiveVo(udnIncentiveList);
 		mapview.addObject("INCENTIVES_LIST", udnIncentiveListVO);
 		List<UdnDealStatusVO> incentive_wl_statusList = commonService.find_All_Status_Deal_Obj(UdanChooConstants.WORKLOAD_INCENTIVE_OBJ);
@@ -421,8 +406,7 @@ public class IncentiveController {
  		mapview.addObject("maxPages", udnIncentiveList.getTotalPages());
     	mapview.addObject("page", page);
     	mapview.addObject("sortBy", sortBy);
-    	
- 			
+
     	return mapview;
     }
     
@@ -438,6 +422,7 @@ public class IncentiveController {
     	//List <UdnIncentiveEntity> undIncentiveList = incentiveService.findIncentiveSearchRecords(searchIncentiveObj);
     	//mapview.addObject("incentiveList", undIncentiveList);
     	mapview.setViewName("incentive/IncentiveReportSearch");
+    	//mapview.addObject("CLAIM_OPTION", UdanChooConstants.CLAIMOPTION);
     	boolean isAdmin=false;
 	    if(userObj.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"))) {
 	   		isAdmin=true;
@@ -537,6 +522,7 @@ public class IncentiveController {
     		}
     		*/
     		
+    		System.out.println("Incentive Object submitted is " + incentiveObj);
     		UdnIncentiveEntity incentiveEntity = new UdnIncentiveEntity(incentiveObj);
 			
 			incentiveEntity = incentiveService.createOrUpdateIncentive(incentiveEntity);
@@ -597,6 +583,7 @@ public class IncentiveController {
     @RequestMapping("/view_filter_employee_target")
     public ModelAndView view_filter_employee_target(@RequestParam(defaultValue = "0") Integer page,@RequestParam(defaultValue = "3") Integer pageSize, @RequestParam(defaultValue = "CreatedAt") String sortBy,@ModelAttribute("TARGET_OBJ") TIEmployeeIncentiveDashboardVO targetObj, BindingResult result) {
         UserDetailsObj userObj = getLoggedInUser();
+        targetObj.setUserId(userObj.getUserId());
         ModelAndView mapview = new ModelAndView();
     	mapview.setViewName("incentive/viewIncentiveDashboard");
 		boolean isAdmin=false;

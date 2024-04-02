@@ -209,8 +209,7 @@
                                                     <form:select path="claimantId" required="required" style="width:90%">
                                                         <c:forEach items="${ACTIVE_USERS_MAP}" var="userMap">
                                                             <c:if test="${userMap.key eq claimantId }">
-                                                                <option class="service-small" value="${userMap.key}"
-                                                                    selected>${userMap.value}</option>
+                                                                <option class="service-small" value="${userMap.key}" selected>${userMap.value}</option>
                                                             </c:if>
                                                             <c:if test="${userMap.key ne claimantId }">
                                                                 <option class="service-small" value="${userMap.key}">
@@ -325,13 +324,13 @@
 
                             <table style="background-color:lightgray;width:1200px">
                               <tr>
-    <th style="color:black"> <p> Claim Type </p></th>
-    <td>
-    	<font color="red"><form:errors path="claimOption" cssClass="error" /></font>
-       <form:radiobutton path="claimOption" id="incentive" value="INCENTIVE"/><label for="incentive">Incentive</label>&nbsp; &nbsp; &nbsp;
-       <form:radiobutton path="claimOption" id="targetAmount" value="TARGET"/><label for="target">Target</label>
-    </td>
-  </tr>
+								    <th style="color:black"> <p> Claim Type </p></th>
+								    <td>
+								    	<font color="red"><form:errors path="claimOption" cssClass="error" /></font>
+								       <form:radiobutton path="claimOption" id="incentive" value="INCENTIVE"/><label for="incentive">Incentive</label>&nbsp; &nbsp; &nbsp;
+								       <form:radiobutton path="claimOption" id="targetAmount" value="TARGET"/><label for="target">Target</label>
+								    </td>
+								</tr>
                                 <tr>
                                     <th style="color:black"><p> Claimed Amount </p></th>
                                     <td style="text-align:left;color:black">INR &nbsp;

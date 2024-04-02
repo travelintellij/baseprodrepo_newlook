@@ -106,8 +106,7 @@
                     <body>
                         <div class="IncentiveReportSearch container">
                             <div class="IncentiveReportSearch_wrapper bs">
-                                <form:form method="post" action="view_filter_incentives"
-                                    modelAttribute="SEARCH_INCENTIVE">
+                                <form:form method="post" action="view_filter_incentives" modelAttribute="SEARCH_INCENTIVE">
                                     <input type="hidden" name="userName" value="${userName}" />
                                     <h1 style="font-size: 25px;margin:10px 0;color:#FABA08">Search Incentive Claims</h1>
                                     <div class="IncentiveReportSearch_wrapper_data">
@@ -155,8 +154,7 @@
                                             <div class="IncentiveReportSearch_wrapper_dl1_r">
                                                 <label for="">Claim Status</label>
                                                 <form:select path="claimStatus" required="required" style="width:90%">
-                                                 <form:options
-                                                    items="${ACTIVE_INCENTIVE_STATUS}" class="service-small" />
+                                                 <form:options items="${ACTIVE_INCENTIVE_STATUS}" class="service-small" />
                                                 </form:select>
                                             </div>
                                             <div class="IncentiveReportSearch_wrapper_dl1_r">
@@ -164,10 +162,8 @@
                                                 <sec:authorize access="hasAnyRole('ADMIN')" >
                                                     <td>
                                                         <div class="select">
-                                                            <form:select path="claimantId"
-                                                                style="width:90%" required="required">
-                                                                <form:options items="${ACTIVE_USERS_MAP}"
-                                                                    class="service-small" />
+                                                            <form:select path="claimantId" style="width:90%" required="required">
+                                                                <form:options items="${ACTIVE_USERS_MAP}" class="service-small" />
                                                             </form:select>
                                                         </div>
                                                 </sec:authorize>
@@ -175,14 +171,17 @@
                                                     ${userName}
                                                 </sec:authorize>
                                             </div>
-                                            <div class="IncentiveReportSearch_wrapper_dl1_r">
-
-                                            </div>
+   											<div class="IncentiveReportSearch_wrapper_dl1_r">
+                                                <label for="">Type</label>
+                                                <form:select path="claimOption" required="required" style="width:90%">
+                                                 <option class="service-small" value="All">All</option>
+                                                 <form:options items="${CLAIM_OPTION}" class="service-small" />
+                                                </form:select>
+                                            </div>                                        
                                         </div>
                                         <div class="due_today_task_data_btnss" style="margin:10px 0">
                                             <input type="submit" value="Apply Filter" />
-                                            <a href="view_default_incentives_report"><input type="button"
-                                                    value="Clear Filter" /></a>
+                                            <a href="view_default_incentives_report"><input type="button" value="Clear Filter" /></a>
                                         </div>
                                     </div>
                                 </form:form>

@@ -194,9 +194,9 @@
                             <sec:authorize access="hasRole('INCENTIVE_CAN_CLAIM')">
                                 <li><a href="newincentive" class="hoverOnLink">New Claim</a>
                             </sec:authorize>
-                         
                     </li>
                     <li><a href="view_default_incentives_report" class="hoverOnLink">Incentive Reports</a></li>
+                    <li><a href="view_filter_employee_target" class="hoverOnLink">View Targets</a></li>
             		</ul>
             		</li>
             	</sec:authorize>

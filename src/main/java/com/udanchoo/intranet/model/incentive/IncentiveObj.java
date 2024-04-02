@@ -118,19 +118,15 @@ public class IncentiveObj extends UdnIncentiveEntity {
 
 
 
+	
+
+
 	@Override
 	public String toString() {
 		return "IncentiveObj [travelStartDate=" + travelStartDate + ", travelEndDate=" + travelEndDate
-				+ ", claimantName=" + claimantName + ", getIncentiveId()=" + getIncentiveId()
-				+ ", getDealConfirmationId()=" + getDealConfirmationId() + ", getClaimantId()=" + getClaimantId()
-				+ ", isQuestion1()=" + isQuestion1() + ", isQuestion2()=" + isQuestion2() + ", isQuestion3()="
-				+ isQuestion3() + ", isQuestion4()=" + isQuestion4() + ", isQuestion5()=" + isQuestion5()
-				+ ", isQuestion6()=" + isQuestion6() + ", getClaimedAmount()=" + getClaimedAmount()
-				+ ", getApprovedAmount()=" + getApprovedAmount() + ", getUserRemarks()=" + getUserRemarks()
-				+ ", getManagementRemarks()=" + getManagementRemarks() + ", getResponseDate()=" + getResponseDate()
-				+ ", getStatus()=" + getStatus() + ", toString()=" + super.toString() + ", getCreatedAt()="
-				+ getCreatedAt() + ", getUpdatedAt()=" + getUpdatedAt() + ", getClass()=" + getClass() + ", hashCode()="
-				+ hashCode() + "]";
+				+ ", claimantName=" + claimantName + ", guestName=" + guestName + ", claimStatusName=" + claimStatusName
+				+ ", notifyClaimant=" + notifyClaimant + ", claimOption=" + claimOption + ", dealName=" + dealName
+				+ "]";
 	}
 
 

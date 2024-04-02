@@ -166,6 +166,15 @@ public class IncentiveServiceImpl {
 					if(searchIncentiveObj.getClaimStatus()!=0) {
 						predicates.add(criteriaBuilder.equal(incentiveRootEntity.get("status"), searchIncentiveObj.getClaimStatus()));
 					}
+					if(searchIncentiveObj.getClaimOption()!=null) {
+						if(searchIncentiveObj.getClaimOption().equals(ClaimOption.TARGET)) {
+							predicates.add(criteriaBuilder.equal(incentiveRootEntity.get("claimOption"), ClaimOption.TARGET));
+						}
+						else if(searchIncentiveObj.getClaimOption().equals(ClaimOption.INCENTIVE)) {
+							predicates.add(criteriaBuilder.equal(incentiveRootEntity.get("claimOption"), ClaimOption.INCENTIVE));
+						}
+					}
+					
 					if(searchIncentiveObj.getIncentiveId()==0 && searchIncentiveObj.getDealConfirmationId()==0) {
 						LocalDate currentDate = LocalDate.now();
 						LocalDate sdateFrom = null;
@@ -400,6 +409,8 @@ public class IncentiveServiceImpl {
 			public Predicate toPredicate(Root<EmployeeTargetMappingEntity> targetRootEntity, CriteriaQuery< ?> query, CriteriaBuilder criteriaBuilder) {
 				//CriteriaQuery<Udn_Deals_Recorder_Entity> criteriaQueryDeal = criteriaBuilder.createQuery(Udn_Deals_Recorder_Entity.class);
 				List<Predicate> predicates = new ArrayList<>();
+				System.out.println("User Id is " + targetObj.getUserId());
+				System.out.println("Admin status is " + isAdmin);
 				if(targetObj.getUserId()!=0) {
 					predicates.add(criteriaBuilder.equal(targetRootEntity.get("userId"), targetObj.getUserId()));
 				}
@@ -523,7 +534,6 @@ public class IncentiveServiceImpl {
    }
 	
    public boolean incentiveExistsByDealIdAndUserIdAndClaimOption(long dealConfirmationId,int claimantId,ClaimOption claimOption) {
-	   System.out.println("Claim option provided is " + claimOption);
 	   return incentiveRepository.existsByDealConfirmationIdAndClaimantIdAndClaimOption(dealConfirmationId, claimantId,claimOption);
    }
    
