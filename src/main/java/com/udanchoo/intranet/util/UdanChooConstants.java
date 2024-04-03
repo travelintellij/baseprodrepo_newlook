@@ -605,6 +605,8 @@ public interface UdanChooConstants {
 					put(0,"All");
 					put(1,"Success");
 					put(2,"Pending");
+					put(3,"Failed");
+					put(4,"Paid");
 				}
 			}; 
 			public static final int TARGET_ALL = 0;

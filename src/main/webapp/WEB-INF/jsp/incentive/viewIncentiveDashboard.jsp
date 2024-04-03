@@ -121,9 +121,11 @@
                                  <a href="<c:url value="/form_view_filter_target"/>">
         							<img class="filter-button" src="${pageContext.request.contextPath}/resources/images/revamped/filter.jpg" alt="Filter" width="20" height="20">
     							</a>
+    							 <sec:authorize access="hasAnyRole('ADMIN','MANAGE_INCENTIVE')">
     							 <a href="<c:url value="/addnewtarget"/>">
         							<img class="filter-button" src="${pageContext.request.contextPath}/resources/images/revamped/add_new_plus.jpg" alt="Filter" width="20" height="20">
     							</a>
+    							</sec:authorize>
                             </div>
                         </div>
 

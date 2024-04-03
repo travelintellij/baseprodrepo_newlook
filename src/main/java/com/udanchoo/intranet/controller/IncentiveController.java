@@ -584,6 +584,8 @@ public class IncentiveController {
     public ModelAndView view_filter_employee_target(@RequestParam(defaultValue = "0") Integer page,@RequestParam(defaultValue = "3") Integer pageSize, @RequestParam(defaultValue = "CreatedAt") String sortBy,@ModelAttribute("TARGET_OBJ") TIEmployeeIncentiveDashboardVO targetObj, BindingResult result) {
         UserDetailsObj userObj = getLoggedInUser();
         targetObj.setUserId(userObj.getUserId());
+        
+        
         ModelAndView mapview = new ModelAndView();
     	mapview.setViewName("incentive/viewIncentiveDashboard");
 		boolean isAdmin=false;
@@ -595,6 +597,7 @@ public class IncentiveController {
 	    List <TIEmployeeIncentiveDashboardVO> udnTargetList = incentiveService.filterTargetRecord(page, UdanChooConstants.DEFAULT_PAGE_SIZE, sortBy, targetObj, isAdmin);
         
 	    mapview.addObject("TARGET_LIST",udnTargetList); 
+	    mapview.addObject("userName", userObj.getUsername());
 
 		/*
 		List <IncentiveObj> udnIncentiveListVO = generateFilteredIncentiveVo(udnIncentiveList);
@@ -796,6 +799,7 @@ public class IncentiveController {
  		mapview.addObject("ACTIVE_USERS_MAP", activeUsersMap);
  		mapview.addObject("FINANCIAL_YEARS_LIST", getFinancialYearsList(targetObj));
  		mapview.addObject("TARGET_STATUS_LIST", UdanChooConstants.TARGET_STATUS);
+ 		mapview.addObject("userName", username);
     	return mapview;
     }
     

@@ -202,12 +202,17 @@
                                    		<p> User Name</p>
                                     </th>
                                     <td> 
+                                       <sec:authorize access="hasAnyRole('ADMIN','MANAGE_INCENTIVE')">
                                        <div class="select">
                                           	<form:select path="userId"  style="width:90%">
 	                           					<option class="service-small" value="0" selected>All-Users</option>
 	                           					<form:options items="${ACTIVE_USERS_MAP}" />
 	                       					</form:select>
                                          </div>
+                                        </sec:authorize>
+                                        <sec:authorize access="! hasAnyRole('ADMIN','MANAGE_INCENTIVE')">
+                                			${userName}
+                                        </sec:authorize>
                                     </td>
                                 </tr>
                                 <tr>

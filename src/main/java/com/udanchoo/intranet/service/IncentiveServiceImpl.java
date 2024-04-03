@@ -411,7 +411,7 @@ public class IncentiveServiceImpl {
 				List<Predicate> predicates = new ArrayList<>();
 				System.out.println("User Id is " + targetObj.getUserId());
 				System.out.println("Admin status is " + isAdmin);
-				if(targetObj.getUserId()!=0) {
+				if(!isAdmin) {
 					predicates.add(criteriaBuilder.equal(targetRootEntity.get("userId"), targetObj.getUserId()));
 				}
 				predicates.add(criteriaBuilder.equal(targetRootEntity.get("financialYear"), targetObj.getFinancialYear()));
