@@ -29,6 +29,9 @@ public class EmployeeTargetMappingEntity extends AuditModel{
     @Column(name = "incentive_amount")
     protected int incentiveAmount;
 
+    @Column(name = "status")
+    protected int status;
+
     
     public EmployeeTargetMappingEntity() {
     	
@@ -83,14 +86,26 @@ public class EmployeeTargetMappingEntity extends AuditModel{
     	this.financialYear=employeeIncVO.getFinancialYear();
     	this.targetAmount=employeeIncVO.getTargetAmount();
     	this.incentiveAmount=employeeIncVO.getIncentiveAmount();
-    	
+    	this.status=employeeIncVO.getStatus();   	
     }
+
+        
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
 
 	@Override
 	public String toString() {
 		return "EmployeeTargetMappingEntity [id=" + id + ", userId=" + userId + ", financialYear=" + financialYear
-				+ ", targetAmount=" + targetAmount + ", incentiveAmount=" + incentiveAmount + "]";
+				+ ", targetAmount=" + targetAmount + ", incentiveAmount=" + incentiveAmount + ", status=" + status
+				+ "]";
 	}
+
+	
     
 	
     

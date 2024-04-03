@@ -120,12 +120,16 @@
                             <div class="IncentiveReportSearch_wrapper bs">
                                  <a href="<c:url value="/form_view_filter_target"/>">
         							<img class="filter-button" src="${pageContext.request.contextPath}/resources/images/revamped/filter.jpg" alt="Filter" width="20" height="20">
-    							</a>
+    							</a>&nbsp;&nbsp;
     							 <sec:authorize access="hasAnyRole('ADMIN','MANAGE_INCENTIVE')">
     							 <a href="<c:url value="/addnewtarget"/>">
         							<img class="filter-button" src="${pageContext.request.contextPath}/resources/images/revamped/add_new_plus.jpg" alt="Filter" width="20" height="20">
-    							</a>
+    							</a>&nbsp;&nbsp;
     							</sec:authorize>
+    							<a href="<c:url value="view_filter_employee_target"/>">
+									<img class="filter-button" src="${pageContext.request.contextPath}/resources/images/revamped/clear_filter.jpg" alt="Filter" width="20" height="20">
+    							</a>
+    							
                             </div>
                         </div>
 
@@ -154,13 +158,15 @@
                                     <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">	${filteredTarget.incentiveAmount}</td>
                                     <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">${filteredTarget.approvedTarget}</td>
                                     <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">${filteredTarget.pendingApprovalTarget}</td>
-                               		<td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">
+                               		<td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">${filteredTarget.statusName}
+                               			<%--
                                			<c:if test="${filteredTarget.approvedTarget ge filteredTarget.targetAmount}">
                                				<b><font color="green">Success</font></b>
                                			</c:if>
                                			<c:if test="${filteredTarget.approvedTarget lt filteredTarget.targetAmount}">
                                				<b><font color="red">Pending</font></b> 
                                			</c:if>
+                               			 --%>
                                		</td>
                                		<td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">
                                		  <i class="fa-solid fa-sliders st1" style="color:black">

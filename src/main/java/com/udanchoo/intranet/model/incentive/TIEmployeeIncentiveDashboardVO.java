@@ -12,10 +12,8 @@ public class TIEmployeeIncentiveDashboardVO extends  EmployeeTargetMappingEntity
 	public int pendingApprovalTarget;
 
 	public String userName; 
+	public String statusName;
 	
-	public int status;
-
-
 	public int getApprovedTarget() {
 		return approvedTarget;
 	}
@@ -29,14 +27,11 @@ public class TIEmployeeIncentiveDashboardVO extends  EmployeeTargetMappingEntity
 		this.pendingApprovalTarget = pendingApprovalTarget;
 	}
 	
-
-	
-
-	public int getStatus() {
-		return status;
+	public String getStatusName() {
+		return statusName;
 	}
-	public void setStatus(int status) {
-		this.status = status;
+	public void setStatusName(String statusName) {
+		this.statusName = statusName;
 	}
 	public String getUserName() {
 		return userName;
@@ -50,6 +45,7 @@ public class TIEmployeeIncentiveDashboardVO extends  EmployeeTargetMappingEntity
 		this.userId=targetMapping.getUserId();
 		this.targetAmount=targetMapping.getTargetAmount();
 		this.financialYear=targetMapping.getFinancialYear();
+		this.status=targetMapping.getStatus();
 		//this.userId = targetMapping.getUserId();
 		//this.selectedFinancialYear = targetMapping.getFinancialYear();
 		//this.currentFinancialYear = targetMapping.getFinancialYear();

@@ -236,7 +236,8 @@
                                     <td> 
                                        <div class="select">
                                           	<form:select path="status"  style="width:90%">
-	                           					<form:options items="${TARGET_STATUS_LIST}" />
+	                           					<option class="service-small" value="0" selected>All-Status</option>
+	                           					<form:options items="${TARGET_STATUS_MAP}" />
 	                       					</form:select>
                                          </div>
                                     </td>

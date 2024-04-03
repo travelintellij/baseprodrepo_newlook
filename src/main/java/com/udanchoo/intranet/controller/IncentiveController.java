@@ -8,9 +8,12 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -38,7 +41,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.itextpdf.text.log.SysoCounter;
 import com.udanchoo.intranet.constant.incentive.ClaimOption;
-import com.udanchoo.intranet.constant.incentive.IncentiveTargetStatus;
+import com.udanchoo.intranet.constant.incentive.IncentiveTargetClaimStatus;
 import com.udanchoo.intranet.entity.EmployeeTargetMappingEntity;
 import com.udanchoo.intranet.entity.UdnIncentiveEntity;
 import com.udanchoo.intranet.entity.Udn_Deals_Recorder_Entity;
@@ -583,41 +586,25 @@ public class IncentiveController {
     @RequestMapping("/view_filter_employee_target")
     public ModelAndView view_filter_employee_target(@RequestParam(defaultValue = "0") Integer page,@RequestParam(defaultValue = "3") Integer pageSize, @RequestParam(defaultValue = "CreatedAt") String sortBy,@ModelAttribute("TARGET_OBJ") TIEmployeeIncentiveDashboardVO targetObj, BindingResult result) {
         UserDetailsObj userObj = getLoggedInUser();
-        targetObj.setUserId(userObj.getUserId());
-        
-        
         ModelAndView mapview = new ModelAndView();
     	mapview.setViewName("incentive/viewIncentiveDashboard");
 		boolean isAdmin=false;
 	    if(userObj.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"))) {
 	   		isAdmin=true;
-	   		
 	   	}
+	    if(targetObj.getUserId()==0 && !isAdmin) {
+	    	targetObj.setUserId(userObj.getUserId());
+        }
+	    else if(targetObj.getUserId()!=0) {
+        	isAdmin=false;
+        }
+        
 	    targetObj.setFinancialYear(UdanChooUtil.validateFinancialYearFormat(targetObj.getFinancialYear()));
 	    List <TIEmployeeIncentiveDashboardVO> udnTargetList = incentiveService.filterTargetRecord(page, UdanChooConstants.DEFAULT_PAGE_SIZE, sortBy, targetObj, isAdmin);
-        
-	    mapview.addObject("TARGET_LIST",udnTargetList); 
+	    mapview.addObject("TARGET_LIST",udnTargetList);
+	    
+		
 	    mapview.addObject("userName", userObj.getUsername());
-
-		/*
-		List <IncentiveObj> udnIncentiveListVO = generateFilteredIncentiveVo(udnIncentiveList);
-		mapview.addObject("INCENTIVES_LIST", udnIncentiveListVO);
-		List<UdnDealStatusVO> incentive_wl_statusList = commonService.find_All_Status_Deal_Obj(UdanChooConstants.WORKLOAD_INCENTIVE_OBJ);
-		Map<Integer, String> activeIncentiveStatusMap = (Map<Integer, String>) incentive_wl_statusList.stream().collect(
-                Collectors.toMap(UdnDealStatusVO::getWorkloadStatusId, UdnDealStatusVO::getWorkloadStatusName));
-		activeIncentiveStatusMap.put(0, "ALL");
-		mapview.addObject("ACTIVE_INCENTIVE_STATUS", activeIncentiveStatusMap);
-
-    	List<UserDetailsObj> activeUsersList = userDetailsService.findAllActiveUsers();
- 		Map<Integer, String> activeUsersMap = (Map<Integer, String>) activeUsersList.stream().collect(
-                 Collectors.toMap(UserDetailsObj::getUserId, UserDetailsObj::getUsername));
- 		activeUsersMap.put(0, "ALL");
- 		mapview.addObject("ACTIVE_USERS_MAP", activeUsersMap);
- 		mapview.addObject("INCENTIVE_SEARCH_PERIOD_TYPE", UdanChooConstants.INCENTIVE_SEARCH_PERIOD_TYPE);
- 		//mapview.addObject("maxPages", udnIncentiveList.getTotalPages());
-    	mapview.addObject("page", page);
-    	mapview.addObject("sortBy", sortBy);
-    	*/
     	return mapview;
     }
     
@@ -637,7 +624,27 @@ public class IncentiveController {
                  Collectors.toMap(UserDetailsObj::getUserId, UserDetailsObj::getUsername));
  		mapview.addObject("ACTIVE_USERS_MAP", activeUsersMap);
  		mapview.addObject("FINANCIAL_YEARS_LIST", getFinancialYearsList(targetObj));
+ 		List<UdnDealStatusVO> target_statusList = commonService.find_All_Active_Status_Deal_Obj(UdanChooConstants.TARGET_OBJ);
+ 		Map<Integer, String> targetStatusMap = (Map<Integer, String>) target_statusList.stream().collect(
+                 Collectors.toMap(UdnDealStatusVO::getWorkloadStatusId, UdnDealStatusVO::getWorkloadStatusName));
+ 		
+ 		LinkedHashMap<Integer, String> targetStatusSortedMap= sortMap(targetStatusMap);
+ 		mapview.addObject("TARGET_STATUS_MAP", targetStatusSortedMap);
     	return mapview;
+    }
+    
+    private LinkedHashMap<Integer, String> sortMap(Map<Integer, String> unsortedMap) {
+    	List<Map.Entry<Integer, String>> entryList = new ArrayList<>(unsortedMap.entrySet());
+
+        // Sort the list based on keys using a comparator
+        Collections.sort(entryList, Comparator.comparing(Map.Entry::getKey));
+
+        // Create a new LinkedHashMap to preserve insertion order and add sorted entries
+        LinkedHashMap<Integer, String> sortedMap = new LinkedHashMap<>();
+        for (Map.Entry<Integer, String> entry : entryList) {
+            sortedMap.put(entry.getKey(), entry.getValue());
+        }
+        return sortedMap;
     }
     
     
@@ -705,6 +712,12 @@ public class IncentiveController {
     	ModelAndView modelView = addnewtarget(targetObj,result);
     	EmployeeTargetMappingEntity tgLeadEntity = incentiveService.findTargetRecordById(targetObj.getId()); 
 		targetObj.updateTargetDashboardVOFromEntity(tgLeadEntity);
+	    List<UdnDealStatusVO> target_statusList = commonService.find_All_Active_Status_Deal_Obj(UdanChooConstants.TARGET_OBJ);
+		Map<Integer, String> targetStatusMap = (Map<Integer, String>) target_statusList.stream().collect(
+                Collectors.toMap(UdnDealStatusVO::getWorkloadStatusId, UdnDealStatusVO::getWorkloadStatusName));
+		modelView.addObject("TARGET_STATUS_MAP", targetStatusMap);
+
+		
 		//below is the temporary code and need to be deleted and uncomment the saveLead part. 
 		//tgLeadEntity.setLeadId(7l);
 		/*try {
@@ -798,7 +811,14 @@ public class IncentiveController {
                  Collectors.toMap(UserDetailsObj::getUserId, UserDetailsObj::getUsername));
  		mapview.addObject("ACTIVE_USERS_MAP", activeUsersMap);
  		mapview.addObject("FINANCIAL_YEARS_LIST", getFinancialYearsList(targetObj));
- 		mapview.addObject("TARGET_STATUS_LIST", UdanChooConstants.TARGET_STATUS);
+ 		
+ 		List<UdnDealStatusVO> target_statusList = commonService.find_All_Active_Status_Deal_Obj(UdanChooConstants.TARGET_OBJ);
+ 		Map<Integer, String> targetStatusMap = (Map<Integer, String>) target_statusList.stream().collect(
+                 Collectors.toMap(UdnDealStatusVO::getWorkloadStatusId, UdnDealStatusVO::getWorkloadStatusName));
+ 		LinkedHashMap<Integer,String> sortedStatusMap = sortMap(targetStatusMap);
+ 		mapview.addObject("TARGET_STATUS_MAP", sortedStatusMap);
+
+ 		//mapview.addObject("TARGET_STATUS_LIST", UdanChooConstants.TARGET_STATUS);
  		mapview.addObject("userName", username);
     	return mapview;
     }

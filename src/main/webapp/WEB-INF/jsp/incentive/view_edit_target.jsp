@@ -226,7 +226,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th style="width:5%;color:black">2</th>
+                                    <th style="width:5%;color:black">3</th>
                                     <th style="width:65%; padding: 5px;text-align:left;color:black">
                                    		<p> Target Amount</p>
                                     </th>
@@ -235,7 +235,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th style="width:5%;color:black">2</th>
+                                    <th style="width:5%;color:black">4</th>
                                     <th style="width:65%; padding: 5px;text-align:left;color:black">
                                    		<p> Incentive Amount</p>
                                     </th>
@@ -243,6 +243,29 @@
                                      	 <form:input path="incentiveAmount" type="number" min="100" />
                                     </td>
                                 </tr>
+                                <tr>
+                                    <th style="width:5%;color:black">4</th>
+                                    <th style="width:65%; padding: 5px;text-align:left;color:black">
+                                   		<p> Incentive Amount</p>
+                                    </th>
+                                    <td> 
+                                     	 <form:input path="incentiveAmount" type="number" min="100" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="width:5%;color:black">2</th>
+                                    <th style="width:65%; padding: 5px;text-align:left;color:black">
+                                   		<p> Status</p>
+                                    </th>
+                                    <td> 
+                                       <div class="select">
+                                          	<form:select path="status"  style="width:90%">
+	                           					<form:options items="${TARGET_STATUS_MAP}" />
+	                       					</form:select>
+                                         </div>
+                                    </td>
+                                </tr>
+                                
                             </table>
                             <table style="background-color:lightgray;width:600px">
                            

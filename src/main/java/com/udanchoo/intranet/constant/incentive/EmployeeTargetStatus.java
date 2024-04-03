@@ -1,14 +1,14 @@
 package com.udanchoo.intranet.constant.incentive;
 
-public enum IncentiveTargetStatus {
-	APPROVED(234),
-	REJECTED(235),
-	PARTIALLYAPPROVED(236),
-	CLAIMED(233);
+public enum EmployeeTargetStatus {
+	PENDING(237),
+	SUCCESS(238),
+	FAILED(239),
+	PAID(240);
 
 	private final int code;
 	
-	IncentiveTargetStatus(int code) {
+	EmployeeTargetStatus(int code) {
 		this.code = code;
 	}
 
@@ -17,8 +17,8 @@ public enum IncentiveTargetStatus {
 	}
 
     // Optional: Get Status enum based on code
-    public static IncentiveTargetStatus getStatusByCode(int code) {
-        for (IncentiveTargetStatus status : IncentiveTargetStatus.values()) {
+    public static EmployeeTargetStatus getStatusByCode(int code) {
+        for (EmployeeTargetStatus status : EmployeeTargetStatus.values()) {
             if (status.getCode() == code) {
                 return status;
             }

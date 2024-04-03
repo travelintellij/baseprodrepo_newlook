@@ -2,8 +2,6 @@ package com.udanchoo.intranet.service;
 
 
 
-import java.sql.Timestamp;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -16,7 +14,6 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Optional;
 
-import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
@@ -32,20 +29,18 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import com.udanchoo.intranet.constant.incentive.ClaimOption;
-import com.udanchoo.intranet.constant.incentive.IncentiveTargetStatus;
+import com.udanchoo.intranet.constant.incentive.EmployeeTargetStatus;
+import com.udanchoo.intranet.constant.incentive.IncentiveTargetClaimStatus;
 import com.udanchoo.intranet.entity.EmployeeTargetMappingEntity;
 import com.udanchoo.intranet.entity.UdnClientEntity;
 import com.udanchoo.intranet.entity.UdnIncentiveEntity;
 import com.udanchoo.intranet.entity.Udn_Airline_Master_Entity;
 import com.udanchoo.intranet.entity.Udn_Deals_Recorder_Entity;
 import com.udanchoo.intranet.entity.Udn_Destinations_Entity;
-import com.udanchoo.intranet.entity.leads.Tg_Leads_Recorder_Entity;
-import com.udanchoo.intranet.entity.supplier.Tg_Supplier_Destinations_Map_Entity;
 import com.udanchoo.intranet.exception.RecordNotFoundException;
 import com.udanchoo.intranet.model.SearchIncentiveObj;
 import com.udanchoo.intranet.model.Udn_Deals_Recorder_Obj;
 import com.udanchoo.intranet.model.incentive.TIEmployeeIncentiveDashboardVO;
-import com.udanchoo.intranet.model.leads.FilterLeadObj;
 import com.udanchoo.intranet.repository.CommonRepository;
 import com.udanchoo.intranet.repository.DealRepository;
 import com.udanchoo.intranet.repository.incentive.EmployeeTargetMappingRepository;
@@ -401,7 +396,6 @@ public class IncentiveServiceImpl {
 	   }
 
 	public List<TIEmployeeIncentiveDashboardVO> filterTargetRecord(int pageNo, int pageSize,String sorting,TIEmployeeIncentiveDashboardVO targetObj,boolean isAdmin ){
-		
 		Pageable paging = PageRequest.of(pageNo, pageSize,Sort.by(sorting));
 		Page<EmployeeTargetMappingEntity> filteredTargetList = employeeTargetRepository.findAll(new Specification<EmployeeTargetMappingEntity>() {
 			private static final long serialVersionUID = 1L;
@@ -409,12 +403,13 @@ public class IncentiveServiceImpl {
 			public Predicate toPredicate(Root<EmployeeTargetMappingEntity> targetRootEntity, CriteriaQuery< ?> query, CriteriaBuilder criteriaBuilder) {
 				//CriteriaQuery<Udn_Deals_Recorder_Entity> criteriaQueryDeal = criteriaBuilder.createQuery(Udn_Deals_Recorder_Entity.class);
 				List<Predicate> predicates = new ArrayList<>();
-				System.out.println("User Id is " + targetObj.getUserId());
-				System.out.println("Admin status is " + isAdmin);
 				if(!isAdmin) {
 					predicates.add(criteriaBuilder.equal(targetRootEntity.get("userId"), targetObj.getUserId()));
 				}
 				predicates.add(criteriaBuilder.equal(targetRootEntity.get("financialYear"), targetObj.getFinancialYear()));
+				if(targetObj.getStatus()!=0) {
+					predicates.add(criteriaBuilder.equal(targetRootEntity.get("status"), targetObj.getStatus()));
+				}
 				return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
 			}
 		},paging);
@@ -428,10 +423,10 @@ public class IncentiveServiceImpl {
 			List<UdnIncentiveEntity> incentiveList = searchIncentiveDealsBasedOnFinancialYear(employeeEntity);
 			for (UdnIncentiveEntity incentiveEntity : incentiveList) {
 				if(employeeEntity.getUserId()==incentiveEntity.getClaimantId()) {
-					if(incentiveEntity.getStatus()==IncentiveTargetStatus.APPROVED.getCode() || incentiveEntity.getStatus()==IncentiveTargetStatus.PARTIALLYAPPROVED.getCode()) {
+					if(incentiveEntity.getStatus()==IncentiveTargetClaimStatus.APPROVED.getCode() || incentiveEntity.getStatus()==IncentiveTargetClaimStatus.PARTIALLYAPPROVED.getCode()) {
 						approvedTotal = approvedTotal + incentiveEntity.getApprovedAmount();
 					}
-					else if(incentiveEntity.getStatus()==IncentiveTargetStatus.CLAIMED.getCode() ) {
+					else if(incentiveEntity.getStatus()==IncentiveTargetClaimStatus.CLAIMED.getCode() ) {
 						claimedButNotApproved = claimedButNotApproved + incentiveEntity.getClaimedAmount();
 					}
 				}
@@ -439,7 +434,13 @@ public class IncentiveServiceImpl {
 			dashBoardVO.setApprovedTarget(approvedTotal);
 			dashBoardVO.setPendingApprovalTarget(claimedButNotApproved);
 			dashBoardVO.setUserName(userService.findUserByID(dashBoardVO.getUserId()).getUsername());
-			if(targetObj.getStatus()==UdanChooConstants.TARGET_MET_SUCCESS) {
+			if(dashBoardVO.getStatus()==EmployeeTargetStatus.PENDING.getCode() || dashBoardVO.getStatus()==EmployeeTargetStatus.FAILED.getCode()) {
+				dashBoardVO.setStatusName("<font color='red'>" + commonService.find_DealStatusById(dashBoardVO.getStatus()).getWorkloadStatusName() + "</font>");
+			}
+			if(dashBoardVO.getStatus()==EmployeeTargetStatus.SUCCESS.getCode() || dashBoardVO.getStatus()==EmployeeTargetStatus.PAID.getCode()) {
+				dashBoardVO.setStatusName("<font color='green'>" + commonService.find_DealStatusById(dashBoardVO.getStatus()).getWorkloadStatusName() + "</font>");				
+			}
+			/*if(targetObj.getStatus()==UdanChooConstants.TARGET_MET_SUCCESS) {
 				if(dashBoardVO.getApprovedTarget() >= dashBoardVO.getTargetAmount()) {
 					dashboardVoList.add(dashBoardVO);
 				}
@@ -449,9 +450,9 @@ public class IncentiveServiceImpl {
 					dashboardVoList.add(dashBoardVO);
 				}
 			}
-			else {
+			else {*/
 				dashboardVoList.add(dashBoardVO);
-			}
+			//}
 	    }
 		return sortDashBoardVOList(dashboardVoList);
 	}

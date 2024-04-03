@@ -1,3 +1,24 @@
+
+ALTER TABLE `udanchoodb`.`employee_target_mapping` 
+ADD COLUMN `status` INT NULL DEFAULT 237 AFTER `incentive_amount`,
+ADD INDEX `employee_target_status_fk_idx` (`status` ASC) VISIBLE;
+;
+ALTER TABLE `udanchoodb`.`employee_target_mapping` 
+ADD CONSTRAINT `employee_target_status_fk`
+  FOREIGN KEY (`status`)
+  REFERENCES `udanchoodb`.`udn_deal_status` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+
+INSERT INTO `udanchoodb`.`udn_deal_status` (`id`, `workloadStatusId`, `workloadStatusObj`, `workloadStatusObjType`, `workloadStatusShortName`, `workloadStatusName`, `workloadStatusActionPending`, `active`) VALUES ('238', '238', 'TARGET_OBJ', 'TARGET_OBJ', 'Success', 'Success', 'action', '1');
+INSERT INTO `udanchoodb`.`udn_deal_status` (`id`, `workloadStatusId`, `workloadStatusObj`, `workloadStatusObjType`, `workloadStatusShortName`, `workloadStatusName`, `workloadStatusActionPending`, `active`) VALUES ('239', '239', 'TARGET_OBJ', 'TARGET_OBJ', 'Failed', 'Failed', 'action', '1');
+INSERT INTO `udanchoodb`.`udn_deal_status` (`id`, `workloadStatusId`, `workloadStatusObj`, `workloadStatusObjType`, `workloadStatusShortName`, `workloadStatusName`, `workloadStatusActionPending`, `active`) VALUES ('240', '240', 'TARGET_OBJ', 'TARGET_OBJ', 'Paid', 'Paid', 'action', '1');
+UPDATE `udanchoodb`.`udn_deal_status` SET `workloadStatusShortName` = 'Pending' WHERE (`id` = '237');
+INSERT INTO `udanchoodb`.`udn_deal_status` (`id`, `workloadStatusId`, `workloadStatusObj`, `workloadStatusObjType`, `workloadStatusShortName`, `workloadStatusName`, `workloadStatusActionPending`, `active`) VALUES ('237', '237', 'TARGET_OBJ', 'TARGET_OBJ', 'pending', 'Pending', 'action', '1');
+
+
+*************************************************************
 ALTER TABLE `udanchoodb`.`employee_target_mapping` 
 CHANGE COLUMN `target_amount` `target_amount` INT NOT NULL ,
 CHANGE COLUMN `incentive_amount` `incentive_amount` INT NOT NULL ;
