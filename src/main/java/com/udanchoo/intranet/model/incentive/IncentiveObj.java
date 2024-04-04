@@ -51,6 +51,7 @@ public class IncentiveObj extends UdnIncentiveEntity {
 		this.question4 = incentiveEntity.isQuestion4();
 		this.question5 = incentiveEntity.isQuestion5();
 		this.question6 = incentiveEntity.isQuestion6();
+		this.grossClaim=incentiveEntity.getGrossClaim();
 		this.claimedAmount = incentiveEntity.getClaimedAmount();
 		this.approvedAmount = incentiveEntity.getApprovedAmount();
 		this.userRemarks = incentiveEntity.getUserRemarks();
@@ -115,10 +116,6 @@ public class IncentiveObj extends UdnIncentiveEntity {
 	public void setNotifyClaimant(boolean notifyClaimant) {
 		this.notifyClaimant = notifyClaimant;
 	}
-
-
-
-	
 
 
 	@Override

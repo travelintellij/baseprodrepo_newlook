@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
    
-    <link href="<c:url value=" /resources/core/main.css" />" rel="stylesheet">
+    
     
 </head>
 <body>     
@@ -70,27 +70,36 @@
 
 <div class="viewIncentiveDetails_modal_wrapper_data">
     <div class="viewIncentiveDetails_modal_wrapper_data_line">
+        <label for="" class="lb">Gross Claim</label>
+        <p>${INCENTIVE_OBJ.grossClaim}</p>
+    </div>
+    <div class="viewIncentiveDetails_modal_wrapper_data_line">
         <label for="" class="lb">Claimed Amount</label>
-        <p>${INCENTIVE_OBJ.claimedAmount}</p>
+        <font color="green"><b><p>${INCENTIVE_OBJ.claimedAmount}</p></b></font>
     </div>
     <div class="viewIncentiveDetails_modal_wrapper_data_line">
         <label for="" class="lb">Approved Amount</label>
         <p>${INCENTIVE_OBJ.approvedAmount}</p>
     </div>
-    <div class="viewIncentiveDetails_modal_wrapper_data_line">
-        <label for="" class="lb">User Remarks</label>
-        <p>${INCENTIVE_OBJ.userRemarks}</p>
-    </div>
+    
     <div class="viewIncentiveDetails_modal_wrapper_data_line">
         <label for="" class="lb">Claim Status</label>
-        <p>${INCENTIVE_OBJ.status}</p>
+        <p>${INCENTIVE_OBJ.claimStatusName}</p>
     </div>
     <div class="viewIncentiveDetails_modal_wrapper_data_line">
     </div>
 </div>
+<br>
 <div class="viewIncentiveDetails_modal_wrapper_data">
     <div class="viewIncentiveDetails_modal_wrapper_data_line">
-        <label for="" class="lb">Managment Remarks</label>
+        <label for="" class="lb">User Remarks</label>
+        <p>${INCENTIVE_OBJ.userRemarks}</p>
+    </div>
+</div>
+<br>
+<div class="viewIncentiveDetails_modal_wrapper_data">
+    <div class="viewIncentiveDetails_modal_wrapper_data_line">
+        <label for="" class="lb">Management Remarks</label>
         <p>${INCENTIVE_OBJ.managementRemarks}</p>
     </div>
 </div>

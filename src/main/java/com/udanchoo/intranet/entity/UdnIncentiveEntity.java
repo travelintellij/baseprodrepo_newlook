@@ -32,6 +32,7 @@ public class UdnIncentiveEntity extends AuditModel {
 	protected boolean question4;
 	protected boolean question5;
 	protected boolean question6;
+	protected int grossClaim;
 	protected int claimedAmount;
 	protected int approvedAmount;
 	protected String userRemarks;
@@ -60,6 +61,7 @@ public class UdnIncentiveEntity extends AuditModel {
 		this.question4 = incentiveObj.isQuestion4();
 		this.question5 = incentiveObj.isQuestion5();
 		this.question6 = incentiveObj.isQuestion6();
+		this.grossClaim=incentiveObj.getGrossClaim();
 		this.claimedAmount = incentiveObj.getClaimedAmount();
 		this.approvedAmount = incentiveObj.getApprovedAmount();
 		this.userRemarks = incentiveObj.getUserRemarks();
@@ -167,15 +169,25 @@ public class UdnIncentiveEntity extends AuditModel {
 	}
 
 	
+	
 
+	public int getGrossClaim() {
+		return grossClaim;
+	}
+
+	public void setGrossClaim(int grossClaim) {
+		this.grossClaim = grossClaim;
+	}
+
+	
 	@Override
 	public String toString() {
 		return "UdnIncentiveEntity [incentiveId=" + incentiveId + ", dealConfirmationId=" + dealConfirmationId
 				+ ", claimantId=" + claimantId + ", question1=" + question1 + ", question2=" + question2
 				+ ", question3=" + question3 + ", question4=" + question4 + ", question5=" + question5 + ", question6="
-				+ question6 + ", claimedAmount=" + claimedAmount + ", approvedAmount=" + approvedAmount
-				+ ", userRemarks=" + userRemarks + ", managementRemarks=" + managementRemarks + ", claimOption="
-				+ claimOption + ", responseDate=" + responseDate + ", status=" + status + "]";
+				+ question6 + ", grossClaim=" + grossClaim + ", claimedAmount=" + claimedAmount + ", approvedAmount="
+				+ approvedAmount + ", userRemarks=" + userRemarks + ", managementRemarks=" + managementRemarks
+				+ ", claimOption=" + claimOption + ", responseDate=" + responseDate + ", status=" + status + "]";
 	}
 
 	public ClaimOption getClaimOption() {
