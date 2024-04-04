@@ -1,4 +1,17 @@
 
+
+#From here use top to bottom. 
+
+1) 
+ALTER TABLE `udanchoodb`.`udnincentive` 
+DROP PRIMARY KEY,
+ADD PRIMARY KEY (`IncentiveId`);
+;
+
+
+
+
+**************************************************************
 ALTER TABLE `udanchoodb`.`employee_target_mapping` 
 ADD COLUMN `status` INT NULL DEFAULT 237 AFTER `incentive_amount`,
 ADD INDEX `employee_target_status_fk_idx` (`status` ASC) VISIBLE;
