@@ -243,17 +243,8 @@
                                      	 <form:input path="incentiveAmount" type="number" min="100" />
                                     </td>
                                 </tr>
-                                <tr>
-                                    <th style="width:5%;color:black">4</th>
-                                    <th style="width:65%; padding: 5px;text-align:left;color:black">
-                                   		<p> Incentive Amount</p>
-                                    </th>
-                                    <td> 
-                                     	 <form:input path="incentiveAmount" type="number" min="100" />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th style="width:5%;color:black">2</th>
+                               <tr>
+                                    <th style="width:5%;color:black">5</th>
                                     <th style="width:65%; padding: 5px;text-align:left;color:black">
                                    		<p> Status</p>
                                     </th>
