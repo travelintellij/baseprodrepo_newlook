@@ -184,7 +184,7 @@
                     <div class="add_man_pckage_wrapper_data_line">
                         <div class="add_man_pckage_wrapper_dl1_pd" style="text-align: start;">
                             <label for="">Exclusions</label> <br>
-                            <form:textarea path="exclusions" rows="15" cols="121" maxlength="127"  style="width:100%"/>
+                            <form:textarea path="exclusions" rows="15" cols="121" maxlength="2000"  style="width:100%"/>
                         </div>
                     </div>
                     <div class="add_man_pckage_wrapper_data_line">

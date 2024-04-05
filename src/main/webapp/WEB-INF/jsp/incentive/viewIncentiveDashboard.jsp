@@ -222,7 +222,7 @@
                         </div>
 
 
-
+				<%--
                         <div id="pagination" align="center">
                            <p style="color:#ffa500;background:black;display:inline-block;padding:2px;border-radius:2px">Page:</p> 
                             <c:url value="view_filter_incentives" var="prev">
@@ -257,7 +257,7 @@
                             </c:if>
                         </div>
                   
-
+ 					--%>
 
                         <script>
                             // Get the modal
