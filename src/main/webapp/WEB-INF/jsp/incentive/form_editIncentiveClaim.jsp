@@ -207,12 +207,17 @@
 								<form:radiobutton path="claimOption" id="targetAmount" value="TARGET"/><label for="target">Target</label>
 
                                 <div class="form_editIncentiveClaim_wrapper_data_p">
-
-                                    <div class="inc_sp_l">
+									<div class="inc_sp_l">
                                         <div class="form_editIncentiveClaim_wrapper_data_line">
-                                            <label for="" style="color:black;">Claimed Amount</label>
+                                            <label for="" style="color:black;">Gross Claim</label>
+                                            <p>${INCENTIVE_OBJ.grossClaim}</p>
+                                        </div>
+                                        <div class="form_editIncentiveClaim_wrapper_data_line">
+                                            <label for="" style="color:black;">Net Claim</label>
                                             <p style="color:#32cd32;font-weight:bold;">${INCENTIVE_OBJ.claimedAmount}</p>
                                         </div>
+                                    </div>
+                                    <div class="inc_sp_l">
                                         <div class="form_editIncentiveClaim_wrapper_data_line">
                                             <label for="" style="color:black">Approved Amount</label>
                                             <form:input type="number" path="approvedAmount" />
@@ -337,6 +342,8 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+
+
 </script>
                 </body>
 </html>

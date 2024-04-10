@@ -333,8 +333,17 @@
 								</tr>
                                 <tr>
                                     <th style="color:black"><p> Claimed Amount </p></th>
-                                    <td style="text-align:left;color:black">INR &nbsp;
-									<form:input path="claimedAmount" type="number" min="20" class="contact" style="height:30px;width: 100px;" />                                    
+                                   <td style="text-align:left;color:black">
+										<table style="width:500px;border:none;">
+										<th style="color:black;text-align: center;"><p> Gross Claim  </p></th>
+										<td>
+											<form:input path="grossClaim" type="number" min="20" class="contact" style="height:30px;width: 100px;" id="grossClaim" oninput="calculateGST()" />
+										</td>
+										<th style="color:black;text-align: center;"><p> Nett Claim  </p></th>
+										<td>
+											<form:input path="claimedAmount" type="number" min="20" class="contact" style="height:30px;width: 100px;" id="claimedAmount" step="1" />
+										</td>
+										</table>	                                    
                                     <br>
                                         <font color="red">
                                             <form:errors path="claimedAmount" cssClass="error" />
@@ -385,7 +394,21 @@ due_today_task_data_btnss" style="text-align:center;width:50%;background:white" 
 
                     </div>
                     <script>
-                        $('#dealName').autocomplete({
+                    function calculateGST() {
+                        // Get the value entered in the first text box
+                        var amountWithGST = parseFloat(document.getElementById('grossClaim').value);
+                        
+                        // Calculate the non-GST amount
+                        var amountWithoutGST = amountWithGST / 1.18; // 18% GST = 1.18
+                        
+                        // Set the value of the second text box with the non-GST amount
+                        document.getElementById('claimedAmount').value = amountWithoutGST.toFixed(0); // Display up to 2 decimal places
+                    }
+
+                    // Disable the context menu (right-click menu) for the second text box
+                    document.getElementById('claimedAmount').addEventListener('contextmenu', function (e) {e.preventDefault();});
+                    
+                    $('#dealName').autocomplete({
                             serviceUrl: '${pageContext.request.contextPath}/getDealInfo',
                             paramName: "dealKeyword",
                             delimiter: ",",
@@ -450,6 +473,9 @@ due_today_task_data_btnss" style="text-align:center;width:50%;background:white" 
                                 modal.style.display = "none";
                             }
                         }
+                        
+
+                        
                     </script>
 
                 </body>

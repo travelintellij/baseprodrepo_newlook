@@ -251,7 +251,7 @@ public class IncentiveController {
 			IncentiveObj incentiveObj =  new IncentiveObj();
 			incentiveObj.updateIncentiveVoFromEntity(incentiveEntity);
 			incentiveObj.setClaimantName(userDetailsService.findUserByID(incentiveObj.getClaimantId()).getUsername());
-			
+			incentiveObj.setClaimStatusName(commonService.find_DealStatusById(incentiveObj.getStatus()).getWorkloadStatusShortName());
 			displayIncentiveView.addObject("INCENTIVE_OBJ", incentiveObj);
 			Udn_Deals_Recorder_Entity dealEntity = dealService.find_DealEntityBy_Id(incentiveObj.getDealConfirmationId());
 			Udn_Deals_Recorder_Obj dealObj = new Udn_Deals_Recorder_Obj(dealEntity);
@@ -524,8 +524,6 @@ public class IncentiveController {
     			errors.rejectValue("sourceName", "city.error");
     		}
     		*/
-    		
-    		System.out.println("Incentive Object submitted is " + incentiveObj);
     		UdnIncentiveEntity incentiveEntity = new UdnIncentiveEntity(incentiveObj);
 			
 			incentiveEntity = incentiveService.createOrUpdateIncentive(incentiveEntity);

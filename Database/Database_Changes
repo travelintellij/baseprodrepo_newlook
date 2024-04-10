@@ -8,6 +8,12 @@ DROP PRIMARY KEY,
 ADD PRIMARY KEY (`IncentiveId`);
 ;
 
+2)
+ALTER TABLE `udanchoodb`.`udnincentive` 
+ADD COLUMN `GrossClaim` INT NULL AFTER `Question6`;
+
+3)
+UPDATE udnincentive SET grossClaim = claimedAmount * 1.18;
 
 
 

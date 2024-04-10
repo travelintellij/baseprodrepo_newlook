@@ -37,8 +37,7 @@
                     <div class="viewIncentiveDetails container">
                         <form:form modelAttribute="INCENTIVE_OBJ">
                             <div class="viewIncentiveDetails_wrapper" style="background:transparent">
-                            <div class="bs" style="background:white;margin:10px auto;width:800px; padding: 10px;
-    border-radius: 10px">
+                            <div class="bs" style="background:white;margin:10px auto;width:800px; padding: 10px; border-radius: 10px">
                                 <h1 class="hd">Incentive Claim Id - ${INCENTIVE_OBJ.incentiveId}</h1>
                                 <div style="margin:10px 0">
                                 <font color="green"> ${Success} </font>
@@ -47,9 +46,7 @@
                                 <div class="viewIncentiveDetails_wr_dt">
                                     <div class="viewIncentiveDetails_wr_dt_line">
                                         <label for="" class="lb">Requested By</label> <br>
-                                        ${INCENTIVE_OBJ.claimantName} <input type="hidden" name="userId"
-                                            value="${userId}" /><input type="hidden" name="userName"
-                                            value="${userName}" />
+                                        ${INCENTIVE_OBJ.claimantName} <input type="hidden" name="userId" value="${userId}" /><input type="hidden" name="userName" value="${userName}" />
                                     </div>
                                     <div class="viewIncentiveDetails_wr_dt_line">
                                         <label for="" class="lb">Deal Confirmation ID</label>
@@ -101,8 +98,13 @@
     border-radius: 10px;">
                                 <div class="viewIncentiveDetails_wr_dt_3_b a">
                                     <div class="viewIncentiveDetails_wr_dt_3_b_l3">
-                                        <label for="" class="lb">Claimed Amount</label>
-                                        <p>${INCENTIVE_OBJ.claimedAmount}</p>
+                                        <label for="" class="lb">Gross Claim</label>
+                                        <p>${INCENTIVE_OBJ.grossClaim}</p>
+                                    </div>
+
+                                    <div class="viewIncentiveDetails_wr_dt_3_b_l3">
+                                        <label for="" class="lb">Net Claim</label>
+                                        <font color="green"><b><p>${INCENTIVE_OBJ.claimedAmount}</p></b></font>
                                     </div>
                                     <div class="viewIncentiveDetails_wr_dt_3_b_l3">
                                         <label for="" class="lb">Approved Amount</label>

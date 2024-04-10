@@ -89,7 +89,7 @@
                 </c:if>
                 <c:if test="${QTN_OBJ.converted eq true }">
                    <a href="#"> <input type="button" value="Search Package" /></a>
-                    <a><input type="button"  value="Add Manually" /></a>
+                    <a><input type="button"  value="Add Manually Disabled" /></a>
                 </c:if>
             </div>
         </div>

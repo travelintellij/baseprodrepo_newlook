@@ -35,10 +35,25 @@ public class IncentiveValidator implements Validator {
 		if(incentiveRecorderVO.getDealConfirmationId()==0) {
 			errors.rejectValue("dealConfirmationId", "deal.missing.error");
 		}
+		else if (incentiveRecorderVO.getDealName()==null || (!isInteger(incentiveRecorderVO.getDealName()))){
+			errors.rejectValue("dealConfirmationId", "invalid.dealName");
+		}
+		else if (incentiveRecorderVO.getDealConfirmationId()!=Integer.parseInt(incentiveRecorderVO.getDealName())) {
+			errors.rejectValue("dealConfirmationId", "invalid.dealName");
+		}
+
 		if(incentiveService.incentiveExistsByDealIdAndUserIdAndClaimOption(incentiveRecorderVO.getDealConfirmationId(), incentiveRecorderVO.getClaimantId(),incentiveRecorderVO.getClaimOption())) {
 			errors.rejectValue("claimantId", "incentive.duplicate.error");
 		}
 		
 	}
  
+	public static boolean isInteger(String str) {
+        try {
+            Integer.parseInt(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
 }

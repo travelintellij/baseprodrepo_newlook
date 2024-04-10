@@ -146,7 +146,9 @@
                                 <th style="height:50px;width:10%;background: #6082B6;">Approved </th>
                                 <th style="height:50px;width:12%;background: #6082B6;">Pending Approval</th>
                                 <th style="height:50px;width:8%;background: #6082B6;">Status</th>
-                                <th style="height:50px;width:10%;background: #6082B6;">Action</th>
+                                <sec:authorize access="hasAnyRole('ADMIN','MANAGE_INCENTIVE')">
+                                	<th style="height:50px;width:10%;background: #6082B6;">Action</th>
+                                </sec:authorize>
                                 
                             </tr>
 							<c:forEach items="${TARGET_LIST}" var="filteredTarget">        
@@ -168,6 +170,7 @@
                                			</c:if>
                                			 --%>
                                		</td>
+                               		<sec:authorize access="hasAnyRole('ADMIN','MANAGE_INCENTIVE')">
                                		<td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">
                                		  <i class="fa-solid fa-sliders st1" style="color:black">
 	                                   <div class="ul" style="background:gray">
@@ -188,6 +191,7 @@
 	                                   </div>
 	                               </i>
                                		</td>
+                               		</sec:authorize>
 
                                
  								</tr>
@@ -218,7 +222,7 @@
                         </div>
 
 
-
+				<%--
                         <div id="pagination" align="center">
                            <p style="color:#ffa500;background:black;display:inline-block;padding:2px;border-radius:2px">Page:</p> 
                             <c:url value="view_filter_incentives" var="prev">
@@ -253,7 +257,7 @@
                             </c:if>
                         </div>
                   
-
+ 					--%>
 
                         <script>
                             // Get the modal
