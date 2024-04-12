@@ -107,16 +107,14 @@
                                                 <input style="width:90%" type="text" name="travelingFromCtrl" id="travelingFromCtrl"
                                                     size="35" placeholder="Traveling From"
                                                     value="${DealObject.travelingFromCity}" required />
-                                                <input type="hidden" name="travelingFrom"
-                                                    value="${DealObject.travelingFrom}" />
+                                                <input type="hidden" name="travelingFrom" value="${DealObject.travelingFrom}" />
                                             </div>
                                             <div class="form_viewDeal_wrapper_data_l1">
                                                 <label for="">Traveing To</label>
                                                 <input style="width:90%" type="text" name="travelingToCtrl" id="travelingToCtrl" size="35"
                                                     placeholder="Traveling To" value="${DealObject.travelingToCity}"
                                                     required />
-                                                <input type="hidden" name="travelingTo"
-                                                    value="${DealObject.travelingTo}" />
+                                                <input type="hidden" name="travelingTo" value="${DealObject.travelingTo}" />
                                             </div>
                                             <div class="form_viewDeal_wrapper_data_l1">
                                                 <label for="">Adults</label>
@@ -272,10 +270,8 @@
                                                 <sec:authorize access="hasAnyRole('ADMIN','DEAL_MANAGER')">
                                                     <td>
                                                         <div class="select">
-                                                            <form:select path="dealOwner"
-                                                                style="width:90%" required="required">
-                                                                <form:options items="${ACTIVE_USERS_MAP}"
-                                                                    class="service-small" />
+                                                            <form:select path="dealOwner" style="width:90%" required="required">
+                                                                <form:options items="${ACTIVE_USERS_MAP}" class="service-small" />
                                                             </form:select>
                                                         </div>
                                                     </td>

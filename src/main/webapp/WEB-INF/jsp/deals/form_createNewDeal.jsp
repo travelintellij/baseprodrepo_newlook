@@ -166,6 +166,7 @@
                                  </div>
                             </sec:authorize>
                             <sec:authorize access="! hasAnyRole('ADMIN','DEAL_MANAGER')">
+                                    <form:hidden path="dealOwner" />
                                     ${dealRecorder.dealOwnerName}
                             </sec:authorize>
 							</div>

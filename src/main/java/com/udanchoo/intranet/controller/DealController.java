@@ -121,7 +121,10 @@ public class DealController {
     	} else {
     	   username = principal.toString();
     	}
+    	
      	UserDetailsObj userObj = (UserDetailsObj) userDetailsService.loadUserByUsername(username);
+     	dealRecorder.setDealOwner(userObj.getUserId());
+     	
     	ModelAndView mapview = new ModelAndView("deals/form_createNewDeal");
     	mapview.addObject("userName", username);
     	mapview.addObject("Id", userObj.getUserId());
