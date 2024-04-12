@@ -85,12 +85,18 @@
             <h1 style="text-align:center;font-size:20px;margin:10px 0;'">Add Flight Sectors to Quotation</h1>
             <div class="due_today_task_data_btnss">
                  <c:if test="${QTN_OBJ.converted ne true }">
-                                                       <a
+                                                          <%--  <a
                                                                 href="form_view_serach_flight_oneway_quotation?leadId=${LEAD_OBJ.leadId }&quotationId=${QTN_OBJ.quotationId}"><input
-                                                                    type="button" 
+                                                                    type="button"
                                                                     value="Flight-Search-One-Way" /> <input
                                                                     type="button"
                                                                     value="Flight-Search-Return" /></a>
+                                                                     --%>
+                                                                   <a> <form action="/udanchoo/storeIds" method="post">
+                                                                            <input type="hidden" name="leadId" value="${LEAD_OBJ.leadId}">
+                                                                            <input type="hidden" name="quotationId" value="${QTN_OBJ.quotationId}">
+                                                                            <input type="submit"  value="Flight Search">
+                                                                        </form> </a>
                                                        <a
                                                                 href="form_view_add_manual_flight_quotation?leadId=${LEAD_OBJ.leadId }&quotationId=${QTN_OBJ.quotationId}"><input
                                                                     type="button" 
@@ -298,6 +304,7 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+
 </script>
 </body>
 </html>

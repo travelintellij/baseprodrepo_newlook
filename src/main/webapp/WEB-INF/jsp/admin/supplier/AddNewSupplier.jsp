@@ -225,6 +225,10 @@
                           
                         </div>
                         <div class="ansd1-ser">
+                         <form:checkbox path="cruise" id="Cruise" style="width:18px;height:18px"/>
+                            <label for="Cruise" class="o" style="font-weight:600">cruise</label>
+                        </div>
+                        <div class="ansd1-ser">
                          <form:checkbox path="others" id="Others" style="width:18px;height:18px"/>
                             <label for="Others" class="o" style="font-weight:600">Others</label>
                         </div>

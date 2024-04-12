@@ -6,7 +6,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @Controller
+@RestController
+
 public class QuotationIdAndLeadIdController {
     @Autowired
     private ReactQuotationIdObj reactQuotationIdObj;
@@ -20,7 +23,7 @@ public class QuotationIdAndLeadIdController {
         return new RedirectView("http://localhost:5173"); // Redirect to the specified URL
     }
 
-    @PostMapping("/api/getIds")
+    @GetMapping("/api/getIds")
     @ResponseBody
     public ReactQuotationIdObj getIds() {
         return reactQuotationIdObj;
