@@ -198,6 +198,23 @@
                                         <span class="checkmark"></span>
                                     </label><span style="font-weight:600;color:black">Insurance</span>
                                 </div>
+                                
+                                
+                                  <div>
+                                    <label class="container"
+                                        style="display: inline;margin: 0 auto;margin-bottom: 20px;">
+                                        <c:if test="${SUPPLIER_OBJ.cruise eq true}">
+                                            <input type="checkbox" checked disabled style="width:18px;height:18px" class="ch_c"/>
+                                        </c:if>
+                                        <c:if test="${SUPPLIER_OBJ.cruise eq false}">
+                                            <input type="checkbox" disabled style="width:18px;height:18px" class="ch_c"/>
+                                        </c:if>
+                                        <span class="checkmark"></span>
+                                    </label><span style="font-weight:600;color:black">Cruise</span>
+                                </div>
+                                
+                                
+                                
                                 <div>
                                     <label class="container"
                                         style="display: inline;margin: 0 auto;margin-bottom: 20px;">
