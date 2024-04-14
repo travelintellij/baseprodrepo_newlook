@@ -29,23 +29,28 @@ public class IncentiveValidator implements Validator {
 	@Override
 	public void validate(Object target, Errors errors) {
 		IncentiveObj incentiveRecorderVO = (IncentiveObj)target;
+		boolean errorFound = false;
 		if(incentiveRecorderVO.getClaimOption()==null) {
+			errorFound=true;
 			errors.rejectValue("claimOption", "incentive.type.error");
 		}
 		if(incentiveRecorderVO.getDealConfirmationId()==0) {
+			errorFound=true;
 			errors.rejectValue("dealConfirmationId", "deal.missing.error");
 		}
 		else if (incentiveRecorderVO.getDealName()==null || (!isInteger(incentiveRecorderVO.getDealName()))){
+			errorFound=true;
 			errors.rejectValue("dealConfirmationId", "invalid.dealName");
 		}
 		else if (incentiveRecorderVO.getDealConfirmationId()!=Integer.parseInt(incentiveRecorderVO.getDealName())) {
+			errorFound=true;
 			errors.rejectValue("dealConfirmationId", "invalid.dealName");
 		}
-
-		if(incentiveService.incentiveExistsByDealIdAndUserIdAndClaimOption(incentiveRecorderVO.getDealConfirmationId(), incentiveRecorderVO.getClaimantId(),incentiveRecorderVO.getClaimOption())) {
-			errors.rejectValue("claimantId", "incentive.duplicate.error");
+		if(!errorFound) {
+			if(!incentiveService.checkIncentiveReclaimAllowed(incentiveRecorderVO.getDealConfirmationId(), incentiveRecorderVO.getClaimantId(),incentiveRecorderVO.getClaimOption())) {
+				errors.rejectValue("claimantId", "incentive.duplicate.error");
+			}
 		}
-		
 	}
  
 	public static boolean isInteger(String str) {

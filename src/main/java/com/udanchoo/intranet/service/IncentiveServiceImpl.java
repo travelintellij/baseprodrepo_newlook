@@ -538,4 +538,20 @@ public class IncentiveServiceImpl {
 	   return incentiveRepository.existsByDealConfirmationIdAndClaimantIdAndClaimOption(dealConfirmationId, claimantId,claimOption);
    }
    
+
+   public boolean checkIncentiveReclaimAllowed(long dealConfirmationId,int claimantId,ClaimOption claimOption) {
+	   boolean claimAllowed=false;
+	   System.out.println("Claim Details are" + dealConfirmationId + "---"+ claimantId + "---" + claimOption);
+	   UdnIncentiveEntity udnIncentiveEntity = incentiveRepository.findByDealConfirmationIdAndClaimantIdAndClaimOption(dealConfirmationId, claimantId,claimOption);
+	   System.out.println("Status is " + udnIncentiveEntity.getStatus() + "----" + IncentiveTargetClaimStatus.REJECTED.getCode());
+	   if(udnIncentiveEntity.getStatus() == IncentiveTargetClaimStatus.REJECTED.getCode()) {
+		   claimAllowed = true;
+	   }
+	   else {
+		   claimAllowed = incentiveExistsByDealIdAndUserIdAndClaimOption(dealConfirmationId,claimantId,claimOption);
+	   }
+	   return claimAllowed;
+	   
+   }
+   
 }
