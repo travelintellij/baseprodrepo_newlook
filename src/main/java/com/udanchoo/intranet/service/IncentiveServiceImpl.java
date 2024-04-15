@@ -541,17 +541,26 @@ public class IncentiveServiceImpl {
 
    public boolean checkIncentiveReclaimAllowed(long dealConfirmationId,int claimantId,ClaimOption claimOption) {
 	   boolean claimAllowed=false;
-	   System.out.println("Claim Details are" + dealConfirmationId + "---"+ claimantId + "---" + claimOption);
-	   UdnIncentiveEntity udnIncentiveEntity = incentiveRepository.findByDealConfirmationIdAndClaimantIdAndClaimOption(dealConfirmationId, claimantId,claimOption);
-	   System.out.println("Status is " + udnIncentiveEntity.getStatus() + "----" + IncentiveTargetClaimStatus.REJECTED.getCode());
+	   System.out.println("Claim Details are-- " + dealConfirmationId + "---"+ claimantId + "---" + claimOption);
+	   List<UdnIncentiveEntity> udnIncentiveEntityList = incentiveRepository.findByDealConfirmationIdAndClaimantIdAndClaimOption(dealConfirmationId, claimantId,claimOption);
+	   for (UdnIncentiveEntity incentiveEntity : udnIncentiveEntityList) {
+		   if (incentiveEntity.getStatus()!=IncentiveTargetClaimStatus.REJECTED.getCode()) {
+			   return claimAllowed;  // At least one status is not 'Rejected'
+	       }
+	   }
+	   return true;  // All statuses are 'Rejected'
+	   
+	   /*
+	   System.out.println("Incentive Entity is " + udnIncentiveEntityList);
+	   		
+	   //System.out.println("Status is " + udnIncentiveEntity.getStatus() + "----" + IncentiveTargetClaimStatus.REJECTED.getCode());
 	   if(udnIncentiveEntity.getStatus() == IncentiveTargetClaimStatus.REJECTED.getCode()) {
 		   claimAllowed = true;
 	   }
 	   else {
 		   claimAllowed = incentiveExistsByDealIdAndUserIdAndClaimOption(dealConfirmationId,claimantId,claimOption);
 	   }
-	   return claimAllowed;
-	   
+	   */
    }
    
 }

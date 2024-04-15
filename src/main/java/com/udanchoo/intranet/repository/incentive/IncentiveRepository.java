@@ -32,6 +32,6 @@ public interface IncentiveRepository extends JpaRepository<UdnIncentiveEntity,Lo
 	
 	boolean existsByDealConfirmationIdAndClaimantId(long dealConfirmationId, int claimantId);
 	boolean existsByDealConfirmationIdAndClaimantIdAndClaimOption(long dealConfirmationId, int claimantId,ClaimOption claimOption);
-	UdnIncentiveEntity findByDealConfirmationIdAndClaimantIdAndClaimOption(long dealConfirmationId, int claimantId,ClaimOption claimOption);
+	List<UdnIncentiveEntity> findByDealConfirmationIdAndClaimantIdAndClaimOption(long dealConfirmationId, int claimantId,ClaimOption claimOption);
 	
 } 

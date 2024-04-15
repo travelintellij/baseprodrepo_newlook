@@ -148,34 +148,21 @@ public class IncentiveController {
       		return mapview; 
     	}
     	else {
-    		if (incentiveObj.getClaimOption() == ClaimOption.INCENTIVE) {
-                System.out.println("Incentive Option is selected");
-    			// Call a service or perform calculations for claiming incentive
-            } else if (incentiveObj.getClaimOption()  == ClaimOption.TARGET) {
-            	System.out.println("Target Amount Option is selected");
-            	// Call a service or perform calculations for claiming target amount
-                //return "redirect:/targetAmountPage";
-            }
-    		
     		UdnIncentiveEntity entity = new UdnIncentiveEntity(incentiveObj);
-    		
 			try {
 				entity.setStatus(UdanChooConstants.INCENTIVE_FRESH_CREATED_STATUS);
 				entity = incentiveService.createOrUpdateIncentive(entity);
 				//incentiveObj.setIncentiveId(entity.getIncentiveId());
 				redirectAttrib.addFlashAttribute("Success", "Your Incentive Claim is Submitted Successfully !!");
 				mapview.setViewName("redirect:view_incentive_details?incentiveId="+entity.getIncentiveId());
-			
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				redirectAttrib.addFlashAttribute("Error", "Error !! While adding claim. Please contact administrator !!");
 				mapview.setViewName("incentive/SubmitNewIncentiveClaim");
 				e.printStackTrace();
 			}
-    		
     	}
     	return mapview ;
-    	
     }
     
     @RequestMapping(value = "adminDisplayIncentive", method = {RequestMethod.GET,RequestMethod.POST})
