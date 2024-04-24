@@ -93,6 +93,14 @@
                             </ul>
                         </li>
                         <li class="tophHeaderMainLink">
+                            <p class="lastOp">Partners</p>
+                            <ul class="topHeaderSubMenu">
+                                <li><a href="view_add_city_form" class="hoverOnLink">Add B2b Partner</a></li>
+                                <li><a href="view_search_city_form" class="hoverOnLink">Manage Partners</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="tophHeaderMainLink">
                             <p class="lastOp">Others</p>
                             <ul class="topHeaderSubMenu">
                                 <li><a href="view_add_city_form" class="hoverOnLink">Add City</a>
