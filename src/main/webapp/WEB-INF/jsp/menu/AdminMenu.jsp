@@ -100,16 +100,7 @@
                             </ul>
                         </li>
 
-                        <li class="tophHeaderMainLink">
-                            <p class="lastOp">Others</p>
-                            <ul class="topHeaderSubMenu">
-                                <li><a href="view_add_city_form" class="hoverOnLink">Add City</a>
-                                </li>
-                                <li><a href="view_search_city_form" class="hoverOnLink">Manage City</a></li>
-                                <li><a href="view_manage_multiple_status" class="hoverOnLink">Status Management</a></li>
-                                <li><a href="view_check_email_working" class="hoverOnLink">Check Email Working</a></li>
-                            </ul>
-                        </li>
+                        
                     </ul>
                 </div>
             </div>
@@ -182,6 +173,18 @@
                         <li><a href="get_visa_service_line_queue_user" class="hoverOnLink">Visa</a></li>
                     </ul>
                 </li>
+                
+                <li class="bottomHeaderLinks">
+                            <p class="lastOp">Others</p>
+                            <ul class="bottomSectionHeaderSubMenu">
+                                <li><a href="view_add_city_form" class="hoverOnLink">Add City</a>
+                                </li>
+                                <li><a href="view_search_city_form" class="hoverOnLink">Manage City</a></li>
+                                <li><a href="view_manage_multiple_status" class="hoverOnLink">Status Management</a></li>
+                                <li><a href="view_check_email_working" class="hoverOnLink">Check Email Working</a></li>
+                            </ul>
+                        </li>
+                
                 <li><a href="${pageContext.request.contextPath}/logout" class="adminSignOut">Sign Out</a></li>
                 <a class="settingIcon" href="view_form_my_profile">
                     <i class="fa-solid fa-gear fa-2xl" id="gear-icon"></i>

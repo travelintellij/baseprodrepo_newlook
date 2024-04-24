@@ -42,7 +42,9 @@ header {
 .insideBottomHeader {
     padding: 0 10px;
 }
-
+.navbar{
+	border:"2px solid red"
+}
 
 
 .topHeader {
@@ -182,7 +184,7 @@ a {
     position: absolute;
     left: 0;
     display: none;
-    width: 180px;
+    width: 212px;
     height: auto;
     padding: 10px 5px;
     background: rgb(0, 0, 0);
