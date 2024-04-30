@@ -1,5 +1,7 @@
 package com.udanchoo.intranet.model;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.udanchoo.intranet.entity.Tg_B2b_Partner_Entity;
 
 public class Tg_B2bPartner_Obj extends Tg_B2b_Partner_Entity{
@@ -8,6 +10,9 @@ public class Tg_B2bPartner_Obj extends Tg_B2b_Partner_Entity{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	private String cityName;
+	private MultipartFile logoFile;
 
 	public Tg_B2bPartner_Obj() {}
 	
@@ -34,6 +39,23 @@ public class Tg_B2bPartner_Obj extends Tg_B2b_Partner_Entity{
 		this.cityId=agentEntity.getCityId();
 		this.active=agentEntity.isActive();
 	}
+
+	public String getCityName() {
+		return cityName;
+	}
+
+	public void setCityName(String cityName) {
+		this.cityName = cityName;
+	}
+
+	public MultipartFile getLogoFile() {
+		return logoFile;
+	}
+
+	public void setLogoFile(MultipartFile logoFile) {
+		this.logoFile = logoFile;
+	}
+	
 	
 
 }

@@ -1,15 +1,24 @@
 package com.udanchoo.intranet.service;
 
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.udanchoo.intranet.entity.Tg_B2b_Partner_Entity;
+import com.udanchoo.intranet.model.Tg_B2bPartner_Obj;
 import com.udanchoo.intranet.repository.TgB2bPartnersRepository;
 
 
@@ -22,6 +31,9 @@ public class TgB2bPartnerServicesImpl {
 	
 	@Autowired
 	TgB2bPartnersRepository b2bPartnerRepository;
+	
+	@Autowired
+	 private FileStorageService fileStorageService;
 	
 	
 	public Tg_B2b_Partner_Entity findPartnerById(int partnerId) {
@@ -49,5 +61,21 @@ public class TgB2bPartnerServicesImpl {
 		}
 		return b2bPartnerMap ;
 	}
+	
+	
+	private static final String UPLOAD_DIR = "c:/uploads/deals";
+	
+
+    @Transactional(rollbackFor = Exception.class)
+    public void savePartnerAndFile(Tg_B2bPartner_Obj partner) throws IOException {
+    	Path directoryPath = Paths.get(fileStorageService.getUserStorageLocation() + "\\" + partner.getPartnerBrandName() );
+    	//Save partner details to the database
+        // Your implementation here...
+
+        // Upload file
+    	String fileName = fileStorageService.storeFile(partner.getLogoFile(),directoryPath);
+    	
+    	
+    }
 	
 }
