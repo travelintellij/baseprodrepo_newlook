@@ -24,7 +24,9 @@ public class Tg_B2bPartner_Obj extends Tg_B2b_Partner_Entity{
 		this.mobile=agentEntity.getMobile();
 		this.address=agentEntity.getAddress();
 		this.email = agentEntity.getEmail();
+		this.gstNumber=agentEntity.getGstNumber();
 		this.cityId=agentEntity.getCityId();
+		this.website=agentEntity.getWebsite();
 		this.active=agentEntity.isActive();
 	}
 	
@@ -37,6 +39,7 @@ public class Tg_B2bPartner_Obj extends Tg_B2b_Partner_Entity{
 		this.address=agentEntity.getAddress();
 		this.email = agentEntity.getEmail();
 		this.cityId=agentEntity.getCityId();
+		this.website=agentEntity.getWebsite();
 		this.active=agentEntity.isActive();
 	}
 

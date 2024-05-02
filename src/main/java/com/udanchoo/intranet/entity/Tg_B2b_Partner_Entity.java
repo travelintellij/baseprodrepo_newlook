@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.udanchoo.intranet.model.Tg_B2bPartner_Obj;
+
 @Entity
 @Table(name = "tg_b2b_partners")
 public class Tg_B2b_Partner_Entity extends AuditModel {
@@ -32,6 +34,25 @@ public class Tg_B2b_Partner_Entity extends AuditModel {
 	protected boolean active; 
 		
 	
+	
+	
+	public Tg_B2b_Partner_Entity(Tg_B2bPartner_Obj partnerObj) {
+		this.partnerId = partnerObj.getPartnerId();
+		this.partnerShortName = partnerObj.getPartnerShortName();
+		this.partnerBrandName = partnerObj.getPartnerBrandName();
+		this.partnerName = partnerObj.getPartnerName();
+		this.address = partnerObj.getAddress();
+		this.mobile = partnerObj.getMobile();
+		this.cityId = partnerObj.getCityId();
+		this.email = partnerObj.getEmail();
+		this.gstNumber = partnerObj.getGstNumber();
+		this.remarks = partnerObj.getRemarks();
+		this.website = partnerObj.getWebsite();
+		this.active = partnerObj.isActive();
+	}
+
+
+
 	public int getPartnerId() {
 		return partnerId;
 	}

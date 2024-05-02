@@ -60,7 +60,8 @@
                     <font color="green"> ${Success} </font>
                     <font color="red"> ${Error}</font>
                 </b></div>
-            <form:form method="post" action="create_create_partner" modelAttribute="PARTNER_OBJ" enctype="multipart/form-data">
+            <form:form method="post" action="create_create_b2b_partner" modelAttribute="PARTNER_OBJ" enctype="multipart/form-data">
+				<font color="red"> <form:errors path="logoFile" cssClass="error" /></font>                
                 <table>
                 <tr>
                 <th style="width:17%;"><label for="" style="font-weight:600">Partner Id</label></th><td> Auto Generated</td>
@@ -77,7 +78,7 @@
                 <tr>
 				<th style="width:17%;"><label for="" style="font-weight:600">Mobile</label></th><td><form:input path="mobile" maxlength="25" size="25" type="number" /> </td>
                 <th style="width:17%;"><label for="" style="font-weight:600">Email</label></th><td><form:input path="email" maxlength="25" size="25" type="email"/> </td>
-                <th style="width:17%;"><label for="" style="font-weight:600">GST Number</label></th><td><form:input path="email" maxlength="25" size="25" type="gstNumber"/> </td>
+                <th style="width:17%;"><label for="" style="font-weight:600">GST Number</label></th><td><form:input path="gstNumber" maxlength="25" size="25" /> </td>
                 </tr>
                 <tr>
                  <th style="width:17%;"><label for="" style="font-weight:600">Active</label></th>

@@ -293,6 +293,12 @@ public class IncentiveServiceImpl {
 						dealEntity = dealService.find_DealEntityBy_Id(Long.parseLong(dealKeyword));
 					}
 					else {
+					    System.out.println("Deal owner for incentive is " + dealOwner);
+						/*if((!isAdmin) && filterDealObj.getDealOwner()==0) {
+					    	filterDealObj.setDealOwner(user.getUserId());
+					    }
+						*/
+						
 						if(dealService.findBy_DealConfirmationId_DealOwner(Long.parseLong(dealKeyword),dealOwner).isPresent()) {
 							dealEntity = dealService.findBy_DealConfirmationId_DealOwner(Long.parseLong(dealKeyword),dealOwner).get();
 						}else {

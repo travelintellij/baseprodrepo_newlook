@@ -24,16 +24,19 @@ public class FileStorageService {
     private Path fileStorageLocation;
     private Path clientStorageLocation;
     private Path userStorageLocation;
+    private Path partnerLogoLocation;
 
     @Autowired
     public FileStorageService(FileStorageProperties fileStorageProperties) {
         this.fileStorageLocation = Paths.get(fileStorageProperties.getUploadDir()).toAbsolutePath().normalize();
         this.clientStorageLocation = Paths.get(fileStorageProperties.getUploadClientsDir()).toAbsolutePath().normalize();
         this.userStorageLocation = Paths.get(fileStorageProperties.getUploadUsersDir()).toAbsolutePath().normalize();
+        this.partnerLogoLocation = Paths.get(fileStorageProperties.getUploadPartnerLogoDir()).toAbsolutePath().normalize();
         try {
             Files.createDirectories(this.fileStorageLocation);
             Files.createDirectories(this.clientStorageLocation);
             Files.createDirectories(this.userStorageLocation);
+            Files.createDirectories(this.partnerLogoLocation);
         } catch (Exception ex) {
             throw new FileStorageException("Could not create the directory where the uploaded files will be stored.", ex);
         }
@@ -114,6 +117,14 @@ public class FileStorageService {
 
 	public void setUserStorageLocation(Path userStorageLocation) {
 		this.userStorageLocation = userStorageLocation;
+	}
+
+	public Path getPartnerLogoLocation() {
+		return partnerLogoLocation;
+	}
+
+	public void setPartnerLogoLocation(Path partnerLogoLocation) {
+		this.partnerLogoLocation = partnerLogoLocation;
 	}
 	
 	

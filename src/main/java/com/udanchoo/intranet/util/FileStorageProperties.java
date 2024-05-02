@@ -7,6 +7,7 @@ public class FileStorageProperties {
     private String uploadDir;
     private String uploadClientsDir;
     private String uploadUsersDir;
+    private String uploadPartnerLogoDir;
     
     public String getUploadDir() {
         return uploadDir;
@@ -31,7 +32,16 @@ public class FileStorageProperties {
 	public void setUploadUsersDir(String uploadUsersDir) {
 		this.uploadUsersDir = uploadUsersDir;
 	}
-    
+
+	public String getUploadPartnerLogoDir() {
+		return uploadPartnerLogoDir;
+	}
+
+	public void setUploadPartnerLogoDir(String uploadPartnerLogoDir) {
+		this.uploadPartnerLogoDir = uploadPartnerLogoDir;
+	}
+
+	
     
     
     

@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -28,6 +30,7 @@ import com.udanchoo.intranet.model.UserDetailsObj;
 import com.udanchoo.intranet.model.leads.TgLeadsRecorderVO;
 import com.udanchoo.intranet.service.TgB2bPartnerServicesImpl;
 import com.udanchoo.intranet.util.UdanChooConstants;
+import com.udanchoo.intranet.validator.B2bPartnerValidator;
 
 @Controller
 public class B2bPartnerController {
@@ -35,6 +38,10 @@ public class B2bPartnerController {
 	
 	@Autowired
 	TgB2bPartnerServicesImpl b2bPartnerService;
+	
+	@Autowired
+	B2bPartnerValidator b2bPartnerValidator;
+	
 	
 	@ResponseBody
 	@RequestMapping("getB2bPartnerById")
@@ -54,32 +61,24 @@ public class B2bPartnerController {
     	return mapview;
     }
 
-	 @Transactional
-	@PostMapping("create_create_partner")
-	public ModelAndView create_create_partner(@ModelAttribute("PARTNER_OBJ") Tg_B2bPartner_Obj partnerObj,  BindingResult result,final RedirectAttributes redirectAttrib ) throws IOException {
+	@Transactional
+	@PostMapping("create_create_b2b_partner")
+	public ModelAndView create_create_b2b_partner(@ModelAttribute("PARTNER_OBJ") Tg_B2bPartner_Obj partnerObj,  BindingResult result,final RedirectAttributes redirectAttrib ) throws IOException {
 		ModelAndView modelView = new ModelAndView();
 		modelView.setViewName("redirect:form_register_partner");
-		//leadValidator.validate(leadRecorderObj, result);
+		b2bPartnerValidator.validate(partnerObj, result);
 		if(result.hasErrors()) {
 			modelView = form_register_partner(partnerObj, result);
 			return modelView;
 		}else {
 			b2bPartnerService.savePartnerAndFile(partnerObj);
-			/*
-			Tg_Leads_Recorder_Entity tgLeadEntity = new Tg_Leads_Recorder_Entity(leadRecorderObj);
-			//below is the temporary code and need to be deleted and uncomment the saveLead part. 
-			//tgLeadEntity.setLeadId(7l);
-			leadService.saveLead(tgLeadEntity);
-			leadRecorderObj.setLeadId(tgLeadEntity.getLeadId());
-			redirectAttrib.addFlashAttribute("Success", "Lead Record is updated Successfully..");
-			modelView.setViewName("redirect:view_lead_details?leadId="+tgLeadEntity.getLeadId());
-			if(leadRecorderObj.isLeadCreationClientInformed()) {
-				notifyLeadCreationTargetAudience(leadRecorderObj,"LeadCreateConfirmation.ftl",true,true);
-				notifyLeadCreationSms(leadRecorderObj);
-			}*/
-			//write email code here. 
 		}
 		return modelView; 
 	 }
+	
+	private boolean isValidImageFile(MultipartFile file) {
+        return file.getContentType() != null && (file.getContentType().equals(MediaType.IMAGE_JPEG_VALUE)
+                || file.getContentType().equals(MediaType.IMAGE_PNG_VALUE));
+    }
 	
 }

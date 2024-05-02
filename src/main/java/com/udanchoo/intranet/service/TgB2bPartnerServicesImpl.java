@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.udanchoo.intranet.entity.Tg_B2b_Partner_Entity;
+import com.udanchoo.intranet.entity.leads.Tg_Leads_Recorder_Entity;
 import com.udanchoo.intranet.model.Tg_B2bPartner_Obj;
 import com.udanchoo.intranet.repository.TgB2bPartnersRepository;
 
@@ -67,15 +68,12 @@ public class TgB2bPartnerServicesImpl {
 	
 
     @Transactional(rollbackFor = Exception.class)
-    public void savePartnerAndFile(Tg_B2bPartner_Obj partner) throws IOException {
-    	Path directoryPath = Paths.get(fileStorageService.getUserStorageLocation() + "\\" + partner.getPartnerBrandName() );
-    	//Save partner details to the database
-        // Your implementation here...
-
+    public void savePartnerAndFile(Tg_B2bPartner_Obj partnerObj) throws IOException {
+    	Path directoryPath = Paths.get(fileStorageService.getPartnerLogoLocation().toString());
+    	Tg_B2b_Partner_Entity b2bPartnerEntity = new Tg_B2b_Partner_Entity(partnerObj);
+    	b2bPartnerRepository.save(b2bPartnerEntity);
         // Upload file
-    	String fileName = fileStorageService.storeFile(partner.getLogoFile(),directoryPath);
-    	
-    	
+    	String fileName = fileStorageService.storeFile(partnerObj.getLogoFile(),directoryPath);
     }
 	
 }
