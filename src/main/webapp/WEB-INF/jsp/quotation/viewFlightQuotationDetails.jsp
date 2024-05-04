@@ -92,6 +92,8 @@
                                                                     type="button"
                                                                     value="Flight-Search-Return" /></a>
                                                                      --%>
+                                                                     
+                                                                 <div style="display: flex;justify-content: center;width:100%">
                                                                    <a> <form action="/udanchoo/storeIds" method="post">
                                                                             <input type="hidden" name="leadId" value="${LEAD_OBJ.leadId}">
                                                                             <input type="hidden" name="quotationId" value="${QTN_OBJ.quotationId}">
@@ -101,7 +103,8 @@
                                                                 href="form_view_add_manual_flight_quotation?leadId=${LEAD_OBJ.leadId }&quotationId=${QTN_OBJ.quotationId}"><input
                                                                     type="button" 
                                                                     value="Add Manually" /></a>
-                                                    </c:if>
+                                                                    </div>
+                                                    </c:if> 
                                                     <c:if test="${QTN_OBJ.converted eq true }">
                                                        <a><input type="button" 
                                                                     value="Flight-Search-One-Way" /> <input

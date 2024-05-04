@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <jsp:include page="../../menu/MenuBuilder.jsp" />
-
+  
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-    <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-        <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-            <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 
                 <head>
                     <meta charset="UTF-8">
                     <meta name="viewport" content="width=device-width, initial-scale=1.0">
                     <title>Document</title>
-                    <script src="<c:url value=" /resources/core/jquery.1.10.2.min.js" />"></script>
-                    <script src="<c:url value=" /resources/core/jquery.autocomplete.min.js" />"></script>
+                    <script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
+                    <script src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
                 </head>
 <style>
- body::before {
+body::before {
             content: "";
-            background-image:  url(${pageContext.request.contextPath}/resources/images/revamped/package_pic.jpg);
+            background-image:  url(${pageContext.request.contextPath}/resources/images/revamped/add_mu.jpg);
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center center;
@@ -30,13 +30,30 @@
             opacity: 0.5; /* Adjust the opacity value as needed (0.0 to 1.0) */
             z-index: -1;
         }
+        .autocomplete-suggestions { border: 1px solid #999; background: red;overflow-y:auto}
+		.autocomplete-suggestion {padding: 2px 5px;color:white; background: black;overflow-y: auto;overflow-y:auto}
+		.autocomplete-selected { background: #F0F0F0;overflow-y:auto} 
+		.autocomplete-suggestions strong { font-weight: normal; color:#FABA08;overflow-y:auto}
+		.autocomplete-group { padding: 2px 5px;overflow-y:auto}
+		.autocomplete-group strong { display: block; border-bottom: 1px solid #000;  background: black ; color:black overflow-y:auto}
+		.autocomplete-selected:hover{
+		color:black
+		}
 </style>
                 <body>
                                 
                     <div class="afd">
 <jsp:include page="../_quotationServicesMenu.jsp" />
 </div>
-                
+
+        <div class="autocomplete-suggestions" style="display:none">
+    <div class="autocomplete-group" ><strong>NHL</strong></div>
+    <div class="autocomplete-suggestion autocomplete-selected" >...</div>
+    <div class="autocomplete-suggestion">...</div>
+    <div class="autocomplete-suggestion">...</div>
+</div>    
+
+    
 <div class="my-ki">
     <!-- ############# quick lead view starts here################## -->
     <form:form modelAttribute="LEAD_OBJ" action="create_create_lead_quotation">
@@ -110,15 +127,12 @@
                     <div class="add_man_pckage_wrapper_data_line">
                         <div class="add_man_pckage_wrapper_dl1">
                             <label for="">City</label>
-                            <form:input path="cityName" type="text" id="cityName" />
-                            <form:hidden path="cityId" id="cityId" />
-                             <font color="red">
-                                <form:errors path="cityName" cssClass="error" />
-                            </font>
+                           <font color="red"><form:errors path="cityName" cssClass="error" /></font>
+				<form:input path="cityName"  type="text" id="cityName"  />
+				<form:hidden path = "cityId" id="cityId" />
                         </div>
                         <div class="add_man_pckage_wrapper_dl1">
                             <label for="">Package Name</label>
-                            
                             <form:input path="packageName" type="text" id="packageName" required="required" />
                             <font color="red">
                                 <form:errors path="packageName" cssClass="error" />
@@ -225,34 +239,35 @@
                             </div>
                         </div>
                     </div>
-                    <script>
-                        $('#cityName').autocomplete({
-                            serviceUrl: '${pageContext.request.contextPath}/getCityList',
-                            paramName: "cityName",
-                            delimiter: ",",
-                            onSelect: function (suggestion) {
-                                cityID = suggestion.data;
-                                id = cityID;
-                                jQuery("#cityId").val(cityID);
-                                $('input[name=cityId]').val(id);
-                                return false;
-                            },
-                            transformResult: function (response) {
-                                return {
-                                    suggestions: $.map($.parseJSON(response), function (item) {
-                                        return {
-                                            value: item.cityName,
-                                            data: item.destinationId
-                                        };
-                                    })
+                   <script>
+$('#cityName').autocomplete({
+	serviceUrl : '${pageContext.request.contextPath}/getCityList',
+	paramName : "cityName",
+	delimiter : ",",
+	onSelect : function(suggestion) {
+		cityID = suggestion.data;
+		id = cityID;
+		jQuery("#cityId").val(cityID);
+		$('input[name=cityId]').val(id);
+		return false;
+	},
+	transformResult : function(response) {
+		return {
+			suggestions : $.map($.parseJSON(response), function(item) {
+				return {
+					value : item.cityName,
+					data : item.destinationId
+				};
+			})
 
-                                };
-                            }
-                        });
+		};
+	}
+});
 
 
 
-                    </script>
+</script>
+
                 </body>
 
 </html>
