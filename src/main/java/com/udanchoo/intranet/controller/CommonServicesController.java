@@ -223,11 +223,9 @@ public class CommonServicesController {
 	List<Tag> getDealInfo(@RequestParam String dealKeyword) {
 		UserDetailsObj user = getLoggedInUser();
     	boolean isAdmin=false;
-    	
      	if(user.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"))) {
     		isAdmin=true;
     	}
-
 		List<Tag> result = new ArrayList<Tag>();
 		List<Udn_Deals_Recorder_Obj> dealListResult;
 		try {

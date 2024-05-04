@@ -17,6 +17,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import javax.persistence.criteria.Subquery;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -210,7 +211,8 @@ public class UdnCommonServicesImpl {
 		List<Udn_Deals_Recorder_Obj> dealSearchList = new ArrayList();
 		if(StringUtils.isNumeric(dealKeyword)) {
 			try {
-				Udn_Deals_Recorder_Entity dealEntity = dealService.findBy_DealConfirmationId_And_DealOwner(Long.parseLong(dealKeyword),dealOwner,isAdmin);
+				//Udn_Deals_Recorder_Entity dealEntity = dealService.findBy_DealConfirmationId_And_DealOwner(Long.parseLong(dealKeyword),dealOwner,isAdmin);
+				Udn_Deals_Recorder_Entity dealEntity = dealService.findByDealConfirmationId_DealOwner_TaggedTeam(Long.parseLong(dealKeyword),dealOwner,isAdmin);
 				if(dealEntity!=null) {
 					Udn_Deals_Recorder_Obj dealObj = new Udn_Deals_Recorder_Obj(dealEntity);
 					dealObj.setClientName((clientService.getClientById(dealObj.getClientId()).getClientName()));
@@ -266,6 +268,16 @@ public class UdnCommonServicesImpl {
 				
 				if(!isAdmin) {
 					predicates.add(criteriaBuilder.equal(dealRootEntity.get("dealOwner"), dealOwner));
+					
+/*
+					// Add condition for team members using a subquery
+			        Subquery<Long> subquery = query.subquery(Long.class);
+			        Root<Udn_Deals_Recorder_Entity> subqueryRoot = subquery.from(Udn_Deals_Recorder_Entity.class);
+			        subquery.select(subqueryRoot.get("dealOwner"));
+			        subquery.where(criteriaBuilder.equal(subqueryRoot.join("teamMembers").get("id"), dealOwner));
+			        */
+
+					
 				}
 				
 				predicates.add(criteriaBuilder.greaterThanOrEqualTo(dealRootEntity.get("createdAt"),criteriaDate));
@@ -281,7 +293,6 @@ public class UdnCommonServicesImpl {
 				return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
 			}
 		});
-		System.out.println("Returned Deal Size is " + filteredDealsRecorderEntity.size());
 		return filteredDealsRecorderEntity;
 	}
 	
