@@ -622,6 +622,25 @@ public class DealServiceImpl {
 	}
 	
 	
+	public boolean isDealRelevantForAccessingUser(long dealConfirmationId, long dealOwner,boolean isAdmin) {
+		Optional<Udn_Deals_Recorder_Entity> optionalDealEntity =  dealRepository.findById(dealConfirmationId);
+		Udn_Deals_Recorder_Entity dealEntity = null;
+		boolean isDealPresent = optionalDealEntity.isPresent();
+		if(isDealPresent) {
+			dealEntity = dealRepository.findById(dealConfirmationId).get();
+		}
+		if(isDealPresent && isAdmin) {
+			return true; 
+		}
+		else if(isDealPresent && dealEntity.getDealOwner()==dealOwner) {
+			return true;
+		}
+		else if(isDealPresent && dealEntity.getTeam().stream().anyMatch(udnTeam -> udnTeam.getUserId() == dealOwner)) {
+			return true;
+		}
+		return false;
+	}
+	
 	public Optional<Udn_Deals_Recorder_Entity> findBy_DealConfirmationId_DealOwner(long dealConfirmationId,long dealOwner){
 		return dealRepository.findByDealConfirmationIdAndDealOwner(dealConfirmationId, dealOwner);
 	}

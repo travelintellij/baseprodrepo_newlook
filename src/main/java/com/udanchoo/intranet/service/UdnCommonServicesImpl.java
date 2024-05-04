@@ -17,7 +17,6 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-import javax.persistence.criteria.Subquery;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -228,7 +227,13 @@ public class UdnCommonServicesImpl {
 		}
 		else {
 			List<Udn_Deals_Recorder_Entity> dealList = searchDealsBasedOnClient(dealOwner, dealKeyword,isAdmin);
-			List<Udn_Deals_Recorder_Obj> dealObjList = convertDealListToObj(dealList);
+			List<Udn_Deals_Recorder_Entity> filteredReleveantList = new ArrayList();
+			for (Udn_Deals_Recorder_Entity dealEntity : dealList) {
+				if(dealService.isDealRelevantForAccessingUser(dealEntity.getDealConfirmationId(), dealOwner, isAdmin)) {
+					filteredReleveantList.add(dealEntity);
+				}
+			}
+			List<Udn_Deals_Recorder_Obj> dealObjList = convertDealListToObj(filteredReleveantList);
 			dealSearchList.addAll(dealObjList);
 		}
 		return dealSearchList;
@@ -268,18 +273,7 @@ public class UdnCommonServicesImpl {
 				
 				if(!isAdmin) {
 					predicates.add(criteriaBuilder.equal(dealRootEntity.get("dealOwner"), dealOwner));
-					
-/*
-					// Add condition for team members using a subquery
-			        Subquery<Long> subquery = query.subquery(Long.class);
-			        Root<Udn_Deals_Recorder_Entity> subqueryRoot = subquery.from(Udn_Deals_Recorder_Entity.class);
-			        subquery.select(subqueryRoot.get("dealOwner"));
-			        subquery.where(criteriaBuilder.equal(subqueryRoot.join("teamMembers").get("id"), dealOwner));
-			        */
-
-					
 				}
-				
 				predicates.add(criteriaBuilder.greaterThanOrEqualTo(dealRootEntity.get("createdAt"),criteriaDate));
 				if(clientName!=null && clientName.trim().length()>0) {
 					Root<UdnClientEntity> clientRootEntity = query.from(UdnClientEntity.class);
@@ -293,6 +287,8 @@ public class UdnCommonServicesImpl {
 				return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
 			}
 		});
+		
+
 		return filteredDealsRecorderEntity;
 	}
 	

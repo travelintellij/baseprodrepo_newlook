@@ -582,9 +582,13 @@ public class DealController {
 	//@RequestMapping("/workload/view_view_deal_form")
 	@RequestMapping("/view_view_deal_form")
    	public ModelAndView view_view_deal_form(@RequestParam("dealConfirmationId") long dealConfirmationId,@ModelAttribute("dealRecorder") Udn_Deals_Recorder_Obj dealRecorder, BindingResult result) {
+		
+		
 		ModelAndView modelView = view_edit_deal_form(dealConfirmationId,dealRecorder,null);
 		modelView.setViewName("deals/form_viewDeal");
-    	return modelView;
+
+		
+		return modelView;
     } 
 	
 	
