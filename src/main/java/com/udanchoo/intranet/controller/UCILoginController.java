@@ -78,7 +78,7 @@ public class UCILoginController {
     }
     
     
-    @RequestMapping(value="/login", method=RequestMethod.GET)  
+    @RequestMapping(value="/login", method=RequestMethod.GET)
     public ModelAndView loginPage(HttpServletRequest request, HttpServletResponse response) {  
     	ModelAndView modelView = new ModelAndView();
     	modelView.setViewName("/login");

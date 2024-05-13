@@ -20,12 +20,12 @@ import com.udanchoo.intranet.service.UserDetailsServiceImpl;
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class SecurityConfiguration  extends WebSecurityConfigurerAdapter {
-	@Autowired
-	private UserDetailsServiceImpl myUserDetailsService;
-	
+public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+    @Autowired
+    private UserDetailsServiceImpl myUserDetailsService;
 
-	 @Override
+
+    @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(myUserDetailsService);
     }
@@ -36,15 +36,14 @@ public class SecurityConfiguration  extends WebSecurityConfigurerAdapter {
 		return NoOpPasswordEncoder.getInstance();
 	}*/
 
-	@Bean
-	public PasswordEncoder encoder() {
-	    return new BCryptPasswordEncoder();
-	}
+    @Bean
+    public PasswordEncoder encoder() {
+        return new BCryptPasswordEncoder();
+    }
 
-	
-	
-	@Override
-	protected void configure(HttpSecurity httpSecurity) throws Exception {
+
+    @Override
+    protected void configure(HttpSecurity httpSecurity) throws Exception {
 		/*
 		httpSecurity.csrf().disable()
 		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
@@ -55,12 +54,13 @@ public class SecurityConfiguration  extends WebSecurityConfigurerAdapter {
 		.antMatchers("/authenticate").permitAll()
 		.anyRequest().authenticated();
 		*/
-		httpSecurity.csrf().disable();
-		httpSecurity.authorizeRequests()
-        .antMatchers("/admin").hasRole("ADMIN")
-        .antMatchers("/user").hasAnyRole("ADMIN","USER")
-        .antMatchers("/**").permitAll()
-        .and().formLogin().successForwardUrl("/view_workloadhome");
-		//.and().formLogin().successForwardUrl("/welcome");
-	}
+        httpSecurity.csrf().disable();
+        httpSecurity.authorizeRequests()
+                .antMatchers("/admin").hasRole("ADMIN")
+                .antMatchers("/user").hasAnyRole("ADMIN", "USER")
+                .antMatchers("/**").permitAll()
+                .and().formLogin().loginPage("/login")
+                .permitAll().successForwardUrl("/view_workloadhome");
+        //.and().formLogin().successForwardUrl("/welcome");
+    }
 }
