@@ -372,7 +372,7 @@ public interface UdanChooConstants {
 		add("other");
 	}};
 	
-	@SuppressWarnings("serial")
+	/*@SuppressWarnings("serial")
 	public static Map<Object, Object> FLT_TICKET_TYPE_LIST = new HashMap<Object, Object>() {{
         put(1,"Economy");
         put(2,"Premium Economy");
@@ -381,6 +381,19 @@ public interface UdanChooConstants {
         put(5,"Other");
 
 	}};
+	*/
+	
+	@SuppressWarnings("serial")
+	static final Map<Integer,String> FLT_TICKET_TYPE_LIST = new HashMap<Integer,String>(){
+		{
+			put(1,"Other");
+			put(2,"Economy");
+			put(3,"Premium Economy");
+			put(4,"Business");
+			put(5,"Premium Business");
+			put(6,"First");
+			//Cabin class (1 for All, 2 for Economy, 3 for PremiumEconomy, 4 for Business, 5 for PremiumBusiness, 6 for First)
+		}};
 	
 
 	public static int DEFAULT_PAGE_SIZE = 20;
@@ -508,6 +521,9 @@ public interface UdanChooConstants {
             put(5,"Special Return");
         }
 	};
+	
+	
+	/*
 	static final Map<Integer,String> CABIN_CLASS = new HashMap<Integer,String>(){
         {
         	 put(0,"Economy");
@@ -518,6 +534,19 @@ public interface UdanChooConstants {
           //Cabin class (1 for All, 2 for Economy, 3 for PremiumEconomy, 4 for Business, 5 for PremiumBusiness, 6 for First)
         }
 	};
+	*/
+	static final Map<Integer,String> CABIN_CLASS = new HashMap<Integer,String>(){
+		{
+			put(1,"Other");
+			put(2,"Economy");
+			put(3,"Premium Economy");
+			put(4,"Business");
+			put(5,"Premium Business");
+			put(6,"First");
+			//Cabin class (1 for All, 2 for Economy, 3 for PremiumEconomy, 4 for Business, 5 for PremiumBusiness, 6 for First)
+		}};
+	
+	
 
 	static final Map<Integer,String> NO_OF_HALTS = new HashMap<Integer,String>(){
         {
