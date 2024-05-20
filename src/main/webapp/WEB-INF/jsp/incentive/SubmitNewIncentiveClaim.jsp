@@ -238,7 +238,7 @@
                                         <div class="due_today_task_data_bt SubmitNewIncentiveClaim_btn">
                                             <a id="myBtn[${filteredLeads.leadId}]" onclick="myLeadDisplay(this)"
                                                 data-load-url="view_view_deal_form_modal" data-toggle="modal"
-                                                data-target="#myModal"><input type="button" value="View Lead Details" style="border-radius:5px;margin-bottom:-10px;background:#FFBA08"/></a>
+                                                data-target="#myModal"><input type="button" value="View Deal Details" style="border-radius:5px;margin-bottom:-10px;background:#FFBA08"/></a>
                                         </div>
                                     </div>
                                 </div>

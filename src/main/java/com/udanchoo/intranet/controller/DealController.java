@@ -506,7 +506,7 @@ public class DealController {
 	
 	//@RequestMapping("/workload/view_edit_deal_form")
 	@RequestMapping("/view_edit_deal_form")
-	   	public ModelAndView view_edit_deal_form(@RequestParam("dealConfirmationId") long dealConfirmationId,@ModelAttribute("dealRecorder") Udn_Deals_Recorder_Obj dealRecorder, BindingResult result) {
+	   	public ModelAndView view_edit_deal_form(@RequestParam("dealConfirmationId") long dealConfirmationId,@ModelAttribute("dealRecorder") Udn_Deals_Recorder_Obj dealRecorder, BindingResult result) throws RecordNotFoundException{
 	    //System.out.println("Deal Recorder Object is " + dealRecorder);	
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 	    	String username;
@@ -520,13 +520,13 @@ public class DealController {
 	     	if(userObj.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"))) {
 	    		isAdmin=true;
 	    	}
-	    	try {
-	    		dealRecorder = dealService.findDealEntityBy_Id(dealConfirmationId,userObj.getUserId(),isAdmin,dealRecorder);
+	    	//try {
+	     	dealRecorder = dealService.findDealEntityBy_Id(dealConfirmationId,userObj.getUserId(),isAdmin,dealRecorder);
 
-			} catch (RecordNotFoundException e) {
+			/*} catch (RecordNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
+			}*/
 	    	
 	    	ModelAndView mapview = new ModelAndView("deals/form_editDeal");
 	    	mapview.addObject("userName", username);
@@ -582,11 +582,14 @@ public class DealController {
 	//@RequestMapping("/workload/view_view_deal_form")
 	@RequestMapping("/view_view_deal_form")
    	public ModelAndView view_view_deal_form(@RequestParam("dealConfirmationId") long dealConfirmationId,@ModelAttribute("dealRecorder") Udn_Deals_Recorder_Obj dealRecorder, BindingResult result) {
-		
-		
-		ModelAndView modelView = view_edit_deal_form(dealConfirmationId,dealRecorder,null);
-		modelView.setViewName("deals/form_viewDeal");
-
+		ModelAndView modelView = new ModelAndView(); 
+		try {
+			modelView = view_edit_deal_form(dealConfirmationId,dealRecorder,null);
+			modelView.setViewName("deals/form_viewDeal");
+		}
+		catch(RecordNotFoundException rnf) {
+			modelView.setViewName("deals/dealError");
+		}
 		
 		return modelView;
     } 
@@ -594,8 +597,15 @@ public class DealController {
 	
 	@RequestMapping("/view_view_deal_form_modal")
    	public ModelAndView view_view_deal_form_modal(@RequestParam("dealConfirmationId") long dealConfirmationId,@ModelAttribute("dealRecorder") Udn_Deals_Recorder_Obj dealRecorder, BindingResult result) {
-		ModelAndView modelView = view_edit_deal_form(dealConfirmationId,dealRecorder,null);
-		modelView.setViewName("deals/form_viewDeal_modal");
+		ModelAndView modelView = new ModelAndView();
+		try {
+			modelView = view_edit_deal_form(dealConfirmationId,dealRecorder,null);
+			modelView.setViewName("deals/form_viewDeal_modal");
+		}
+		catch(RecordNotFoundException rnf) {
+			modelView.setViewName("deals/dealError");
+		}
+		
     	return modelView;
     }
 	

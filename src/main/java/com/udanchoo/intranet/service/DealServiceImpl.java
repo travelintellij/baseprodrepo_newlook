@@ -75,6 +75,7 @@ import com.udanchoo.intranet.repository.DealRepository;
 import com.udanchoo.intranet.repository.Deal_Service_Map_Repository;
 import com.udanchoo.intranet.repository.Deal_Status_Repository;
 import com.udanchoo.intranet.repository.TgB2bPartnersRepository;
+import com.udanchoo.intranet.repository.Ti_Deals_Team_Map_Repository;
 import com.udanchoo.intranet.repository.Udn_Services_Master_Repository;
 import com.udanchoo.intranet.util.UdanChooConstants;
 
@@ -116,7 +117,8 @@ public class DealServiceImpl {
 	@Autowired
 	UserDetailsServiceImpl userService;
 
-
+	@Autowired
+	Ti_Deals_Team_Map_Repository dealTeamMapRepository;
 	
 	public Udn_Deals_Recorder_Entity createDealWithServices(Udn_Deals_Recorder_Entity entity) {
 		entity = dealRepository.saveAndFlush(entity);
@@ -151,23 +153,21 @@ public class DealServiceImpl {
 		return dealRecorderObj;
 	} 
 	
-	public Udn_Deals_Recorder_Obj findDealEntityBy_Id(Long dealId,long dealOwner,boolean isDealAdmin,Udn_Deals_Recorder_Obj dealRecorderObj ) throws RecordNotFoundException {
+	public Udn_Deals_Recorder_Obj findDealEntityBy_Id(Long dealId,int dealOwner,boolean isDealAdmin,Udn_Deals_Recorder_Obj dealRecorderObj ) throws RecordNotFoundException {
 		Optional<Udn_Deals_Recorder_Entity> dealEntity ;
-		boolean dealAccessAllowed = false; 
-		
 		//if the user is admin or tagged user or deal owner then only deal access will be allowed to user. 
-		
-		
-
-		/*
 		if(isDealAdmin) {
 			dealEntity =  dealRepository.findById(dealId);
 			
 		}
 		else {
 			dealEntity =  dealRepository.findByDealConfirmationIdAndDealOwner(dealId,dealOwner);
-		}*/
-		dealEntity =  dealRepository.findById(dealId);
+		}
+		if(!dealEntity.isPresent()) {
+			if(dealTeamMapRepository.existsByDealConfirmationIdAndUserId(dealId, dealOwner)){
+				dealEntity =  dealRepository.findById(dealId);	
+			}
+		}
 		if(dealEntity.isPresent()) {
 			HashSet operatingTeam= new HashSet(); 
 			dealEntity.get().getTeam().forEach(e->operatingTeam.add(String.valueOf(e.getUserId())));
@@ -180,12 +180,12 @@ public class DealServiceImpl {
 			dealRecorderObj.setStatusName(commonService.find_DealStatusById(dealRecorderObj.getDealStatus()).getWorkloadStatusName());
 			dealRecorderObj.setDealSourceName(findAgentById(dealRecorderObj.getDealSource()).getPartnerShortName());
 			dealRecorderObj.setDealOwnerName(userService.findUserByID(Integer.parseInt(String.valueOf(dealRecorderObj.getDealOwner()))).getUsername());
-		}else {
+		}
+		else {
 			throw new RecordNotFoundException("Deal Id: " + dealId + " do not Exist !!");
 		}
 		return dealRecorderObj;
 	} 
-	
 	
 	public Udn_Deals_Recorder_Entity find_DealEntityBy_Id(Long dealId) throws RecordNotFoundException {
 		Optional<Udn_Deals_Recorder_Entity> dealEntity =  dealRepository.findById(dealId);
@@ -194,7 +194,6 @@ public class DealServiceImpl {
 		}
 		return dealEntity.get();
 	} 
-	
 	
 	//following code will iterate through all the services booked under the deal and set the status of the workload.
 	public void setDealWLServicesStatasName(Udn_Deals_Recorder_Obj dealRecorderObj) {

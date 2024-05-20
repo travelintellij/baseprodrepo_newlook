@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import com.udanchoo.intranet.entity.Udn_Deal_HTL_SL_Entity;
 import com.udanchoo.intranet.entity.Udn_Deals_Recorder_Entity;
 
 @Repository
@@ -51,6 +52,7 @@ public interface DealRepository extends JpaRepository<Udn_Deals_Recorder_Entity,
 	
 	Optional<Udn_Deals_Recorder_Entity> findByDealConfirmationIdAndDealOwner(long dealConfirmationId,long dealOwner);
 	
+		
 	boolean existsByclientId(long clientId);
 	
 	long countByDealStatusAndDealOwner(int status,long dealOwner);
