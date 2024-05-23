@@ -62,6 +62,35 @@ public class FileStorageService {
         }
     }
 
+    public String storePartnerLogo(MultipartFile file,Path fileStorageLocation,String fileBrandShortName) {
+        // Normalize file name
+        
+        String fileExtension=".jpg";
+        int lastIndexOfDot = file.getOriginalFilename().lastIndexOf('.');
+        if (lastIndexOfDot != -1) {
+            fileExtension = file.getOriginalFilename().substring(lastIndexOfDot);
+        }
+        
+        // Create the new file name using partnerShortName and the file extension
+        String newFileName = fileBrandShortName + fileExtension;
+        String fileName = StringUtils.cleanPath(newFileName);
+
+        try {
+            // Check if the file's name contains invalid characters
+            if(fileName.contains("..")) {
+                throw new FileStorageException("Sorry! Filename contains invalid path sequence " + fileName);
+            }
+
+            // Copy file to the target location (Replacing existing file with the same name)
+            Path targetLocation = fileStorageLocation.resolve(newFileName);
+            Files.copy(file.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
+
+            return fileName;
+        } catch (IOException ex) {
+            throw new FileStorageException("Could not store file " + fileName + ". Please try again!", ex);
+        }
+    }
+
     
     /***************** TEMP CODE *********************************/
     

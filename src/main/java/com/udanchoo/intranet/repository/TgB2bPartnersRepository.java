@@ -16,4 +16,6 @@ public interface TgB2bPartnersRepository extends JpaRepository<Tg_B2b_Partner_En
 		@Query("FROM Tg_B2b_Partner_Entity a WHERE a.partnerId=?1 AND a.active=true")
 		Tg_B2b_Partner_Entity find_Active_Agent_ById(int id);
 		
+		boolean existsByPartnerShortName(String partnerShortBrandName); 
+		
 }

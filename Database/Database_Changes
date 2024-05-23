@@ -3,6 +3,8 @@
 
 
 
+
+
 #13th May 2024
 
 UPDATE `udanchoodb`.`udn_flt_manual_quotation` SET `cabinClass` = 2 WHERE cabinClass = 0;
@@ -10,20 +12,6 @@ UPDATE `udanchoodb`.`udn_flt_manual_quotation` SET `cabinClass` = 6 WHERE cabinC
 UPDATE `udanchoodb`.`udn_flt_manual_quotation` SET `cabinClass` = 3 WHERE cabinClass = 1;
 UPDATE `udanchoodb`.`udn_flt_quotation_stops_detail` SET `cabinClass` = 2 WHERE cabinClass = 0;
 UPDATE `udanchoodb`.`udn_flt_quotation_stops_detail` SET `cabinClass` = 3 WHERE cabinClass = 1;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ***************************************************
 

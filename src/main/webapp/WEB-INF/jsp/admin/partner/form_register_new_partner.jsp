@@ -62,6 +62,7 @@
                 </b></div>
             <form:form method="post" action="create_create_b2b_partner" modelAttribute="PARTNER_OBJ" enctype="multipart/form-data">
 				<font color="red"> <form:errors path="logoFile" cssClass="error" /></font>                
+				<font color="red"> <form:errors path="partnerShortName" cssClass="error" /></font>
                 <table>
                 <tr>
                 <th style="width:17%;"><label for="" style="font-weight:600">Partner Id</label></th><td> Auto Generated</td>

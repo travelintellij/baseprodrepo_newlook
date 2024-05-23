@@ -33,6 +33,7 @@ import com.udanchoo.intranet.entity.Udn_Airline_Master_Entity;
 import com.udanchoo.intranet.entity.Udn_Deal_Status_Entity;
 import com.udanchoo.intranet.entity.Udn_Deals_Recorder_Entity;
 import com.udanchoo.intranet.entity.Udn_Destinations_Entity;
+import com.udanchoo.intranet.entity.deals.Ti_Deals_Team_Map_Entity;
 import com.udanchoo.intranet.exception.RecordNotFoundException;
 import com.udanchoo.intranet.model.AirLineVO;
 import com.udanchoo.intranet.model.UdnDealStatusVO;
@@ -270,9 +271,15 @@ public class UdnCommonServicesImpl {
 			@Override
 			public Predicate toPredicate(Root<Udn_Deals_Recorder_Entity> dealRootEntity, CriteriaQuery< ?> query, CriteriaBuilder criteriaBuilder) {
 				List<Predicate> predicates = new ArrayList<>();
-				
-				if(!isAdmin) {
-					predicates.add(criteriaBuilder.equal(dealRootEntity.get("dealOwner"), dealOwner));
+				List<Predicate> dealUserMapPredicate = new ArrayList<>();
+ 				if(!isAdmin) {
+ 					//predicates.add(criteriaBuilder.equal(dealRootEntity.get("dealOwner"), dealOwner));
+
+ 					Predicate dealOwnerPredicate = criteriaBuilder.equal(dealRootEntity.get("dealOwner"), dealOwner);
+					Root<Ti_Deals_Team_Map_Entity> dealUserMapRootEntity = query.from(Ti_Deals_Team_Map_Entity.class);
+					Predicate predicateDealTeamMap = criteriaBuilder.equal(dealUserMapRootEntity.get("userId"),dealOwner);
+					Predicate finalUltimatePredicate = criteriaBuilder.or(dealOwnerPredicate,predicateDealTeamMap);
+					predicates.add(finalUltimatePredicate);
 				}
 				predicates.add(criteriaBuilder.greaterThanOrEqualTo(dealRootEntity.get("createdAt"),criteriaDate));
 				if(clientName!=null && clientName.trim().length()>0) {
@@ -284,11 +291,10 @@ public class UdnCommonServicesImpl {
 					clientPredicateList.add(clientIdPredicate);
 					predicates.addAll(clientPredicateList);
 				}
+				query.distinct(true);
 				return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
 			}
 		});
-		
-
 		return filteredDealsRecorderEntity;
 	}
 	
