@@ -65,7 +65,7 @@ public class B2bPartnerController {
 	@PostMapping("create_create_b2b_partner")
 	public ModelAndView create_create_b2b_partner(@ModelAttribute("PARTNER_OBJ") Tg_B2bPartner_Obj partnerObj,  BindingResult result,final RedirectAttributes redirectAttrib ) throws IOException {
 		ModelAndView modelView = new ModelAndView();
-		modelView.setViewName("redirect:form_register_partner");
+		//modelView.setViewName("redirect:form_register_partner");
 		b2bPartnerValidator.validate(partnerObj, result);
 		if(result.hasErrors()) {
 			modelView = form_register_partner(partnerObj, result);

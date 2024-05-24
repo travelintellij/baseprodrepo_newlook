@@ -25,8 +25,8 @@ public class Tg_B2b_Partner_Entity extends AuditModel {
 	protected String partnerBrandName;
 	protected String partnerName ;
 	protected String address ;
-	protected long mobile ;
-	protected long cityId ;
+	protected long contactNumber ;
+	protected int cityId ;
 	protected String email;
 	protected String gstNumber; 
 	protected String remarks; 
@@ -42,7 +42,7 @@ public class Tg_B2b_Partner_Entity extends AuditModel {
 		this.partnerBrandName = partnerObj.getPartnerBrandName();
 		this.partnerName = partnerObj.getPartnerName();
 		this.address = partnerObj.getAddress();
-		this.mobile = partnerObj.getMobile();
+		this.contactNumber = partnerObj.getContactNumber();
 		this.cityId = partnerObj.getCityId();
 		this.email = partnerObj.getEmail();
 		this.gstNumber = partnerObj.getGstNumber();
@@ -101,25 +101,27 @@ public class Tg_B2b_Partner_Entity extends AuditModel {
 
 
 
-	public long getMobile() {
-		return mobile;
+	
+
+	public long getContactNumber() {
+		return contactNumber;
 	}
 
 
 
-	public void setMobile(long mobile) {
-		this.mobile = mobile;
+	public void setContactNumber(long contactNumber) {
+		this.contactNumber = contactNumber;
 	}
 
 
 
-	public long getCityId() {
+	public int getCityId() {
 		return cityId;
 	}
 
 
 
-	public void setCityId(long cityId) {
+	public void setCityId(int cityId) {
 		this.cityId = cityId;
 	}
 

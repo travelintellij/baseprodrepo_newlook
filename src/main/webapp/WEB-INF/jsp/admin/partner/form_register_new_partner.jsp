@@ -63,25 +63,27 @@
             <form:form method="post" action="create_create_b2b_partner" modelAttribute="PARTNER_OBJ" enctype="multipart/form-data">
 				<font color="red"> <form:errors path="logoFile" cssClass="error" /></font>                
 				<font color="red"> <form:errors path="partnerShortName" cssClass="error" /></font>
+				<font color="red"> <form:errors path="cityName" cssClass="error" /></font>
                 <table>
                 <tr>
                 <th style="width:17%;"><label for="" style="font-weight:600">Partner Id</label></th><td> Auto Generated</td>
-                <th style="width:17%;"><label for="" style="font-weight:600">Short Name</label></th><td><form:input path="partnerShortName" maxlength="5" size="5" /></td>
-                <th style="width:17%;"><label for="" style="font-weight:600">Brand Name</label></th><td><form:input path="partnerBrandName" maxlength="25" size="15" /> <br></td>
+                <th style="width:17%;"><label for="" style="font-weight:600">Short Name</label></th><td><form:input path="partnerShortName" maxlength="10" size="5" /></td>
+                <th style="width:17%;"><label for="" style="font-weight:600">Brand Name</label></th><td><form:input path="partnerBrandName" maxlength="25" size="15" minlength="3" /> <br></td>
                 </tr>
                 <tr>
-                <th style="width:17%;"><label for="" style="font-weight:600">Partner Name</label></th><td><form:input path="partnerName" maxlength="25" size="25" /> </td>
+                <th style="width:17%;"><label for="" style="font-weight:600">Partner Name</label></th><td><form:input path="partnerName" maxlength="25" size="25" minlength="3" /> </td>
                  <th style="width:17%;"><label for="" style="font-weight:600">City</label></th><td><form:input path="cityName" name="cityName" /></td>
                 <form:hidden path="cityId" />
                 <th style="width:17%;"><label for="" style="font-weight:600">Address</label></th><td><form:textarea path="address" maxlength="1450" name="" id="address" cols="30" rows="2" /></td>
                 
                 </tr>
                 <tr>
-				<th style="width:17%;"><label for="" style="font-weight:600">Mobile</label></th><td><form:input path="mobile" maxlength="25" size="25" type="number" /> </td>
+				<th style="width:17%;"><label for="" style="font-weight:600">Contact Number</label></th><td><form:input path="contactNumber" maxlength="25" size="25" type="number" /> </td>
                 <th style="width:17%;"><label for="" style="font-weight:600">Email</label></th><td><form:input path="email" maxlength="25" size="25" type="email"/> </td>
                 <th style="width:17%;"><label for="" style="font-weight:600">GST Number</label></th><td><form:input path="gstNumber" maxlength="25" size="25" /> </td>
                 </tr>
                 <tr>
+                 <th style="width:17%;"><label for="" style="font-weight:600">website</label></th><td><form:input path="website" maxlength="250" size="25" /> </td>
                  <th style="width:17%;"><label for="" style="font-weight:600">Active</label></th>
                  <td>
                  	<form:select path="active" >
@@ -89,7 +91,7 @@
                  		<option class="service-small" value="false" >Not Active </option>
     				</form:select>
     			</td>
-    			<th style="width:17%;"><label for="" style="font-weight:600">Remarks</label></th><td><form:textarea path="remarks" maxlength="1450" name="" id="address" cols="30" rows="2" /></td>
+    			<th style="width:17%;"><label for="" style="font-weight:600">Remarks</label></th><td><form:textarea path="remarks" maxlength="1450" name="" id="remarks" cols="30" rows="2" /></td>
                 </tr>
                 
                 <tr>

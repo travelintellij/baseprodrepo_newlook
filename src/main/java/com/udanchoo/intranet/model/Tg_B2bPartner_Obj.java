@@ -21,7 +21,7 @@ public class Tg_B2bPartner_Obj extends Tg_B2b_Partner_Entity{
 		this.partnerName=agentEntity.getPartnerName();
 		this.partnerShortName=agentEntity.getPartnerShortName();
 		this.partnerBrandName=agentEntity.getPartnerBrandName();
-		this.mobile=agentEntity.getMobile();
+		this.contactNumber=agentEntity.getContactNumber();
 		this.address=agentEntity.getAddress();
 		this.email = agentEntity.getEmail();
 		this.gstNumber=agentEntity.getGstNumber();
@@ -33,7 +33,7 @@ public class Tg_B2bPartner_Obj extends Tg_B2b_Partner_Entity{
 	public void updateVoFromEntity(Tg_B2b_Partner_Entity agentEntity) {
 		this.partnerId = agentEntity.getPartnerId();
 		this.partnerName=agentEntity.getPartnerName();
-		this.mobile=agentEntity.getMobile();
+		this.contactNumber=agentEntity.getContactNumber();
 		this.partnerShortName=agentEntity.getPartnerShortName();
 		this.partnerBrandName=agentEntity.getPartnerBrandName();
 		this.address=agentEntity.getAddress();

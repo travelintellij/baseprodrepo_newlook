@@ -32,12 +32,16 @@ public class B2bPartnerValidator implements Validator {
 		if(!isValidImageFile(partnerVO.getLogoFile())) {
 			errors.rejectValue("logoFile", "logo.file.type.error");
 		}
-		if(partnerVO==null || partnerVO.getPartnerShortName().trim().length()==0) {
+		if(partnerVO.getPartnerShortName()==null || partnerVO.getPartnerShortName().trim().length()==0) {
 			errors.rejectValue("partnerShortName", "parnter.shortname.error");
 		}
 		if(b2bPartnerService.checkPartnerExistByShortName(partnerVO.getPartnerShortName())){
 			errors.rejectValue("partnerShortName", "parnter.shortname.duplicate.error");
 		}
+		if(!commonService.existsByDestinationIdAndCityName(partnerVO.getCityId(), partnerVO.getCityName())) {
+			errors.rejectValue("cityName", "city.error");
+		}
+
 			
 		
 	}
@@ -46,8 +50,17 @@ public class B2bPartnerValidator implements Validator {
 	
 	
 	private boolean isValidImageFile(MultipartFile file) {
-        return file.getContentType() != null && (file.getContentType().equals(MediaType.IMAGE_JPEG_VALUE)
+        boolean isValidFile = true;
+        if (file == null || file.isEmpty()) {
+        	System.out.println("As per this file upload is empty");
+        	return isValidFile;
+        }
+        	
+        isValidFile = file.getContentType() != null && (file.getContentType().equals(MediaType.IMAGE_JPEG_VALUE)
                 || file.getContentType().equals(MediaType.IMAGE_PNG_VALUE));
+		
+		System.out.println("As per this file status is " + isValidFile);
+        return isValidFile;
     }
 
 

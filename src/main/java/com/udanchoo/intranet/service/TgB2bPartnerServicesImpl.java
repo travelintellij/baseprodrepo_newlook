@@ -73,7 +73,8 @@ public class TgB2bPartnerServicesImpl {
     	Tg_B2b_Partner_Entity b2bPartnerEntity = new Tg_B2b_Partner_Entity(partnerObj);
     	b2bPartnerRepository.save(b2bPartnerEntity);
         // Upload file
-    	fileStorageService.storePartnerLogo(partnerObj.getLogoFile(),directoryPath,partnerObj.getPartnerShortName().trim());
+    	if (partnerObj.getLogoFile() != null && !partnerObj.getLogoFile().isEmpty())
+    		fileStorageService.storePartnerLogo(partnerObj.getLogoFile(),directoryPath,partnerObj.getPartnerShortName().trim());
     }
     
     public boolean checkPartnerExistByShortName(String partnerShortName) {
