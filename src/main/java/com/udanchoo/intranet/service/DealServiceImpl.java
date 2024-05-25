@@ -64,11 +64,12 @@ import com.udanchoo.intranet.exception.RecordNotFoundException;
 import com.udanchoo.intranet.model.DashboardLineChartObj;
 import com.udanchoo.intranet.model.DashboardObj;
 import com.udanchoo.intranet.model.SearchDealObj;
-import com.udanchoo.intranet.model.Tg_B2bPartner_Obj;
+
 import com.udanchoo.intranet.model.Udn_Deal_Services_Map_Obj;
 import com.udanchoo.intranet.model.Udn_Deals_Recorder_Obj;
 import com.udanchoo.intranet.model.UserDetailsObj;
 import com.udanchoo.intranet.model.leads.FilterLeadObj;
+import com.udanchoo.intranet.model.partner.Tg_B2bPartner_Obj;
 import com.udanchoo.intranet.model.quotation.ManualFlightQuotationVO;
 import com.udanchoo.intranet.model.quotation.TgQuotationRecorderVO;
 import com.udanchoo.intranet.repository.DealRepository;

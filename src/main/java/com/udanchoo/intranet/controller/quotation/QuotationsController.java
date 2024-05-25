@@ -3,7 +3,6 @@ package com.udanchoo.intranet.controller.quotation;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
-import java.nio.file.Files;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,12 +15,8 @@ import java.util.stream.Collectors;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
-import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.io.ByteArrayResource;
-import org.springframework.core.io.Resource;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -33,7 +28,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -53,15 +47,11 @@ import com.udanchoo.intranet.entity.quotation.Udn_Manual_Package_Quotation_Entit
 import com.udanchoo.intranet.entity.quotation.Udn_Manual_SightSeeing_Quotation_Entity;
 import com.udanchoo.intranet.entity.quotation.Udn_Manual_Transfer_Quotation_Entity;
 import com.udanchoo.intranet.entity.quotation.Udn_Manual_Visa_Quotation_Entity;
-import com.udanchoo.intranet.model.ClientObj;
-import com.udanchoo.intranet.model.Tag;
-import com.udanchoo.intranet.model.Tg_B2bPartner_Obj;
 import com.udanchoo.intranet.model.UdnDealStatusVO;
 import com.udanchoo.intranet.model.Udn_Deals_Recorder_Obj;
 import com.udanchoo.intranet.model.UserDetailsObj;
 import com.udanchoo.intranet.model.api.flight.Tg_Flt_Airport_Obj;
 import com.udanchoo.intranet.model.leads.TgLeadsRecorderVO;
-import com.udanchoo.intranet.model.quotation.ConfigurationQuotationVO;
 import com.udanchoo.intranet.model.quotation.FlightStopDetailQuotationVO;
 import com.udanchoo.intranet.model.quotation.ManualCruiseQuotationVO;
 import com.udanchoo.intranet.model.quotation.ManualFlightQuotationVO;

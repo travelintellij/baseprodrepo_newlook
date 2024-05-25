@@ -7,7 +7,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.udanchoo.intranet.model.Tg_B2bPartner_Obj;
+import com.udanchoo.intranet.model.partner.Tg_B2bPartner_Obj;
 import com.udanchoo.intranet.service.TgB2bPartnerServicesImpl;
 import com.udanchoo.intranet.service.UdnCommonServicesImpl;
 
@@ -41,8 +41,6 @@ public class B2bPartnerValidator implements Validator {
 		if(!commonService.existsByDestinationIdAndCityName(partnerVO.getCityId(), partnerVO.getCityName())) {
 			errors.rejectValue("cityName", "city.error");
 		}
-
-			
 		
 	}
  

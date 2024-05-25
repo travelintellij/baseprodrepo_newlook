@@ -7,7 +7,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.udanchoo.intranet.model.Tg_B2bPartner_Obj;
+import com.udanchoo.intranet.model.partner.Tg_B2bPartner_Obj;
+
+
 
 @Entity
 @Table(name = "tg_b2b_partners")

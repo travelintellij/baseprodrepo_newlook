@@ -98,7 +98,7 @@
                             <p class="lastOp">Partners</p>
                             <ul class="topHeaderSubMenu">
                                 <li><a href="form_register_partner" class="hoverOnLink">Add B2b Partner</a></li>
-                                <li><a href="view_search_city_form" class="hoverOnLink">Manage Partners</a></li>
+                                <li><a href="view_filter_partners" class="hoverOnLink">Manage Partners</a></li>
                             </ul>
                         </li>
 

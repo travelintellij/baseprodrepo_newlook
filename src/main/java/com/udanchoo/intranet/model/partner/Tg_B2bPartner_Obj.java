@@ -1,4 +1,4 @@
-package com.udanchoo.intranet.model;
+package com.udanchoo.intranet.model.partner;
 
 import org.springframework.web.multipart.MultipartFile;
 
