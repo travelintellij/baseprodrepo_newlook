@@ -6376,7 +6376,7 @@ width: 90%
     width: 90%;
 }
 /* ################### flight stop view ################# */
-.view_flight_wrapper{
+.view_flight_wrapper{ 
 color: black;
     text-align: center;
     border-collapse: collapse;
@@ -6384,6 +6384,7 @@ color: black;
     background: white;
     padding: 10px;
     border-radius: 10px;
+    width:80%;
 }
 .view_flight_wrapper_data_line{
     display: flex;
@@ -6391,6 +6392,10 @@ color: black;
 .view_flight_wrapper_dl{
     text-align: start;
     width: 300px;
+}
+.view_flight{
+	display: flex;
+	justify-content: center;
 }
 /* ###################### ClientCRUDDocs_wrapper ############## */
 .ClientCRUDDocs_wrapper {
