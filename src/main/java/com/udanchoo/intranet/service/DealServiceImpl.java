@@ -128,7 +128,7 @@ public class DealServiceImpl {
 	}
 	
 	
-	public Udn_Deals_Recorder_Obj findDealEntityById(Long dealId,long dealOwner,boolean isDealAdmin) throws RecordNotFoundException {
+	public Udn_Deals_Recorder_Obj findDealEntityById(Long dealId,int dealOwner,boolean isDealAdmin) throws RecordNotFoundException {
 		Optional<Udn_Deals_Recorder_Entity> dealEntity ;
 		if(isDealAdmin) {
 			dealEntity =  dealRepository.findById(dealId);
@@ -136,9 +136,11 @@ public class DealServiceImpl {
 		else {
 			dealEntity =  dealRepository.findByDealConfirmationIdAndDealOwner(dealId,dealOwner);
 		}
-		
-		
-		
+		if(!dealEntity.isPresent()) {
+			if(dealTeamMapRepository.existsByDealConfirmationIdAndUserId(dealId, dealOwner)){
+				dealEntity =  dealRepository.findById(dealId);	
+			}
+		}
 		Udn_Deals_Recorder_Obj dealRecorderObj = null;
 		if(dealEntity.isPresent()) {
 			dealRecorderObj = new Udn_Deals_Recorder_Obj(dealEntity.get());
@@ -863,7 +865,7 @@ public class DealServiceImpl {
 	}
 
 
-	private void convertInsuranceQtnToDeal(Udn_Deals_Recorder_Entity newDealEntity,Tg_Quotation_Recorder_Entity quotationEntity, long userId,boolean isAdmin) {
+	private void convertInsuranceQtnToDeal(Udn_Deals_Recorder_Entity newDealEntity,Tg_Quotation_Recorder_Entity quotationEntity, int userId,boolean isAdmin) {
 		Udn_Deal_Services_Entity serviceMap= dealServiceLine.find_Service_Map_Deal(newDealEntity.getDealConfirmationId(),UdanChooConstants.WORKLOAD_INS_CODE,userId,isAdmin);
 		for(Udn_Manual_Insurance_Quotation_Entity insQtnEntity: quotationEntity.getInsuranceQuotationsList()) {
 			boolean costupdated=false;

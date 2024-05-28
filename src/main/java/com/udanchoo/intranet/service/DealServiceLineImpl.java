@@ -75,6 +75,7 @@ import com.udanchoo.intranet.repository.Deal_TRN_ServiceLine_Repository;
 import com.udanchoo.intranet.repository.Deal_VSA_Doc_ServiceLine_Repository;
 import com.udanchoo.intranet.repository.Deal_VSA_ServiceLine_Repository;
 import com.udanchoo.intranet.repository.TI_Hotel_Voucher_Repository;
+import com.udanchoo.intranet.repository.Ti_Deals_Team_Map_Repository;
 import com.udanchoo.intranet.repository.Visa_Doc_Master_Repository;
 import com.udanchoo.intranet.util.UdanChooConstants;
 
@@ -150,6 +151,9 @@ public class DealServiceLineImpl {
 	@Autowired
 	ClientServiceImpl clientService;
 	
+	@Autowired
+	Ti_Deals_Team_Map_Repository dealTeamMapRepository;
+	
 	public List<FlightServiceLineVO> find_FLT_ServiceLines_Basedon_DealId(long dealconfirmationId,long dealOwner,boolean isAdmin){
 		List<Udn_Deal_FLT_SL_Entity> fltSLList ;
 		//if(isAdmin) {
@@ -185,13 +189,21 @@ public class DealServiceLineImpl {
 
 	
 	
-	public Udn_Deal_Services_Entity find_Service_Map_Deal(long dealConfirmationId,String dealServiceCode,long dealOwner,boolean isAdmin) {
+	public Udn_Deal_Services_Entity find_Service_Map_Deal(long dealConfirmationId,String dealServiceCode,int dealOwner,boolean isAdmin) {
+		Udn_Deal_Services_Entity dealServiceEntity ;
 		if(isAdmin) {
-			return dealServiceLineRepository.find_Service_Map_Deal(dealConfirmationId, dealServiceCode);
+			dealServiceEntity =  dealServiceLineRepository.find_Service_Map_Deal(dealConfirmationId, dealServiceCode);
 			
 		}else {
-			return dealServiceLineRepository.find_Service_Map_DealWithOwner(dealConfirmationId, dealServiceCode, dealOwner);
+			//return dealServiceLineRepository.find_Service_Map_DealWithOwner(dealConfirmationId, dealServiceCode, dealOwner);
+			dealServiceEntity =  dealServiceLineRepository.find_Service_Map_DealWithOwner(dealConfirmationId, dealServiceCode, dealOwner);
 		}
+		if(dealServiceEntity==null) {
+			if(dealTeamMapRepository.existsByDealConfirmationIdAndUserId(dealConfirmationId, dealOwner)){
+				dealServiceEntity =  dealServiceLineRepository.find_Service_Map_Deal(dealConfirmationId, dealServiceCode);	
+			}
+		}
+		return dealServiceEntity;
 		 
 	}
 

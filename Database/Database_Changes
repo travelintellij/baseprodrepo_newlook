@@ -1,17 +1,15 @@
+
+
+
+
+
+
+
+*************** Below mentioned changes are done **************************************
 #1
 
 ALTER TABLE `udanchoodb`.`tg_b2b_partners` 
 CHANGE COLUMN `mobile` `contactNumber` BIGINT NULL DEFAULT NULL ;
-
-
-
-
-
-
-
-
-
-
 
 *************** Below mentioned changes are done **************************************
 

@@ -40,6 +40,7 @@ import com.udanchoo.intranet.model.leads.TgLeadsRecorderVO;
 import com.udanchoo.intranet.model.partner.FilterPartnerObj;
 import com.udanchoo.intranet.model.partner.Tg_B2bPartner_Obj;
 import com.udanchoo.intranet.service.TgB2bPartnerServicesImpl;
+import com.udanchoo.intranet.service.UdnCommonServicesImpl;
 import com.udanchoo.intranet.service.UserDetailsServiceImpl;
 import com.udanchoo.intranet.util.UdanChooConstants;
 import com.udanchoo.intranet.validator.B2bPartnerValidator;
@@ -56,6 +57,10 @@ public class B2bPartnerController {
 	
 	@Autowired
 	UserDetailsServiceImpl userDetailsService;
+	
+	@Autowired
+	UdnCommonServicesImpl commonService;
+
 	
 	@ResponseBody
 	@RequestMapping("getB2bPartnerById")
@@ -133,13 +138,30 @@ public class B2bPartnerController {
 		while(filteredPartnersIterator.hasNext()) {
 			Tg_B2b_Partner_Entity partnerEntity = (Tg_B2b_Partner_Entity) filteredPartnersIterator.next();
 			Tg_B2bPartner_Obj partnerVO =b2bPartnerService.getPartnerVoFromEntity(partnerEntity);
+			partnerVO.setCityName(commonService.findDestinationById(partnerVO.getCityId()).getCityName());
 			filteredLeadsVoList.add(partnerVO);
 		}
 		return filteredLeadsVoList;
 	}
 	
+	@PostMapping(value = "form_action_b2b_partner", params = "Edit")
+	public ModelAndView form_view_edit_b2b_partner(@ModelAttribute("PARTNER_OBJ") Tg_B2bPartner_Obj partnerObj,BindingResult result) throws IOException {
+		System.out.println("Edit Partner is called: " + partnerObj.getPartnerId());
+		Tg_B2b_Partner_Entity partnerEntity = b2bPartnerService.findPartnerById(partnerObj.getPartnerId());
+		partnerObj.updateVoFromEntity(partnerEntity);
+		partnerObj.setCityName(commonService.findDestinationById(partnerObj.getCityId()).getCityName());
+		ModelAndView mapview = new ModelAndView("admin/partner/form_edit_partner");
+    	return mapview;
+	}
 	
-	
+	@PostMapping(value = "form_action_b2b_partner", params = "Delete")
+	public ModelAndView form_view_delete_b2b_partner(@ModelAttribute("PARTNER_OBJ") Tg_B2bPartner_Obj partnerObj,BindingResult result) throws IOException {
+		Tg_B2b_Partner_Entity partnerEntity = b2bPartnerService.findPartnerById(partnerObj.getPartnerId());
+		partnerObj.updateVoFromEntity(partnerEntity);
+		ModelAndView mapview = new ModelAndView("admin/partner/form_delete_partner");
+    	return mapview;
+	}
+
 	
 	private UserDetailsObj getLoggedInUser() {
     	Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();

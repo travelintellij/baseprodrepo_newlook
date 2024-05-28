@@ -195,6 +195,8 @@
                     </thead>
                     <tbody>
                   	<c:forEach items="${FILTERED_PARTNERS_RECORDS}" var="filteredPartners">
+						<form:form method="post" action="form_action_b2b_partner">
+						<input type="hidden" name="partnerId" value="${filteredPartners.partnerId}" />
 						<tr>
 							<td class="leadId" style="border-bottom:2px solid black;border-right:2px solid black;border-left:2px solid black"">
 								<a style="cursor: pointer;" id="myBtn[${filteredPartners.partnerId}]" onclick="myLeadDisplay(this)" data-load-url="view_lead_details_modal?leadId=${filteredLeads.leadId}" data-toggle="modal" data-target="#myModal" >
@@ -205,26 +207,20 @@
 							<td style="border-bottom:2px solid black;border-right:2px solid black">${filteredPartners.partnerBrandName}</td>
 							<td style="border-bottom:2px solid black;border-right:2px solid black">${filteredPartners.partnerName}</td>
 							<td style="border-bottom:2px solid black;border-right:2px solid black">${filteredPartners.cityName}</td>
-							
+							<td style="border-bottom:2px solid black;border-right:2px solid black">${filteredPartners.active}</td>
 							    <td class="st fili" style="border-bottom:2px solid black;border-right:2px solid black">
+	                               
 	                               <i class="fa-solid fa-sliders st1" style="color:black">
 	                                   <div class="ul" style="background:gray">
 	                                       <ul>
-	                                           <li><a href="form_view_lead_followup_details?leadId=${filteredLeads.leadId }"
-	                                                   class="pop-up">FollowUp</a></li>
-	                                           <li><a href="form_view_editlead?leadId=${filteredLeads.leadId }"
-	                                                   class="pop-up">Edit</a></li>
-	                                           <li><a href="view_form_search_supplier_quote?leadId=${filteredLeads.leadId }"
-	                                                   class="pop-up">Request Quote</a></li>
-	                                           <li><a href="view_lead_quotations_list?leadId=${filteredLeads.leadId }"
-	                                                   class="pop-up">Quotations</a></li>
-	                                           <li><a href="form_view_lead_reminder_details?leadId=${filteredLeads.leadId }&page=${page}"
-	                                                   class="pop-up">Reminder</a></li>
+	                                           <li><input type="submit" name="Edit" value="Edit" class="pop-up"/></li><!-- <li><a href="form_view_editlead?leadId=${filteredLeads.leadId }" class="pop-up"> Edit</a></li> -->
+	                                           <li><input type="submit" name="Delete" value="Delete" class="pop-up"/></li><!-- <li><a href="view_form_search_supplier_quote?leadId=${filteredLeads.leadId }" class="pop-up"><font color="red">Delete</font></a></li> -->
 	                                       </ul>
 	                                   </div>
 	                               </i>
 	                           </td>
 						</tr>
+						</form:form>
 					</c:forEach>
                     </tbody>
                 </table>
