@@ -55,19 +55,21 @@
    
     <div class="AdminCreateNewUser container">
         <div class="AdminCreateNewUser_wrapper">
-            <h1 class="page-heading" style="font-weight:600">Create Partner</h1>
+            <h1 class="page-heading" style="font-weight:600">Edit Partner</h1>
             <div align="center"><b>
                     <font color="green"> ${Success} </font>
                     <font color="red"> ${Error}</font>
                 </b></div>
-            <form:form method="post" action="create_create_b2b_partner" modelAttribute="PARTNER_OBJ" enctype="multipart/form-data">
+            <form:form method="post" action="edit_edit_b2b_partner" modelAttribute="PARTNER_OBJ" enctype="multipart/form-data">
+				<form:hidden path="partnerId" />
+				<form:hidden path="partnerShortName" />
 				<font color="red"> <form:errors path="logoFile" cssClass="error" /></font>                
 				<font color="red"> <form:errors path="partnerShortName" cssClass="error" /></font>
 				<font color="red"> <form:errors path="cityName" cssClass="error" /></font>
                 <table>
                 <tr>
                 <th style="width:17%;"><label for="" style="font-weight:600">Partner Id</label></th><td> Auto Generated</td>
-                <th style="width:17%;"><label for="" style="font-weight:600">Short Name</label></th><td><form:input path="partnerShortName" maxlength="10" size="5" /></td>
+                <th style="width:17%;"><label for="" style="font-weight:600">Short Name</label></th><td>${PARTNER_OBJ.partnerShortName}</td>
                 <th style="width:17%;"><label for="" style="font-weight:600">Brand Name</label></th><td><form:input path="partnerBrandName" maxlength="25" size="15" minlength="3" /> <br></td>
                 </tr>
                 <tr>
@@ -98,11 +100,18 @@
                 	<th colspan="3"><label for="" style="font-weight:600">Logo File (JPG/PNG, max 500KB):</label></th>
         			<td><input type="file" name="logoFile" accept=".jpg,.png" /></td>
                 </tr>
-                
-                
                 </table>
+                <c:if test="${not empty PARTNER_OBJ.logFilePath}">
+		            <div>
+		                <img src="file:${PARTNER_OBJ.logFilePath}" alt="Partner Logo" width="100" height="100"/>
+		                <form action="deleteLogo" method="post" style="display:inline;">
+		                    <input type="hidden" name="partnerId" value="${PARTNER_OBJ.partnerId}"/>
+		                    <button type="submit">Delete Logo</button>
+		                </form>
+		            </div>
+		        </c:if>
                 <div class="due_today_task_data_btns">
-                	<input type="submit" id="submitPartner" name="submitPartner" value="Create Partner" />
+                	<input type="submit" id="submitPartner" name="submitPartner" value="Update Partner" />
                             <a href="view_filter_partners">Cancel</a>
                         </div>
                 

@@ -1,6 +1,9 @@
 package com.udanchoo.intranet.controller;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -11,6 +14,7 @@ import java.util.stream.Collectors;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -62,6 +66,10 @@ public class B2bPartnerController {
 	UdnCommonServicesImpl commonService;
 
 	
+	//@Value("${file.upload-partnerlogodir}")
+	private String LOGO_FILE_PATH="/uploads/";
+
+	
 	@ResponseBody
 	@RequestMapping("getB2bPartnerById")
     public Tg_B2bPartner_Obj findB2bPartnerByID(@RequestParam("b2bPartnerId") int b2bPartnerId) {
@@ -84,8 +92,15 @@ public class B2bPartnerController {
 	@PostMapping("create_create_b2b_partner")
 	public ModelAndView create_create_b2b_partner(@ModelAttribute("PARTNER_OBJ") Tg_B2bPartner_Obj partnerObj,  BindingResult result,final RedirectAttributes redirectAttrib ) throws IOException {
 		ModelAndView modelView = new ModelAndView();
-		//modelView.setViewName("redirect:form_register_partner");
+		modelView.setViewName("redirect:view_filter_partners");
 		b2bPartnerValidator.validate(partnerObj, result);
+		if(partnerObj.getPartnerShortName()==null || partnerObj.getPartnerShortName().trim().length()==0) {
+			result.rejectValue("partnerShortName", "parnter.shortname.error");
+		}
+		if(b2bPartnerService.checkPartnerExistByShortName(partnerObj.getPartnerShortName())){
+			result.rejectValue("partnerShortName", "parnter.shortname.duplicate.error");
+		}
+
 		if(result.hasErrors()) {
 			modelView = form_register_partner(partnerObj, result);
 			return modelView;
@@ -99,6 +114,22 @@ public class B2bPartnerController {
         return file.getContentType() != null && (file.getContentType().equals(MediaType.IMAGE_JPEG_VALUE)
                 || file.getContentType().equals(MediaType.IMAGE_PNG_VALUE));
     }
+	
+	@Transactional
+	@PostMapping("edit_edit_b2b_partner")
+	public ModelAndView edit_edit_b2b_partner(@ModelAttribute("PARTNER_OBJ") Tg_B2bPartner_Obj partnerObj,  BindingResult result,final RedirectAttributes redirectAttrib ) throws IOException {
+		ModelAndView modelView = new ModelAndView();
+		modelView.setViewName("redirect:view_filter_partners");
+		b2bPartnerValidator.validate(partnerObj, result);
+		if(result.hasErrors()) {
+			modelView = form_view_edit_b2b_partner(partnerObj, result);
+			return modelView;
+		}else {
+			System.out.println("Logo Exists for " + b2bPartnerService.checkPartnerLogoExists(partnerObj));
+			b2bPartnerService.savePartnerAndFile(partnerObj);
+		}
+		return modelView; 
+	 }
 	
 	
 	@RequestMapping(value="view_filter_partners",method= {RequestMethod.GET,RequestMethod.POST})
@@ -151,6 +182,23 @@ public class B2bPartnerController {
 		partnerObj.updateVoFromEntity(partnerEntity);
 		partnerObj.setCityName(commonService.findDestinationById(partnerObj.getCityId()).getCityName());
 		ModelAndView mapview = new ModelAndView("admin/partner/form_edit_partner");
+		
+		String logoFileName; 
+		logoFileName = partnerObj.getPartnerShortName() + ".jpg"; 
+        Path logoFilePath = Paths.get(LOGO_FILE_PATH, logoFileName);
+
+        if (Files.exists(logoFilePath)) {
+        	partnerObj.setLogFilePath(logoFilePath.toString());
+        }
+        else {
+        	logoFileName = partnerObj.getPartnerShortName() + ".png"; 
+        	logoFilePath = Paths.get(LOGO_FILE_PATH, logoFileName);
+        	if (Files.exists(logoFilePath)) {
+        		 //"/partner-images/" + logoFileName);
+        		partnerObj.setLogFilePath(logoFilePath.toString());
+        	}
+        }
+        System.out.println("Log file path is " + partnerObj.getLogFilePath());
     	return mapview;
 	}
 	

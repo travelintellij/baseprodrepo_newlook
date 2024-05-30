@@ -3,6 +3,7 @@ package com.udanchoo.intranet.service;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.ParseException;
@@ -101,6 +102,16 @@ public class TgB2bPartnerServicesImpl {
     	return b2bPartnerRepository.existsByPartnerShortName(partnerShortName);
     }
     
+    
+    public boolean checkPartnerLogoExists(Tg_B2bPartner_Obj partnerObj) {
+    	Path directoryPath = Paths.get(fileStorageService.getPartnerLogoLocation().toString());
+    	Path jpgFilePath = Paths.get(directoryPath.toString(), partnerObj.getPartnerShortName() + ".jpg");
+        Path pngFilePath = Paths.get(directoryPath.toString(), partnerObj.getPartnerShortName() + ".png");
+        
+        System.out.println(" Absolute PAth is " + jpgFilePath.getParent().toAbsolutePath().toString());
+        return Files.exists(jpgFilePath) || Files.exists(pngFilePath);
+    	
+    }
     
 	public Page<Tg_B2b_Partner_Entity>  filterPartners(int pageNo, int pageSize,String sorting,FilterPartnerObj filterPartnerObj,boolean isAdmin ) {
 		Pageable paging = PageRequest.of(pageNo, pageSize,Sort.by(sorting));

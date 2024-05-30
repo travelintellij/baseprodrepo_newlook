@@ -19,8 +19,8 @@ import com.udanchoo.intranet.util.FileStorageProperties;
     FileStorageProperties.class
 })
 @ComponentScan
-@PropertySource(value = { "classpath:services-discovery-prod.properties" })
-//@PropertySource(value = { "classpath:services-discovery.properties" })
+//@PropertySource(value = { "classpath:services-discovery-prod.properties" })
+@PropertySource(value = { "classpath:services-discovery.properties" })
 public class SpringBootApp extends WebMvcAutoConfiguration  
 {
       /*

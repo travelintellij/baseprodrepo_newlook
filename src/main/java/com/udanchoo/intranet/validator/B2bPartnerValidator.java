@@ -32,12 +32,6 @@ public class B2bPartnerValidator implements Validator {
 		if(!isValidImageFile(partnerVO.getLogoFile())) {
 			errors.rejectValue("logoFile", "logo.file.type.error");
 		}
-		if(partnerVO.getPartnerShortName()==null || partnerVO.getPartnerShortName().trim().length()==0) {
-			errors.rejectValue("partnerShortName", "parnter.shortname.error");
-		}
-		if(b2bPartnerService.checkPartnerExistByShortName(partnerVO.getPartnerShortName())){
-			errors.rejectValue("partnerShortName", "parnter.shortname.duplicate.error");
-		}
 		if(!commonService.existsByDestinationIdAndCityName(partnerVO.getCityId(), partnerVO.getCityName())) {
 			errors.rejectValue("cityName", "city.error");
 		}

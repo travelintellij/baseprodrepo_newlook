@@ -13,6 +13,7 @@ public class Tg_B2bPartner_Obj extends Tg_B2b_Partner_Entity{
 	
 	private String cityName;
 	private MultipartFile logoFile;
+	private String logFilePath;
 
 	public Tg_B2bPartner_Obj() {}
 	
@@ -27,7 +28,9 @@ public class Tg_B2bPartner_Obj extends Tg_B2b_Partner_Entity{
 		this.gstNumber=agentEntity.getGstNumber();
 		this.cityId=agentEntity.getCityId();
 		this.website=agentEntity.getWebsite();
+		this.remarks=agentEntity.getRemarks();
 		this.active=agentEntity.isActive();
+		
 	}
 	
 	public void updateVoFromEntity(Tg_B2b_Partner_Entity agentEntity) {
@@ -36,10 +39,13 @@ public class Tg_B2bPartner_Obj extends Tg_B2b_Partner_Entity{
 		this.contactNumber=agentEntity.getContactNumber();
 		this.partnerShortName=agentEntity.getPartnerShortName();
 		this.partnerBrandName=agentEntity.getPartnerBrandName();
+		this.contactNumber=agentEntity.getContactNumber();
 		this.address=agentEntity.getAddress();
 		this.email = agentEntity.getEmail();
+		this.gstNumber=agentEntity.getGstNumber();
 		this.cityId=agentEntity.getCityId();
 		this.website=agentEntity.getWebsite();
+		this.remarks=agentEntity.getRemarks();
 		this.active=agentEntity.isActive();
 	}
 
@@ -57,6 +63,14 @@ public class Tg_B2bPartner_Obj extends Tg_B2b_Partner_Entity{
 
 	public void setLogoFile(MultipartFile logoFile) {
 		this.logoFile = logoFile;
+	}
+
+	public String getLogFilePath() {
+		return logFilePath;
+	}
+
+	public void setLogFilePath(String logFilePath) {
+		this.logFilePath = logFilePath;
 	}
 	
 	
