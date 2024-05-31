@@ -64,13 +64,11 @@ public class FileStorageService {
 
     public String storePartnerLogo(MultipartFile file,Path fileStorageLocation,String fileBrandShortName) {
         // Normalize file name
-        
         String fileExtension=".jpg";
         int lastIndexOfDot = file.getOriginalFilename().lastIndexOf('.');
         if (lastIndexOfDot != -1) {
             fileExtension = file.getOriginalFilename().substring(lastIndexOfDot);
         }
-        
         // Create the new file name using partnerShortName and the file extension
         String newFileName = fileBrandShortName + fileExtension;
         String fileName = StringUtils.cleanPath(newFileName);
@@ -84,13 +82,33 @@ public class FileStorageService {
             // Copy file to the target location (Replacing existing file with the same name)
             Path targetLocation = fileStorageLocation.resolve(newFileName);
             Files.copy(file.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
-
+            if(fileExtension.trim().equalsIgnoreCase(".jpg")) {
+            	newFileName = fileBrandShortName + ".png";
+            	targetLocation = fileStorageLocation.resolve(newFileName);
+            	deleteFileIfExists(targetLocation);
+            }
+            else if(fileExtension.trim().equalsIgnoreCase(".png")) {
+            	newFileName = fileBrandShortName + ".jpg";
+            	targetLocation = fileStorageLocation.resolve(newFileName);
+            	deleteFileIfExists(targetLocation);
+            }
             return fileName;
         } catch (IOException ex) {
             throw new FileStorageException("Could not store file " + fileName + ". Please try again!", ex);
         }
     }
 
+    
+
+	 public boolean deleteFileIfExists(Path filePath) {
+	        //Path path = Paths.get(filePath);
+	        try {
+	            return Files.deleteIfExists(filePath);
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	            return false;
+	        }
+	    }
     
     /***************** TEMP CODE *********************************/
     

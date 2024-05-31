@@ -85,19 +85,30 @@ public class TgB2bPartnerServicesImpl {
 	}
 	
 	
-	private static final String UPLOAD_DIR = "c:/uploads/deals";
-	
-
     @Transactional(rollbackFor = Exception.class)
     public void savePartnerAndFile(Tg_B2bPartner_Obj partnerObj) throws IOException {
     	Path directoryPath = Paths.get(fileStorageService.getPartnerLogoLocation().toString());
     	Tg_B2b_Partner_Entity b2bPartnerEntity = new Tg_B2b_Partner_Entity(partnerObj);
     	b2bPartnerRepository.save(b2bPartnerEntity);
         // Upload file
-    	if (partnerObj.getLogoFile() != null && !partnerObj.getLogoFile().isEmpty())
+    	if (partnerObj.getLogoFile() != null && !partnerObj.getLogoFile().isEmpty()) {
     		fileStorageService.storePartnerLogo(partnerObj.getLogoFile(),directoryPath,partnerObj.getPartnerShortName().trim());
+    	}
+    		
     }
     
+   public boolean deleteLogoIfExists(Tg_B2bPartner_Obj partnerObj) {
+    	Path directoryPath = Paths.get(fileStorageService.getPartnerLogoLocation().toString());
+    	Path targetLocation = directoryPath.resolve(partnerObj.getLogoFileName());
+        try {
+            return Files.deleteIfExists(targetLocation);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
+   
     public boolean checkPartnerExistByShortName(String partnerShortName) {
     	return b2bPartnerRepository.existsByPartnerShortName(partnerShortName);
     }

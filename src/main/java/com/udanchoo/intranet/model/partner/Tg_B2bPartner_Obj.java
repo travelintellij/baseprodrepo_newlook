@@ -14,6 +14,7 @@ public class Tg_B2bPartner_Obj extends Tg_B2b_Partner_Entity{
 	private String cityName;
 	private MultipartFile logoFile;
 	private String logFilePath;
+	private String logoFileName;
 
 	public Tg_B2bPartner_Obj() {}
 	
@@ -72,6 +73,23 @@ public class Tg_B2bPartner_Obj extends Tg_B2b_Partner_Entity{
 	public void setLogFilePath(String logFilePath) {
 		this.logFilePath = logFilePath;
 	}
+
+	public String getLogoFileName() {
+		return logoFileName;
+	}
+
+	public void setLogoFileName(String logoFileName) {
+		this.logoFileName = logoFileName;
+	}
+
+	@Override
+	public String toString() {
+		return "Tg_B2bPartner_Obj [cityName=" + cityName + ", logoFile=" + logoFile + ", logFilePath=" + logFilePath
+				+ ", logoFileName=" + logoFileName + "]";
+	}
+
+	
+	
 	
 	
 

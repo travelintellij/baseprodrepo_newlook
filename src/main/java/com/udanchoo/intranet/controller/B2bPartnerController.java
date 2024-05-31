@@ -43,6 +43,7 @@ import com.udanchoo.intranet.model.leads.TI_Leads_Followup_VO;
 import com.udanchoo.intranet.model.leads.TgLeadsRecorderVO;
 import com.udanchoo.intranet.model.partner.FilterPartnerObj;
 import com.udanchoo.intranet.model.partner.Tg_B2bPartner_Obj;
+import com.udanchoo.intranet.service.FileStorageService;
 import com.udanchoo.intranet.service.TgB2bPartnerServicesImpl;
 import com.udanchoo.intranet.service.UdnCommonServicesImpl;
 import com.udanchoo.intranet.service.UserDetailsServiceImpl;
@@ -64,10 +65,18 @@ public class B2bPartnerController {
 	
 	@Autowired
 	UdnCommonServicesImpl commonService;
+	
+	@Autowired
+	 private FileStorageService fileStorageService;
+	
 
 	
 	//@Value("${file.upload-partnerlogodir}")
-	private String LOGO_FILE_PATH="/uploads/";
+	//private String LOGO_FILE_PATH;
+	
+    @Value("${file.upload-partnerlogodir}")
+    private String absoluteImageDirectory;
+	//private String LOGO_FILE_PATH="/uploads/";
 
 	
 	@ResponseBody
@@ -116,10 +125,10 @@ public class B2bPartnerController {
     }
 	
 	@Transactional
-	@PostMapping("edit_edit_b2b_partner")
+	@PostMapping(value = "edit_edit_b2b_partner", params = "Update_Partner")
 	public ModelAndView edit_edit_b2b_partner(@ModelAttribute("PARTNER_OBJ") Tg_B2bPartner_Obj partnerObj,  BindingResult result,final RedirectAttributes redirectAttrib ) throws IOException {
 		ModelAndView modelView = new ModelAndView();
-		modelView.setViewName("redirect:view_filter_partners");
+		modelView.setViewName("redirect:form_auto_resubmit?partnerId="+partnerObj.getPartnerId());
 		b2bPartnerValidator.validate(partnerObj, result);
 		if(result.hasErrors()) {
 			modelView = form_view_edit_b2b_partner(partnerObj, result);
@@ -131,10 +140,24 @@ public class B2bPartnerController {
 		return modelView; 
 	 }
 	
+	@PostMapping(value = "edit_edit_b2b_partner", params = "Delete_Logo")
+	public ModelAndView deleteLogo(@ModelAttribute("PARTNER_OBJ") Tg_B2bPartner_Obj partnerObj,BindingResult result) throws IOException {
+		b2bPartnerService.deleteLogoIfExists(partnerObj);
+		ModelAndView mapview = form_view_edit_b2b_partner(partnerObj, result);
+    	return mapview;
+	}
+	
+	@RequestMapping(value="form_auto_resubmit",method= {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView form_auto_resubmit( @ModelAttribute("PARTNER_OBJ") Tg_B2bPartner_Obj partnerObj,BindingResult result,final RedirectAttributes redirectAttrib) {
+		ModelAndView modelView = new ModelAndView("admin/partner/form_auto_resubmit");
+		//redirectAttrib.addFlashAttribute("Success", "Partner Record is updated Successfully..");
+		modelView.addObject("Success", "Partner Record is updated Successfully..");
+		return modelView; 
+	}
+
 	
 	@RequestMapping(value="view_filter_partners",method= {RequestMethod.GET,RequestMethod.POST})
 	public ModelAndView view_filter_partners( @RequestParam(defaultValue = "0") String page,@RequestParam(defaultValue = "3") Integer pageSize, @RequestParam(defaultValue = "CreatedAt") String sortBy,@ModelAttribute("FILTER_PARTNER") FilterPartnerObj filterPartnerObj,BindingResult result) {
-		System.out.println("View Partner is invoked");
 		pageSize = UdanChooConstants.DEFAULT_PAGE_SIZE;
 		ModelAndView modelView = new ModelAndView("admin/partner/view_filterPartners");
 		//System.out.println(filterObj);
@@ -177,30 +200,58 @@ public class B2bPartnerController {
 	
 	@PostMapping(value = "form_action_b2b_partner", params = "Edit")
 	public ModelAndView form_view_edit_b2b_partner(@ModelAttribute("PARTNER_OBJ") Tg_B2bPartner_Obj partnerObj,BindingResult result) throws IOException {
-		System.out.println("Edit Partner is called: " + partnerObj.getPartnerId());
 		Tg_B2b_Partner_Entity partnerEntity = b2bPartnerService.findPartnerById(partnerObj.getPartnerId());
 		partnerObj.updateVoFromEntity(partnerEntity);
 		partnerObj.setCityName(commonService.findDestinationById(partnerObj.getCityId()).getCityName());
 		ModelAndView mapview = new ModelAndView("admin/partner/form_edit_partner");
 		
-		String logoFileName; 
-		logoFileName = partnerObj.getPartnerShortName() + ".jpg"; 
-        Path logoFilePath = Paths.get(LOGO_FILE_PATH, logoFileName);
+		
+		String logoFileName = partnerObj.getPartnerShortName() + ".jpg";; 
+        Path logoFilePath = Paths.get(absoluteImageDirectory, logoFileName);
 
         if (Files.exists(logoFilePath)) {
-        	partnerObj.setLogFilePath(logoFilePath.toString());
+        	partnerObj.setLogFilePath("/absolute-images/" + logoFileName);
+        	partnerObj.setLogoFileName(logoFileName);
         }
         else {
         	logoFileName = partnerObj.getPartnerShortName() + ".png"; 
-        	logoFilePath = Paths.get(LOGO_FILE_PATH, logoFileName);
+        	logoFilePath = Paths.get(absoluteImageDirectory, logoFileName);
         	if (Files.exists(logoFilePath)) {
         		 //"/partner-images/" + logoFileName);
-        		partnerObj.setLogFilePath(logoFilePath.toString());
+        		partnerObj.setLogFilePath("/absolute-images/" + logoFileName);
+        		partnerObj.setLogoFileName(logoFileName);
         	}
+        	else partnerObj.setLogFilePath(null);
         }
-        System.out.println("Log file path is " + partnerObj.getLogFilePath());
     	return mapview;
 	}
+	
+	@PostMapping(value = "form_action_b2b_partner", params = "View")
+	public ModelAndView form_view_view_b2b_partner(@ModelAttribute("PARTNER_OBJ") Tg_B2bPartner_Obj partnerObj,@RequestParam(defaultValue = "") String Success,BindingResult result) throws IOException {
+		Tg_B2b_Partner_Entity partnerEntity = b2bPartnerService.findPartnerById(partnerObj.getPartnerId());
+		partnerObj.updateVoFromEntity(partnerEntity);
+		partnerObj.setCityName(commonService.findDestinationById(partnerObj.getCityId()).getCityName());
+		ModelAndView mapview = new ModelAndView("admin/partner/form_view_partner");
+		mapview.addObject("Success", Success);
+		String logoFileName = partnerObj.getPartnerShortName() + ".jpg";; 
+        Path logoFilePath = Paths.get(absoluteImageDirectory, logoFileName);
+        if (Files.exists(logoFilePath)) {
+        	partnerObj.setLogFilePath("/absolute-images/" + logoFileName);
+        	partnerObj.setLogoFileName(logoFileName);
+        }
+        else {
+        	logoFileName = partnerObj.getPartnerShortName() + ".png"; 
+        	logoFilePath = Paths.get(absoluteImageDirectory, logoFileName);
+        	if (Files.exists(logoFilePath)) {
+        		 //"/partner-images/" + logoFileName);
+        		partnerObj.setLogFilePath("/absolute-images/" + logoFileName);
+        		partnerObj.setLogoFileName(logoFileName);
+        	}
+        	else partnerObj.setLogFilePath(null);
+        }
+    	return mapview;
+	}
+
 	
 	@PostMapping(value = "form_action_b2b_partner", params = "Delete")
 	public ModelAndView form_view_delete_b2b_partner(@ModelAttribute("PARTNER_OBJ") Tg_B2bPartner_Obj partnerObj,BindingResult result) throws IOException {

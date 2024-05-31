@@ -55,12 +55,12 @@
    
     <div class="AdminCreateNewUser container">
         <div class="AdminCreateNewUser_wrapper">
-            <h1 class="page-heading" style="font-weight:600">Edit Partner</h1>
+            <h1 class="page-heading" style="font-weight:600">View Partner</h1>
             <div align="center"><b>
                     <font color="green"> ${Success} </font>
                     <font color="red"> ${Error}</font>
                 </b></div>
-            <form:form method="post" action="edit_edit_b2b_partner" modelAttribute="PARTNER_OBJ" enctype="multipart/form-data">
+            <form:form method="post" action="form_action_b2b_partner" modelAttribute="PARTNER_OBJ" enctype="multipart/form-data">
 				<form:hidden path="partnerId" />
 				<form:hidden path="partnerShortName" />
 				<form:hidden path="logFilePath" />
@@ -70,47 +70,46 @@
 				<font color="red"> <form:errors path="cityName" cssClass="error" /></font>
                 <table>
                 <tr>
-                <th style="width:17%;"><label for="" style="font-weight:600">Partner Id</label></th><td> Auto Generated</td>
+                <th style="width:17%;"><label for="" style="font-weight:600">Partner Id</label></th><td>${PARTNER_OBJ.partnerId}</td>
                 <th style="width:17%;"><label for="" style="font-weight:600">Short Name</label></th><td>${PARTNER_OBJ.partnerShortName}</td>
-                <th style="width:17%;"><label for="" style="font-weight:600">Brand Name</label></th><td><form:input path="partnerBrandName" maxlength="25" size="15" minlength="3" /> <br></td>
+                <th style="width:17%;"><label for="" style="font-weight:600">Brand Name</label></th><td>${PARTNER_OBJ.partnerBrandName}</td>
                 </tr>
                 <tr>
-                <th style="width:17%;"><label for="" style="font-weight:600">Partner Name</label></th><td><form:input path="partnerName" maxlength="25" size="25" minlength="3" /> </td>
-                 <th style="width:17%;"><label for="" style="font-weight:600">City</label></th><td><form:input path="cityName" name="cityName" /></td>
+                <th style="width:17%;"><label for="" style="font-weight:600">Partner Name</label></th><td>${PARTNER_OBJ.partnerName}</td>
+                 <th style="width:17%;"><label for="" style="font-weight:600">City</label></th><td>${PARTNER_OBJ.cityName}</td>
                 <form:hidden path="cityId" />
-                <th style="width:17%;"><label for="" style="font-weight:600">Address</label></th><td><form:textarea path="address" maxlength="1450" name="" id="address" cols="30" rows="2" /></td>
+                <th style="width:17%;"><label for="" style="font-weight:600">Address</label></th><td>${PARTNER_OBJ.address}</td>
                 
                 </tr>
                 <tr>
-				<th style="width:17%;"><label for="" style="font-weight:600">Contact Number</label></th><td><form:input path="contactNumber" maxlength="25" size="25" type="number" /> </td>
-                <th style="width:17%;"><label for="" style="font-weight:600">Email</label></th><td><form:input path="email" maxlength="25" size="25" type="email"/> </td>
-                <th style="width:17%;"><label for="" style="font-weight:600">GST Number</label></th><td><form:input path="gstNumber" maxlength="25" size="25" /> </td>
+				<th style="width:17%;"><label for="" style="font-weight:600">Contact Number</label></th><td>${PARTNER_OBJ.contactNumber}</td>
+                <th style="width:17%;"><label for="" style="font-weight:600">Email</label></th><td>${PARTNER_OBJ.email}</td>
+                <th style="width:17%;"><label for="" style="font-weight:600">GST Number</label></th><td>${PARTNER_OBJ.gstNumber}</td>
                 </tr>
                 <tr>
-                 <th style="width:17%;"><label for="" style="font-weight:600">website</label></th><td><form:input path="website" maxlength="250" size="25" /> </td>
+                 <th style="width:17%;"><label for="" style="font-weight:600">website</label></th><td>${PARTNER_OBJ.website}</td>
                  <th style="width:17%;"><label for="" style="font-weight:600">Active</label></th>
                  <td>
-                 	<form:select path="active" >
-                 		<option class="service-small" value="true" selected>Active</option>
-                 		<option class="service-small" value="false" >Not Active </option>
-    				</form:select>
+                 	${PARTNER_OBJ.active}
     			</td>
-    			<th style="width:17%;"><label for="" style="font-weight:600">Remarks</label></th><td><form:textarea path="remarks" maxlength="1450" name="" id="remarks" cols="30" rows="2" /></td>
+    			<th style="width:17%;"><label for="" style="font-weight:600">Remarks</label></th><td>${PARTNER_OBJ.remarks}</td>
                 </tr>
                 
                 <tr>
-                	<th colspan="3"><label for="" style="font-weight:600">Logo File (JPG/PNG, max 500KB):</label></th>
-        			<td><input type="file" name="logoFile" accept=".jpg,.png" /></td>
+                	<th ><label for="" style="font-weight:600">Logo File:</label></th>
+                	<c:if test="${not empty PARTNER_OBJ.logFilePath}">
+		            	<td colspan="2">
+		                <img src="${pageContext.request.contextPath}${PARTNER_OBJ.logFilePath}" alt="Partner Logo" width="100" height="100"/>
+		                </td>
+		        	</c:if>
+		        	<c:if test="${empty PARTNER_OBJ.logFilePath}">
+		        		<td colspan="2">Not Available</td>
+		        	</c:if>
                 </tr>
                 </table>
-                <c:if test="${not empty PARTNER_OBJ.logFilePath}">
-		            <div>
-		                <img src="${pageContext.request.contextPath}${PARTNER_OBJ.logFilePath}" alt="Partner Logo" width="100" height="100"/>
-	                    <input type="submit" id="deletelogo" name="Delete_Logo" value="Delete Logo" />
-		            </div>
-		        </c:if>
+                
                 <div class="due_today_task_data_btns">
-                	<input type="submit" id="submitPartner" name="Update_Partner" value="Update Partner" />
+                	<input type="submit" id="submitPartner" name="Edit" value="Edit Partner" />
                             <a href="view_filter_partners">Cancel</a>
                         </div>
                 
