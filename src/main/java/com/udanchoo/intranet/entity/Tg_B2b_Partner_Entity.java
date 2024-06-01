@@ -34,9 +34,12 @@ public class Tg_B2b_Partner_Entity extends AuditModel {
 	protected String remarks; 
 	protected String website;
 	protected boolean active; 
-		
-	
-	
+ 	protected String beneficiaryName;
+	protected String bankName;
+	protected String bankAccountNumber;
+	protected String bankIFSCCode;
+	protected String bankBranch;
+	protected String upiId;
 	
 	public Tg_B2b_Partner_Entity(Tg_B2bPartner_Obj partnerObj) {
 		this.partnerId = partnerObj.getPartnerId();
@@ -51,6 +54,13 @@ public class Tg_B2b_Partner_Entity extends AuditModel {
 		this.remarks = partnerObj.getRemarks();
 		this.website = partnerObj.getWebsite();
 		this.active = partnerObj.isActive();
+		this.beneficiaryName= partnerObj.getBeneficiaryName();
+		this.bankName= partnerObj.getBankName();
+		this.bankAccountNumber= partnerObj.getBankAccountNumber();
+		this.bankIFSCCode= partnerObj.getBankIFSCCode();
+		this.bankBranch= partnerObj.getBankBranch();
+		this.upiId= partnerObj.getUpiId();
+
 	}
 
 
@@ -189,21 +199,62 @@ public class Tg_B2b_Partner_Entity extends AuditModel {
 		this.partnerBrandName = partnerBrandName;
 	}
 
-
-
 	public Tg_B2b_Partner_Entity() {}
-
-
 
 	public String getWebsite() {
 		return website;
 	}
 
-
-
 	public void setWebsite(String website) {
 		this.website = website;
 	}
-	
+
+	public String getBeneficiaryName() {
+		return beneficiaryName;
+	}
+
+	public void setBeneficiaryName(String beneficiaryName) {
+		this.beneficiaryName = beneficiaryName;
+	}
+
+	public String getBankName() {
+		return bankName;
+	}
+
+	public void setBankName(String bankName) {
+		this.bankName = bankName;
+	}
+
+	public String getBankAccountNumber() {
+		return bankAccountNumber;
+	}
+
+	public void setBankAccountNumber(String bankAccountNumber) {
+		this.bankAccountNumber = bankAccountNumber;
+	}
+
+	public String getBankIFSCCode() {
+		return bankIFSCCode;
+	}
+
+	public void setBankIFSCCode(String bankIFSCCode) {
+		this.bankIFSCCode = bankIFSCCode;
+	}
+
+	public String getBankBranch() {
+		return bankBranch;
+	}
+
+	public void setBankBranch(String bankBranch) {
+		this.bankBranch = bankBranch;
+	}
+
+	public String getUpiId() {
+		return upiId;
+	}
+
+	public void setUpiId(String upiId) {
+		this.upiId = upiId;
+	}
 	
 }

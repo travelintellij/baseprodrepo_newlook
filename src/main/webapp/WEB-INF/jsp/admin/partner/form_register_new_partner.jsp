@@ -41,7 +41,17 @@
         th, td {
   padding: 3px;
 }
-		
+	.center-table {
+            margin: 0 auto; /* Center horizontally */
+            border-collapse: collapse;
+        }
+        .center-table th, .center-table td {
+            padding: 8px;
+            text-align: center; /* Optional: Center text within cells */
+        }	
+         .center-table th {
+            text-align: left; /* Align table header content to the left */
+        }
 </style>
 <body>
    
@@ -93,17 +103,49 @@
     			</td>
     			<th style="width:17%;"><label for="" style="font-weight:600">Remarks</label></th><td><form:textarea path="remarks" maxlength="1450" name="" id="remarks" cols="30" rows="2" /></td>
                 </tr>
-                
+                </table>
+                <br>
+                <hr>
+                <table style="width:50%;" class="center-table">
+                	<tr><th colspan="2" style="text-align:center;">Bank Details</th></tr>
+	                <tr>
+	                	<th style="width:50;"><label for="" style="font-weight:600">Bank Name</label></th>
+	                	<td><form:input path="beneficiaryName" maxlength="250" size="25" /></td>
+	                </tr>
+	                <tr>
+	                	<th style="width:50;"><label for="" style="font-weight:600">Bank Account Number</label></th>
+	                	<td><form:input path="bankAccountNumber" maxlength="250" size="25" /></td>
+	                </tr>
+	                <tr>
+	                	<th style="width:50;"><label for="" style="font-weight:600">Bank Name</label></th>
+	                	<td><form:input path="bankName" maxlength="250" size="25" /></td>
+	                </tr>
+	                <tr>
+	                	<th style="width:50;"><label for="" style="font-weight:600">IFSC Code</label></th>
+	                	<td><form:input path="bankIFSCCode" maxlength="45" size="25" /></td>
+	                </tr>
+	                <tr>
+	                	<th style="width:50;"><label for="" style="font-weight:600">Branch</label></th>
+	                	<td><form:input path="bankBranch" maxlength="250" size="25" /></td>
+	                </tr>
+	                <tr>
+	                	<th style="width:50;"><label for="" style="font-weight:600">UPI ID</label></th>
+	                	<td><form:input path="upiId" maxlength="250" size="25" /></td>
+	                </tr>
+                </table>
+                <br>
+                <hr>
+                <table>
                 <tr>
                 	<th colspan="3"><label for="" style="font-weight:600">Logo File (JPG/PNG, max 500KB):</label></th>
         			<td><input type="file" name="logoFile" accept=".jpg,.png" /></td>
                 </tr>
-                
-                
                 </table>
+                
+                
                 <div class="due_today_task_data_btns">
                 	<input type="submit" id="submitPartner" name="submitPartner" value="Create Partner" />
-                            <a href="view_filter_partners">Cancel</a>
+                            <a href="view_filter_partners">List Partners</a>
                         </div>
                 
               

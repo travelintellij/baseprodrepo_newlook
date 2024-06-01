@@ -148,6 +148,9 @@ public class TgB2bPartnerServicesImpl {
 				if(filterPartnerObj.getCityId()!=0) {
 					predicates.add(criteriaBuilder.equal(partnerRootEntity.get("cityId"), filterPartnerObj.getCityId()));
 				}
+				if ((filterPartnerObj.getPartnerShortName() != null) && (filterPartnerObj.getPartnerShortName().trim().length()>0)) {
+					predicates.add(criteriaBuilder.like(criteriaBuilder.lower(partnerRootEntity.get("partnerShortName")),"%" + filterPartnerObj.getPartnerShortName().toLowerCase() + "%"));
+				}
 				if ((filterPartnerObj.getPartnerBrandName() != null) && (filterPartnerObj.getPartnerBrandName().trim().length()>0)) {
 					predicates.add(criteriaBuilder.like(criteriaBuilder.lower(partnerRootEntity.get("partnerBrandName")),"%" + filterPartnerObj.getPartnerBrandName().toLowerCase() + "%"));
 				}
@@ -155,6 +158,8 @@ public class TgB2bPartnerServicesImpl {
 				if ((filterPartnerObj.getPartnerName() != null) && (filterPartnerObj.getPartnerName().trim().length()>0)) {
 					predicates.add(criteriaBuilder.like(criteriaBuilder.lower(partnerRootEntity.get("partnerName")),"%" + filterPartnerObj.getPartnerName().toLowerCase() + "%"));
 				}
+				 
+				predicates.add(criteriaBuilder.equal(partnerRootEntity.get("active"), filterPartnerObj.isActive()));
 			
 			return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
 		}

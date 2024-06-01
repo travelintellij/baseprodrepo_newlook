@@ -8,6 +8,8 @@ public class FilterPartnerObj  {
    private String partnerBrandName;
    private String partnerCityName;
    private int cityId;
+   private boolean active=true;
+   private String cityName;
 
    
 	public int getPartnerId() {
@@ -58,6 +60,23 @@ public class FilterPartnerObj  {
 		this.cityId = cityId;
 	}
 
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
+	public String getCityName() {
+		return cityName;
+	}
+
+	public void setCityName(String cityName) {
+		this.cityName = cityName;
+	}
+
+	
 	
 	
 	

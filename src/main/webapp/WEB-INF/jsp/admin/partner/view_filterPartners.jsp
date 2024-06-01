@@ -133,6 +133,9 @@
             <div class="upperPart bs">
                 <h1 class="heading" style="color:#FFBA08">Search Partner</h1>
                 <div class="firstL">
+                    <table>
+                    <tr>
+                    <td>
                     <div class="box1 box">
                         <label for="tf"  style="font-weight:800">Partner ID</label><br>
                         <form:input path="partnerId" name="partnerId" id="partnerId" class="inf"  />
@@ -140,45 +143,52 @@
                             <form:errors cssClass = "error" path="partnerShortName" htmlEscape="false"  style="font-size:13px;font-weight:bold"/>
                         </font>
                     </div>
+                    </td>
+                    <td>
                     <div class="box2 box">
                         <label for="tt"  style="font-weight:800">Partner Short Name</label><br>
                         <form:input path="partnerShortName" name="partnerShortName" id="partnerShortName" class="inf"  />
                         
                     </div>
-                   
+                    </td>
+                    <td>
+                    <div class="box2 box">
+                        <label for="tt"  style="font-weight:800">Brand Name</label><br>
+                        <form:input path="partnerBrandName" name="partnerBrandName" id="partnerShortName" class="inf"  />
+                        
+                    </div>
+                    </td><td>
                     <div class="l2Box2 box contactName">
                         <label for="cn"  style="font-weight:800">Partner Name</label> <br>
                         <form:input path="partnerName"  id="partnerName" name="partnerName" size="35" style="width:200px;" placeholder="partnerName" class="inf" />
                     </div>
+                    </td>
+                    <td>
+                     <div class="l2Box2 box contactName" style="display: inline-block">
+                        <label for="cn"  style="font-weight:800">City</label> <br>
+ 						<form:input path="cityName" name="cityName" id="cityName" class="inf" />
+						<form:hidden path = "cityId" />
+                    </div>
+                    </td><td>
+                    <div class="l2Box2 box contactName">
+                        <label for="cn"  style="font-weight:800;">Active</label> 
+                        <form:select path="active">
+					        <form:option value="true" label="True" />
+                			<form:option value="false" label="False" />
+					    </form:select>
+                    </div>
+                    </td>
+                    </tr>
+                    </table>
                 </div>
                 </div>
                 <div class="btns">
                     <div class="inBtns">
                         <input type="submit" value="Apply Filter" class="btn btn1">
-                        <a href="view_filter_leads" class="btn">Clear Filter</a>
+                        <a href="view_filter_partners" class="btn">Clear Filter</a>
                     </div>
                 </div>
             </div>
-            <!-- ############## end of upper part ############# -->
-
-            <div id="myModal" class="modal" style="background: rgba(0, 0, 0, 0.8);margin-top:80px">
-						
-						  <!-- Modal content -->
-						  <div class="modal-content" style="background:black;border-radius:10px">
-						    <div class="modal-header">
-						      <span class="close" style="color:red;"><i class="fa-solid fa-xmark fa-xl"></i></span>
-						    </div>
-						    <div class="modal-body">
-						
-						
-						    </div>
-
-						  </div>
-						
-						</div>
-            
-            	
-            <!-- ############## end of lower part ############# -->
 	</form:form>
     </div>
               <!-- ############## start of lower part ############# -->
@@ -225,15 +235,14 @@
                 </table>
             </div>
             
-      
 <div id="pagination" align="center" class="container">
 <p style="color:#ffa500;background:black;display:inline-block;padding:2px;border-radius:2px">Page : </p>
 				
-			    <c:url value="view_filter_leads" var="prev">
+			    <c:url value="view_filter_partners" var="prev">
 			       <c:param name="page" value="${page-1}"/>
 			    </c:url>
 			    <c:if test="${page > 0}">
-			        <a style="background:black;padding:2px 5px;border-radius:2px;color:#ffa500" href="<c:out value="${prev}&sortBy=${sortBy}&qualified=${FILTER_LEAD_WL.qualified}&flagged=${FILTER_LEAD_WL.flagged}&leadOwner=${FILTER_LEAD_WL.leadOwner}&leadSource=${FILTER_LEAD_WL.leadSource}&leadStatus=${FILTER_LEAD_WL.leadStatus}&source=${FILTER_LEAD_WL.source}&sourceName=${FILTER_LEAD_WL.sourceName}&destinationName=${FILTER_LEAD_WL.destinationName}&destination=${FILTER_LEAD_WL.destination}&contactId=${FILTER_LEAD_WL.contactId}&contactName=${FILTER_LEAD_WL.contactName}&dateCriteria=${FILTER_LEAD_WL.dateCriteria}&startDate=${FILTER_LEAD_WL.startDate}&endDate=${FILTER_LEAD_WL.endDate}" />" class="pn prev">Prev</a>
+			        <a style="background:black;padding:2px 5px;border-radius:2px;color:#ffa500" href="<c:out value="${prev}&active=${FILTER_PARTNER.active}&partnerShortName=${FILTER_PARTNER.partnerShortName}&partnerName=${FILTER_PARTNER.partnerName}&partnerBrandName=${FILTER_PARTNER.partnerBrandName}&cityId=${FILTER_PARTNER.cityId}&cityName=${FILTER_PARTNER.cityName}" />" class="pn prev">Prev</a>
 			    </c:if>
 			
 			    <c:forEach begin="1" end="${maxPages}" step="1" varStatus="i">
@@ -242,48 +251,26 @@
 			                <span style="background:black;padding:2px 5px;border-radius:2px;color:white">${i.index}</span>
 			            </c:when>
 			            <c:otherwise>
-			                <c:url value="view_filter_leads" var="url">
+			                <c:url value="view_filter_partners" var="url">
 			                    <c:param name="page" value="${i.index-1}"/>
 			                </c:url>
-			                 <a style="background:white;padding:2px 5px;border-radius:2px;color:black" href='<c:out value="${url}&sortBy=${sortBy}&qualified=${FILTER_LEAD_WL.qualified}&flagged=${FILTER_LEAD_WL.flagged}&leadOwner=${FILTER_LEAD_WL.leadOwner}&leadSource=${FILTER_LEAD_WL.leadSource}&leadStatus=${FILTER_LEAD_WL.leadStatus}&source=${FILTER_LEAD_WL.source}&sourceName=${FILTER_LEAD_WL.sourceName}&destinationName=${FILTER_LEAD_WL.destinationName}&destination=${FILTER_LEAD_WL.destination}&contactId=${FILTER_LEAD_WL.contactId}&contactName=${FILTER_LEAD_WL.contactName}&dateCriteria=${FILTER_LEAD_WL.dateCriteria}" />'>${i.index}</a>
+			                 <a style="background:white;padding:2px 5px;border-radius:2px;color:black" href='<c:out value="${url}&active=${FILTER_PARTNER.active}&partnerShortName=${FILTER_PARTNER.partnerShortName}&partnerName=${FILTER_PARTNER.partnerName}&partnerBrandName=${FILTER_PARTNER.partnerBrandName}&cityId=${FILTER_PARTNER.cityId}&cityName=${FILTER_PARTNER.cityName}" />'>${i.index}</a>
 			            </c:otherwise>
 			        </c:choose>
 			    </c:forEach>
-			    <c:url value="view_filter_leads" var="next">
+			    <c:url value="view_filter_partners" var="next">
 			        <c:param name="page" value="${page + 1}"/>
 			    </c:url>
 			    <c:if test="${page + 1 < maxPages}">
-			       <a style="background:black;padding:2px 5px;border-radius:2px;color:#ffa500" href='<c:out value="${next}&sortBy=${sortBy}&qualified=${FILTER_LEAD_WL.qualified}&flagged=${FILTER_LEAD_WL.flagged}&leadOwner=${FILTER_LEAD_WL.leadOwner}&leadSource=${FILTER_LEAD_WL.leadSource}&leadStatus=${leadStatus}&source=${FILTER_LEAD_WL.source}&sourceName=${FILTER_LEAD_WL.sourceName}&destinationName=${FILTER_LEAD_WL.destinationName}&destination=${FILTER_LEAD_WL.destination}&contactId=${FILTER_LEAD_WL.contactId}&contactName=${FILTER_LEAD_WL.contactName}&dateCriteria=${FILTER_LEAD_WL.dateCriteria}&startDate=${FILTER_LEAD_WL.startDate}&endDate=${FILTER_LEAD_WL.endDate}" />' class="pn next">Next</a>
+			       <a style="background:black;padding:2px 5px;border-radius:2px;color:#ffa500" href='<c:out value="${next}&active=${FILTER_PARTNER.active}&partnerShortName=${FILTER_PARTNER.partnerShortName}&partnerName=${FILTER_PARTNER.partnerName}&partnerBrandName=${FILTER_PARTNER.partnerBrandName}&cityId=${FILTER_PARTNER.cityId}&cityName=${FILTER_PARTNER.cityName}" />' class="pn next">Next</a>
 			    </c:if>
 			</div>
 
 	
 
 <script>
-$(document).ready(function() {
-	$('#contactName').autocomplete({
-		serviceUrl: '${pageContext.request.contextPath}/getClientList',
-		paramName: "tagName",
-		delimiter: ",",
-		onSelect: function(suggestion) {
-            cityID = suggestion.data;
-            id=cityID;
-            jQuery("#contactId").val(cityID);
-            $('input[name=contactId]').val(id);
-            return false;
-        },
-		transformResult: function(response) {
-	        return {
-	            suggestions: $.map($.parseJSON(response), function(item) {
-	            	return { value: item.tagName, data: item.id };
-	            })
-	            
-	        };
-	    }
-	});
 
-
-$('#sourceName').autocomplete({
+$('#cityName').autocomplete({
 	serviceUrl: '${pageContext.request.contextPath}/getCityList',
 	paramName: "cityName",
 	delimiter: ",",
@@ -291,7 +278,7 @@ $('#sourceName').autocomplete({
         cityID = suggestion.data;
         id=cityID;
         jQuery("#destinationId").val(cityID);
-        $('input[name=source]').val(id);
+        $('input[name=cityId]').val(id);
         return false;
     },
 	transformResult: function(response) {
@@ -304,88 +291,8 @@ $('#sourceName').autocomplete({
     }
 });
 
-$('#destinationName').autocomplete({
-	serviceUrl: '${pageContext.request.contextPath}/getCityList',
-	paramName: "cityName",
-	delimiter: ",",
-	onSelect: function(suggestion) {
-        cityID = suggestion.data;
-        id=cityID;
-        jQuery("#destinationId").val(cityID);
-        $('input[name=destination]').val(id);
-        return false;
-    },
-	transformResult: function(response) {
-        return {
-            suggestions: $.map($.parseJSON(response), function(item) {
-            	return { value: item.cityName, data: item.destinationId };
-            })
-            
-        };
-    }
-});
-
-});
 </script>
 
-<script>
-// Get the modal
-var modal = document.getElementById("myModal");
-
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-
-
-function myLeadDisplay(clicked) { 
-	//alert(clicked); 
-	$("#myModal .modal-body").load($(clicked).attr('data-load-url'));
-	modal.style.display = "block";
-}   
-// When the user clicks the button, open the modal 
-/*btn.onclick = function() {
-	//$("#myModal .modal-body").html('pass your html text here');
-	$("#myModal .modal-body").load($(this).attr('data-load-url'));
-	modal.style.display = "block";
-  
-}*/
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-</script>
-<script>
-/* When the user clicks on the button, 
-toggle between hiding and showing the menudown content */
-function myFunction(clicked) {
-  document.getElementById($(clicked)).classList.toggle("show");
-}
-
-// Close the menudown if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.menubtn')) {
-    var menudowns = document.getElementsByClassName("menudown-content");
-    var i;
-    for (i = 0; i < menudowns.length; i++) {
-      var openmenudown = menudowns[i];
-      if (openmenudown.classList.contains('show')) {
-        openmenudown.classList.remove('show');
-      }
-    }
-  }
-}
-</script>
 
 </body>
 

@@ -41,7 +41,17 @@
         th, td {
   padding: 3px;
 }
-		
+		.center-table {
+            margin: 0 auto; /* Center horizontally */
+            border-collapse: collapse;
+        }
+        .center-table th, .center-table td {
+            padding: 8px;
+            text-align: center; /* Optional: Center text within cells */
+        }	
+         .center-table th, .center-table td {
+            text-align: left; /* Align table header content to the left */
+        }	
 </style>
 <body>
    
@@ -94,7 +104,40 @@
     			</td>
     			<th style="width:17%;"><label for="" style="font-weight:600">Remarks</label></th><td>${PARTNER_OBJ.remarks}</td>
                 </tr>
+                </table>
+                <hr>
+                <table style="width:50%;" class="center-table">
+                	<tr><th colspan="2" style="text-align:center;">Bank Details</th></tr>
+	                <tr>
+	                	<th style="width:50;"><label for="" style="font-weight:600">Bank Name</label></th>
+	                	<td>${PARTNER_OBJ.beneficiaryName}</td>
+	                </tr>
+	                <tr>
+	                	<th style="width:50;"><label for="" style="font-weight:600">Bank Account Number</label></th>
+	                	<td>${PARTNER_OBJ.bankAccountNumber}</td>
+	                </tr>
+	                <tr>
+	                	<th style="width:50;"><label for="" style="font-weight:600">Bank Name</label></th>
+	                	<td>${PARTNER_OBJ.bankName}</td>
+	                </tr>
+	                <tr>
+	                	<th style="width:50;"><label for="" style="font-weight:600">IFSC Code</label></th>
+	                	<td>${PARTNER_OBJ.bankIFSCCode}</td>
+	                </tr>
+	                <tr>
+	                	<th style="width:50;"><label for="" style="font-weight:600">Branch</label></th>
+	                	<td>${PARTNER_OBJ.bankBranch}</td>
+	                </tr>
+	                <hr>
+	                <tr>
+	                	<th style="width:50;"><label for="" style="font-weight:600">UPI ID</label></th>
+	                	<td>${PARTNER_OBJ.upiId}</td>
+	                </tr>
+                </table>
+                <br>
+                <hr>
                 
+                <table>
                 <tr>
                 	<th ><label for="" style="font-weight:600">Logo File:</label></th>
                 	<c:if test="${not empty PARTNER_OBJ.logFilePath}">
@@ -110,7 +153,7 @@
                 
                 <div class="due_today_task_data_btns">
                 	<input type="submit" id="submitPartner" name="Edit" value="Edit Partner" />
-                            <a href="view_filter_partners">Cancel</a>
+                            <a href="view_filter_partners">List Partners</a>
                         </div>
                 
               

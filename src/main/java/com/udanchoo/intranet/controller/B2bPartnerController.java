@@ -176,10 +176,10 @@ public class B2bPartnerController {
 	   	}
 		//TODO Check if some one changes the url manually then it should lead to an error page. not to a server error. 
 		int pageNum = Integer.parseInt(page);
-		Page<Tg_B2b_Partner_Entity> pageLeadsFilteredRecords = b2bPartnerService.filterPartners(pageNum, pageSize, sortBy, filterPartnerObj, isAdmin);
-		List<Tg_B2bPartner_Obj> filteredPartnersVoList = generateFilteredPartnersVo(pageLeadsFilteredRecords);
+		Page<Tg_B2b_Partner_Entity> pagePartnersFilteredRecords = b2bPartnerService.filterPartners(pageNum, pageSize, sortBy, filterPartnerObj, isAdmin);
+		List<Tg_B2bPartner_Obj> filteredPartnersVoList = generateFilteredPartnersVo(pagePartnersFilteredRecords);
 		modelView.addObject("FILTERED_PARTNERS_RECORDS",filteredPartnersVoList);
-		modelView.addObject("maxPages", pageLeadsFilteredRecords.getTotalPages());
+		modelView.addObject("maxPages", pagePartnersFilteredRecords.getTotalPages());
 		modelView.addObject("page", pageNum);
 		modelView.addObject("sortBy", sortBy);
 		return modelView;

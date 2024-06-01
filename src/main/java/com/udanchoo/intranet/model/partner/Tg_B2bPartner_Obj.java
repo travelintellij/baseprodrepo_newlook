@@ -31,7 +31,12 @@ public class Tg_B2bPartner_Obj extends Tg_B2b_Partner_Entity{
 		this.website=agentEntity.getWebsite();
 		this.remarks=agentEntity.getRemarks();
 		this.active=agentEntity.isActive();
-		
+		this.beneficiaryName= agentEntity.getBeneficiaryName();
+		this.bankName= agentEntity.getBankName();
+		this.bankAccountNumber= agentEntity.getBankAccountNumber();
+		this.bankIFSCCode= agentEntity.getBankIFSCCode();
+		this.bankBranch= agentEntity.getBankBranch();
+		this.upiId= agentEntity.getUpiId();
 	}
 	
 	public void updateVoFromEntity(Tg_B2b_Partner_Entity agentEntity) {
@@ -48,6 +53,12 @@ public class Tg_B2bPartner_Obj extends Tg_B2b_Partner_Entity{
 		this.website=agentEntity.getWebsite();
 		this.remarks=agentEntity.getRemarks();
 		this.active=agentEntity.isActive();
+		this.beneficiaryName= agentEntity.getBeneficiaryName();
+		this.bankName= agentEntity.getBankName();
+		this.bankAccountNumber= agentEntity.getBankAccountNumber();
+		this.bankIFSCCode= agentEntity.getBankIFSCCode();
+		this.bankBranch= agentEntity.getBankBranch();
+		this.upiId= agentEntity.getUpiId();
 	}
 
 	public String getCityName() {
