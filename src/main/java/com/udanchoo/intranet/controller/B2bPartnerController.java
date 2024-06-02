@@ -94,7 +94,19 @@ public class B2bPartnerController {
 	@RequestMapping("form_register_partner")
    	public ModelAndView form_register_partner(@ModelAttribute("PARTNER_OBJ") Tg_B2bPartner_Obj partnerObj,BindingResult result) {
     	ModelAndView mapview = new ModelAndView("admin/partner/form_register_new_partner");
-    	return mapview;
+		UserDetailsObj user = getLoggedInUser();
+		boolean canManagePartner=false;
+	    if(user.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN") || a.getAuthority().equals("ROLE_MANAGE_PARTNER"))) {
+	    	System.out.println("Authority is " + user.getAuthorities());
+	    	canManagePartner=true;
+	   	}
+	    if(canManagePartner) {
+	    	return mapview;
+	    }
+	    else {
+	    	mapview.setViewName("error/unauthorizedPage");
+	    	return mapview;
+	    }
     }
 
 	@Transactional
@@ -102,20 +114,31 @@ public class B2bPartnerController {
 	public ModelAndView create_create_b2b_partner(@ModelAttribute("PARTNER_OBJ") Tg_B2bPartner_Obj partnerObj,  BindingResult result,final RedirectAttributes redirectAttrib ) throws IOException {
 		ModelAndView modelView = new ModelAndView();
 		modelView.setViewName("redirect:view_filter_partners");
-		b2bPartnerValidator.validate(partnerObj, result);
-		if(partnerObj.getPartnerShortName()==null || partnerObj.getPartnerShortName().trim().length()==0) {
-			result.rejectValue("partnerShortName", "parnter.shortname.error");
-		}
-		if(b2bPartnerService.checkPartnerExistByShortName(partnerObj.getPartnerShortName())){
-			result.rejectValue("partnerShortName", "parnter.shortname.duplicate.error");
-		}
-
-		if(result.hasErrors()) {
-			modelView = form_register_partner(partnerObj, result);
-			return modelView;
-		}else {
-			b2bPartnerService.savePartnerAndFile(partnerObj);
-		}
+		UserDetailsObj user = getLoggedInUser();
+		boolean canManagePartner=false;
+	    if(user.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN") || a.getAuthority().equals("ROLE_MANAGE_PARTNER"))) {
+	    	System.out.println("Authority is " + user.getAuthorities());
+	    	canManagePartner=true;
+	   	}
+	    if(canManagePartner) {
+			b2bPartnerValidator.validate(partnerObj, result);
+			if(partnerObj.getPartnerShortName()==null || partnerObj.getPartnerShortName().trim().length()==0) {
+				result.rejectValue("partnerShortName", "parnter.shortname.error");
+			}
+			if(b2bPartnerService.checkPartnerExistByShortName(partnerObj.getPartnerShortName())){
+				result.rejectValue("partnerShortName", "parnter.shortname.duplicate.error");
+			}
+	
+			if(result.hasErrors()) {
+				modelView = form_register_partner(partnerObj, result);
+				return modelView;
+			}else {
+				b2bPartnerService.savePartnerAndFile(partnerObj);
+			}
+	    }
+	    else {
+	    	modelView.setViewName("error/unauthorizedPage");
+	    }
 		return modelView; 
 	 }
 	
@@ -129,14 +152,25 @@ public class B2bPartnerController {
 	public ModelAndView edit_edit_b2b_partner(@ModelAttribute("PARTNER_OBJ") Tg_B2bPartner_Obj partnerObj,  BindingResult result,final RedirectAttributes redirectAttrib ) throws IOException {
 		ModelAndView modelView = new ModelAndView();
 		modelView.setViewName("redirect:form_auto_resubmit?partnerId="+partnerObj.getPartnerId());
-		b2bPartnerValidator.validate(partnerObj, result);
-		if(result.hasErrors()) {
-			modelView = form_view_edit_b2b_partner(partnerObj, result);
-			return modelView;
-		}else {
-			System.out.println("Logo Exists for " + b2bPartnerService.checkPartnerLogoExists(partnerObj));
-			b2bPartnerService.savePartnerAndFile(partnerObj);
+		UserDetailsObj user = getLoggedInUser();
+		boolean canManagePartner=false;
+	    if(user.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN") || a.getAuthority().equals("ROLE_MANAGE_PARTNER"))) {
+	    	System.out.println("Authority is " + user.getAuthorities());
+	    	canManagePartner=true;
+	   	}
+	    if(canManagePartner) {
+			b2bPartnerValidator.validate(partnerObj, result);
+			if(result.hasErrors()) {
+				modelView = form_view_edit_b2b_partner(partnerObj, result);
+				return modelView;
+			}else {
+				System.out.println("Logo Exists for " + b2bPartnerService.checkPartnerLogoExists(partnerObj));
+				b2bPartnerService.savePartnerAndFile(partnerObj);
+			}
+	    }else {
+			modelView.setViewName("error/unauthorizedPage");
 		}
+			    
 		return modelView; 
 	 }
 	
@@ -170,18 +204,25 @@ public class B2bPartnerController {
 		*/
 		UserDetailsObj user = getLoggedInUser();
 		
-		boolean isAdmin=false;
-	    if(user.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN") || a.getAuthority().equals("PARTNER_MANAGER"))) {
-	   		isAdmin=true;
+		boolean canManagePartner=false;
+	    if(user.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN") || a.getAuthority().equals("ROLE_MANAGE_PARTNER"))) {
+	    	System.out.println("Authority is " + user.getAuthorities());
+	    	canManagePartner=true;
 	   	}
 		//TODO Check if some one changes the url manually then it should lead to an error page. not to a server error. 
-		int pageNum = Integer.parseInt(page);
-		Page<Tg_B2b_Partner_Entity> pagePartnersFilteredRecords = b2bPartnerService.filterPartners(pageNum, pageSize, sortBy, filterPartnerObj, isAdmin);
-		List<Tg_B2bPartner_Obj> filteredPartnersVoList = generateFilteredPartnersVo(pagePartnersFilteredRecords);
-		modelView.addObject("FILTERED_PARTNERS_RECORDS",filteredPartnersVoList);
-		modelView.addObject("maxPages", pagePartnersFilteredRecords.getTotalPages());
-		modelView.addObject("page", pageNum);
-		modelView.addObject("sortBy", sortBy);
+	    if(canManagePartner) {
+		    int pageNum = Integer.parseInt(page);
+			Page<Tg_B2b_Partner_Entity> pagePartnersFilteredRecords = b2bPartnerService.filterPartners(pageNum, pageSize, sortBy, filterPartnerObj, canManagePartner);
+			List<Tg_B2bPartner_Obj> filteredPartnersVoList = generateFilteredPartnersVo(pagePartnersFilteredRecords);
+			modelView.addObject("FILTERED_PARTNERS_RECORDS",filteredPartnersVoList);
+			modelView.addObject("maxPages", pagePartnersFilteredRecords.getTotalPages());
+			modelView.addObject("page", pageNum);
+			modelView.addObject("sortBy", sortBy);
+	    }
+	    else {
+	    	modelView.setViewName("error/unauthorizedPage");
+	    }
+	    
 		return modelView;
 	}
 	
