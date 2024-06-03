@@ -117,7 +117,6 @@ public class B2bPartnerController {
 		UserDetailsObj user = getLoggedInUser();
 		boolean canManagePartner=false;
 	    if(user.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN") || a.getAuthority().equals("ROLE_MANAGE_PARTNER"))) {
-	    	System.out.println("Authority is " + user.getAuthorities());
 	    	canManagePartner=true;
 	   	}
 	    if(canManagePartner) {

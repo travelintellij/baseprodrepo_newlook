@@ -1,6 +1,6 @@
 
 
-
+1)
 ALTER TABLE `udanchoodb`.`tg_b2b_partners` 
 ADD COLUMN `beneficiaryName` VARCHAR(250) NULL AFTER `cityId`,
 ADD COLUMN `bankName` VARCHAR(250) NULL AFTER `beneficiaryName`,
@@ -8,6 +8,9 @@ ADD COLUMN `bankAccountNumber` VARCHAR(250) NULL AFTER `bankName`,
 ADD COLUMN `bankIFSCCode` VARCHAR(45) NULL AFTER `bankAccountNumber`,
 ADD COLUMN `bankBranch` VARCHAR(250) NULL AFTER `bankIFSCCode`,
 ADD COLUMN `upiId` VARCHAR(250) NULL AFTER `bankBranch`;
+
+2)
+INSERT INTO `udanchoodb`.`role` (`roleId`, `roleName`, `roleTarget`) VALUES ('42', 'MANAGE_PARTNER', 'PARTNER');
 
 
 
