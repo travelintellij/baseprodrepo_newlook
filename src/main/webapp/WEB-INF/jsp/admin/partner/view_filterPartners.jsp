@@ -223,7 +223,6 @@
 	                                       <ul>
 	                                           <li><input type="submit" name="View" value="View" class="pop-up"/></li><!-- <li><a href="form_view_editlead?leadId=${filteredLeads.leadId }" class="pop-up"> Edit</a></li> -->
 	                                           <li><input type="submit" name="Edit" value="Edit" class="pop-up"/></li><!-- <li><a href="form_view_editlead?leadId=${filteredLeads.leadId }" class="pop-up"> Edit</a></li> -->
-	                                           <li><input type="submit" name="Delete" value="Delete" class="pop-up"/></li><!-- <li><a href="view_form_search_supplier_quote?leadId=${filteredLeads.leadId }" class="pop-up"><font color="red">Delete</font></a></li> -->
 	                                       </ul>
 	                                   </div>
 	                               </i>

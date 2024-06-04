@@ -97,7 +97,6 @@ public class B2bPartnerController {
 		UserDetailsObj user = getLoggedInUser();
 		boolean canManagePartner=false;
 	    if(user.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN") || a.getAuthority().equals("ROLE_MANAGE_PARTNER"))) {
-	    	System.out.println("Authority is " + user.getAuthorities());
 	    	canManagePartner=true;
 	   	}
 	    if(canManagePartner) {
@@ -154,7 +153,6 @@ public class B2bPartnerController {
 		UserDetailsObj user = getLoggedInUser();
 		boolean canManagePartner=false;
 	    if(user.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN") || a.getAuthority().equals("ROLE_MANAGE_PARTNER"))) {
-	    	System.out.println("Authority is " + user.getAuthorities());
 	    	canManagePartner=true;
 	   	}
 	    if(canManagePartner) {
@@ -163,7 +161,6 @@ public class B2bPartnerController {
 				modelView = form_view_edit_b2b_partner(partnerObj, result);
 				return modelView;
 			}else {
-				System.out.println("Logo Exists for " + b2bPartnerService.checkPartnerLogoExists(partnerObj));
 				b2bPartnerService.savePartnerAndFile(partnerObj);
 			}
 	    }else {
@@ -205,7 +202,6 @@ public class B2bPartnerController {
 		
 		boolean canManagePartner=false;
 	    if(user.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN") || a.getAuthority().equals("ROLE_MANAGE_PARTNER"))) {
-	    	System.out.println("Authority is " + user.getAuthorities());
 	    	canManagePartner=true;
 	   	}
 		//TODO Check if some one changes the url manually then it should lead to an error page. not to a server error. 

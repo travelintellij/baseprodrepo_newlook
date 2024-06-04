@@ -93,5 +93,6 @@ public interface DealServiceLineRepository extends JpaRepository<Udn_Deal_Servic
 	@Query("FROM Udn_Deal_CRS_SL_Entity a join Udn_Deal_Services_Entity b on a.serviceMapId = b.serviceMapId where b.parentDealRecord.dealConfirmationId=?1 order by displayOrder")
 	List<Udn_Deal_CRS_SL_Entity> findCRSServiceLinesBasedonDealId(long dealconfirmationId);
 
+//	@Query("SELECT CASE WHEN COUNT(h) > 0 THEN true ELSE false END FROM HotelServiceLineEntity h WHERE h.dealConfirmationId = :dealConfirmationId AND h.userId = :userId")
 	
 } 

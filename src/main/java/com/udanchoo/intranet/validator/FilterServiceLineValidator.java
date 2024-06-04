@@ -31,7 +31,7 @@ public class FilterServiceLineValidator implements Validator {
 	@Override
 	public void validate(Object target, Errors errors) {
 		FilterServiceLineObj filterSLVo = (FilterServiceLineObj)target;
-		System.out.println("Filtered object is " + filterSLVo);
+		//System.out.println("Filtered object is " + filterSLVo);
 		if(filterSLVo.getClientId()==0 && ((filterSLVo.getClientName()!=null) && (filterSLVo.getClientName().trim().length()!=0))){
 			errors.rejectValue("clientName", "invalid.clientName");
 		}

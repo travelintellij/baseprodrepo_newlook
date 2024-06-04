@@ -254,7 +254,7 @@ public class DealServiceLineImpl {
 	
 	/***************************************HTL Service line start from here ********************************************/
 	
-	public List<HotelServiceLineVO> find_HTL_ServiceLines_Basedon_DealId(long dealconfirmationId,long dealOwner,boolean isAdmin) throws RecordNotFoundException{
+	public List<HotelServiceLineVO> find_HTL_ServiceLines_Basedon_DealId(long dealconfirmationId,int dealOwner,boolean isAdmin) throws RecordNotFoundException{
 		List<Udn_Deal_HTL_SL_Entity> htlSLList;
 		if(isAdmin) {
 			htlSLList =  dealServiceLineRepository.findHTLServiceLinesBasedonDealId(dealconfirmationId);
@@ -262,7 +262,11 @@ public class DealServiceLineImpl {
 		else {
 			htlSLList =  dealServiceLineRepository.findHTLServiceLinesBasedonDealIdAndDealOwner(dealconfirmationId,dealOwner);
 		}
-		
+		if(htlSLList.size()==0) {
+			if(dealTeamMapRepository.existsByDealConfirmationIdAndUserId(dealconfirmationId, dealOwner)){
+				htlSLList =  dealServiceLineRepository.findHTLServiceLinesBasedonDealId(dealconfirmationId);	
+			}
+		}
 		List<HotelServiceLineVO> listHtlSlVO = new ArrayList();
 		
 		Iterator itrHtlList = htlSLList.iterator();

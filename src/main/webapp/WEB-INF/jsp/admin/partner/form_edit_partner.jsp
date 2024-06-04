@@ -111,7 +111,7 @@
                 <table style="width:50%;" class="center-table">
                 	<tr><th colspan="2" style="text-align:center;">Bank Details</th></tr>
 	                <tr>
-	                	<th style="width:50;"><label for="" style="font-weight:600">Bank Name</label></th>
+	                	<th style="width:50;"><label for="" style="font-weight:600">Beneficiary Name</label></th>
 	                	<td><form:input path="beneficiaryName" maxlength="250" size="25" /></td>
 	                </tr>
 	                <tr>
