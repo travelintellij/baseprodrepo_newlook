@@ -383,10 +383,10 @@ VoucherServiceImpl voucherServiceLine;
 
     	List fltServiceLineList ;
     	//if(userObj.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"))) {
-    		fltServiceLineList = dealServiceLine.find_FLT_ServiceLines_Basedon_DealId(dealConfirmationId,userObj.getUserId(),true);
+    		fltServiceLineList = dealServiceLine.find_FLT_ServiceLines_Basedon_DealId(dealConfirmationId,userObj.getUserId(),isAdmin);
     	/*}
     	else {
-    		fltServiceLineList = dealServiceLine.find_FLT_ServiceLines_Basedon_DealId(dealConfirmationId,userObj.getUserId(),false);
+    		fltServiceLineList = dealServiceLine.find_FLT_ServiceLines_Basedon_DealId(dealConfirmationId,userObj.getUserId(),isAdmin);
     	}*/
     	Udn_Deal_Services_Entity serviceMap= dealServiceLine.find_Service_Map_Deal(dealConfirmationId,UdanChooConstants.WORKLOAD_FLT_CODE,userObj.getUserId(),isAdmin);
     	mapview.addObject("FLT_SL_LIST", fltServiceLineList);

@@ -913,7 +913,7 @@ public class DealServiceImpl {
 	public Page<Udn_Deals_Recorder_Entity>  filterDeals(int pageNo, int pageSize,long dealOwner,String sorting,SearchDealObj filterDealObj,boolean isAdmin ) {
 		boolean dateCheckFilterNeeded = true;
 		String searchCriteria = filterDealObj.getSearchCriteria();
-		System.out.println("Filtered Object is " + filterDealObj);
+		//System.out.println("Filtered Object is " + filterDealObj);
 		
 		if(filterDealObj.getDealConfirmationId()!=0) {
 			dateCheckFilterNeeded = false;

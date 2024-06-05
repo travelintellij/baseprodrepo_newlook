@@ -154,14 +154,20 @@ public class DealServiceLineImpl {
 	@Autowired
 	Ti_Deals_Team_Map_Repository dealTeamMapRepository;
 	
-	public List<FlightServiceLineVO> find_FLT_ServiceLines_Basedon_DealId(long dealconfirmationId,long dealOwner,boolean isAdmin){
+	public List<FlightServiceLineVO> find_FLT_ServiceLines_Basedon_DealId(long dealconfirmationId,int dealOwner,boolean isAdmin){
 		List<Udn_Deal_FLT_SL_Entity> fltSLList ;
-		//if(isAdmin) {
+		if(isAdmin) {
 			fltSLList =  dealServiceLineRepository.findFLTServiceLinesBasedonDealId(dealconfirmationId);
-		/*}
+		}
 		else {
 			fltSLList =  dealServiceLineRepository.findFLTServiceLinesBasedonDealIdAndDealOwner(dealconfirmationId,dealOwner);
-		}*/
+		}
+		if(fltSLList.size()==0) {
+			if(dealTeamMapRepository.existsByDealConfirmationIdAndUserId(dealconfirmationId, dealOwner)){
+				fltSLList =  dealServiceLineRepository.findFLTServiceLinesBasedonDealId(dealconfirmationId);	
+			}
+		}
+
 		
 		List<FlightServiceLineVO> listFltSlVO = new ArrayList();
 		Iterator itrFltList = fltSLList.iterator();
@@ -349,7 +355,7 @@ public class DealServiceLineImpl {
 
 	/**************************************Insurance Service Line Code ***************************************************/
 	
-	public List<InsuranceServiceLineVO> find_INS_ServiceLines_Basedon_DealId(long dealconfirmationId,long dealOwner,boolean isAdmin){
+	public List<InsuranceServiceLineVO> find_INS_ServiceLines_Basedon_DealId(long dealconfirmationId,int dealOwner,boolean isAdmin){
 		List<Udn_Deal_INS_SL_Entity> insSLList;
 		
 		if(isAdmin) {
@@ -357,6 +363,11 @@ public class DealServiceLineImpl {
 		}
 		else {
 			insSLList =  dealServiceLineRepository.findINSServiceLinesBasedonDealIdAndOwner(dealconfirmationId,dealOwner);
+		}
+		if(insSLList.size()==0) {
+			if(dealTeamMapRepository.existsByDealConfirmationIdAndUserId(dealconfirmationId, dealOwner)){
+				insSLList =  dealServiceLineRepository.findINSServiceLinesBasedonDealId(dealconfirmationId);	
+			}
 		}
 		List<InsuranceServiceLineVO> listInsSlVO = new ArrayList<InsuranceServiceLineVO>();
 		
@@ -409,13 +420,18 @@ public class DealServiceLineImpl {
 	}
 
 	/********************************************************************************************************************/
-	public List<LandPackageServiceLineVO> find_LDP_ServiceLines_Basedon_DealId(long dealconfirmationId,long dealOwner,boolean isAdmin){
+	public List<LandPackageServiceLineVO> find_LDP_ServiceLines_Basedon_DealId(long dealconfirmationId,int dealOwner,boolean isAdmin){
 		List<Udn_Deal_LDP_SL_Entity> ldpSLList; 
 		if(isAdmin) {
 			ldpSLList =  dealServiceLineRepository.findLDPServiceLinesBasedonDealId(dealconfirmationId);
 		}
 		else {
 			ldpSLList =  dealServiceLineRepository.findLDPServiceLinesBasedonDealIdAndOwner(dealconfirmationId,dealOwner);
+		}
+		if(ldpSLList.size()==0) {
+			if(dealTeamMapRepository.existsByDealConfirmationIdAndUserId(dealconfirmationId, dealOwner)){
+				ldpSLList =  dealServiceLineRepository.findLDPServiceLinesBasedonDealId(dealconfirmationId);	
+			}
 		}
 		List<LandPackageServiceLineVO> listLdpSlVO = new ArrayList<LandPackageServiceLineVO>();
 		Iterator<Udn_Deal_LDP_SL_Entity> itrLdpList = ldpSLList.iterator();
@@ -466,13 +482,19 @@ public class DealServiceLineImpl {
 	}
 	
 	/****************************** OTHER SERVICE LINE STARTS HERE ***************************************/
-	public List<OtherServiceLineVO> find_OTH_ServiceLines_Basedon_DealId(long dealconfirmationId,long dealOwner,boolean isAdmin){
+	public List<OtherServiceLineVO> find_OTH_ServiceLines_Basedon_DealId(long dealconfirmationId,int dealOwner,boolean isAdmin){
 		List<Udn_Deal_OTH_SL_Entity> othSLList; 
 		if(isAdmin) {
 			othSLList =  dealServiceLineRepository.findOTHServiceLinesBasedonDealId(dealconfirmationId);
 		}else {
 			othSLList =  dealServiceLineRepository.findOTHServiceLinesBasedonDealIdAndOwner(dealconfirmationId,dealOwner);
 		}
+		if(othSLList.size()==0) {
+			if(dealTeamMapRepository.existsByDealConfirmationIdAndUserId(dealconfirmationId, dealOwner)){
+				othSLList =  dealServiceLineRepository.findOTHServiceLinesBasedonDealId(dealconfirmationId);	
+			}
+		}
+
 
 		List<OtherServiceLineVO> listOthSlVO = new ArrayList();
 		
@@ -521,7 +543,7 @@ public class DealServiceLineImpl {
 	
 	/*********************************** STS Service Line Starts from here ***********************/
 	
-	public List<SightSeeingServiceLineVO> find_STS_ServiceLines_Basedon_DealId(long dealconfirmationId,long dealOwner,boolean isAdmin) throws RecordNotFoundException{
+	public List<SightSeeingServiceLineVO> find_STS_ServiceLines_Basedon_DealId(long dealconfirmationId,int dealOwner,boolean isAdmin) throws RecordNotFoundException{
 		List<Udn_Deal_STS_SL_Entity> stsSLList; 
 		if(isAdmin) {
 			stsSLList=  dealServiceLineRepository.findSTSServiceLinesBasedonDealId(dealconfirmationId);
@@ -529,6 +551,13 @@ public class DealServiceLineImpl {
 		else {
 			stsSLList=  dealServiceLineRepository.findSTSServiceLinesBasedonDealIdAndOwner(dealconfirmationId,dealOwner);
 		}
+		if(stsSLList.size()==0) {
+			if(dealTeamMapRepository.existsByDealConfirmationIdAndUserId(dealconfirmationId, dealOwner)){
+				stsSLList =  dealServiceLineRepository.findSTSServiceLinesBasedonDealId(dealconfirmationId);	
+			}
+		}
+
+		
 		List<SightSeeingServiceLineVO> listStsSlVO = new ArrayList();
 		
 		Iterator itrStsList = stsSLList.iterator();
@@ -577,7 +606,7 @@ public class DealServiceLineImpl {
 	
 	/*********************************** TRN Service Line Starts from here ***********************/
 	
-	public List<TransferServiceLineVO> find_TRN_ServiceLines_Basedon_DealId(long dealconfirmationId,long dealOwner,boolean isAdmin) throws RecordNotFoundException{
+	public List<TransferServiceLineVO> find_TRN_ServiceLines_Basedon_DealId(long dealconfirmationId,int dealOwner,boolean isAdmin) throws RecordNotFoundException{
 		List<Udn_Deal_TRN_SL_Entity> trnSLList;
 		if(isAdmin) {
 			trnSLList =  dealServiceLineRepository.findTRNServiceLinesBasedonDealId(dealconfirmationId);
@@ -585,6 +614,13 @@ public class DealServiceLineImpl {
 		else {
 			trnSLList =  dealServiceLineRepository.findTRNServiceLinesBasedonDealIdAndOwner(dealconfirmationId,dealOwner);
 		}
+		if(trnSLList.size()==0) {
+			if(dealTeamMapRepository.existsByDealConfirmationIdAndUserId(dealconfirmationId, dealOwner)){
+				trnSLList =  dealServiceLineRepository.findTRNServiceLinesBasedonDealId(dealconfirmationId);	
+			}
+		}
+
+		
 		List<TransferServiceLineVO> listTrnSlVO = new ArrayList();
 		
 		Iterator itrTrnList = trnSLList.iterator();
@@ -636,7 +672,7 @@ public class DealServiceLineImpl {
 	/***************************** VSA Service Line Code Starts from here *******************************/
 	
 	
-	public List<VisaServiceLineVO> find_VSA_ServiceLines_Basedon_DealId(long dealconfirmationId,long dealOwner,boolean isAdmin) {
+	public List<VisaServiceLineVO> find_VSA_ServiceLines_Basedon_DealId(long dealconfirmationId,int dealOwner,boolean isAdmin) {
 		List<Udn_Deal_VSA_SL_Entity> vsaSLList; 
 		if(isAdmin)
 			vsaSLList =  dealServiceLineRepository.findVSAServiceLinesBasedonDealId(dealconfirmationId);
@@ -644,7 +680,12 @@ public class DealServiceLineImpl {
 		else {
 			vsaSLList =  dealServiceLineRepository.findVSAServiceLinesBasedonDealIdAndOwner(dealconfirmationId,dealOwner);
 		}
-		
+		if(vsaSLList.size()==0) {
+			if(dealTeamMapRepository.existsByDealConfirmationIdAndUserId(dealconfirmationId, dealOwner)){
+				vsaSLList =  dealServiceLineRepository.findVSAServiceLinesBasedonDealId(dealconfirmationId);	
+			}
+		}
+
 		
 		List<VisaServiceLineVO> listVsaSlVO = new ArrayList();
 		
@@ -893,7 +934,7 @@ public class DealServiceLineImpl {
 		
 	}
 	
-	public List<CruiseServiceLineVO> find_CRS_ServiceLines_Basedon_DealId(long dealconfirmationId,long dealOwner,boolean isAdmin) throws RecordNotFoundException{
+	public List<CruiseServiceLineVO> find_CRS_ServiceLines_Basedon_DealId(long dealconfirmationId,int dealOwner,boolean isAdmin) throws RecordNotFoundException{
 		List<Udn_Deal_CRS_SL_Entity> crsSLList;
 		if(isAdmin) {
 			crsSLList =  dealServiceLineRepository.findCRSServiceLinesBasedonDealId(dealconfirmationId);
@@ -901,6 +942,13 @@ public class DealServiceLineImpl {
 		else {
 			crsSLList =  dealServiceLineRepository.findCRSServiceLinesBasedonDealIdAndOwner(dealconfirmationId,dealOwner);
 		}
+		if(crsSLList.size()==0) {
+			if(dealTeamMapRepository.existsByDealConfirmationIdAndUserId(dealconfirmationId, dealOwner)){
+				crsSLList =  dealServiceLineRepository.findCRSServiceLinesBasedonDealId(dealconfirmationId);	
+			}
+		}
+
+		
 		List<CruiseServiceLineVO> listCrsSlVO = new ArrayList();
 		
 		Iterator itrCrsList = crsSLList.iterator();

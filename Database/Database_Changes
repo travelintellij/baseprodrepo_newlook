@@ -1,5 +1,12 @@
 
 
+
+
+
+
+
+*************** Below mentioned changes are done **************************************
+
 1)
 ALTER TABLE `udanchoodb`.`tg_b2b_partners` 
 ADD COLUMN `beneficiaryName` VARCHAR(250) NULL AFTER `cityId`,
