@@ -169,6 +169,9 @@ public class IncentiveServiceImpl {
 							predicates.add(criteriaBuilder.equal(incentiveRootEntity.get("claimOption"), ClaimOption.INCENTIVE));
 						}
 					}
+					else {
+						predicates.add(criteriaBuilder.equal(incentiveRootEntity.get("claimOption"), ClaimOption.INCENTIVE));
+					}
 					
 					if(searchIncentiveObj.getIncentiveId()==0 && searchIncentiveObj.getDealConfirmationId()==0) {
 						LocalDate currentDate = LocalDate.now();

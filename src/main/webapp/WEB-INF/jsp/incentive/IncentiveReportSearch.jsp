@@ -174,7 +174,6 @@
    											<div class="IncentiveReportSearch_wrapper_dl1_r">
                                                 <label for="">Type</label>
                                                 <form:select path="claimOption" required="required" style="width:90%">
-                                                 <option class="service-small" value="All">All</option>
                                                  <form:options items="${CLAIM_OPTION}" class="service-small" />
                                                 </form:select>
                                             </div>                                        
