@@ -215,6 +215,8 @@
                                                 &nbsp;&nbsp;
                                                 <a style="color:#32cd32" href="form_view_editIncentive?incentiveId=${incentiveObj.incentiveId}">Edit</a>
                                             </sec:authorize>
+                                            
+                                            
 
                                         </td>
                                         <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">
@@ -240,14 +242,14 @@
                                         <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">${incentiveObj.claimOption} </td>
                                         <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">${incentiveObj.claimedAmount}</td>
                                         <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">${incentiveObj.approvedAmount}</td>
-                                        <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">${incentiveObj.claimStatusName}</td>
+                                        <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">${incentiveObj.claimStatusName} and ${incentiveObj.status}</td>
                                     </tr>
                                     <c:set var="totalIncentive" value="${totalIncentive + incentiveObj.claimedAmount}" />
                                     <c:set var="totalApproved" value="${totalApproved + incentiveObj.approvedAmount}" />
                                 </c:forEach>
                             </c:if>
                             <tr>
-                                <td colspan="7" style="text-align:end;margin-right:10px;"><b>
+                                <td colspan="8" style="text-align:end;margin-right:10px;"><b>
                                         <font size="3">Total </font>
                                     </b></td>
                                     <td style="text-align:center;black:#32cd32;font-weight:bold">${totalIncentive}</td>
