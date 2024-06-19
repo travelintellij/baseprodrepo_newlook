@@ -391,6 +391,7 @@ public class IncentiveController {
  		Map<Integer, String> activeUsersMap = (Map<Integer, String>) activeUsersList.stream().collect(
                  Collectors.toMap(UserDetailsObj::getUserId, UserDetailsObj::getUsername));
  		activeUsersMap.put(0, "ALL");
+ 		mapview.addObject("STATUS_EDIT_ALLOWED", UdanChooConstants.INCENTIVE_FRESH_CREATED_STATUS);
  		mapview.addObject("ACTIVE_USERS_MAP", activeUsersMap);
  		mapview.addObject("INCENTIVE_SEARCH_PERIOD_TYPE", UdanChooConstants.INCENTIVE_SEARCH_PERIOD_TYPE);
  		mapview.addObject("maxPages", udnIncentiveList.getTotalPages());
