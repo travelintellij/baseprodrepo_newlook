@@ -165,6 +165,51 @@ public class IncentiveController {
     	return mapview ;
     }
     
+    
+    @RequestMapping("/form_edit_newincentive")
+   	public ModelAndView form_edit_newIncentiveFormDisplay(@ModelAttribute("INCENTIVE_OBJ") IncentiveObj incentiveObj,BindingResult result) {
+    	Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    	String username;
+    	if (principal instanceof UserDetails) {
+    	   username = ((UserDetails)principal).getUsername();
+    	} else {
+    	   username = principal.toString();
+    	}
+     	UserDetailsObj userObj = (UserDetailsObj) userDetailsService.loadUserByUsername(username);
+    	ModelAndView mapview = new ModelAndView("incentive/editIncentiveClaim");
+    	mapview.addObject("userName", username);
+    	mapview.addObject("userId", userObj.getUserId());
+    	
+    	UdnIncentiveEntity incentiveEntity=null;
+		try {
+			incentiveEntity = incentiveService.getIncentiveById(incentiveObj.getIncentiveId()).get();
+		} catch (RecordNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+		incentiveObj.updateIncentiveVoFromEntity(incentiveEntity);
+		incentiveObj.setClaimStatusName(commonService.find_DealStatusById(incentiveObj.getStatus()).getWorkloadStatusShortName());
+		
+		Udn_Deals_Recorder_Entity dealEntity;
+		try {
+			dealEntity = dealService.find_DealEntityBy_Id(incentiveEntity.getDealConfirmationId());
+			incentiveObj.setGuestName((clientService.getClientById(dealEntity.getClientId()).getClientName()));
+			incentiveObj.setClaimantName(userDetailsService.findUserByID(incentiveObj.getClaimantId()).getUsername());
+		} catch (RecordNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+    	List<UserDetailsObj> activeUsersList = userDetailsService.findAllActiveUsers();
+ 		Map<Integer, String> activeUsersMap = (Map<Integer, String>) activeUsersList.stream().collect(
+                 Collectors.toMap(UserDetailsObj::getUserId, UserDetailsObj::getUsername));
+ 		mapview.addObject("ACTIVE_USERS_MAP", activeUsersMap);
+    	//mapview.addObject("userRole", userObj.getRoles());
+    	return mapview;
+    }
+    
+    
     @RequestMapping(value = "adminDisplayIncentive", method = {RequestMethod.GET,RequestMethod.POST})
     public ModelAndView adminDisplayIncentive(@RequestParam("incentiveId") long incentiveId) {
     	ModelAndView modelView = displayIncentive(incentiveId);

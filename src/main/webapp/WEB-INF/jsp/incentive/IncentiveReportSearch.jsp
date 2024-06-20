@@ -217,7 +217,7 @@
                                             </sec:authorize>
                                             <c:if test="${not empty incentiveObj and incentiveObj.status eq STATUS_EDIT_ALLOWED}">
     											<!-- Display edit link if status matches status_edit_allowed -->
-												    <a style="color:#32cd32" href="form_view_editIncentive?incentiveId=${incentiveObj.incentiveId}">Edit</a>
+												    <a style="color:#32cd32" href="form_edit_newincentive?incentiveId=${incentiveObj.incentiveId}">Edit</a>
 											</c:if>
                                         </td>
                                         <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">

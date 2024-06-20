@@ -262,60 +262,47 @@
                                         You ? </p>
                                         <form:errors path="question1" cssClass="error" />
                                     </th>
-                                    <td> <input type="radio" name="question1" value="yes"> Yes
-
-                                    </td>
-                                    <td> <input type="radio" name="question1" value="no" checked> No</td>
+                                    <td><form:radiobutton path="question1" value="Yes" label="Yes" /></td> 
+                                    <td><form:radiobutton path="question1" value="No" label="No" /></td> 
+                                    
                                 </tr>
                                 <tr>
                                     <th style="width:5%;color:black">2</th>
                                     <th style="width:50%; padding: 5px;text-align:left;color:black"> <p>You took minimal
-                                        support of management
-                                        and were
-                                        able to
-                                        handle the query alone ? </p></th>
-                                    <td><input type="radio" name="question2" value="yes">Yes</td>
-                                    <td> <input type="radio" name="question2" value="no" checked>No </td>
+                                        support of management and were able to handle the query alone ? </p>
+                                    </th>
+                                    <td><form:radiobutton path="question2" value="Yes" label="Yes" /></td> 
+                                    <td><form:radiobutton path="question2" value="No" label="No" /></td> 
                                 </tr>
                                 <tr>
                                     <th style="width:5%;color:black">3</th>
                                     <th style="width:50%; padding: 5px;text-align:left;color:black"><p> You responded all
-                                        queries of client
-                                        yourself ontime
-                                        without
-                                        any delay ? </p></th>
-                                    <td><input type="radio" name="question3" value="yes">Yes</td>
-                                    <td> <input type="radio" name="question3" value="no" checked>No </td>
+                                        queries of client yourself ontime without any delay ? </p>
+                                    </th>
+                                    <td><form:radiobutton path="question3" value="Yes" label="Yes" /></td> 
+                                    <td><form:radiobutton path="question3" value="No" label="No" /></td> 
                                 </tr>
                                 <tr>
                                     <th style="width:5%;color:black">4</th>
                                     <th style="width:50%; padding: 5px;text-align:left;color:black"><p> You ensured and
-                                        verified with management
-                                        time to
-                                        time for
-                                        payment settlement ? </p> </th>
-                                    <td><input type="radio" name="question4" value="yes">Yes</td>
-                                    <td> <input type="radio" name="question4" value="no" checked>No </td>
+                                        verified with management time to time for payment settlement ? </p> </th>
+                                    <td><form:radiobutton path="question4" value="Yes" label="Yes" /></td> 
+                                    <td><form:radiobutton path="question4" value="No" label="No" /></td> 
                                 </tr>
                                 <tr>
                                     <th style="width:5%;color:black">5</th>
                                     <th style="width:50%; padding: 5px;text-align:left;color:black"> <p>You ensured Vouchers
-                                        Shared, Invoices
-                                        Collected and
-                                        all
-                                        settled with the deal ? </p> </th>
-                                    <td><input type="radio" name="question5" value="yes">Yes</td>
-                                    <td> <input type="radio" name="question5" value="no" checked>No </td>
+                                        Shared, Invoices Collected and all settled with the deal ? </p> </th>
+                                    <td><form:radiobutton path="question5" value="Yes" label="Yes" /></td> 
+                                    <td><form:radiobutton path="question5" value="No" label="No" /></td> 
                                 </tr>
                                 <tr>
                                     <th style="width:5%;color:black">6</th>
                                     <th style="width:50%; padding: 5px;text-align:left;color:black"><p> UdanChoo online
-                                        Review achieved or
-                                        decided not
-                                        needed ? </p>
+                                        Review achieved or decided not needed ? </p>
                                     </th>
-                                    <td><input type="radio" name="question6" value="yes">Yes</td>
-                                    <td> <input type="radio" name="question6" value="no" checked>No </td>
+                                    <td><form:radiobutton path="question6" value="Yes" label="Yes" /></td> 
+                                    <td><form:radiobutton path="question6" value="No" label="No" /></td> 
                                 </tr>
                             </table>
 
