@@ -190,7 +190,7 @@
 
                         <table class="bs" style="width:1500px;margin:10px auto;text-align:center;background:white;color:black">
                             <tr>
-                                <th style="height:50px;width:10%;background: #6082B6;">Incentive Id </th>
+                                <th style="height:50px;width:10%;background: #6082B6;">Incentive Id</th>
                                 <th style="height:50px;width:10%;background: #6082B6;">Deal Id </th>
                                 <th style="height:50px;width:15%;background: #6082B6;">Lead Guest Name</th>
                                 <th style="height:50px;width:8%;background: #6082B6;">Start Date</th>
@@ -209,16 +209,21 @@
                                         <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">
                                             <a style="color:blue;text-decoration:nonr;cursor:pointer" id="myBtn[${incentiveObj.incentiveId}]" onclick="myLeadDisplay(this)"
                                                 data-load-url="displayIncentiveModal?incentiveId=${incentiveObj.incentiveId}"
-                                                data-toggle="modal" data-target="#myModal">${incentiveObj.incentiveId}</a>
+                                                data-toggle="modal" data-target="#myModal">${incentiveObj.incentiveId} </a>
+                                                
 
                                             <sec:authorize access="hasAnyRole('ADMIN')">
                                                 &nbsp;&nbsp;
                                                 <a style="color:#32cd32" href="form_view_editIncentive?incentiveId=${incentiveObj.incentiveId}">Edit</a>
                                             </sec:authorize>
+                                            
+                                            <sec:authorize access="!hasAnyRole('ADMIN')">
                                             <c:if test="${not empty incentiveObj and incentiveObj.status eq STATUS_EDIT_ALLOWED}">
     											<!-- Display edit link if status matches status_edit_allowed -->
 												    <a style="color:#32cd32" href="form_edit_newincentive?incentiveId=${incentiveObj.incentiveId}">Edit</a>
 											</c:if>
+											</sec:authorize>
+											
                                         </td>
                                         <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">
                                             <a style="color:blue;text-decoration:none;cursor:pointer" id="myBtn[${incentiveObj.dealConfirmationId}]"

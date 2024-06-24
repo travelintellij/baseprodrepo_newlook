@@ -39,10 +39,12 @@ public class IncentiveValidator implements Validator {
 			errors.rejectValue("dealConfirmationId", "deal.missing.error");
 		}
 		else if (incentiveRecorderVO.getDealName()==null || (!isInteger(incentiveRecorderVO.getDealName()))){
+			System.out.println("Control is coming here" + incentiveRecorderVO.getDealName());
 			errorFound=true;
 			errors.rejectValue("dealConfirmationId", "invalid.dealName");
 		}
 		else if (incentiveRecorderVO.getDealConfirmationId()!=Integer.parseInt(incentiveRecorderVO.getDealName())) {
+			System.out.println("Not sure why deal confirmation id is zero");
 			errorFound=true;
 			errors.rejectValue("dealConfirmationId", "invalid.dealName");
 		}

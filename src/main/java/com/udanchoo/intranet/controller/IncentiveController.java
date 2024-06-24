@@ -190,7 +190,10 @@ public class IncentiveController {
     	
 		incentiveObj.updateIncentiveVoFromEntity(incentiveEntity);
 		incentiveObj.setClaimStatusName(commonService.find_DealStatusById(incentiveObj.getStatus()).getWorkloadStatusShortName());
-		
+		double percentage = 0.18;
+        // Calculate the gross claim by adding 18% to the net claim and rounding off
+		incentiveObj.setGrossClaim((int) Math.round(incentiveObj.getClaimedAmount() * (1 + percentage)));
+		incentiveObj.setDealName(String.valueOf(incentiveObj.getDealConfirmationId()));
 		Udn_Deals_Recorder_Entity dealEntity;
 		try {
 			dealEntity = dealService.find_DealEntityBy_Id(incentiveEntity.getDealConfirmationId());
@@ -284,6 +287,8 @@ public class IncentiveController {
 			incentiveObj.updateIncentiveVoFromEntity(incentiveEntity);
 			incentiveObj.setClaimantName(userDetailsService.findUserByID(incentiveObj.getClaimantId()).getUsername());
 			incentiveObj.setClaimStatusName(commonService.find_DealStatusById(incentiveObj.getStatus()).getWorkloadStatusShortName());
+			double percentage = 0.18;
+			incentiveObj.setGrossClaim((int) Math.round(incentiveObj.getClaimedAmount() * (1 + percentage)));
 			displayIncentiveView.addObject("INCENTIVE_OBJ", incentiveObj);
 			Udn_Deals_Recorder_Entity dealEntity = dealService.find_DealEntityBy_Id(incentiveObj.getDealConfirmationId());
 			Udn_Deals_Recorder_Obj dealObj = new Udn_Deals_Recorder_Obj(dealEntity);
@@ -483,6 +488,7 @@ public class IncentiveController {
     	mapview.addObject("maxPages", udnIncentiveList.getTotalPages());
     	mapview.addObject("page", page);
     	mapview.addObject("sortBy", sortBy);
+    	mapview.addObject("STATUS_EDIT_ALLOWED", UdanChooConstants.INCENTIVE_FRESH_CREATED_STATUS);
     	
     	return mapview;
     }
@@ -544,6 +550,31 @@ public class IncentiveController {
 		modelView.addObject("ACTIVE_INCENTIVE_STATUS", activeIncentiveStatusMap);
 		
 		
+        return modelView;
+    }
+    
+    @RequestMapping(value = "claimant_edit_editIncentive", method = RequestMethod.GET)
+    public ModelAndView claimant_edit_editIncentive(@ModelAttribute("updateincentive") @Valid IncentiveObj incentiveObj, BindingResult result, final RedirectAttributes redirectAttrib){
+    	
+    	UserDetailsObj userObj = getLoggedInUser();
+    	ModelAndView modelView = new ModelAndView();
+    	modelView.setViewName("incentive/form_editIncentiveClaim");
+    	UdnIncentiveEntity incentiveEntity = null;
+		try {
+			incentiveEntity = incentiveService.getIncentiveById(incentiveObj.getIncentiveId()).get();
+			//System.out.println("Entity Details is "  + incentiveEntity);
+		} catch (RecordNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		List<UserDetailsObj> activeUsersList = userDetailsService.findAllActiveUsers();
+ 		Map<Integer, String> activeUsersMap = (Map<Integer, String>) activeUsersList.stream().collect(
+                 Collectors.toMap(UserDetailsObj::getUserId, UserDetailsObj::getUsername));
+ 		modelView.addObject("ACTIVE_USERS_MAP", activeUsersMap);
+		List<UdnDealStatusVO> incentive_wl_statusList = commonService.find_All_Status_Deal_Obj(UdanChooConstants.WORKLOAD_INCENTIVE_OBJ);
+		Map<Integer, String> activeIncentiveStatusMap = (Map<Integer, String>) incentive_wl_statusList.stream().collect(
+                Collectors.toMap(UdnDealStatusVO::getWorkloadStatusId, UdnDealStatusVO::getWorkloadStatusShortName));
+		modelView.addObject("ACTIVE_INCENTIVE_STATUS", activeIncentiveStatusMap);
         return modelView;
     }
     

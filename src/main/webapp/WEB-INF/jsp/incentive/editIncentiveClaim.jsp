@@ -190,8 +190,9 @@
                 </style>
 
                 <body>
-                    <form:form method="post" action="create_create_incentive" modelAttribute="INCENTIVE_OBJ">
-                        
+                    <form:form method="post" action="edit_edit_incentive_details" modelAttribute="INCENTIVE_OBJ">
+                        <form:hidden path="incentiveId" />
+                        <form:hidden path="status" />
                         <div class="SubmitNewIncentiveClaim container">
                             <div class="SubmitNewIncentiveClaim_wrapper bs">
                                 <h1 class="hd" style="color:#FFBA08">Incentive Claim Form</h1>
@@ -230,7 +231,8 @@
                                         
                                         <div class="SubmitNewIncentiveClaim_wrapper_dl2">
                                             <label for="">Deal ID</label> <br>
-                                            <form:input path="dealName" name="dealName" class="form-control search-slt" id="dealName" placeholder="Deal Search - Enter Only numeric Deal # or Client Name " />
+                                            <form:input path="dealName" name="dealName" class="form-control search-slt" id="dealName" placeholder="Deal Search - Enter Only numeric Deal # or Client Name " disabled="true" />
+                                            <form:hidden path="dealName" />
                                             <form:hidden path="dealConfirmationId" />
                                             <br>
                                            
