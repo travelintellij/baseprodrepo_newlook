@@ -67,12 +67,12 @@
                                 </form:form>
                             </div>
                         </div>
-                <table class="cli_crud bs" style="width:60%;text-align: center;margin: 10px auto;">  
+                <table class="cli_crud bs" style="width:70%;text-align: center;margin: 10px auto;">  
                 <thead style="background: #6082B6;color:black;height:50px;color:black;margin-bottom:10px">
                 <tr>
 				<th>S. No.</th>
 				<th colspan="1">Document Name</th>
-				<th colspan="2" style="width:30px;text-align:center">Action</th>
+				<th colspan="3" style="width:60px;text-align:center">Action</th>
 			     </tr>
 			     </thead>
 			     <tbody style="background:white;color:black">
@@ -81,11 +81,20 @@
 			 <tr style="padding:10px">
 				<td><c:out value = "${docCount}"/>.</td>
 				<td>${file.name}</td>
+								<td>
+					<form:form name="view_client_docForm" id="view_client_doc" action="view_client_doc" style="display:inline;" target="_blank">
+         				<input type="hidden" name="clientId" value="${CLIENT_OBJ.clientId}"/>
+         				<input type="hidden" name="fileName" value="${file}"/>
+     					<input type="submit" name="View" Value="View" style="color: white;background-color: darkgrey; padding: 6px 12px; border:none;outline:none;border-radius:5px;margin-right:-25px;margin-top:5px;cursor:pointer" />
+        			</form:form>
+				</td>
+				
+
 				<td>
 					<form:form name="download_client_docForm" id="download_client_doc" action="download_client_doc" style="display:inline;">
          				<input type="hidden" name="clientId" value="${CLIENT_OBJ.clientId}"/>
          				<input type="hidden" name="fileName" value="${file}"/>
-     					<input type="submit" name="Download" Value="Download" style="color: white;background-color: #32cd32; padding: 6px 12px; border:none;outline:none;border-radius:5px;margin-right:-70px;margin-top:5px;cursor:pointer" />
+     					<input type="submit" name="Download" Value="Download" style="color: white;background-color: #32cd32; padding: 6px 12px; border:none;outline:none;border-radius:5px;margin-right:-40px;margin-top:5px;cursor:pointer" />
         			</form:form>
 				</td>
 				<td>				

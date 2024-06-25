@@ -2,6 +2,7 @@ package com.udanchoo.intranet.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.LinkOption;
 import java.nio.file.Path;
@@ -13,6 +14,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
@@ -372,6 +374,33 @@ public class ClientController {
     	            .body(resource);
     }
 	
+	@PostMapping("view_client_doc")
+	public ResponseEntity<Resource>  view_client_doc(@RequestParam("clientId") long clientId,@RequestParam("fileName") String downloadFilePath) throws IOException {
+		Path downloadPath = Paths.get(downloadFilePath);
+		Resource resource = new UrlResource(downloadPath.toUri());
+		//String  contentType = "application/octet-stream";
+		String  contentType = determineContentType(resource);
+		
+		return ResponseEntity.ok().contentType(MediaType.parseMediaType(contentType))
+    	            .header(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=\"" + resource.getFilename() + "\"")
+    	            .body(resource);
+    }
+	
+	private final ServletContext servletContext;
+	 public ClientController(ServletContext servletContext) {
+	        this.servletContext = servletContext;
+	    }
+	private String determineContentType(Resource resource) throws IOException {
+	        // Try to determine the content type
+	        String contentType = servletContext.getMimeType(resource.getFile().getAbsolutePath());
+
+	        // Fallback to octet-stream if type could not be determined
+	        if (contentType == null) {
+	            contentType = "application/octet-stream";
+	        }
+
+	        return contentType;
+	}
 	
 	@PostMapping("delete_client_doc")
 	public ModelAndView delete_client_doc(@RequestParam("clientId") long clientId,@RequestParam("fileName") String deleteFileName) throws IOException {
