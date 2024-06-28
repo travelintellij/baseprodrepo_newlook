@@ -321,16 +321,11 @@
 	                               <i class="fa-solid fa-sliders st1" style="color:black">
 	                                   <div class="ul" style="background:gray">
 	                                       <ul>
-	                                           <li><a href="form_view_lead_followup_details?leadId=${filteredLeads.leadId }"
-	                                                   class="pop-up">FollowUp</a></li>
-	                                           <li><a href="form_view_editlead?leadId=${filteredLeads.leadId }"
-	                                                   class="pop-up">Edit</a></li>
-	                                           <li><a href="view_form_search_supplier_quote?leadId=${filteredLeads.leadId }"
-	                                                   class="pop-up">Request Quote</a></li>
-	                                           <li><a href="view_lead_quotations_list?leadId=${filteredLeads.leadId }"
-	                                                   class="pop-up">Quotations</a></li>
-	                                           <li><a href="form_view_lead_reminder_details?leadId=${filteredLeads.leadId }&page=${page}"
-	                                                   class="pop-up">Reminder</a></li>
+	                                           <li><a href="form_view_lead_followup_details?leadId=${filteredLeads.leadId }" class="pop-up">FollowUp</a></li>
+	                                           <li><a href="form_view_editlead?leadId=${filteredLeads.leadId }" class="pop-up">Edit</a></li>
+	                                           <li><a href="view_form_search_supplier_quote?leadId=${filteredLeads.leadId }" class="pop-up">Request Quote</a></li>
+	                                           <li><a href="view_lead_quotations_list?leadId=${filteredLeads.leadId }" class="pop-up">Quotations</a></li>
+	                                           <li><a href="form_view_lead_reminder_details?leadId=${filteredLeads.leadId }&page=${page}" class="pop-up">Reminder</a></li>
 	                                       </ul>
 	                                   </div>
 	                               </i>

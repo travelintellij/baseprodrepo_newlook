@@ -168,7 +168,7 @@
                                                         </div>
                                                 </sec:authorize>
                                                 <sec:authorize access="!hasAnyRole('ADMIN')">
-                                                    ${userName}
+                                                    <br> ${userName}
                                                 </sec:authorize>
                                             </div>
    											<div class="IncentiveReportSearch_wrapper_dl1_r">
@@ -176,7 +176,16 @@
                                                 <form:select path="claimOption" required="required" style="width:90%">
                                                  <form:options items="${CLAIM_OPTION}" class="service-small" />
                                                 </form:select>
+                                            </div>
+                                            <div class="IncentiveReportSearch_wrapper_dl1_r">
+                                                <label for="">Verified</label>
+                                                <form:select path="verifiedClaimOption" required="required" style="width:90%">
+                                                	<form:options items="${VERIFIED_CLAIMS_OPTIONS}" class="service-small" />
+                                                </form:select>
+                                                
+                                                
                                             </div>                                        
+                                                                                    
                                         </div>
                                         <div class="due_today_task_data_btnss" style="margin:10px 0">
                                             <input type="submit" value="Apply Filter" />
@@ -218,7 +227,7 @@
                                             </sec:authorize>
                                             
                                             <sec:authorize access="!hasAnyRole('ADMIN')">
-                                            <c:if test="${not empty incentiveObj and incentiveObj.status eq STATUS_EDIT_ALLOWED}">
+                                            <c:if test="${not empty incentiveObj and incentiveObj.status eq STATUS_EDIT_ALLOWED and not incentiveObj.verified}">
     											<!-- Display edit link if status matches status_edit_allowed -->
 												    <a style="color:#32cd32" href="form_edit_newincentive?incentiveId=${incentiveObj.incentiveId}">Edit</a>
 											</c:if>
@@ -248,7 +257,14 @@
                                         <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">${incentiveObj.claimOption} </td>
                                         <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">${incentiveObj.claimedAmount}</td>
                                         <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">${incentiveObj.approvedAmount}</td>
-                                        <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">${incentiveObj.claimStatusName}</td>
+                                        <td style="border-bottom:2px solid #FABA08;border-right:2px solid #FABA08">
+                                        	${incentiveObj.claimStatusName}
+                                        	<c:if test = "${incentiveObj.verified eq true and incentiveObj.status eq STATUS_EDIT_ALLOWED}">
+                                        		<img src="${pageContext.request.contextPath}/resources/images/Verified.jpg" height="25" width="25">
+                                        	</c:if>
+                                        
+                                        
+                                        </td>
                                     </tr>
                                     <c:set var="totalIncentive" value="${totalIncentive + incentiveObj.claimedAmount}" />
                                     <c:set var="totalApproved" value="${totalApproved + incentiveObj.approvedAmount}" />

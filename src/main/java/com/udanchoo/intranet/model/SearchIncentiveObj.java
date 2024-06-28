@@ -15,6 +15,8 @@ public class SearchIncentiveObj {
 	private boolean blnSearchOnClaimDate;
 	private int incentiveSearchPeriodType;
 	private ClaimOption claimOption;
+	private int verifiedClaimOption;
+	private boolean verified;
 	
 	public String getClaimFromDate() {
 		return claimFromDate;
@@ -105,13 +107,32 @@ public class SearchIncentiveObj {
 	public void setClaimOption(ClaimOption claimOption) {
 		this.claimOption = claimOption;
 	}
+	
+	
+	
+	
+	
+	
 	@Override
 	public String toString() {
 		return "SearchIncentiveObj [incentiveId=" + incentiveId + ", claimFromDate=" + claimFromDate + ", claimToDate="
 				+ claimToDate + ", claimStatus=" + claimStatus + ", claimantId=" + claimantId + ", userName=" + userName
 				+ ", reportOfUser=" + reportOfUser + ", dealConfirmationId=" + dealConfirmationId + ", dealName="
 				+ dealName + ", blnSearchOnClaimDate=" + blnSearchOnClaimDate + ", incentiveSearchPeriodType="
-				+ incentiveSearchPeriodType + ", claimOption=" + claimOption + "]";
+				+ incentiveSearchPeriodType + ", claimOption=" + claimOption + ", verifiedClaimOption="
+				+ verifiedClaimOption + "]";
+	}
+	public int getVerifiedClaimOption() {
+		return verifiedClaimOption;
+	}
+	public void setVerifiedClaimOption(int verifiedClaimOption) {
+		this.verifiedClaimOption = verifiedClaimOption;
+	}
+	public boolean isVerified() {
+		return verified;
+	}
+	public void setVerified(boolean verified) {
+		this.verified = verified;
 	}
 	
 	

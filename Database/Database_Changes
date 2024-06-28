@@ -1,4 +1,9 @@
 
+1) 
+ALTER TABLE `udanchoodb`.`udnincentive` 
+ADD COLUMN `verified` TINYINT NULL DEFAULT 0 AFTER `updated_at`,
+CHANGE COLUMN `claimOption` `claimOption` ENUM('INCENTIVE', 'TARGET') NOT NULL AFTER `Status`;
+
 
 
 

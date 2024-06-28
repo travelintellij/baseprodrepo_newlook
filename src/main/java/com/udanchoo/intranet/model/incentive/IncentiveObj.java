@@ -18,6 +18,7 @@ public class IncentiveObj extends UdnIncentiveEntity {
 	private ClaimOption claimOption;
 	private String dealName;
 	
+	
 	public IncentiveObj() {
 		
 	}
@@ -61,6 +62,7 @@ public class IncentiveObj extends UdnIncentiveEntity {
 		this.status = incentiveEntity.getStatus();
 		this.setCreatedAt(incentiveEntity.getCreatedAt());
 		this.claimOption=incentiveEntity.getClaimOption();
+		this.verified=incentiveEntity.isVerified();
 	}
 
 
@@ -147,7 +149,7 @@ public class IncentiveObj extends UdnIncentiveEntity {
 	public void setDealName(String dealName) {
 		this.dealName = dealName;
 	}
- 	
+
 
 	
 }

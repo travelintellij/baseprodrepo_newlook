@@ -350,22 +350,19 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th style="color:black"><p> User Remarks </p></th>
+                                    <th style="color:black;wideth:25%;"><p> User Remarks </p></th>
                                     <td style="text-align:left;">
-                                    
-                                    <form:textarea path="userRemarks" maxlength="250" id="userRemarks" cols="75" rows="2" style="resize: none;" /><br>
-                                    
+                                    <form:textarea path="userRemarks" maxlength="250" id="userRemarks" cols="40" rows="2" style="resize: none;" /><br>
                                         <font color="red">
                                             <form:errors path="userRemarks" cssClass="error" />
                                         </font>
                                     </td>
                                 </tr>
+                                <tr><td colspan="2"><label for="verified"><font color="red" size="4" style=" font-size: 20px;">Verified & Final Claim</font></label>&nbsp;&nbsp;&nbsp;<form:checkbox path="verified" id="verified" style="margin: 4px 0 0;line-height: normal;width: 20px;height: 20px;"/></td></tr>
                                 <tr>
-                                    <td class="
-due_today_task_data_btnss" style="text-align:center;width:50%;background:white" colspan="2" >
+                                    <td class="due_today_task_data_btnss" style="text-align:center;width:50%;background:white" colspan="2" >
                                         <input type="submit" value="Submit Claim">
-                                        <a href="view_default_incentives_report"><input type="button"
-                                                value="View Incentive Listing" /></a>
+                                        <a href="view_default_incentives_report"><input type="button" value="View Incentive Listing" /></a>
                                     </td>
                                 </tr>
                             </table>

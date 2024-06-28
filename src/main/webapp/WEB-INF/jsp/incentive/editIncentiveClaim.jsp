@@ -349,12 +349,11 @@
                                         </font>
                                     </td>
                                 </tr>
+                                <tr><td colspan="2"><label for="verified"><font color="red" size="4" style=" font-size: 20px;">Verified & Final Claim</font></label>&nbsp;&nbsp;&nbsp;<form:checkbox path="verified" id="verified" style="margin: 4px 0 0;line-height: normal;width: 20px;height: 20px;"/></td></tr>
                                 <tr>
-                                    <td class="
-due_today_task_data_btnss" style="text-align:center;width:50%;background:white" colspan="2" >
+                                    <td class="due_today_task_data_btnss" style="text-align:center;width:50%;background:white" colspan="2" >
                                         <input type="submit" value="Submit Claim">
-                                        <a href="view_default_incentives_report"><input type="button"
-                                                value="View Incentive Listing" /></a>
+                                        <a href="view_default_incentives_report"><input type="button" value="View Incentive Listing" /></a>
                                     </td>
                                 </tr>
                             </table>

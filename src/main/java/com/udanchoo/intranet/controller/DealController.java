@@ -408,6 +408,12 @@ public class DealController {
     	Map<Integer, String> dealStatusMap = (Map<Integer, String>) udnDealStatusVoList.stream().collect(
                 Collectors.toMap(UdnDealStatusVO::getWorkloadStatusId, UdnDealStatusVO::getWorkloadStatusName));
     	modelView.addObject("DEAL_STATUS_MAP", dealStatusMap);
+    	
+    	List<UserDetailsObj> activeUsersList = userDetailsService.findAllActiveUsers();
+ 		Map<Integer, String> activeUsersMap = (Map<Integer, String>) activeUsersList.stream().collect(
+                 Collectors.toMap(UserDetailsObj::getUserId, UserDetailsObj::getUsername));
+ 		modelView.addObject("ACTIVE_USERS_MAP", activeUsersMap);
+ 		
 		if(filterDealObj.getEndDate().compareTo(filterDealObj.getStartDate()) <0) {
 			result.rejectValue("endDate", "lead.invalid.date.range");
 		}

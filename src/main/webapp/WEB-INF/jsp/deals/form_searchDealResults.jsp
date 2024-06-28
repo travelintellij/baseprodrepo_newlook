@@ -43,8 +43,7 @@
                         
                                     <td style="width: 250px;border-bottom:2px solid black;border-right:2px solid black">
                                         <c:forEach var="listValue" items="${dealObj.serviceList}" varStatus="loopCounter">
-                                            <img src="${pageContext.request.contextPath}/resources/images/${listValue.trim()}.jpg" height="25"
-                                                width="25">
+                                            <img src="${pageContext.request.contextPath}/resources/images/${listValue.trim()}.jpg" height="25" width="25">
                                         </c:forEach>
                                     </td>
                         

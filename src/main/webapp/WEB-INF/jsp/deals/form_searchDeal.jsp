@@ -6,12 +6,25 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <head>
+    <script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
+	<script src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>search deals</title>
-     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/captureLead.css">
+    <title>Search Deals</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
+    <script src="https://kit.fontawesome.com/6f6addf9b0.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/6f6addf9b0.js" crossorigin="anonymous"></script>
 </head>
 <style>
+   .autocomplete-suggestions { border: 1px solid #999; background: red;overflow-y:auto}
+		.autocomplete-suggestion {padding: 2px 5px;color:white; background: black;overflow-y: auto;overflow-y:auto}
+		.autocomplete-selected { background: #F0F0F0;overflow-y:auto} 
+		.autocomplete-suggestions strong { font-weight: normal; color:#FABA08;overflow-y:auto}
+		.autocomplete-group { padding: 2px 5px;overflow-y:auto}
+		.autocomplete-group strong { display: block; border-bottom: 1px solid #000;  background: black ; color:black overflow-y:auto}
+		.autocomplete-selected:hover{
+		color:black
+		}
   body::before {
             content: "";
             background-image:  url(${pageContext.request.contextPath}/resources/images/revamped/search_deals.jpg);
@@ -30,6 +43,7 @@
 </style>
 <body>
 
+
     <div class="search_deal container">
         <div class="search_deal_wrapper bs">
             <h1 class="search_deal_h1">
@@ -42,10 +56,9 @@
                         <form:input path="dealConfirmationId" type="number" min="0" size="35" value=""
                             placeholder="Deal Number" />
                     </div>
-                    <div class="search_deals_data_l1">
+                      <div class="l2Box2 box contactName">
                         <label for="cn">Client Name</label>
-                        <form:input path="clientName" id="clientName" name="clientName" size="35"
-                            placeholder="Client Name" />
+                        <form:input path="clientName"  id="clientName" name="clientName" size="35"  placeholder="Client Name" class="inf" />
                         <form:hidden path="clientId" />
                     </div>
                     <div class="search_deals_data_l1">
@@ -58,8 +71,16 @@
                             <option class="service-small" value="0">Please Select</option>
                             <form:options items="${DEAL_STATUS_MAP}" class="service-small" />
                         </form:select>
+                    </div>&nbsp;&nbsp;&nbsp;&nbsp;
+                     <div class="search_deals_data_l1">
+                        <label for="dealOwner">Deal Owner</label>
+                        <form:select path="dealOwner" required="required">
+                            <option class="service-small" value="0">Please Select</option>
+                            <form:options items="${ACTIVE_USERS_MAP}" class="service-small" />
+                        </form:select>
                     </div>
                 </div>
+                
                 <div class="search_deals_data">
                     <div class="search_deals_data_l1 search_deal_chs">
 						<form:radiobutton path="searchOnBookingDate" value="true" style="display: inline-block;width: 20px;height: 20px;margin-left: -25px;margin-right:10px"/>                        

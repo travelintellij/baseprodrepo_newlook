@@ -37,6 +37,7 @@ public class UdnIncentiveEntity extends AuditModel {
 	protected int approvedAmount;
 	protected String userRemarks;
 	protected String managementRemarks;
+	protected boolean verified=false;
 	
 	@Enumerated(EnumType.STRING)
     @Column(name = "claimOption", nullable = false)
@@ -70,6 +71,7 @@ public class UdnIncentiveEntity extends AuditModel {
 		this.responseDate = incentiveObj.getResponseDate();
 		this.status = incentiveObj.getStatus();
 		this.claimOption=incentiveObj.getClaimOption();
+		this.verified=incentiveObj.isVerified();
 	}
 	public Long getIncentiveId() {
 		return incentiveId;
@@ -180,6 +182,8 @@ public class UdnIncentiveEntity extends AuditModel {
 	}
 
 	
+	
+
 	@Override
 	public String toString() {
 		return "UdnIncentiveEntity [incentiveId=" + incentiveId + ", dealConfirmationId=" + dealConfirmationId
@@ -187,7 +191,8 @@ public class UdnIncentiveEntity extends AuditModel {
 				+ ", question3=" + question3 + ", question4=" + question4 + ", question5=" + question5 + ", question6="
 				+ question6 + ", grossClaim=" + grossClaim + ", claimedAmount=" + claimedAmount + ", approvedAmount="
 				+ approvedAmount + ", userRemarks=" + userRemarks + ", managementRemarks=" + managementRemarks
-				+ ", claimOption=" + claimOption + ", responseDate=" + responseDate + ", status=" + status + "]";
+				+ ", verified=" + verified + ", claimOption=" + claimOption + ", responseDate=" + responseDate
+				+ ", status=" + status + "]";
 	}
 
 	public ClaimOption getClaimOption() {
@@ -196,6 +201,14 @@ public class UdnIncentiveEntity extends AuditModel {
 
 	public void setClaimOption(ClaimOption claimOption) {
 		this.claimOption = claimOption;
+	}
+
+	public boolean isVerified() {
+		return verified;
+	}
+
+	public void setVerified(boolean verified) {
+		this.verified = verified;
 	}
 	
 	

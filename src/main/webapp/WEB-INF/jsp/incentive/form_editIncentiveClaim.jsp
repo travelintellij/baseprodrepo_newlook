@@ -216,7 +216,15 @@
                                             <label for="" style="color:black;">Net Claim</label>
                                             <p style="color:#32cd32;font-weight:bold;">${INCENTIVE_OBJ.claimedAmount}</p>
                                         </div>
+
+										<div class="form_editIncentiveClaim_wrapper_data_line">
+                                            <label for="" style="color:black;">Verified</label>
+                                            <p style="color:#32cd32;font-weight:bold;"><form:checkbox path="verified" id="verified" style="margin: 4px 0 0;line-height: normal;width: 20px;height: 20px;"/></p>
+                                        </div>
+                                        
                                     </div>
+                                    
+                                    
                                     <div class="inc_sp_l">
                                         <div class="form_editIncentiveClaim_wrapper_data_line">
                                             <label for="" style="color:black">Approved Amount</label>

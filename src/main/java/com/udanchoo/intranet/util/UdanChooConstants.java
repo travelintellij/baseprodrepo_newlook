@@ -653,7 +653,15 @@ public interface UdanChooConstants {
 				}
 			}; 
 
-	
+		static final Map<Integer, String> VERIFIED_CLAIMS= new HashMap<Integer, String>(){
+			{
+				put(0,"All");
+				put(1,"VERIFIED");
+				put(2,"NOT VERIFIED");
+			}
+		}; 
+
+			
 		/************************** Deal Related Constants ******************************/
 	    static final Map<Integer, String> DEAL_SEARCH_PERIOD_TYPE = new HashMap<Integer, String>(){
 				{

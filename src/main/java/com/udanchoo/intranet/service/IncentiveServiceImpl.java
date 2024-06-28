@@ -155,6 +155,11 @@ public class IncentiveServiceImpl {
 						predicates.add(criteriaBuilder.equal(incentiveRootEntity.get("dealConfirmationId"), searchIncentiveObj.getDealConfirmationId()));
 					}
 
+					if(searchIncentiveObj.getVerifiedClaimOption()!=0) {
+							predicates.add(criteriaBuilder.equal(incentiveRootEntity.get("verified"), searchIncentiveObj.isVerified()));
+					}
+
+
 					if(searchIncentiveObj.getIncentiveId()!=0) {
 						predicates.add(criteriaBuilder.equal(incentiveRootEntity.get("incentiveId"), searchIncentiveObj.getIncentiveId()));
 					}

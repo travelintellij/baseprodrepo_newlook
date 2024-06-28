@@ -442,6 +442,8 @@ public class IncentiveController {
                  Collectors.toMap(UserDetailsObj::getUserId, UserDetailsObj::getUsername));
  		activeUsersMap.put(0, "ALL");
  		mapview.addObject("STATUS_EDIT_ALLOWED", UdanChooConstants.INCENTIVE_FRESH_CREATED_STATUS);
+ 		mapview.addObject("VERIFIED_CLAIMS_OPTIONS", UdanChooConstants.VERIFIED_CLAIMS);
+ 		
  		mapview.addObject("ACTIVE_USERS_MAP", activeUsersMap);
  		mapview.addObject("INCENTIVE_SEARCH_PERIOD_TYPE", UdanChooConstants.INCENTIVE_SEARCH_PERIOD_TYPE);
  		mapview.addObject("maxPages", udnIncentiveList.getTotalPages());
@@ -470,6 +472,14 @@ public class IncentiveController {
 	   	}else {
 	   		searchIncentiveObj.setClaimantId(userObj.getUserId());
 	   	}
+	    if(searchIncentiveObj.getVerifiedClaimOption()!=0) {
+	    	if(searchIncentiveObj.getVerifiedClaimOption()==1) {
+	    		searchIncentiveObj.setVerified(true);
+	    	}
+	    	else if(searchIncentiveObj.getVerifiedClaimOption()==2) {
+	    		searchIncentiveObj.setVerified(false);
+	    	}
+	    }
 	    Page <UdnIncentiveEntity> udnIncentiveList = incentiveService.filterIncentiveRecord(page,pageSize,"createdAt",searchIncentiveObj,isAdmin);
     	List <IncentiveObj> udnIncentiveListVO = generateFilteredIncentiveVo(udnIncentiveList);
 		mapview.addObject("INCENTIVES_LIST", udnIncentiveListVO);
@@ -484,6 +494,7 @@ public class IncentiveController {
 		activeIncentiveStatusMap.put(0, "ALL");
 		mapview.addObject("ACTIVE_INCENTIVE_STATUS", activeIncentiveStatusMap);
 		mapview.addObject("INCENTIVE_SEARCH_PERIOD_TYPE", UdanChooConstants.INCENTIVE_SEARCH_PERIOD_TYPE);
+		mapview.addObject("VERIFIED_CLAIMS_OPTIONS", UdanChooConstants.VERIFIED_CLAIMS);
     	
     	mapview.addObject("maxPages", udnIncentiveList.getTotalPages());
     	mapview.addObject("page", page);
