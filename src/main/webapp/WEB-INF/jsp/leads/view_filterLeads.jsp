@@ -151,17 +151,17 @@
                             <form:errors path="destinationName" cssClass="error" htmlEscape="false" style="font-size: 13px;font-weight:bold"/>
                         </font>
                     </div>
-                    <!-- <sec:authorize access="hasAnyRole('ADMIN','LEAD_MANAGER')">
-                        <th>Lead Owner</th>
-                        <td>
-                            <div class="select">
+                    <sec:authorize access="hasAnyRole('ADMIN','LEAD_MANAGER')">
+                        <div class="secondL">
+                    		<div class="l3Box3 box">
+                                <label for="all"  style="font-weight:800">Lead Owner</label> <br>
                                 <form:select path="leadOwner" style="width: 150px;">
-                                    <form:options items="${ACTIVE_USERS_MAP}" class="service-small" />
                                     <form:option value="0" label="***ALL***" class="service-small" />
+                                    <form:options items="${ACTIVE_USERS_MAP}" class="service-small" />
                                 </form:select>
                             </div>
-                        </td>
-                    </sec:authorize> -->
+                        </div>
+                    </sec:authorize>
                     <div class="box3 box chflex">
                         <form:checkbox path="qualified" id="quali" />
                         <label for="quali"  style="font-weight:800">Qualified</label>
@@ -172,7 +172,7 @@
                     </div>
                     <div class="l2Box1 box" style="margin-right:22px">
                         <label for="id"  style="font-weight:800">Lead id</label> <br>
-                        <form:input path="leadId" type="number" min="0" size="35" value="" id="id" class="inf" placeholder="Lead Number" />
+                        <form:input path="leadId" type="number" min="0" size="35" value="" id="id" class="inf" placeholder="Lead Number" style="width:100px;"/>
                     </div>
                     <div class="l2Box2 box contactName">
                         <label for="cn"  style="font-weight:800">Contact Name</label> <br>
