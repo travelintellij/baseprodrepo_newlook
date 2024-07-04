@@ -70,6 +70,7 @@
                         <li class="tophHeaderMainLink Mql6">
                             <p>Service Line Queue</p>
                             <ul class="topHeaderSubMenu">
+                                <li><a href="get_deals_service_line_queue_user" class="hoverOnLink">Deals</a></li>
                                 <li><a href="get_flight_service_line_queue_user" class="hoverOnLink">Flight</a></li>
                                 <li><a href="get_hotel_service_line_queue_user" class="hoverOnLink">Hotal</a></li>
                                 <li><a href="get_insurance_service_line_queue_user" class="hoverOnLink">Insurence</a>

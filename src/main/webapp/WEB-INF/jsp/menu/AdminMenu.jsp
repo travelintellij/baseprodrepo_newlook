@@ -165,6 +165,7 @@
                 <li class="bottomHeaderLinks">
                     <p>Service Line Queue</p>
                     <ul class="bottomSectionHeaderSubMenu">
+                        <li><a href="get_deals_service_line_queue_user" class="hoverOnLink">Deals</a></li>
                         <li><a href="get_flight_service_line_queue_user" class="hoverOnLink">Flight</a></li>
                         <li><a href="get_hotel_service_line_queue_user" class="hoverOnLink">Hotel</a></li>
                         <li><a href="get_insurance_service_line_queue_user" class="hoverOnLink">Insurance</a></li>

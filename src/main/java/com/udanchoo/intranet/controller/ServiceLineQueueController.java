@@ -105,7 +105,51 @@ public class ServiceLineQueueController {
 	     	UserDetailsObj userObj = (UserDetailsObj) userDetailsService.loadUserByUsername(username);
 	     	
 	     	return userObj;
-	    }
+	}
+	 
+	 
+	@RequestMapping("/get_deals_service_line_queue_user")
+	public ModelAndView get_deals_service_line_queue_user( @RequestParam(defaultValue = "0") String page,@RequestParam(defaultValue = "10") Integer pageSize, @RequestParam(defaultValue = "CreatedAt") String sortBy,@RequestParam(defaultValue = "") String dateFrom,@RequestParam(defaultValue = "") String dateTo,@ModelAttribute("FILTER_SL") FilterServiceLineObj filterObj,BindingResult result) {
+		//System.out.println("Filtered Object is " + filterObj);
+		ModelAndView modelView = new ModelAndView("serviceline/view_deal_serviceline");
+		validator.validate(filterObj, result);
+		if(dateFrom!=null && dateFrom.trim().length()>0 && dateTo!=null && dateTo.trim().length()>0) {
+			filterObj.setDateFrom(dateFrom);
+			filterObj.setDateTo(dateTo);
+		}
+		if(result.hasErrors()) {
+    		System.out.println("error is " + result);
+			return modelView; 
+    	}
+		UserDetailsObj user = getLoggedInUser();
+    	boolean isAdmin=false;
+     	if(user.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"))) {
+    		isAdmin=true;
+    	}
+		//TODO Check if some one changes the url manually then it should lead to an error page. not to a server error. 
+		int pageNum = Integer.parseInt(page);
+		Page<Udn_Deal_FLT_SL_Entity> pageFlightServiceLine = null;
+		if(filterObj.getClientId()==0 && filterObj.getStatusId()==0 && (filterObj.getDateFrom()==null || filterObj.getDateFrom().trim().length()==0) && (filterObj.getDateTo()==null || filterObj.getDateTo().trim().length()==0)  ) {
+				pageFlightServiceLine = queueService.findByCreatedAtAfter_BasedOn_Owner(pageNum, UdanChooConstants.DEFAULT_PAGE_SIZE, user.getUserId(),sortBy,isAdmin);
+		}else {
+			pageFlightServiceLine = queueService.searchFlightSLSortByCNameBySLOwner(pageNum, UdanChooConstants.DEFAULT_PAGE_SIZE, user.getUserId(),sortBy,filterObj.getClientId(),filterObj.getStatusId(),filterObj,isAdmin);
+		}
+		List flt_sl_wl_statusList = commonService.find_All_Status_Deal_Obj(UdanChooConstants.WORKLOAD_FLT_SL_OBJ);
+		List<FlightServiceLineVO> fltSlVo = generateFLT_SL_Vo(pageFlightServiceLine);
+		//PagedListHolder<Udn_Deal_FLT_SL_Entity> pagedListHolder = new PagedListHolder<Udn_Deal_FLT_SL_Entity>(listFlightServiceLine);
+		//pagedListHolder.setPageSize(2);
+		modelView.addObject("FLT_PAGE_LIST", fltSlVo);
+		modelView.addObject("FLT_SL_STATUS_LIST", flt_sl_wl_statusList);
+		modelView.addObject("maxPages", pageFlightServiceLine.getTotalPages());
+		modelView.addObject("page", pageNum);
+		modelView.addObject("sortBy", sortBy);
+		modelView.addObject("clientId", filterObj.getClientId());
+		modelView.addObject("statusId", filterObj.getStatusId());
+		modelView.addObject("dateFrom", filterObj.getDateFrom());
+		modelView.addObject("dateTo", filterObj.getDateTo());
+		return modelView;
+	}
+
 	
 	//@RequestMapping("/workload/get_flight_service_line_queue_user")
 	 @RequestMapping("/get_flight_service_line_queue_user")
@@ -122,24 +166,19 @@ public class ServiceLineQueueController {
 			return modelView; 
     	}
 		UserDetailsObj user = getLoggedInUser();
-		
     	boolean isAdmin=false;
      	if(user.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"))) {
     		isAdmin=true;
     	}
-
 		//TODO Check if some one changes the url manually then it should lead to an error page. not to a server error. 
 		int pageNum = Integer.parseInt(page);
-		
 		Page<Udn_Deal_FLT_SL_Entity> pageFlightServiceLine = null;
 		if(filterObj.getClientId()==0 && filterObj.getStatusId()==0 && (filterObj.getDateFrom()==null || filterObj.getDateFrom().trim().length()==0) && (filterObj.getDateTo()==null || filterObj.getDateTo().trim().length()==0)  ) {
 				pageFlightServiceLine = queueService.findByCreatedAtAfter_BasedOn_Owner(pageNum, UdanChooConstants.DEFAULT_PAGE_SIZE, user.getUserId(),sortBy,isAdmin);
 		}else {
 			pageFlightServiceLine = queueService.searchFlightSLSortByCNameBySLOwner(pageNum, UdanChooConstants.DEFAULT_PAGE_SIZE, user.getUserId(),sortBy,filterObj.getClientId(),filterObj.getStatusId(),filterObj,isAdmin);
 		}
-		
 		List flt_sl_wl_statusList = commonService.find_All_Status_Deal_Obj(UdanChooConstants.WORKLOAD_FLT_SL_OBJ);
-		
 		List<FlightServiceLineVO> fltSlVo = generateFLT_SL_Vo(pageFlightServiceLine);
 		//PagedListHolder<Udn_Deal_FLT_SL_Entity> pagedListHolder = new PagedListHolder<Udn_Deal_FLT_SL_Entity>(listFlightServiceLine);
 		//pagedListHolder.setPageSize(2);
@@ -152,7 +191,6 @@ public class ServiceLineQueueController {
 		modelView.addObject("statusId", filterObj.getStatusId());
 		modelView.addObject("dateFrom", filterObj.getDateFrom());
 		modelView.addObject("dateTo", filterObj.getDateTo());
-		
 		return modelView;
 	}
 	
