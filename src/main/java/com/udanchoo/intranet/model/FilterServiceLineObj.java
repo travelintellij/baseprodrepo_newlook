@@ -5,6 +5,7 @@ import java.sql.Date;
 public class FilterServiceLineObj {
 	private int clientId = 0;
 	private String clientName;
+	private long dealOwner;
 	private int statusId =0;
 	private String dateFrom;
 	private String dateTo;
@@ -64,6 +65,14 @@ public class FilterServiceLineObj {
 		this.sortBy = sortBy;
 	}
 	
+	
+	
+	public long getDealOwner() {
+		return dealOwner;
+	}
+	public void setDealOwner(long dealOwner) {
+		this.dealOwner = dealOwner;
+	}
 	public String toString() {
 		String attrib = "Displaying Filter Criteria Requested \n";
 		attrib = attrib  + "clientId -> " + clientId + "\n";

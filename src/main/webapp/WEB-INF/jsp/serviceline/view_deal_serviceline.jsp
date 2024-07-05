@@ -45,11 +45,12 @@
             <a href="view_open_my_created_task_form_user">SightSeeing</a>
             <a href="view_open_my_assigned_task_form_user">Land Package</a>
             <a href="view_completed_task_form_user">Visa</a>
-        </div>
+  </div>
 
 
 
     <div class="view_taask container">
+<form:form action="view_filter_deals" modelAttribute="FILTER_SL">
         <div class="view_task_wrapper bs">
             <div align="center"><b>
                     <font color="green"> ${Success} </font>
@@ -69,6 +70,18 @@
                     <label for="">Task Priority</label>
 					<a href="#"><input type="button" style="background-color:red;color:white;" value="Upcoming or Active" /></a>                
 				</div>
+				<sec:authorize access="hasAnyRole('ADMIN','LEAD_MANAGER')">
+                    <div class="secondL">
+                		<div class="l3Box3 box">
+                            <label for="all"  style="font-weight:800">Deal Owner</label> <br>
+                            <form:select path="dealOwner" style="width: 150px;">
+                                <form:option value="0" label="***ALL***" class="service-small" />
+                                <form:options items="${ACTIVE_USERS_MAP}" class="service-small" />
+                            </form:select>
+                        </div>
+                    </div>
+                </sec:authorize>
+				
             </div>
             <div class="view_task_data">
                 <div class="view_task_data_li view_task_date">
@@ -86,8 +99,7 @@
               <a href="view_open_task_form_user"><input type="button" value="Clear Filter" /></a>
             </div>
         </div>
-        
-
+	</form:form>
         <table class="view_task_table">
         <thead style="background:#6082B6;height:50px">
             <tr>
