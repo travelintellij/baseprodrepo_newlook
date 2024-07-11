@@ -46,8 +46,10 @@ import com.udanchoo.intranet.model.InsuranceServiceLineVO;
 import com.udanchoo.intranet.model.LandPackageServiceLineVO;
 import com.udanchoo.intranet.model.OtherServiceLineVO;
 import com.udanchoo.intranet.model.ProductModel;
+import com.udanchoo.intranet.model.SearchDealObj;
 import com.udanchoo.intranet.model.SightSeeingServiceLineVO;
 import com.udanchoo.intranet.model.TransferServiceLineVO;
+import com.udanchoo.intranet.model.Udn_Deals_Recorder_Obj;
 import com.udanchoo.intranet.model.UserDetailsObj;
 import com.udanchoo.intranet.model.VisaServiceLineVO;
 import com.udanchoo.intranet.service.ClientServiceImpl;
@@ -94,6 +96,10 @@ public class ServiceLineQueueController {
 	
 	@Autowired
     private FilterServiceLineValidator validator;
+
+	@Autowired
+	UserDetailsServiceImpl userService;
+
 	
 	 private UserDetailsObj getLoggedInUser() {
 	    	Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -110,8 +116,9 @@ public class ServiceLineQueueController {
 	 
 	 
 	@RequestMapping("/get_deals_service_line_queue_user")
-	public ModelAndView get_deals_service_line_queue_user( @RequestParam(defaultValue = "0") String page,@RequestParam(defaultValue = "10") Integer pageSize, @RequestParam(defaultValue = "CreatedAt") String sortBy,@RequestParam(defaultValue = "") String dateFrom,@RequestParam(defaultValue = "") String dateTo,@ModelAttribute("FILTER_SL") FilterServiceLineObj filterObj,BindingResult result) {
+	public ModelAndView get_deals_service_line_queue_user( @RequestParam(defaultValue = "0") String page,@RequestParam(defaultValue = "CreatedAt") String sortBy,@ModelAttribute("FILTER_SL") SearchDealObj filterObj,BindingResult result) {
 		//System.out.println("Filtered Object is " + filterObj);
+		int pageSize = UdanChooConstants.DEFAULT_PAGE_SIZE;
 		ModelAndView modelView = new ModelAndView("serviceline/view_deal_serviceline");
 		UserDetailsObj user = getLoggedInUser();
     	boolean isAdmin=false;
@@ -123,29 +130,37 @@ public class ServiceLineQueueController {
     		modelView.addObject("ACTIVE_USERS_MAP", activeUsersMap);
     	}
 		//TODO Check if some one changes the url manually then it should lead to an error page. not to a server error. 
-		int pageNum = Integer.parseInt(page);
-		Page<Udn_Deal_FLT_SL_Entity> pageFlightServiceLine = null;
-		if(filterObj.getClientId()==0 && filterObj.getStatusId()==0 && (filterObj.getDateFrom()==null || filterObj.getDateFrom().trim().length()==0) && (filterObj.getDateTo()==null || filterObj.getDateTo().trim().length()==0)  ) {
-				pageFlightServiceLine = queueService.findByCreatedAtAfter_BasedOn_Owner(pageNum, UdanChooConstants.DEFAULT_PAGE_SIZE, user.getUserId(),sortBy,isAdmin);
-		}else {
-			pageFlightServiceLine = queueService.searchFlightSLSortByCNameBySLOwner(pageNum, UdanChooConstants.DEFAULT_PAGE_SIZE, user.getUserId(),sortBy,filterObj.getClientId(),filterObj.getStatusId(),filterObj,isAdmin);
-		}
-		List flt_sl_wl_statusList = commonService.find_All_Status_Deal_Obj(UdanChooConstants.WORKLOAD_FLT_SL_OBJ);
-		List<FlightServiceLineVO> fltSlVo = generateFLT_SL_Vo(pageFlightServiceLine);
-		//PagedListHolder<Udn_Deal_FLT_SL_Entity> pagedListHolder = new PagedListHolder<Udn_Deal_FLT_SL_Entity>(listFlightServiceLine);
-		//pagedListHolder.setPageSize(2);
-		modelView.addObject("FLT_PAGE_LIST", fltSlVo);
-		modelView.addObject("FLT_SL_STATUS_LIST", flt_sl_wl_statusList);
-		modelView.addObject("maxPages", pageFlightServiceLine.getTotalPages());
+     	int pageNum = Integer.parseInt(page);
+		
+		Page<Udn_Deals_Recorder_Entity> pageDealsFilteredRecords = dealService.filterDeals(pageNum, pageSize, filterObj.getDealOwner(), sortBy, filterObj, isAdmin);
+		//modelView.addObject("dealSearchList",pageDealsFilteredRecords);
+		List<Udn_Deals_Recorder_Obj> filteredDealsVoList = generateFilteredDealsVo(pageDealsFilteredRecords);
+		modelView.addObject("FILTERED_DEAL_RECORDS",filteredDealsVoList);
+		modelView.addObject("maxPages", pageDealsFilteredRecords.getTotalPages());
 		modelView.addObject("page", pageNum);
 		modelView.addObject("sortBy", sortBy);
-		modelView.addObject("clientId", filterObj.getClientId());
-		modelView.addObject("statusId", filterObj.getStatusId());
-		modelView.addObject("dateFrom", filterObj.getDateFrom());
-		modelView.addObject("dateTo", filterObj.getDateTo());
-		return modelView;
+		return modelView; 
 	}
 
+	private List<Udn_Deals_Recorder_Obj> generateFilteredDealsVo(Page<Udn_Deals_Recorder_Entity> pagedResult) {
+		List<Udn_Deals_Recorder_Obj> filteredDealsVoList = new ArrayList<Udn_Deals_Recorder_Obj>();
+		List<Udn_Deals_Recorder_Entity> dealsEntityList = pagedResult.getContent();
+		Iterator filteredDealsIterator = dealsEntityList.iterator();
+		while(filteredDealsIterator.hasNext()) {
+			Udn_Deals_Recorder_Entity dealEntity = (Udn_Deals_Recorder_Entity) filteredDealsIterator.next();
+			Udn_Deals_Recorder_Obj dealsVO =new Udn_Deals_Recorder_Obj(dealEntity);
+			try {
+				dealsVO.setClientName((clientService.getClientById(dealsVO.getClientId()).getClientName()));
+				dealsVO.setStatusName(commonService.find_DealStatusById(dealsVO.getDealStatus()).getWorkloadStatusName());
+				dealsVO.setDealOwnerName(userService.findUserByID(Integer.parseInt(String.valueOf(dealsVO.getDealOwner()))).getUsername());
+			} catch (RecordNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			filteredDealsVoList.add(dealsVO);
+		}
+		return filteredDealsVoList;
+	}
 	
 	//@RequestMapping("/workload/get_flight_service_line_queue_user")
 	 @RequestMapping("/get_flight_service_line_queue_user")

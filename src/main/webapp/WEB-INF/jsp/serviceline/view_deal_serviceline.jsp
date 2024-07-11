@@ -49,7 +49,7 @@
 
 
 
-    <div class="view_taask container">
+    <div class="container">
 <form:form action="view_filter_deals" modelAttribute="FILTER_SL">
         <div class="view_task_wrapper bs">
             <div align="center"><b>
@@ -63,7 +63,7 @@
                         placeholder="Deal Confirmation Id ">
                 </div>
                 <div class="view_task_data_li view_task_tak_owner">
-                    <label for="">Task Owner</label>
+                    <label for="">Click for Completed Deals</label>
                       <a href="#"><input type="button" style="background-color:green;color:white;" value="Completed Deals" /></a>
                 </div>
                 <div class="view_task_data_li view_task_task_pri">
@@ -83,73 +83,42 @@
                 </sec:authorize>
 				
             </div>
-            <div class="view_task_data">
-                <div class="view_task_data_li view_task_date">
-                    <label for="">Due Date Range</label>
-                    <input type="date">
-                </div>
-                <div class="view_task_data_li view_task_date">
-                    <!-- <label for="">Confirmation id</label> -->
-                    <br>
-                    <input type="date">
-                </div>
-            </div>
             <div class="due_today_task_data_btnss" style="display:flex;justify-content:center;margin-top:10px">
                 <input style="background-color:#32cd32;" type="submit" value="Apply Filter" />
               <a href="view_open_task_form_user"><input type="button" value="Clear Filter" /></a>
             </div>
         </div>
 	</form:form>
-        <table class="view_task_table">
-        <thead style="background:#6082B6;height:50px">
+	</div>
+        <table class="view_task_table" style="width:70%; margin-left: auto;margin-right: auto;">
+        <thead style="background:#6082B6;height:50px;">
             <tr>
-                <th style="width:10%;"><a style="color:black;"
-                        href="view_open_task_form_user?sortBy=taskId&dateFrom=${dateFrom}&dateTo=${dateTo}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}">Task
-                        Id</a></th>
-                <th style="width:20%;color:black" >Task Title</th>
-                <th style="width:20%;"><a style="color:black;"
-                        href="view_open_task_form_user?sortBy=dealConfirmationId&dateFrom=${dateFrom}&dateTo=${dateTo}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}">Deal
-                        Associated</a></th>
-                <th style="width:15%;"><a style="color:black;"
-                        href="view_open_task_form_user?sortBy=taskOwner&dateFrom=${dateFrom}&dateTo=${dateTo}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}">Assigned
-                        To</a></th>
-                <th style="width:10%;"><a style="color:black;"
-                        href="view_open_task_form_user?sortBy=taskPriority&dateFrom=${dateFrom}&dateTo=${dateTo}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}">Priority</a>
-                </th>
-                <th style="width:15%;"><a style="color:black"
-                        href="view_open_task_form_user?sortBy=taskDueDate&dateFrom=${dateFrom}&dateTo=${dateTo}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}">Due
-                        Date</a></th>
-                <th style="width:20%;color:black">Action
-            </tr>
-   </thead>
-            <tr>
-                <c:forEach items="${OPEN_TASK_LIST}" var="openTaskList">
-            <tr>
-                <td style="border-bottom:2px solid black;border-right:2px solid black;border-left:2px solid black">${openTaskList.taskId }</td>
-                <td style="border-bottom:2px solid black;border-right:2px solid black;">${openTaskList.taskTitle }</td>
-                <td style="border-bottom:2px solid black;border-right:2px solid black;">
-                    <c:if test="${openTaskList.dealConfirmationId != 0}">
-                        ${openTaskList.dealConfirmationId}
-                    </c:if>
+                <th style="width:10%;"><a style="color:black;" href="#">Deal Number</a></th>
+                <th style="width:10%;"><a style="color:black;" href="#">Booking Date</th>
+                <th style="width:20%;">Client Name</th>
+                <th style="width:10%;"><a style="color:black;" href="#">Start Date</a></th>
+                <th style="width:10%;"><a style="color:black;" href="#">End Date</a></th>
+                <th style="width:20%;">Services Booked</a></th>
+                <th style="width:10%;"><a style="color:black" href="#">Deal Status</a></th>
+                <th style="width:10%;"><a style="color:black" href="#">Deal Owner</th>
+             </tr>
+   		</thead>
+			<c:forEach items="${FILTERED_DEAL_RECORDS}" var="dealObj">
+			<tr>
+                <td style="width:10%;"><a style="color:black;" href="#">${dealObj.dealConfirmationId}</a></td>
+                <td style="width:10%;"><fmt:formatDate value="${dealObj.bookingDate}" pattern="dd-MM-yyyy" /></td>
+                <td style="width:20%;">${dealObj.clientName}</th>
+                <td style="width:10%;"><fmt:formatDate value="${dealObj.travelStartDate}" pattern="dd-MM-yyyy" /></td>
+                <td style="width:10%;"><fmt:formatDate value="${dealObj.travelEndDate}" pattern="dd-MM-yyyy" /></td>
+                <td style="width:20%;">   
+                	<c:forEach var="listValue" items="${dealObj.serviceList}" varStatus="loopCounter">
+                    	<img src="${pageContext.request.contextPath}/resources/images/${listValue.trim()}.jpg" height="25" width="25">
+                    </c:forEach>
                 </td>
-                <td style="border-bottom:2px solid black;border-right:2px solid black;"> ${openTaskList.taskOwnerName}</td>
-                <td style="border-bottom:2px solid black;border-right:2px solid black;">${openTaskList.taskPriority}</td>
-                <td style="border-bottom:2px solid black;border-right:2px solid black;">${localDateTimeFormat.format(openTaskList.taskDueDate)}</td>
-                <td style="border-bottom:2px solid black;border-right:2px solid black;">
-                    <i class="fa-solid fa-sliders view_task_icon" >
-                        <div class="view_task_ul">
-                            <ul>
-                                <li><a href="view_view_task?taskId=${openTaskList.taskId }">View</a></li>
-                                <li><a href="view_form_edit_task_req?taskId=${openTaskList.taskId }"
-                                        class="pop-up">Edit</a></li>
-                                <li><a href="view_form_delete_task?taskId=${openTaskList.taskId}"
-                                        class="pop-up">Delete</a></li>
-                            </ul>
-                        </div>
-                    </i>
-                </td>
-            </tr>
-            </c:forEach>
+                <td style="width:10%;">${dealObj.statusName}</a></td>
+                <td style="width:10%;">${dealObj.dealOwnerName}</td>
+             </tr>
+			</c:forEach>
 
             </tr>
         </table>
@@ -188,7 +157,7 @@
                     class="pn next">Next</a>
             </c:if>
         </div>
-    </div>
+    
 
 
    <script>
