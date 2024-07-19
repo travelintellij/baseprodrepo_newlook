@@ -19,6 +19,7 @@ public class SearchDealObj  {
     private long dealOwner;
     private boolean dateCheckFilterNeeded;
     private int  dealSearchPeriodType;
+    private boolean upcomingDeal=true;
     
     public String getStatusName() {
 		return statusName;
@@ -128,6 +129,15 @@ public class SearchDealObj  {
 	}
 
 	
+	
+
+	public boolean isUpcomingDeal() {
+		return upcomingDeal;
+	}
+
+	public void setUpcomingDeal(boolean upcomingDeal) {
+		this.upcomingDeal = upcomingDeal;
+	}
 
 	@Override
 	public String toString() {

@@ -56,6 +56,7 @@ import com.udanchoo.intranet.service.ClientServiceImpl;
 import com.udanchoo.intranet.service.DealServiceImpl;
 import com.udanchoo.intranet.service.HotelServiceImpl;
 import com.udanchoo.intranet.service.QueueManageService;
+import com.udanchoo.intranet.service.ServiceLineQueueServiceImpl;
 import com.udanchoo.intranet.service.SightSeeingServiceImpl;
 import com.udanchoo.intranet.service.SupplierServiceImpl;
 import com.udanchoo.intranet.service.UdnCommonServicesImpl;
@@ -75,6 +76,10 @@ public class ServiceLineQueueController {
 	
 	@Autowired
 	DealServiceImpl dealService;
+	
+	@Autowired
+	ServiceLineQueueServiceImpl serviceLineQueueService;
+	
 	
 	@Autowired
 	QueueManageService queueService;
@@ -116,7 +121,7 @@ public class ServiceLineQueueController {
 	 
 	 
 	@RequestMapping("/get_deals_service_line_queue_user")
-	public ModelAndView get_deals_service_line_queue_user( @RequestParam(defaultValue = "0") String page,@RequestParam(defaultValue = "CreatedAt") String sortBy,@ModelAttribute("FILTER_SL") SearchDealObj filterObj,BindingResult result) {
+	public ModelAndView get_deals_service_line_queue_user( @RequestParam(defaultValue = "0") String page,@RequestParam(defaultValue = "TravelEndDate") String sortBy,@ModelAttribute("FILTER_SL") SearchDealObj filterObj,BindingResult result) {
 		//System.out.println("Filtered Object is " + filterObj);
 		int pageSize = UdanChooConstants.DEFAULT_PAGE_SIZE;
 		ModelAndView modelView = new ModelAndView("serviceline/view_deal_serviceline");
@@ -132,7 +137,7 @@ public class ServiceLineQueueController {
 		//TODO Check if some one changes the url manually then it should lead to an error page. not to a server error. 
      	int pageNum = Integer.parseInt(page);
 		
-		Page<Udn_Deals_Recorder_Entity> pageDealsFilteredRecords = dealService.filterDeals(pageNum, pageSize, filterObj.getDealOwner(), sortBy, filterObj, isAdmin);
+		Page<Udn_Deals_Recorder_Entity> pageDealsFilteredRecords = serviceLineQueueService.filterServiceLineQueueDeals(pageNum, pageSize, filterObj.getDealOwner(), sortBy, filterObj, isAdmin);
 		//modelView.addObject("dealSearchList",pageDealsFilteredRecords);
 		List<Udn_Deals_Recorder_Obj> filteredDealsVoList = generateFilteredDealsVo(pageDealsFilteredRecords);
 		modelView.addObject("FILTERED_DEAL_RECORDS",filteredDealsVoList);

@@ -50,7 +50,7 @@
 
 
     <div class="container">
-<form:form action="view_filter_deals" modelAttribute="FILTER_SL">
+<form:form action="get_deals_service_line_queue_user" modelAttribute="FILTER_SL">
         <div class="view_task_wrapper bs">
             <div align="center"><b>
                     <font color="green"> ${Success} </font>
