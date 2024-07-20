@@ -59,8 +59,7 @@
             <div class="view_task_data">
                 <div class="view_task_data_li">
                     <label for="">Deal Confirmation id</label>
-                    <input type="text" name="dealConfirmationId" id="dealConfirmationId" step="0.0"
-                        placeholder="Deal Confirmation Id ">
+                    <form:input path="dealConfirmationId" type="number" min="0" size="35" value="" placeholder="Deal Number" />
                 </div>
                 <div class="view_task_data_li view_task_tak_owner">
                     <label for="">Click for Completed Deals</label>
@@ -85,7 +84,7 @@
             </div>
             <div class="due_today_task_data_btnss" style="display:flex;justify-content:center;margin-top:10px">
                 <input style="background-color:#32cd32;" type="submit" value="Apply Filter" />
-              <a href="view_open_task_form_user"><input type="button" value="Clear Filter" /></a>
+              <a href="get_deals_service_line_queue_user"><input type="button" value="Clear Filter" /></a>
             </div>
         </div>
 	</form:form>

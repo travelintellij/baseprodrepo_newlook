@@ -91,8 +91,7 @@
                         <c:url value="view_filter_deals" var="url">
                             <c:param  name="page" value="${i.index-1}" />
                         </c:url>
-                        <a
-                         style="padding:2px 5px;border-radius:2px;color:black"   href='<c:out value="${url}&sortBy=${sortBy}&dealStatus=${FILTER_DEAL_OBJ.dealStatus}&startDate=${FILTER_DEAL_OBJ.startDate}&endDate=${FILTER_DEAL_OBJ.endDate}&searchOnBookingDate=${FILTER_DEAL_OBJ.searchOnBookingDate}" />'>${i.index}</a>
+                        <a style="padding:2px 5px;border-radius:2px;color:black"   href='<c:out value="${url}&sortBy=${sortBy}&dealStatus=${FILTER_DEAL_OBJ.dealStatus}&startDate=${FILTER_DEAL_OBJ.startDate}&endDate=${FILTER_DEAL_OBJ.endDate}&searchOnBookingDate=${FILTER_DEAL_OBJ.searchOnBookingDate}" />'>${i.index}</a>
                     </c:otherwise>
                 </c:choose>
             </c:forEach>

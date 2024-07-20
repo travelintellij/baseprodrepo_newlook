@@ -53,8 +53,7 @@
                 <div class="search_deals_data">
                     <div class="search_deals_data_l1">
                         <label for="dcn">Deal Confirmation No.</label>
-                        <form:input path="dealConfirmationId" type="number" min="0" size="35" value=""
-                            placeholder="Deal Number" />
+                        <form:input path="dealConfirmationId" type="number" min="0" size="35" value="" placeholder="Deal Number" />
                     </div>
                       <div class="l2Box2 box contactName">
                         <label for="cn">Client Name</label>
