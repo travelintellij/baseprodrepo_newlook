@@ -62,12 +62,13 @@
                     <form:input path="dealConfirmationId" type="number" min="0" size="35" value="" placeholder="Deal Number" />
                 </div>
                 <div class="view_task_data_li view_task_tak_owner">
-                    <label for="">Click for Completed Deals</label>
-                      <a href="#"><input type="button" style="background-color:green;color:white;" value="Completed Deals" /></a>
-                </div>
+						<form:radiobutton path="upcomingDeal" value="true" style="display: inline-block;width: 20px;height: 20px;margin-left: -25px;margin-right:10px"/>
+						<input type="button" style="background-color:green;color:white;width:200px;" value="Completed Deals" />                
+				</div>
                 <div class="view_task_data_li view_task_task_pri">
-                    <label for="">Task Priority</label>
-					<a href="#"><input type="button" style="background-color:red;color:white;" value="Upcoming or Active" /></a>                
+					<form:radiobutton path="upcomingDeal" value="true" style="display: inline-block;width: 20px;height: 20px;margin-left: -25px;margin-right:10px"/>
+					<a href="#"><input type="button" style="background-color:red;color:white;width:200px;" value="Upcoming or Active" /></a>                
+					
 				</div>
 				<sec:authorize access="hasAnyRole('ADMIN','LEAD_MANAGER')">
                     <div class="secondL">
