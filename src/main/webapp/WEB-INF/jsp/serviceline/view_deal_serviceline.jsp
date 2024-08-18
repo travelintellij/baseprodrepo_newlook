@@ -5,6 +5,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <head>
@@ -62,7 +64,7 @@
                     <form:input path="dealConfirmationId" type="number" min="0" size="35" value="" placeholder="Deal Number" />
                 </div>
                 <div class="view_task_data_li view_task_tak_owner">
-						<form:radiobutton path="upcomingDeal" value="true" style="display: inline-block;width: 20px;height: 20px;margin-left: -25px;margin-right:10px"/>
+						<form:radiobutton path="upcomingDeal" value="false" style="display: inline-block;width: 20px;height: 20px;margin-left: -25px;margin-right:10px"/>
 						<input type="button" style="background-color:green;color:white;width:200px;" value="Completed Deals" />                
 				</div>
                 <div class="view_task_data_li view_task_task_pri">
@@ -81,7 +83,9 @@
                         </div>
                     </div>
                 </sec:authorize>
-				
+				<sec:authorize access="! hasAnyRole('ADMIN','LEAD_MANAGER')">
+ 					<b>Deal Owner:</b> &nbsp;&nbsp; ${userName}
+                </sec:authorize>
             </div>
             <div class="due_today_task_data_btnss" style="display:flex;justify-content:center;margin-top:10px">
                 <input style="background-color:#32cd32;" type="submit" value="Apply Filter" />
@@ -126,12 +130,11 @@
 
         <div id="pagination" align="center" style="margin:10px 0">
           <font style="color:#ffa500;background:black;display:inline-block;padding:2px;border-radius:2px">Page:</font> 
-            <c:url value="view_open_task_form_user" var="prev">
+            <c:url value="get_deals_service_line_queue_user" var="prev">
                 <c:param name="page" value="${page-1}" />
             </c:url>
             <c:if test="${page > 0}">
-                <a  style="background:black;padding:2px 5px;border-radius:2px;color:#ffa500" href="<c:out value="
-                    ${prev}&sortBy=${sortBy}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&dateFrom=${dateFrom}&dateTo=${dateTo}&taskPriority=${taskPriority}" />"
+                <a  style="background:black;padding:2px 5px;border-radius:2px;color:#ffa500" href="<c:out value="${prev}&sortBy=${sortBy}&dealOwner=${dealOwner}&dealConfirmationId=${dealConfirmationId}&upcomingDeal=${upcomingDeal}" />"
                 >Prev</a>
             </c:if>
 
@@ -141,19 +144,18 @@
                         <span style="background:black;padding:2px 5px;border-radius:2px;color:white">${i.index}</span>
                     </c:when>
                     <c:otherwise>
-                        <c:url value="view_open_task_form_user" var="url">
+                        <c:url value="get_deals_service_line_queue_user" var="url">
                             <c:param name="page" value="${i.index-1}" />
                         </c:url>
-                        <a
-                          style="padding:2px 5px;border-radius:2px;color:black"  href='<c:out value="${url}&sortBy=${sortBy}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&taskPriority=${taskPriority}" />'>${i.index}</a>
+                        <a style="padding:2px 5px;border-radius:2px;color:black"  href='<c:out value="${url}&sortBy=${sortBy}&dealOwner=${dealOwner}&dealConfirmationId=${dealConfirmationId}&upcomingDeal=${upcomingDeal}" />'>${i.index}</a>
                     </c:otherwise>
                 </c:choose>
             </c:forEach>
-            <c:url value="view_open_task_form_user" var="next">
+            <c:url value="get_deals_service_line_queue_user" var="next">
                 <c:param name="page" value="${page + 1}" />
             </c:url>
             <c:if test="${page + 1 < maxPages}">
-                <a style="background:black;padding:2px 5px;border-radius:2px;color:#ffa500" href='<c:out value="${next}&sortBy=${sortBy}&taskOwner=${taskOwner}&dealConfirmationId=${dealConfirmationId}&dateFrom=${dateFrom}&dateTo=${dateTo}&taskPriority=${taskPriority}" />'
+                <a style="background:black;padding:2px 5px;border-radius:2px;color:#ffa500" href='<c:out value="${next}&sortBy=${sortBy}&dealOwner=${dealOwner}&dealConfirmationId=${dealConfirmationId}&upcomingDeal=${upcomingDeal}" />'
                     class="pn next">Next</a>
             </c:if>
         </div>

@@ -123,7 +123,15 @@ public class ServiceLineQueueController {
 	@RequestMapping("/get_deals_service_line_queue_user")
 	public ModelAndView get_deals_service_line_queue_user( @RequestParam(defaultValue = "0") String page,@RequestParam(defaultValue = "TravelEndDate") String sortBy,@ModelAttribute("FILTER_SL") SearchDealObj filterObj,BindingResult result) {
 		//System.out.println("Filtered Object is " + filterObj);
-		int pageSize = UdanChooConstants.DEFAULT_PAGE_SIZE;
+		 Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			String username;
+	    	if (principal instanceof UserDetails) {
+	    	   username = ((UserDetails)principal).getUsername();
+	    	} else {
+	    	   username = principal.toString();
+	    	}
+	     	UserDetailsObj userObj = (UserDetailsObj) userDetailsService.loadUserByUsername(username);
+		int pageSize = 2;//UdanChooConstants.DEFAULT_PAGE_SIZE;
 		ModelAndView modelView = new ModelAndView("serviceline/view_deal_serviceline");
 		UserDetailsObj user = getLoggedInUser();
     	boolean isAdmin=false;
@@ -134,16 +142,24 @@ public class ServiceLineQueueController {
                     Collectors.toMap(UserDetailsObj::getUserId, UserDetailsObj::getUsername));
     		modelView.addObject("ACTIVE_USERS_MAP", activeUsersMap);
     	}
+        if((!isAdmin) && filterObj.getDealOwner()==0) {
+	    	filterObj.setDealOwner((user.getUserId()))  ;
+	    }
+     	
 		//TODO Check if some one changes the url manually then it should lead to an error page. not to a server error. 
      	int pageNum = Integer.parseInt(page);
 		
 		Page<Udn_Deals_Recorder_Entity> pageDealsFilteredRecords = serviceLineQueueService.filterServiceLineQueueDeals(pageNum, pageSize, filterObj.getDealOwner(), sortBy, filterObj, isAdmin);
 		//modelView.addObject("dealSearchList",pageDealsFilteredRecords);
 		List<Udn_Deals_Recorder_Obj> filteredDealsVoList = generateFilteredDealsVo(pageDealsFilteredRecords);
+		modelView.addObject("userName", username);
 		modelView.addObject("FILTERED_DEAL_RECORDS",filteredDealsVoList);
 		modelView.addObject("maxPages", pageDealsFilteredRecords.getTotalPages());
 		modelView.addObject("page", pageNum);
 		modelView.addObject("sortBy", sortBy);
+		modelView.addObject("dealOwner", filterObj.getDealOwner());
+		modelView.addObject("upcomingDeal", filterObj.isUpcomingDeal());
+		
 		return modelView; 
 	}
 
@@ -171,7 +187,15 @@ public class ServiceLineQueueController {
 	 @RequestMapping("/get_flight_service_line_queue_user")
 	public ModelAndView get_flight_service_line_queue_user( @RequestParam(defaultValue = "0") String page,@RequestParam(defaultValue = "10") Integer pageSize, @RequestParam(defaultValue = "CreatedAt") String sortBy,@RequestParam(defaultValue = "") String dateFrom,@RequestParam(defaultValue = "") String dateTo,@ModelAttribute("FILTER_SL") FilterServiceLineObj filterObj,BindingResult result) {
 		//System.out.println("Filtered Object is " + filterObj);
-		ModelAndView modelView = new ModelAndView("serviceline/view_flt_service_line_queue");
+		 Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			String username;
+	    	if (principal instanceof UserDetails) {
+	    	   username = ((UserDetails)principal).getUsername();
+	    	} else {
+	    	   username = principal.toString();
+	    	}
+	     	UserDetailsObj userObj = (UserDetailsObj) userDetailsService.loadUserByUsername(username);
+		 ModelAndView modelView = new ModelAndView("serviceline/view_flt_service_line_queue");
 		validator.validate(filterObj, result);
 		if(dateFrom!=null && dateFrom.trim().length()>0 && dateTo!=null && dateTo.trim().length()>0) {
 			filterObj.setDateFrom(dateFrom);
@@ -198,6 +222,7 @@ public class ServiceLineQueueController {
 		List<FlightServiceLineVO> fltSlVo = generateFLT_SL_Vo(pageFlightServiceLine);
 		//PagedListHolder<Udn_Deal_FLT_SL_Entity> pagedListHolder = new PagedListHolder<Udn_Deal_FLT_SL_Entity>(listFlightServiceLine);
 		//pagedListHolder.setPageSize(2);
+		modelView.addObject("userName", username);
 		modelView.addObject("FLT_PAGE_LIST", fltSlVo);
 		modelView.addObject("FLT_SL_STATUS_LIST", flt_sl_wl_statusList);
 		modelView.addObject("maxPages", pageFlightServiceLine.getTotalPages());
