@@ -91,15 +91,49 @@ input[type=button], input[type=submit], input[type=reset] {
 <br>	
 <h3 align="center"><b>Flight Service Line</b></h3>
 	
-	<form:form action="get_flight_service_line_queue_user" modelAttribute="FILTER_SL">
-		<div align="center"><font color="red">
-			<b>
-			<form:errors path="clientName" /><br>
-			<form:errors path="dateFrom" />
-			</b>
-		</font>
-		</div>
-	
+	 <div class="container">
+<form:form action="get_flight_service_line_queue_user" modelAttribute="FILTER_SL">
+        <div class="view_task_wrapper bs">
+            <div align="center"><b>
+                    <font color="green"> ${Success} </font>
+                    <font color="red"> ${Error}</font>
+                </b></div>
+            <div class="view_task_data">
+                <div class="view_task_data_li">
+                    <label for="">Deal Confirmation id</label>
+                    <form:input path="dealConfirmationId" type="number" min="0" size="35" value="" placeholder="Deal Number" />
+                </div>
+                <div class="view_task_data_li view_task_tak_owner">
+						<form:radiobutton path="upcomingDeal" value="false" style="display: inline-block;width: 20px;height: 20px;margin-left: -25px;margin-right:10px"/>
+						<input type="button" style="background-color:green;color:white;width:200px;" value="Completed Deals" />                
+				</div>
+                <div class="view_task_data_li view_task_task_pri">
+					<form:radiobutton path="upcomingDeal" value="true" style="display: inline-block;width: 20px;height: 20px;margin-left: -25px;margin-right:10px"/>
+					<a href="#"><input type="button" style="background-color:red;color:white;width:200px;" value="Upcoming or Active" /></a>                
+					
+				</div>
+				<sec:authorize access="hasAnyRole('ADMIN','LEAD_MANAGER')">
+                    <div class="secondL">
+                		<div class="l3Box3 box">
+                            <label for="all"  style="font-weight:800">Deal Owner</label> <br>
+                            <form:select path="dealOwner" style="width: 150px;">
+                                <form:option value="0" label="***ALL***" class="service-small" />
+                                <form:options items="${ACTIVE_USERS_MAP}" class="service-small" />
+                            </form:select>
+                        </div>
+                    </div>
+                </sec:authorize>
+				<sec:authorize access="! hasAnyRole('ADMIN','LEAD_MANAGER')">
+ 					<b>Deal Owner:</b> &nbsp;&nbsp; ${userName}
+                </sec:authorize>
+            </div>
+            <div class="due_today_task_data_btnss" style="display:flex;justify-content:center;margin-top:10px">
+                <input style="background-color:#32cd32;" type="submit" value="Apply Filter" />
+              <a href="get_deals_service_line_queue_user"><input type="button" value="Clear Filter" /></a>
+            </div>
+        </div>
+	</form:form>
+	</div>
 		<table style="width: 90%; ">
 			<tr >
 				<td style="height:30px"><img src="${pageContext.request.contextPath}/resources/images/filter.jpg" height="50" width="50"/></td>
@@ -192,6 +226,6 @@ input[type=button], input[type=submit], input[type=reset] {
 			       <a href='<c:out value="${next}&sortBy=${sortBy}&statusId=${statusId}&clientId=${clientId}&dateFrom=${dateFrom}&dateTo=${dateTo}" />' class="pn next">Next</a>
 			    </c:if>
 			</div>
-	</form:form>
+
 
 

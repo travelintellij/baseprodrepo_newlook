@@ -10,6 +10,9 @@ public class FilterServiceLineObj {
 	private String dateFrom;
 	private String dateTo;
 	private String sortBy;
+	private long dealConfirmationId;
+	private boolean upcomingDeal=true;
+	
 	//private int next;
 	
 	public int getClientId() {
@@ -83,5 +86,19 @@ public class FilterServiceLineObj {
 		
 		return attrib ;
 	}
+	public long getDealConfirmationId() {
+		return dealConfirmationId;
+	}
+	public void setDealConfirmationId(long dealConfirmationId) {
+		this.dealConfirmationId = dealConfirmationId;
+	}
+	public boolean isUpcomingDeal() {
+		return upcomingDeal;
+	}
+	public void setUpcomingDeal(boolean upcomingDeal) {
+		this.upcomingDeal = upcomingDeal;
+	}
+	
+	
 	
 }

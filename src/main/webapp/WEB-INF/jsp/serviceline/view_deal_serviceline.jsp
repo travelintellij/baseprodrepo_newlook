@@ -34,6 +34,9 @@
             opacity: 0.5; /* Adjust the opacity value as needed (0.0 to 1.0) */
             z-index: -1;
         }
+        table, th, td {
+  border: 1px solid black;
+}
 </style>
 <body>
 
@@ -41,7 +44,7 @@
 
  <div class="cnt_options ">
             <a href="view_create_task_form_user" style="color:white;background:black">Deals</a>
-            <a href="view_open_task_form_user" "> Flight</a>
+            <a href="get_flight_service_line_queue_user" "> Flight</a>
             <a href="view_open_task_form_user_filter_due_today">Hotel</a>
             <a href="view_open_over_due_task_form_user">Transfers</a>
             <a href="view_open_my_created_task_form_user">SightSeeing</a>
