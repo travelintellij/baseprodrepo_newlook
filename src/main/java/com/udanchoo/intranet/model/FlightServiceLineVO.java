@@ -18,6 +18,7 @@ public class FlightServiceLineVO {
 	
 	private int airlineId;
 	private LocalDateTime departureDate;
+	private String formattedDepartureDate;
 	private LocalDateTime arrivalDate;
 	private int supplierId;
 	private String remarks;
@@ -50,8 +51,8 @@ public class FlightServiceLineVO {
 	@Min(value=1, message="Error[Arrival City] is not selected property.")  
 	private int arrivingTo;
 
-	//private String departingCity;
-	//private String arrivalCity;
+	private String departingCity;
+	private String arrivalCity;
 	
 	private int noOfHalt;
 	private int status;
@@ -158,6 +159,7 @@ public class FlightServiceLineVO {
 	public void setDepartureDate(String departureDate) {
 		//this.departureDate = departureDate;
 		this.departureDate = LocalDateTime.parse(departureDate,formatter);
+		this.formattedDepartureDate = this.departureDate.format(formatter);
 	}
 	public LocalDateTime getArrivalDate() {
 		return arrivalDate;
@@ -363,6 +365,24 @@ public class FlightServiceLineVO {
 	}
 	public void setMarkup(float markup) {
 		this.markup = markup;
+	}
+	public String getDepartingCity() {
+		return departingCity;
+	}
+	public void setDepartingCity(String departingCity) {
+		this.departingCity = departingCity;
+	}
+	public String getArrivalCity() {
+		return arrivalCity;
+	}
+	public void setArrivalCity(String arrivalCity) {
+		this.arrivalCity = arrivalCity;
+	}
+	public String getFormattedDepartureDate() {
+		return formattedDepartureDate;
+	}
+	public void setFormattedDepartureDate(String formattedDepartureDate) {
+		this.formattedDepartureDate = formattedDepartureDate;
 	}
 	
 	

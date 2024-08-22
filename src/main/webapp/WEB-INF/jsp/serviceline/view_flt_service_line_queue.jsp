@@ -1,93 +1,60 @@
 <!DOCTYPE html>
+<html lang="en">
 <jsp:include page="../menu/MenuBuilder.jsp" />
-
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 
-<script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
-<script src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
-<script>
-$(document).ready(function() {
-	$('#clientName').autocomplete({
-		serviceUrl: '${pageContext.request.contextPath}/getClientList',
-		paramName: "tagName",
-		delimiter: ",",
-		onSelect: function(suggestion) {
-            cityID = suggestion.data;
-            id=cityID;
-            jQuery("#clientId").val(cityID);
-            $('input[name=clientId]').val(id);
-            return false;
-        },
-		transformResult: function(response) {
-	        return {
-	            suggestions: $.map($.parseJSON(response), function(item) {
-	            	return { value: item.tagName, data: item.id };
-	            })
-	            
-	        };
-	    }
-	});
-});
-
- 
-</script>
-
-	
-<link href="<c:url value="/resources/core/main.css" />" rel="stylesheet">
-
-
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Task</title>
+    		<script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>
+	<script src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/revamped/style.css">
+    <script src="https://kit.fontawesome.com/6f6addf9b0.js" crossorigin="anonymous"></script>
+</head>
 <style>
-table {
-  width: 100%;
-  height: 60px;
-  border-collapse: collapse;
-  border: 1px solid #38678f;
-  margin: 5px auto;
-  background: white;
+   body::before {
+            content: "";
+            background-image: url(${pageContext.request.contextPath}/resources/images/revamped/view_task.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5; /* Adjust the opacity value as needed (0.0 to 1.0) */
+            z-index: -1;
+        }
+        table, th, td {
+  border: 1px solid black;
 }
-
-th {
-  background: #7B68EE;
-  height: 40px;
-  width: 10%;
-  font-weight: heavy;
-  text-shadow: 0 1px 0 #38678f;
-  color: white;
-  border: 1px solid #38678f;
-  box-shadow: inset 0px 1px 2px #568ebd;
-  transition: all 0.2s;
-}
-tr {
-  border-bottom: 1px solid #cccccc;
-}
-
-td {
-  border-right: 1px solid #cccccc;
-  padding: 10px;
-  transition: all 0.2s;
-  text-align: center;
-}
-
-.heavyTable {
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  animation: float 5s infinite;
-}
-
-input[type=button], input[type=submit], input[type=reset] {
-  background-color: #4CAF50;
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  text-decoration: none;
-  margin: 4px 2px;
-  cursor: pointer;
-}
-
 </style>
+<body>
+
+
+
+ <div class="cnt_options ">
+            <a href="get_deals_service_line_queue_user" >Deals</a>
+            <a href="get_flight_service_line_queue_user" style="color:white;background:black"> Flight</a>
+            <a href="view_open_task_form_user_filter_due_today">Hotel</a>
+            <a href="view_open_over_due_task_form_user">Transfers</a>
+            <a href="view_open_my_created_task_form_user">SightSeeing</a>
+            <a href="view_open_my_assigned_task_form_user">Land Package</a>
+            <a href="view_completed_task_form_user">Visa</a>
+  </div>
+
+
+
+
 <br>	
 <h3 align="center"><b>Flight Service Line</b></h3>
 	
@@ -132,70 +99,38 @@ input[type=button], input[type=submit], input[type=reset] {
               <a href="get_deals_service_line_queue_user"><input type="button" value="Clear Filter" /></a>
             </div>
         </div>
-	</form:form>
+	
 	</div>
-		<table style="width: 90%; ">
-			<tr >
-				<td style="height:30px"><img src="${pageContext.request.contextPath}/resources/images/filter.jpg" height="50" width="50"/></td>
-				<td style="height:30px">
-					<input type="text" class="contact" id="clientName" name="clientName" value="" size="35" placeholder="Client Name"/>
-					<input type="hidden" name="clientId" value="" />
-				</td>
-		        <td style="height:30px">
-	        	<div class="select">
-				<select id = "statusId" name="statusId" style="width: 150px;">
-					<c:if test="${not empty FLT_SL_STATUS_LIST}">
-				      <option value="" class="service-small">Status Filter</option>
-				       <c:forEach items="${FLT_SL_STATUS_LIST}" var="flt_sl_statusObj">
-			      			<option class="service-small" value="${flt_sl_statusObj.workloadStatusId}">${flt_sl_statusObj.workloadStatusName}</option>
-				   		</c:forEach>
-				 </c:if>
-				 </select>  
-				 </div>
-      
-	        </td>
-	        <td>
-	        	<b>Departure Date Range</b>
-	        </td>
-	        <td><input type="date" name="DateFrom"/></td>
-	        <td><input type="date" name="DateTo"/></td>
- 			<td style="height:30px"><input style="background-color:red;" type="submit" value="Apply Filter" /> </td>
-			<td style="height:30px"><a href="get_flight_service_line_queue_user"><input type="button" value="Clear Filter" /></a></td>
-			</tr>
-		</table>
-	
-	
-		<hr>
 		<c:set value="${FLT_PAGE_LIST}" var="fltPageList" />
-		<table>
-			<tr>
-				<th style="width:5%;">Service Id</th>
-				<th style="width:5%;">Flight #</th>
-				<th style="width:8%;"><a style="color:#ffffa0;" href="get_flight_service_line_queue_user?sortBy=dealConfirmationId&clientId=${clientId}&statusId=${statusId}&dateFrom=${dateFrom}&dateTo=${dateTo}">Deal Code #</a></th>
-				<th style="width:13%;">Lead Client Name</th>
-				<th style="width:8%;"><a style="color:#ffffa0;" href="get_flight_service_line_queue_user?sortBy=CreatedAt&clientId=${clientId}&statusId=${statusId}&dateFrom=${dateFrom}&dateTo=${dateTo}">Created Date</a></th>
-				<th style="width:8%;"><a style="color:#ffffa0;" href="get_flight_service_line_queue_user?sortBy=departureDate&clientId=${clientId}&statusId=${statusId}&dateFrom=${dateFrom}&dateTo=${dateTo}">Departure Date</a></th>
-				<th style="width:10%;">Departing From</th>
-				<th style="width:10%;">Arriving To</th>
-				<th style="width:12%;"><a style="color:#ffffa0;" href="get_flight_service_line_queue_user?sortBy=status&clientId=${clientId}&statusId=${statusId}&dateFrom=${dateFrom}&dateTo=${dateTo}">SL Status</a></th>
-				<th style="width:22%;">Action</th>
-			</tr>
-			<c:forEach items="${fltPageList}" var="flt">
+	<table class="view_task_table" style="width:70%; margin-left: auto;margin-right: auto;">
+        <thead style="background:#6082B6;height:50px;">
+            <tr>
+                <th style="width:10%;"><a style="color:black;" href="#">Deal Number</a></th>
+                <th style="width:10%;"><a style="color:black;" href="#">Flight #</th>
+                <th style="width:20%;">Client Name</th>
+                <th style="width:15%;"><a style="color:black;" href="#">Departure Date</a></th>
+                <th style="width:10%;"><a style="color:black;" href="#">Departing From</a></th>
+                <th style="width:10%;"><a style="color:black" href="#">Arriving To</a></th>
+                <th style="width:10%;"><a style="color:black" href="#">SL Status</th>
+                <th style="width:10%;"><a style="color:black" href="#">Action</th>
+             </tr>
+   		</thead>
+		<c:forEach items="${fltPageList}" var="flt">
 				<tr>
-					<td style="width:5%;">${flt.fltServiceId}</td>
+					<td style="width:5%;">${flt.dealConfirmationId}</td>
 					<td style="width:5%;">${flt.flightNumber}</td>
-					<td style="width:5%;">UDN ${flt.dealConfirmationId}</td>
 					<td style="width:13%;">${flt.clientName}</td>
-					<td style="width:8%;"><fmt:formatDate value="${flt.createdAt}" pattern="dd-MM-yyyy" /></td>
-					<td style="width:8%;"><fmt:formatDate value="${flt.departureDate}" pattern="dd-MM-yyyy" /></td></td>
+					<td style="width:15%;">${flt.formattedDepartureDate}</td>
 					<td style="width:10%;">${flt.departingCity}</td>
 					<td style="width:10%;">${flt.arrivalCity}</td>
 					<td style="width:13%;">${flt.statusName}</td>
 					<td style="width:24%;"><a target="_blank" href="view_workload_createNewWorkLoadForm?dealConfirmationId=${flt.dealConfirmationId}"><input type="button" style="background-color: #786AAF;padding: 4px 5px;"value="View WorkLoad" /></a> | <a href="view_view_deal_form?dealConfirmationId=${flt.dealConfirmationId}"><input type="button" style="background-color: #786AAF;padding: 4px 5px;"value="View Deal" /></a> | <a target="_blank" href="view_upload_file?dealConfirmationId=${flt.dealConfirmationId}"><input type="button" style="background-color: #786AAF;padding: 4px 5px;"value="View Voucher" /></a></td>
-					
 				</tr>
 			</c:forEach>
-		</table>
+
+            </tr>
+        </table>
+		</form:form>
 	
 				<div id="pagination" align="right">
 				Page: 

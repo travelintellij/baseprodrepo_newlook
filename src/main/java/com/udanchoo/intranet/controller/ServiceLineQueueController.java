@@ -105,6 +105,7 @@ public class ServiceLineQueueController {
 	@Autowired
 	UserDetailsServiceImpl userService;
 
+	private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMM yyyy HH:mm");
 	
 	 private UserDetailsObj getLoggedInUser() {
 	    	Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -250,6 +251,7 @@ public class ServiceLineQueueController {
 				fltSLVo.setDestinationCity(commonService.findAirportById(fltSLVo.getArrivingTo()).getCityName());
 				fltSLVo.setClientName(clientService.getClientById(dealObj.getClientId()).getClientName());
 				fltSLVo.setStatusName(commonService.find_DealStatusById(fltSLVo.getStatus()).getWorkloadStatusName());
+				fltSLVo.setFormattedDepartureDate(fltSLEntity.getDepartureDate().format(formatter));
 				fltSLVoList.add(fltSLVo);
 
 			} catch (RecordNotFoundException e) {
