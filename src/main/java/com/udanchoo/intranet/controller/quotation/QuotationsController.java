@@ -52,6 +52,7 @@ import com.udanchoo.intranet.model.Udn_Deals_Recorder_Obj;
 import com.udanchoo.intranet.model.UserDetailsObj;
 import com.udanchoo.intranet.model.api.flight.Tg_Flt_Airport_Obj;
 import com.udanchoo.intranet.model.leads.TgLeadsRecorderVO;
+import com.udanchoo.intranet.model.quotation.ConfigurationQuotationVO;
 import com.udanchoo.intranet.model.quotation.FlightStopDetailQuotationVO;
 import com.udanchoo.intranet.model.quotation.ManualCruiseQuotationVO;
 import com.udanchoo.intranet.model.quotation.ManualFlightQuotationVO;
@@ -78,6 +79,7 @@ import com.udanchoo.intranet.validator.FlightStopValidator;
 import com.udanchoo.intranet.validator.ManualQuotationValidator;
 import com.udanchoo.intranet.validator.QuotationEditValidator;
 import com.udanchoo.intranet.validator.QuotationVersionAddValidator;
+import org.springframework.web.client.RestTemplate;
 
 @Transactional
 @Controller
@@ -98,6 +100,9 @@ public class QuotationsController<Resource> {
 	
 	@Autowired
     private FlightStopValidator flightStopValidator;
+	
+	@Autowired
+    private RestTemplate restTemplate;
 	
 		
 	@Autowired
@@ -140,6 +145,10 @@ public class QuotationsController<Resource> {
 	@Value("${DWNLOAD_QTN_URL}")
 	private String DWNLOAD_QTN_URL;
 
+	@Value("${CHECK_ITINERARY_EXIST}")
+	private String CHECK_ITINERARY_EXIST;
+	
+	
 
 	@Autowired
 	EntityManager entityManager;
@@ -955,6 +964,29 @@ public class QuotationsController<Resource> {
 	}
 	
 	
+	@RequestMapping(value = "/checkItineraryExists")
+	public ModelAndView checkItineraryExists(@RequestParam long quotationId) {
+		System.out.println("Welcome to check itinery controller man. ");
+		UserDetailsObj userObj = getLoggedInUser();
+		ModelAndView modelView = new ModelAndView();
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("quotationId", String.valueOf(quotationId));
+		
+        System.out.println("Invoking Itinerary Check 123...");
+        Boolean isItineryExist = restTemplate.getForObject(CHECK_ITINERARY_EXIST, Boolean.class,params );
+		
+		System.out.println("Itineray Response is " + isItineryExist );
+		if(isItineryExist) {
+			modelView.setViewName("quotation/itinerary/viewItinerary");
+		}
+		else {
+			modelView.setViewName("quotation/itinerary/createItinerary");
+		}
+
+				
+
+		return modelView; 
+	 }
 	
 
 	
