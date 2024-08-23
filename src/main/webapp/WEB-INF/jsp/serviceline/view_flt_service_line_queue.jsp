@@ -102,29 +102,31 @@
 	
 	</div>
 		<c:set value="${FLT_PAGE_LIST}" var="fltPageList" />
-	<table class="view_task_table" style="width:70%; margin-left: auto;margin-right: auto;">
+	<table class="view_task_table" style="width:80%; margin-left: auto;margin-right: auto;">
         <thead style="background:#6082B6;height:50px;">
             <tr>
-                <th style="width:10%;"><a style="color:black;" href="#">Deal Number</a></th>
-                <th style="width:10%;"><a style="color:black;" href="#">Flight #</th>
-                <th style="width:20%;">Client Name</th>
-                <th style="width:15%;"><a style="color:black;" href="#">Departure Date</a></th>
-                <th style="width:10%;"><a style="color:black;" href="#">Departing From</a></th>
-                <th style="width:10%;"><a style="color:black" href="#">Arriving To</a></th>
+                <th style="width:5%;"><a style="color:black;" href="#">Deal Number</a></th>
+                <th style="width:5%;"><a style="color:black;" href="#">Flight #</th>
+                <th style="width:13%;">Client Name</th>
+                <th style="width:10%;"><a style="color:black;" href="#">Departure</a></th>
+                <th style="width:10%;"><a style="color:black;" href="#">Arrival</a></th>
+                <th style="width:10%;"><a style="color:black;" href="#">From</a></th>
+                <th style="width:10%;"><a style="color:black" href="#">To</a></th>
                 <th style="width:10%;"><a style="color:black" href="#">SL Status</th>
-                <th style="width:10%;"><a style="color:black" href="#">Action</th>
+                <th style="width:15%;"><a style="color:black" href="#">Action</th>
              </tr>
    		</thead>
 		<c:forEach items="${fltPageList}" var="flt">
 				<tr>
 					<td style="width:5%;">${flt.dealConfirmationId}</td>
 					<td style="width:5%;">${flt.flightNumber}</td>
-					<td style="width:13%;">${flt.clientName}</td>
-					<td style="width:15%;">${flt.formattedDepartureDate}</td>
-					<td style="width:10%;">${flt.departingCity}</td>
-					<td style="width:10%;">${flt.arrivalCity}</td>
-					<td style="width:13%;">${flt.statusName}</td>
-					<td style="width:24%;"><a target="_blank" href="view_workload_createNewWorkLoadForm?dealConfirmationId=${flt.dealConfirmationId}"><input type="button" style="background-color: #786AAF;padding: 4px 5px;"value="View WorkLoad" /></a> | <a href="view_view_deal_form?dealConfirmationId=${flt.dealConfirmationId}"><input type="button" style="background-color: #786AAF;padding: 4px 5px;"value="View Deal" /></a> | <a target="_blank" href="view_upload_file?dealConfirmationId=${flt.dealConfirmationId}"><input type="button" style="background-color: #786AAF;padding: 4px 5px;"value="View Voucher" /></a></td>
+					<td style="width:15%;">${flt.clientName}</td>
+					<td style="width:10%;">${flt.formattedDepartureDate}</td>
+					<td style="width:10%;">${flt.formattedArrivalDate}</td>
+					<td style="width:10%;">${flt.originCity}</td>
+					<td style="width:10%;">${flt.destinationCity}</td>
+					<td style="width:10%;">${flt.statusName}</td>
+					<td style="width:15%;"><a target="_blank" href="view_workload_createNewWorkLoadForm?dealConfirmationId=${flt.dealConfirmationId}"><input type="button" style="background-color: #786AAF;color:white;padding: 4px 5px;" value="Workload" /></a> | <a href="view_view_deal_form?dealConfirmationId=${flt.dealConfirmationId}"><input type="button" style="background-color: #786AAF;color:white;padding: 4px 5px;"value="Deal" /></a> </a></td>
 				</tr>
 			</c:forEach>
 

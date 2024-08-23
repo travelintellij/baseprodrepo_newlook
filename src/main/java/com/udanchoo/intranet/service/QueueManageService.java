@@ -39,7 +39,9 @@ import com.udanchoo.intranet.entity.Udn_Deal_TRN_SL_Entity;
 import com.udanchoo.intranet.entity.Udn_Deal_VSA_SL_Entity;
 import com.udanchoo.intranet.entity.Udn_Deals_Recorder_Entity;
 import com.udanchoo.intranet.entity.Udn_Hotel_Master_Entity;
+import com.udanchoo.intranet.entity.deals.Ti_Deals_Team_Map_Entity;
 import com.udanchoo.intranet.model.FilterServiceLineObj;
+import com.udanchoo.intranet.model.SearchDealObj;
 import com.udanchoo.intranet.model.SearchHotelObj;
 import com.udanchoo.intranet.model.Udn_Hotel_Master_Obj;
 import com.udanchoo.intranet.repository.Deal_FLT_ServiceLine_Repository;
@@ -106,6 +108,8 @@ public class QueueManageService {
 		//System.out.println("Result Obtained is " + pagedResult.getNumberOfElements());
         return pagedResult;
 	}
+	
+	
 	
 	
 	
@@ -193,6 +197,60 @@ public class QueueManageService {
 		return filteredFlightList;
 	}
 
+	
+	public Page<Udn_Deal_FLT_SL_Entity>  filterServiceLineFlightQueue(int pageNo, int pageSize,long dealOwner,String sorting,FilterServiceLineObj filterDealObj,boolean isAdmin ) {
+		Pageable paging = PageRequest.of(pageNo, pageSize,Sort.by(sorting));
+		
+		/*Date currentDate = Date.from(java.time.ZonedDateTime.now().toInstant());
+	    GregorianCalendar cal = new GregorianCalendar();
+		cal.setTime(currentDate);
+		cal.add(Calendar.DATE, -365);
+		Date criteriaDate = cal.getTime();
+		*/
+		LocalDateTime currentDate = LocalDateTime.now();
+		
+		boolean isDealAdmin=false;
+		
+		Page<Udn_Deal_FLT_SL_Entity> filtereDealsList = fltServiceLineRespository.findAll(new Specification<Udn_Deal_FLT_SL_Entity>() {
+			private static final long serialVersionUID = 1L;
+			@Override
+			public Predicate toPredicate(Root<Udn_Deal_FLT_SL_Entity> flightRootEntity, CriteriaQuery< ?> query, CriteriaBuilder criteriaBuilder) {
+				List<Predicate> predicates = new ArrayList<>();
+				query.distinct(true);
+				if(dealOwner!=0) {
+					Root<Ti_Deals_Team_Map_Entity> rootDealsTeamMapEntity = query.from(Ti_Deals_Team_Map_Entity.class);
+					Root<Udn_Deals_Recorder_Entity> dealRootEntity = query.from(Udn_Deals_Recorder_Entity.class);
+					
+					List<Predicate> teamListPredicatesList = new ArrayList<>();
+					Predicate notNullPredicate = criteriaBuilder.isNotNull(rootDealsTeamMapEntity.get("dealConfirmationId"));
+					Predicate serviceCityPredcate =criteriaBuilder.equal( rootDealsTeamMapEntity.get("userId"),dealOwner);
+					Predicate supplierPredcate =criteriaBuilder.equal(flightRootEntity.get("dealConfirmationId"), rootDealsTeamMapEntity.get("dealConfirmationId"));
+					Predicate finalJoinPredicate = criteriaBuilder.and(serviceCityPredcate,supplierPredcate,notNullPredicate);
+					Predicate dealOwnerPredicate = criteriaBuilder.equal(dealRootEntity.get("dealOwner"), dealOwner);
+					Predicate finalUltimatePredicate = criteriaBuilder.or(dealOwnerPredicate,finalJoinPredicate);
+					teamListPredicatesList.add(finalUltimatePredicate);
+					predicates.addAll(teamListPredicatesList);
+				}
+				if(filterDealObj.isUpcomingDeal()) {
+					predicates.add(criteriaBuilder.greaterThanOrEqualTo(flightRootEntity.get("arrivalDate"),currentDate));
+				}
+				else if((!filterDealObj.isUpcomingDeal())) {
+					predicates.add(criteriaBuilder.lessThanOrEqualTo(flightRootEntity.get("departureDate"),currentDate));
+				}
+				/*if(filterDealObj.getDealConfirmationId()!=0) {
+				predicates.add(criteriaBuilder.equal(flightRootEntity.get("dealConfirmationId"), filterDealObj.getDealConfirmationId()));
+				}*/
+
+				
+				return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
+				
+			}
+		},paging);
+		
+		return filtereDealsList;
+	}
+	
+	
 	
 	/*************************** Hotel SL Queue Starts from here ***************************************************/
 	

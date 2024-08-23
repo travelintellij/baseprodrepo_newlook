@@ -19,6 +19,7 @@ public class FlightServiceLineVO {
 	private int airlineId;
 	private LocalDateTime departureDate;
 	private String formattedDepartureDate;
+	private String formattedArrivalDate;
 	private LocalDateTime arrivalDate;
 	private int supplierId;
 	private String remarks;
@@ -167,6 +168,7 @@ public class FlightServiceLineVO {
 	public void setArrivalDate(String arrivalDate) {
 		//this.arrivalDate = arrivalDate;
 		this.arrivalDate = LocalDateTime.parse(arrivalDate,formatter);
+		this.formattedArrivalDate = this.arrivalDate.format(formatter);
 	}
 	public int getDepartingFrom() {
 		return departingFrom;
@@ -383,6 +385,12 @@ public class FlightServiceLineVO {
 	}
 	public void setFormattedDepartureDate(String formattedDepartureDate) {
 		this.formattedDepartureDate = formattedDepartureDate;
+	}
+	public String getFormattedArrivalDate() {
+		return formattedArrivalDate;
+	}
+	public void setFormattedArrivalDate(String formattedArrivalDate) {
+		this.formattedArrivalDate = formattedArrivalDate;
 	}
 	
 	

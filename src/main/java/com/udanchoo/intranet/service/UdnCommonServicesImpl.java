@@ -11,6 +11,7 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import javax.persistence.criteria.CriteriaBuilder;
@@ -325,7 +326,11 @@ public class UdnCommonServicesImpl {
 	}*/
 	
 	public Tg_Flt_Airport_Entity findAirportById(int airportId) {
-		return fltAirportRepository.findById(airportId).get();
+		Optional<Tg_Flt_Airport_Entity> flightAirportEntity = fltAirportRepository.findById(airportId);
+		if(flightAirportEntity.isPresent())
+			return fltAirportRepository.findById(airportId).get();
+		else
+			return null;
 	}
 	
 	public List<Udn_Destinations_Entity> findDistinctActiveDestinationList(){

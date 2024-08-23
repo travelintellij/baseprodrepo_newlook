@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.udanchoo.intranet.entity.Product;
+import com.udanchoo.intranet.entity.Tg_Flt_Airport_Entity;
 import com.udanchoo.intranet.entity.Udn_Deal_FLT_SL_Entity;
 import com.udanchoo.intranet.entity.Udn_Deal_HTL_SL_Entity;
 import com.udanchoo.intranet.entity.Udn_Deal_INS_SL_Entity;
@@ -214,11 +215,13 @@ public class ServiceLineQueueController {
 		//TODO Check if some one changes the url manually then it should lead to an error page. not to a server error. 
 		int pageNum = Integer.parseInt(page);
 		Page<Udn_Deal_FLT_SL_Entity> pageFlightServiceLine = null;
-		if(filterObj.getClientId()==0 && filterObj.getStatusId()==0 && (filterObj.getDateFrom()==null || filterObj.getDateFrom().trim().length()==0) && (filterObj.getDateTo()==null || filterObj.getDateTo().trim().length()==0)  ) {
+		/*if(filterObj.getClientId()==0 && filterObj.getStatusId()==0 && (filterObj.getDateFrom()==null || filterObj.getDateFrom().trim().length()==0) && (filterObj.getDateTo()==null || filterObj.getDateTo().trim().length()==0)  ) {
 				pageFlightServiceLine = queueService.findByCreatedAtAfter_BasedOn_Owner(pageNum, UdanChooConstants.DEFAULT_PAGE_SIZE, user.getUserId(),sortBy,isAdmin);
 		}else {
 			pageFlightServiceLine = queueService.searchFlightSLSortByCNameBySLOwner(pageNum, UdanChooConstants.DEFAULT_PAGE_SIZE, user.getUserId(),sortBy,filterObj.getClientId(),filterObj.getStatusId(),filterObj,isAdmin);
-		}
+		}*/
+		pageFlightServiceLine = queueService.filterServiceLineFlightQueue(pageNum, UdanChooConstants.DEFAULT_PAGE_SIZE,user.getUserId(),sortBy,filterObj,isAdmin);
+		
 		List flt_sl_wl_statusList = commonService.find_All_Status_Deal_Obj(UdanChooConstants.WORKLOAD_FLT_SL_OBJ);
 		List<FlightServiceLineVO> fltSlVo = generateFLT_SL_Vo(pageFlightServiceLine);
 		//PagedListHolder<Udn_Deal_FLT_SL_Entity> pagedListHolder = new PagedListHolder<Udn_Deal_FLT_SL_Entity>(listFlightServiceLine);
@@ -247,11 +250,26 @@ public class ServiceLineQueueController {
 			try {
 				dealObj = dealService.find_DealEntityBy_Id(fltSLEntity.getDealConfirmationId());
 				FlightServiceLineVO fltSLVo = new FlightServiceLineVO(fltSLEntity);
-				fltSLVo.setOriginCity(commonService.findAirportById(fltSLVo.getDepartingFrom()).getCityName());
-				fltSLVo.setDestinationCity(commonService.findAirportById(fltSLVo.getArrivingTo()).getCityName());
+				Tg_Flt_Airport_Entity airportEntity = commonService.findAirportById(fltSLVo.getDepartingFrom());
+				if(airportEntity!=null)
+					fltSLVo.setOriginCity(airportEntity.getCityName());
+				else
+					fltSLVo.setOriginCity("Unavailable");
+				
+				airportEntity = commonService.findAirportById(fltSLVo.getArrivingTo());
+				if(airportEntity!=null)
+					fltSLVo.setDestinationCity(airportEntity.getCityName());    
+				else
+					fltSLVo.setDestinationCity("Unavailable");
+
+				//airportEntity = commonService.findAirportById(fltSLVo.getArrivingTo()).getCityName()
+				//fltSLVo.setDestinationCity(commonService.findAirportById(fltSLVo.getArrivingTo()).getCityName());
 				fltSLVo.setClientName(clientService.getClientById(dealObj.getClientId()).getClientName());
 				fltSLVo.setStatusName(commonService.find_DealStatusById(fltSLVo.getStatus()).getWorkloadStatusName());
 				fltSLVo.setFormattedDepartureDate(fltSLEntity.getDepartureDate().format(formatter));
+				fltSLVo.setFormattedArrivalDate(fltSLEntity.getArrivalDate().format(formatter));
+				//fltSLVo.setDepartingCity(commonService.findDestinationById(fltSLVo.getde).getCityName());
+				//fltSLVo.setArrivalCity(commonService.findDestinationById(fltSLVo.getArrivingTo()).getCityName());
 				fltSLVoList.add(fltSLVo);
 
 			} catch (RecordNotFoundException e) {
