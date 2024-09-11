@@ -211,7 +211,15 @@ public class ServiceLineQueueController {
     	boolean isAdmin=false;
      	if(user.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"))) {
     		isAdmin=true;
+    		List<UserDetailsObj> activeUsersList = userDetailsService.findAllActiveUsers();
+    		Map<Integer, String> activeUsersMap = (Map<Integer, String>) activeUsersList.stream().collect(
+                    Collectors.toMap(UserDetailsObj::getUserId, UserDetailsObj::getUsername));
+    		modelView.addObject("ACTIVE_USERS_MAP", activeUsersMap);
     	}
+        if((!isAdmin) && filterObj.getDealOwner()==0) {
+	    	filterObj.setDealOwner((user.getUserId()))  ;
+	    }
+     	
 		//TODO Check if some one changes the url manually then it should lead to an error page. not to a server error. 
 		int pageNum = Integer.parseInt(page);
 		Page<Udn_Deal_FLT_SL_Entity> pageFlightServiceLine = null;
@@ -220,10 +228,12 @@ public class ServiceLineQueueController {
 		}else {
 			pageFlightServiceLine = queueService.searchFlightSLSortByCNameBySLOwner(pageNum, UdanChooConstants.DEFAULT_PAGE_SIZE, user.getUserId(),sortBy,filterObj.getClientId(),filterObj.getStatusId(),filterObj,isAdmin);
 		}*/
-		pageFlightServiceLine = queueService.filterServiceLineFlightQueue(pageNum, UdanChooConstants.DEFAULT_PAGE_SIZE,user.getUserId(),sortBy,filterObj,isAdmin);
+		pageFlightServiceLine = queueService.filterServiceLineFlightQueue(pageNum, UdanChooConstants.DEFAULT_PAGE_SIZE,sortBy,filterObj,isAdmin);
 		
+		System.out.println("Flight Size is before " + pageFlightServiceLine.getNumberOfElements());
 		List flt_sl_wl_statusList = commonService.find_All_Status_Deal_Obj(UdanChooConstants.WORKLOAD_FLT_SL_OBJ);
 		List<FlightServiceLineVO> fltSlVo = generateFLT_SL_Vo(pageFlightServiceLine);
+		System.out.println("Flight Size is After " + fltSlVo.size());
 		//PagedListHolder<Udn_Deal_FLT_SL_Entity> pagedListHolder = new PagedListHolder<Udn_Deal_FLT_SL_Entity>(listFlightServiceLine);
 		//pagedListHolder.setPageSize(2);
 		modelView.addObject("userName", username);
@@ -266,6 +276,7 @@ public class ServiceLineQueueController {
 				//fltSLVo.setDestinationCity(commonService.findAirportById(fltSLVo.getArrivingTo()).getCityName());
 				fltSLVo.setClientName(clientService.getClientById(dealObj.getClientId()).getClientName());
 				fltSLVo.setStatusName(commonService.find_DealStatusById(fltSLVo.getStatus()).getWorkloadStatusName());
+				fltSLVo.setDealOwnerName(userService.findUserByID((int)dealObj.getDealOwner()).getUsername());
 				fltSLVo.setFormattedDepartureDate(fltSLEntity.getDepartureDate().format(formatter));
 				fltSLVo.setFormattedArrivalDate(fltSLEntity.getArrivalDate().format(formatter));
 				//fltSLVo.setDepartingCity(commonService.findDestinationById(fltSLVo.getde).getCityName());

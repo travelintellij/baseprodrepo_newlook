@@ -198,7 +198,8 @@ public class QueueManageService {
 	}
 
 	
-	public Page<Udn_Deal_FLT_SL_Entity>  filterServiceLineFlightQueue(int pageNo, int pageSize,long dealOwner,String sorting,FilterServiceLineObj filterDealObj,boolean isAdmin ) {
+	public Page<Udn_Deal_FLT_SL_Entity>  filterServiceLineFlightQueue(int pageNo, int pageSize,String sorting,FilterServiceLineObj filterDealObj,boolean isAdmin ) {
+		System.out.println("Page Size is " + pageSize);
 		Pageable paging = PageRequest.of(pageNo, pageSize,Sort.by(sorting));
 		
 		/*Date currentDate = Date.from(java.time.ZonedDateTime.now().toInstant());
@@ -208,28 +209,48 @@ public class QueueManageService {
 		Date criteriaDate = cal.getTime();
 		*/
 		LocalDateTime currentDate = LocalDateTime.now();
+		long dealOwner = filterDealObj.getDealOwner();
+		//boolean isDealAdmin=false;
 		
-		boolean isDealAdmin=false;
-		
-		Page<Udn_Deal_FLT_SL_Entity> filtereDealsList = fltServiceLineRespository.findAll(new Specification<Udn_Deal_FLT_SL_Entity>() {
+		Page<Udn_Deal_FLT_SL_Entity> filtereDealsFlightSLList = fltServiceLineRespository.findAll(new Specification<Udn_Deal_FLT_SL_Entity>() {
 			private static final long serialVersionUID = 1L;
 			@Override
 			public Predicate toPredicate(Root<Udn_Deal_FLT_SL_Entity> flightRootEntity, CriteriaQuery< ?> query, CriteriaBuilder criteriaBuilder) {
 				List<Predicate> predicates = new ArrayList<>();
 				query.distinct(true);
+				System.out.println("Deal Owner under flight module is " + filterDealObj.getDealOwner());
 				if(dealOwner!=0) {
 					Root<Ti_Deals_Team_Map_Entity> rootDealsTeamMapEntity = query.from(Ti_Deals_Team_Map_Entity.class);
 					Root<Udn_Deals_Recorder_Entity> dealRootEntity = query.from(Udn_Deals_Recorder_Entity.class);
-					
 					List<Predicate> teamListPredicatesList = new ArrayList<>();
 					Predicate notNullPredicate = criteriaBuilder.isNotNull(rootDealsTeamMapEntity.get("dealConfirmationId"));
 					Predicate serviceCityPredcate =criteriaBuilder.equal( rootDealsTeamMapEntity.get("userId"),dealOwner);
 					Predicate supplierPredcate =criteriaBuilder.equal(flightRootEntity.get("dealConfirmationId"), rootDealsTeamMapEntity.get("dealConfirmationId"));
 					Predicate finalJoinPredicate = criteriaBuilder.and(serviceCityPredcate,supplierPredcate,notNullPredicate);
+					
+					
+					Predicate dealOwnerPredicate = criteriaBuilder.equal(dealRootEntity.get("dealOwner"), dealOwner);
+					
+					
+					Predicate finalUltimatePredicate = criteriaBuilder.or(dealOwnerPredicate,finalJoinPredicate);
+					teamListPredicatesList.add(finalUltimatePredicate);
+					predicates.addAll(teamListPredicatesList);
+
+					
+					/*
+					Root<Ti_Deals_Team_Map_Entity> rootDealsTeamMapEntity = query.from(Ti_Deals_Team_Map_Entity.class);
+					Root<Udn_Deals_Recorder_Entity> dealRootEntity = query.from(Udn_Deals_Recorder_Entity.class);
+					
+					List<Predicate> teamListPredicatesList = new ArrayList<>();
+					Predicate notNullPredicate = criteriaBuilder.isNotNull(rootDealsTeamMapEntity.get("dealConfirmationId"));
+					Predicate dealUserOwnerPredicate =criteriaBuilder.equal( rootDealsTeamMapEntity.get("userId"),dealOwner);
+					Predicate dealConfirmationPredcate =criteriaBuilder.equal(flightRootEntity.get("dealConfirmationId"), rootDealsTeamMapEntity.get("dealConfirmationId"));
+					Predicate finalJoinPredicate = criteriaBuilder.and(dealUserOwnerPredicate,dealConfirmationPredcate,notNullPredicate);
 					Predicate dealOwnerPredicate = criteriaBuilder.equal(dealRootEntity.get("dealOwner"), dealOwner);
 					Predicate finalUltimatePredicate = criteriaBuilder.or(dealOwnerPredicate,finalJoinPredicate);
 					teamListPredicatesList.add(finalUltimatePredicate);
 					predicates.addAll(teamListPredicatesList);
+					*/
 				}
 				if(filterDealObj.isUpcomingDeal()) {
 					predicates.add(criteriaBuilder.greaterThanOrEqualTo(flightRootEntity.get("arrivalDate"),currentDate));
@@ -246,8 +267,8 @@ public class QueueManageService {
 				
 			}
 		},paging);
-		
-		return filtereDealsList;
+
+		return filtereDealsFlightSLList;
 	}
 	
 	

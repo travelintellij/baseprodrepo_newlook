@@ -29,6 +29,9 @@ public class FlightServiceLineVO {
 	private int cabinClass;
 	private String cabinClassName;
 	private int displayOrder;
+	private long dealOwner;
+	
+	private String dealOwnerName;
 	
 	 
 	public int getDisplayOrder() {
@@ -391,6 +394,18 @@ public class FlightServiceLineVO {
 	}
 	public void setFormattedArrivalDate(String formattedArrivalDate) {
 		this.formattedArrivalDate = formattedArrivalDate;
+	}
+	public String getDealOwnerName() {
+		return dealOwnerName;
+	}
+	public void setDealOwnerName(String dealOwnerName) {
+		this.dealOwnerName = dealOwnerName;
+	}
+	public long getDealOwner() {
+		return dealOwner;
+	}
+	public void setDealOwner(long dealOwner) {
+		this.dealOwner = dealOwner;
 	}
 	
 	

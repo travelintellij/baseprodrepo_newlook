@@ -72,7 +72,7 @@
                 </div>
                 <div class="view_task_data_li view_task_tak_owner">
 						<form:radiobutton path="upcomingDeal" value="false" style="display: inline-block;width: 20px;height: 20px;margin-left: -25px;margin-right:10px"/>
-						<input type="button" style="background-color:green;color:white;width:200px;" value="Completed Deals" />                
+						<input type="button" style="background-color:green;color:white;width:200px;" value="Completed" />                
 				</div>
                 <div class="view_task_data_li view_task_task_pri">
 					<form:radiobutton path="upcomingDeal" value="true" style="display: inline-block;width: 20px;height: 20px;margin-left: -25px;margin-right:10px"/>
@@ -105,7 +105,7 @@
 	<table class="view_task_table" style="width:80%; margin-left: auto;margin-right: auto;">
         <thead style="background:#6082B6;height:50px;">
             <tr>
-                <th style="width:5%;"><a style="color:black;" href="#">Deal Number</a></th>
+                <th style="width:5%;"><a style="color:black;" href="#">Deal #</a></th>
                 <th style="width:5%;"><a style="color:black;" href="#">Flight #</th>
                 <th style="width:13%;">Client Name</th>
                 <th style="width:10%;"><a style="color:black;" href="#">Departure</a></th>
@@ -113,6 +113,7 @@
                 <th style="width:10%;"><a style="color:black;" href="#">From</a></th>
                 <th style="width:10%;"><a style="color:black" href="#">To</a></th>
                 <th style="width:10%;"><a style="color:black" href="#">SL Status</th>
+                <th style="width:10%;"><a style="color:black" href="#">Deal Owner</th>
                 <th style="width:15%;"><a style="color:black" href="#">Action</th>
              </tr>
    		</thead>
@@ -126,6 +127,7 @@
 					<td style="width:10%;">${flt.originCity}</td>
 					<td style="width:10%;">${flt.destinationCity}</td>
 					<td style="width:10%;">${flt.statusName}</td>
+					<td style="width:10%;">${flt.dealOwnerName}</td>
 					<td style="width:15%;"><a target="_blank" href="view_workload_createNewWorkLoadForm?dealConfirmationId=${flt.dealConfirmationId}"><input type="button" style="background-color: #786AAF;color:white;padding: 4px 5px;" value="Workload" /></a> | <a href="view_view_deal_form?dealConfirmationId=${flt.dealConfirmationId}"><input type="button" style="background-color: #786AAF;color:white;padding: 4px 5px;"value="Deal" /></a> </a></td>
 				</tr>
 			</c:forEach>
@@ -134,35 +136,37 @@
         </table>
 		</form:form>
 	
-				<div id="pagination" align="right">
-				Page: 
-			    <c:url value="get_flight_service_line_queue_user" var="prev">
-			       <c:param name="page" value="${page-1}"/>
-			    </c:url>
-			    <c:if test="${page > 0}">
-			        <a href="<c:out value="${prev}&sortBy=${sortBy}&statusId=${statusId}&clientId=${clientId}&dateFrom=${dateFrom}&dateTo=${dateTo}" />" class="pn prev">Prev</a>
-			    </c:if>
-			
-			    <c:forEach begin="1" end="${maxPages}" step="1" varStatus="i">
-			        <c:choose>
-			            <c:when test="${(page+1) == i.index}">
-			                <span>${i.index}</span>
-			            </c:when>
-			            <c:otherwise>
-			                <c:url value="get_flight_service_line_queue_user" var="url">
-			                    <c:param name="page" value="${i.index-1}"/>
-			                </c:url>
-			                 <a href='<c:out value="${url}&sortBy=${sortBy}&statusId=${statusId}&clientId=${clientId}" />'>${i.index}</a>
-			            </c:otherwise>
-			        </c:choose>
-			    </c:forEach>
-			    <c:url value="get_flight_service_line_queue_user" var="next">
-			        <c:param name="page" value="${page + 1}"/>
-			    </c:url>
-			    <c:if test="${page + 1 < maxPages}">
-			       <a href='<c:out value="${next}&sortBy=${sortBy}&statusId=${statusId}&clientId=${clientId}&dateFrom=${dateFrom}&dateTo=${dateTo}" />' class="pn next">Next</a>
-			    </c:if>
-			</div>
+	     <div id="pagination" align="center" style="margin:10px 0">
+          <font style="color:#ffa500;background:black;display:inline-block;padding:2px;border-radius:2px">Page:</font> 
+            <c:url value="get_deals_service_line_queue_user" var="prev">
+                <c:param name="page" value="${page-1}" />
+            </c:url>
+            <c:if test="${page > 0}">
+                <a  style="background:black;padding:2px 5px;border-radius:2px;color:#ffa500" href="<c:out value="${prev}&sortBy=${sortBy}&dealOwner=${dealOwner}&dealConfirmationId=${dealConfirmationId}&upcomingDeal=${upcomingDeal}" />"
+                >Prev</a>
+            </c:if>
 
+            <c:forEach begin="1" end="${maxPages}" step="1" varStatus="i">
+                <c:choose>
+                    <c:when test="${(page+1) == i.index}">
+                        <span style="background:black;padding:2px 5px;border-radius:2px;color:white">${i.index}</span>
+                    </c:when>
+                    <c:otherwise>
+                        <c:url value="get_deals_service_line_queue_user" var="url">
+                            <c:param name="page" value="${i.index-1}" />
+                        </c:url>
+                        <a style="padding:2px 5px;border-radius:2px;color:black"  href='<c:out value="${url}&sortBy=${sortBy}&dealOwner=${dealOwner}&dealConfirmationId=${dealConfirmationId}&upcomingDeal=${upcomingDeal}" />'>${i.index}</a>
+                    </c:otherwise>
+                </c:choose>
+            </c:forEach>
+            <c:url value="get_deals_service_line_queue_user" var="next">
+                <c:param name="page" value="${page + 1}" />
+            </c:url>
+            <c:if test="${page + 1 < maxPages}">
+                <a style="background:black;padding:2px 5px;border-radius:2px;color:#ffa500" href='<c:out value="${next}&sortBy=${sortBy}&dealOwner=${dealOwner}&dealConfirmationId=${dealConfirmationId}&upcomingDeal=${upcomingDeal}" />'
+                    class="pn next">Next</a>
+            </c:if>
+        </div>
+    
 
 
