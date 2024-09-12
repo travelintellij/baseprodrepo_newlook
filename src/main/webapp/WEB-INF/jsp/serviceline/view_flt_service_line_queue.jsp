@@ -96,7 +96,7 @@
             </div>
             <div class="due_today_task_data_btnss" style="display:flex;justify-content:center;margin-top:10px">
                 <input style="background-color:#32cd32;" type="submit" value="Apply Filter" />
-              <a href="get_deals_service_line_queue_user"><input type="button" value="Clear Filter" /></a>
+              <a href="get_flight_service_line_queue_user"><input type="button" value="Clear Filter" /></a>
             </div>
         </div>
 	
@@ -138,7 +138,7 @@
 	
 	     <div id="pagination" align="center" style="margin:10px 0">
           <font style="color:#ffa500;background:black;display:inline-block;padding:2px;border-radius:2px">Page:</font> 
-            <c:url value="get_deals_service_line_queue_user" var="prev">
+            <c:url value="get_flight_service_line_queue_user" var="prev">
                 <c:param name="page" value="${page-1}" />
             </c:url>
             <c:if test="${page > 0}">
@@ -152,14 +152,14 @@
                         <span style="background:black;padding:2px 5px;border-radius:2px;color:white">${i.index}</span>
                     </c:when>
                     <c:otherwise>
-                        <c:url value="get_deals_service_line_queue_user" var="url">
+                        <c:url value="get_flight_service_line_queue_user" var="url">
                             <c:param name="page" value="${i.index-1}" />
                         </c:url>
                         <a style="padding:2px 5px;border-radius:2px;color:black"  href='<c:out value="${url}&sortBy=${sortBy}&dealOwner=${dealOwner}&dealConfirmationId=${dealConfirmationId}&upcomingDeal=${upcomingDeal}" />'>${i.index}</a>
                     </c:otherwise>
                 </c:choose>
             </c:forEach>
-            <c:url value="get_deals_service_line_queue_user" var="next">
+            <c:url value="get_flight_service_line_queue_user" var="next">
                 <c:param name="page" value="${page + 1}" />
             </c:url>
             <c:if test="${page + 1 < maxPages}">

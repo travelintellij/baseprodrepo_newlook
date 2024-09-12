@@ -199,9 +199,7 @@ public class QueueManageService {
 
 	
 	public Page<Udn_Deal_FLT_SL_Entity>  filterServiceLineFlightQueue(int pageNo, int pageSize,String sorting,FilterServiceLineObj filterDealObj,boolean isAdmin ) {
-		System.out.println("Page Size is " + pageSize);
 		Pageable paging = PageRequest.of(pageNo, pageSize,Sort.by(sorting));
-		
 		/*Date currentDate = Date.from(java.time.ZonedDateTime.now().toInstant());
 	    GregorianCalendar cal = new GregorianCalendar();
 		cal.setTime(currentDate);
@@ -224,15 +222,17 @@ public class QueueManageService {
 					Root<Udn_Deals_Recorder_Entity> dealRootEntity = query.from(Udn_Deals_Recorder_Entity.class);
 					List<Predicate> teamListPredicatesList = new ArrayList<>();
 					Predicate notNullPredicate = criteriaBuilder.isNotNull(rootDealsTeamMapEntity.get("dealConfirmationId"));
-					Predicate serviceCityPredcate =criteriaBuilder.equal( rootDealsTeamMapEntity.get("userId"),dealOwner);
-					Predicate supplierPredcate =criteriaBuilder.equal(flightRootEntity.get("dealConfirmationId"), rootDealsTeamMapEntity.get("dealConfirmationId"));
-					Predicate finalJoinPredicate = criteriaBuilder.and(serviceCityPredcate,supplierPredcate,notNullPredicate);
+					Predicate dealUserOwnerPredicate =criteriaBuilder.equal( rootDealsTeamMapEntity.get("userId"),dealOwner);
+					Predicate dealConfirmationIdPredcate =criteriaBuilder.equal(flightRootEntity.get("dealConfirmationId"), rootDealsTeamMapEntity.get("dealConfirmationId"));
+					Predicate finalJoinPredicate = criteriaBuilder.and(dealUserOwnerPredicate,dealConfirmationIdPredcate,notNullPredicate);
 					
 					
+					Predicate dealRootConfirmationIdPredcate =criteriaBuilder.equal(flightRootEntity.get("dealConfirmationId"), dealRootEntity.get("dealConfirmationId"));
 					Predicate dealOwnerPredicate = criteriaBuilder.equal(dealRootEntity.get("dealOwner"), dealOwner);
+					Predicate finalDealOwnerRootPredicate = criteriaBuilder.and(dealRootConfirmationIdPredcate,dealOwnerPredicate);
 					
 					
-					Predicate finalUltimatePredicate = criteriaBuilder.or(dealOwnerPredicate,finalJoinPredicate);
+					Predicate finalUltimatePredicate = criteriaBuilder.or(finalDealOwnerRootPredicate,finalJoinPredicate);
 					teamListPredicatesList.add(finalUltimatePredicate);
 					predicates.addAll(teamListPredicatesList);
 
@@ -258,9 +258,9 @@ public class QueueManageService {
 				else if((!filterDealObj.isUpcomingDeal())) {
 					predicates.add(criteriaBuilder.lessThanOrEqualTo(flightRootEntity.get("departureDate"),currentDate));
 				}
-				/*if(filterDealObj.getDealConfirmationId()!=0) {
-				predicates.add(criteriaBuilder.equal(flightRootEntity.get("dealConfirmationId"), filterDealObj.getDealConfirmationId()));
-				}*/
+				if(filterDealObj.getDealConfirmationId()!=0) {
+					predicates.add(criteriaBuilder.equal(flightRootEntity.get("dealConfirmationId"), filterDealObj.getDealConfirmationId()));
+				}
 
 				
 				return criteriaBuilder.and(predicates.toArray(new Predicate[0]));

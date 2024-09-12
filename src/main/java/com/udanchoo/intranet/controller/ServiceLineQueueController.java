@@ -133,7 +133,7 @@ public class ServiceLineQueueController {
 	    	   username = principal.toString();
 	    	}
 	     	UserDetailsObj userObj = (UserDetailsObj) userDetailsService.loadUserByUsername(username);
-		int pageSize = 2;//UdanChooConstants.DEFAULT_PAGE_SIZE;
+		int pageSize = UdanChooConstants.DEFAULT_PAGE_SIZE;
 		ModelAndView modelView = new ModelAndView("serviceline/view_deal_serviceline");
 		UserDetailsObj user = getLoggedInUser();
     	boolean isAdmin=false;
@@ -187,7 +187,7 @@ public class ServiceLineQueueController {
 	
 	//@RequestMapping("/workload/get_flight_service_line_queue_user")
 	 @RequestMapping("/get_flight_service_line_queue_user")
-	public ModelAndView get_flight_service_line_queue_user( @RequestParam(defaultValue = "0") String page,@RequestParam(defaultValue = "10") Integer pageSize, @RequestParam(defaultValue = "CreatedAt") String sortBy,@RequestParam(defaultValue = "") String dateFrom,@RequestParam(defaultValue = "") String dateTo,@ModelAttribute("FILTER_SL") FilterServiceLineObj filterObj,BindingResult result) {
+	public ModelAndView get_flight_service_line_queue_user( @RequestParam(defaultValue = "0") String page,@RequestParam(defaultValue = "10") Integer pageSize, @RequestParam(defaultValue = "arrivalDate") String sortBy,@RequestParam(defaultValue = "") String dateFrom,@RequestParam(defaultValue = "") String dateTo,@ModelAttribute("FILTER_SL") FilterServiceLineObj filterObj,BindingResult result) {
 		//System.out.println("Filtered Object is " + filterObj);
 		 Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			String username;
@@ -198,7 +198,7 @@ public class ServiceLineQueueController {
 	    	}
 	     	UserDetailsObj userObj = (UserDetailsObj) userDetailsService.loadUserByUsername(username);
 		 ModelAndView modelView = new ModelAndView("serviceline/view_flt_service_line_queue");
-		validator.validate(filterObj, result);
+		/*validator.validate(filterObj, result);
 		if(dateFrom!=null && dateFrom.trim().length()>0 && dateTo!=null && dateTo.trim().length()>0) {
 			filterObj.setDateFrom(dateFrom);
 			filterObj.setDateTo(dateTo);
@@ -207,6 +207,7 @@ public class ServiceLineQueueController {
     		System.out.println("error is " + result);
 			return modelView; 
     	}
+    	*/
 		UserDetailsObj user = getLoggedInUser();
     	boolean isAdmin=false;
      	if(user.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"))) {
@@ -229,11 +230,8 @@ public class ServiceLineQueueController {
 			pageFlightServiceLine = queueService.searchFlightSLSortByCNameBySLOwner(pageNum, UdanChooConstants.DEFAULT_PAGE_SIZE, user.getUserId(),sortBy,filterObj.getClientId(),filterObj.getStatusId(),filterObj,isAdmin);
 		}*/
 		pageFlightServiceLine = queueService.filterServiceLineFlightQueue(pageNum, UdanChooConstants.DEFAULT_PAGE_SIZE,sortBy,filterObj,isAdmin);
-		
-		System.out.println("Flight Size is before " + pageFlightServiceLine.getNumberOfElements());
 		List flt_sl_wl_statusList = commonService.find_All_Status_Deal_Obj(UdanChooConstants.WORKLOAD_FLT_SL_OBJ);
 		List<FlightServiceLineVO> fltSlVo = generateFLT_SL_Vo(pageFlightServiceLine);
-		System.out.println("Flight Size is After " + fltSlVo.size());
 		//PagedListHolder<Udn_Deal_FLT_SL_Entity> pagedListHolder = new PagedListHolder<Udn_Deal_FLT_SL_Entity>(listFlightServiceLine);
 		//pagedListHolder.setPageSize(2);
 		modelView.addObject("userName", username);
@@ -246,6 +244,9 @@ public class ServiceLineQueueController {
 		modelView.addObject("statusId", filterObj.getStatusId());
 		modelView.addObject("dateFrom", filterObj.getDateFrom());
 		modelView.addObject("dateTo", filterObj.getDateTo());
+		modelView.addObject("dealOwner", filterObj.getDealOwner());
+		modelView.addObject("upcomingDeal", filterObj.isUpcomingDeal());
+
 		return modelView;
 	}
 	
