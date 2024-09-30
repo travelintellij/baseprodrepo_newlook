@@ -298,38 +298,48 @@ public class ServiceLineQueueController {
 	//@RequestMapping("/workload/get_hotel_service_line_queue_user")
 	@RequestMapping("/get_hotel_service_line_queue_user")
 	public ModelAndView get_hotel_service_line_queue_user( @RequestParam(defaultValue = "0") String page,@RequestParam(defaultValue = "10") Integer pageSize, @RequestParam(defaultValue = "CreatedAt") String sortBy,@RequestParam(defaultValue = "") String dateFrom,@RequestParam(defaultValue = "") String dateTo,@ModelAttribute("FILTER_SL") FilterServiceLineObj filterObj,BindingResult result) {
-		ModelAndView modelView = new ModelAndView("serviceline/view_htl_service_line_queue");
-		validator.validate(filterObj, result);
-		if(dateFrom!=null && dateFrom.trim().length()>0 && dateTo!=null && dateTo.trim().length()>0) {
-			filterObj.setDateFrom(dateFrom);
-			filterObj.setDateTo(dateTo);
-		}
-		if(result.hasErrors()) {
-    		System.out.println("error is " + result);
-			return modelView; 
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		String username;
+    	if (principal instanceof UserDetails) {
+    	   username = ((UserDetails)principal).getUsername();
+    	} else {
+    	   username = principal.toString();
     	}
-		
+     	UserDetailsObj userObj = (UserDetailsObj) userDetailsService.loadUserByUsername(username);
+		ModelAndView modelView = new ModelAndView("serviceline/view_htl_service_line_queue");
 		UserDetailsObj user = getLoggedInUser();
-    	boolean isAdmin=false;
+		boolean isAdmin=false;
      	if(user.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"))) {
     		isAdmin=true;
+    		List<UserDetailsObj> activeUsersList = userDetailsService.findAllActiveUsers();
+    		Map<Integer, String> activeUsersMap = (Map<Integer, String>) activeUsersList.stream().collect(
+                    Collectors.toMap(UserDetailsObj::getUserId, UserDetailsObj::getUsername));
+    		modelView.addObject("ACTIVE_USERS_MAP", activeUsersMap);
     	}
+        if((!isAdmin) && filterObj.getDealOwner()==0) {
+	    	filterObj.setDealOwner((user.getUserId()))  ;
+	    }
+     	
 
      	//TODO Check if some one changes the url manually then it should lead to an error page. not to a server error. 
 		int pageNum = Integer.parseInt(page);
 		
 		Page<Udn_Deal_HTL_SL_Entity> pageHotelServiceLine = null;
-		if(filterObj.getClientId()==0 && filterObj.getStatusId()==0 && (filterObj.getDateFrom()==null || filterObj.getDateFrom().trim().length()==0) && (filterObj.getDateTo()==null || filterObj.getDateTo().trim().length()==0)  ) {
+		
+		/*if(filterObj.getClientId()==0 && filterObj.getStatusId()==0 && (filterObj.getDateFrom()==null || filterObj.getDateFrom().trim().length()==0) && (filterObj.getDateTo()==null || filterObj.getDateTo().trim().length()==0)  ) {
 			pageHotelServiceLine = queueService.find_Hotel_SL_ByCreatedAtAfter_BasedOn_Owner(pageNum, UdanChooConstants.DEFAULT_PAGE_SIZE, user.getUserId(),sortBy,isAdmin);
 		}else {
 			pageHotelServiceLine = queueService.searchHotelSLSortByCNameBySLOwner(pageNum, UdanChooConstants.DEFAULT_PAGE_SIZE, user.getUserId(),sortBy,filterObj.getClientId(),filterObj.getStatusId(),filterObj,isAdmin);
-		}
+		}*/
+		pageHotelServiceLine = queueService.filterServiceLineHotelQueue(pageNum, UdanChooConstants.DEFAULT_PAGE_SIZE,sortBy,filterObj,isAdmin);
 		
 		List htl_sl_wl_statusList = commonService.find_All_Status_Deal_Obj(UdanChooConstants.WORKLOAD_HTL_SL_OBJ);
 		
 		List<HotelServiceLineVO> htlSlVo = generateHTL_SL_Vo(pageHotelServiceLine);
+		modelView.addObject("userName", username);
 		modelView.addObject("HTL_PAGE_LIST", htlSlVo );
 		modelView.addObject("HTL_SL_STATUS_LIST", htl_sl_wl_statusList);
+		modelView.addObject("dealOwner", filterObj.getDealOwner());
 		modelView.addObject("maxPages", pageHotelServiceLine.getTotalPages());
 		modelView.addObject("page", pageNum);
 		modelView.addObject("sortBy", sortBy);
@@ -337,7 +347,8 @@ public class ServiceLineQueueController {
 		modelView.addObject("statusId", filterObj.getStatusId());
 		modelView.addObject("dateFrom", filterObj.getDateFrom());
 		modelView.addObject("dateTo", filterObj.getDateTo());
-
+		modelView.addObject("upcomingDeal", filterObj.isUpcomingDeal());
+		modelView.addObject("dealOwner", filterObj.getDealOwner());
 		return modelView;
 	}
 	
@@ -356,8 +367,7 @@ public class ServiceLineQueueController {
 				htlSLVo.setCityName(commonService.findDestinationById(htlSLVo.getCityId()).getCityName());
 				htlSLVo.setStatusName(commonService.find_DealStatusById(htlSLVo.getStatus()).getWorkloadStatusName());
 				htlSLVo.setHotelName(hotelService.find_HotelbyId(htlSLVo.getHotelId()).getHotelName());
-				
-				
+				htlSLVo.setDealOwnerName(userService.findUserByID((int)dealObj.getDealOwner()).getUsername());
 				htlSLVoList.add(htlSLVo);
 			} catch (RecordNotFoundException e) {
 				// TODO Auto-generated catch block

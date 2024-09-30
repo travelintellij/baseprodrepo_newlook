@@ -275,6 +275,7 @@ public class QueueManageService {
 	
 	/*************************** Hotel SL Queue Starts from here ***************************************************/
 	
+	/*
 	public Page<Udn_Deal_HTL_SL_Entity> find_Hotel_SL_ByCreatedAtAfter_BasedOn_Owner(int pageNo, int pageSize,long serviceLineOwner,String sorting,boolean isAdmin){
 		Pageable paging = PageRequest.of(pageNo, pageSize,Sort.by(sorting));
 	    
@@ -286,12 +287,7 @@ public class QueueManageService {
 		Date criteriaDate = cal.getTime();
 		//System.out.println("criteriaDate Date is " + criteriaDate);
 		Page<Udn_Deal_HTL_SL_Entity> pagedResult; 
-		//if(isAdmin) {
-			pagedResult= htlServiceLineRespository.findByCreatedAtAfter(criteriaDate, paging);
-		/*}else {
-			pagedResult= htlServiceLineRespository.findByCreatedAtAfterAndServiceLineOwner(criteriaDate, serviceLineOwner,paging);
-		}*/
-		//System.out.println("Result Obtained is " + pagedResult.getNumberOfElements());
+		pagedResult= htlServiceLineRespository.findByCreatedAtAfter(criteriaDate, paging);
         return pagedResult;
 	}
 	
@@ -350,6 +346,62 @@ public class QueueManageService {
 		
 		return filteredHotelList;
 	}
+	*/
+	
+	public Page<Udn_Deal_HTL_SL_Entity>  filterServiceLineHotelQueue(int pageNo, int pageSize,String sorting,FilterServiceLineObj filterDealObj,boolean isAdmin ) {
+		Pageable paging = PageRequest.of(pageNo, pageSize,Sort.by(sorting));
+		/*Date currentDate = Date.from(java.time.ZonedDateTime.now().toInstant());
+	    GregorianCalendar cal = new GregorianCalendar();
+		cal.setTime(currentDate);
+		cal.add(Calendar.DATE, -365);
+		Date criteriaDate = cal.getTime();
+		*/
+		Date currentDate = Date.from(java.time.ZonedDateTime.now().toInstant());
+		long dealOwner = filterDealObj.getDealOwner();
+		//boolean isDealAdmin=false;
+		
+		Page<Udn_Deal_HTL_SL_Entity> filtereDealsHotelsList = htlServiceLineRespository.findAll(new Specification<Udn_Deal_HTL_SL_Entity>() {
+			private static final long serialVersionUID = 1L;
+			@Override
+			public Predicate toPredicate(Root<Udn_Deal_HTL_SL_Entity> hotelRootEntity, CriteriaQuery< ?> query, CriteriaBuilder criteriaBuilder) {
+				List<Predicate> predicates = new ArrayList<>();
+				query.distinct(true);
+				if(dealOwner!=0) {
+					Root<Ti_Deals_Team_Map_Entity> rootDealsTeamMapEntity = query.from(Ti_Deals_Team_Map_Entity.class);
+					Root<Udn_Deals_Recorder_Entity> dealRootEntity = query.from(Udn_Deals_Recorder_Entity.class);
+					List<Predicate> teamListPredicatesList = new ArrayList<>();
+					Predicate notNullPredicate = criteriaBuilder.isNotNull(rootDealsTeamMapEntity.get("dealConfirmationId"));
+					Predicate dealUserOwnerPredicate =criteriaBuilder.equal( rootDealsTeamMapEntity.get("userId"),dealOwner);
+					Predicate dealConfirmationIdPredcate =criteriaBuilder.equal(hotelRootEntity.get("dealConfirmationId"), rootDealsTeamMapEntity.get("dealConfirmationId"));
+					Predicate finalJoinPredicate = criteriaBuilder.and(dealUserOwnerPredicate,dealConfirmationIdPredcate,notNullPredicate);
+					Predicate dealRootConfirmationIdPredcate =criteriaBuilder.equal(hotelRootEntity.get("dealConfirmationId"), dealRootEntity.get("dealConfirmationId"));
+					Predicate dealOwnerPredicate = criteriaBuilder.equal(dealRootEntity.get("dealOwner"), dealOwner);
+					Predicate finalDealOwnerRootPredicate = criteriaBuilder.and(dealRootConfirmationIdPredcate,dealOwnerPredicate);
+					Predicate finalUltimatePredicate = criteriaBuilder.or(finalDealOwnerRootPredicate,finalJoinPredicate);
+					teamListPredicatesList.add(finalUltimatePredicate);
+					predicates.addAll(teamListPredicatesList);
+				}
+				if(filterDealObj.isUpcomingDeal()) {
+					predicates.add(criteriaBuilder.greaterThanOrEqualTo(hotelRootEntity.get("checkOutDate"),currentDate));
+				}
+				else if((!filterDealObj.isUpcomingDeal())) {
+					predicates.add(criteriaBuilder.lessThanOrEqualTo(hotelRootEntity.get("checkInDate"),currentDate));
+				}
+				if(filterDealObj.getDealConfirmationId()!=0) {
+					predicates.add(criteriaBuilder.equal(hotelRootEntity.get("dealConfirmationId"), filterDealObj.getDealConfirmationId()));
+				}
+
+				
+				return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
+				
+			}
+		},paging);
+
+		return filtereDealsHotelsList;
+	}
+	
+	
+	
 	
 	/*************************** Insurance SL Queue Starts from here ***************************************************/
 	

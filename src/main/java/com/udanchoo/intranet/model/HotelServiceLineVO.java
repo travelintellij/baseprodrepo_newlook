@@ -37,6 +37,7 @@ public class HotelServiceLineVO  {
 	private String statusName;
 	private String clientName;
 	private String mealPlanName;
+	private String dealOwnerName;
 	
 	/*************************/
 
@@ -337,6 +338,14 @@ public class HotelServiceLineVO  {
 
 	public void setMarkup(float markup) {
 		this.markup = markup;
+	}
+
+	public String getDealOwnerName() {
+		return dealOwnerName;
+	}
+
+	public void setDealOwnerName(String dealOwnerName) {
+		this.dealOwnerName = dealOwnerName;
 	}
 	
 	
