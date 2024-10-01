@@ -45,8 +45,9 @@
  <div class="cnt_options ">
             <a href="get_deals_service_line_queue_user" >Deals</a>
             <a href="get_flight_service_line_queue_user" style="color:white;background:black"> Flight</a>
-            <a href="view_open_task_form_user_filter_due_today">Hotel</a>
-            <a href="view_open_over_due_task_form_user">Transfers</a>
+            <a href="get_hotel_service_line_queue_user">Hotel</a>
+            <a href="get_insurance_service_line_queue_user">Insurance</a>
+            <a href="get_transfer_service_line_queue_user">Transfers</a>
             <a href="view_open_my_created_task_form_user">SightSeeing</a>
             <a href="view_open_my_assigned_task_form_user">Land Package</a>
             <a href="view_completed_task_form_user">Visa</a>

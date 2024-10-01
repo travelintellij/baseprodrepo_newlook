@@ -382,48 +382,49 @@ public class ServiceLineQueueController {
 	//@RequestMapping("/workload/get_insurance_service_line_queue_user")
 	@RequestMapping("/get_insurance_service_line_queue_user")
 	public ModelAndView get_insurance_service_line_queue_user( @RequestParam(defaultValue = "0") String page,@RequestParam(defaultValue = "10") Integer pageSize, @RequestParam(defaultValue = "CreatedAt") String sortBy,@RequestParam(defaultValue = "") String dateFrom,@RequestParam(defaultValue = "") String dateTo,@ModelAttribute("FILTER_SL") FilterServiceLineObj filterObj,BindingResult result) {
-		ModelAndView modelView = new ModelAndView("serviceline/view_ins_service_line_queue");
-		validator.validate(filterObj, result);
-		if(dateFrom!=null && dateFrom.trim().length()>0 && dateTo!=null && dateTo.trim().length()>0) {
-			filterObj.setDateFrom(dateFrom);
-			filterObj.setDateTo(dateTo);
-		}
-		if(result.hasErrors()) {
-    		System.out.println("error is " + result);
-			return modelView; 
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		String username;
+    	if (principal instanceof UserDetails) {
+    	   username = ((UserDetails)principal).getUsername();
+    	} else {
+    	   username = principal.toString();
     	}
-		
+     	UserDetailsObj userObj = (UserDetailsObj) userDetailsService.loadUserByUsername(username);
+		ModelAndView modelView = new ModelAndView("serviceline/view_ins_service_line_queue");
 		UserDetailsObj user = getLoggedInUser();
 		boolean isAdmin=false;
      	if(user.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"))) {
     		isAdmin=true;
+    		List<UserDetailsObj> activeUsersList = userDetailsService.findAllActiveUsers();
+    		Map<Integer, String> activeUsersMap = (Map<Integer, String>) activeUsersList.stream().collect(
+                    Collectors.toMap(UserDetailsObj::getUserId, UserDetailsObj::getUsername));
+    		modelView.addObject("ACTIVE_USERS_MAP", activeUsersMap);
     	}
-		
-	
-		
-		//TODO Check if some one changes the url manually then it should lead to an error page. not to a server error. 
+        if((!isAdmin) && filterObj.getDealOwner()==0) {
+	    	filterObj.setDealOwner((user.getUserId()))  ;
+	    }
+     	//TODO Check if some one changes the url manually then it should lead to an error page. not to a server error. 
 		int pageNum = Integer.parseInt(page);
 		
-		Page<Udn_Deal_INS_SL_Entity> pageInsuranceServiceLine = null;
-		if(filterObj.getClientId()==0 && filterObj.getStatusId()==0 && (filterObj.getDateFrom()==null || filterObj.getDateFrom().trim().length()==0) && (filterObj.getDateTo()==null || filterObj.getDateTo().trim().length()==0)  ) {
-			pageInsuranceServiceLine = queueService.find_Insurance_SL_ByCreatedAtAfter_BasedOn_Owner(pageNum, UdanChooConstants.DEFAULT_PAGE_SIZE, user.getUserId(),sortBy,isAdmin);
-		}else {
-			pageInsuranceServiceLine = queueService.searchInsuranceSLSortByCNameBySLOwner(pageNum, UdanChooConstants.DEFAULT_PAGE_SIZE, user.getUserId(),sortBy,filterObj.getClientId(),filterObj.getStatusId(),filterObj,isAdmin);
-		}
+		Page<Udn_Deal_INS_SL_Entity> pageHotelServiceLine = null;
+		pageHotelServiceLine = queueService.filterServiceLineInsuranceQueue(pageNum, UdanChooConstants.DEFAULT_PAGE_SIZE,sortBy,filterObj,isAdmin);
 		
 		List ins_sl_wl_statusList = commonService.find_All_Status_Deal_Obj(UdanChooConstants.WORKLOAD_INS_SL_OBJ);
 		
-		List<InsuranceServiceLineVO> insSlVo = generateINS_SL_Vo(pageInsuranceServiceLine);
+		List<InsuranceServiceLineVO> insSlVo = generateINS_SL_Vo(pageHotelServiceLine);
+		modelView.addObject("userName", username);
 		modelView.addObject("INS_PAGE_LIST", insSlVo );
 		modelView.addObject("INS_SL_STATUS_LIST", ins_sl_wl_statusList);
-		modelView.addObject("maxPages", pageInsuranceServiceLine.getTotalPages());
+		modelView.addObject("dealOwner", filterObj.getDealOwner());
+		modelView.addObject("maxPages", pageHotelServiceLine.getTotalPages());
 		modelView.addObject("page", pageNum);
 		modelView.addObject("sortBy", sortBy);
 		modelView.addObject("clientId", filterObj.getClientId());
 		modelView.addObject("statusId", filterObj.getStatusId());
 		modelView.addObject("dateFrom", filterObj.getDateFrom());
 		modelView.addObject("dateTo", filterObj.getDateTo());
-
+		modelView.addObject("upcomingDeal", filterObj.isUpcomingDeal());
+		modelView.addObject("dealOwner", filterObj.getDealOwner());
 		return modelView;
 	}
 	private List<InsuranceServiceLineVO> generateINS_SL_Vo(Page<Udn_Deal_INS_SL_Entity> pagedResult) {
@@ -440,7 +441,7 @@ public class ServiceLineQueueController {
 				insSLVo.setClientName(clientService.getClientById(dealObj.getClientId()).getClientName());
 				insSLVo.setDestinationName(commonService.findDestinationById(insSLVo.getDestinationId()).getCityName());
 				insSLVo.setStatusName(commonService.find_DealStatusById(insSLVo.getStatus()).getWorkloadStatusName());
-				
+				insSLVo.setDealOwnerName(userService.findUserByID((int)dealObj.getDealOwner()).getUsername());
 				insSLVoList.add(insSLVo);
 			} catch (RecordNotFoundException e) {
 				// TODO Auto-generated catch block

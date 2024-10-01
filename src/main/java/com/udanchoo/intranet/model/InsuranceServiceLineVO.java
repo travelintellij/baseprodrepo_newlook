@@ -38,6 +38,8 @@ public class InsuranceServiceLineVO {
 	private int insuranceType;
 	private int displayOrder;
 	
+	private String dealOwnerName;
+	
 	public InsuranceServiceLineVO() {
 		
 	}
@@ -297,6 +299,14 @@ public class InsuranceServiceLineVO {
 
 	public void setInsuranceTypeName(String insuranceTypeName) {
 		this.insuranceTypeName = insuranceTypeName;
+	}
+
+	public String getDealOwnerName() {
+		return dealOwnerName;
+	}
+
+	public void setDealOwnerName(String dealOwnerName) {
+		this.dealOwnerName = dealOwnerName;
 	}
 	
 	
