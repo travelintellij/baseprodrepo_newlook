@@ -678,7 +678,7 @@ public class ServiceLineQueueController {
 	
 	/************************ Transfers Queue Handling Part Starts from here *********************/
 	
-	//@RequestMapping("/workload/get_transfers_service_line_queue_user")
+/*	
 	@RequestMapping("/get_transfers_service_line_queue_user")
 	public ModelAndView get_transfers_service_line_queue_user( @RequestParam(defaultValue = "0") String page,@RequestParam(defaultValue = "10") Integer pageSize, @RequestParam(defaultValue = "CreatedAt") String sortBy,@RequestParam(defaultValue = "") String dateFrom,@RequestParam(defaultValue = "") String dateTo,@ModelAttribute("FILTER_SL") FilterServiceLineObj filterObj,BindingResult result) {
 		ModelAndView modelView = new ModelAndView("serviceline/view_trn_service_line_queue");
@@ -713,8 +713,6 @@ public class ServiceLineQueueController {
 		List trn_sl_wl_statusList = commonService.find_All_Status_Deal_Obj(UdanChooConstants.WORKLOAD_TRN_SL_OBJ);
 		
 		List<TransferServiceLineVO> trnSlVo = generateTRN_SL_Vo(pageTransfersServiceLine);
-		//PagedListHolder<Udn_Deal_FLT_SL_Entity> pagedListHolder = new PagedListHolder<Udn_Deal_FLT_SL_Entity>(listFlightServiceLine);
-		//pagedListHolder.setPageSize(2);
 		modelView.addObject("TRN_PAGE_LIST", trnSlVo);
 		modelView.addObject("TRN_SL_STATUS_LIST", trn_sl_wl_statusList);
 		modelView.addObject("maxPages", pageTransfersServiceLine.getTotalPages());
@@ -728,6 +726,57 @@ public class ServiceLineQueueController {
 		
 		return modelView;
 	}
+	*/
+	
+	@RequestMapping("/get_transfers_service_line_queue_user")
+	public ModelAndView get_transfers_service_line_queue_user( @RequestParam(defaultValue = "0") String page,@RequestParam(defaultValue = "10") Integer pageSize, @RequestParam(defaultValue = "CreatedAt") String sortBy,@RequestParam(defaultValue = "") String dateFrom,@RequestParam(defaultValue = "") String dateTo,@ModelAttribute("FILTER_SL") FilterServiceLineObj filterObj,BindingResult result) {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		String username;
+    	if (principal instanceof UserDetails) {
+    	   username = ((UserDetails)principal).getUsername();
+    	} else {
+    	   username = principal.toString();
+    	}
+     	UserDetailsObj userObj = (UserDetailsObj) userDetailsService.loadUserByUsername(username);
+		ModelAndView modelView = new ModelAndView("serviceline/view_trn_service_line_queue");
+		UserDetailsObj user = getLoggedInUser();
+		boolean isAdmin=false;
+     	if(user.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"))) {
+    		isAdmin=true;
+    		List<UserDetailsObj> activeUsersList = userDetailsService.findAllActiveUsers();
+    		Map<Integer, String> activeUsersMap = (Map<Integer, String>) activeUsersList.stream().collect(
+                    Collectors.toMap(UserDetailsObj::getUserId, UserDetailsObj::getUsername));
+    		modelView.addObject("ACTIVE_USERS_MAP", activeUsersMap);
+    	}
+        if((!isAdmin) && filterObj.getDealOwner()==0) {
+	    	filterObj.setDealOwner((user.getUserId()))  ;
+	    }
+     	//TODO Check if some one changes the url manually then it should lead to an error page. not to a server error. 
+		int pageNum = Integer.parseInt(page);
+		
+		Page<Udn_Deal_TRN_SL_Entity> pageHotelServiceLine = null;
+		pageHotelServiceLine = queueService.filterServiceLineTransfersQueue(pageNum, UdanChooConstants.DEFAULT_PAGE_SIZE,sortBy,filterObj,isAdmin);
+		
+		List trn_sl_wl_statusList = commonService.find_All_Status_Deal_Obj(UdanChooConstants.WORKLOAD_TRN_SL_OBJ);
+		
+		List<TransferServiceLineVO> trnSlVo = generateTRN_SL_Vo(pageHotelServiceLine);
+		modelView.addObject("userName", username);
+		modelView.addObject("TRN_PAGE_LIST", trnSlVo  );
+		modelView.addObject("TRN_SL_STATUS_LIST", trn_sl_wl_statusList);
+		modelView.addObject("dealOwner", filterObj.getDealOwner());
+		modelView.addObject("maxPages", pageHotelServiceLine.getTotalPages());
+		modelView.addObject("page", pageNum);
+		modelView.addObject("sortBy", sortBy);
+		modelView.addObject("clientId", filterObj.getClientId());
+		modelView.addObject("statusId", filterObj.getStatusId());
+		modelView.addObject("dateFrom", filterObj.getDateFrom());
+		modelView.addObject("dateTo", filterObj.getDateTo());
+		modelView.addObject("upcomingDeal", filterObj.isUpcomingDeal());
+		modelView.addObject("dealOwner", filterObj.getDealOwner());
+		return modelView;
+	}
+
+	
 	
 	private List<TransferServiceLineVO> generateTRN_SL_Vo(Page<Udn_Deal_TRN_SL_Entity> pagedResult) {
 		List<TransferServiceLineVO> trnSLVoList = new ArrayList<TransferServiceLineVO>();

@@ -761,6 +761,53 @@ public class QueueManageService {
 	}
 
 	/*************************** Transfers SL Queue Starts from here ***************************************************/
+	
+	
+	public Page<Udn_Deal_TRN_SL_Entity>  filterServiceLineTransfersQueue(int pageNo, int pageSize,String sorting,FilterServiceLineObj filterDealObj,boolean isAdmin ) {
+		Pageable paging = PageRequest.of(pageNo, pageSize,Sort.by(sorting));
+		Date currentDate = Date.from(java.time.ZonedDateTime.now().toInstant());
+		long dealOwner = filterDealObj.getDealOwner();
+		Page<Udn_Deal_TRN_SL_Entity> filtereDealsTransfersList = trnServiceLineRespository.findAll(new Specification<Udn_Deal_TRN_SL_Entity>() {
+			private static final long serialVersionUID = 1L;
+			@Override
+			public Predicate toPredicate(Root<Udn_Deal_TRN_SL_Entity> transferRootEntity, CriteriaQuery< ?> query, CriteriaBuilder criteriaBuilder) {
+				List<Predicate> predicates = new ArrayList<>();
+				query.distinct(true);
+				if(dealOwner!=0) {
+					Root<Ti_Deals_Team_Map_Entity> rootDealsTeamMapEntity = query.from(Ti_Deals_Team_Map_Entity.class);
+					Root<Udn_Deals_Recorder_Entity> dealRootEntity = query.from(Udn_Deals_Recorder_Entity.class);
+					List<Predicate> teamListPredicatesList = new ArrayList<>();
+					Predicate notNullPredicate = criteriaBuilder.isNotNull(rootDealsTeamMapEntity.get("dealConfirmationId"));
+					Predicate dealUserOwnerPredicate =criteriaBuilder.equal( rootDealsTeamMapEntity.get("userId"),dealOwner);
+					Predicate dealConfirmationIdPredcate =criteriaBuilder.equal(transferRootEntity.get("dealConfirmationId"), rootDealsTeamMapEntity.get("dealConfirmationId"));
+					Predicate finalJoinPredicate = criteriaBuilder.and(dealUserOwnerPredicate,dealConfirmationIdPredcate,notNullPredicate);
+					Predicate dealRootConfirmationIdPredcate =criteriaBuilder.equal(transferRootEntity.get("dealConfirmationId"), dealRootEntity.get("dealConfirmationId"));
+					Predicate dealOwnerPredicate = criteriaBuilder.equal(dealRootEntity.get("dealOwner"), dealOwner);
+					Predicate finalDealOwnerRootPredicate = criteriaBuilder.and(dealRootConfirmationIdPredcate,dealOwnerPredicate);
+					Predicate finalUltimatePredicate = criteriaBuilder.or(finalDealOwnerRootPredicate,finalJoinPredicate);
+					teamListPredicatesList.add(finalUltimatePredicate);
+					predicates.addAll(teamListPredicatesList);
+				}
+				if(filterDealObj.isUpcomingDeal()) {
+					predicates.add(criteriaBuilder.greaterThanOrEqualTo(transferRootEntity.get("transferDate"),currentDate));
+				}
+				else if((!filterDealObj.isUpcomingDeal())) {
+					predicates.add(criteriaBuilder.lessThanOrEqualTo(transferRootEntity.get("transferDate"),currentDate));
+				}
+				if(filterDealObj.getDealConfirmationId()!=0) {
+					predicates.add(criteriaBuilder.equal(transferRootEntity.get("dealConfirmationId"), filterDealObj.getDealConfirmationId()));
+				}
+
+				
+				return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
+				
+			}
+		},paging);
+
+		return filtereDealsTransfersList;
+	}
+	
+	
 	public Page<Udn_Deal_TRN_SL_Entity> find_Transfers_SL_ByCreatedAtAfter_BasedOn_Owner(int pageNo, int pageSize,long serviceLineOwner,String sorting,boolean isAdmin){
 		Pageable paging = PageRequest.of(pageNo, pageSize,Sort.by(sorting));
 	    

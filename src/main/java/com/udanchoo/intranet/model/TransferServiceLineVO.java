@@ -44,6 +44,7 @@ public class TransferServiceLineVO  {
 	private String transferTypeName;
 	private String pickupTransferPointName;
 	private String dropTransferPointName;
+	private String dealOwnerName;
 	/*************************/
 
 	
@@ -371,6 +372,14 @@ public class TransferServiceLineVO  {
 
 	public void setDropTransferPointName(String dropTransferPointName) {
 		this.dropTransferPointName = dropTransferPointName;
+	}
+
+	public String getDealOwnerName() {
+		return dealOwnerName;
+	}
+
+	public void setDealOwnerName(String dealOwnerName) {
+		this.dealOwnerName = dealOwnerName;
 	}
 
 	
