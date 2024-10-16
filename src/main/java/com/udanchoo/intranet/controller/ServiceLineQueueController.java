@@ -51,6 +51,7 @@ import com.udanchoo.intranet.model.SearchDealObj;
 import com.udanchoo.intranet.model.SightSeeingServiceLineVO;
 import com.udanchoo.intranet.model.TransferServiceLineVO;
 import com.udanchoo.intranet.model.Udn_Deals_Recorder_Obj;
+import com.udanchoo.intranet.model.Udn_SightSeeing_Master_Obj;
 import com.udanchoo.intranet.model.UserDetailsObj;
 import com.udanchoo.intranet.model.VisaServiceLineVO;
 import com.udanchoo.intranet.service.ClientServiceImpl;
@@ -599,7 +600,7 @@ public class ServiceLineQueueController {
 
 	
 	/************************ SightSeeing Queue Handling Part Starts from here *********************/
-	
+	/*
 	//@RequestMapping("/workload/get_sightseeing_service_line_queue_user")
 	@RequestMapping("/get_sightseeing_service_line_queue_user")
 	public ModelAndView get_sightseeing_service_line_queue_user( @RequestParam(defaultValue = "0") String page,@RequestParam(defaultValue = "10") Integer pageSize, @RequestParam(defaultValue = "CreatedAt") String sortBy,@RequestParam(defaultValue = "") String dateFrom,@RequestParam(defaultValue = "") String dateTo,@ModelAttribute("FILTER_SL") FilterServiceLineObj filterObj,BindingResult result) {
@@ -635,8 +636,6 @@ public class ServiceLineQueueController {
 		List flt_sl_wl_statusList = commonService.find_All_Status_Deal_Obj(UdanChooConstants.WORKLOAD_STS_SL_OBJ);
 		
 		List<SightSeeingServiceLineVO> stsSlVo = generateSTS_SL_Vo(pageSightSeeingServiceLine);
-		//PagedListHolder<Udn_Deal_FLT_SL_Entity> pagedListHolder = new PagedListHolder<Udn_Deal_FLT_SL_Entity>(listFlightServiceLine);
-		//pagedListHolder.setPageSize(2);
 		modelView.addObject("STS_PAGE_LIST", stsSlVo);
 		modelView.addObject("STS_SL_STATUS_LIST", flt_sl_wl_statusList);
 		modelView.addObject("maxPages", pageSightSeeingServiceLine.getTotalPages());
@@ -650,6 +649,55 @@ public class ServiceLineQueueController {
 		
 		return modelView;
 	}
+	*/
+	@RequestMapping("/get_sightseeing_service_line_queue_user")
+	public ModelAndView get_sightseeing_service_line_queue_user( @RequestParam(defaultValue = "0") String page,@RequestParam(defaultValue = "10") Integer pageSize, @RequestParam(defaultValue = "tourDate") String sortBy,@RequestParam(defaultValue = "") String dateFrom,@RequestParam(defaultValue = "") String dateTo,@ModelAttribute("FILTER_SL") FilterServiceLineObj filterObj,BindingResult result) {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		String username;
+    	if (principal instanceof UserDetails) {
+    	   username = ((UserDetails)principal).getUsername();
+    	} else {
+    	   username = principal.toString();
+    	}
+     	UserDetailsObj userObj = (UserDetailsObj) userDetailsService.loadUserByUsername(username);
+		ModelAndView modelView = new ModelAndView("serviceline/view_sts_service_line_queue");
+		UserDetailsObj user = getLoggedInUser();
+		boolean isAdmin=false;
+     	if(user.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"))) {
+    		isAdmin=true;
+    		List<UserDetailsObj> activeUsersList = userDetailsService.findAllActiveUsers();
+    		Map<Integer, String> activeUsersMap = (Map<Integer, String>) activeUsersList.stream().collect(
+                    Collectors.toMap(UserDetailsObj::getUserId, UserDetailsObj::getUsername));
+    		modelView.addObject("ACTIVE_USERS_MAP", activeUsersMap);
+    	}
+        if((!isAdmin) && filterObj.getDealOwner()==0) {
+	    	filterObj.setDealOwner((user.getUserId()))  ;
+	    }
+     	//TODO Check if some one changes the url manually then it should lead to an error page. not to a server error. 
+		int pageNum = Integer.parseInt(page);
+		
+		Page<Udn_Deal_STS_SL_Entity> pageHotelServiceLine = null;
+		pageHotelServiceLine = queueService.filterServiceLineSightSeeingQueue(pageNum, UdanChooConstants.DEFAULT_PAGE_SIZE,sortBy,filterObj,isAdmin);
+		
+		List trn_sl_wl_statusList = commonService.find_All_Status_Deal_Obj(UdanChooConstants.WORKLOAD_STS_SL_OBJ);
+		
+		List<SightSeeingServiceLineVO> trnSlVo = generateSTS_SL_Vo(pageHotelServiceLine);
+		modelView.addObject("userName", username);
+		modelView.addObject("STS_PAGE_LIST", trnSlVo  );
+		modelView.addObject("STS_SL_STATUS_LIST", trn_sl_wl_statusList);
+		modelView.addObject("dealOwner", filterObj.getDealOwner());
+		modelView.addObject("maxPages", pageHotelServiceLine.getTotalPages());
+		modelView.addObject("page", pageNum);
+		modelView.addObject("sortBy", sortBy);
+		modelView.addObject("clientId", filterObj.getClientId());
+		modelView.addObject("statusId", filterObj.getStatusId());
+		modelView.addObject("dateFrom", filterObj.getDateFrom());
+		modelView.addObject("dateTo", filterObj.getDateTo());
+		modelView.addObject("upcomingDeal", filterObj.isUpcomingDeal());
+		modelView.addObject("dealOwner", filterObj.getDealOwner());
+		return modelView;
+	}
+
 	
 	private List<SightSeeingServiceLineVO> generateSTS_SL_Vo(Page<Udn_Deal_STS_SL_Entity> pagedResult) {
 		List<SightSeeingServiceLineVO> stsSLVoList = new ArrayList<SightSeeingServiceLineVO>();
@@ -665,7 +713,11 @@ public class ServiceLineQueueController {
 				stsSLVo.setClientName(clientService.getClientById(dealObj.getClientId()).getClientName());
 				stsSLVo.setCityName(commonService.findDestinationById(stsSLVo.getCityId()).getCityName());
 				stsSLVo.setStatusName(commonService.find_DealStatusById(stsSLVo.getStatus()).getWorkloadStatusName());
-				stsSLVo.setSightSeeingName(sightSeeingService.find_SightSeeingById(stsSLVo.getSightSeeingId()).getSightSeeingName());
+				Udn_SightSeeing_Master_Obj sightSeeingObj =sightSeeingService.find_SightSeeingById(stsSLVo.getSightSeeingId()); 
+				if(sightSeeingObj!=null) {
+					stsSLVo.setSightSeeingName(sightSeeingObj.getSightSeeingName());
+				}
+				stsSLVo.setDealOwnerName(userService.findUserByID((int)dealObj.getDealOwner()).getUsername());
 				stsSLVoList.add(stsSLVo);
 			} catch (RecordNotFoundException e) {
 				// TODO Auto-generated catch block
@@ -791,8 +843,9 @@ public class ServiceLineQueueController {
 				TransferServiceLineVO trnSLVo = new TransferServiceLineVO(trnSLEntity);
 				trnSLVo.setClientName(clientService.getClientById(dealObj.getClientId()).getClientName());
 				trnSLVo.setPickupCityName(commonService.findDestinationById(trnSLVo.getPickupCityId()).getCityName());
+				trnSLVo.setDropCityName(commonService.findDestinationById(trnSLVo.getDropCityId()).getCityName());
 				trnSLVo.setStatusName(commonService.find_DealStatusById(trnSLVo.getStatus()).getWorkloadStatusName());
-				//trnSLVo.setSightSeeingName(sightSeeingService.find_SightSeeingById(trnSLVo.getSightSeeingId()).getSightSeeingName());
+				trnSLVo.setDealOwnerName(userService.findUserByID((int)dealObj.getDealOwner()).getUsername());
 				trnSLVoList.add(trnSLVo);
 			} catch (RecordNotFoundException e) {
 				// TODO Auto-generated catch block

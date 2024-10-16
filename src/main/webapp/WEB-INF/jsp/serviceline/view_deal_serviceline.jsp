@@ -48,7 +48,7 @@
             <a href="get_hotel_service_line_queue_user">Hotel</a>
             <a href="get_insurance_service_line_queue_user">Insurance</a>
             <a href="get_transfers_service_line_queue_user">Transfers</a>
-            <a href="view_open_my_created_task_form_user">SightSeeing</a>
+            <a href="get_sightseeing_service_line_queue_user">SightSeeing</a>
             <a href="view_open_my_assigned_task_form_user">Land Package</a>
             <a href="view_completed_task_form_user">Visa</a>
   </div>

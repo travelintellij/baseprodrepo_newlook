@@ -36,7 +36,7 @@ public class SightSeeingServiceLineVO  {
 	
 	private String statusName;
 	private String clientName;
-
+	private String dealOwnerName;
 	/*************************/
 
 	
@@ -296,6 +296,14 @@ public class SightSeeingServiceLineVO  {
 
 	public void setTransferTypeName(String transferTypeName) {
 		this.transferTypeName = transferTypeName;
+	}
+
+	public String getDealOwnerName() {
+		return dealOwnerName;
+	}
+
+	public void setDealOwnerName(String dealOwnerName) {
+		this.dealOwnerName = dealOwnerName;
 	}
 	
 	

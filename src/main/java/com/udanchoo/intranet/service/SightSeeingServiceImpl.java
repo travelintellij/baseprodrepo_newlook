@@ -115,13 +115,15 @@ public class SightSeeingServiceImpl {
 	
 	public Udn_SightSeeing_Master_Obj find_SightSeeingById(long sightSeeingId) throws RecordNotFoundException {
 		Udn_SightSeeing_Master_Obj sightSeeingObj=null;
-		Optional<Udn_SightSeeing_Master_Entity> sightSeeingEntity = sightSeeingMasterRepository.findById(sightSeeingId);
-		if(sightSeeingEntity.isPresent()) {
-			sightSeeingObj = new Udn_SightSeeing_Master_Obj(sightSeeingEntity.get());
-			sightSeeingObj.setCityName(commonService.findDestinationById(sightSeeingObj.getCityId()).getCityName());
-		}
-		else {
-			throw new RecordNotFoundException("SightSeeing doesnot exist. ");
+		if(sightSeeingId!=0) {
+			Optional<Udn_SightSeeing_Master_Entity> sightSeeingEntity = sightSeeingMasterRepository.findById(sightSeeingId);
+			if(sightSeeingEntity.isPresent()) {
+				sightSeeingObj = new Udn_SightSeeing_Master_Obj(sightSeeingEntity.get());
+				sightSeeingObj.setCityName(commonService.findDestinationById(sightSeeingObj.getCityId()).getCityName());
+			}
+			else {
+				throw new RecordNotFoundException("SightSeeing doesnot exist. ");
+			}
 		}
 		return sightSeeingObj;
 	}
