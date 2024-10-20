@@ -170,10 +170,10 @@
                         <li><a href="get_hotel_service_line_queue_user" class="hoverOnLink">Hotel</a></li>
                         <li><a href="get_insurance_service_line_queue_user" class="hoverOnLink">Insurance</a></li>
                         <li><a href="get_landpackage_service_line_queue_user" class="hoverOnLink">LandPackage</a></li>
-                        <li><a href="get_other_service_line_queue_user" class="hoverOnLink">Others</a></li>
                         <li><a href="get_sightseeing_service_line_queue_user" class="hoverOnLink">SightSeeing</a></li>
                         <li><a href="get_transfers_service_line_queue_user" class="hoverOnLink">Transfers</a></li>
                         <li><a href="get_visa_service_line_queue_user" class="hoverOnLink">Visa</a></li>
+                        <li><a href="get_other_service_line_queue_user" class="hoverOnLink">Others</a></li>
                     </ul>
                 </li>
                 

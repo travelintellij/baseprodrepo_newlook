@@ -199,7 +199,13 @@ public class QueueManageService {
 
 	
 	public Page<Udn_Deal_FLT_SL_Entity>  filterServiceLineFlightQueue(int pageNo, int pageSize,String sorting,FilterServiceLineObj filterDealObj,boolean isAdmin ) {
-		Pageable paging = PageRequest.of(pageNo, pageSize,Sort.by(sorting));
+		Sort sort = Sort.by(sorting).ascending(); 
+		if(!filterDealObj.isUpcomingDeal()) {
+			sorting ="arrivalDate";
+			sort = Sort.by(sorting).descending();
+		}
+
+		Pageable paging = PageRequest.of(pageNo, pageSize,sort);
 		/*Date currentDate = Date.from(java.time.ZonedDateTime.now().toInstant());
 	    GregorianCalendar cal = new GregorianCalendar();
 		cal.setTime(currentDate);
@@ -349,7 +355,13 @@ public class QueueManageService {
 	*/
 	
 	public Page<Udn_Deal_HTL_SL_Entity>  filterServiceLineHotelQueue(int pageNo, int pageSize,String sorting,FilterServiceLineObj filterDealObj,boolean isAdmin ) {
-		Pageable paging = PageRequest.of(pageNo, pageSize,Sort.by(sorting));
+		Sort sort = Sort.by(sorting).ascending(); 
+		if(!filterDealObj.isUpcomingDeal()) {
+			sorting ="checkOutDate";
+			sort = Sort.by(sorting).descending();
+		}
+
+		Pageable paging = PageRequest.of(pageNo, pageSize,sort);
 		/*Date currentDate = Date.from(java.time.ZonedDateTime.now().toInstant());
 	    GregorianCalendar cal = new GregorianCalendar();
 		cal.setTime(currentDate);
@@ -406,7 +418,12 @@ public class QueueManageService {
 	/*************************** Insurance SL Queue Starts from here ***************************************************/
 	
 	public Page<Udn_Deal_INS_SL_Entity>  filterServiceLineInsuranceQueue(int pageNo, int pageSize,String sorting,FilterServiceLineObj filterDealObj,boolean isAdmin ) {
-		Pageable paging = PageRequest.of(pageNo, pageSize,Sort.by(sorting));
+		Sort sort = Sort.by(sorting).ascending(); 
+		if(!filterDealObj.isUpcomingDeal()) {
+			sorting ="coverageEndDate";
+			sort = Sort.by(sorting).descending();
+		}
+		Pageable paging = PageRequest.of(pageNo, pageSize,sort);
 		Date currentDate = Date.from(java.time.ZonedDateTime.now().toInstant());
 		long dealOwner = filterDealObj.getDealOwner();
 		Page<Udn_Deal_INS_SL_Entity> filtereDealsInsuranceList = insServiceLineRespository.findAll(new Specification<Udn_Deal_INS_SL_Entity>() {
@@ -525,6 +542,8 @@ public class QueueManageService {
 	}
 	*/
 	/*************************** LandPackage SL Queue Starts from here ***************************************************/
+
+	/*
 	public Page<Udn_Deal_LDP_SL_Entity> find_LandPacakage_SL_ByCreatedAtAfter_BasedOn_Owner(int pageNo, int pageSize,long serviceLineOwner,String sorting,boolean isAdmin){
 		Pageable paging = PageRequest.of(pageNo, pageSize,Sort.by(sorting));
 	    
@@ -536,14 +555,58 @@ public class QueueManageService {
 		Date criteriaDate = cal.getTime();
 		//System.out.println("criteriaDate Date is " + criteriaDate);
 		Page<Udn_Deal_LDP_SL_Entity> pagedResult; 
-		//if(isAdmin) {
+
 			pagedResult = ldpServiceLineRespository.findByCreatedAtAfter(criteriaDate, paging);
-		/*}
-		else {
-			pagedResult = ldpServiceLineRespository.findByCreatedAtAfterAndServiceLineOwner(criteriaDate, serviceLineOwner,paging);
-		}*/
-		//System.out.println("Result Obtained is " + pagedResult.getNumberOfElements());
         return pagedResult;
+	}
+	*/
+	public Page<Udn_Deal_LDP_SL_Entity>  filterServiceLineLandPackageQueue(int pageNo, int pageSize,String sorting,FilterServiceLineObj filterDealObj,boolean isAdmin ) {
+		Sort sort = Sort.by(sorting).ascending(); 
+		if(!filterDealObj.isUpcomingDeal()) {
+			sorting ="endDate";
+			sort = Sort.by(sorting).descending();
+		}
+		//Pageable paging = PageRequest.of(pageNo, pageSize,Sort.by(sorting));
+		Pageable paging = PageRequest.of(pageNo, pageSize,sort);
+		Date currentDate = Date.from(java.time.ZonedDateTime.now().toInstant());
+		long dealOwner = filterDealObj.getDealOwner();
+		Page<Udn_Deal_LDP_SL_Entity> filtereDealsInsuranceList = ldpServiceLineRespository.findAll(new Specification<Udn_Deal_LDP_SL_Entity>() {
+			private static final long serialVersionUID = 1L;
+			@Override
+			public Predicate toPredicate(Root<Udn_Deal_LDP_SL_Entity> landPackageRootEntity, CriteriaQuery< ?> query, CriteriaBuilder criteriaBuilder) {
+				List<Predicate> predicates = new ArrayList<>();
+				query.distinct(true);
+				if(dealOwner!=0) {
+					Root<Ti_Deals_Team_Map_Entity> rootDealsTeamMapEntity = query.from(Ti_Deals_Team_Map_Entity.class);
+					Root<Udn_Deals_Recorder_Entity> dealRootEntity = query.from(Udn_Deals_Recorder_Entity.class);
+					List<Predicate> teamListPredicatesList = new ArrayList<>();
+					Predicate notNullPredicate = criteriaBuilder.isNotNull(rootDealsTeamMapEntity.get("dealConfirmationId"));
+					Predicate dealUserOwnerPredicate =criteriaBuilder.equal( rootDealsTeamMapEntity.get("userId"),dealOwner);
+					Predicate dealConfirmationIdPredcate =criteriaBuilder.equal(landPackageRootEntity.get("dealConfirmationId"), rootDealsTeamMapEntity.get("dealConfirmationId"));
+					Predicate finalJoinPredicate = criteriaBuilder.and(dealUserOwnerPredicate,dealConfirmationIdPredcate,notNullPredicate);
+					Predicate dealRootConfirmationIdPredcate =criteriaBuilder.equal(landPackageRootEntity.get("dealConfirmationId"), dealRootEntity.get("dealConfirmationId"));
+					Predicate dealOwnerPredicate = criteriaBuilder.equal(dealRootEntity.get("dealOwner"), dealOwner);
+					Predicate finalDealOwnerRootPredicate = criteriaBuilder.and(dealRootConfirmationIdPredcate,dealOwnerPredicate);
+					Predicate finalUltimatePredicate = criteriaBuilder.or(finalDealOwnerRootPredicate,finalJoinPredicate);
+					teamListPredicatesList.add(finalUltimatePredicate);
+					predicates.addAll(teamListPredicatesList);
+				}
+				if(filterDealObj.isUpcomingDeal()) {
+					predicates.add(criteriaBuilder.greaterThanOrEqualTo(landPackageRootEntity.get("endDate"),currentDate));
+				}
+				else if((!filterDealObj.isUpcomingDeal())) {
+					predicates.add(criteriaBuilder.lessThanOrEqualTo(landPackageRootEntity.get("endDate"),currentDate));
+				}
+				if(filterDealObj.getDealConfirmationId()!=0) {
+					predicates.add(criteriaBuilder.equal(landPackageRootEntity.get("dealConfirmationId"), filterDealObj.getDealConfirmationId()));
+				}
+				
+				return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
+				
+			}
+		},paging);
+
+		return filtereDealsInsuranceList;
 	}
 	
 	public Page<Udn_Deal_LDP_SL_Entity>  searchLandPackageSLSortByCNameBySLOwner(int pageNo, int pageSize,long serviceLineOwner,String sorting,Integer clientId, Integer statusId,FilterServiceLineObj filterSLVo,boolean isAdmin) {
@@ -607,6 +670,8 @@ public class QueueManageService {
 	
 	
 	/*************************** Other SL Queue Starts from here ***************************************************/	
+
+	/*
 	public Page<Udn_Deal_OTH_SL_Entity> find_Other_SL_ByCreatedAtAfter_BasedOn_Owner(int pageNo, int pageSize,long serviceLineOwner,String sorting,boolean isAdmin){
 		Pageable paging = PageRequest.of(pageNo, pageSize,Sort.by(sorting));
 	    
@@ -618,14 +683,57 @@ public class QueueManageService {
 		Date criteriaDate = cal.getTime();
 		//System.out.println("criteriaDate Date is " + criteriaDate);
 		Page<Udn_Deal_OTH_SL_Entity> pagedResult; 
-		//if(isAdmin) {
-			pagedResult= othServiceLineRespository.findByCreatedAtAfter(criteriaDate, paging);
-		/*}
-		else {
-			pagedResult= othServiceLineRespository.findByCreatedAtAfterAndServiceLineOwner(criteriaDate, serviceLineOwner,paging);
-		}*/
+		pagedResult= othServiceLineRespository.findByCreatedAtAfter(criteriaDate, paging);
 		//System.out.println("Result Obtained is " + pagedResult.getNumberOfElements());
         return pagedResult;
+	}
+	*/
+	public Page<Udn_Deal_OTH_SL_Entity>  filterServiceLineOtherQueue(int pageNo, int pageSize,String sorting,FilterServiceLineObj filterDealObj,boolean isAdmin ) {
+		Sort sort = Sort.by(sorting).ascending(); 
+		if(!filterDealObj.isUpcomingDeal()) {
+			sort = Sort.by(sorting).descending();
+		}
+		Pageable paging = PageRequest.of(pageNo, pageSize,sort);
+		Date currentDate = Date.from(java.time.ZonedDateTime.now().toInstant());
+		long dealOwner = filterDealObj.getDealOwner();
+		Page<Udn_Deal_OTH_SL_Entity> filtereDealsSightSeeingList = othServiceLineRespository.findAll(new Specification<Udn_Deal_OTH_SL_Entity>() {
+			private static final long serialVersionUID = 1L;
+			@Override
+			public Predicate toPredicate(Root<Udn_Deal_OTH_SL_Entity> sightseeingRootEntity, CriteriaQuery< ?> query, CriteriaBuilder criteriaBuilder) {
+				List<Predicate> predicates = new ArrayList<>();
+				query.distinct(true);
+				if(dealOwner!=0) {
+					Root<Ti_Deals_Team_Map_Entity> rootDealsTeamMapEntity = query.from(Ti_Deals_Team_Map_Entity.class);
+					Root<Udn_Deals_Recorder_Entity> dealRootEntity = query.from(Udn_Deals_Recorder_Entity.class);
+					List<Predicate> teamListPredicatesList = new ArrayList<>();
+					Predicate notNullPredicate = criteriaBuilder.isNotNull(rootDealsTeamMapEntity.get("dealConfirmationId"));
+					Predicate dealUserOwnerPredicate =criteriaBuilder.equal( rootDealsTeamMapEntity.get("userId"),dealOwner);
+					Predicate dealConfirmationIdPredcate =criteriaBuilder.equal(sightseeingRootEntity.get("dealConfirmationId"), rootDealsTeamMapEntity.get("dealConfirmationId"));
+					Predicate finalJoinPredicate = criteriaBuilder.and(dealUserOwnerPredicate,dealConfirmationIdPredcate,notNullPredicate);
+					Predicate dealRootConfirmationIdPredcate =criteriaBuilder.equal(sightseeingRootEntity.get("dealConfirmationId"), dealRootEntity.get("dealConfirmationId"));
+					Predicate dealOwnerPredicate = criteriaBuilder.equal(dealRootEntity.get("dealOwner"), dealOwner);
+					Predicate finalDealOwnerRootPredicate = criteriaBuilder.and(dealRootConfirmationIdPredcate,dealOwnerPredicate);
+					Predicate finalUltimatePredicate = criteriaBuilder.or(finalDealOwnerRootPredicate,finalJoinPredicate);
+					teamListPredicatesList.add(finalUltimatePredicate);
+					predicates.addAll(teamListPredicatesList);
+				}
+				if(filterDealObj.isUpcomingDeal()) {
+					predicates.add(criteriaBuilder.greaterThanOrEqualTo(sightseeingRootEntity.get("serviceDate"),currentDate));
+				}
+				else if((!filterDealObj.isUpcomingDeal())) {
+					predicates.add(criteriaBuilder.lessThanOrEqualTo(sightseeingRootEntity.get("serviceDate"),currentDate));
+				}
+				if(filterDealObj.getDealConfirmationId()!=0) {
+					predicates.add(criteriaBuilder.equal(sightseeingRootEntity.get("dealConfirmationId"), filterDealObj.getDealConfirmationId()));
+				}
+
+				
+				return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
+				
+			}
+		},paging);
+
+		return filtereDealsSightSeeingList;
 	}
 
 	public Page<Udn_Deal_OTH_SL_Entity>  searchOtherSLSortByCNameBySLOwner(int pageNo, int pageSize,long serviceLineOwner,String sorting,Integer clientId, Integer statusId,FilterServiceLineObj filterSLVo,boolean isAdmin ) {
@@ -685,7 +793,12 @@ public class QueueManageService {
 	/*************************** SightSeeing SL Queue Starts from here ***************************************************/
 	
 	public Page<Udn_Deal_STS_SL_Entity>  filterServiceLineSightSeeingQueue(int pageNo, int pageSize,String sorting,FilterServiceLineObj filterDealObj,boolean isAdmin ) {
-		Pageable paging = PageRequest.of(pageNo, pageSize,Sort.by(sorting));
+		Sort sort = Sort.by(sorting).ascending(); 
+		if(!filterDealObj.isUpcomingDeal()) {
+			sorting ="tourDate";
+			sort = Sort.by(sorting).descending();
+		}
+		Pageable paging = PageRequest.of(pageNo, pageSize,sort);
 		Date currentDate = Date.from(java.time.ZonedDateTime.now().toInstant());
 		long dealOwner = filterDealObj.getDealOwner();
 		Page<Udn_Deal_STS_SL_Entity> filtereDealsSightSeeingList = stsServiceLineRespository.findAll(new Specification<Udn_Deal_STS_SL_Entity>() {
@@ -810,7 +923,13 @@ public class QueueManageService {
 	
 	
 	public Page<Udn_Deal_TRN_SL_Entity>  filterServiceLineTransfersQueue(int pageNo, int pageSize,String sorting,FilterServiceLineObj filterDealObj,boolean isAdmin ) {
-		Pageable paging = PageRequest.of(pageNo, pageSize,Sort.by(sorting));
+		Sort sort = Sort.by(sorting).ascending(); 
+		if(!filterDealObj.isUpcomingDeal()) {
+			sorting ="transferDate";
+			sort = Sort.by(sorting).descending();
+		}
+
+		Pageable paging = PageRequest.of(pageNo, pageSize,sort);
 		Date currentDate = Date.from(java.time.ZonedDateTime.now().toInstant());
 		long dealOwner = filterDealObj.getDealOwner();
 		Page<Udn_Deal_TRN_SL_Entity> filtereDealsTransfersList = trnServiceLineRespository.findAll(new Specification<Udn_Deal_TRN_SL_Entity>() {
@@ -925,6 +1044,9 @@ public class QueueManageService {
 	}
 
 	/*************************** Visa SL Queue Starts from here ***************************************************/
+	
+	/*
+	
 	public Page<Udn_Deal_VSA_SL_Entity> find_Visa_SL_ByCreatedAtAfter_BasedOn_Owner(int pageNo, int pageSize,int serviceLineOwner,String sorting,boolean isAdmin){
 		Pageable paging = PageRequest.of(pageNo, pageSize,Sort.by(sorting));
 	    
@@ -936,15 +1058,61 @@ public class QueueManageService {
 		Date criteriaDate = cal.getTime();
 		//System.out.println("criteriaDate Date is " + criteriaDate);
 		Page<Udn_Deal_VSA_SL_Entity> pagedResult; 
-		//if(isAdmin) {
+	
 			pagedResult= vsaServiceLineRespository.findByCreatedAtAfter(criteriaDate, paging);
-		/*}
-		else {
-			pagedResult= vsaServiceLineRespository.findByCreatedAtAfterAndServiceLineOwner(criteriaDate, serviceLineOwner,paging);
-		}*/
-		//System.out.println("Result Obtained is " + pagedResult.getNumberOfElements());
+	
         return pagedResult;
 	}
+	*/
+	public Page<Udn_Deal_VSA_SL_Entity>  filterServiceLineVisaQueue(int pageNo, int pageSize,String sorting,FilterServiceLineObj filterDealObj,boolean isAdmin ) {
+		Sort sort = Sort.by(sorting).ascending(); 
+		if(!filterDealObj.isUpcomingDeal()) {
+			sorting ="travelReturnDate";
+			sort = Sort.by(sorting).descending();
+		}
+		//Pageable paging = PageRequest.of(pageNo, pageSize,Sort.by(sorting));
+		Pageable paging = PageRequest.of(pageNo, pageSize,sort);
+		Date currentDate = Date.from(java.time.ZonedDateTime.now().toInstant());
+		long dealOwner = filterDealObj.getDealOwner();
+		Page<Udn_Deal_VSA_SL_Entity> filtereDealsInsuranceList = vsaServiceLineRespository.findAll(new Specification<Udn_Deal_VSA_SL_Entity>() {
+			private static final long serialVersionUID = 1L;
+			@Override
+			public Predicate toPredicate(Root<Udn_Deal_VSA_SL_Entity> landPackageRootEntity, CriteriaQuery< ?> query, CriteriaBuilder criteriaBuilder) {
+				List<Predicate> predicates = new ArrayList<>();
+				query.distinct(true);
+				if(dealOwner!=0) {
+					Root<Ti_Deals_Team_Map_Entity> rootDealsTeamMapEntity = query.from(Ti_Deals_Team_Map_Entity.class);
+					Root<Udn_Deals_Recorder_Entity> dealRootEntity = query.from(Udn_Deals_Recorder_Entity.class);
+					List<Predicate> teamListPredicatesList = new ArrayList<>();
+					Predicate notNullPredicate = criteriaBuilder.isNotNull(rootDealsTeamMapEntity.get("dealConfirmationId"));
+					Predicate dealUserOwnerPredicate =criteriaBuilder.equal( rootDealsTeamMapEntity.get("userId"),dealOwner);
+					Predicate dealConfirmationIdPredcate =criteriaBuilder.equal(landPackageRootEntity.get("dealConfirmationId"), rootDealsTeamMapEntity.get("dealConfirmationId"));
+					Predicate finalJoinPredicate = criteriaBuilder.and(dealUserOwnerPredicate,dealConfirmationIdPredcate,notNullPredicate);
+					Predicate dealRootConfirmationIdPredcate =criteriaBuilder.equal(landPackageRootEntity.get("dealConfirmationId"), dealRootEntity.get("dealConfirmationId"));
+					Predicate dealOwnerPredicate = criteriaBuilder.equal(dealRootEntity.get("dealOwner"), dealOwner);
+					Predicate finalDealOwnerRootPredicate = criteriaBuilder.and(dealRootConfirmationIdPredcate,dealOwnerPredicate);
+					Predicate finalUltimatePredicate = criteriaBuilder.or(finalDealOwnerRootPredicate,finalJoinPredicate);
+					teamListPredicatesList.add(finalUltimatePredicate);
+					predicates.addAll(teamListPredicatesList);
+				}
+				if(filterDealObj.isUpcomingDeal()) {
+					predicates.add(criteriaBuilder.greaterThanOrEqualTo(landPackageRootEntity.get("travelReturnDate"),currentDate));
+				}
+				else if((!filterDealObj.isUpcomingDeal())) {
+					predicates.add(criteriaBuilder.lessThanOrEqualTo(landPackageRootEntity.get("travelReturnDate"),currentDate));
+				}
+				if(filterDealObj.getDealConfirmationId()!=0) {
+					predicates.add(criteriaBuilder.equal(landPackageRootEntity.get("dealConfirmationId"), filterDealObj.getDealConfirmationId()));
+				}
+				
+				return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
+				
+			}
+		},paging);
+
+		return filtereDealsInsuranceList;
+	}
+	
 	
 	public Page<Udn_Deal_VSA_SL_Entity>  searchVisaSLSortByCNameBySLOwner(int pageNo, int pageSize,long serviceLineOwner,String sorting,Integer clientId, Integer statusId,FilterServiceLineObj filterSLVo,boolean isAdmin ) {
 		Pageable paging = PageRequest.of(pageNo, pageSize,Sort.by(sorting));

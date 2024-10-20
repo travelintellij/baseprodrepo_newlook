@@ -124,7 +124,7 @@ public class ServiceLineQueueController {
 	 
 	 
 	@RequestMapping("/get_deals_service_line_queue_user")
-	public ModelAndView get_deals_service_line_queue_user( @RequestParam(defaultValue = "0") String page,@RequestParam(defaultValue = "TravelEndDate") String sortBy,@ModelAttribute("FILTER_SL") SearchDealObj filterObj,BindingResult result) {
+	public ModelAndView get_deals_service_line_queue_user( @RequestParam(defaultValue = "0") String page,@RequestParam(defaultValue = "travelStartDate") String sortBy,@ModelAttribute("FILTER_SL") SearchDealObj filterObj,BindingResult result) {
 		//System.out.println("Filtered Object is " + filterObj);
 		 Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			String username;
@@ -188,7 +188,7 @@ public class ServiceLineQueueController {
 	
 	//@RequestMapping("/workload/get_flight_service_line_queue_user")
 	 @RequestMapping("/get_flight_service_line_queue_user")
-	public ModelAndView get_flight_service_line_queue_user( @RequestParam(defaultValue = "0") String page,@RequestParam(defaultValue = "10") Integer pageSize, @RequestParam(defaultValue = "arrivalDate") String sortBy,@RequestParam(defaultValue = "") String dateFrom,@RequestParam(defaultValue = "") String dateTo,@ModelAttribute("FILTER_SL") FilterServiceLineObj filterObj,BindingResult result) {
+	public ModelAndView get_flight_service_line_queue_user( @RequestParam(defaultValue = "0") String page,@RequestParam(defaultValue = "10") Integer pageSize, @RequestParam(defaultValue = "departureDate") String sortBy,@RequestParam(defaultValue = "") String dateFrom,@RequestParam(defaultValue = "") String dateTo,@ModelAttribute("FILTER_SL") FilterServiceLineObj filterObj,BindingResult result) {
 		//System.out.println("Filtered Object is " + filterObj);
 		 Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			String username;
@@ -298,7 +298,7 @@ public class ServiceLineQueueController {
 	
 	//@RequestMapping("/workload/get_hotel_service_line_queue_user")
 	@RequestMapping("/get_hotel_service_line_queue_user")
-	public ModelAndView get_hotel_service_line_queue_user( @RequestParam(defaultValue = "0") String page,@RequestParam(defaultValue = "10") Integer pageSize, @RequestParam(defaultValue = "CreatedAt") String sortBy,@RequestParam(defaultValue = "") String dateFrom,@RequestParam(defaultValue = "") String dateTo,@ModelAttribute("FILTER_SL") FilterServiceLineObj filterObj,BindingResult result) {
+	public ModelAndView get_hotel_service_line_queue_user( @RequestParam(defaultValue = "0") String page,@RequestParam(defaultValue = "10") Integer pageSize, @RequestParam(defaultValue = "checkInDate") String sortBy,@RequestParam(defaultValue = "") String dateFrom,@RequestParam(defaultValue = "") String dateTo,@ModelAttribute("FILTER_SL") FilterServiceLineObj filterObj,BindingResult result) {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String username;
     	if (principal instanceof UserDetails) {
@@ -382,7 +382,7 @@ public class ServiceLineQueueController {
 	
 	//@RequestMapping("/workload/get_insurance_service_line_queue_user")
 	@RequestMapping("/get_insurance_service_line_queue_user")
-	public ModelAndView get_insurance_service_line_queue_user( @RequestParam(defaultValue = "0") String page,@RequestParam(defaultValue = "10") Integer pageSize, @RequestParam(defaultValue = "CreatedAt") String sortBy,@RequestParam(defaultValue = "") String dateFrom,@RequestParam(defaultValue = "") String dateTo,@ModelAttribute("FILTER_SL") FilterServiceLineObj filterObj,BindingResult result) {
+	public ModelAndView get_insurance_service_line_queue_user( @RequestParam(defaultValue = "0") String page,@RequestParam(defaultValue = "10") Integer pageSize, @RequestParam(defaultValue = "coverageStartDate") String sortBy,@RequestParam(defaultValue = "") String dateFrom,@RequestParam(defaultValue = "") String dateTo,@ModelAttribute("FILTER_SL") FilterServiceLineObj filterObj,BindingResult result) {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String username;
     	if (principal instanceof UserDetails) {
@@ -454,51 +454,54 @@ public class ServiceLineQueueController {
 	
 	/************************ LandPackage Queue Handling Part Starts from here *********************/
 
-	//@RequestMapping("/workload/get_landpackage_service_line_queue_user")
 	@RequestMapping("/get_landpackage_service_line_queue_user")
-	public ModelAndView get_landpackage_service_line_queue_user( @RequestParam(defaultValue = "0") String page,@RequestParam(defaultValue = "10") Integer pageSize, @RequestParam(defaultValue = "CreatedAt") String sortBy,@RequestParam(defaultValue = "") String dateFrom,@RequestParam(defaultValue = "") String dateTo,@ModelAttribute("FILTER_SL") FilterServiceLineObj filterObj,BindingResult result) {
-		ModelAndView modelView = new ModelAndView("serviceline/view_ldp_service_line_queue");
-		validator.validate(filterObj, result);
-		if(dateFrom!=null && dateFrom.trim().length()>0 && dateTo!=null && dateTo.trim().length()>0) {
-			filterObj.setDateFrom(dateFrom);
-			filterObj.setDateTo(dateTo);
-		}
-		if(result.hasErrors()) {
-    		System.out.println("error is " + result);
-			return modelView; 
+	public ModelAndView get_landpackage_service_line_queue_user( @RequestParam(defaultValue = "0") String page,@RequestParam(defaultValue = "10") Integer pageSize, @RequestParam(defaultValue = "startDate") String sortBy,@RequestParam(defaultValue = "") String dateFrom,@RequestParam(defaultValue = "") String dateTo,@ModelAttribute("FILTER_SL") FilterServiceLineObj filterObj,BindingResult result) {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		String username;
+    	if (principal instanceof UserDetails) {
+    	   username = ((UserDetails)principal).getUsername();
+    	} else {
+    	   username = principal.toString();
     	}
-		
+     	UserDetailsObj userObj = (UserDetailsObj) userDetailsService.loadUserByUsername(username);
+		ModelAndView modelView = new ModelAndView("serviceline/view_ldp_service_line_queue");
 		UserDetailsObj user = getLoggedInUser();
-    	boolean isAdmin=false;
+		boolean isAdmin=false;
      	if(user.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"))) {
     		isAdmin=true;
+    		List<UserDetailsObj> activeUsersList = userDetailsService.findAllActiveUsers();
+    		Map<Integer, String> activeUsersMap = (Map<Integer, String>) activeUsersList.stream().collect(
+                    Collectors.toMap(UserDetailsObj::getUserId, UserDetailsObj::getUsername));
+    		modelView.addObject("ACTIVE_USERS_MAP", activeUsersMap);
     	}
-		
-		//TODO Check if some one changes the url manually then it should lead to an error page. not to a server error. 
+        if((!isAdmin) && filterObj.getDealOwner()==0) {
+	    	filterObj.setDealOwner((user.getUserId()))  ;
+	    }
+     	//TODO Check if some one changes the url manually then it should lead to an error page. not to a server error. 
 		int pageNum = Integer.parseInt(page);
 		
-		Page<Udn_Deal_LDP_SL_Entity> pageLandPackageServiceLine = null;
-		if(filterObj.getClientId()==0 && filterObj.getStatusId()==0 && (filterObj.getDateFrom()==null || filterObj.getDateFrom().trim().length()==0) && (filterObj.getDateTo()==null || filterObj.getDateTo().trim().length()==0)  ) {
-			pageLandPackageServiceLine = queueService.find_LandPacakage_SL_ByCreatedAtAfter_BasedOn_Owner(pageNum, UdanChooConstants.DEFAULT_PAGE_SIZE, user.getUserId(),sortBy,isAdmin);
-		}else {
-			pageLandPackageServiceLine = queueService.searchLandPackageSLSortByCNameBySLOwner(pageNum, UdanChooConstants.DEFAULT_PAGE_SIZE, user.getUserId(),sortBy,filterObj.getClientId(),filterObj.getStatusId(),filterObj,isAdmin);
-		}
+		Page<Udn_Deal_LDP_SL_Entity> pageHotelServiceLine = null;
+		pageHotelServiceLine = queueService.filterServiceLineLandPackageQueue(pageNum, UdanChooConstants.DEFAULT_PAGE_SIZE,sortBy,filterObj,isAdmin);
 		
 		List ldp_sl_wl_statusList = commonService.find_All_Status_Deal_Obj(UdanChooConstants.WORKLOAD_LDP_SL_OBJ);
 		
-		List<LandPackageServiceLineVO> ldpSlVo = generateLDP_SL_Vo(pageLandPackageServiceLine);
-		modelView.addObject("LDP_PAGE_LIST", ldpSlVo );
+		List<LandPackageServiceLineVO> insSlVo = generateLDP_SL_Vo(pageHotelServiceLine);
+		modelView.addObject("userName", username);
+		modelView.addObject("LDP_PAGE_LIST", insSlVo );
 		modelView.addObject("LDP_SL_STATUS_LIST", ldp_sl_wl_statusList);
-		modelView.addObject("maxPages", pageLandPackageServiceLine.getTotalPages());
+		modelView.addObject("dealOwner", filterObj.getDealOwner());
+		modelView.addObject("maxPages", pageHotelServiceLine.getTotalPages());
 		modelView.addObject("page", pageNum);
 		modelView.addObject("sortBy", sortBy);
 		modelView.addObject("clientId", filterObj.getClientId());
 		modelView.addObject("statusId", filterObj.getStatusId());
 		modelView.addObject("dateFrom", filterObj.getDateFrom());
 		modelView.addObject("dateTo", filterObj.getDateTo());
-
+		modelView.addObject("upcomingDeal", filterObj.isUpcomingDeal());
+		modelView.addObject("dealOwner", filterObj.getDealOwner());
 		return modelView;
 	}
+
 
 	private List<LandPackageServiceLineVO> generateLDP_SL_Vo(Page<Udn_Deal_LDP_SL_Entity> pagedResult) {
 		List<LandPackageServiceLineVO> ldpSLVoList = new ArrayList<LandPackageServiceLineVO>();
@@ -514,6 +517,7 @@ public class ServiceLineQueueController {
 				ldpSLVo.setClientName(clientService.getClientById(dealObj.getClientId()).getClientName());
 				ldpSLVo.setDestinationName(commonService.findDestinationById(ldpSLVo.getDestinationId()).getCityName());
 				ldpSLVo.setStatusName(commonService.find_DealStatusById(ldpSLVo.getStatus()).getWorkloadStatusName());
+				ldpSLVo.setDealOwnerName(userService.findUserByID((int)dealObj.getDealOwner()).getUsername());
 				ldpSLVoList.add(ldpSLVo);
 			} catch (RecordNotFoundException e) {
 				// TODO Auto-generated catch block
@@ -526,6 +530,8 @@ public class ServiceLineQueueController {
 	
 	
 	/************************ LandPackage Queue Handling Part Starts from here *********************/
+
+	/*
 	//@RequestMapping("/workload/get_other_service_line_queue_user")
 	@RequestMapping("/get_other_service_line_queue_user")
 	public ModelAndView get_other_service_line_queue_user( @RequestParam(defaultValue = "0") String page,@RequestParam(defaultValue = "10") Integer pageSize, @RequestParam(defaultValue = "CreatedAt") String sortBy,@RequestParam(defaultValue = "") String dateFrom,@RequestParam(defaultValue = "") String dateTo,@ModelAttribute("FILTER_SL") FilterServiceLineObj filterObj,BindingResult result) {
@@ -576,6 +582,55 @@ public class ServiceLineQueueController {
 		return modelView;
 	}
 
+*/
+	@RequestMapping("/get_other_service_line_queue_user")
+	public ModelAndView get_other_service_line_queue_user( @RequestParam(defaultValue = "0") String page,@RequestParam(defaultValue = "10") Integer pageSize, @RequestParam(defaultValue = "serviceDate") String sortBy,@RequestParam(defaultValue = "") String dateFrom,@RequestParam(defaultValue = "") String dateTo,@ModelAttribute("FILTER_SL") FilterServiceLineObj filterObj,BindingResult result) {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		String username;
+    	if (principal instanceof UserDetails) {
+    	   username = ((UserDetails)principal).getUsername();
+    	} else {
+    	   username = principal.toString();
+    	}
+     	UserDetailsObj userObj = (UserDetailsObj) userDetailsService.loadUserByUsername(username);
+		ModelAndView modelView = new ModelAndView("serviceline/view_oth_service_line_queue");
+		UserDetailsObj user = getLoggedInUser();
+		boolean isAdmin=false;
+     	if(user.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"))) {
+    		isAdmin=true;
+    		List<UserDetailsObj> activeUsersList = userDetailsService.findAllActiveUsers();
+    		Map<Integer, String> activeUsersMap = (Map<Integer, String>) activeUsersList.stream().collect(
+                    Collectors.toMap(UserDetailsObj::getUserId, UserDetailsObj::getUsername));
+    		modelView.addObject("ACTIVE_USERS_MAP", activeUsersMap);
+    	}
+        if((!isAdmin) && filterObj.getDealOwner()==0) {
+	    	filterObj.setDealOwner((user.getUserId()))  ;
+	    }
+     	//TODO Check if some one changes the url manually then it should lead to an error page. not to a server error. 
+		int pageNum = Integer.parseInt(page);
+		
+		Page<Udn_Deal_OTH_SL_Entity> pageHotelServiceLine = null;
+		pageHotelServiceLine = queueService.filterServiceLineOtherQueue(pageNum, UdanChooConstants.DEFAULT_PAGE_SIZE,sortBy,filterObj,isAdmin);
+		
+		List oth_sl_wl_statusList = commonService.find_All_Status_Deal_Obj(UdanChooConstants.WORKLOAD_OTH_SL_OBJ);
+		
+		List<OtherServiceLineVO> trnSlVo = generateOTH_SL_Vo(pageHotelServiceLine);
+		modelView.addObject("userName", username);
+		modelView.addObject("OTH_PAGE_LIST", trnSlVo  );
+		modelView.addObject("OTH_SL_STATUS_LIST", oth_sl_wl_statusList);
+		modelView.addObject("dealOwner", filterObj.getDealOwner());
+		modelView.addObject("maxPages", pageHotelServiceLine.getTotalPages());
+		modelView.addObject("page", pageNum);
+		modelView.addObject("sortBy", sortBy);
+		modelView.addObject("clientId", filterObj.getClientId());
+		modelView.addObject("statusId", filterObj.getStatusId());
+		modelView.addObject("dateFrom", filterObj.getDateFrom());
+		modelView.addObject("dateTo", filterObj.getDateTo());
+		modelView.addObject("upcomingDeal", filterObj.isUpcomingDeal());
+		modelView.addObject("dealOwner", filterObj.getDealOwner());
+		return modelView;
+	}
+
 	private List<OtherServiceLineVO> generateOTH_SL_Vo(Page<Udn_Deal_OTH_SL_Entity> pagedResult) {
 		List<OtherServiceLineVO> othSLVoList = new ArrayList<OtherServiceLineVO>();
 		List<Udn_Deal_OTH_SL_Entity> othEntityList = pagedResult.getContent();
@@ -589,6 +644,7 @@ public class ServiceLineQueueController {
 				OtherServiceLineVO othSLVo = new OtherServiceLineVO(othSLEntity);
 				othSLVo.setClientName(clientService.getClientById(dealObj.getClientId()).getClientName());
 				othSLVo.setStatusName(commonService.find_DealStatusById(othSLVo.getStatus()).getWorkloadStatusName());
+				othSLVo.setDealOwnerName(userService.findUserByID((int)dealObj.getDealOwner()).getUsername());
 				othSLVoList.add(othSLVo);
 			} catch (RecordNotFoundException e) {
 				// TODO Auto-generated catch block
@@ -781,7 +837,7 @@ public class ServiceLineQueueController {
 	*/
 	
 	@RequestMapping("/get_transfers_service_line_queue_user")
-	public ModelAndView get_transfers_service_line_queue_user( @RequestParam(defaultValue = "0") String page,@RequestParam(defaultValue = "10") Integer pageSize, @RequestParam(defaultValue = "CreatedAt") String sortBy,@RequestParam(defaultValue = "") String dateFrom,@RequestParam(defaultValue = "") String dateTo,@ModelAttribute("FILTER_SL") FilterServiceLineObj filterObj,BindingResult result) {
+	public ModelAndView get_transfers_service_line_queue_user( @RequestParam(defaultValue = "0") String page,@RequestParam(defaultValue = "10") Integer pageSize, @RequestParam(defaultValue = "transferDate") String sortBy,@RequestParam(defaultValue = "") String dateFrom,@RequestParam(defaultValue = "") String dateTo,@ModelAttribute("FILTER_SL") FilterServiceLineObj filterObj,BindingResult result) {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String username;
     	if (principal instanceof UserDetails) {
@@ -857,6 +913,7 @@ public class ServiceLineQueueController {
 	
 	/************************ Visa Queue Handling Part Starts from here *********************/
 	
+	/*
 	//@RequestMapping("/workload/get_visa_service_line_queue_user")
 	@RequestMapping("/get_visa_service_line_queue_user")
 	public ModelAndView get_visa_service_line_queue_user( @RequestParam(defaultValue = "0") String page,@RequestParam(defaultValue = "10") Integer pageSize, @RequestParam(defaultValue = "CreatedAt") String sortBy,@RequestParam(defaultValue = "") String dateFrom,@RequestParam(defaultValue = "") String dateTo,@ModelAttribute("FILTER_SL") FilterServiceLineObj filterObj,BindingResult result) {
@@ -907,7 +964,54 @@ public class ServiceLineQueueController {
 		
 		return modelView;
 	}
-	
+	*/
+	@RequestMapping("/get_visa_service_line_queue_user")
+	public ModelAndView get_visa_service_line_queue_user( @RequestParam(defaultValue = "0") String page,@RequestParam(defaultValue = "10") Integer pageSize, @RequestParam(defaultValue = "travelStartDate") String sortBy,@RequestParam(defaultValue = "") String dateFrom,@RequestParam(defaultValue = "") String dateTo,@ModelAttribute("FILTER_SL") FilterServiceLineObj filterObj,BindingResult result) {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		String username;
+    	if (principal instanceof UserDetails) {
+    	   username = ((UserDetails)principal).getUsername();
+    	} else {
+    	   username = principal.toString();
+    	}
+     	UserDetailsObj userObj = (UserDetailsObj) userDetailsService.loadUserByUsername(username);
+		ModelAndView modelView = new ModelAndView("serviceline/view_vsa_service_line_queue");
+		UserDetailsObj user = getLoggedInUser();
+		boolean isAdmin=false;
+     	if(user.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"))) {
+    		isAdmin=true;
+    		List<UserDetailsObj> activeUsersList = userDetailsService.findAllActiveUsers();
+    		Map<Integer, String> activeUsersMap = (Map<Integer, String>) activeUsersList.stream().collect(
+                    Collectors.toMap(UserDetailsObj::getUserId, UserDetailsObj::getUsername));
+    		modelView.addObject("ACTIVE_USERS_MAP", activeUsersMap);
+    	}
+        if((!isAdmin) && filterObj.getDealOwner()==0) {
+	    	filterObj.setDealOwner((user.getUserId()))  ;
+	    }
+     	//TODO Check if some one changes the url manually then it should lead to an error page. not to a server error. 
+		int pageNum = Integer.parseInt(page);
+		
+		Page<Udn_Deal_VSA_SL_Entity> pageHotelServiceLine = null;
+		pageHotelServiceLine = queueService.filterServiceLineVisaQueue(pageNum, UdanChooConstants.DEFAULT_PAGE_SIZE,sortBy,filterObj,isAdmin);
+		
+		List vsa_sl_wl_statusList = commonService.find_All_Status_Deal_Obj(UdanChooConstants.WORKLOAD_VSA_SL_OBJ);
+		
+		List<VisaServiceLineVO> insSlVo = generateVSA_SL_Vo(pageHotelServiceLine);
+		modelView.addObject("userName", username);
+		modelView.addObject("VSA_PAGE_LIST", insSlVo );
+		modelView.addObject("VSA_SL_STATUS_LIST", vsa_sl_wl_statusList);
+		modelView.addObject("dealOwner", filterObj.getDealOwner());
+		modelView.addObject("maxPages", pageHotelServiceLine.getTotalPages());
+		modelView.addObject("page", pageNum);
+		modelView.addObject("sortBy", sortBy);
+		modelView.addObject("clientId", filterObj.getClientId());
+		modelView.addObject("statusId", filterObj.getStatusId());
+		modelView.addObject("dateFrom", filterObj.getDateFrom());
+		modelView.addObject("dateTo", filterObj.getDateTo());
+		modelView.addObject("upcomingDeal", filterObj.isUpcomingDeal());
+		modelView.addObject("dealOwner", filterObj.getDealOwner());
+		return modelView;
+	}
 	private List<VisaServiceLineVO> generateVSA_SL_Vo(Page<Udn_Deal_VSA_SL_Entity> pagedResult) {
 		List<VisaServiceLineVO> vsaSLVoList = new ArrayList<VisaServiceLineVO>();
 		List<Udn_Deal_VSA_SL_Entity> vsaEntityList = pagedResult.getContent();
@@ -923,6 +1027,7 @@ public class ServiceLineQueueController {
 				vsaSLVo.setSupplierName(supplierService.findSupplierById(vsaSLVo.getSupplierId()).get().getSupplierName());
 				vsaSLVo.setCountryName(commonService.findDestinationByCountryCode(vsaSLVo.getCountryCode()).getCountryName());
 				vsaSLVo.setStatusName(commonService.find_DealStatusById(vsaSLVo.getStatus()).getWorkloadStatusName());
+				vsaSLVo.setDealOwnerName(userService.findUserByID((int)dealObj.getDealOwner()).getUsername());
 				//vsaSLVo.setServiceLineOwnerName(userDetailsService.findUserByID(vsaSLVo.getServiceLineOwner()).getUsername());
 				vsaSLVoList.add(vsaSLVo);
 			} catch (RecordNotFoundException e) {

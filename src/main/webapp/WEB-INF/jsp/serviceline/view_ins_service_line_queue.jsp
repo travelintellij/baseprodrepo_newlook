@@ -49,8 +49,9 @@
             <a href="get_insurance_service_line_queue_user" style="color:white;background:black">Insurance</a>
             <a href="get_transfers_service_line_queue_user">Transfers</a>
             <a href="get_sightseeing_service_line_queue_user">SightSeeing</a>
-            <a href="view_open_my_assigned_task_form_user">Land Package</a>
-            <a href="view_completed_task_form_user">Visa</a>
+            <a href="get_landpackage_service_line_queue_user">Land Package</a>
+            <a href="get_visa_service_line_queue_user">Visa</a>
+            <a href="get_other_service_line_queue_user">Other</a>
   </div>
 
 

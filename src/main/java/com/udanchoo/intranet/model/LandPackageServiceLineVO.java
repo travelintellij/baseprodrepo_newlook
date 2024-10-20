@@ -40,6 +40,7 @@ public class LandPackageServiceLineVO  {
 	private String supplierName;
 	private String statusName;
 	private String clientName;
+	private String dealOwnerName;
 
 	/*************************/
 
@@ -359,6 +360,14 @@ public class LandPackageServiceLineVO  {
 
 	public void setDisplayOrder(int displayOrder) {
 		this.displayOrder = displayOrder;
+	}
+
+	public String getDealOwnerName() {
+		return dealOwnerName;
+	}
+
+	public void setDealOwnerName(String dealOwnerName) {
+		this.dealOwnerName = dealOwnerName;
 	}
 		
 	

@@ -31,7 +31,7 @@ public class OtherServiceLineVO {
 	private String supplierName;
 	private String statusName;
 	private String clientName;
-	
+	private String dealOwnerName;
 		
 	public String toString() {
 		String attrib = " Other Serrvice VO " + "\n";
@@ -224,6 +224,14 @@ public class OtherServiceLineVO {
 
 	public void setDisplayOrder(int displayOrder) {
 		this.displayOrder = displayOrder;
+	}
+
+	public String getDealOwnerName() {
+		return dealOwnerName;
+	}
+
+	public void setDealOwnerName(String dealOwnerName) {
+		this.dealOwnerName = dealOwnerName;
 	}
 	
 	

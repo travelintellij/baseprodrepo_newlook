@@ -126,7 +126,14 @@ public class ServiceLineQueueServiceImpl {
 			dateCheckFilterNeeded = false;
 		}
 		filterDealObj.setDateCheckFilterNeeded(dateCheckFilterNeeded);
-		Pageable paging = PageRequest.of(pageNo, pageSize,Sort.by(sorting));
+		
+		Sort sort = Sort.by(sorting).ascending(); 
+		if(!filterDealObj.isUpcomingDeal()) {
+			sorting ="travelEndDate";
+			sort = Sort.by(sorting).descending();
+		}
+		
+		Pageable paging = PageRequest.of(pageNo, pageSize,sort);
 		Date currentDate = Date.from(java.time.ZonedDateTime.now().toInstant());
 	    GregorianCalendar cal = new GregorianCalendar();
 		cal.setTime(currentDate);

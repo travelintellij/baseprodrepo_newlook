@@ -73,16 +73,12 @@
                                 <li><a href="get_deals_service_line_queue_user" class="hoverOnLink">Deals</a></li>
                                 <li><a href="get_flight_service_line_queue_user" class="hoverOnLink">Flight</a></li>
                                 <li><a href="get_hotel_service_line_queue_user" class="hoverOnLink">Hotal</a></li>
-                                <li><a href="get_insurance_service_line_queue_user" class="hoverOnLink">Insurence</a>
-                                </li>
-                                <li><a href="get_landpackage_service_line_queue_user"
-                                        class="hoverOnLink">LandPackage</a></li>
-                                <li><a href="get_other_service_line_queue_user" class="hoverOnLink">Others</a></li>
-                                <li><a href="get_sightseeing_service_line_queue_user"
-                                        class="hoverOnLink">SightSeeing</a></li>
-                                <li><a href="get_transfers_service_line_queue_user" class="hoverOnLink">Transfers</a>
-                                </li>
+                                <li><a href="get_insurance_service_line_queue_user" class="hoverOnLink">Insurence</a></li>
+                                <li><a href="get_landpackage_service_line_queue_user" class="hoverOnLink">LandPackage</a></li>
+                                <li><a href="get_sightseeing_service_line_queue_user" class="hoverOnLink">SightSeeing</a></li>
+                                <li><a href="get_transfers_service_line_queue_user" class="hoverOnLink">Transfers</a></li>
                                 <li><a href="get_visa_service_line_queue_user" class="hoverOnLink">Visa</a></li>
+                                <li><a href="get_other_service_line_queue_user" class="hoverOnLink">Others</a></li>
                             </ul>
                         </li>
                     </ul>

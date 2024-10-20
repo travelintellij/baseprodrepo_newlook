@@ -31,6 +31,8 @@ public class VisaServiceLineVO  {
 	private float markup;
 	private int displayOrder;
 	
+	private String dealOwnerName;
+	
 	private String remarks;
 	private Set<Udn_Visa_Doc_SL_Obj> visaDocumentEntityList = new LinkedHashSet<Udn_Visa_Doc_SL_Obj>();
 
@@ -388,6 +390,14 @@ public class VisaServiceLineVO  {
 
 	public void setDisplayOrder(int displayOrder) {
 		this.displayOrder = displayOrder;
+	}
+
+	public String getDealOwnerName() {
+		return dealOwnerName;
+	}
+
+	public void setDealOwnerName(String dealOwnerName) {
+		this.dealOwnerName = dealOwnerName;
 	}
 
 	
