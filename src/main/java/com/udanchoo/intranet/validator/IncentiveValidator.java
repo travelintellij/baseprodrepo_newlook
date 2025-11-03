@@ -48,7 +48,7 @@ public class IncentiveValidator implements Validator {
 			errorFound=true;
 			errors.rejectValue("dealConfirmationId", "invalid.dealName");
 		}
-		if(!errorFound) {
+         if(!errorFound) {
 			if(!incentiveService.checkIncentiveReclaimAllowed(incentiveRecorderVO.getDealConfirmationId(), incentiveRecorderVO.getClaimantId(),incentiveRecorderVO.getClaimOption())) {
 				errors.rejectValue("claimantId", "incentive.duplicate.error");
 			}
