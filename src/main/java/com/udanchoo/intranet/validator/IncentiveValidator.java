@@ -48,11 +48,15 @@ public class IncentiveValidator implements Validator {
 			errorFound=true;
 			errors.rejectValue("dealConfirmationId", "invalid.dealName");
 		}
+         // commenting out this method below to allow multiple claims
+        /*
 		if(!errorFound) {
 			if(!incentiveService.checkIncentiveReclaimAllowed(incentiveRecorderVO.getDealConfirmationId(), incentiveRecorderVO.getClaimantId(),incentiveRecorderVO.getClaimOption())) {
 				errors.rejectValue("claimantId", "incentive.duplicate.error");
 			}
 		}
+
+         */
 	}
  
 	public static boolean isInteger(String str) {
