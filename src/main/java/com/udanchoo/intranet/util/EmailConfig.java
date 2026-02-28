@@ -38,24 +38,21 @@ public class EmailConfig
 	
 	@Value("${spring.mail.host}")
 	private String emailHost;
-	
-	@Value("${b2b.mail.port}")
+
+    @Value("${spring.b2b.mail.port}")
 	private int emailPort;
-	
-	@Value("${b2b.mail.properties.mail.transport.protocol}")
-	private String emailProtocol;
+
+    @Value("${spring.b2b.mail.properties.mail.transport.protocol}")
+    private String emailProtocol;
 	
 	@Value("${spring.mail.properties.mail.smtp.auth}")
 	private String smtpAuth;
 	
 	@Value("${spring.mail.properties.mail.debug}")
 	private String mailDebug;
-	
-	@Value("${b2b.mail.properties.mail.smtp.socketFactory.port}")
-	private String socketFactoryPort;
-	
-	@Value("${b2b.mail.properties.mail.smtp.socketFactory.class}")
-	private String socketFactoryClass;
+
+
+
 	
 	
 	@Bean
@@ -82,10 +79,10 @@ public class EmailConfig
         
         Properties props = mailSender.getJavaMailProperties();
         props.put("mail.transport.protocol", emailProtocol);
-        //props.put("mail.smtp.auth", smtpAuth);
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
         props.put("mail.debug", mailDebug);
-        props.put("spring.mail.properties.mail.smtp.socketFactory.port", socketFactoryPort);
-        props.put("spring.mail.properties.mail.smtp.socketFactory.class", socketFactoryClass);
+
          
         
         mailSender.setJavaMailProperties(props);
@@ -102,30 +99,25 @@ public class EmailConfig
 	}
 
 
-	
-	    
-	@Bean
-	public Session getNotification1EmailSessionSender() {
-		 // SMTP server details
-        //String host = "smtp.example.com";
-        //int port = 587;
-        //String username = "your_username";
-        //String password = "your_password";
-        // TLS connection properties
+
+
+    @Bean
+    public Session getNotification1EmailSessionSender() {
+
         Properties props = new Properties();
+        props.put("mail.transport.protocol", "smtp");
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");
         props.put("mail.smtp.host", emailHost);
         props.put("mail.smtp.port", emailPort);
+        props.put("mail.debug", "true"); // enable temporarily
 
-        // Create session with authentication
-        Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+        return Session.getInstance(props, new Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(notification1EmailUsername, notification1EmailPassword);
             }
         });
-        return session;
-	}
-    
-    
+    }
+
+
 }

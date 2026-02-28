@@ -53,7 +53,7 @@ import freemarker.template.TemplateException;
 @Service
 public class EmailServiceImpl {
 
-	
+
 	@Autowired
 	private JavaMailSender mailSender;
 
@@ -86,6 +86,9 @@ public class EmailServiceImpl {
 
 	@Value("${email.internal.valid}")
 	private boolean internalEmailNotifyActive;
+
+    @Value("${followup.email.notify}")
+    private String followupNotificationEmail;
 	
 	 
     /**
@@ -348,7 +351,16 @@ public class EmailServiceImpl {
 	    		Session session = emailConfig.getNotification1EmailSessionSender();
 	    		MimeMessage message = new MimeMessage(session);
 	    		message.setFrom(new InternetAddress(emailFrom));
-	    		message.setRecipients(Message.RecipientType.TO, mail.getToList());
+                // First: send to original recipients (owner + teammates)
+                message.setRecipients(
+                        Message.RecipientType.TO,
+                        mail.getToList()
+                );
+
+                message.addRecipients(
+                        Message.RecipientType.TO,
+                        InternetAddress.parse(followupNotificationEmail)
+                );
 	    		if(emailNotifyBcc!=null && emailNotifyBcc.trim().length()>0) {
 		    		message.setRecipients(Message.RecipientType.BCC, emailNotifyBcc);
 	    		}
