@@ -28,7 +28,7 @@ public class ClientObj {
 	}
 
 	//@NotNull(message = "Error: [City] can not be left blank.")
-	private int cityId;
+	private Integer cityId;
 	
 	private String cityName;
 	
@@ -45,7 +45,7 @@ public class ClientObj {
 		this.countryName = countryName;
 	}
 
-	public int getCityId() {
+	public Integer getCityId() {
 		return cityId;
 	}
 
@@ -341,7 +341,7 @@ public class ClientObj {
 		this.phone=clientEntity.getPhone();
 		this.address=clientEntity.getAddress();
 		this.bankDetails=clientEntity.getBankDetails();
-		this.cityId=clientEntity.getCityId();
+		this.cityId = clientEntity.getCityId() != null ? clientEntity.getCityId() : 0;
 		this.clientName=clientEntity.getClientName();
 		this.companyDetails=clientEntity.getCompanyDetails();
 		this.email=clientEntity.getEmail();

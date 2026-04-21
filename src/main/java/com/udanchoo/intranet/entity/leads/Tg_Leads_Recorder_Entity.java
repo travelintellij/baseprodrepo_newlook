@@ -54,7 +54,7 @@ public class Tg_Leads_Recorder_Entity extends AuditModel {
 	protected String clientRemarks;
 	protected String internalRemarks;
 	protected String childrenAgeInfo;
-	protected int source;
+	protected Integer source;
 	
 	protected boolean landPackage;
 	//protected boolean packageWithFlight;
@@ -99,14 +99,14 @@ public class Tg_Leads_Recorder_Entity extends AuditModel {
 	}
 	
 	
-	public int getSource() {
+	public Integer getSource() {
 		return source;
 	}
-	public void setSource(int source) {
+	public void setSource(Integer source) {
 		this.source = source;
 	}
 
-	protected int destination;
+	protected Integer destination;
 	protected Date travelStartDate;
 	protected Date travelEndDate;
 	protected int leadStatus;
@@ -153,10 +153,10 @@ public class Tg_Leads_Recorder_Entity extends AuditModel {
 		this.tentativeCost = tentativeCost;
 	}
 
-	public int getDestination() {
+	public Integer getDestination() {
 		return destination;
 	}
-	public void setDestination(int destination) {
+	public void setDestination(Integer destination) {
 		this.destination = destination;
 	}
 	public Date getTravelStartDate() {

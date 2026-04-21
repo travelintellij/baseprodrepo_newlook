@@ -110,6 +110,7 @@ CREATE TABLE `tg_b2b_partners` (
   `website` varchar(345) DEFAULT NULL,
   `cityId` bigint NOT NULL,
   PRIMARY KEY (`partnerId`,`active`),
+  UNIQUE KEY `partnerId_UNIQUE` (`partnerId`),
   UNIQUE KEY `partnerShortName_UNIQUE` (`partnerShortName`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='All B2b Agents and partners information is recorded in this table.';
 /*!40101 SET character_set_client = @saved_cs_client */;

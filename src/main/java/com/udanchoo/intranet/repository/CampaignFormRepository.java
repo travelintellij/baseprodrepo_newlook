@@ -12,4 +12,6 @@ public interface CampaignFormRepository extends JpaRepository<CampaignFormEntity
     List<CampaignFormEntity> findByActiveTrue();
 
     List<CampaignFormEntity> findByFormType(String formType);
+
+    List<CampaignFormEntity> findByFormId(String formId);
 }

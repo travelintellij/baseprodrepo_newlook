@@ -51,6 +51,17 @@
             Configure your Facebook/Instagram Lead Ads API credentials. Settings are stored in the database.
         </p>
 
+        <c:if test="${not empty successMsg}">
+            <div style="background:#d4edda;color:#155724;border:1px solid #c3e6cb;padding:10px 16px;border-radius:5px;margin-bottom:15px;font-weight:600;">
+                <i class="fa fa-check-circle"></i> ${successMsg}
+            </div>
+        </c:if>
+        <c:if test="${not empty errorMsg}">
+            <div style="background:#f8d7da;color:#721c24;border:1px solid #f5c6cb;padding:10px 16px;border-radius:5px;margin-bottom:15px;font-weight:600;">
+                <i class="fa fa-times-circle"></i> ${errorMsg}
+            </div>
+        </c:if>
+
         <form:form action="${pageContext.request.contextPath}/campaign/central-config/save"
                    method="POST" modelAttribute="config">
             <form:hidden path="id"/>
@@ -72,40 +83,33 @@
                 </div>
 
                 <div class="anc-cn anc-com">
-                    <label for="metaAppId" style="font-weight:600">App ID</label>
+                    <label for="metaAppId" style="font-weight:600">Page ID *</label>
                     <form:input path="metaAppId" id="metaAppId" class="contact"
                         placeholder="e.g. 1234567890123456"/>
+                    <p class="helper-text">Your Facebook Page ID used for lead sync.</p>
                 </div>
 
                 <div class="anc-cn anc-com">
-                    <label for="metaAppSecret" style="font-weight:600">App Secret</label>
-                    <form:input path="metaAppSecret" id="metaAppSecret" class="contact"
-                        type="password" placeholder="Your Meta App Secret"/>
-                </div>
-
-                <div class="anc-cn anc-com">
-                    <label for="metaGraphApiVersion" style="font-weight:600">Graph API Version</label>
-                    <form:input path="metaGraphApiVersion" id="metaGraphApiVersion" class="contact"
-                        placeholder="e.g. v19.0"/>
-                    <p class="helper-text">Default: v19.0</p>
+                    <label for="defaultLeadOwnerId" style="font-weight:600">Default Lead Owner *</label>
+                    <div class="select">
+                        <select name="defaultLeadOwnerId" id="defaultLeadOwnerId" class="contact" style="width:100%">
+                            <option value="">-- Select Lead Owner --</option>
+                            <c:forEach items="${ACTIVE_USERS_MAP}" var="userMap">
+                                <option value="${userMap.key}"
+                                    <c:if test="${config.defaultLeadOwnerId == userMap.key}">selected</c:if>>
+                                    ${userMap.value}
+                                </option>
+                            </c:forEach>
+                        </select>
+                    </div>
+                    <p class="helper-text">This user receives email notification when a lead is auto-imported from Meta.</p>
                 </div>
             </div>
 
-            <div class="anc-sec-li">
-                <div class="anc-cn anc-com">
-                    <label for="metaLeadFormId" style="font-weight:600">Default Lead Form ID</label>
-                    <form:input path="metaLeadFormId" id="metaLeadFormId" class="contact"
-                        placeholder="e.g. 1234567890123456"/>
-                    <p class="helper-text">Used for connection testing. Campaign forms use their own Form IDs.</p>
-                </div>
-
-                <div class="anc-cn anc-com">
-                    <label for="defaultLeadOwnerId" style="font-weight:600">Default Lead Owner (User ID)</label>
-                    <form:input path="defaultLeadOwnerId" id="defaultLeadOwnerId" class="contact"
-                        type="number" placeholder="e.g. 1"/>
-                    <p class="helper-text">Auto-imported leads are assigned to this user ID.</p>
-                </div>
-            </div>
+            <%-- Hidden fields to preserve unused DB columns --%>
+            <form:hidden path="metaLeadFormId"/>
+            <form:hidden path="metaAppSecret"/>
+            <form:hidden path="metaGraphApiVersion"/>
 
             <div id="testResult" class="test-result"></div>
 

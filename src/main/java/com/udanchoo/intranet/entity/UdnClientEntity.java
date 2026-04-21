@@ -30,13 +30,13 @@ public class UdnClientEntity extends AuditModel {
 
 	
 	@Column(nullable = true,name="cityId", unique = false)
-	private int cityId;
+	private Integer cityId;
 	
-	public int getCityId() {
+	public Integer getCityId() {
 		return cityId;
 	}
 
-	public void setCityId(int cityId) {
+	public void setCityId(Integer cityId) {
 		this.cityId = cityId;
 	}
 

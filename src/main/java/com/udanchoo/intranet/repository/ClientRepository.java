@@ -14,4 +14,9 @@ public interface ClientRepository extends JpaRepository<UdnClientEntity,Long>,Jp
 	UdnClientEntity find_ClientByDealConfirmationId(Long dealConfirmationId);
 	
 	boolean existsByclientIdAndClientName(long clientId, String clientName);
-} 
+
+	java.util.List<UdnClientEntity> findByEmail(String email);
+
+	java.util.List<UdnClientEntity> findByMobile(long mobile);
+}
+ 
