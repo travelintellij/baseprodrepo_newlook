@@ -1,10 +1,6 @@
 package com.udanchoo.intranet.entity.reminder;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import com.udanchoo.intranet.entity.AuditModel;
 import com.udanchoo.intranet.model.reminder.TtsLeadsReminderRecorderVO;
@@ -24,8 +20,9 @@ public class Tts_Lead_Reminder_Recorder_Entity extends AuditModel {
 	protected Long leadId;
 	protected boolean smsSent;
 	protected boolean emailSent;
-	
-	
+
+    @Column(name = "whatsapp_sent")
+    private boolean whatsappSent;
 		
 	public Tts_Lead_Reminder_Recorder_Entity() {
 
@@ -36,6 +33,7 @@ public class Tts_Lead_Reminder_Recorder_Entity extends AuditModel {
 		this.leadId=leadsReminderRecorderVo.getLeadId();
 		this.smsSent=leadsReminderRecorderVo.isSmsSent();
 		this.emailSent=leadsReminderRecorderVo.isEmailSent();
+		this.whatsappSent=leadsReminderRecorderVo.isWhatsappSent();
 	}
 
 	public Long getLeadReminderId() {
@@ -65,7 +63,7 @@ public class Tts_Lead_Reminder_Recorder_Entity extends AuditModel {
 	@Override
 	public String toString() {
 		return "Tts_Lead_Reminder_Recorder_Entity [leadReminderId=" + leadReminderId + ", leadId=" + leadId
-				+ ", smsSent=" + smsSent + ", emailSent=" + emailSent + "]";
+				+ ", smsSent=" + smsSent + ", emailSent=" + emailSent + ", whatsappSent=" + whatsappSent + "]";
 	}
 
 	public boolean isEmailSent() {
@@ -75,5 +73,13 @@ public class Tts_Lead_Reminder_Recorder_Entity extends AuditModel {
 	public void setEmailSent(boolean emailSent) {
 		this.emailSent = emailSent;
 	}
+
+    public boolean isWhatsappSent() {
+        return whatsappSent;
+    }
+
+    public void setWhatsappSent(boolean whatsappSent) {
+        this.whatsappSent = whatsappSent;
+    }
 	
 }

@@ -64,7 +64,12 @@
 </c:if>
 <%@ include file="subcomponents/_qtn_costing_config.jsp" %>
 <%@ include file="subcomponents/_qtn_tnc_config.jsp" %>
-<p align="right"><input type="button" id="Printbox" value="print" onclick="javascript:window.print();" /> </p>
+<p align="right">
+    <a href="send_whatsapp_quotation?leadId=${LEAD_OBJ.leadId}&quotationId=${QTN_OBJ.quotationId}" style="text-decoration:none;">
+        <input type="button" value="Share on WhatsApp" style="background:#25D366; color:white; border:none; padding:5px 10px; cursor:pointer; border-radius:3px;"/>
+    </a>
+    <input type="button" id="Printbox" value="print" onclick="javascript:window.print();" /> 
+</p>
 </form:form> 
 
 

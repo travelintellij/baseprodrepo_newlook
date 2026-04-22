@@ -47,6 +47,7 @@ import com.udanchoo.intranet.service.QuotationServiceImpl;
 import com.udanchoo.intranet.service.TgB2bPartnerServicesImpl;
 import com.udanchoo.intranet.service.UdnCommonServicesImpl;
 import com.udanchoo.intranet.service.UserDetailsServiceImpl;
+import com.udanchoo.intranet.service.WhatsAppServiceImpl;
 import com.udanchoo.intranet.util.UdanChooConstants;
 import com.udanchoo.intranet.validator.ConfigurationQuotationValidator;
 import com.udanchoo.intranet.validator.EmailAudienceValidator;
@@ -112,6 +113,18 @@ public class ConfigurationQuotationController {
 	
 	@Autowired
     private EmailAudienceValidator emailValidator;
+	
+	@Autowired
+	private WhatsAppServiceImpl whatsappService;
+
+	@Value("${whatsapp.notify.active:false}")
+	private boolean whatsappNotifyActive;
+
+    @Value("${whatsapp.template.lead.registered}")
+    private String whatsappTemplateId;
+	
+	@Value("${BASE_QUOTATION_URL:http://yourshms.com/view/}")
+	private String baseQuotationUrl;
 	
 	
 
@@ -520,7 +533,73 @@ public class ConfigurationQuotationController {
 		return modelView;
 		
 	}
-		
-	
+
+    @RequestMapping("/send_whatsapp_quotation")
+    public ModelAndView send_whatsapp_quotation(
+            @RequestParam long quotationId,
+            @ModelAttribute("QTN_OBJ") TgQuotationRecorderVO quotationVO,
+            @ModelAttribute("LEAD_OBJ") TgLeadsRecorderVO leadRecorderObj,
+            final RedirectAttributes redirectAttrib) {
+
+        Tg_Quotation_Recorder_Entity quotationEntity =
+                quotationService.findQuotationRecordById(quotationId);
+
+        ClientObj client = clientService.find_ClientBy_Id(leadRecorderObj.getContactId());
+        UserDetailsObj userObj = getLoggedInUser();
+
+        // ✅ Validate mobile first
+        if (client.getMobile() == null || client.getMobile().toString().trim().isEmpty()) {
+            redirectAttrib.addFlashAttribute("Error", "Client mobile number not available.");
+            return new ModelAndView("redirect:form_view_configure_quotation_details?leadId="
+                    + leadRecorderObj.getLeadId() + "&quotationId=" + quotationId);
+        }
+
+        // ✅ Check WhatsApp toggle
+        if (!whatsappNotifyActive) {
+            redirectAttrib.addFlashAttribute("Error", "WhatsApp service is disabled.");
+            return new ModelAndView("redirect:form_view_configure_quotation_details?leadId="
+                    + leadRecorderObj.getLeadId() + "&quotationId=" + quotationId);
+        }
+
+        // ✅ Format mobile properly
+        String mobile = String.valueOf(client.getMobile()).replaceAll("\\s+", "");
+        mobile = mobile.replaceAll("[^0-9]", "");
+
+
+        // ✅ Prepare template params
+        Map<Integer, String> params = new HashMap<>();
+        params.put(1, client.getClientName());                        // {{1}} Customer Name
+        params.put(2, String.valueOf(leadRecorderObj.getLeadId()));   // {{2}} Query ID
+        params.put(3, userObj.getName());                             // {{3}} Representative Name
+        params.put(4, mobile);                                        // {{4}} Mobile
+        params.put(5, client.getEmail());                             // {{5}} Email
+
+        boolean sent = false;
+
+        try {
+            // ✅ Send WhatsApp message
+            sent = whatsappService.sendTemplateMessage(
+                    mobile,
+                    whatsappTemplateId,   // <-- from application.properties
+                    params
+            );
+        } catch (Exception e) {
+            e.printStackTrace();
+            redirectAttrib.addFlashAttribute("Error", "WhatsApp sending failed due to exception.");
+            return new ModelAndView("redirect:form_view_configure_quotation_details?leadId="
+                    + leadRecorderObj.getLeadId() + "&quotationId=" + quotationId);
+        }
+
+        // ✅ Handle response
+        if (sent) {
+            redirectAttrib.addFlashAttribute("Success", "Quotation shared via WhatsApp successfully!");
+        } else {
+            redirectAttrib.addFlashAttribute("Error", "Failed to share via WhatsApp. Please check configuration.");
+        }
+
+        return new ModelAndView("redirect:form_view_configure_quotation_details?leadId="
+                + leadRecorderObj.getLeadId() + "&quotationId=" + quotationId);
+    }
+
 }
 

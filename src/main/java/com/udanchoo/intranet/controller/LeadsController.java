@@ -55,6 +55,7 @@ import com.udanchoo.intranet.service.ReminderServiceImpl;
 import com.udanchoo.intranet.service.TgB2bPartnerServicesImpl;
 import com.udanchoo.intranet.service.UdnCommonServicesImpl;
 import com.udanchoo.intranet.service.UserDetailsServiceImpl;
+import com.udanchoo.intranet.service.WhatsAppServiceImpl;
 import com.udanchoo.intranet.util.UdanChooConstants;
 import com.udanchoo.intranet.util.UdanChooUtil;
 import com.udanchoo.intranet.validator.FilterLeadValidator;
@@ -108,6 +109,12 @@ public class LeadsController {
 	
 	@Value("${COMPANY_NAME}")
 	private String COMPANY_NAME;
+
+	@Autowired
+	WhatsAppServiceImpl whatsappService;
+
+	@Value("${whatsapp.notify.active:false}")
+	private boolean whatsappNotifyActive;
 
     @RequestMapping("/form_register_newlead")
    	public ModelAndView form_register_newlead(@ModelAttribute("LEAD_OBJ") TgLeadsRecorderVO leadRecorderObj,BindingResult result) {
@@ -212,6 +219,9 @@ public class LeadsController {
 			if(leadRecorderObj.isLeadCreationClientInformed()) {
 				notifyLeadCreationTargetAudience(leadRecorderObj,"LeadCreateConfirmation.ftl",true,true);
 				notifyLeadCreationSms(leadRecorderObj);
+				if (whatsappNotifyActive) {
+					notifyLeadCreationWhatsApp(leadRecorderObj);
+				}
 			}
 			//write email code here. 
 		}
@@ -268,6 +278,9 @@ public class LeadsController {
    			if(leadRecorderObj.isNotifyAgain()) {
    				notifyLeadCreationTargetAudience(leadRecorderObj,"LeadUpdateConfirmation.ftl",false,true);
    				notifyLeadCreationSms(leadRecorderObj);
+				if (whatsappNotifyActive) {
+					notifyLeadCreationWhatsApp(leadRecorderObj);
+				}
    			}
    			//write email code here. 
    		}
@@ -339,6 +352,20 @@ public class LeadsController {
 		}
 	} 
 
+	private boolean notifyLeadCreationWhatsApp(TgLeadsRecorderVO leadRecorderObj) {
+		ClientObj client = clientService.find_ClientBy_Id(leadRecorderObj.getContactId());
+		UdnTeam representative = userService.findUserByID(leadRecorderObj.getLeadOwner());
+		String leadRef = generateLeadReferenceNumber(leadRecorderObj);
+		
+		Map<Integer, String> parameters = new HashMap<>();
+		parameters.put(1, client.getClientName());
+		parameters.put(2, leadRef);
+		parameters.put(3, representative.getName());
+		parameters.put(4, String.valueOf(representative.getMobile()));
+		parameters.put(5, representative.getEmail());
+		
+		return whatsappService.sendTemplateMessage(String.valueOf(client.getMobile()), "udanchoo_lead_registered_msg", parameters);
+	}
 	private String constructGuestDetails(TgLeadsRecorderVO leadRecorderObj){
 		String guestDetails ="";
 		if(leadRecorderObj.getAdults()>0) {

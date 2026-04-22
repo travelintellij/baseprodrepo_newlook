@@ -159,3 +159,7 @@ CREATE TABLE employee_target_mapping (
 
 ALTER TABLE `udanchoodb`.`udnincentive` 
 ADD COLUMN `claimOption` ENUM('INCENTIVE', 'TARGET') NOT NULL AFTER `updated_at`;
+
+
+ALTER TABLE tts_lead_reminder_recorder_service
+ADD COLUMN whatsapp_sent BOOLEAN DEFAULT FALSE;

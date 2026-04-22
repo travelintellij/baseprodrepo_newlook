@@ -11,6 +11,7 @@ import java.util.Properties;
 import javax.annotation.Resource;
 import javax.mail.MessagingException;
 
+import com.udanchoo.intranet.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -34,14 +35,6 @@ import com.udanchoo.intranet.model.ReminderServiceObj;
 import com.udanchoo.intranet.model.UserDetailsObj;
 import com.udanchoo.intranet.model.leads.TgLeadsRecorderVO;
 import com.udanchoo.intranet.model.reminder.TtsLeadsReminderRecorderVO;
-import com.udanchoo.intranet.service.ClientServiceImpl;
-import com.udanchoo.intranet.service.EmailServiceImpl;
-import com.udanchoo.intranet.service.LeadServiceImpl;
-import com.udanchoo.intranet.service.QuotationServiceImpl;
-import com.udanchoo.intranet.service.ReminderServiceImpl;
-import com.udanchoo.intranet.service.TgB2bPartnerServicesImpl;
-import com.udanchoo.intranet.service.UdnCommonServicesImpl;
-import com.udanchoo.intranet.service.UserDetailsServiceImpl;
 import com.udanchoo.intranet.util.UdanChooConstants;
 import com.udanchoo.intranet.util.UdanChooUtil;
 import com.udanchoo.intranet.validator.EmailAudienceValidator;
@@ -95,6 +88,16 @@ public class ReminderServiceController {
 
 	@Autowired
 	ReminderServiceImpl reminderService;
+
+    @Value("${whatsapp.template.lead.followup}")
+    private String whatsappFollowupTemplateId;
+
+
+    @Autowired
+    WhatsAppServiceImpl whatsappService;
+
+    @Value("${whatsapp.notify.active:false}")
+    private boolean whatsappNotifyActive;
 	
 	private UserDetailsObj getLoggedInUser() {
 	    	Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -112,37 +115,10 @@ public class ReminderServiceController {
 
 	@RequestMapping("/form_view_lead_reminder_details")
 	public ModelAndView form_view_lead_reminder_details(long leadId, @RequestParam(defaultValue = "0") String page,@ModelAttribute("REMINDER_SERVICE") ReminderServiceObj reminderServiceObj,BindingResult result,final RedirectAttributes redirectAttrib) {
-		UserDetailsObj loggedUser = getLoggedInUser();
 		ModelAndView mapview = new ModelAndView("reminder/viewReminderDetails");
-		TgLeadsRecorderVO leadRecorderObj = new TgLeadsRecorderVO(); 
-		leadRecorderObj.setLeadId(leadId);
-		Tg_Leads_Recorder_Entity tgLeadEntity =leadService.findLeadRecordById(leadRecorderObj.getLeadId());
-		leadRecorderObj.updateLeadVoFromEntity(tgLeadEntity);
-		leadService.updateLeadVoFromEntity(tgLeadEntity,leadRecorderObj);
-		reminderServiceObj.setLeadsRecorderObj(leadRecorderObj);
-		EmailMessageVO emailMessageVo = new EmailMessageVO();
+		populateReminderServiceObj(leadId, reminderServiceObj);
+		mapview.addObject("page", page);
 		
-		ClientObj client = clientService.find_ClientBy_Id(leadRecorderObj.getContactId());
-		emailMessageVo.setEmailToList(client.getEmail());
-    	emailMessageVo.setEmailSubject("Reminder: Your Upcoming Travel plan for Query Id: UDN-" + leadRecorderObj.getLeadId() + "-" + leadRecorderObj.getLeadSourceShortName());
-    	emailMessageVo.setEmailMessage("This is to remind you that we are eagerly waiting to serve you and we are worried that we have not heard it back from you. Kindly contact us for your best deal." );
-    	reminderServiceObj.setEmailMessageVo(emailMessageVo);
-
-    	//String message = "Dear " + client.getClientName() +", This is to remind you that we are eagerly waiting to hear for your upcoming travel plan. Please share an update as we are eager to serve you. Thx " + COMPANY_NAME +  " " + loggedUser.getName() + " " +  loggedUser.getMobile() ;
-    	Map<String, Object> smsValuesMap=new HashMap<String, Object>();
-    	smsValuesMap.put("CONTACT_NAME",client.getClientName());
-    	smsValuesMap.put("COMPANY_NAME",COMPANY_NAME);
-    	smsValuesMap.put("USER_NAME",loggedUser.getName());
-    	smsValuesMap.put("USER_MOBILE",loggedUser.getMobile());
-    	//String message = "Dear %(CONTACT_NAME), This is to remind you that we are eagerly waiting to hear for your upcoming travel plan. Please share an update as we are eager to serve you. Thx %(COMPANY_NAME) %(USER_NAME) %(USER_MOBILE)";
-    	String message = UdanChooUtil.notificationMessagesList().getProperty(UdanChooConstants.QUERY_REMINDER_MESSAGE);
-    	message = UdanChooUtil.replacePlaceholders(message,smsValuesMap);
-    	SMS smsMessage = new SMS();
-    	smsMessage.setTo(client.getMobile());
-    	smsMessage.setMessage(message);
-    	reminderServiceObj.setSmsVo(smsMessage);
-    	mapview.addObject("page", page);
-    	
 		List<TtsLeadsReminderRecorderVO> leadsReminderVoList = reminderService.listAllLeadsReminderDetails(leadId);
 		mapview.addObject("LEADS_REMINDER_RECORDS",leadsReminderVoList);
 
@@ -151,8 +127,17 @@ public class ReminderServiceController {
 
 	@RequestMapping("/form_view_lead_reminder_confirmation")
 	public ModelAndView form_view_lead_reminder_confirmation(long leadId, @RequestParam(defaultValue = "0") String page,@ModelAttribute("REMINDER_SERVICE") ReminderServiceObj reminderServiceObj,BindingResult result,final RedirectAttributes redirectAttrib) {
-		ModelAndView modelView = new ModelAndView();
-		//modelView = form_view_lead_reminder_details(reminderServiceObj.getLeadsRecorderObj().getLeadId(),"0",reminderServiceObj,result,redirectAttrib);
+		ModelAndView modelView = new ModelAndView("reminder/viewReminderServiceConfirmation");
+		populateReminderServiceObj(leadId, reminderServiceObj);
+		
+		List<TtsLeadsReminderRecorderVO> leadsReminderVoList = reminderService.listAllLeadsReminderDetails(leadId);
+		modelView.addObject("LEADS_REMINDER_RECORDS",leadsReminderVoList);
+
+		return modelView;
+	}
+
+	private void populateReminderServiceObj(long leadId, ReminderServiceObj reminderServiceObj) {
+		UserDetailsObj loggedUser = getLoggedInUser();
 		TgLeadsRecorderVO leadRecorderObj = new TgLeadsRecorderVO(); 
 		leadRecorderObj.setLeadId(leadId);
 		Tg_Leads_Recorder_Entity tgLeadEntity =leadService.findLeadRecordById(leadRecorderObj.getLeadId());
@@ -160,93 +145,98 @@ public class ReminderServiceController {
 		leadService.updateLeadVoFromEntity(tgLeadEntity,leadRecorderObj);
 		reminderServiceObj.setLeadsRecorderObj(leadRecorderObj);
 		
-		List<TtsLeadsReminderRecorderVO> leadsReminderVoList = reminderService.listAllLeadsReminderDetails(leadId);
-		modelView.addObject("LEADS_REMINDER_RECORDS",leadsReminderVoList);
+		EmailMessageVO emailMessageVo = reminderServiceObj.getEmailMessageVo();
+		if (emailMessageVo == null) {
+			emailMessageVo = new EmailMessageVO();
+			reminderServiceObj.setEmailMessageVo(emailMessageVo);
+		}
+		
+		ClientObj client = clientService.find_ClientBy_Id(leadRecorderObj.getContactId());
+		emailMessageVo.setEmailToList(client.getEmail());
+    	emailMessageVo.setEmailSubject("Reminder: Your Upcoming Travel plan for Query Id: UDN-" + leadRecorderObj.getLeadId() + "-" + leadRecorderObj.getLeadSourceShortName());
+    	emailMessageVo.setEmailMessage("This is to remind you that we are eagerly waiting to serve you and we are worried that we have not heard it back from you. Kindly contact us for your best deal." );
 
-		modelView.setViewName("reminder/viewReminderServiceConfirmation");
-		return modelView;
+    	Map<String, Object> smsValuesMap=new HashMap<String, Object>();
+    	smsValuesMap.put("CONTACT_NAME",client.getClientName());
+    	smsValuesMap.put("COMPANY_NAME",COMPANY_NAME);
+    	smsValuesMap.put("USER_NAME",loggedUser.getName());
+    	smsValuesMap.put("USER_MOBILE",loggedUser.getMobile());
+    	
+    	String message = UdanChooUtil.notificationMessagesList().getProperty(UdanChooConstants.QUERY_REMINDER_MESSAGE);
+    	message = UdanChooUtil.replacePlaceholders(message,smsValuesMap);
+    	
+    	SMS smsMessage = reminderServiceObj.getSmsVo();
+		if (smsMessage == null) {
+			smsMessage = new SMS();
+			reminderServiceObj.setSmsVo(smsMessage);
+		}
+    	smsMessage.setTo(client.getMobile());
+    	smsMessage.setMessage(message);
 	}
-	
-	@PostMapping(value="/send_send_leadReminder")
-	public ModelAndView send_send_leadReminder(@ModelAttribute("REMINDER_SERVICE") ReminderServiceObj reminderServiceObj,BindingResult result,final RedirectAttributes redirectAttrib) {
-		int smsSuccessCode=0;
-		int emailSuccessCode;
-		ModelAndView modelView = new ModelAndView("redirect:form_view_lead_reminder_confirmation?leadId="+reminderServiceObj.getLeadsRecorderObj().getLeadId());
-		//ModelAndView modelView = new ModelAndView("reminder/viewReminderDetails");
-		if(reminderServiceObj.isBothSmsAndEmailReminder()) {
-			emailSuccessCode = send_send_emailReminder(reminderServiceObj,result,redirectAttrib);
-			if(emailSuccessCode==0) {
-				Tts_Lead_Reminder_Recorder_Entity ttsLeadsReminderEntity = new Tts_Lead_Reminder_Recorder_Entity();
-				ttsLeadsReminderEntity.setLeadId(reminderServiceObj.getLeadsRecorderObj().getLeadId());
-				ttsLeadsReminderEntity.setEmailSent(true);
-				smsSuccessCode = send_send_smsReminder(reminderServiceObj,result,redirectAttrib);
-				if(smsSuccessCode==200) {
-					redirectAttrib.addFlashAttribute("Success","Success: SMS & Email Reminders sent successfully.  ");
-					ttsLeadsReminderEntity.setSmsSent(true);
-				}else {
-					redirectAttrib.addFlashAttribute("Success","Success: Email Sent Successfully <br> <font color='red'>Failure: SMS Reminders sending failed.</font>  ");
-				}
-				reminderService.saveLeadsReminderRecorder(ttsLeadsReminderEntity);
-			}
-			/*else if(smsSuccessCode==200 && emailSuccessCode!=0) {
-				redirectAttrib.addFlashAttribute("Success","Success: SMS Sent Successfully <br> <font color='red'>Failure: Email Reminders sending failed.</font>  ");
-				modelView = form_view_lead_reminder_details(reminderServiceObj.getLeadsRecorderObj().getLeadId(),"0",reminderServiceObj,result,redirectAttrib);
-			}
-			else if (smsSuccessCode!=200 && emailSuccessCode==0) {
-				redirectAttrib.addFlashAttribute("Success","Success: Email Sent Successfully <br> <font color='red'>Failure: SMS Reminders sending failed.</font>  ");
-			}*/
-			else {
-				modelView = form_view_lead_reminder_details(reminderServiceObj.getLeadsRecorderObj().getLeadId(),"0",reminderServiceObj,result,redirectAttrib);
-				//redirectAttrib.addFlashAttribute("Failure","Failure: Reminder Service Failed. Please contact Administrator !! ");
-			}
-		}
-		else if(reminderServiceObj.isSmsReminder()) {
-			//modelView.setViewName("forward:send_send_smsReminder");
-			smsSuccessCode = send_send_smsReminder(reminderServiceObj,result,redirectAttrib);
-			if(smsSuccessCode==200) {
-				Tts_Lead_Reminder_Recorder_Entity ttsLeadsReminderEntity = new Tts_Lead_Reminder_Recorder_Entity();
-				ttsLeadsReminderEntity.setLeadId(reminderServiceObj.getLeadsRecorderObj().getLeadId());
-				ttsLeadsReminderEntity.setEmailSent(false);
-				ttsLeadsReminderEntity.setSmsSent(true);
-				reminderService.saveLeadsReminderRecorder(ttsLeadsReminderEntity);
-				redirectAttrib.addFlashAttribute("Success","Success: SMS Reminder Sent Successfully. ");
-			}
-			else {
-				redirectAttrib.addFlashAttribute("Failure","Failure: SMS reminder failed. Please contact Administrator.");
-			}
-		}
-		else if(reminderServiceObj.isEmailReminder()) {
-			emailSuccessCode = send_send_emailReminder(reminderServiceObj,result,redirectAttrib);
-			if(emailSuccessCode==0) {
-				Tts_Lead_Reminder_Recorder_Entity ttsLeadsReminderEntity = new Tts_Lead_Reminder_Recorder_Entity();
-				ttsLeadsReminderEntity.setLeadId(reminderServiceObj.getLeadsRecorderObj().getLeadId());
-				ttsLeadsReminderEntity.setEmailSent(true);
-				ttsLeadsReminderEntity.setSmsSent(false);
-				reminderService.saveLeadsReminderRecorder(ttsLeadsReminderEntity);
-				redirectAttrib.addFlashAttribute("Success","Success: Email Reminder Sent Successfully. ");
-			}
-			else {
-				modelView = form_view_lead_reminder_details(reminderServiceObj.getLeadsRecorderObj().getLeadId(),"0",reminderServiceObj,result,redirectAttrib);
-				redirectAttrib.addFlashAttribute("Failure","Failure: Email Reminder failed. Please contact Administrator.  ");
-			}
-			//modelView.setViewName("forward:send_send_emailReminder");
-		}
-		return modelView;
-	}
+
+    @PostMapping(value="/send_send_leadReminder")
+    public ModelAndView send_send_leadReminder(
+            @RequestParam(value = "action", required = false) String action,
+            @ModelAttribute("REMINDER_SERVICE") ReminderServiceObj reminderServiceObj,
+            BindingResult result,
+            final RedirectAttributes redirectAttrib) {
+
+        Long leadId = reminderServiceObj.getLeadsRecorderObj().getLeadId();
+
+        Tts_Lead_Reminder_Recorder_Entity entity = new Tts_Lead_Reminder_Recorder_Entity();
+        entity.setLeadId(leadId);
+        entity.setSmsSent(false);
+        entity.setEmailSent(false);
+        entity.setWhatsappSent(false);
+
+        boolean sentSuccessfully = false;
+
+        if ("sms".equals(action)) {
+            int smsCode = send_send_smsReminder(reminderServiceObj, result, redirectAttrib);
+            sentSuccessfully = (smsCode == 200);
+            entity.setSmsSent(sentSuccessfully);
+        } else if ("email".equals(action)) {
+            int emailCode = send_send_emailReminder(reminderServiceObj, result, redirectAttrib);
+            sentSuccessfully = (emailCode == 0);
+            entity.setEmailSent(sentSuccessfully);
+        } else if ("whatsapp".equals(action)) {
+            if (whatsappNotifyActive) {
+                sentSuccessfully = sendReminderWhatsApp(reminderServiceObj);
+            }
+            entity.setWhatsappSent(sentSuccessfully);
+        }
+
+        // Save history (single entry for the attempted action)
+        if (action != null && (action.equals("sms") || action.equals("email") || action.equals("whatsapp"))) {
+            reminderService.saveLeadsReminderRecorder(entity);
+        }
+
+        if (sentSuccessfully) {
+            redirectAttrib.addFlashAttribute("Success", "Reminder sent successfully.");
+        } else {
+            redirectAttrib.addFlashAttribute("Failure", "Reminder could not be sent.");
+        }
+
+        return new ModelAndView("redirect:form_view_lead_reminder_confirmation?leadId=" + leadId);
+    }
 	
 	private int send_send_emailReminder(@ModelAttribute("REMINDER_SERVICE") ReminderServiceObj reminderServiceObj,BindingResult result,final RedirectAttributes redirectAttrib) {
-		int executionStatus =0;
+		int executionStatus = -1;
 		UserDetailsObj loggedUser = getLoggedInUser();
-		
-		EmailMessageVO emailMessageVo = reminderServiceObj.getEmailMessageVo();
+
+        EmailMessageVO emailMessageVo = reminderServiceObj.getEmailMessageVo();
+
+        if (emailMessageVo == null) {
+            emailMessageVo = new EmailMessageVO();
+            reminderServiceObj.setEmailMessageVo(emailMessageVo);
+        }
 		emailMessageVo.setReminderServiceMessage(true);
 		emailValidator.validate(emailMessageVo, result);
     	//System.out.println("Email Validator Rsult is " + result);
-		if(result.hasErrors()) {
-			//modelview = form_view_lead_reminder_details(reminderServiceObj.getLeadsRecorderObj().getLeadId(),"0",reminderServiceObj,result,redirectAttrib);
-    		//return modelview;
-			executionStatus = -1;
-    	}
+        if (result.hasErrors()) {
+            result.getAllErrors().forEach(e -> System.out.println(e));
+            return -1;
+        }
 		else {
 			try {
 				reminderService.send_lead_reminder_email_msg(emailMessageVo,reminderServiceObj.getLeadsRecorderObj().getContactName(),loggedUser);
@@ -285,6 +275,52 @@ public class ReminderServiceController {
 		}*/
 		return returnCode;
 	}
+
+
+    private boolean sendReminderWhatsApp(ReminderServiceObj reminderServiceObj) {
+
+        try {
+            TgLeadsRecorderVO leadVO = reminderServiceObj.getLeadsRecorderObj();
+            Tg_Leads_Recorder_Entity leadEntity = leadService.findLeadRecordById(leadVO.getLeadId());
+
+            ClientObj client = clientService.find_ClientBy_Id(leadEntity.getContactId());
+            UserDetailsObj rep = getLoggedInUser();
+
+            // Use SAME reference format everywhere
+            String leadRef = "Q-" + leadEntity.getLeadId() + "-" +
+                    b2bPartnerService.findPartnerById(leadEntity.getLeadSource()).getPartnerShortName();
+
+            String status = commonService
+                    .find_DealStatusById(leadEntity.getLeadStatus())
+                    .getWorkloadStatusName();
+
+            Map<Integer, String> params = new HashMap<>();
+            params.put(1, client.getClientName());
+            params.put(2, leadRef);
+            params.put(3, rep.getName());
+            params.put(4, status);
+            params.put(5, String.valueOf(rep.getMobile()));  // ✅ FIXED
+            params.put(6, rep.getEmail());
+
+            boolean sent = whatsappService.sendTemplateMessage(
+                    String.valueOf(client.getMobile()),
+                    whatsappFollowupTemplateId,
+                    params
+            );
+
+            if (sent) {
+                System.out.println("WhatsApp SENT successfully to: " + client.getMobile());
+            } else {
+                System.out.println("WhatsApp FAILED for: " + client.getMobile());
+            }
+
+            return sent;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 	
 }
 

@@ -43,9 +43,7 @@
 					<form:hidden path = "smsVo.to" />
 					<form:hidden path = "smsVo.message" />
 					
-					<form:hidden path = "bothSmsAndEmailReminder" />
-					<form:hidden path = "smsReminder" />
-					<form:hidden path = "emailReminder" />
+
                         <div align="center"><b>
                                 <font color="green"> ${Success} </font>
                                 <font color="red"> ${Failure}</font>
@@ -201,6 +199,7 @@
                                                 <th width="300px;">S.No.</th>
                                                 <th width="300px;">SMS</th>
                                                 <th width="300px;">Email</th>
+                                                <th width="300px;">WhatsApp</th>
                                                 <th width="300px;">Reminder DateTime</th>
                                             </tr>
 
@@ -211,6 +210,7 @@
                                                     <td style="border-bottom:2px solid black;border-right:2px solid black">${count=count-1}</td>
                                                     <td style="border-bottom:2px solid black;border-right:2px solid black">${leadReminderRecorder.smsSent}</td>
                                                     <td style="border-bottom:2px solid black;border-right:2px solid black">${leadReminderRecorder.emailSent}</td>
+                                                    <td style="border-bottom:2px solid black;border-right:2px solid black">${leadReminderRecorder.whatsappSent}</td>
                                                     <td style="border-bottom:2px solid black">
                                                         <fmt:formatDate type="both" dateStyle="medium"
                                                             timeStyle="medium" pattern="dd-MMM-yyyy"
@@ -240,7 +240,6 @@
                                         disabled="true" />
                                 </div>
                                 <div class="due_today_task_data_btns">
-                                    <input type="submit" style="background:#32cd32;color:white" name="SendEmail" value="Send SMS Reminder" id="sms" />
                                 </div>
                             </div>
 
@@ -277,14 +276,35 @@
                                     <form:textarea path="emailMessageVo.emailMessage" rows="4" cols="65" />
                                 </div>
                                 <div class="due_today_task_data_btns">
-                                    <input type="submit" style="background:#32cd32;color:white" name="SendEmail" value="Send Email Reminder" id="email" onclick="return setReminderMode()" />
+
                                 </div>
                             </div>
+                            </div>
+
+
+                            <div class="due_today_task_data_btns"
+                                 style="display:flex;gap:15px;justify-content:center;margin-top:20px;">
+
+                                <button type="submit" name="action" value="sms"
+                                    style="background:#32cd32;color:white;">
+                                    Send SMS Reminder
+                                </button>
+
+                                <button type="submit" name="action" value="email"
+                                    style="background:#023e8a;color:white;">
+                                    Send Email Reminder
+                                </button>
+
+                                <button type="submit" name="action" value="whatsapp"
+                                    style="background:#25D366;color:white;">
+                                    Send WhatsApp Reminder
+                                </button>
+
                             </div>
                             <!-- ########################### email reminder ####################### -->
                             <div class="due_today_task_data_btns"
                                 style="display:flex;justify-content: center;margin-bottom: 50px;">
-                                <input type="submit" name="SendEmail" value="Send Both Sms-Email Reminder" id="both"  style="background:#023e8a;color:white"/>
+
                                 <a href="view_filter_leads?page=${page}" style="background:#023e8a;color:white">Cancel</a>
                             </div>
 
@@ -292,34 +312,7 @@
                     </form:form>
 
 
-					<script>
-					$('#sms, #email,#both').click(function () {
-						   if (this.id == 'sms') {
-							   $("#smsReminder").attr('value','true');
-							   $("#bothSmsAndEmailReminder").attr('value','false');
-							   $("#emailReminder").attr('value','false');
-						   }
-						   else if (this.id == 'email') {
-							   $("#emailReminder").attr('value','true');
-							   $("#smsReminder").attr('value','false');
-							   $("#bothSmsAndEmailReminder").attr('value','false');
-						   }
-						   else if (this.id == 'both') {
-							   $("#bothSmsAndEmailReminder").attr('value','true');
-							   $("#smsReminder").attr('value','false');
-							   $("#emailReminder").attr('value','false');
-							}
-						});
 
-					
-					/*
-					function setNotifyAction(clicked){ 
-						alert(clicked);
-						$("#bothSmsAndEmailReminder").attr('value','true');
-						alert($("#bothSmsAndEmailReminder").val());
-					}
-					*/
-					</script>
 
                 </body>
 
