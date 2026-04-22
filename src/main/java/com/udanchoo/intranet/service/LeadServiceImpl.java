@@ -76,26 +76,76 @@ public class LeadServiceImpl {
 
 	public TgLeadsRecorderVO getLeadVoFromEntity(Tg_Leads_Recorder_Entity tgLeadEntity) {
 		TgLeadsRecorderVO tgLeadVO = new TgLeadsRecorderVO(tgLeadEntity);
-		tgLeadVO.setSourceName(commonService.findDestinationById(tgLeadVO.getSource()).getCityName());
-		tgLeadVO.setDestinationName(commonService.findDestinationById(tgLeadVO.getDestination()).getCityName());
+		// Handle null source/destination for social media imported leads
+		if (tgLeadVO.getSource() != null) {
+			tgLeadVO.setSourceName(commonService.findDestinationById(tgLeadVO.getSource()).getCityName());
+		} else {
+			tgLeadVO.setSourceName("N/A");
+		}
+		if (tgLeadVO.getDestination() != null) {
+			tgLeadVO.setDestinationName(commonService.findDestinationById(tgLeadVO.getDestination()).getCityName());
+		} else {
+			tgLeadVO.setDestinationName("N/A");
+		}
 		tgLeadVO.setContactName(clientService.find_ClientBy_Id(tgLeadVO.getContactId()).getClientName());
+		// Handle null b2bPartner for social media imported leads
 		Tg_B2b_Partner_Entity b2bPartner = b2bPartnerService.findPartnerById(tgLeadVO.getLeadSource());
-		tgLeadVO.setLeadSourceShortName(b2bPartner.getPartnerShortName());
-		tgLeadVO.setLeadSourceName(b2bPartner.getPartnerName());
-		tgLeadVO.setStatusName(commonService.find_DealStatusById(tgLeadVO.getLeadStatus()).getWorkloadStatusName());
-		tgLeadVO.setLeadOwnerName(userService.findUserByID(tgLeadVO.getLeadOwner()).getUsername());
+		if (b2bPartner != null) {
+			tgLeadVO.setLeadSourceShortName(b2bPartner.getPartnerShortName());
+			tgLeadVO.setLeadSourceName(b2bPartner.getPartnerName());
+		} else {
+			tgLeadVO.setLeadSourceShortName("Social Media");
+			tgLeadVO.setLeadSourceName("Social Media Lead");
+		}
+		// Handle null deal status for social media imported leads
+		try {
+			tgLeadVO.setStatusName(commonService.find_DealStatusById(tgLeadVO.getLeadStatus()).getWorkloadStatusName());
+		} catch (Exception e) {
+			tgLeadVO.setStatusName("Open");
+		}
+		// Handle null lead owner
+		try {
+			tgLeadVO.setLeadOwnerName(userService.findUserByID(tgLeadVO.getLeadOwner()).getUsername());
+		} catch (Exception e) {
+			tgLeadVO.setLeadOwnerName("Unassigned");
+		}
 		return tgLeadVO;
 	}
 	
 	public TgLeadsRecorderVO updateLeadVoFromEntity(Tg_Leads_Recorder_Entity tgLeadEntity,TgLeadsRecorderVO tgLeadVO ) {
-		tgLeadVO.setSourceName(commonService.findDestinationById(tgLeadVO.getSource()).getCityName());
-		tgLeadVO.setDestinationName(commonService.findDestinationById(tgLeadVO.getDestination()).getCityName());
+		// Handle null source/destination for social media imported leads
+		if (tgLeadVO.getSource() != null) {
+			tgLeadVO.setSourceName(commonService.findDestinationById(tgLeadVO.getSource()).getCityName());
+		} else {
+			tgLeadVO.setSourceName("N/A");
+		}
+		if (tgLeadVO.getDestination() != null) {
+			tgLeadVO.setDestinationName(commonService.findDestinationById(tgLeadVO.getDestination()).getCityName());
+		} else {
+			tgLeadVO.setDestinationName("N/A");
+		}
 		tgLeadVO.setContactName(clientService.find_ClientBy_Id(tgLeadVO.getContactId()).getClientName());
+		// Handle null b2bPartner for social media imported leads
 		Tg_B2b_Partner_Entity b2bPartner = b2bPartnerService.findPartnerById(tgLeadVO.getLeadSource());
-		tgLeadVO.setLeadSourceShortName(b2bPartner.getPartnerShortName());
-		tgLeadVO.setLeadSourceName(b2bPartner.getPartnerName());
-		tgLeadVO.setStatusName(commonService.find_DealStatusById(tgLeadVO.getLeadStatus()).getWorkloadStatusName());
-		tgLeadVO.setLeadOwnerName(userService.findUserByID(tgLeadVO.getLeadOwner()).getUsername());
+		if (b2bPartner != null) {
+			tgLeadVO.setLeadSourceShortName(b2bPartner.getPartnerShortName());
+			tgLeadVO.setLeadSourceName(b2bPartner.getPartnerName());
+		} else {
+			tgLeadVO.setLeadSourceShortName("Social Media");
+			tgLeadVO.setLeadSourceName("Social Media Lead");
+		}
+		// Handle null deal status for social media imported leads
+		try {
+			tgLeadVO.setStatusName(commonService.find_DealStatusById(tgLeadVO.getLeadStatus()).getWorkloadStatusName());
+		} catch (Exception e) {
+			tgLeadVO.setStatusName("Open");
+		}
+		// Handle null lead owner
+		try {
+			tgLeadVO.setLeadOwnerName(userService.findUserByID(tgLeadVO.getLeadOwner()).getUsername());
+		} catch (Exception e) {
+			tgLeadVO.setLeadOwnerName("Unassigned");
+		}
 		return tgLeadVO;
 	}
 	

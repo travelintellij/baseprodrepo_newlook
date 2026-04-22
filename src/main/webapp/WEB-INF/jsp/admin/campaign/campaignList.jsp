@@ -57,6 +57,17 @@
 
         <font color="green"> ${Success} </font>
         <font color="red"> ${Error}</font>
+
+        <c:if test="${not empty successMsg}">
+            <div style="background:#d4edda;color:#155724;border:1px solid #c3e6cb;padding:10px 16px;border-radius:5px;margin:10px 0;font-weight:600;">
+                <i class="fa fa-check-circle"></i> ${successMsg}
+            </div>
+        </c:if>
+        <c:if test="${not empty errorMsg}">
+            <div style="background:#f8d7da;color:#721c24;border:1px solid #f5c6cb;padding:10px 16px;border-radius:5px;margin:10px 0;font-weight:600;">
+                <i class="fa fa-times-circle"></i> ${errorMsg}
+            </div>
+        </c:if>
     </div>
 
     <div class="search-clients-sec bs">

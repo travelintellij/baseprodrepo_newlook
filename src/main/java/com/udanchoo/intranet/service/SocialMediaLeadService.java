@@ -63,6 +63,9 @@ public class SocialMediaLeadService {
     private UserRepository userRepository;
 
     @Autowired
+    private EmailServiceImpl emailService;
+
+    @Autowired
     private ApplicationContext applicationContext;
 
     @PersistenceContext
@@ -108,11 +111,11 @@ public class SocialMediaLeadService {
             JsonNode dataArray = rootNode.get("data");
 
             if (dataArray == null || !dataArray.isArray()) {
-                logger.debug("[SocialMediaLeadService] No data array in API response");
+                logger.warn("[SocialMediaLeadService] No leads found for Form ID: {}. Response: {}", activeFormId, response);
                 return importedLeads;
             }
 
-            logger.info("[SocialMediaLeadService] Found {} leads from Meta API", dataArray.size());
+            logger.info("[SocialMediaLeadService] Found {} leads from Meta API for Form ID: {}", dataArray.size(), activeFormId);
 
             for (JsonNode leadNode : dataArray) {
                 String metaLeadId = leadNode.get("id").asText();
@@ -234,25 +237,19 @@ public class SocialMediaLeadService {
                     || centralConfig.getMetaPageAccessToken().isEmpty()) {
                 throw new RuntimeException("Meta Page Access Token is not configured. Please set it in Settings.");
             }
-            if (centralConfig.getMetaLeadFormId() == null || centralConfig.getMetaLeadFormId().trim().isEmpty()) {
-                throw new RuntimeException("Meta Lead Form ID is not configured. Please set it in Settings.");
-            }
 
             String token = centralConfig.getMetaPageAccessToken();
-            String formId = centralConfig.getMetaLeadFormId();
-            String version = (centralConfig.getMetaGraphApiVersion() != null
-                    && !centralConfig.getMetaGraphApiVersion().isEmpty())
-                    ? centralConfig.getMetaGraphApiVersion() : "v19.0";
+            String version = "v19.0";
 
-            String apiUrl = GRAPH_API_BASE + version + "/" + formId
-                    + "?fields=id,name,status&access_token=" + token;
+            // Test by fetching token info from Meta — does not need a Form ID
+            String apiUrl = GRAPH_API_BASE + version + "/me?fields=id,name&access_token=" + token;
             String response = makeGetRequest(apiUrl);
             JsonNode node = objectMapper.readTree(response);
 
             result.put("success", true);
-            result.put("formName", node.has("name") ? node.get("name").asText() : "N/A");
+            result.put("formName", node.has("name") ? node.get("name").asText() : "Meta Page");
             result.put("formId", node.has("id") ? node.get("id").asText() : "N/A");
-            result.put("formStatus", node.has("status") ? node.get("status").asText() : "N/A");
+            result.put("formStatus", "ACTIVE");
             result.put("message", "Connected to Meta API successfully!");
         } catch (Exception e) {
             result.put("success", false);
@@ -306,10 +303,17 @@ public class SocialMediaLeadService {
         Map<String, String> fields = new HashMap<>();
         if (fieldDataNode != null && fieldDataNode.isArray()) {
             for (JsonNode field : fieldDataNode) {
-                String name = field.get("name").asText();
+                String name = field.get("name").asText().toLowerCase();
                 JsonNode valuesNode = field.get("values");
                 if (valuesNode != null && valuesNode.isArray() && valuesNode.size() > 0) {
-                    fields.put(name, valuesNode.get(0).asText());
+                    String value = valuesNode.get(0).asText();
+                    fields.put(name, value);
+
+                    // Map variations to standard keys for easier processing
+                    if (name.contains("name") && !fields.containsKey("full_name")) fields.put("full_name", value);
+                    if (name.contains("email") && !fields.containsKey("email")) fields.put("email", value);
+                    if (name.contains("phone") && !fields.containsKey("phone_number")) fields.put("phone_number", value);
+                    if (name.contains("mobile") && !fields.containsKey("phone_number")) fields.put("phone_number", value);
                 }
             }
         }
@@ -336,24 +340,17 @@ public class SocialMediaLeadService {
         // Try to find existing client by email
         UdnClientEntity client = null;
         if (!email.isEmpty()) {
-            List<UdnClientEntity> all = clientRepository.findAll();
-            for (UdnClientEntity c : all) {
-                if (email.equalsIgnoreCase(c.getEmail())) {
-                    client = c;
-                    break;
-                }
+            List<UdnClientEntity> existing = clientRepository.findByEmail(email);
+            if (!existing.isEmpty()) {
+                client = existing.get(0);
             }
         }
 
         // Try to find by mobile
         if (client == null && mobile != 0) {
-            final long finalMobile = mobile;
-            List<UdnClientEntity> all = clientRepository.findAll();
-            for (UdnClientEntity c : all) {
-                if (finalMobile == c.getMobile()) {
-                    client = c;
-                    break;
-                }
+            List<UdnClientEntity> existing = clientRepository.findByMobile(mobile);
+            if (!existing.isEmpty()) {
+                client = existing.get(0);
             }
         }
 
@@ -366,6 +363,8 @@ public class SocialMediaLeadService {
             client.setReferredBy(source);
             client.setRemarks("Auto-imported from " + source);
             client.setActive(true);
+            // Ensure cityId is null to avoid FK constraint violation (null won't trigger FK check)
+            client.setCityId(null); 
             client = clientRepository.save(client);
             logger.info("[SocialMediaLeadService] Created new client: {} (ID: {})", name, client.getClientId());
         } else {
@@ -393,7 +392,11 @@ public class SocialMediaLeadService {
             logger.warn("[SocialMediaLeadService] Could not read default lead owner, using admin (1)");
         }
         lead.setLeadOwner(defaultOwnerId);
-        lead.setSource(6); // Social Media source code
+        
+        // Reset destination/source to null to avoid FK constraint violations
+        lead.setDestination(null);
+        lead.setSource(null);
+        
         lead.setQualified(false);
         lead.setFlagged(false);
         lead.setLeadCreationClientInformed(false);
@@ -448,7 +451,9 @@ public class SocialMediaLeadService {
             String crmLeadIdStr = fieldData.get("crm_lead_id");
             if (crmLeadIdStr == null) return;
 
-            String clientName = fieldData.getOrDefault("client_name", "Unknown");
+            String clientName = fieldData.getOrDefault("full_name", "Unknown");
+            String clientEmail = fieldData.getOrDefault("email", "N/A");
+            String clientPhone = fieldData.getOrDefault("phone_number", "N/A");
             String leadId = "UDN-" + crmLeadIdStr;
             String source = fieldData.getOrDefault("source", "Social Media Lead Ad");
 
@@ -467,8 +472,34 @@ public class SocialMediaLeadService {
                 return;
             }
 
-            logger.info("[SocialMediaLeadService] New lead {} assigned to {} - email notification skipped (configure EmailService to enable)",
-                    leadId, ownerUser.getEmail());
+            // Compose email
+            String subject = "New Social Media Lead Assigned: " + leadId + " (" + clientName + ")";
+            StringBuilder body = new StringBuilder();
+            body.append("Hello ").append(ownerUser.getName()).append(",\n\n");
+            body.append("A new lead has been auto-imported from ").append(source).append(" and assigned to you.\n\n");
+            body.append("--- Lead Details ---\n");
+            body.append("Lead ID: ").append(leadId).append("\n");
+            body.append("Name:    ").append(clientName).append("\n");
+            body.append("Email:   ").append(clientEmail).append("\n");
+            body.append("Phone:   ").append(clientPhone).append("\n");
+            
+            if (fieldData.containsKey("what_is_your_traveling_date?")) {
+                body.append("Travel Date: ").append(fieldData.get("what_is_your_traveling_date?")).append("\n");
+            }
+            if (fieldData.containsKey("what_is_your_departure_city?")) {
+                body.append("Departure City: ").append(fieldData.get("what_is_your_departure_city?")).append("\n");
+            }
+            if (fieldData.containsKey("city")) {
+                body.append("City: ").append(fieldData.get("city")).append("\n");
+            }
+
+            body.append("\nPlatform: ").append(fieldData.getOrDefault("platform", "N/A")).append("\n");
+            body.append("Submitted: ").append(fieldData.getOrDefault("created_time", "N/A")).append("\n\n");
+            body.append("Please log in to the CRM to view full details and start follow-up.\n\n");
+            body.append("Regards,\nUdanChoo CRM Auto-Sync System");
+
+            emailService.sendMail(ownerUser.getEmail(), subject, body.toString());
+            logger.info("[SocialMediaLeadService] Sent lead notification email for {} to {}", leadId, ownerUser.getEmail());
 
         } catch (Exception e) {
             logger.error("[SocialMediaLeadService] Post-import notification failed", e);

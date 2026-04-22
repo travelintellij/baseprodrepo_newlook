@@ -7,10 +7,13 @@ import com.udanchoo.intranet.repository.UdnCentralConfigRepository;
 import com.udanchoo.intranet.service.SocialMediaLeadService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import com.udanchoo.intranet.model.UserDetailsObj;
+import com.udanchoo.intranet.service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.HashMap;
 import java.util.List;
@@ -45,6 +48,9 @@ public class CampaignController {
     @Autowired
     private UdnCentralConfigRepository centralConfigRepository;
 
+    @Autowired
+    private UserDetailsServiceImpl userDetailsService;
+
     // ========== Campaign Form CRUD ==========
 
     @GetMapping("/campaign/list")
@@ -61,13 +67,30 @@ public class CampaignController {
     }
 
     @PostMapping("/campaign/save")
-    public String saveCampaignForm(@ModelAttribute CampaignFormEntity campaignFormEntity) {
+    public String saveCampaignForm(@ModelAttribute CampaignFormEntity campaignFormEntity,
+                                   RedirectAttributes ra) {
         try {
             if (campaignFormEntity.getActive() == null) campaignFormEntity.setActive(true);
+
+            // ── Duplicate Form ID check ──
+            String newFormId = campaignFormEntity.getFormId();
+            if (newFormId != null && !newFormId.trim().isEmpty()) {
+                List<CampaignFormEntity> existing = campaignFormRepository.findByFormId(newFormId.trim());
+                boolean isDuplicate = existing.stream().anyMatch(e ->
+                        !e.getCampaignFormId().equals(campaignFormEntity.getCampaignFormId()));
+                if (isDuplicate) {
+                    ra.addFlashAttribute("errorMsg",
+                            "A campaign with Form ID '" + newFormId + "' already exists. Each Form ID must be unique.");
+                    return "redirect:/campaign/list";
+                }
+            }
+
             campaignFormRepository.save(campaignFormEntity);
             logger.info("[CampaignController] Saved campaign form: {}", campaignFormEntity.getFormName());
+            ra.addFlashAttribute("successMsg", "Campaign saved successfully!");
         } catch (Exception e) {
             logger.error("[CampaignController] Error saving campaign form", e);
+            ra.addFlashAttribute("errorMsg", "Error saving campaign: " + e.getMessage());
         }
         return "redirect:/campaign/list";
     }
@@ -90,11 +113,18 @@ public class CampaignController {
         UdnCentralConfigEntity config = centralConfigRepository.findTopByOrderByIdAsc();
         if (config == null) config = new UdnCentralConfigEntity();
         model.addAttribute("config", config);
+        // Populate lead owner dropdown
+        List<UserDetailsObj> activeUsersList = userDetailsService.findAllActiveUsers();
+        java.util.Map<Integer, String> activeUsersMap = activeUsersList.stream()
+                .collect(java.util.stream.Collectors.toMap(
+                        UserDetailsObj::getUserId, UserDetailsObj::getUsername));
+        model.addAttribute("ACTIVE_USERS_MAP", activeUsersMap);
         return "admin/campaign/centralConfig";
     }
 
     @PostMapping("/campaign/central-config/save")
-    public String saveCentralConfig(@ModelAttribute UdnCentralConfigEntity config) {
+    public String saveCentralConfig(@ModelAttribute UdnCentralConfigEntity config,
+                                    RedirectAttributes redirectAttribs) {
         try {
             UdnCentralConfigEntity existing = centralConfigRepository.findTopByOrderByIdAsc();
             if (existing != null) {
@@ -102,8 +132,10 @@ public class CampaignController {
             }
             centralConfigRepository.save(config);
             logger.info("[CampaignController] Central config saved successfully");
+            redirectAttribs.addFlashAttribute("successMsg", "Settings saved successfully!");
         } catch (Exception e) {
             logger.error("[CampaignController] Error saving central config", e);
+            redirectAttribs.addFlashAttribute("errorMsg", "Error saving settings: " + e.getMessage());
         }
         return "redirect:/campaign/central-config";
     }
@@ -119,19 +151,31 @@ public class CampaignController {
             List<Map<String, String>> importedLeads = socialMediaLeadService.fetchAndImportLeads(campaignFormId);
 
             int newLeads = 0, errors = 0;
+            List<String> errorMessages = new java.util.ArrayList<>();
             for (Map<String, String> lead : importedLeads) {
                 if ("Imported Successfully".equals(lead.get("status"))) newLeads++;
-                else if ("Error".equals(lead.get("status"))) errors++;
+                else if ("Error".equals(lead.get("status"))) {
+                    errors++;
+                    if (lead.get("message") != null) errorMessages.add(lead.get("message"));
+                }
             }
 
-            response.put("success", true);
+            String msg;
+            if (newLeads > 0 && errors == 0) {
+                msg = newLeads + " new lead(s) imported successfully!";
+            } else if (newLeads > 0) {
+                msg = newLeads + " lead(s) imported. " + errors + " failed.";
+            } else if (errors > 0) {
+                msg = errors + " lead(s) failed: " + String.join(" | ", errorMessages);
+            } else {
+                msg = "No new leads. All leads are already synced.";
+            }
+
+            response.put("success", errors == 0 || newLeads > 0);
             response.put("newLeadsImported", newLeads);
             response.put("errors", errors);
-            response.put("totalImported", socialMediaLeadService.getImportedLeadCount());
-            response.put("leads", importedLeads);
-            response.put("message", newLeads > 0
-                    ? newLeads + " new lead(s) imported successfully!" + (errors > 0 ? " (" + errors + " error(s))" : "")
-                    : (errors > 0 ? errors + " lead(s) failed to import." : "No new leads. All leads are already synced."));
+            response.put("errorDetails", errorMessages);
+            response.put("message", msg);
 
         } catch (Exception e) {
             response.put("success", false);
