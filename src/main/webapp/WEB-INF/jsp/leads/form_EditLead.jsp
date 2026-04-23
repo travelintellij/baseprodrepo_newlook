@@ -275,12 +275,16 @@
                     <div class="info-client_3" style="margin-top: 10px;">
                     <div class=" sub_info-client" >
                         <form:checkbox class="ch_c" path="leadCreationClientInformed" disabled="true"  style="width:18px;height:18px"/>
-                        <label for="">Client Informed Earlier</label>
+                        <label for="">Email Sent Earlier</label>
                         <form:hidden  path="leadCreationClientInformed"/>
                     </div>
                     <div class="sub_info-client" style="margin-left: 10px;">
                         <form:checkbox path="notifyAgain" style="width:18px;height:18px"/>
-                        <label for="">Send Registration email again</label>
+                        <label for="">Resend Email</label>
+                    </div>
+                    <div class=" sub_info-client" style="margin-left: 10px;">
+                        <form:checkbox path="whatsappInformed" style="width:18px;height:18px"/>
+                        <label for="">Inform via WhatsApp</label>
                     </div>
                 </div>
                 <div class="due_today_task_data_btns">

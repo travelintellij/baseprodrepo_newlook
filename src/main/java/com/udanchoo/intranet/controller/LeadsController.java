@@ -219,9 +219,9 @@ public class LeadsController {
 			if(leadRecorderObj.isLeadCreationClientInformed()) {
 				notifyLeadCreationTargetAudience(leadRecorderObj,"LeadCreateConfirmation.ftl",true,true);
 				notifyLeadCreationSms(leadRecorderObj);
-				if (whatsappNotifyActive) {
-					notifyLeadCreationWhatsApp(leadRecorderObj);
-				}
+			}
+			if (whatsappNotifyActive && leadRecorderObj.isWhatsappInformed()) {
+				notifyLeadCreationWhatsApp(leadRecorderObj);
 			}
 			//write email code here. 
 		}
@@ -281,7 +281,9 @@ public class LeadsController {
 				if (whatsappNotifyActive) {
 					notifyLeadCreationWhatsApp(leadRecorderObj);
 				}
-   			}
+   			} else if (whatsappNotifyActive && leadRecorderObj.isWhatsappInformed() && !orgEntity.isWhatsappInformed()) {
+				notifyLeadCreationWhatsApp(leadRecorderObj);
+			}
    			//write email code here. 
    		}
    		return modelView; 

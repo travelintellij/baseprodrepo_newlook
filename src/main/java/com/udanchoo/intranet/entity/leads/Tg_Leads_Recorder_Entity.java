@@ -68,6 +68,7 @@ public class Tg_Leads_Recorder_Entity extends AuditModel {
 	protected boolean cruise;
 	protected boolean others;
 	protected boolean leadCreationClientInformed;
+	protected boolean whatsappInformed;
  
 	
 	@ManyToMany(targetEntity = UdnTeam.class,fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -231,6 +232,7 @@ public class Tg_Leads_Recorder_Entity extends AuditModel {
 		this.cruise=leadsRecorderVo.isCruise();
 		this.others=leadsRecorderVo.isOthers();
 		this.leadCreationClientInformed=leadsRecorderVo.isLeadCreationClientInformed();
+		this.whatsappInformed=leadsRecorderVo.isWhatsappInformed();
 		this.destination=leadsRecorderVo.getDestination();
 		this.travelStartDate=leadsRecorderVo.getTravelStartDate();
 		this.travelEndDate=leadsRecorderVo.getTravelEndDate();
@@ -331,6 +333,13 @@ public class Tg_Leads_Recorder_Entity extends AuditModel {
 	}
 	public void setLeadCreationClientInformed(boolean leadCreationClientInformed) {
 		this.leadCreationClientInformed = leadCreationClientInformed;
+	}
+	
+	public boolean isWhatsappInformed() {
+		return whatsappInformed;
+	}
+	public void setWhatsappInformed(boolean whatsappInformed) {
+		this.whatsappInformed = whatsappInformed;
 	}
 	
 	public String getChildrenAgeInfo() {

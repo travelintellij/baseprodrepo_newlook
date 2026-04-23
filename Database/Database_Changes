@@ -177,3 +177,7 @@ ADD COLUMN `claimOption` ENUM('INCENTIVE', 'TARGET') NOT NULL AFTER `updated_at`
 
 ALTER TABLE tts_lead_reminder_recorder_service
 ADD COLUMN whatsapp_sent BOOLEAN DEFAULT FALSE;
+
+ALTER TABLE tg_leads_recorder
+ADD COLUMN whatsappInformed TINYINT(1) DEFAULT 0
+AFTER leadCreationClientInformed;

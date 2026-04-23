@@ -240,7 +240,11 @@
                         <div class=" info-client" style="margin-top: 10px;">
                             <div class="sub_info-client">
                                 <form:checkbox path="leadCreationClientInformed" checked="checked" style="width:18px;height:18px"/>
-                                <label for="">Inform client about the lead creation (email will be sent)</label>
+                                <label for="">Inform client through Email</label>
+                            </div>
+                            <div class="sub_info-client" style="margin-top: 5px;">
+                                <form:checkbox path="whatsappInformed" style="width:18px;height:18px"/>
+                                <label for="">Inform client through WhatsApp</label>
                             </div>
                         </div>
                         <div class="due_today_task_data_btns">
