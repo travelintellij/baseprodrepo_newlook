@@ -12,6 +12,11 @@ import com.udanchoo.intranet.repository.ClientRepository;
 import com.udanchoo.intranet.repository.TG_Leads_Repostory;
 import com.udanchoo.intranet.repository.UdnCentralConfigRepository;
 import com.udanchoo.intranet.repository.UserRepository;
+import com.udanchoo.intranet.repository.Udn_Destinations_Master_Repository;
+import com.udanchoo.intranet.entity.Udn_Destinations_Entity;
+import com.udanchoo.intranet.repository.TgB2bPartnersRepository;
+import com.udanchoo.intranet.entity.Tg_B2b_Partner_Entity;
+import com.udanchoo.intranet.util.UdanChooConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,6 +66,12 @@ public class SocialMediaLeadService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private Udn_Destinations_Master_Repository destinationRepository;
+
+    @Autowired
+    private TgB2bPartnersRepository b2bPartnerRepository;
 
     @Autowired
     private EmailServiceImpl emailService;
@@ -134,7 +145,7 @@ public class SocialMediaLeadService {
 
                 try {
                     Map<String, String> result = applicationContext.getBean(SocialMediaLeadService.class)
-                            .processAndImportLead(fieldData);
+                            .processAndImportLead(fieldData, formConfig);
                     importedLeads.add(result);
                     notifyLeadOwnerFromFieldData(result);
                 } catch (Exception ex) {
@@ -149,7 +160,7 @@ public class SocialMediaLeadService {
             // Handle pagination
             if (rootNode.has("paging") && rootNode.get("paging").has("next")) {
                 String nextPageUrl = rootNode.get("paging").get("next").asText();
-                importedLeads.addAll(fetchAndImportFromUrl(nextPageUrl));
+                importedLeads.addAll(fetchAndImportFromUrl(nextPageUrl, formConfig));
             }
 
         } catch (Exception e) {
@@ -167,14 +178,14 @@ public class SocialMediaLeadService {
      * Process a single lead in its own transaction.
      */
     @Transactional
-    public Map<String, String> processAndImportLead(Map<String, String> fieldData) {
+    public Map<String, String> processAndImportLead(Map<String, String> fieldData, CampaignFormEntity formConfig) {
         String platform = fieldData.getOrDefault("platform", "fb");
         String metaLeadId = fieldData.getOrDefault("meta_lead_id", "");
         String createdTime = fieldData.getOrDefault("created_time", "");
         String sourceName = "ig".equals(platform) ? "Instagram Lead Ad" : "Facebook Lead Ad";
 
         UdnClientEntity client = findOrCreateClient(fieldData, sourceName);
-        Tg_Leads_Recorder_Entity lead = createLead(client, fieldData, sourceName);
+        Tg_Leads_Recorder_Entity lead = createLead(client, fieldData, sourceName, formConfig);
 
         applicationContext.getBean(SocialMediaLeadService.class)
                 .logImportedLead(metaLeadId, lead.getLeadId(), platform, createdTime);
@@ -262,7 +273,7 @@ public class SocialMediaLeadService {
     // Private Helper Methods
     // ======================================================
 
-    private List<Map<String, String>> fetchAndImportFromUrl(String url) {
+    private List<Map<String, String>> fetchAndImportFromUrl(String url, CampaignFormEntity formConfig) {
         List<Map<String, String>> results = new ArrayList<>();
         try {
             String response = makeGetRequest(url);
@@ -281,7 +292,7 @@ public class SocialMediaLeadService {
 
                     try {
                         Map<String, String> result = applicationContext.getBean(SocialMediaLeadService.class)
-                                .processAndImportLead(fieldData);
+                                .processAndImportLead(fieldData, formConfig);
                         results.add(result);
                         notifyLeadOwnerFromFieldData(result);
                     } catch (Exception ex) {
@@ -374,12 +385,12 @@ public class SocialMediaLeadService {
         return client;
     }
 
-    private Tg_Leads_Recorder_Entity createLead(UdnClientEntity client, Map<String, String> fieldData, String source) {
+    private Tg_Leads_Recorder_Entity createLead(UdnClientEntity client, Map<String, String> fieldData, String source, CampaignFormEntity formConfig) {
         Tg_Leads_Recorder_Entity lead = new Tg_Leads_Recorder_Entity();
         lead.setContactId(client.getClientId());
         lead.setAdults(1);
         lead.setChildren(0);
-        lead.setLeadStatus(101); // Open
+        lead.setLeadStatus(UdanChooConstants.DEAL_FRESH_CREATED_LEAD_WL_STATUS); // Open
 
         // Default lead owner from Central Config
         int defaultOwnerId = 1;
@@ -393,38 +404,130 @@ public class SocialMediaLeadService {
         }
         lead.setLeadOwner(defaultOwnerId);
         
-        // Reset destination/source to null to avoid FK constraint violations
-        lead.setDestination(null);
-        lead.setSource(null);
+        // Resolve Destination: Default to "Unknown" if not provided
+        Integer destinationId = null;
+        String destName = fieldData.get("destination");
+        if (destName == null || destName.trim().isEmpty()) {
+            destName = fieldData.get("what_is_your_destination?");
+        }
+        if (destName == null || destName.trim().isEmpty()) {
+            destName = fieldData.get("city");
+        }
         
+        // Fallback to Campaign's defined destination if provided
+        if ((destName == null || destName.trim().isEmpty()) && formConfig != null) {
+            destName = formConfig.getDestination();
+        }
+        
+        if (destName != null && !destName.trim().isEmpty()) {
+            List<Udn_Destinations_Entity> dests = destinationRepository.findByCityNameIgnoreCase(destName.trim());
+            if (!dests.isEmpty()) {
+                destinationId = dests.get(0).getDestinationId();
+            } else {
+                destinationId = getUnknownDestinationId();
+            }
+        } else {
+            destinationId = getUnknownDestinationId();
+        }
+        
+        lead.setDestination(destinationId);
+        lead.setLeadSource(getDefaultDigitalMarketingSourceId());
+        lead.setSource(getUnknownDestinationId());
+        
+        // Resolve TSD & TED: Default to present date if not provided
+        java.sql.Date sqlNow = new java.sql.Date(System.currentTimeMillis());
+        java.sql.Date tsd = null;
+        if (fieldData.containsKey("what_is_your_traveling_date?")) {
+            java.util.Date parsed = tryParseDate(fieldData.get("what_is_your_traveling_date?"));
+            if (parsed != null) {
+                tsd = new java.sql.Date(parsed.getTime());
+            }
+        }
+        if (tsd == null) {
+            tsd = sqlNow;
+        }
+        
+        lead.setTravelStartDate(tsd);
+        
+        // TED defaults to TSD if not provided separately
+        java.sql.Date ted = null;
+        if (fieldData.containsKey("what_is_your_return_date?")) {
+            java.util.Date parsed = tryParseDate(fieldData.get("what_is_your_return_date?"));
+            if (parsed != null) {
+                ted = new java.sql.Date(parsed.getTime());
+            }
+        }
+        if (ted == null) {
+            ted = tsd; // Or sqlNow
+        }
+        
+        lead.setTravelEndDate(ted);
+        
+        // Inherit tentative cost and service from Campaign config
+        if (formConfig != null) {
+            lead.setTentativeCost(formConfig.getTentativeCost() != null ? formConfig.getTentativeCost() : 0);
+            
+            String defService = formConfig.getDefaultService();
+            if (defService != null && !defService.trim().isEmpty()) {
+                String[] selectedServices = defService.split(",");
+                for (String serviceCode : selectedServices) {
+                    serviceCode = serviceCode.trim();
+                    if (UdanChooConstants.WORKLOAD_FLT_CODE.equalsIgnoreCase(serviceCode)) lead.setFlight(true);
+                    else if (UdanChooConstants.WORKLOAD_HTL_CODE.equalsIgnoreCase(serviceCode)) lead.setHotel(true);
+                    else if (UdanChooConstants.WORKLOAD_LDP_CODE.equalsIgnoreCase(serviceCode)) lead.setLandPackage(true);
+                    else if (UdanChooConstants.WORKLOAD_VSA_CODE.equalsIgnoreCase(serviceCode)) lead.setVisa(true);
+                    else if (UdanChooConstants.WORKLOAD_TRN_CODE.equalsIgnoreCase(serviceCode)) lead.setTransfers(true);
+                    else if (UdanChooConstants.WORKLOAD_STS_CODE.equalsIgnoreCase(serviceCode)) lead.setSightseeing(true);
+                    else if (UdanChooConstants.WORKLOAD_INS_CODE.equalsIgnoreCase(serviceCode)) lead.setInsurance(true);
+                    else if (UdanChooConstants.WORKLOAD_CRS_CODE.equalsIgnoreCase(serviceCode)) lead.setCruise(true);
+                    else if (UdanChooConstants.WORKLOAD_OTH_CODE.equalsIgnoreCase(serviceCode)) lead.setOthers(true);
+                    
+                    // Also handle the internal names used in the JSP before
+                    else if ("flight".equalsIgnoreCase(serviceCode)) lead.setFlight(true);
+                    else if ("hotel".equalsIgnoreCase(serviceCode)) lead.setHotel(true);
+                    else if ("landPackage".equalsIgnoreCase(serviceCode)) lead.setLandPackage(true);
+                    else if ("visa".equalsIgnoreCase(serviceCode)) lead.setVisa(true);
+                    else if ("transfers".equalsIgnoreCase(serviceCode)) lead.setTransfers(true);
+                    else if ("sightseeing".equalsIgnoreCase(serviceCode)) lead.setSightseeing(true);
+                    else if ("insurance".equalsIgnoreCase(serviceCode)) lead.setInsurance(true);
+                    else if ("cruise".equalsIgnoreCase(serviceCode)) lead.setCruise(true);
+                    else if ("others".equalsIgnoreCase(serviceCode)) lead.setOthers(true);
+                }
+            }
+        }
+
         lead.setQualified(false);
         lead.setFlagged(false);
         lead.setLeadCreationClientInformed(false);
 
         // Build remarks from lead form data
-        StringBuilder remarks = new StringBuilder();
-        remarks.append("[").append(source).append("]\n");
+        StringBuilder internalRemarks = new StringBuilder();
+        internalRemarks.append("[").append(source).append("]\n");
 
+        if (fieldData.containsKey("email")) {
+            internalRemarks.append("Email: ").append(fieldData.get("email")).append("\n");
+        }
+        if (fieldData.containsKey("phone_number")) {
+            internalRemarks.append("Phone: ").append(fieldData.get("phone_number")).append("\n");
+        }
         if (fieldData.containsKey("what_is_your_traveling_date?")) {
-            remarks.append("Travel Date: ").append(fieldData.get("what_is_your_traveling_date?")).append("\n");
+            internalRemarks.append("Travel Date: ").append(fieldData.get("what_is_your_traveling_date?")).append("\n");
         }
         if (fieldData.containsKey("what_is_your_departure_city?")) {
-            remarks.append("Departure City: ").append(fieldData.get("what_is_your_departure_city?")).append("\n");
+            internalRemarks.append("Departure City: ").append(fieldData.get("what_is_your_departure_city?")).append("\n");
         }
         if (fieldData.containsKey("city")) {
-            remarks.append("City: ").append(fieldData.get("city")).append("\n");
+            internalRemarks.append("City: ").append(fieldData.get("city")).append("\n");
         }
-        remarks.append("Meta Lead ID: ").append(fieldData.getOrDefault("meta_lead_id", "N/A")).append("\n");
-        remarks.append("Platform: ").append(fieldData.getOrDefault("platform", "N/A")).append("\n");
-        remarks.append("Submitted: ").append(fieldData.getOrDefault("created_time", "N/A"));
+        internalRemarks.append("Meta Lead ID: ").append(fieldData.getOrDefault("meta_lead_id", "N/A")).append("\n");
+        internalRemarks.append("Platform: ").append(fieldData.getOrDefault("platform", "N/A")).append("\n");
+        internalRemarks.append("Imported: ").append(new Date());
 
-        String remarksStr = remarks.toString();
-        if (remarksStr.length() > 250) remarksStr = remarksStr.substring(0, 250) + "...";
-        lead.setClientRemarks(remarksStr);
-
-        String internalRemarks = "Auto-imported from " + source + " on " + new Date();
-        if (internalRemarks.length() > 250) internalRemarks = internalRemarks.substring(0, 250) + "...";
-        lead.setInternalRemarks(internalRemarks);
+        String internalRemarksStr = internalRemarks.toString();
+        if (internalRemarksStr.length() > 250) internalRemarksStr = internalRemarksStr.substring(0, 250) + "...";
+        
+        lead.setInternalRemarks(internalRemarksStr);
+        lead.setClientRemarks(""); // Keep empty as requested
 
         Date now = new Date();
         lead.setCreatedAt(now);
@@ -540,5 +643,36 @@ public class SocialMediaLeadService {
             } catch (Exception ignored) {}
         }
         return null;
+    }
+
+    private Integer getUnknownDestinationId() {
+        List<Udn_Destinations_Entity> list = destinationRepository.findByCityNameIgnoreCase("Unknown");
+        if (!list.isEmpty()) {
+            return list.get(0).getDestinationId();
+        }
+        Udn_Destinations_Entity unknown = new Udn_Destinations_Entity();
+        unknown.setCityName("Unknown");
+        unknown.setCountryCode("UN");
+        unknown.setCountryName("Unknown");
+        unknown.setActive(true);
+        unknown = destinationRepository.save(unknown);
+        return unknown.getDestinationId();
+    }
+
+    private Integer getDefaultDigitalMarketingSourceId() {
+        List<Tg_B2b_Partner_Entity> partners = b2bPartnerRepository.find_All_Active_Agents();
+        for (Tg_B2b_Partner_Entity p : partners) {
+            if ("Digital Marketing".equalsIgnoreCase(p.getPartnerName())) {
+                return p.getPartnerId();
+            }
+        }
+        
+        Tg_B2b_Partner_Entity dmPartner = new Tg_B2b_Partner_Entity();
+        dmPartner.setPartnerName("Digital Marketing");
+        dmPartner.setPartnerShortName("UDN");
+        dmPartner.setPartnerBrandName("UdanChoo DM");
+        dmPartner.setActive(true);
+        dmPartner = b2bPartnerRepository.save(dmPartner);
+        return dmPartner.getPartnerId();
     }
 }

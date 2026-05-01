@@ -172,12 +172,25 @@ public class LeadsController {
 		leadRecorderVO.setTeamNames(arrayToJson);
 
     	
-    	leadRecorderVO.setSourceName(commonService.findDestinationById(leadRecorderVO.getSource()).getCityName());
-    	leadRecorderVO.setDestinationName(commonService.findDestinationById(leadRecorderVO.getDestination()).getCityName());
+    	if (leadRecorderVO.getSource() != null && leadRecorderVO.getSource() != 0) {
+    		leadRecorderVO.setSourceName(commonService.findDestinationById(leadRecorderVO.getSource()).getCityName());
+    	} else {
+    		leadRecorderVO.setSourceName("Unknown");
+    	}
+    	if (leadRecorderVO.getDestination() != null && leadRecorderVO.getDestination() != 0) {
+    		leadRecorderVO.setDestinationName(commonService.findDestinationById(leadRecorderVO.getDestination()).getCityName());
+    	} else {
+    		leadRecorderVO.setDestinationName("Unknown");
+    	}
     	leadRecorderVO.setContactName(clientService.find_ClientBy_Id(leadRecorderVO.getContactId()).getClientName());
     	Tg_B2b_Partner_Entity b2bPartner =b2bPartnerService.findPartnerById(leadRecorderVO.getLeadSource()); 
-    	leadRecorderVO.setLeadSourceShortName(b2bPartner.getPartnerShortName());
-    	leadRecorderVO.setLeadSourceName(b2bPartner.getPartnerName());
+    	if (b2bPartner != null) {
+    	    leadRecorderVO.setLeadSourceShortName(b2bPartner.getPartnerShortName());
+    	    leadRecorderVO.setLeadSourceName(b2bPartner.getPartnerName());
+    	} else {
+    	    leadRecorderVO.setLeadSourceShortName("UDN");
+    	    leadRecorderVO.setLeadSourceName("UdanChoo");
+    	}
     	
     	//TODO following db call is also done inside form_register_newlead as well. this can be reduced. Think it over. 
     	//leadRecorderVO.setStatusName(commonService.find_DealStatusById(leadRecorderVO.getLeadStatus()).getWorkloadStatusName());
@@ -403,8 +416,10 @@ public class LeadsController {
 		if(leadRecorderObj.getLeadId().toString().length()<4) {
 			leadId = String.format("%04d", leadRecorderObj.getLeadId());
 		}
-		leadRecorderObj.setLeadSourceShortName(b2bPartnerService.findPartnerById(leadRecorderObj.getLeadSource()).getPartnerShortName());
-		String leadReferenceNumber = "Q-"+leadId+"-"+ leadRecorderObj.getLeadSourceShortName();
+		Tg_B2b_Partner_Entity b2bPartner = b2bPartnerService.findPartnerById(leadRecorderObj.getLeadSource());
+		String shortName = (b2bPartner != null && b2bPartner.getPartnerShortName() != null) ? b2bPartner.getPartnerShortName() : "UDN";
+		leadRecorderObj.setLeadSourceShortName(shortName);
+		String leadReferenceNumber = "Q-"+leadId+"-"+ shortName;
 		return leadReferenceNumber;
 	}
 	
@@ -575,12 +590,25 @@ public class LeadsController {
     	int DEFAULT_PAGE_NUM=leadFollowupVO.getPage();
 		Tg_Leads_Recorder_Entity tgLeadEntity =leadService.findLeadRecordById(leadRecorderObj.getLeadId());
 		leadRecorderObj.updateLeadVoFromEntity(tgLeadEntity);
-		leadRecorderObj.setSourceName(commonService.findDestinationById(leadRecorderObj.getSource()).getCityName());
-		leadRecorderObj.setDestinationName(commonService.findDestinationById(leadRecorderObj.getDestination()).getCityName());
+		if (leadRecorderObj.getSource() != null && leadRecorderObj.getSource() != 0) {
+			leadRecorderObj.setSourceName(commonService.findDestinationById(leadRecorderObj.getSource()).getCityName());
+		} else {
+			leadRecorderObj.setSourceName("Unknown");
+		}
+		if (leadRecorderObj.getDestination() != null && leadRecorderObj.getDestination() != 0) {
+			leadRecorderObj.setDestinationName(commonService.findDestinationById(leadRecorderObj.getDestination()).getCityName());
+		} else {
+			leadRecorderObj.setDestinationName("Unknown");
+		}
 		leadRecorderObj.setContactName(clientService.find_ClientBy_Id(leadRecorderObj.getContactId()).getClientName());
 		Tg_B2b_Partner_Entity b2bPartner = b2bPartnerService.findPartnerById(leadRecorderObj.getLeadSource());
-		leadRecorderObj.setLeadSourceShortName(b2bPartner.getPartnerShortName());
-		leadRecorderObj.setLeadSourceName(b2bPartner.getPartnerName());
+		if (b2bPartner != null) {
+		    leadRecorderObj.setLeadSourceShortName(b2bPartner.getPartnerShortName());
+		    leadRecorderObj.setLeadSourceName(b2bPartner.getPartnerName());
+		} else {
+		    leadRecorderObj.setLeadSourceShortName("UDN");
+		    leadRecorderObj.setLeadSourceName("UdanChoo");
+		}
 		leadRecorderObj.setStatusName(commonService.find_DealStatusById(leadRecorderObj.getLeadStatus()).getWorkloadStatusName());
 		leadRecorderObj.setLeadOwnerName(userService.findUserByID(leadRecorderObj.getLeadOwner()).getUsername());
 		
@@ -634,7 +662,10 @@ public class LeadsController {
 
 			 
 			String clientName = clientService.find_ClientBy_Id(leadEntity.getContactId()).getClientName();
-			String destinationName = commonService.findDestinationById(leadEntity.getDestination()).getCityName();
+			String destinationName = "Unknown";
+			if (leadEntity.getDestination() != null && leadEntity.getDestination() != 0) {
+			    destinationName = commonService.findDestinationById(leadEntity.getDestination()).getCityName();
+			}
 			String emailBody = "Action by:  " +  userObj.getUsername() + "\n";
 			emailBody = emailBody + "Action Time: " +  DateTimeFormatter.ofPattern("dd/MMM/yyyy HH:mm").format(leadFollowupVO.getFollowuptime()) + "\n";
 			emailBody = emailBody + "Action Taken: " + leadFollowupVO.getResponse() + "\n\n";
@@ -687,5 +718,22 @@ public class LeadsController {
 		 }
 	 
 	
+
+	@PostMapping("/bulk_delete_leads")
+	public String bulkDeleteLeads(@RequestParam(value="leadIds", required=false) Long[] leadIds, RedirectAttributes redirectAttributes) {
+		if (leadIds == null || leadIds.length == 0) {
+			redirectAttributes.addFlashAttribute("ERROR_MESSAGE", "No leads selected for deletion.");
+			return "redirect:view_filter_leads";
+		}
+		try {
+			for (Long id : leadIds) {
+				leadService.deleteLead(id);
+			}
+			redirectAttributes.addFlashAttribute("SUCCESS_MESSAGE", "Successfully deleted " + leadIds.length + " lead(s).");
+		} catch (Exception e) {
+			redirectAttributes.addFlashAttribute("ERROR_MESSAGE", "Error deleting leads: " + e.getMessage());
+		}
+		return "redirect:view_filter_leads";
+	}
 }
 

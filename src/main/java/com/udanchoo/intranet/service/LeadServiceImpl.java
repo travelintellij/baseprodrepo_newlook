@@ -287,4 +287,13 @@ public class LeadServiceImpl {
 		
 		return filteredLeadsFollowUpList;
 		}
+
+	@javax.transaction.Transactional
+	public void deleteLead(long leadId) {
+		Tg_Leads_Recorder_Entity lead = leadRepository.findById(leadId).orElse(null);
+		if (lead != null) {
+			leadRepository.delete(lead);
+			leadRepository.flush();
+		}
 	}
+}

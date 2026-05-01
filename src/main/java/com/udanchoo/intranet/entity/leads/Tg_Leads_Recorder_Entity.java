@@ -71,7 +71,7 @@ public class Tg_Leads_Recorder_Entity extends AuditModel {
 	protected boolean whatsappInformed;
  
 	
-	@ManyToMany(targetEntity = UdnTeam.class,fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToMany(targetEntity = UdnTeam.class,fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "ti_leads_team_map",
             joinColumns = {@JoinColumn(name="leadId")},
             inverseJoinColumns = {@JoinColumn(name="userId")})

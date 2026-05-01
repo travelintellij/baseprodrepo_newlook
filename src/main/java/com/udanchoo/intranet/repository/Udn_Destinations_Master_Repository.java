@@ -41,5 +41,7 @@ public interface Udn_Destinations_Master_Repository extends JpaRepository<Udn_De
 	//public String findDistinctByCountryCode(String countryCode);
 	
 	boolean existsByCityNameAndCountryCodeIgnoreCase(String cityName, String countryCode);
+	
+	public List<Udn_Destinations_Entity> findByCityNameIgnoreCase(String cityName);
 
 }

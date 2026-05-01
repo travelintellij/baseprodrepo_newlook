@@ -70,13 +70,14 @@
         </c:if>
     </div>
 
-    <div class="search-clients-sec bs">
+    <div class="search-clients-sec bs" style="width: 100%; margin: 20px 0; box-sizing: border-box;">
         <table class="sc-table">
             <thead style="background:#6082B6;">
                 <tr style="height:50px; color:black;">
                     <th class="sc-th" style="width:50px;">#</th>
                     <th class="sc-th">Form Name</th>
                     <th class="sc-th">Campaign Name</th>
+                    <th class="sc-th">Destination</th>
                     <th class="sc-th" style="width:100px;">Type</th>
                     <th class="sc-th">Form ID</th>
                     <th class="sc-th" style="width:90px;">Status</th>
@@ -87,7 +88,7 @@
                 <c:choose>
                     <c:when test="${empty campaigns}">
                         <tr>
-                            <td colspan="7" style="text-align:center; color:#888; padding:30px;
+                            <td colspan="8" style="text-align:center; color:#888; padding:30px;
                                 border-bottom:2px solid black; border-right:2px solid black; border-left:2px solid black;">
                                 No campaign forms added yet.
                                 <a href="${pageContext.request.contextPath}/campaign/add">Add one now</a>.
@@ -108,14 +109,20 @@
                                 </td>
                                 <td style="border-bottom:2px solid black;border-right:2px solid black;">
                                     <c:choose>
+                                        <c:when test="${not empty c.destination}">${c.destination}</c:when>
+                                        <c:otherwise><em style="color:#999;">Not Set</em></c:otherwise>
+                                    </c:choose>
+                                </td>
+                                <td style="border-bottom:2px solid black;border-right:2px solid black;">
+                                    <c:choose>
                                         <c:when test="${c.formType == 'META'}">
                                             <i class="fab fa-facebook" style="color:#1877F2"></i> Meta
                                         </c:when>
                                         <c:otherwise>${c.formType}</c:otherwise>
                                     </c:choose>
                                 </td>
-                                <td style="border-bottom:2px solid black;border-right:2px solid black;">
-                                    <small style="color:#555; word-break:break-all;">${c.formId}</small>
+                                <td style="border-bottom:2px solid black;border-right:2px solid black; white-space: nowrap;">
+                                    <small style="color:#555; word-break:keep-all;">${c.formId}</small>
                                 </td>
                                 <td style="border-bottom:2px solid black;border-right:2px solid black;">
                                     <c:choose>
@@ -123,17 +130,22 @@
                                         <c:otherwise><span class="badge-inactive">Inactive</span></c:otherwise>
                                     </c:choose>
                                 </td>
-                                <td style="border-bottom:2px solid black;border-right:2px solid black;">
+                                <td style="border-bottom:2px solid black;border-right:2px solid black; white-space: nowrap;">
                                     <button class="camp-action-btn" onclick="syncLeads(${c.campaignFormId}, this)">
                                         <i class="fa fa-sync"></i> Sync Leads
-                                    </button>
-                                    &nbsp;
+                                     </button>
+                                     &nbsp;
+                                     <a href="${pageContext.request.contextPath}/campaign/edit/${c.campaignFormId}" 
+                                        class="camp-action-btn" style="background:#FABA08; color:black; text-decoration:none; display:inline-block; line-height: 1.5; padding: 4px 12px; border-radius: 3px;">
+                                         <i class="fa fa-edit"></i> Edit
+                                     </a>
+                                     &nbsp;
                                     <a href="${pageContext.request.contextPath}/campaign/delete/${c.campaignFormId}"
                                        class="camp-delete-btn"
                                        onclick="return confirm('Are you sure you want to delete this campaign form?')">
                                         <i class="fa fa-trash"></i> Delete
                                     </a>
-                                    <div id="result-${c.campaignFormId}" class="sync-result"></div>
+                                    <div id="result-${c.campaignFormId}" class="sync-result" style="white-space: normal;"></div>
                                 </td>
                             </tr>
                         </c:forEach>

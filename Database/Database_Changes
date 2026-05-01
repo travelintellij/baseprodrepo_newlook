@@ -181,3 +181,15 @@ ADD COLUMN whatsapp_sent BOOLEAN DEFAULT FALSE;
 ALTER TABLE tg_leads_recorder
 ADD COLUMN whatsappInformed TINYINT(1) DEFAULT 0
 AFTER leadCreationClientInformed;
+
+
+ALTER TABLE campaign_form ADD COLUMN destination VARCHAR(100) DEFAULT NULL;
+
+ALTER TABLE campaign_form
+ADD COLUMN tentativeCost INT DEFAULT 0;
+
+
+ALTER TABLE campaign_form
+ADD COLUMN defaultService VARCHAR(50) DEFAULT NULL;
+
+

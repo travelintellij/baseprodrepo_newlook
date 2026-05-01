@@ -2,6 +2,7 @@ package com.udanchoo.intranet.controller;
 
 import com.udanchoo.intranet.entity.CampaignFormEntity;
 import com.udanchoo.intranet.entity.UdnCentralConfigEntity;
+import com.udanchoo.intranet.entity.Udn_Destinations_Entity;
 import com.udanchoo.intranet.repository.CampaignFormRepository;
 import com.udanchoo.intranet.repository.UdnCentralConfigRepository;
 import com.udanchoo.intranet.service.SocialMediaLeadService;
@@ -9,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.udanchoo.intranet.model.UserDetailsObj;
 import com.udanchoo.intranet.service.UserDetailsServiceImpl;
+import com.udanchoo.intranet.service.UdnCommonServicesImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,8 +18,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Controller for Campaign Management and Social Media Lead Sync.
@@ -51,7 +55,29 @@ public class CampaignController {
     @Autowired
     private UserDetailsServiceImpl userDetailsService;
 
+    @Autowired
+    private UdnCommonServicesImpl udnCommonServices;
+
     // ========== Campaign Form CRUD ==========
+
+    @ModelAttribute("DESTINATIONS_LIST")
+    public Map<String, String> getDestinationsList() {
+        Map<String, String> map = new LinkedHashMap<>();
+        try {
+            List<Udn_Destinations_Entity> list = udnCommonServices.listAllActiveDestinations();
+            if (list != null) {
+                for (Udn_Destinations_Entity d : list) {
+                    if (d.getCityName() != null && !d.getCityName().isEmpty()) {
+                        String label = d.getCityName() + (d.getCountryName() != null ? " (" + d.getCountryName() + ")" : "");
+                        map.put(d.getCityName(), label);
+                    }
+                }
+            }
+        } catch (Exception e) {
+            logger.error("[CampaignController] Error loading destinations", e);
+        }
+        return map;
+    }
 
     @GetMapping("/campaign/list")
     public String campaignList(Model model) {
@@ -63,6 +89,18 @@ public class CampaignController {
     @GetMapping("/campaign/add")
     public String addCampaignForm(Model model) {
         model.addAttribute("campaign", new CampaignFormEntity());
+        model.addAttribute("serviceList", userDetailsService.findAllActiveUdnServices());
+        return "admin/campaign/addCampaignForm";
+    }
+
+    @GetMapping("/campaign/edit/{id}")
+    public String editCampaignForm(@PathVariable Long id, Model model) {
+        CampaignFormEntity campaign = campaignFormRepository.findById(id).orElse(null);
+        if (campaign != null && campaign.getDefaultService() != null && !campaign.getDefaultService().isEmpty()) {
+            campaign.setServices(java.util.Arrays.asList(campaign.getDefaultService().split(",")));
+        }
+        model.addAttribute("campaign", campaign);
+        model.addAttribute("serviceList", userDetailsService.findAllActiveUdnServices());
         return "admin/campaign/addCampaignForm";
     }
 
@@ -72,12 +110,20 @@ public class CampaignController {
         try {
             if (campaignFormEntity.getActive() == null) campaignFormEntity.setActive(true);
 
+            // Join services into defaultService CSV
+            if (campaignFormEntity.getServices() != null && !campaignFormEntity.getServices().isEmpty()) {
+                campaignFormEntity.setDefaultService(String.join(",", campaignFormEntity.getServices()));
+            }
+
             // ── Duplicate Form ID check ──
             String newFormId = campaignFormEntity.getFormId();
             if (newFormId != null && !newFormId.trim().isEmpty()) {
                 List<CampaignFormEntity> existing = campaignFormRepository.findByFormId(newFormId.trim());
-                boolean isDuplicate = existing.stream().anyMatch(e ->
-                        !e.getCampaignFormId().equals(campaignFormEntity.getCampaignFormId()));
+                // If editing, exclude the current campaign from the duplicate check
+                boolean isDuplicate = existing.stream().anyMatch(e -> 
+                    campaignFormEntity.getCampaignFormId() == null || !e.getCampaignFormId().equals(campaignFormEntity.getCampaignFormId())
+                );
+                
                 if (isDuplicate) {
                     ra.addFlashAttribute("errorMsg",
                             "A campaign with Form ID '" + newFormId + "' already exists. Each Form ID must be unique.");

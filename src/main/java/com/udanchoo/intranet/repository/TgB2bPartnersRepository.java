@@ -19,4 +19,6 @@ public interface TgB2bPartnersRepository extends JpaRepository<Tg_B2b_Partner_En
 		
 		boolean existsByPartnerShortName(String partnerShortBrandName); 
 		
+		List<Tg_B2b_Partner_Entity> findByPartnerShortName(String partnerShortName);
+		
 }

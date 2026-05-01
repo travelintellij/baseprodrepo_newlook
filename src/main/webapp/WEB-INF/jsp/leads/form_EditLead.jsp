@@ -234,14 +234,14 @@
                             </div>
                         </div>
 
-                        <div class="edit_lead_wrapper_data_l1_rem" style="margin-top: 10px;">
-                            <div class="edit_lead_wrapper_data_l1_rem1">
+                        <div class="edit_lead_wrapper_data_l1_rem" style="margin-top: 10px; display: flex;">
+                            <div class="edit_lead_wrapper_data_l1_rem1" style="flex: 1;">
                                 <label for="" style="font-weight:800">Client Remarks</label> <br>
-                                <form:textarea path="clientRemarks" name="" id="" cols="68" rows="5" />
+                                <form:textarea path="clientRemarks" style="width: 100%; box-sizing: border-box;" rows="5" />
                             </div>
-                            <div class="edit_lead_wrapper_data_l1_rem2" style="margin-left: 17px;">
+                            <div class="edit_lead_wrapper_data_l1_rem2" style="flex: 1; margin-left: 17px;">
                                 <label for="" style="font-weight:800">Internal Remarks</label> <br>
-                                <form:textarea path="internalRemarks" name="" id="" cols="66" rows="5" />
+                                <form:textarea path="internalRemarks" style="width: 100%; box-sizing: border-box;" rows="5" />
                             </div>
                         </div>
 
