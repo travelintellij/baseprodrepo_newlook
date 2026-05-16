@@ -83,6 +83,19 @@
                         <label for="">Quotation Status</label>
                         <p>Created</p>
                     </div>
+                    <div class="viewQuotationDetails_wrapper_data_l1">
+                        <label for="">Linked Itinerary</label>
+                        <p>
+                            <c:set var="found" value="false" />
+                            <c:forEach items="${ITINERARIES}" var="itinerary">
+                                <c:if test="${itinerary.itineraryId eq QTN_OBJ.itineraryId}">
+                                    ${itinerary.title}
+                                    <c:set var="found" value="true" />
+                                </c:if>
+                            </c:forEach>
+                            <c:if test="${not found}">None</c:if>
+                        </p>
+                    </div>
                 </div>
                 <p class="viewQuotationDetails_wrapper_data_line_ser_hd">Services to be included</p>
                 <div class="viewQuotationDetails_wrapper_data_line_ser">

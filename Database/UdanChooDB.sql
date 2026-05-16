@@ -241,6 +241,7 @@ CREATE TABLE `tg_quotations_recorder` (
   `createdBy` int DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
+  `itineraryId` bigint DEFAULT NULL,
   PRIMARY KEY (`quotationId`),
   KEY `QTN_LEAD_KEY_idx` (`leadId`),
   KEY `QTN_CRTD-BY_idx` (`createdBy`),

@@ -2,10 +2,7 @@ package com.udanchoo.intranet.controller.quotation;
 
 
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -38,6 +35,7 @@ import com.udanchoo.intranet.model.FileUploaderListVO;
 import com.udanchoo.intranet.model.UserDetailsObj;
 import com.udanchoo.intranet.model.leads.TgLeadsRecorderVO;
 import com.udanchoo.intranet.model.quotation.ConfigurationQuotationVO;
+import com.udanchoo.intranet.model.quotation.Itinerary;
 import com.udanchoo.intranet.model.quotation.TgQuotationRecorderVO;
 import com.udanchoo.intranet.service.ClientServiceImpl;
 import com.udanchoo.intranet.service.EmailServiceImpl;
@@ -108,6 +106,9 @@ public class ConfigurationQuotationController {
 	
 	@Value("${SRVC_SEND_EMAIL_QTN_URL}")
 	private String SRVC_SEND_EMAIL_QTN_URL;
+	
+	@Value("${ITINERARY_SERVICE_URL}")
+	private String ITINERARY_SERVICE_URL;
 	
 	
 	
@@ -182,7 +183,19 @@ public class ConfigurationQuotationController {
 			mapview.setViewName("quotation/configuration/form_view_add_configuration_manual_quotation");
 			mapview.addObject("B2B_PARTNERS_MAP", b2bPartnerService.find_All_B2bPartners_Map());
 		}
+		mapview.addObject("ITINERARIES", fetchItinerariesForLead(leadRecorderObj.getLeadId()));
 		return mapview;
+	}
+
+	private List<Itinerary> fetchItinerariesForLead(long leadId) {
+		try {
+			String url = ITINERARY_SERVICE_URL + "/get_itineraries_by_lead?leadId=" + leadId;
+			Itinerary[] itineraries = restTemplate.getForObject(url, Itinerary[].class);
+			return itineraries != null ? java.util.Arrays.asList(itineraries) : new ArrayList<>();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ArrayList<>();
+		}
 	}
 
 	/*private void updateManualConfigurationAdditionalFields(TgQuotationRecorderVO qtnRecorderObj) {
@@ -265,6 +278,12 @@ public class ConfigurationQuotationController {
 				Udn_Configuration_Manual_Quotation_Entity configQtnEntity = new Udn_Configuration_Manual_Quotation_Entity(configurationQtnVO);
 				configQtnEntity.setQuotationEntity(quotationEntity);
 				quotationEntity.setConfigurationQuotationEntity(configQtnEntity);
+				
+				// Update Itinerary ID if changed in this screen
+				if (qtnRecorderObj.getItineraryId() != null) {
+					quotationEntity.setItineraryId(qtnRecorderObj.getItineraryId());
+				}
+				
 				quotationService.saveLead(quotationEntity);
 				redirectAttrib.addFlashAttribute("Success","Quotation Configuration is updated Successfully!!");
 				modelView.setViewName("redirect:form_view_configure_quotation_details?leadId="+quotationEntity.getLeadEntity().getLeadId() + "&quotationId="+quotationId);
@@ -389,6 +408,16 @@ public class ConfigurationQuotationController {
 		}
 		modelView.addObject("B2B_PARTNER", partnerEntity);
 		modelView.addObject("localDateTimeFormat", DateTimeFormatter.ofPattern("dd/MMM/yyyy HH:mm"));
+
+		if (qtnRecorderObj.getItineraryId() != null) {
+			try {
+				String url = ITINERARY_SERVICE_URL + "/get_itinerary?itineraryId=" + qtnRecorderObj.getItineraryId();
+				Itinerary linkedItinerary = restTemplate.getForObject(url, Itinerary.class);
+				modelView.addObject("LINKED_ITINERARY", linkedItinerary);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 
 		modelView.setViewName("quotation/configuration/view_final_quotation");
 		return modelView; 

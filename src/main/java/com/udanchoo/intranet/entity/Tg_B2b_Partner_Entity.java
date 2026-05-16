@@ -40,6 +40,15 @@ public class Tg_B2b_Partner_Entity extends AuditModel {
 	protected String bankIFSCCode;
 	protected String bankBranch;
 	protected String upiId;
+    private String mobile;
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
 	
 	public Tg_B2b_Partner_Entity(Tg_B2bPartner_Obj partnerObj) {
 		this.partnerId = partnerObj.getPartnerId();

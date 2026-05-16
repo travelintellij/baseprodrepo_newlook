@@ -86,7 +86,16 @@
                     </div>
                     <div class="viewEditQuotationDetails_wrapper_dl1">
                         <label for="" class="lb">Quotation Status</label>
-                        <p>123</p>
+                        <p>Draft</p>
+                    </div>
+                    <div class="viewEditQuotationDetails_wrapper_dl1">
+                        <label for="" class="lb">Link Itinerary</label>
+                        <form:select path="itineraryId">
+                            <form:option value="" label="-- Select Itinerary --" />
+                            <c:forEach items="${ITINERARIES}" var="itinerary">
+                                <form:option value="${itinerary.itineraryId}" label="${itinerary.title}" />
+                            </c:forEach>
+                        </form:select>
                     </div>
                 </div>
                 <h1 class="lb" style="text-align: start;">Services to be included</h1>

@@ -100,7 +100,7 @@
                 <label style="font-weight:600; display: block; margin-bottom: 12px; font-size: 15px; color: #333;">
                     <i class="fa fa-check-square" style="color:#6082B6"></i> Select Services (Tick all that apply) *
                 </label>
-                <div style="display: flex; flex-wrap: wrap; gap: 20px; background: rgba(255,255,255,0.9); padding: 20px; border-radius: 8px; border: 1px solid #ccc; box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);">
+                <div style="display: flex; flex-wrap: wrap; gap: x; background: rgba(255,255,255,0.9); padding: 20px; border-radius: 8px; border: 1px solid #ccc; box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);">
                     <div style="display: flex; align-items: center; gap: 10px; min-width: 150px;">
                         <form:checkbox path="services" value="FLT" id="srv_FLT" style="width: 22px; height: 22px; cursor: pointer; accent-color: #6082B6;"/>
                         <label for="srv_FLT" style="cursor: pointer; font-size: 15px; font-weight: 500; color: #333;">Flight</label>

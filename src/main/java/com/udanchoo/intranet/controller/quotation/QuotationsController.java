@@ -63,6 +63,7 @@ import com.udanchoo.intranet.model.quotation.ManualPackageQuotationVO;
 import com.udanchoo.intranet.model.quotation.ManualSightSeeingQuotationVO;
 import com.udanchoo.intranet.model.quotation.ManualTransferQuotationVO;
 import com.udanchoo.intranet.model.quotation.ManualVisaQuotationVO;
+import com.udanchoo.intranet.model.quotation.Itinerary;
 import com.udanchoo.intranet.model.quotation.TgQuotationRecorderVO;
 import com.udanchoo.intranet.service.ClientServiceImpl;
 import com.udanchoo.intranet.service.DealServiceImpl;
@@ -148,6 +149,9 @@ public class QuotationsController<Resource> {
 	@Value("${CHECK_ITINERARY_EXIST}")
 	private String CHECK_ITINERARY_EXIST;
 	
+	@Value("${ITINERARY_SERVICE_URL}")
+	private String ITINERARY_SERVICE_URL;
+	
 	
 
 	@Autowired
@@ -200,10 +204,20 @@ public class QuotationsController<Resource> {
 	}
 	
 	@RequestMapping("/form_view_new_quotation")
-	public ModelAndView form_view_new_quotation(@ModelAttribute("LEAD_OBJ") TgLeadsRecorderVO leadRecorderObj,@ModelAttribute("QTN_OBJ") TgQuotationRecorderVO qtnRecorderObj,BindingResult result) {
+	public ModelAndView form_view_new_quotation(@RequestParam(value="leadId", required=false) Long leadId,
+			@RequestParam(value="quotationId", required=false) Long quotationId,
+			@ModelAttribute("LEAD_OBJ") TgLeadsRecorderVO leadRecorderObj,
+			@ModelAttribute("QTN_OBJ") TgQuotationRecorderVO qtnRecorderObj,
+			BindingResult result) {
 		
+		if (leadId == null && leadRecorderObj.getLeadId() != null) {
+			leadId = leadRecorderObj.getLeadId();
+		}
+		if (leadId == null) {
+			return new ModelAndView("redirect:/view_leads");
+		}
 		ModelAndView mapview = new ModelAndView("quotation/createNewQuotation");
-		Tg_Leads_Recorder_Entity tgLeadEntity =leadService.findLeadRecordById(leadRecorderObj.getLeadId());
+		Tg_Leads_Recorder_Entity tgLeadEntity = leadService.findLeadRecordById(leadId);
 		leadRecorderObj.updateLeadVoFromEntity(tgLeadEntity);
 		leadRecorderObj.setSourceName(commonService.findDestinationById(leadRecorderObj.getSource()).getCityName());
 		leadRecorderObj.setDestinationName(commonService.findDestinationById(leadRecorderObj.getDestination()).getCityName());
@@ -214,19 +228,37 @@ public class QuotationsController<Resource> {
 		leadRecorderObj.setStatusName(commonService.find_DealStatusById(leadRecorderObj.getLeadStatus()).getWorkloadStatusName());
 		leadRecorderObj.setLeadOwnerName(userService.findUserByID(leadRecorderObj.getLeadOwner()).getUsername());
 		qtnRecorderObj.setLeadEntity(tgLeadEntity);
+		mapview.addObject("ITINERARIES", fetchItinerariesForLead(leadRecorderObj.getLeadId()));
 		return mapview;
+	}
+
+	private List<Itinerary> fetchItinerariesForLead(long leadId) {
+		try {
+			String url = ITINERARY_SERVICE_URL + "/get_itineraries_by_lead?leadId=" + leadId;
+			Itinerary[] itineraries = restTemplate.getForObject(url, Itinerary[].class);
+			return itineraries != null ? java.util.Arrays.asList(itineraries) : new ArrayList<>();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ArrayList<>();
+		}
 	}
 	
 	
 	@PostMapping("create_create_lead_quotation")
-	public ModelAndView create_create_lead_quotation(@ModelAttribute("LEAD_OBJ") TgLeadsRecorderVO leadRecorderObj,@ModelAttribute("QTN_OBJ") TgQuotationRecorderVO qtnRecorderObj,  BindingResult result,final RedirectAttributes redirectAttrib ) {
+	public ModelAndView create_create_lead_quotation(@RequestParam(value="leadId", required=false) Long leadId,
+			@RequestParam(value="quotationId", required=false) Long quotationId,
+			@ModelAttribute("LEAD_OBJ") TgLeadsRecorderVO leadRecorderObj,
+			@ModelAttribute("QTN_OBJ") TgQuotationRecorderVO qtnRecorderObj,
+			BindingResult result,
+			final RedirectAttributes redirectAttrib ) {
 		UserDetailsObj userObj = getLoggedInUser();
 		ModelAndView modelView = new ModelAndView();
 		
-		long leadId = leadRecorderObj.getLeadId();
+		if (leadId == null) leadId = leadRecorderObj.getLeadId();
+		
 		qtnAddValidator.validate(qtnRecorderObj, result);
 		if(result.hasErrors()) {
-			modelView = form_view_new_quotation(leadRecorderObj,qtnRecorderObj,result);
+			modelView = form_view_new_quotation(leadId, quotationId, leadRecorderObj, qtnRecorderObj, result);
 			return modelView;
 		}
 		else {
@@ -274,9 +306,28 @@ public class QuotationsController<Resource> {
 	 }
 
 	@RequestMapping("/form_view_quotation_details")
-	public ModelAndView form_view_quotation_details(@ModelAttribute("LEAD_OBJ") TgLeadsRecorderVO leadRecorderObj,@ModelAttribute("QTN_OBJ") TgQuotationRecorderVO qtnRecorderObj,BindingResult result) {
+	public ModelAndView form_view_quotation_details(@RequestParam(value="leadId", required=false) Long leadId,
+			@RequestParam(value="quotationId", required=false) Long quotationId,
+			@ModelAttribute("LEAD_OBJ") TgLeadsRecorderVO leadRecorderObj,
+			@ModelAttribute("QTN_OBJ") TgQuotationRecorderVO qtnRecorderObj,
+			BindingResult result) {
+		
+		if (leadId == null && leadRecorderObj.getLeadId() != null) {
+			leadId = leadRecorderObj.getLeadId();
+		}
+		if (quotationId == null && qtnRecorderObj.getQuotationId() > 0) {
+			quotationId = qtnRecorderObj.getQuotationId();
+		}
+
 		ModelAndView mapview = new ModelAndView("quotation/viewQuotationDetails");
-		Tg_Leads_Recorder_Entity tgLeadEntity =leadService.findLeadRecordById(leadRecorderObj.getLeadId());
+		
+		if (leadId == null) {
+			// Fallback or error handling
+			return new ModelAndView("redirect:/view_leads"); 
+		}
+
+		Tg_Leads_Recorder_Entity tgLeadEntity = leadService.findLeadRecordById(leadId);
+		leadRecorderObj.setLeadId(leadId);
 		leadRecorderObj.updateLeadVoFromEntity(tgLeadEntity);
 		leadRecorderObj.setSourceName(commonService.findDestinationById(leadRecorderObj.getSource()).getCityName());
 		leadRecorderObj.setDestinationName(commonService.findDestinationById(leadRecorderObj.getDestination()).getCityName());
@@ -287,23 +338,33 @@ public class QuotationsController<Resource> {
 		leadRecorderObj.setStatusName(commonService.find_DealStatusById(leadRecorderObj.getLeadStatus()).getWorkloadStatusName());
 		leadRecorderObj.setLeadOwnerName(userService.findUserByID(leadRecorderObj.getLeadOwner()).getUsername());
 		
-		Tg_Quotation_Recorder_Entity quotationEntity= quotationService.findQuotationRecordById(qtnRecorderObj.getQuotationId());
+		Tg_Quotation_Recorder_Entity quotationEntity = quotationService.findQuotationRecordById(quotationId != null ? quotationId : qtnRecorderObj.getQuotationId());
+		qtnRecorderObj.setQuotationId(quotationEntity.getQuotationId());
 		qtnRecorderObj.setVoFromEntity(quotationEntity);
 		qtnRecorderObj.setLeadEntity(tgLeadEntity);
+		mapview.addObject("ITINERARIES", fetchItinerariesForLead(leadRecorderObj.getLeadId()));
 		return mapview;
 	}
 	
 	@RequestMapping("/form_view_edit_quotation_details")
-	public ModelAndView form_view_edit_quotation_details(@ModelAttribute("LEAD_OBJ") TgLeadsRecorderVO leadRecorderObj,@ModelAttribute("QTN_OBJ") TgQuotationRecorderVO qtnRecorderObj,BindingResult result) {
-		ModelAndView modelView = form_view_quotation_details(leadRecorderObj,qtnRecorderObj,result);
+	public ModelAndView form_view_edit_quotation_details(@RequestParam(value="leadId", required=false) Long leadId,
+			@RequestParam(value="quotationId", required=false) Long quotationId,
+			@ModelAttribute("LEAD_OBJ") TgLeadsRecorderVO leadRecorderObj,
+			@ModelAttribute("QTN_OBJ") TgQuotationRecorderVO qtnRecorderObj,
+			BindingResult result) {
+		ModelAndView modelView = form_view_quotation_details(leadId, quotationId, leadRecorderObj, qtnRecorderObj, result);
 		modelView.setViewName("quotation/viewEditQuotationDetails");
 		return modelView;
-		
 	}
 	
     @Transactional
 	@PostMapping("edit_edit_lead_quotation")
-	public ModelAndView edit_edit_lead_quotation(@ModelAttribute("LEAD_OBJ") TgLeadsRecorderVO leadRecorderObj,@ModelAttribute("QTN_OBJ") TgQuotationRecorderVO qtnRecorderObj,  BindingResult result,final RedirectAttributes redirectAttrib ) {
+	public ModelAndView edit_edit_lead_quotation(@RequestParam(value="leadId", required=false) Long leadId,
+			@RequestParam(value="quotationId", required=false) Long quotationId,
+			@ModelAttribute("LEAD_OBJ") TgLeadsRecorderVO leadRecorderObj,
+			@ModelAttribute("QTN_OBJ") TgQuotationRecorderVO qtnRecorderObj,
+			BindingResult result,
+			final RedirectAttributes redirectAttrib ) {
 		UserDetailsObj userObj = getLoggedInUser();
 		qtnRecorderObj.setCreatedBy(userObj.getUserId());
 		qtnRecorderObj.setLastUpdatedBy(userObj.getUserId());
@@ -313,14 +374,25 @@ public class QuotationsController<Resource> {
 		*/
 		qtnEditValidator.validate(qtnRecorderObj, result);
 		if(result.hasErrors()) {
-			modelView = form_view_edit_quotation_details(leadRecorderObj,qtnRecorderObj,result);
+			modelView = form_view_edit_quotation_details(leadId, quotationId, leadRecorderObj, qtnRecorderObj, result);
 			return modelView;
 		}else {
 			Tg_Leads_Recorder_Entity leadEntity = leadService.findLeadRecordById(leadRecorderObj.getLeadId());
-			Tg_Quotation_Recorder_Entity quotationEntity = new Tg_Quotation_Recorder_Entity(qtnRecorderObj);
-			quotationEntity.setLeadEntity(leadEntity);
+			Tg_Quotation_Recorder_Entity quotationEntity = quotationService.findQuotationRecordById(qtnRecorderObj.getQuotationId());
+			quotationEntity.setQuotationName(qtnRecorderObj.getQuotationName());
+			quotationEntity.setTourPackage(qtnRecorderObj.isTourPackage());
+			quotationEntity.setFlight(qtnRecorderObj.isFlight());
+			quotationEntity.setHotel(qtnRecorderObj.isHotel());
+			quotationEntity.setTransfers(qtnRecorderObj.isTransfers());
+			quotationEntity.setSightseeing(qtnRecorderObj.isSightseeing());
+			quotationEntity.setVisa(qtnRecorderObj.isVisa());
+			quotationEntity.setInsurance(qtnRecorderObj.isInsurance());
+			quotationEntity.setCruise(qtnRecorderObj.isCruise());
+			quotationEntity.setOthers(qtnRecorderObj.isOthers());
+			quotationEntity.setItineraryId(qtnRecorderObj.getItineraryId());
+			quotationEntity.setLastUpdatedBy(userObj.getUserId());
 			quotationService.saveLead(quotationEntity);
-			modelView = form_view_quotation_details(leadRecorderObj,qtnRecorderObj,result);
+			modelView = form_view_quotation_details(leadRecorderObj.getLeadId(), qtnRecorderObj.getQuotationId(), leadRecorderObj, qtnRecorderObj, result);
 		}
 		//modelView.setViewName("redirect:view_lead_quotations_list?leadId="+leadId);
 		return modelView;
@@ -329,11 +401,14 @@ public class QuotationsController<Resource> {
 	
 	
 	@RequestMapping("/form_view_delete_quotation_details")
-	public ModelAndView form_view_delete_quotation_details(@ModelAttribute("LEAD_OBJ") TgLeadsRecorderVO leadRecorderObj,@ModelAttribute("QTN_OBJ") TgQuotationRecorderVO qtnRecorderObj,BindingResult result) {
-		ModelAndView modelView = form_view_quotation_details(leadRecorderObj,qtnRecorderObj,result);
+	public ModelAndView form_view_delete_quotation_details(@RequestParam(value="leadId", required=false) Long leadId,
+			@RequestParam(value="quotationId", required=false) Long quotationId,
+			@ModelAttribute("LEAD_OBJ") TgLeadsRecorderVO leadRecorderObj,
+			@ModelAttribute("QTN_OBJ") TgQuotationRecorderVO qtnRecorderObj,
+			BindingResult result) {
+		ModelAndView modelView = form_view_quotation_details(leadId, quotationId, leadRecorderObj, qtnRecorderObj, result);
 		modelView.setViewName("quotation/viewQuotationDeleteConfirmation");
 		return modelView;
-		
 	}
 	
 	
@@ -348,9 +423,27 @@ public class QuotationsController<Resource> {
 	}
 	
 	@RequestMapping("/form_view_flight_quotation_details")
-	public ModelAndView form_view_flight_quotation_details(@ModelAttribute("LEAD_OBJ") TgLeadsRecorderVO leadRecorderObj,@ModelAttribute("QTN_OBJ") TgQuotationRecorderVO qtnRecorderObj,BindingResult result,final RedirectAttributes redirectAttrib) {
+	public ModelAndView form_view_flight_quotation_details(@RequestParam(value="leadId", required=false) Long leadId,
+			@RequestParam(value="quotationId", required=false) Long quotationId,
+			@ModelAttribute("LEAD_OBJ") TgLeadsRecorderVO leadRecorderObj,
+			@ModelAttribute("QTN_OBJ") TgQuotationRecorderVO qtnRecorderObj,
+			BindingResult result,
+			final RedirectAttributes redirectAttrib) {
+		
+		if (leadId == null && leadRecorderObj.getLeadId() != null) {
+			leadId = leadRecorderObj.getLeadId();
+		}
+		if (quotationId == null && qtnRecorderObj.getQuotationId() > 0) {
+			quotationId = qtnRecorderObj.getQuotationId();
+		}
+
 		ModelAndView mapview = new ModelAndView("quotation/viewFlightQuotationDetails");
-		Tg_Leads_Recorder_Entity tgLeadEntity =leadService.findLeadRecordById(leadRecorderObj.getLeadId());
+		
+		if (leadId == null) {
+			return new ModelAndView("redirect:/view_leads");
+		}
+
+		Tg_Leads_Recorder_Entity tgLeadEntity = leadService.findLeadRecordById(leadId);
 		leadRecorderObj.updateLeadVoFromEntity(tgLeadEntity);
 		leadRecorderObj.setSourceName(commonService.findDestinationById(leadRecorderObj.getSource()).getCityName());
 		leadRecorderObj.setDestinationName(commonService.findDestinationById(leadRecorderObj.getDestination()).getCityName());
@@ -386,8 +479,14 @@ public class QuotationsController<Resource> {
 	
 	
 	@RequestMapping("/form_view_serach_flight_oneway_quotation")
-	public ModelAndView form_view_serach_flight_oneway_quotation(@ModelAttribute("LEAD_OBJ") TgLeadsRecorderVO leadRecorderObj,@ModelAttribute("QTN_OBJ") TgQuotationRecorderVO qtnRecorderObj,@ModelAttribute("FLT_SRCH") FlightSearchRequest flightSearchRequest,BindingResult result,final RedirectAttributes redirectAttrib) {
-		ModelAndView mapview = form_view_flight_quotation_details(leadRecorderObj,qtnRecorderObj,result,redirectAttrib);
+	public ModelAndView form_view_serach_flight_oneway_quotation(@RequestParam(value="leadId", required=false) Long leadId,
+			@RequestParam(value="quotationId", required=false) Long quotationId,
+			@ModelAttribute("LEAD_OBJ") TgLeadsRecorderVO leadRecorderObj,
+			@ModelAttribute("QTN_OBJ") TgQuotationRecorderVO qtnRecorderObj,
+			@ModelAttribute("FLT_SRCH") FlightSearchRequest flightSearchRequest,
+			BindingResult result,
+			final RedirectAttributes redirectAttrib) {
+		ModelAndView mapview = form_view_flight_quotation_details(leadId, quotationId, leadRecorderObj, qtnRecorderObj, result, redirectAttrib);
 		ArrayList<Integer> paxCount = new ArrayList<Integer>();
 		for(int i=1;i<10;i++)
 			paxCount.add(i);
@@ -400,8 +499,14 @@ public class QuotationsController<Resource> {
 	/************ Manual Flight Quotation Starts from here *************************************************************/
 	
 	@RequestMapping("/form_view_add_manual_flight_quotation")
-	public ModelAndView form_view_add_manual_flight_quotation(@ModelAttribute("LEAD_OBJ") TgLeadsRecorderVO leadRecorderObj,@ModelAttribute("QTN_OBJ") TgQuotationRecorderVO qtnRecorderObj,@ModelAttribute("MANUAL_FLT") ManualFlightQuotationVO manualFlightRequest,BindingResult result,final RedirectAttributes redirectAttrib) {
-		ModelAndView mapview = form_view_flight_quotation_details(leadRecorderObj,qtnRecorderObj,result,redirectAttrib);
+	public ModelAndView form_view_add_manual_flight_quotation(@RequestParam(value="leadId", required=false) Long leadId,
+			@RequestParam(value="quotationId", required=false) Long quotationId,
+			@ModelAttribute("LEAD_OBJ") TgLeadsRecorderVO leadRecorderObj,
+			@ModelAttribute("QTN_OBJ") TgQuotationRecorderVO qtnRecorderObj,
+			@ModelAttribute("MANUAL_FLT") ManualFlightQuotationVO manualFlightRequest,
+			BindingResult result,
+			final RedirectAttributes redirectAttrib) {
+		ModelAndView mapview = form_view_flight_quotation_details(leadId, quotationId, leadRecorderObj, qtnRecorderObj, result, redirectAttrib);
 		/*
 		ArrayList<Integer> paxCount = new ArrayList<Integer>();
 		for(int i=1;i<10;i++)
@@ -417,8 +522,14 @@ public class QuotationsController<Resource> {
 	
 	
 	@RequestMapping("/form_view_edit_manual_flight_quotation")
-	public ModelAndView form_view_edit_manual_flight_quotation(@ModelAttribute("LEAD_OBJ") TgLeadsRecorderVO leadRecorderObj,@ModelAttribute("QTN_OBJ") TgQuotationRecorderVO qtnRecorderObj,@ModelAttribute("MANUAL_FLT") ManualFlightQuotationVO manualFlightRequest,BindingResult result,final RedirectAttributes redirectAttrib) {
-		ModelAndView mapview = form_view_flight_quotation_details(leadRecorderObj,qtnRecorderObj,result,redirectAttrib);
+	public ModelAndView form_view_edit_manual_flight_quotation(@RequestParam(value="leadId", required=false) Long leadId,
+			@RequestParam(value="quotationId", required=false) Long quotationId,
+			@ModelAttribute("LEAD_OBJ") TgLeadsRecorderVO leadRecorderObj,
+			@ModelAttribute("QTN_OBJ") TgQuotationRecorderVO qtnRecorderObj,
+			@ModelAttribute("MANUAL_FLT") ManualFlightQuotationVO manualFlightRequest,
+			BindingResult result,
+			final RedirectAttributes redirectAttrib) {
+		ModelAndView mapview = form_view_flight_quotation_details(leadId, quotationId, leadRecorderObj, qtnRecorderObj, result, redirectAttrib);
 		ArrayList<Integer> paxCount = new ArrayList<Integer>();
 		for(int i=1;i<10;i++)
 			paxCount.add(i);
@@ -449,7 +560,7 @@ public class QuotationsController<Resource> {
 		if(result.hasErrors()) {
 			TgLeadsRecorderVO leadRecorderObj = new TgLeadsRecorderVO();
 			leadRecorderObj.setLeadId(quotationEntity.getLeadEntity().getLeadId());
-			modelView = form_view_add_manual_flight_quotation(leadRecorderObj,qtnRecorderObj,manualFlightRequest,result,redirectAttrib);
+			modelView = form_view_add_manual_flight_quotation(leadRecorderObj.getLeadId(), quotationId, leadRecorderObj, qtnRecorderObj, manualFlightRequest, result, redirectAttrib);
 			modelView.addObject("LEAD_OBJ",leadRecorderObj);
 			return modelView;
 		}else {
@@ -476,8 +587,8 @@ public class QuotationsController<Resource> {
 		if(result.hasErrors()) {
 			TgLeadsRecorderVO leadRecorderObj = new TgLeadsRecorderVO();
 			leadRecorderObj.setLeadId(quotationEntity.getLeadEntity().getLeadId());
-			modelView = form_view_flight_quotation_details(leadRecorderObj,qtnRecorderObj,result,redirectAttrib);
-			//modelView = form_view_edit_manual_flight_quotation(leadRecorderObj,qtnRecorderObj,manualFlightRequest,result,redirectAttrib);
+			modelView = form_view_flight_quotation_details(leadRecorderObj.getLeadId(), quotationId, leadRecorderObj, qtnRecorderObj, result, redirectAttrib);
+			//modelView = form_view_edit_manual_flight_quotation(leadRecorderObj.getLeadId(), quotationId, leadRecorderObj, qtnRecorderObj, manualFlightRequest, result, redirectAttrib);
 			modelView.addObject("PAX_COUNT", 9);
 			HashMap airlineMap = commonService.find_All_Airlines_map();
 			modelView.addObject("AIRLINE_MAP", UdanChooUtil.sortByValue(airlineMap));
@@ -501,8 +612,14 @@ public class QuotationsController<Resource> {
 	
 	
 	@RequestMapping("/form_view_delete_manual_flight_quotation")
-	public ModelAndView form_view_delete_manual_flight_quotation(@ModelAttribute("LEAD_OBJ") TgLeadsRecorderVO leadRecorderObj,@ModelAttribute("QTN_OBJ") TgQuotationRecorderVO qtnRecorderObj,@ModelAttribute("MANUAL_FLT") ManualFlightQuotationVO manualFlightRequest,BindingResult result,final RedirectAttributes redirectAttrib) {
-		ModelAndView mapview = form_view_flight_quotation_details(leadRecorderObj,qtnRecorderObj,result,redirectAttrib);
+	public ModelAndView form_view_delete_manual_flight_quotation(@RequestParam(value="leadId", required=false) Long leadId,
+			@RequestParam(value="quotationId", required=false) Long quotationId,
+			@ModelAttribute("LEAD_OBJ") TgLeadsRecorderVO leadRecorderObj,
+			@ModelAttribute("QTN_OBJ") TgQuotationRecorderVO qtnRecorderObj,
+			@ModelAttribute("MANUAL_FLT") ManualFlightQuotationVO manualFlightRequest,
+			BindingResult result,
+			final RedirectAttributes redirectAttrib) {
+		ModelAndView mapview = form_view_flight_quotation_details(leadId, quotationId, leadRecorderObj, qtnRecorderObj, result, redirectAttrib);
 		ArrayList<Integer> paxCount = new ArrayList<Integer>();
 		mapview.addObject("PAX_COUNT", 9);
 		mapview.setViewName("quotation/manualflight/form_view_delete_manual_flight_quotation");
@@ -538,8 +655,15 @@ public class QuotationsController<Resource> {
 	
 	
 	@RequestMapping("/form_view_manage_stops_quotation")
-	public ModelAndView form_view_manage_stops_quotation(@ModelAttribute("LEAD_OBJ") TgLeadsRecorderVO leadRecorderObj,@ModelAttribute("QTN_OBJ") TgQuotationRecorderVO qtnRecorderObj,@ModelAttribute("MANUAL_FLT") ManualFlightQuotationVO manualFlightRequest,@ModelAttribute("FLT_STOP") FlightStopDetailQuotationVO flightStopVO,BindingResult result,final RedirectAttributes redirectAttrib) {
-		ModelAndView mapview = form_view_flight_quotation_details(leadRecorderObj,qtnRecorderObj,result,redirectAttrib);
+	public ModelAndView form_view_manage_stops_quotation(@RequestParam(value="leadId", required=false) Long leadId,
+			@RequestParam(value="quotationId", required=false) Long quotationId,
+			@ModelAttribute("LEAD_OBJ") TgLeadsRecorderVO leadRecorderObj,
+			@ModelAttribute("QTN_OBJ") TgQuotationRecorderVO qtnRecorderObj,
+			@ModelAttribute("MANUAL_FLT") ManualFlightQuotationVO manualFlightRequest,
+			@ModelAttribute("FLT_STOP") FlightStopDetailQuotationVO flightStopVO,
+			BindingResult result,
+			final RedirectAttributes redirectAttrib) {
+		ModelAndView mapview = form_view_flight_quotation_details(leadId, quotationId, leadRecorderObj, qtnRecorderObj, result, redirectAttrib);
 		quotationService.updateInjectedManualFlightObject(manualFlightRequest.getManualFlightQuotationId(), manualFlightRequest);
 		mapview.setViewName("quotation/viewFlightStopDetails");
 		HashMap airlineMap = commonService.find_All_Airlines_map();
@@ -549,8 +673,15 @@ public class QuotationsController<Resource> {
 	}
 
 	@RequestMapping("/form_view_add_flight_stop_quotation")
-	public ModelAndView form_view_add_flight_stop_quotation(@ModelAttribute("LEAD_OBJ") TgLeadsRecorderVO leadRecorderObj,@ModelAttribute("QTN_OBJ") TgQuotationRecorderVO qtnRecorderObj,@ModelAttribute("MANUAL_FLT") ManualFlightQuotationVO manualFlightRequest,@ModelAttribute("FLT_STOP") FlightStopDetailQuotationVO flightStopVO,BindingResult result,final RedirectAttributes redirectAttrib) {
-		ModelAndView mapview = form_view_manage_stops_quotation(leadRecorderObj,qtnRecorderObj,manualFlightRequest,flightStopVO,result,redirectAttrib);
+	public ModelAndView form_view_add_flight_stop_quotation(@RequestParam(value="leadId", required=false) Long leadId,
+			@RequestParam(value="quotationId", required=false) Long quotationId,
+			@ModelAttribute("LEAD_OBJ") TgLeadsRecorderVO leadRecorderObj,
+			@ModelAttribute("QTN_OBJ") TgQuotationRecorderVO qtnRecorderObj,
+			@ModelAttribute("MANUAL_FLT") ManualFlightQuotationVO manualFlightRequest,
+			@ModelAttribute("FLT_STOP") FlightStopDetailQuotationVO flightStopVO,
+			BindingResult result,
+			final RedirectAttributes redirectAttrib) {
+		ModelAndView mapview = form_view_manage_stops_quotation(leadId, quotationId, leadRecorderObj, qtnRecorderObj, manualFlightRequest, flightStopVO, result, redirectAttrib);
 		mapview.addObject("FLT_STOP_ACTION", "ADD");
 		mapview.addObject("MANUAL_FLT", manualFlightRequest);
 		return mapview;
@@ -567,7 +698,7 @@ public class QuotationsController<Resource> {
 		Udn_Manual_Flight_Quotation_Entity manualQtnEntity = quotationService.findManualFlightQuotationEntityById(manualFlightRequest.getManualFlightQuotationId());
 		if(result.hasErrors()) {
 			leadRecorderObj.setLeadId(quotationEntity.getLeadEntity().getLeadId());
-			modelView = form_view_add_flight_stop_quotation(leadRecorderObj,qtnRecorderObj,manualFlightRequest,flightStopVO,result,redirectAttrib);
+			modelView = form_view_add_flight_stop_quotation(leadRecorderObj.getLeadId(), quotationId, leadRecorderObj, qtnRecorderObj, manualFlightRequest, flightStopVO, result, redirectAttrib);
 			return modelView;
 		}
 		else {
@@ -585,8 +716,15 @@ public class QuotationsController<Resource> {
 	 }
 	
 	@RequestMapping("/form_view_edit_flight_stop_quotation")
-	public ModelAndView form_view_edit_flight_stop_quotation(@ModelAttribute("LEAD_OBJ") TgLeadsRecorderVO leadRecorderObj,@ModelAttribute("QTN_OBJ") TgQuotationRecorderVO qtnRecorderObj,@ModelAttribute("MANUAL_FLT") ManualFlightQuotationVO manualFlightRequest,@ModelAttribute("FLT_STOP") FlightStopDetailQuotationVO flightStopVO,BindingResult result,final RedirectAttributes redirectAttrib) {
-		ModelAndView mapview = form_view_manage_stops_quotation(leadRecorderObj,qtnRecorderObj,manualFlightRequest,flightStopVO,result,redirectAttrib);
+	public ModelAndView form_view_edit_flight_stop_quotation(@RequestParam(value="leadId", required=false) Long leadId,
+			@RequestParam(value="quotationId", required=false) Long quotationId,
+			@ModelAttribute("LEAD_OBJ") TgLeadsRecorderVO leadRecorderObj,
+			@ModelAttribute("QTN_OBJ") TgQuotationRecorderVO qtnRecorderObj,
+			@ModelAttribute("MANUAL_FLT") ManualFlightQuotationVO manualFlightRequest,
+			@ModelAttribute("FLT_STOP") FlightStopDetailQuotationVO flightStopVO,
+			BindingResult result,
+			final RedirectAttributes redirectAttrib) {
+		ModelAndView mapview = form_view_manage_stops_quotation(leadId, quotationId, leadRecorderObj, qtnRecorderObj, manualFlightRequest, flightStopVO, result, redirectAttrib);
 		Udn_Flight_Quotation_Stop_Detail_Entity flightStopEntity = quotationService.findFlightStopEntityById(flightStopVO.getFltQuotationStopId());
 		flightStopVO.updateFlightStopVoFromEntity(flightStopEntity);
 		flightStopVO.setOriginCity(commonService.findAirportById(flightStopVO.getAirportCodeOrigin()).getCityName());
@@ -607,7 +745,7 @@ public class QuotationsController<Resource> {
 		Udn_Manual_Flight_Quotation_Entity manualQtnEntity = quotationService.findManualFlightQuotationEntityById(manualFlightRequest.getManualFlightQuotationId());
 		if(result.hasErrors()) {
 			leadRecorderObj.setLeadId(quotationEntity.getLeadEntity().getLeadId());
-			modelView = form_view_edit_flight_stop_quotation(leadRecorderObj,qtnRecorderObj,manualFlightRequest,flightStopVO,result,redirectAttrib);
+			modelView = form_view_edit_flight_stop_quotation(leadRecorderObj.getLeadId(), quotationId, leadRecorderObj, qtnRecorderObj, manualFlightRequest, flightStopVO, result, redirectAttrib);
 			return modelView;
 		}
 		else {
@@ -629,8 +767,15 @@ public class QuotationsController<Resource> {
 	
 
 	@RequestMapping("/form_view_delete_flight_stop_quotation")
-	public ModelAndView form_view_delete_flight_stop_quotation(@ModelAttribute("LEAD_OBJ") TgLeadsRecorderVO leadRecorderObj,@ModelAttribute("QTN_OBJ") TgQuotationRecorderVO qtnRecorderObj,@ModelAttribute("MANUAL_FLT") ManualFlightQuotationVO manualFlightRequest,@ModelAttribute("FLT_STOP") FlightStopDetailQuotationVO flightStopVO,BindingResult result,final RedirectAttributes redirectAttrib) {
-		ModelAndView mapview = form_view_edit_flight_stop_quotation(leadRecorderObj,qtnRecorderObj,manualFlightRequest,flightStopVO,result,redirectAttrib);
+	public ModelAndView form_view_delete_flight_stop_quotation(@RequestParam(value="leadId", required=false) Long leadId,
+			@RequestParam(value="quotationId", required=false) Long quotationId,
+			@ModelAttribute("LEAD_OBJ") TgLeadsRecorderVO leadRecorderObj,
+			@ModelAttribute("QTN_OBJ") TgQuotationRecorderVO qtnRecorderObj,
+			@ModelAttribute("MANUAL_FLT") ManualFlightQuotationVO manualFlightRequest,
+			@ModelAttribute("FLT_STOP") FlightStopDetailQuotationVO flightStopVO,
+			BindingResult result,
+			final RedirectAttributes redirectAttrib) {
+		ModelAndView mapview = form_view_edit_flight_stop_quotation(leadId, quotationId, leadRecorderObj, qtnRecorderObj, manualFlightRequest, flightStopVO, result, redirectAttrib);
 		flightStopVO.setAirlineName(commonService.findAirlineById(flightStopVO.getAirlineId()).getAirlineName());
 		flightStopVO.setCabinClassName(UdanChooConstants.CABIN_CLASS.get(flightStopVO.getCabinClass()));
 		mapview.addObject("FLT_STOP_ACTION", "DELETE");
@@ -648,8 +793,15 @@ public class QuotationsController<Resource> {
 	 }
 	
 	@RequestMapping("/form_view_flight_stops_quotation_modal")
-	public ModelAndView form_view_flight_stops_quotation_modal(@ModelAttribute("LEAD_OBJ") TgLeadsRecorderVO leadRecorderObj,@ModelAttribute("QTN_OBJ") TgQuotationRecorderVO qtnRecorderObj,@ModelAttribute("MANUAL_FLT") ManualFlightQuotationVO manualFlightRequest,@ModelAttribute("FLT_STOP") FlightStopDetailQuotationVO flightStopVO,BindingResult result,final RedirectAttributes redirectAttrib) {
-		ModelAndView mapview = form_view_manage_stops_quotation(leadRecorderObj,qtnRecorderObj,manualFlightRequest,flightStopVO,result,redirectAttrib);
+	public ModelAndView form_view_flight_stops_quotation_modal(@RequestParam(value="leadId", required=false) Long leadId,
+			@RequestParam(value="quotationId", required=false) Long quotationId,
+			@ModelAttribute("LEAD_OBJ") TgLeadsRecorderVO leadRecorderObj,
+			@ModelAttribute("QTN_OBJ") TgQuotationRecorderVO qtnRecorderObj,
+			@ModelAttribute("MANUAL_FLT") ManualFlightQuotationVO manualFlightRequest,
+			@ModelAttribute("FLT_STOP") FlightStopDetailQuotationVO flightStopVO,
+			BindingResult result,
+			final RedirectAttributes redirectAttrib) {
+		ModelAndView mapview = form_view_manage_stops_quotation(leadId, quotationId, leadRecorderObj, qtnRecorderObj, manualFlightRequest, flightStopVO, result, redirectAttrib);
 		mapview.setViewName("quotation/viewFlightStopDetails_modal");
 		return mapview;
 	}
@@ -658,14 +810,14 @@ public class QuotationsController<Resource> {
 
 	
 	@RequestMapping("/serach_flight_oneway_quotation_results")
-	public ModelAndView serach_flight_oneway_quotation_results(@ModelAttribute("LEAD_OBJ") TgLeadsRecorderVO leadRecorderObj,@ModelAttribute("QTN_OBJ") TgQuotationRecorderVO qtnRecorderObj,@ModelAttribute("FLT_SRCH") FlightSearchRequest flightSearchRequest,BindingResult result,final RedirectAttributes redirectAttrib) {
-		System.out.println("*************leadRecorderObj***********************");
-		System.out.println(leadRecorderObj);
-		System.out.println("*************QTN_OBJ***********************");
-		System.out.println(qtnRecorderObj);
-		System.out.println("*************flightSearchRequest***********************");
-		System.out.println(flightSearchRequest);
-		ModelAndView mapview = form_view_flight_quotation_details(leadRecorderObj,qtnRecorderObj,result,redirectAttrib);
+	public ModelAndView serach_flight_oneway_quotation_results(@RequestParam(value="leadId", required=false) Long leadId,
+			@RequestParam(value="quotationId", required=false) Long quotationId,
+			@ModelAttribute("LEAD_OBJ") TgLeadsRecorderVO leadRecorderObj,
+			@ModelAttribute("QTN_OBJ") TgQuotationRecorderVO qtnRecorderObj,
+			@ModelAttribute("FLT_SRCH") FlightSearchRequest flightSearchRequest,
+			BindingResult result,
+			final RedirectAttributes redirectAttrib) {
+		ModelAndView mapview = form_view_flight_quotation_details(leadId, quotationId, leadRecorderObj, qtnRecorderObj, result, redirectAttrib);
 		ArrayList<Integer> paxCount = new ArrayList<Integer>();
 		for(int i=1;i<10;i++)
 			paxCount.add(i);
@@ -695,7 +847,12 @@ public class QuotationsController<Resource> {
 	
 	
 	@RequestMapping("/form_view_duplicate_quotation_details")
-	public ModelAndView form_view_duplicate_quotation_details(@ModelAttribute("LEAD_OBJ") TgLeadsRecorderVO leadRecorderObj,@ModelAttribute("QTN_OBJ") TgQuotationRecorderVO qtnRecorderObj,BindingResult result) {
+	public ModelAndView form_view_duplicate_quotation_details(@RequestParam(value="leadId", required=false) Long leadId,
+			@RequestParam(value="quotationId", required=false) Long quotationId,
+			@ModelAttribute("LEAD_OBJ") TgLeadsRecorderVO leadRecorderObj,
+			@ModelAttribute("QTN_OBJ") TgQuotationRecorderVO qtnRecorderObj,
+			BindingResult result) {
+		ModelAndView mapview = form_view_quotation_details(leadId, quotationId, leadRecorderObj, qtnRecorderObj, result);
 		UserDetailsObj userObj = getLoggedInUser();
 		qtnRecorderObj.setCreatedBy(userObj.getUserId());
 		qtnRecorderObj.setLastUpdatedBy(userObj.getUserId());

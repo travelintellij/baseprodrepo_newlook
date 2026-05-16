@@ -53,6 +53,7 @@ public class TgQuotationRecorderVO extends Tg_Quotation_Recorder_Entity {
 		this.quotationName=tgQuotationEntity.getQuotationName();
 		this.createdBy=tgQuotationEntity.getCreatedBy();
 		this.lastUpdatedBy=tgQuotationEntity.getLastUpdatedBy();
+		this.itineraryId=tgQuotationEntity.getItineraryId();
 		
 	}
 	
@@ -72,6 +73,7 @@ public class TgQuotationRecorderVO extends Tg_Quotation_Recorder_Entity {
 		this.createdBy=tgQuotationEntity.getCreatedBy();
 		this.lastUpdatedBy=tgQuotationEntity.getLastUpdatedBy();
 		this.converted=tgQuotationEntity.isConverted();
+		this.itineraryId=tgQuotationEntity.getItineraryId();
 		//this.manualQuotationsList = tgQuotationEntity.getManualQuotationsList();
 		updateManualFlightVO(tgQuotationEntity.getManualQuotationsList());
 		updateManualHotelVO(tgQuotationEntity.getHotelQuotationsList(),this.getHotelOptionNo());

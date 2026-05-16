@@ -48,6 +48,8 @@
 <%@ include file="subcomponents/_qtn_others_config.jsp" %>
 </c:if>
 
+<%@ include file="subcomponents/_qtn_itinerary_config.jsp" %>
+
 
 
 

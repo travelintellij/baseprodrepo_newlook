@@ -62,7 +62,16 @@
                         </div>
                         <div class="createNewQuotation_form_wrapper_data_l1">
                             <label for="">Quotation status</label>
-                            <p>sasas</p>
+                            <p>Draft</p>
+                        </div>
+                        <div class="createNewQuotation_form_wrapper_data_l1">
+                            <label for="">Link Itinerary</label>
+                            <form:select path="itineraryId">
+                                <form:option value="" label="-- Select Itinerary --" />
+                                <c:forEach items="${ITINERARIES}" var="itinerary">
+                                    <form:option value="${itinerary.itineraryId}" label="${itinerary.title}" />
+                                </c:forEach>
+                            </form:select>
                         </div>
                     </div>
                     <p style="color: black;text-align: start;">Services to be included</p>

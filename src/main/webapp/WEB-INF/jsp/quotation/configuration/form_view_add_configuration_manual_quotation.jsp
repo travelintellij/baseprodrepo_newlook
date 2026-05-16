@@ -151,12 +151,20 @@
                                             </form:select>
                                         </div>
                                         <div class="form_view_aCMQuotation_lb_wr_f_sb">
+                                            <label for="" class="lb">Link Itinerary</label>
+                                            <select name="itineraryId" class="service-small">
+                                                <option value="" ${QTN_OBJ.itineraryId == null ? 'selected' : ''}>-- Select Itinerary --</option>
+                                                <c:forEach items="${ITINERARIES}" var="itinerary">
+                                                    <option value="${itinerary.itineraryId}" ${QTN_OBJ.itineraryId == itinerary.itineraryId ? 'selected' : ''}>${itinerary.title}</option>
+                                                </c:forEach>
+                                            </select>
+                                        </div>
+                                        <div class="form_view_aCMQuotation_lb_wr_f_sb">
                                             <label for="" class="lb">Logo Header</label> <br>
                                             <form:radiobutton path="logoHeader" id="logoHeaderTrue" name="logoHeader"
                                                 value="true" /> <label for="logoHeaderTrue" class="radio">Yes</label>
                                             <form:radiobutton path="logoHeader" id="logoHeaderFalse" name="logoHeader"
                                                 value="false" /> <label for="logoHeaderFalse" class="radio">No</label>
-
                                         </div>
                                         <div class="form_view_aCMQuotation_lb_wr_f_sb">
                                             <label for="" class="lb">Complete Address</label>  <br>

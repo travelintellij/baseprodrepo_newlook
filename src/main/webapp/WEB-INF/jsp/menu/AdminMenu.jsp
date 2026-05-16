@@ -170,6 +170,7 @@
                     </ul>
                 </li>
 
+                <sec:authorize access="hasRole('MANAGE_CAMPAIGN')">
                 <li class="bottomHeaderLinks">
                     <p>Campaigns</p>
                     <ul class="bottomSectionHeaderSubMenu">
@@ -178,6 +179,7 @@
                         <li><a href="${pageContext.request.contextPath}/campaign/central-config" class="hoverOnLink">Meta API Settings</a></li>
                     </ul>
                 </li>
+                </sec:authorize>
 
                 <li class="bottomHeaderLinks">
                     <p class="lastOp">Others</p>
