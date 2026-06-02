@@ -60,7 +60,9 @@ import com.udanchoo.intranet.service.ClientServiceImpl;
 import com.udanchoo.intranet.service.DealServiceImpl;
 import com.udanchoo.intranet.service.DealServiceLineImpl;
 import com.udanchoo.intranet.service.EmailServiceImpl;
-import com.udanchoo.intranet.service.FileStorageService;
+import com.udanchoo.intranet.service.DocumentService;
+import com.udanchoo.intranet.entity.Document;
+import org.springframework.core.io.ByteArrayResource;
 import com.udanchoo.intranet.service.UdnCommonServicesImpl;
 import com.udanchoo.intranet.service.UserDetailsServiceImpl;
 import com.udanchoo.intranet.util.UdanChooConstants;
@@ -75,7 +77,7 @@ public class FileController  {
 	private static final Logger logger = LoggerFactory.getLogger(FileController.class);
 
     @Autowired
-    private FileStorageService fileStorageService;
+    private DocumentService documentService;
     
 	@Autowired
 	UserDetailsServiceImpl userDetailsService;
@@ -103,45 +105,15 @@ public class FileController  {
 	@PostMapping("/uploadFile")
     public ModelAndView uploadFile(@RequestParam("file") MultipartFile file,@RequestParam("dealConfirmationId") int dealConfirmationId,@RequestParam("uploadType") String uploadType) {
     	ModelAndView mapview = new ModelAndView();
-    	Path directoryPath = Paths.get(fileStorageService.getFileStorageLocation() + "\\" + dealConfirmationId +"\\" + uploadType);
-    	boolean pathExists = Files.exists(directoryPath,new LinkOption[]{ LinkOption.NOFOLLOW_LINKS});
-    	UploadFileResponse uploadFileResponse = null;
-    	ResponseEntity< Resource> response =null ;
-    	Path newPath = null;
-    	if(!pathExists) {
-    		try {
-				newPath = Files.createDirectories(directoryPath);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-    	}
-    	else {
-    		newPath=directoryPath;
-    	}
-
-    	String fileName = fileStorageService.storeFile(file,newPath);
-    	mapview.addObject("Success", "File is Uploaded Successfully ! ");
-		
-		/*
-		try {
-			response = download(newPath.toString() + "\\" + fileName);
-			String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-	                .path("/downloadFile/")
-	                .path(newPath.toString() + "\\" + fileName)
-	                .toUriString();
-			uploadFileResponse =   new UploadFileResponse(fileName, fileDownloadUri,file.getContentType(), file.getSize());
-		}
-		catch(Exception e) {
-			e.printStackTrace();
-		}
-		*/
-    	
-    	//return uploadFileResponse;
-		 
+        try {
+            documentService.saveDocument("DEAL_" + uploadType, String.valueOf(dealConfirmationId), file);
+            mapview.addObject("Success", "File is Uploaded Successfully ! ");
+        } catch (Exception e) {
+            e.printStackTrace();
+            mapview.addObject("Error", "Error uploading file ! ");
+        }
 		mapview.setViewName("forward:view_upload_file");
 		return mapview;
-    
     }
 
     
@@ -216,22 +188,38 @@ public class FileController  {
     //@PostMapping(value="/workload/downloadFile")
    @PostMapping(value="/downloadFile")
     public ResponseEntity<Resource>  downloadFile(@RequestParam("dealConfirmationId") long dealConfirmationId,@RequestParam("fileName") String deleteFilePath,@RequestParam("fileType") String fileType) throws IOException {
-		Path downloadFilePath = Paths.get(deleteFilePath);
-		Resource resource = new UrlResource(downloadFilePath.toUri());
-		String  contentType = "application/octet-stream";
-		return ResponseEntity.ok().contentType(MediaType.parseMediaType(contentType))
-    	            .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
-    	            .body(resource);
+        Document document = documentService.getDocument(Long.parseLong(deleteFilePath));
+        if (document == null) {
+            return ResponseEntity.notFound().build();
+        }
+        Resource resource = new ByteArrayResource(document.getFileData()) {
+            @Override
+            public String getFilename() {
+                return document.getFileName();
+            }
+        };
+        String contentType = document.getFileType() != null ? document.getFileType() : "application/octet-stream";
+        return ResponseEntity.ok().contentType(MediaType.parseMediaType(contentType))
+                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
+                    .body(resource);
     }
     
     @RequestMapping(path = "/download", method = RequestMethod.GET)
     public ResponseEntity<Resource> download(String downloadFile) throws IOException {
-    	String  contentType = "application/octet-stream";
-    	Path path = Paths.get(downloadFile);
-    	Resource resource = new UrlResource(path.toUri());
-    	return ResponseEntity.ok().contentType(MediaType.parseMediaType(contentType))
-    	            .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
-    	            .body(resource);
+        Document document = documentService.getDocument(Long.parseLong(downloadFile));
+        if (document == null) {
+            return ResponseEntity.notFound().build();
+        }
+        Resource resource = new ByteArrayResource(document.getFileData()) {
+            @Override
+            public String getFilename() {
+                return document.getFileName();
+            }
+        };
+        String contentType = document.getFileType() != null ? document.getFileType() : "application/octet-stream";
+        return ResponseEntity.ok().contentType(MediaType.parseMediaType(contentType))
+                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
+                    .body(resource);
     }
     
 
@@ -240,15 +228,9 @@ public class FileController  {
     @PostMapping(value="/deleteFile")
     public ModelAndView deleteFile(@RequestParam("dealConfirmationId") long dealConfirmationId,@RequestParam("fileName") String deleteFileName,@RequestParam("fileType") String fileType) throws IOException {
 		ModelAndView mapview = new ModelAndView();
-		//Path deleteFilePath = Paths.get(fileStorageService.getFileStorageLocation() + "\\" + dealConfirmationId +"\\" + fileType +"\\" + deleteFileName);
-		Path deleteFilePath = Paths.get(deleteFileName);
-    	if(Files.exists(deleteFilePath)) {
-    		Files.delete(deleteFilePath);
-    		mapview.addObject("Success", "File is deleted Successfully ! ");
-    	}
+		documentService.deleteDocument(Long.parseLong(deleteFileName));
+		mapview.addObject("Success", "File is deleted Successfully ! ");
 		mapview.setViewName("forward:view_upload_file");
-
-
     	return mapview;	
     }
     
@@ -256,23 +238,24 @@ public class FileController  {
     
     @GetMapping("/downloadFile/{fileName:.+}")
     public ResponseEntity<Resource> downloadFile(@PathVariable String fileName, HttpServletRequest request) {
-        // Load file as Resource
-        
-    	Resource resource = fileStorageService.loadFileAsResource(fileName);
-
-        // Try to determine file's content type
-        String contentType = null;
+        Document parsedDocument = null;
         try {
-            contentType = request.getServletContext().getMimeType(resource.getFile().getAbsolutePath());
-        } catch (IOException ex) {
-            logger.info("Could not determine file type.");
+            parsedDocument = documentService.getDocument(Long.parseLong(fileName.split("\\.")[0]));
+        } catch (NumberFormatException e) {
+            // Ignored
         }
-
-        // Fallback to the default content type if type could not be determined
-        if(contentType == null) {
-            contentType = "application/octet-stream";
+        if (parsedDocument == null) {
+            return ResponseEntity.notFound().build();
         }
-
+        
+        final Document document = parsedDocument;
+        Resource resource = new ByteArrayResource(document.getFileData()) {
+            @Override
+            public String getFilename() {
+                return document.getFileName();
+            }
+        };
+        String contentType = document.getFileType() != null ? document.getFileType() : "application/octet-stream";
         return ResponseEntity.ok()
                 .contentType(MediaType.parseMediaType(contentType))
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
@@ -280,9 +263,17 @@ public class FileController  {
     }
     @PostMapping(value="/viewFile")
     public ResponseEntity<Resource>  viewFile(@RequestParam("dealConfirmationId") long dealConfirmationId,@RequestParam("fileName") String fileName,@RequestParam("fileType") String fileType) throws IOException {
-        String  contentType = "application/pdf";
-        Path path = Paths.get(fileName);
-        Resource resource = new UrlResource(path.toUri());
+        Document document = documentService.getDocument(Long.parseLong(fileName));
+        if (document == null) {
+            return ResponseEntity.notFound().build();
+        }
+        Resource resource = new ByteArrayResource(document.getFileData()) {
+            @Override
+            public String getFilename() {
+                return document.getFileName();
+            }
+        };
+        String contentType = document.getFileType() != null ? document.getFileType() : "application/pdf";
         return ResponseEntity.ok().contentType(MediaType.parseMediaType(contentType))
                 .header(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=\"" + resource.getFilename() + "\"")
                 .body(resource);
@@ -312,24 +303,25 @@ public class FileController  {
     	mapview.addObject("dealConfirmationId", dealConfirmationId);
     	mapview.addObject("client", clientObj);
  
-    	Path directoryPath = Paths.get(fileStorageService.getFileStorageLocation() + "\\" + dealConfirmationId );
-    	
-    	if(Files.exists(directoryPath)) {
-    		Map<Object, Object> voucherMAP =  Stream.of(new File(directoryPath.toString()).listFiles())
-    	          .filter(file -> file.isDirectory()) 
-    	          .collect(Collectors.toMap(map -> map.getName(), map -> listFilesUsingJavaIO(map.getPath())));
-    		
-    		
-    		
-    		mapview.addObject("VOUCHERS_MAP", voucherMAP);
-    	}
+    	List<Document> docs = documentService.getDocumentsByPrefix(String.valueOf(dealConfirmationId), "DEAL_");
+        Map<String, List<Document>> voucherMAP = new HashMap<>();
+        for (Document doc : docs) {
+            String dirName = doc.getEntityType().replace("DEAL_", "");
+            voucherMAP.computeIfAbsent(dirName, k -> new ArrayList<>()).add(doc);
+        }
+        if (!voucherMAP.isEmpty()) {
+            mapview.addObject("VOUCHERS_MAP", voucherMAP);
+        }
     	
     	return mapview;
     }
     
     
     private Set<File> listFilesUsingJavaIO(String dir) {
-        return Stream.of(new File(dir).listFiles())
+        // Obsolete, left for compatibility if needed elsewhere
+        File fileDir = new File(dir);
+        if (!fileDir.exists() || !fileDir.isDirectory()) return java.util.Collections.emptySet();
+        return Stream.of(fileDir.listFiles())
           .filter(file -> !file.isDirectory())
           .map(File::getAbsoluteFile)
           .collect(Collectors.toSet());

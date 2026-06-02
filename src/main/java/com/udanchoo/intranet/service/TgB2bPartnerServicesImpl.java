@@ -41,6 +41,8 @@ import com.udanchoo.intranet.model.leads.TgLeadsRecorderVO;
 import com.udanchoo.intranet.model.partner.FilterPartnerObj;
 import com.udanchoo.intranet.model.partner.Tg_B2bPartner_Obj;
 import com.udanchoo.intranet.repository.TgB2bPartnersRepository;
+import com.udanchoo.intranet.service.DocumentService;
+import com.udanchoo.intranet.entity.Document;
 import com.udanchoo.intranet.util.UdanChooConstants;
 
 
@@ -55,7 +57,7 @@ public class TgB2bPartnerServicesImpl {
 	TgB2bPartnersRepository b2bPartnerRepository;
 	
 	@Autowired
-	 private FileStorageService fileStorageService;
+	 private DocumentService documentService;
 	
 	
 	public Tg_B2b_Partner_Entity findPartnerById(int partnerId) {
@@ -87,25 +89,21 @@ public class TgB2bPartnerServicesImpl {
 	
     @Transactional(rollbackFor = Exception.class)
     public void savePartnerAndFile(Tg_B2bPartner_Obj partnerObj) throws IOException {
-    	Path directoryPath = Paths.get(fileStorageService.getPartnerLogoLocation().toString());
     	Tg_B2b_Partner_Entity b2bPartnerEntity = new Tg_B2b_Partner_Entity(partnerObj);
-    	b2bPartnerRepository.save(b2bPartnerEntity);
+    	b2bPartnerEntity = b2bPartnerRepository.save(b2bPartnerEntity);
+    	partnerObj.setPartnerId(b2bPartnerEntity.getPartnerId());
         // Upload file
     	if (partnerObj.getLogoFile() != null && !partnerObj.getLogoFile().isEmpty()) {
-    		fileStorageService.storePartnerLogo(partnerObj.getLogoFile(),directoryPath,partnerObj.getPartnerShortName().trim());
+            documentService.saveDocument("B2B_LOGO", String.valueOf(partnerObj.getPartnerId()), partnerObj.getPartnerShortName().trim() + ".jpg", partnerObj.getLogoFile().getContentType(), partnerObj.getLogoFile().getBytes());
     	}
-    		
     }
     
    public boolean deleteLogoIfExists(Tg_B2bPartner_Obj partnerObj) {
-    	Path directoryPath = Paths.get(fileStorageService.getPartnerLogoLocation().toString());
-    	Path targetLocation = directoryPath.resolve(partnerObj.getLogoFileName());
-        try {
-            return Files.deleteIfExists(targetLocation);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
+        List<Document> docs = documentService.getDocuments("B2B_LOGO", String.valueOf(partnerObj.getPartnerId()));
+        for (Document doc : docs) {
+            documentService.deleteDocument(doc.getId());
         }
+        return true;
     }
     
    
@@ -115,13 +113,8 @@ public class TgB2bPartnerServicesImpl {
     
     
     public boolean checkPartnerLogoExists(Tg_B2bPartner_Obj partnerObj) {
-    	Path directoryPath = Paths.get(fileStorageService.getPartnerLogoLocation().toString());
-    	Path jpgFilePath = Paths.get(directoryPath.toString(), partnerObj.getPartnerShortName() + ".jpg");
-        Path pngFilePath = Paths.get(directoryPath.toString(), partnerObj.getPartnerShortName() + ".png");
-        
-        System.out.println(" Absolute PAth is " + jpgFilePath.getParent().toAbsolutePath().toString());
-        return Files.exists(jpgFilePath) || Files.exists(pngFilePath);
-    	
+        List<Document> docs = documentService.getDocuments("B2B_LOGO", String.valueOf(partnerObj.getPartnerId()));
+        return !docs.isEmpty();
     }
     
 	public Page<Tg_B2b_Partner_Entity>  filterPartners(int pageNo, int pageSize,String sorting,FilterPartnerObj filterPartnerObj,boolean isAdmin ) {

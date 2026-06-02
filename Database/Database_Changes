@@ -192,4 +192,18 @@ ADD COLUMN tentativeCost INT DEFAULT 0;
 ALTER TABLE campaign_form
 ADD COLUMN defaultService VARCHAR(50) DEFAULT NULL;
 
-
+#######################################################################
+# Document Storage Refactoring (Files to DB BLOBs)
+#######################################################################
+CREATE TABLE IF NOT EXISTS `document` (
+    `id`            BIGINT       NOT NULL AUTO_INCREMENT,
+    `entity_type`   VARCHAR(100) NOT NULL,
+    `entity_id`     VARCHAR(255) NOT NULL,
+    `file_name`     VARCHAR(255) NOT NULL,
+    `file_type`     VARCHAR(255) NULL,
+    `file_size`     BIGINT       NULL,
+    `uploaded_date` DATETIME     NULL,
+    `file_data`     LONGBLOB     NOT NULL,
+    PRIMARY KEY (`id`),
+    INDEX `idx_entity_type_id` (`entity_type`, `entity_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

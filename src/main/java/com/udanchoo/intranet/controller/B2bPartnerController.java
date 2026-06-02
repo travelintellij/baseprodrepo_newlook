@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 
+import com.udanchoo.intranet.model.partner.FilterPartnerObj;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
@@ -41,9 +42,10 @@ import com.udanchoo.intranet.model.UserDetailsObj;
 import com.udanchoo.intranet.model.leads.FilterLeadObj;
 import com.udanchoo.intranet.model.leads.TI_Leads_Followup_VO;
 import com.udanchoo.intranet.model.leads.TgLeadsRecorderVO;
-import com.udanchoo.intranet.model.partner.FilterPartnerObj;
 import com.udanchoo.intranet.model.partner.Tg_B2bPartner_Obj;
 import com.udanchoo.intranet.service.FileStorageService;
+import com.udanchoo.intranet.service.DocumentService;
+import com.udanchoo.intranet.entity.Document;
 import com.udanchoo.intranet.service.TgB2bPartnerServicesImpl;
 import com.udanchoo.intranet.service.UdnCommonServicesImpl;
 import com.udanchoo.intranet.service.UserDetailsServiceImpl;
@@ -68,6 +70,9 @@ public class B2bPartnerController {
 	
 	@Autowired
 	 private FileStorageService fileStorageService;
+	
+	@Autowired
+	private DocumentService documentService;
 	
 
 	
@@ -187,7 +192,7 @@ public class B2bPartnerController {
 
 	
 	@RequestMapping(value="view_filter_partners",method= {RequestMethod.GET,RequestMethod.POST})
-	public ModelAndView view_filter_partners( @RequestParam(defaultValue = "0") String page,@RequestParam(defaultValue = "3") Integer pageSize, @RequestParam(defaultValue = "CreatedAt") String sortBy,@ModelAttribute("FILTER_PARTNER") FilterPartnerObj filterPartnerObj,BindingResult result) {
+	public ModelAndView view_filter_partners(@RequestParam(defaultValue = "0") String page, @RequestParam(defaultValue = "3") Integer pageSize, @RequestParam(defaultValue = "CreatedAt") String sortBy, @ModelAttribute("FILTER_PARTNER") FilterPartnerObj filterPartnerObj, BindingResult result) {
 		pageSize = UdanChooConstants.DEFAULT_PAGE_SIZE;
 		ModelAndView modelView = new ModelAndView("admin/partner/view_filterPartners");
 		//System.out.println(filterObj);
@@ -241,23 +246,13 @@ public class B2bPartnerController {
 		partnerObj.setCityName(commonService.findDestinationById(partnerObj.getCityId()).getCityName());
 		ModelAndView mapview = new ModelAndView("admin/partner/form_edit_partner");
 		
-		
-		String logoFileName = partnerObj.getPartnerShortName() + ".jpg";; 
-        Path logoFilePath = Paths.get(absoluteImageDirectory, logoFileName);
-
-        if (Files.exists(logoFilePath)) {
-        	partnerObj.setLogFilePath("/absolute-images/" + logoFileName);
-        	partnerObj.setLogoFileName(logoFileName);
-        }
-        else {
-        	logoFileName = partnerObj.getPartnerShortName() + ".png"; 
-        	logoFilePath = Paths.get(absoluteImageDirectory, logoFileName);
-        	if (Files.exists(logoFilePath)) {
-        		 //"/partner-images/" + logoFileName);
-        		partnerObj.setLogFilePath("/absolute-images/" + logoFileName);
-        		partnerObj.setLogoFileName(logoFileName);
-        	}
-        	else partnerObj.setLogFilePath(null);
+		List<Document> logos = documentService.getDocuments("B2B_LOGO", String.valueOf(partnerObj.getPartnerId()));
+        if (!logos.isEmpty()) {
+            Document logo = logos.get(0);
+            partnerObj.setLogFilePath("/view_partner_logo?docId=" + logo.getId());
+            partnerObj.setLogoFileName(logo.getFileName());
+        } else {
+            partnerObj.setLogFilePath(null);
         }
     	return mapview;
 	}
@@ -269,21 +264,13 @@ public class B2bPartnerController {
 		partnerObj.setCityName(commonService.findDestinationById(partnerObj.getCityId()).getCityName());
 		ModelAndView mapview = new ModelAndView("admin/partner/form_view_partner");
 		mapview.addObject("Success", Success);
-		String logoFileName = partnerObj.getPartnerShortName() + ".jpg";; 
-        Path logoFilePath = Paths.get(absoluteImageDirectory, logoFileName);
-        if (Files.exists(logoFilePath)) {
-        	partnerObj.setLogFilePath("/absolute-images/" + logoFileName);
-        	partnerObj.setLogoFileName(logoFileName);
-        }
-        else {
-        	logoFileName = partnerObj.getPartnerShortName() + ".png"; 
-        	logoFilePath = Paths.get(absoluteImageDirectory, logoFileName);
-        	if (Files.exists(logoFilePath)) {
-        		 //"/partner-images/" + logoFileName);
-        		partnerObj.setLogFilePath("/absolute-images/" + logoFileName);
-        		partnerObj.setLogoFileName(logoFileName);
-        	}
-        	else partnerObj.setLogFilePath(null);
+		List<Document> logos = documentService.getDocuments("B2B_LOGO", String.valueOf(partnerObj.getPartnerId()));
+        if (!logos.isEmpty()) {
+            Document logo = logos.get(0);
+            partnerObj.setLogFilePath("/view_partner_logo?docId=" + logo.getId());
+            partnerObj.setLogoFileName(logo.getFileName());
+        } else {
+            partnerObj.setLogFilePath(null);
         }
     	return mapview;
 	}
@@ -298,6 +285,20 @@ public class B2bPartnerController {
 	}
 
 	
+    @RequestMapping(value = "/view_partner_logo", method = RequestMethod.GET)
+    public org.springframework.http.ResponseEntity<org.springframework.core.io.Resource> viewPartnerLogo(@RequestParam("docId") long docId) {
+        try {
+            Document doc = documentService.getDocument(docId);
+            org.springframework.core.io.ByteArrayResource resource = new org.springframework.core.io.ByteArrayResource(doc.getFileData());
+            String contentType = doc.getFileType() != null ? doc.getFileType() : "image/jpeg";
+            return org.springframework.http.ResponseEntity.ok()
+                    .contentType(org.springframework.http.MediaType.parseMediaType(contentType))
+                    .body(resource);
+        } catch (Exception e) {
+            return org.springframework.http.ResponseEntity.notFound().build();
+        }
+    }
+
 	private UserDetailsObj getLoggedInUser() {
     	Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     	String username;

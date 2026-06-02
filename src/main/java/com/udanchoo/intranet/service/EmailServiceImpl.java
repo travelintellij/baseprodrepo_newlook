@@ -41,6 +41,9 @@ import com.udanchoo.intranet.model.EmailMessageVO;
 import com.udanchoo.intranet.model.Mail;
 import com.udanchoo.intranet.util.EmailConfig;
 import com.udanchoo.intranet.util.FileStorageProperties;
+import com.udanchoo.intranet.service.DocumentService;
+import com.udanchoo.intranet.entity.Document;
+import org.springframework.core.io.ByteArrayResource;
 
 import freemarker.cache.WebappTemplateLoader;
 import freemarker.core.Configurable;
@@ -59,6 +62,9 @@ public class EmailServiceImpl {
 
 	@Autowired
 	private EmailConfig emailConfig;
+
+	@Autowired
+	private DocumentService documentService;
 
 	
 	/*@Autowired
@@ -159,9 +165,18 @@ public class EmailServiceImpl {
 	                //attachFiles(filtToAttach,helper );
 	                
 	                for (Object aName : filtToAttach) {
-	    				File file = new File((String)aName);
-	                	FileSystemResource fr = new FileSystemResource(file);
-	    				helper.addAttachment(file.getName(), fr);
+                        try {
+                            Long docId = Long.parseLong((String) aName);
+                            Document doc = documentService.getDocument(docId);
+                            if (doc != null) {
+                                ByteArrayResource br = new ByteArrayResource(doc.getFileData());
+                                helper.addAttachment(doc.getFileName(), br);
+                            }
+                        } catch (NumberFormatException e) {
+	    				    File file = new File((String)aName);
+	                	    FileSystemResource fr = new FileSystemResource(file);
+	    				    helper.addAttachment(file.getName(), fr);
+                        }
 	    			}
 	                helper.setText(emailMessageVo.getEmailMessage());
 	            }

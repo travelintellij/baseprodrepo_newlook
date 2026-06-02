@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:if test="${not empty LINKED_ITINERARY}">
-    <div class="itinerary-section" style="margin-top: 20px; page-break-before: auto;">
-        <h2 style="background-color: #333; color: #fff; padding: 10px; margin-bottom: 15px; font-size: 18px;">Itinerary: ${LINKED_ITINERARY.title}</h2>
+    <div class="itinerary-section" style="margin-top: 20px; page-break-before: always;">
+        <h2 style="background-color: #333; color: #fff; padding: 10px; margin-bottom: 15px; font-size: 18px;">Tentative Itinerary: ${LINKED_ITINERARY.title}</h2>
         <c:if test="${not empty LINKED_ITINERARY.description}">
             <p style="font-style: italic; margin-bottom: 15px; color: #555;">${LINKED_ITINERARY.description}</p>
         </c:if>

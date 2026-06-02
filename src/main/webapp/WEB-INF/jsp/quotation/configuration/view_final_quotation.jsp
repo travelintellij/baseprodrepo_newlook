@@ -7,8 +7,151 @@
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <head>
 <link href="<c:url value="/resources/core/main.css" />" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Global Premium Reset & Typography */
+body {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 40px;
+    font-family: 'Outfit', 'Segoe UI', system-ui, sans-serif;
+    color: #1e293b;
+    line-height: 1.5;
+    background-color: transparent;
+}
+
+/* Background image configuration */
+.quotation-print-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -9999;
+    opacity: 0.25; /* Highly visible but soft enough for text readability */
+    filter: brightness(0.8) contrast(1.15) saturate(1.1); /* Darker and more contrast */
+    pointer-events: none;
+    object-fit: cover;
+}
+
+/* Tables & Borders Styling */
+table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin-bottom: 24px !important;
+    background-color: rgba(255, 255, 255, 0.88) !important; /* Shows background through */
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03) !important;
+}
+
+table, th, td {
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+th {
+    background-color: rgba(15, 23, 42, 0.9) !important; /* Deep Slate Gray */
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    font-size: 0.85rem !important;
+    letter-spacing: 0.05em !important;
+    padding: 12px 16px !important;
+}
+
+td {
+    padding: 12px 16px !important;
+    color: #334155 !important;
+    font-size: 0.95rem !important;
+}
+
+/* Modern styling for hr, headings and fonts */
+h1, h2, h3, h4, h5, h6 {
+    color: #0f172a !important;
+    font-weight: 700 !important;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 1.5rem !important;
+}
+
+hr {
+    border: 0 !important;
+    height: 1px !important;
+    background: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0.1), rgba(0,0,0,0)) !important;
+    margin: 24px 0 !important;
+}
+
+/* Redefining color accents to match the modern theme */
+td[style*="background-color:pink"],
+th[style*="background-color:pink"],
+td[style*="background-color: pink"],
+th[style*="background-color: pink"] {
+    background-color: rgba(253, 242, 248, 0.9) !important; /* Soft rose total highlight */
+    font-weight: 700 !important;
+    color: #9d174d !important;
+}
+
+td[style*="background-color:yellow"],
+td[style*="background-color: yellow"] {
+    background-color: rgba(254, 243, 199, 0.95) !important; /* Warm amber costing header */
+    color: #92400e !important;
+}
+
+table[style*="background-color:#FFFACD"] {
+    background-color: rgba(254, 243, 199, 0.6) !important;
+}
+
+th[style*="background-color:blue"] {
+    background-color: rgba(29, 78, 216, 0.9) !important; /* Royal blue service headers */
+    color: white !important;
+}
+
+td[style*="background-color:lightblue"] {
+    background-color: rgba(219, 234, 254, 0.8) !important; /* Ice blue highlights */
+}
+
+/* Media Print Configuration for A4 PDF */
+@media print {
+    #Printbox, a[href*="send_whatsapp_quotation"], input[type="button"] {
+        display: none !important;
+    }
+    
+    @page {
+        size: A4;
+        margin: 0; /* Fully covers print page borders (full bleed) */
+    }
+    
+    html, body {
+        background-color: transparent !important;
+    }
+    
+    body {
+        max-width: none !important;
+        margin: 20mm 15mm !important; /* Consistent padding away from edges */
+        padding: 0 !important;
+    }
+    
+    .quotation-print-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: -9999;
+        opacity: 0.25;
+        filter: brightness(0.8) contrast(1.15) saturate(1.1);
+        object-fit: cover;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+}
+</style>
 </head>
 <body>
+<img class="quotation-print-bg" src="${pageContext.request.contextPath}/resources/images/revamped/quotation_print_bg.jpg" alt="background">
 <form:form modelAttribute="MANUAL_CNF" action="create_update_generate_manual_configuration_quotation">
 
 <%@ include file="subcomponents/_qtn_header_config.jsp" %>
@@ -48,8 +191,6 @@
 <%@ include file="subcomponents/_qtn_others_config.jsp" %>
 </c:if>
 
-<%@ include file="subcomponents/_qtn_itinerary_config.jsp" %>
-
 
 
 
@@ -66,6 +207,7 @@
 </c:if>
 <%@ include file="subcomponents/_qtn_costing_config.jsp" %>
 <%@ include file="subcomponents/_qtn_tnc_config.jsp" %>
+<%@ include file="subcomponents/_qtn_itinerary_config.jsp" %>
 <p align="right">
     <a href="send_whatsapp_quotation?leadId=${LEAD_OBJ.leadId}&quotationId=${QTN_OBJ.quotationId}" style="text-decoration:none;">
         <input type="button" value="Share on WhatsApp" style="background:#25D366; color:white; border:none; padding:5px 10px; cursor:pointer; border-radius:3px;"/>
