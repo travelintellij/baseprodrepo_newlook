@@ -158,6 +158,74 @@
             font-size: 13px;
         }
 
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transform: translateY(-20px);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.show .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-content i {
+            font-size: 40px;
+            color: #e53e3e;
+            margin-bottom: 15px;
+        }
+
+        .modal-content h3 {
+            margin: 0 0 10px;
+            color: #1a202c;
+            font-size: 20px;
+        }
+
+        .modal-content p {
+            color: #4a5568;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .modal-btn {
+            background: #3182ce;
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+        }
+
+        .modal-btn:hover {
+            background: #2b6cb0;
+        }
+
     </style>
 </head>
 <body>
@@ -251,6 +319,10 @@ var dayCount = 0;
 })();
 
 function addDay() {
+    if (dayCount >= 120) {
+        showModal();
+        return;
+    }
     var container = document.getElementById("dayContainer");
     var index = dayCount;
     dayCount++;
@@ -297,6 +369,31 @@ function renumberDays() {
         });
     });
 }
+
+function showModal() {
+    var modal = document.getElementById('maxLimitModal');
+    modal.style.display = 'flex';
+    void modal.offsetWidth; // trigger reflow
+    modal.classList.add('show');
+}
+
+function closeModal() {
+    var modal = document.getElementById('maxLimitModal');
+    modal.classList.remove('show');
+    setTimeout(() => {
+        modal.style.display = 'none';
+    }, 300);
+}
 </script>
+
+<div id="maxLimitModal" class="modal-overlay">
+    <div class="modal-content">
+        <i class="fas fa-exclamation-circle"></i>
+        <h3>Maximum Limit Reached</h3>
+        <p>You can only add up to 120 days to an itinerary.</p>
+        <button class="modal-btn" onclick="closeModal()">Got it</button>
+    </div>
+</div>
+
 </body>
 </html>
