@@ -90,18 +90,27 @@ public class TgB2bPartnerServicesImpl {
     @Transactional(rollbackFor = Exception.class)
     public void savePartnerAndFile(Tg_B2bPartner_Obj partnerObj) throws IOException {
     	Tg_B2b_Partner_Entity b2bPartnerEntity = new Tg_B2b_Partner_Entity(partnerObj);
+        
+        if (partnerObj.getPartnerId() > 0) {
+            Tg_B2b_Partner_Entity existing = findPartnerById(partnerObj.getPartnerId());
+            if (existing != null) {
+                b2bPartnerEntity.setLogoImage(existing.getLogoImage());
+            }
+        }
+
+    	if (partnerObj.getLogoFile() != null && !partnerObj.getLogoFile().isEmpty()) {
+            b2bPartnerEntity.setLogoImage(partnerObj.getLogoFile().getBytes());
+    	}
+        
     	b2bPartnerEntity = b2bPartnerRepository.save(b2bPartnerEntity);
     	partnerObj.setPartnerId(b2bPartnerEntity.getPartnerId());
-        // Upload file
-    	if (partnerObj.getLogoFile() != null && !partnerObj.getLogoFile().isEmpty()) {
-            documentService.saveDocument("B2B_LOGO", String.valueOf(partnerObj.getPartnerId()), partnerObj.getPartnerShortName().trim() + ".jpg", partnerObj.getLogoFile().getContentType(), partnerObj.getLogoFile().getBytes());
-    	}
     }
     
    public boolean deleteLogoIfExists(Tg_B2bPartner_Obj partnerObj) {
-        List<Document> docs = documentService.getDocuments("B2B_LOGO", String.valueOf(partnerObj.getPartnerId()));
-        for (Document doc : docs) {
-            documentService.deleteDocument(doc.getId());
+        Tg_B2b_Partner_Entity entity = findPartnerById(partnerObj.getPartnerId());
+        if (entity != null) {
+            entity.setLogoImage(null);
+            b2bPartnerRepository.save(entity);
         }
         return true;
     }
@@ -113,8 +122,8 @@ public class TgB2bPartnerServicesImpl {
     
     
     public boolean checkPartnerLogoExists(Tg_B2bPartner_Obj partnerObj) {
-        List<Document> docs = documentService.getDocuments("B2B_LOGO", String.valueOf(partnerObj.getPartnerId()));
-        return !docs.isEmpty();
+        Tg_B2b_Partner_Entity entity = findPartnerById(partnerObj.getPartnerId());
+        return entity != null && entity.getLogoImage() != null && entity.getLogoImage().length > 0;
     }
     
 	public Page<Tg_B2b_Partner_Entity>  filterPartners(int pageNo, int pageSize,String sorting,FilterPartnerObj filterPartnerObj,boolean isAdmin ) {

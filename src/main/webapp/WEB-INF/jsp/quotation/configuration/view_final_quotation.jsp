@@ -16,78 +16,77 @@ body {
     padding: 40px;
     font-family: 'Outfit', 'Segoe UI', system-ui, sans-serif;
     color: #1e293b;
-    line-height: 1.5;
-    background-color: transparent;
+    line-height: 1.6;
+    background-color: #e0f2fe !important; /* Sky Blue Background */
 }
 
 /* Background image configuration */
 .quotation-print-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -9999;
-    opacity: 0.75; /* Perfect blend for the pink theme */
-    pointer-events: none;
-    object-fit: cover;
+    display: none !important; /* Removing the background image as user requested sky blue background */
 }
 
 /* Tables & Borders Styling */
 table {
     width: 100% !important;
     border-collapse: separate !important;
-    border-spacing: 0 !important;
+    border-spacing: 0;
     margin-bottom: 24px !important;
-    background-color: rgba(255, 255, 255, 0.85) !important; /* Glass effect */
-    backdrop-filter: blur(8px) !important;
+    background-color: #ffffff !important; 
     border-radius: 12px !important;
     overflow: hidden !important;
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1) !important;
-    border: 1px solid rgba(255, 255, 255, 0.6) !important;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+    border: 1px solid #bae6fd !important;
 }
 
 table, th, td {
-    border: 1px solid rgba(0, 0, 0, 0.05) !important;
+    border: none !important;
 }
 
 th {
-    background-color: rgba(255, 255, 255, 0.95) !important; 
-    color: #0284c7 !important; /* Sky blue for headers */
+    background-color: #0284c7 !important; /* Rich Sky Blue / Ocean Blue */
+    color: #ffffff !important;
     font-weight: 700 !important;
     text-transform: uppercase !important;
-    font-size: 0.85rem !important;
+    font-size: 0.9rem !important;
     letter-spacing: 0.05em !important;
-    padding: 14px 16px !important;
-    white-space: nowrap !important;
-    text-align: center !important;
+    padding: 14px 18px !important;
+    border-bottom: 2px solid #0369a1 !important;
 }
 
 td {
-    padding: 14px 16px !important;
+    padding: 14px 18px !important;
     color: #334155 !important;
     font-size: 0.95rem !important;
-    text-align: center !important;
-    vertical-align: middle !important;
+    border-bottom: 1px solid #f1f5f9 !important;
+}
+
+tr:last-child td {
+    border-bottom: none !important;
 }
 
 /* Modern styling for hr, headings and fonts */
 h1, h2, h3, h4, h5, h6 {
-    color: #0284c7 !important;
+    color: #0c4a6e !important; /* Dark sky blue for headings */
     font-weight: 800 !important;
-    margin-top: 20px;
-    margin-bottom: 10px;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    letter-spacing: -0.02em;
 }
 
 h2 {
-    font-size: 1.5rem !important;
+    font-size: 1.75rem !important;
 }
 
 hr {
     border: 0 !important;
-    height: 1px !important;
-    background: linear-gradient(to right, rgba(0,0,0,0), rgba(2, 132, 199, 0.2), rgba(0,0,0,0)) !important;
-    margin: 24px 0 !important;
+    height: 2px !important;
+    background: linear-gradient(to right, rgba(2,132,199,0), rgba(2,132,199,0.5), rgba(2,132,199,0)) !important;
+    margin: 30px 0 !important;
+}
+
+strong, b {
+    font-weight: 800 !important;
+    color: #0f172a !important;
 }
 
 /* Redefining color accents to match the modern theme */
@@ -95,35 +94,31 @@ td[style*="background-color:pink"],
 th[style*="background-color:pink"],
 td[style*="background-color: pink"],
 th[style*="background-color: pink"] {
-    background-color: rgba(240, 249, 255, 0.9) !important; 
+    background-color: rgba(253, 242, 248, 0.9) !important; 
     font-weight: 700 !important;
-    color: #0284c7 !important;
+    color: #9d174d !important;
 }
 
 td[style*="background-color:yellow"],
 td[style*="background-color: yellow"] {
-    background-color: rgba(224, 242, 254, 0.95) !important; /* Light sky blue */
-    color: #0284c7 !important;
+    background-color: rgba(254, 243, 199, 0.95) !important; 
     font-weight: 700 !important;
+    color: #92400e !important;
 }
 
 table[style*="background-color:#FFFACD"] {
-    background-color: rgba(255, 255, 255, 0.7) !important;
+    background-color: #fef3c7 !important;
 }
 
-th[style*="background-color:blue"],
-td[style*="background-color:blue"] {
-    background-color: rgba(14, 165, 233, 0.9) !important; /* Solid sky blue for main headers */
+th[style*="background-color:blue"] {
+    background-color: #0369a1 !important; 
     color: white !important;
-    font-size: 1.05rem !important;
-    letter-spacing: 0.05em !important;
-    border: none !important;
 }
 
 td[style*="background-color:lightblue"] {
-    background-color: rgba(186, 230, 253, 0.8) !important; /* Soft blue highlights */
-    color: #0284c7 !important;
-    font-weight: 600 !important;
+    background-color: #bae6fd !important; 
+    font-weight: 700 !important;
+    color: #0c4a6e !important;
 }
 
 /* Media Print Configuration for A4 PDF */
@@ -138,7 +133,9 @@ td[style*="background-color:lightblue"] {
     }
     
     html, body {
-        background-color: transparent !important;
+        background-color: #e0f2fe !important; /* Sky blue background for print */
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
     }
     
     body {
@@ -148,22 +145,13 @@ td[style*="background-color:lightblue"] {
     }
     
     .quotation-print-bg {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        z-index: -9999;
-        opacity: 0.55; /* Slightly lighter for printing */
-        object-fit: cover;
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
+        display: none !important;
     }
 }
 </style>
 </head>
 <body>
-<img class="quotation-print-bg" src="${pageContext.request.contextPath}/resources/images/revamped/quotation_print_bg.png" alt="background">
+<img class="quotation-print-bg" src="${pageContext.request.contextPath}/resources/images/revamped/quotation_print_bg.jpg" alt="background">
 <form:form modelAttribute="MANUAL_CNF" action="create_update_generate_manual_configuration_quotation">
 
 <%@ include file="subcomponents/_qtn_header_config.jsp" %>

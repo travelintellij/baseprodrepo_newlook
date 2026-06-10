@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 import com.udanchoo.intranet.model.partner.Tg_B2bPartner_Obj;
@@ -41,6 +42,10 @@ public class Tg_B2b_Partner_Entity extends AuditModel {
 	protected String bankBranch;
 	protected String upiId;
     private String mobile;
+
+    @Lob
+    @Column(name = "logo_image")
+    private byte[] logoImage;
 
     public String getMobile() {
         return mobile;
@@ -257,6 +262,15 @@ public class Tg_B2b_Partner_Entity extends AuditModel {
 	public void setBankBranch(String bankBranch) {
 		this.bankBranch = bankBranch;
 	}
+
+    @Lob
+    public byte[] getLogoImage() {
+        return logoImage;
+    }
+
+    public void setLogoImage(byte[] logoImage) {
+        this.logoImage = logoImage;
+    }
 
 	public String getUpiId() {
 		return upiId;
