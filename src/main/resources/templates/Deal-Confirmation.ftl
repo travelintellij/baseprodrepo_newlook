@@ -1,808 +1,205 @@
-<!doctype html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
-    <head>
-        <!-- NAME: SELL PRODUCTS -->
-        <!--[if gte mso 15]>
-        <xml>
-            <o:OfficeDocumentSettings>
-            <o:AllowPNG/>
-            <o:PixelsPerInch>96</o:PixelsPerInch>
-            </o:OfficeDocumentSettings>
-        </xml>
-        <![endif]-->
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>UdanChoo Deal Reference Communication</title>
-        
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UdanChoo Deal Reference Communication</title>
     <style type="text/css">
-		p{
-			margin:10px 0;
-			padding:0;
-		}
-		table{
-			border-collapse:collapse;
-		}
-		h1,h2,h3,h4,h5,h6{
-			display:block;
-			margin:0;
-			padding:0;
-		}
-		img,a img{
-			border:0;
-			height:auto;
-			outline:none;
-			text-decoration:none;
-		}
-		body,#bodyTable,#bodyCell{
-			height:100%;
-			margin:0;
-			padding:0;
-			width:100%;
-		}
-		.mcnPreviewText{
-			display:none !important;
-		}
-		#outlook a{
-			padding:0;
-		}
-		img{
-			-ms-interpolation-mode:bicubic;
-		}
-		table{
-			mso-table-lspace:0pt;
-			mso-table-rspace:0pt;
-		}
-		.ReadMsgBody{
-			width:100%;
-		}
-		.ExternalClass{
-			width:100%;
-		}
-		p,a,li,td,blockquote{
-			mso-line-height-rule:exactly;
-		}
-		a[href^=tel],a[href^=sms]{
-			color:inherit;
-			cursor:default;
-			text-decoration:none;
-		}
-		p,a,li,td,body,table,blockquote{
-			-ms-text-size-adjust:100%;
-			-webkit-text-size-adjust:100%;
-		}
-		.ExternalClass,.ExternalClass p,.ExternalClass td,.ExternalClass div,.ExternalClass span,.ExternalClass font{
-			line-height:100%;
-		}
-		a[x-apple-data-detectors]{
-			color:inherit !important;
-			text-decoration:none !important;
-			font-size:inherit !important;
-			font-family:inherit !important;
-			font-weight:inherit !important;
-			line-height:inherit !important;
-		}
-		.templateContainer{
-			max-width:600px !important;
-		}
-		a.mcnButton{
-			display:block;
-		}
-		.mcnImage,.mcnRetinaImage{
-			vertical-align:bottom;
-		}
-		.mcnTextContent{
-			word-break:break-word;
-		}
-		.mcnTextContent img{
-			height:auto !important;
-		}
-		.mcnDividerBlock{
-			table-layout:fixed !important;
-		}
-	/*
-	@tab Page
-	@section Heading 1
-	@style heading 1
-	*/
-		h1{
-			/*@editable*/color:#222222;
-			/*@editable*/font-family:Helvetica;
-			/*@editable*/font-size:40px;
-			/*@editable*/font-style:normal;
-			/*@editable*/font-weight:bold;
-			/*@editable*/line-height:150%;
-			/*@editable*/letter-spacing:normal;
-			/*@editable*/text-align:center;
-		}
-	/*
-	@tab Page
-	@section Heading 2
-	@style heading 2
-	*/
-		h2{
-			/*@editable*/color:#222222;
-			/*@editable*/font-family:Helvetica;
-			/*@editable*/font-size:34px;
-			/*@editable*/font-style:normal;
-			/*@editable*/font-weight:bold;
-			/*@editable*/line-height:150%;
-			/*@editable*/letter-spacing:normal;
-			/*@editable*/text-align:left;
-		}
-	/*
-	@tab Page
-	@section Heading 3
-	@style heading 3
-	*/
-		h3{
-			/*@editable*/color:#444444;
-			/*@editable*/font-family:Helvetica;
-			/*@editable*/font-size:22px;
-			/*@editable*/font-style:normal;
-			/*@editable*/font-weight:bold;
-			/*@editable*/line-height:150%;
-			/*@editable*/letter-spacing:normal;
-			/*@editable*/text-align:left;
-		}
-	/*
-	@tab Page
-	@section Heading 4
-	@style heading 4
-	*/
-		h4{
-			/*@editable*/color:#949494;
-			/*@editable*/font-family:Georgia;
-			/*@editable*/font-size:20px;
-			/*@editable*/font-style:italic;
-			/*@editable*/font-weight:normal;
-			/*@editable*/line-height:125%;
-			/*@editable*/letter-spacing:normal;
-			/*@editable*/text-align:left;
-		}
-	/*
-	@tab Header
-	@section Header Container Style
-	*/
-		#templateHeader{
-			/*@editable*/background-color:#F7F7F7;
-			/*@editable*/background-image:none;
-			/*@editable*/background-repeat:no-repeat;
-			/*@editable*/background-position:center;
-			/*@editable*/background-size:cover;
-			/*@editable*/border-top:0;
-			/*@editable*/border-bottom:0;
-			/*@editable*/padding-top:45px;
-			/*@editable*/padding-bottom:45px;
-		}
-	/*
-	@tab Header
-	@section Header Interior Style
-	*/
-		.headerContainer{
-			/*@editable*/background-color:transparent;
-			/*@editable*/background-image:none;
-			/*@editable*/background-repeat:no-repeat;
-			/*@editable*/background-position:center;
-			/*@editable*/background-size:cover;
-			/*@editable*/border-top:0;
-			/*@editable*/border-bottom:0;
-			/*@editable*/padding-top:0;
-			/*@editable*/padding-bottom:0;
-		}
-	/*
-	@tab Header
-	@section Header Text
-	*/
-		.headerContainer .mcnTextContent,.headerContainer .mcnTextContent p{
-			/*@editable*/color:#757575;
-			/*@editable*/font-family:Helvetica;
-			/*@editable*/font-size:16px;
-			/*@editable*/line-height:150%;
-			/*@editable*/text-align:left;
-		}
-	/*
-	@tab Header
-	@section Header Link
-	*/
-		.headerContainer .mcnTextContent a,.headerContainer .mcnTextContent p a{
-			/*@editable*/color:#007C89;
-			/*@editable*/font-weight:normal;
-			/*@editable*/text-decoration:underline;
-		}
-	/*
-	@tab Body
-	@section Body Container Style
-	*/
-		#templateBody{
-			/*@editable*/background-color:#FFFFFF;
-			/*@editable*/background-image:none;
-			/*@editable*/background-repeat:no-repeat;
-			/*@editable*/background-position:center;
-			/*@editable*/background-size:cover;
-			/*@editable*/border-top:0;
-			/*@editable*/border-bottom:0;
-			/*@editable*/padding-top:36px;
-			/*@editable*/padding-bottom:45px;
-		}
-	/*
-	@tab Body
-	@section Body Interior Style
-	*/
-		.bodyContainer{
-			/*@editable*/background-color:transparent;
-			/*@editable*/background-image:none;
-			/*@editable*/background-repeat:no-repeat;
-			/*@editable*/background-position:center;
-			/*@editable*/background-size:cover;
-			/*@editable*/border-top:0;
-			/*@editable*/border-bottom:0;
-			/*@editable*/padding-top:0;
-			/*@editable*/padding-bottom:0;
-		}
-	/*
-	@tab Body
-	@section Body Text
-	*/
-		.bodyContainer .mcnTextContent,.bodyContainer .mcnTextContent p{
-			/*@editable*/color:#757575;
-			/*@editable*/font-family:Helvetica;
-			/*@editable*/font-size:16px;
-			/*@editable*/line-height:150%;
-			/*@editable*/text-align:left;
-		}
-	/*
-	@tab Body
-	@section Body Link
-	*/
-		.bodyContainer .mcnTextContent a,.bodyContainer .mcnTextContent p a{
-			/*@editable*/color:#007C89;
-			/*@editable*/font-weight:normal;
-			/*@editable*/text-decoration:underline;
-		}
-	/*
-	@tab Footer
-	@section Footer Style
-	*/
-		#templateFooter{
-			/*@editable*/background-color:#333333;
-			/*@editable*/background-image:none;
-			/*@editable*/background-repeat:no-repeat;
-			/*@editable*/background-position:center;
-			/*@editable*/background-size:cover;
-			/*@editable*/border-top:0;
-			/*@editable*/border-bottom:0;
-			/*@editable*/padding-top:45px;
-			/*@editable*/padding-bottom:63px;
-		}
-	/*
-	@tab Footer
-	@section Footer Interior Style
-	*/
-		.footerContainer{
-			/*@editable*/background-color:transparent;
-			/*@editable*/background-image:none;
-			/*@editable*/background-repeat:no-repeat;
-			/*@editable*/background-position:center;
-			/*@editable*/background-size:cover;
-			/*@editable*/border-top:0;
-			/*@editable*/border-bottom:0;
-			/*@editable*/padding-top:0;
-			/*@editable*/padding-bottom:0;
-		}
-	/*
-	@tab Footer
-	@section Footer Text
-	*/
-		.footerContainer .mcnTextContent,.footerContainer .mcnTextContent p{
-			/*@editable*/color:#FFFFFF;
-			/*@editable*/font-family:Helvetica;
-			/*@editable*/font-size:12px;
-			/*@editable*/line-height:150%;
-			/*@editable*/text-align:center;
-		}
-	/*
-	@tab Footer
-	@section Footer Link
-	*/
-		.footerContainer .mcnTextContent a,.footerContainer .mcnTextContent p a{
-			/*@editable*/color:#FFFFFF;
-			/*@editable*/font-weight:normal;
-			/*@editable*/text-decoration:underline;
-		}
-	@media only screen and (min-width:768px){
-		.templateContainer{
-			width:600px !important;
-		}
-
-}	@media only screen and (max-width: 480px){
-		body,table,td,p,a,li,blockquote{
-			-webkit-text-size-adjust:none !important;
-		}
-
-}	@media only screen and (max-width: 480px){
-		body{
-			width:100% !important;
-			min-width:100% !important;
-		}
-
-}	@media only screen and (max-width: 480px){
-		.mcnRetinaImage{
-			max-width:100% !important;
-		}
-
-}	@media only screen and (max-width: 480px){
-		.mcnImage{
-			width:100% !important;
-		}
-
-}	@media only screen and (max-width: 480px){
-		.mcnCartContainer,.mcnCaptionTopContent,.mcnRecContentContainer,.mcnCaptionBottomContent,.mcnTextContentContainer,.mcnBoxedTextContentContainer,.mcnImageGroupContentContainer,.mcnCaptionLeftTextContentContainer,.mcnCaptionRightTextContentContainer,.mcnCaptionLeftImageContentContainer,.mcnCaptionRightImageContentContainer,.mcnImageCardLeftTextContentContainer,.mcnImageCardRightTextContentContainer,.mcnImageCardLeftImageContentContainer,.mcnImageCardRightImageContentContainer{
-			max-width:100% !important;
-			width:100% !important;
-		}
-
-}	@media only screen and (max-width: 480px){
-		.mcnBoxedTextContentContainer{
-			min-width:100% !important;
-		}
-
-}	@media only screen and (max-width: 480px){
-		.mcnImageGroupContent{
-			padding:9px !important;
-		}
-
-}	@media only screen and (max-width: 480px){
-		.mcnCaptionLeftContentOuter .mcnTextContent,.mcnCaptionRightContentOuter .mcnTextContent{
-			padding-top:9px !important;
-		}
-
-}	@media only screen and (max-width: 480px){
-		.mcnImageCardTopImageContent,.mcnCaptionBottomContent:last-child .mcnCaptionBottomImageContent,.mcnCaptionBlockInner .mcnCaptionTopContent:last-child .mcnTextContent{
-			padding-top:18px !important;
-		}
-
-}	@media only screen and (max-width: 480px){
-		.mcnImageCardBottomImageContent{
-			padding-bottom:9px !important;
-		}
-
-}	@media only screen and (max-width: 480px){
-		.mcnImageGroupBlockInner{
-			padding-top:0 !important;
-			padding-bottom:0 !important;
-		}
-
-}	@media only screen and (max-width: 480px){
-		.mcnImageGroupBlockOuter{
-			padding-top:9px !important;
-			padding-bottom:9px !important;
-		}
-
-}	@media only screen and (max-width: 480px){
-		.mcnTextContent,.mcnBoxedTextContentColumn{
-			padding-right:18px !important;
-			padding-left:18px !important;
-		}
-
-}	@media only screen and (max-width: 480px){
-		.mcnImageCardLeftImageContent,.mcnImageCardRightImageContent{
-			padding-right:18px !important;
-			padding-bottom:0 !important;
-			padding-left:18px !important;
-		}
-
-}	@media only screen and (max-width: 480px){
-		.mcpreview-image-uploader{
-			display:none !important;
-			width:100% !important;
-		}
-
-}	@media only screen and (max-width: 480px){
-	/*
-	@tab Mobile Styles
-	@section Heading 1
-	@tip Make the first-level headings larger in size for better readability on small screens.
-	*/
-		h1{
-			/*@editable*/font-size:30px !important;
-			/*@editable*/line-height:125% !important;
-		}
-
-}	@media only screen and (max-width: 480px){
-	/*
-	@tab Mobile Styles
-	@section Heading 2
-	@tip Make the second-level headings larger in size for better readability on small screens.
-	*/
-		h2{
-			/*@editable*/font-size:26px !important;
-			/*@editable*/line-height:125% !important;
-		}
-
-}	@media only screen and (max-width: 480px){
-	/*
-	@tab Mobile Styles
-	@section Heading 3
-	@tip Make the third-level headings larger in size for better readability on small screens.
-	*/
-		h3{
-			/*@editable*/font-size:20px !important;
-			/*@editable*/line-height:150% !important;
-		}
-
-}	@media only screen and (max-width: 480px){
-	/*
-	@tab Mobile Styles
-	@section Heading 4
-	@tip Make the fourth-level headings larger in size for better readability on small screens.
-	*/
-		h4{
-			/*@editable*/font-size:18px !important;
-			/*@editable*/line-height:150% !important;
-		}
-
-}	@media only screen and (max-width: 480px){
-	/*
-	@tab Mobile Styles
-	@section Boxed Text
-	@tip Make the boxed text larger in size for better readability on small screens. We recommend a font size of at least 16px.
-	*/
-		.mcnBoxedTextContentContainer .mcnTextContent,.mcnBoxedTextContentContainer .mcnTextContent p{
-			/*@editable*/font-size:14px !important;
-			/*@editable*/line-height:150% !important;
-		}
-
-}	@media only screen and (max-width: 480px){
-	/*
-	@tab Mobile Styles
-	@section Header Text
-	@tip Make the header text larger in size for better readability on small screens.
-	*/
-		.headerContainer .mcnTextContent,.headerContainer .mcnTextContent p{
-			/*@editable*/font-size:16px !important;
-			/*@editable*/line-height:150% !important;
-		}
-
-}	@media only screen and (max-width: 480px){
-	/*
-	@tab Mobile Styles
-	@section Body Text
-	@tip Make the body text larger in size for better readability on small screens. We recommend a font size of at least 16px.
-	*/
-		.bodyContainer .mcnTextContent,.bodyContainer .mcnTextContent p{
-			/*@editable*/font-size:16px !important;
-			/*@editable*/line-height:150% !important;
-		}
-
-}	@media only screen and (max-width: 480px){
-	/*
-	@tab Mobile Styles
-	@section Footer Text
-	@tip Make the footer content text larger in size for better readability on small screens.
-	*/
-		.footerContainer .mcnTextContent,.footerContainer .mcnTextContent p{
-			/*@editable*/font-size:14px !important;
-			/*@editable*/line-height:150% !important;
-		}
-
-}</style></head>
-    <body>
-        
-        <center>
-            <table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable">
-                <tr>
-                    <td align="center" valign="top" id="bodyCell">
-                        <!-- BEGIN TEMPLATE // -->
-                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                            <tr>
-                                <td align="center" valign="top" id="templateHeader" data-template-container>
-                                    <!--[if (gte mso 9)|(IE)]>
-                                    <table align="center" border="0" cellspacing="0" cellpadding="0" width="600" style="width:600px;">
-                                    <tr>
-                                    <td align="center" valign="top" width="600" style="width:600px;">
-                                    <![endif]-->
-                                    <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" class="templateContainer">
-                                        <tr>
-                                            <td valign="top" class="headerContainer"><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnImageBlock" style="min-width:100%;">
-    <tbody class="mcnImageBlockOuter">
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #e0f2fe;
+            margin: 0;
+            padding: 0;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+        table {
+            border-collapse: collapse;
+            mso-table-lspace: 0pt;
+            mso-table-rspace: 0pt;
+        }
+        img {
+            border: 0;
+            height: auto;
+            line-height: 100%;
+            outline: none;
+            text-decoration: none;
+        }
+        .wrapper {
+            width: 100%;
+            table-layout: fixed;
+            background-color: #e0f2fe;
+            padding: 40px 0;
+        }
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background-color: #f8fafc;
+            border-radius: 12px;
+            border: 2px solid #0369a1;
+            overflow: hidden;
+            box-shadow: 0 6px 18px rgba(3, 105, 161, 0.1);
+        }
+        .header {
+            background-color: #f8fafc;
+            padding: 30px;
+            text-align: center;
+        }
+        .header img {
+            max-width: 150px;
+            display: inline-block;
+        }
+        .header h1 {
+            display: inline-block;
+            background-color: #e0f2fe;
+            color: #0369a1;
+            margin: 15px 0 0 0;
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-size: 22px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .content {
+            padding: 40px 30px;
+            color: #1e293b;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        .content h2 {
+            font-size: 20px;
+            color: #0369a1;
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-weight: 800;
+            border-bottom: 2px solid #e0f2fe;
+            padding-bottom: 10px;
+        }
+        .deal-ref-box {
+            background-color: #fffbeb;
+            border-left: 4px solid #d97706;
+            padding: 18px;
+            margin-bottom: 25px;
+            border-radius: 6px;
+        }
+        .deal-ref-box p {
+            margin: 0 0 5px 0;
+            font-size: 13px;
+            color: #b45309;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .deal-ref-box span {
+            font-size: 22px;
+            color: #b45309;
+            font-weight: 800;
+        }
+        .services-section {
+            background-color: #f0f9ff;
+            border: 1px solid #bae6fd;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 25px 0;
+        }
+        .services-section h3 {
+            margin-top: 0;
+            margin-bottom: 12px;
+            font-size: 15px;
+            color: #0369a1;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid #bae6fd;
+            padding-bottom: 8px;
+        }
+        .services-list {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            color: #1e293b;
+        }
+        .footer {
+            background-color: #f0f9ff;
+            padding: 30px;
+            text-align: center;
+            border-top: 1px solid #bae6fd;
+            color: #64748b;
+            font-size: 12px;
+        }
+        .footer p {
+            margin: 0 0 10px 0;
+        }
+        .footer a {
+            color: #0369a1;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .footer .social-links {
+            margin-top: 15px;
+        }
+        .footer .social-links a {
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <center class="wrapper">
+        <table class="container" width="100%" cellpadding="0" cellspacing="0">
+            <!-- Header -->
             <tr>
-                <td valign="top" style="padding:5px" class="mcnImageBlockInner">
-                    <table align="left" width="100%" border="0" cellpadding="0" cellspacing="0" class="mcnImageContentContainer" style="min-width:100%;">
-                        <tbody><tr>
-                            <td class="mcnImageContent" valign="top" style="padding-right: 9px; padding-left: 9px; padding-top: 0; padding-bottom: 0; text-align:center;">
-                                
-                                    
-                                        <img align="center" alt="" src="https://gallery.mailchimp.com/b524536bce55ad238411aa638/images/488c4b5b-8dae-4155-ac97-bd1c4c5349fa.jpg" width="140" style="max-width:250px; padding-bottom: 0; display: inline !important; vertical-align: bottom;" class="mcnImage">
-                                    
-                                
-                            </td>
-                        </tr>
-                    </tbody></table>
+                <td class="header">
+                    <img src="https://gallery.mailchimp.com/b524536bce55ad238411aa638/images/488c4b5b-8dae-4155-ac97-bd1c4c5349fa.jpg" alt="UdanChoo Logo">
+                    <h1>Deal Reference Registration</h1>
                 </td>
             </tr>
-    </tbody>
-</table></td>
-                                        </tr>
-                                    </table>
-									
-                                    <!--[if (gte mso 9)|(IE)]>
-                                    </td>
-                                    </tr>
-                                    </table>
-                                    <![endif]-->
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="center" valign="top" id="templateBody" data-template-container>
-								 <h1><span style="font-size:15px">Deal Reference Number :- <mark>UDN ${dealConfirmationId}</mark></span></h1>
-                                    <!--[if (gte mso 9)|(IE)]>
-                                    <table align="center" border="0" cellspacing="0" cellpadding="0" width="600" style="width:600px;">
-                                    <tr>
-                                    <td align="center" valign="top" width="600" style="width:600px;">
-                                    <![endif]-->
-                                    <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" class="templateContainer">
-                                        <tr>
-                                            <td valign="top" class="bodyContainer"><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="min-width:100%;">
-    <tbody class="mcnTextBlockOuter">
-        <tr>
-            <td valign="top" class="mcnTextBlockInner" style="padding-top:9px;">
-              	<!--[if mso]>
-				<table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
-				<tr>
-				<![endif]-->
-			    
-				<!--[if mso]>
-				<td valign="top" width="600" style="width:600px;">
-				<![endif]-->
-                <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width:100%; min-width:100%;" width="100%" class="mcnTextContentContainer">
-                    <tbody>
-					
-					<tr>
-                        
-                        <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
-                        
-                            Dear <b>${clientName}</b><br>
-<br>
-<strong>UdanChoo </strong>is pleased to inform you that we have created the reference number to your deal for future communication. <b>UDN-${dealConfirmationId}</b> is your unique  reference number related to this deal. 
-<br><br>
-<b>Your Services Includes : </b><br>
-<br>
-${Services}
-<br>
-<br>
-You will hear soon from us about your further confirmation of services, vouchers and reminders (if any) so that you dont miss out anything and we take care of all of your travel deliverables.&nbsp;
-<br><br>
-I am <b>${serviceAdvisor} reachable at ${contactNumber} </b>, this information is if in case you would like to talk to us so that we clarify all your doubts for hassle free travel.&nbsp;<br>
-<br>
-Please feel free to escalate to my manager @ 99 99 44 9267, if you find any issue related to my extended support in this deal. I am dedicated and working on this deal. 
-<br>
-<br>
-<BR>
-<h1><span style="font-size:15px">Looking forward to seeing your pleasurable experience with us !</span></h1>
-<BR>
-Regards<br>
-${serviceAdvisor}<br>
-Your Deal Owner<br>
-C.Care: 99 99 44 6267
-                        </td>
-                    </tr>
-                </tbody></table>
-				<!--[if mso]>
-				</td>
-				<![endif]-->
-                
-				<!--[if mso]>
-				</tr>
-				</table>
-				<![endif]-->
-            </td>
-        </tr>
-    </tbody>
-</table><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="min-width:100%;">
-    <tbody class="mcnTextBlockOuter">
-        <tr>
-            <td valign="top" class="mcnTextBlockInner" style="padding-top:9px;">
-              	<!--[if mso]>
-				<table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
-				<tr>
-				<![endif]-->
-			    
-				<!--[if mso]>
-				<td valign="top" width="600" style="width:600px;">
-				<![endif]-->
-                <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width:100%; min-width:100%;" width="100%" class="mcnTextContentContainer">
-                    <tbody><tr>
-                        
-                        <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
-                        
-                            
-                        </td>
-                    </tr>
-                </tbody></table>
-				<!--[if mso]>
-				</td>
-				<![endif]-->
-                
-				<!--[if mso]>
-				</tr>
-				</table>
-				<![endif]-->
-            </td>
-        </tr>
-    </tbody>
-</table></td>
-                                        </tr>
-                                    </table>
-                                    <!--[if (gte mso 9)|(IE)]>
-                                    </td>
-                                    </tr>
-                                    </table>
-                                    <![endif]-->
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="center" valign="top" id="templateFooter" data-template-container>
-                                    <!--[if (gte mso 9)|(IE)]>
-                                    <table align="center" border="0" cellspacing="0" cellpadding="0" width="600" style="width:600px;">
-                                    <tr>
-                                    <td align="center" valign="top" width="600" style="width:600px;">
-                                    <![endif]-->
-                                    <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" class="templateContainer">
-                                        <tr>
-                                            <td valign="top" class="footerContainer"><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnFollowBlock" style="min-width:100%;">
-    <tbody class="mcnFollowBlockOuter">
-        <tr>
-            <td align="center" valign="top" style="padding:9px" class="mcnFollowBlockInner">
-                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnFollowContentContainer" style="min-width:100%;">
-    <tbody><tr>
-        <td align="center" style="padding-left:9px;padding-right:9px;">
-            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="min-width:100%;" class="mcnFollowContent">
-                <tbody><tr>
-                    <td align="center" valign="top" style="padding-top:9px; padding-right:9px; padding-left:9px;">
-                        <table align="center" border="0" cellpadding="0" cellspacing="0">
-                            <tbody><tr>
-                                <td align="center" valign="top">
-                                    <!--[if mso]>
-                                    <table align="center" border="0" cellspacing="0" cellpadding="0">
-                                    <tr>
-                                    <![endif]-->
-                                    
-                                        <!--[if mso]>
-                                        <td align="center" valign="top">
-                                        <![endif]-->
-                                        
-                                        
-                                            <table align="left" border="0" cellpadding="0" cellspacing="0" style="display:inline;">
-                                                <tbody><tr>
-                                                    <td valign="top" style="padding-right:10px; padding-bottom:9px;" class="mcnFollowContentItemContainer">
-                                                        <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnFollowContentItem">
-                                                            <tbody><tr>
-                                                                <td align="left" valign="middle" style="padding-top:5px; padding-right:10px; padding-bottom:5px; padding-left:9px;">
-                                                                    <table align="left" border="0" cellpadding="0" cellspacing="0" width="">
-                                                                        <tbody><tr>
-                                                                            
-                                                                                <td align="center" valign="middle" width="24" class="mcnFollowIconContent">
-                                                                                    <a href="https://www.facebook.com/UdanChoo.travel/" target="_blank"><img src="https://cdn-images.mailchimp.com/icons/social-block-v2/light-facebook-48.png" alt="Facebook" style="display:block;" height="24" width="24" class=""></a>
-                                                                                </td>
-                                                                            
-                                                                            
-                                                                        </tr>
-                                                                    </tbody></table>
-                                                                </td>
-                                                            </tr>
-                                                        </tbody></table>
-                                                    </td>
-                                                </tr>
-                                            </tbody></table>
-                                        
-                                        <!--[if mso]>
-                                        </td>
-                                        <![endif]-->
-                                    
-                                        <!--[if mso]>
-                                        <td align="center" valign="top">
-                                        <![endif]-->
-                                        
-                                        
-                                            <table align="left" border="0" cellpadding="0" cellspacing="0" style="display:inline;">
-                                                <tbody><tr>
-                                                    <td valign="top" style="padding-right:0; padding-bottom:9px;" class="mcnFollowContentItemContainer">
-                                                        <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnFollowContentItem">
-                                                            <tbody><tr>
-                                                                <td align="left" valign="middle" style="padding-top:5px; padding-right:10px; padding-bottom:5px; padding-left:9px;">
-                                                                    <table align="left" border="0" cellpadding="0" cellspacing="0" width="">
-                                                                        <tbody><tr>
-                                                                            
-                                                                                <td align="center" valign="middle" width="24" class="mcnFollowIconContent">
-                                                                                    <a href="www.udanchoo.com" target="_blank"><img src="https://cdn-images.mailchimp.com/icons/social-block-v2/light-link-48.png" alt="www.udanchoo.com" style="display:block;" height="24" width="24" class=""></a>
-                                                                                </td>
-                                                                            
-                                                                            
-                                                                        </tr>
-                                                                    </tbody></table>
-                                                                </td>
-                                                            </tr>
-                                                        </tbody></table>
-                                                    </td>
-                                                </tr>
-                                            </tbody></table>
-                                        
-                                        <!--[if mso]>
-                                        </td>
-                                        <![endif]-->
-                                    
-                                    <!--[if mso]>
-                                    </tr>
-                                    </table>
-                                    <![endif]-->
-                                </td>
-                            </tr>
-                        </tbody></table>
-                    </td>
-                </tr>
-            </tbody></table>
-        </td>
-    </tr>
-</tbody></table>
+            <!-- Content -->
+            <tr>
+                <td class="content">
+                    <h2>Dear ${clientName},</h2>
+                    <p>Thank you for choosing <strong>UdanChoo</strong>! We are pleased to inform you that we have registered your travel inquiry and generated a unique reference number for all future communications.</p>
+                    
+                    <div class="deal-ref-box">
+                        <p>YOUR UNIQUE DEAL REFERENCE</p>
+                        <span><strong>UDN-${dealConfirmationId}</strong></span>
+                    </div>
 
-            </td>
-        </tr>
-    </tbody>
-</table><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="min-width:100%;">
-    <tbody class="mcnTextBlockOuter">
-        <tr>
-            <td valign="top" class="mcnTextBlockInner" style="padding-top:9px;">
-              	<!--[if mso]>
-				<table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
-				<tr>
-				<![endif]-->
-			    
-				<!--[if mso]>
-				<td valign="top" width="600" style="width:600px;">
-				<![endif]-->
-                <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width:100%; min-width:100%;" width="100%" class="mcnTextContentContainer">
-                    <tbody><tr>
-                        
-                        <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
-                        
-                            <em>Copyright © * 2020 | UdanChoo.com&nbsp;&nbsp;<br>
-All rights reserved.</em><br>
-<br>
-<br>
-<strong>Our mailing address is:</strong><br>
-sales@udanchoo.com<br>
-<br>
-&nbsp;
-                        </td>
-                    </tr>
-                </tbody></table>
-				<!--[if mso]>
-				</td>
-				<![endif]-->
-                
-				<!--[if mso]>
-				</tr>
-				</table>
-				<![endif]-->
-            </td>
-        </tr>
-    </tbody>
-</table></td>
-                                        </tr>
-                                    </table>
-                                    <!--[if (gte mso 9)|(IE)]>
-                                    </td>
-                                    </tr>
-                                    </table>
-                                    <![endif]-->
-                                </td>
-                            </tr>
-                        </table>
-                        <!-- // END TEMPLATE -->
-                    </td>
-                </tr>
-            </table>
-        </center>
-    </body>
+                    <div class="services-section">
+                        <h3>Included Services</h3>
+                        <div class="services-list">
+                            <strong>${Services}</strong>
+                        </div>
+                    </div>
+
+                    <p>Our dedicated team is working on your deal. We will contact you shortly with confirmed services, travel vouchers, and itinerary options so that all your travel requirements are taken care of seamlessly.</p>
+                    
+                    <p>Should you have any immediate questions, feel free to reach out to me directly:</p>
+                    
+                    <table width="100%" cellpadding="0" cellspacing="0" style="margin: 20px 0; background-color: #ffffff; border: 1px solid #bae6fd; border-radius: 8px; padding: 15px;">
+                        <tr>
+                            <td>
+                                <strong style="color: #0369a1;">Service Advisor:</strong> <strong>${serviceAdvisor}</strong><br>
+                                <strong style="color: #0369a1;">Contact:</strong> <strong>${contactNumber}</strong>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <p style="font-size: 13px; color: #64748b; line-height: 1.5;">If you experience any issues or need further support, please feel free to escalate directly to my manager at <strong>99 99 44 9267</strong>.</p>
+                </td>
+            </tr>
+            <!-- Footer -->
+            <tr>
+                <td class="footer">
+                    <p>Copyright &copy; 2026 UdanChoo.com. All rights reserved.</p>
+                    <p>Our mailing address is: <a href="mailto:sales@udanchoo.com"><strong>sales@udanchoo.com</strong></a> | Customer Care: <strong>99 99 44 6267</strong></p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/UdanChoo.travel/"><strong>Facebook</strong></a>
+                        <a href="https://www.udanchoo.com"><strong>Website</strong></a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </center>
+</body>
 </html>

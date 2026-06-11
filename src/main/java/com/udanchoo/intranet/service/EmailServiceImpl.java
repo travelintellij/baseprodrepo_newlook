@@ -108,6 +108,12 @@ public class EmailServiceImpl {
     		message.setTo(to);
     		message.setSubject(subject);
     		message.setText(body);
+            if (mailSender instanceof JavaMailSenderImpl) {
+                JavaMailSenderImpl impl = (JavaMailSenderImpl) mailSender;
+                System.out.println("MAIL HOST: " + impl.getHost());
+                System.out.println("MAIL PORT: " + impl.getPort());
+                System.out.println("MAIL USER: " + impl.getUsername());
+            }
     		mailSender.send(message);
     	}
     }
@@ -253,7 +259,16 @@ public class EmailServiceImpl {
 	        helper.setSubject(mail.getSubject());
 	        helper.setFrom(mail.getFrom());
 
-	       mailSender.send(message);
+            if (mailSender instanceof JavaMailSenderImpl) {
+                JavaMailSenderImpl impl = (JavaMailSenderImpl) mailSender;
+
+                System.out.println("DEFAULT HOST = " + impl.getHost());
+                System.out.println("DEFAULT PORT = " + impl.getPort());
+                System.out.println("DEFAULT USER = " + impl.getUsername());
+            }
+
+
+            mailSender.send(message);
 	    }
 	    
 	    
@@ -316,6 +331,7 @@ public class EmailServiceImpl {
 	        helper.setSubject(mail.getSubject());
 	        helper.setFrom(b2BEmailFrom);
 	        //mailSender.send(message);
+
 	        emailConfig.getB2bJavaMailSender().send(message);
 	    }
 	    
