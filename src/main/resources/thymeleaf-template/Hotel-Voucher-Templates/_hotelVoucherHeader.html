@@ -1,7 +1,11 @@
 <div class="header" th:fragment="_hotelVoucherHeader1">
         <table style="width:100%">
             <tr>
-                <td style="width:15%;"><a href="#default" class="logo"><img th:src="@{${'classpath:static/images/'+ LOGO_FILE_NAME}}" width="80" height="80"/></a></td>
+                <td style="width:15%;">
+                    <a href="#default" class="logo" th:if="${LOGO_URL != null && LOGO_URL != ''}">
+                        <img th:src="${LOGO_URL}" width="80" height="80"/>
+                    </a>
+                </td>
                 <td style="text-align:center;width:60%;"><a class="active" href="#home">[[${b2bPartnersDTO.partnerName }]]</a></td>
                 <td style="text-align:left;width:25%;">
                     

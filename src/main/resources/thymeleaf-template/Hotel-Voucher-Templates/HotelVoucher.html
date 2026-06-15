@@ -123,24 +123,24 @@
 <hr style="border: none; border-top: 1px solid #cbd5e1; margin: 8px 0;" />
 	<table style="width:100%;table-layout: fixed; border-collapse: collapse; margin-bottom: 12px;">
 		<tr>
-		<td style="width:38%; vertical-align: top; padding-right: 10px;">
-			<table style="width: 100%; background-color: #e6f9f2; border: 2px solid #059669; padding: 10px; border-collapse: collapse;">
+		<td style="width:32%; vertical-align: top; padding-right: 25px;">
+			<table style="width: 100%; border: none; padding: 0px; border-collapse: collapse;">
 				<tr>
-					<td colspan="2" style="text-align:center; padding-bottom: 6px; border-bottom: 1px solid #a7f3d0;">
-                        <span style="font-size: 13px; color: #059669; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px;">Hotel Voucher</span>
+					<td colspan="2" style="text-align:left; padding-bottom: 8px;">
+                        <span style="font-size: 16px; color: #059669; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px;">Hotel Voucher</span>
                     </td>
 				</tr>
 				<tr style="font-size:11px;">
-					<td style="text-align:left; width:50%; padding-top: 6px; color: #059669;"><b>Voucher No:</b></td>
-					<td style="text-align:right; width:50%; padding-top: 6px; font-weight: bold; color: #059669;">000[[${hotelVoucherEntity.htlVoucherId}]]</td>
+					<td style="text-align:left; width:45%; padding-top: 6px; color: #475569;"><b>Voucher No:</b></td>
+					<td style="text-align:right; width:55%; padding-top: 6px; font-weight: bold; color: #0f172a;">000[[${hotelVoucherEntity.htlVoucherId}]]</td>
 				</tr>
 				<tr style="font-size:11px;">
-					<td style="text-align:left; width:50; color: #059669;"><b>Date:</b> </td>
-					<td th:text="${#dates.format(hotelVoucherEntity.voucherDate, 'dd-MMM-yyyy')}" style="text-align:right; font-weight: bold; color: #059669;"></td>
+					<td style="text-align:left; width:45%; padding-top: 4px; color: #475569;"><b>Date:</b></td>
+					<td th:text="${#dates.format(hotelVoucherEntity.voucherDate, 'dd-MMM-yyyy')}" style="text-align:right; padding-top: 4px; font-weight: bold; color: #0f172a;"></td>
 				</tr>
 			</table>
 	 	</td>
-	 	<td style="width:62%; vertical-align: top; padding-left: 10px;">
+	 	<td style="width:68%; vertical-align: top; padding-left: 25px;">
 	 		<table style="width: 100%; background-color: #ffffff; border: 1px solid #e2e8f0; padding: 10px; border-collapse: collapse;">
 	 			<tr>
                     <td colspan="2" style="border-bottom: 1px solid #f1f5f9; padding-bottom: 4px;">

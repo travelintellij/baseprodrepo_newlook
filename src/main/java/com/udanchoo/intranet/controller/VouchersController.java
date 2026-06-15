@@ -198,18 +198,25 @@ public class VouchersController {
 				e1.printStackTrace();
 			}
     		voucherInputDataMap.put("hotelMasterEntity",hotelMasterEntity);
-    		String logoFileName=b2bPartnersDTO.getPartnerShortName()+".jpg";
-    		voucherInputDataMap.put("LOGO_FILE_NAME",logoFileName);
-        	String uploadType="Hotel";
-        	//String voucherFileName="HTL_VOUCHER_"+ hotelVoucherVO.getHtlVoucherId()+".pdf";
-        	String voucherFileName="HTL_VOUCHER_"+ hotelVoucherVO.getHtlServiceId()+".pdf";
-    		
+    		Path tempLogoPath = null;
     		try {
                 String tempDir = System.getProperty("java.io.tmpdir");
                 Path tempPath = Paths.get(tempDir, "vouchers_temp");
                 if (!Files.exists(tempPath)) Files.createDirectories(tempPath);
 
-				voucherServiceLine.generatePdfFile("Hotel-Voucher-Templates/HotelVoucher", voucherInputDataMap, tempPath.toString(), voucherFileName, b2bPartnersDTO.getPartnerBrandName());
+                String logoUrl = null;
+                if (b2bPartnersDTO != null && b2bPartnersDTO.getLogoImage() != null && b2bPartnersDTO.getLogoImage().length > 0) {
+                    tempLogoPath = tempPath.resolve("logo_" + b2bPartnersDTO.getPartnerId() + "_" + System.currentTimeMillis() + ".jpg");
+                    Files.write(tempLogoPath, b2bPartnersDTO.getLogoImage());
+                    logoUrl = tempLogoPath.toUri().toString();
+                }
+                voucherInputDataMap.put("LOGO_URL", logoUrl);
+
+                String uploadType="Hotel";
+                String voucherFileName="HTL_VOUCHER_"+ hotelVoucherVO.getHtlServiceId()+".pdf";
+
+                String partnerBrand = (b2bPartnersDTO != null) ? b2bPartnersDTO.getPartnerBrandName() : "UdanChoo";
+				voucherServiceLine.generatePdfFile("Hotel-Voucher-Templates/HotelVoucher", voucherInputDataMap, tempPath.toString(), voucherFileName, partnerBrand);
                 
                 Path generatedPdfPath = tempPath.resolve(voucherFileName);
                 byte[] pdfBytes = Files.readAllBytes(generatedPdfPath);
@@ -220,7 +227,15 @@ public class VouchersController {
 			} catch (Exception e) {
 				e.printStackTrace();
                 isSuccess=false;
-			}
+			} finally {
+                if (tempLogoPath != null) {
+                    try {
+                        Files.deleteIfExists(tempLogoPath);
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            }
     		isSuccess=true;
     	}
     	else {
