@@ -29,12 +29,19 @@ public interface Udn_Destinations_Master_Repository extends JpaRepository<Udn_De
 	boolean existsByDestinationIdAndCityName(int destinationId, String cityNabyme);
 	
 	boolean existsByDestinationIdAndCountryName(int destinationId, String countryName);
-	
-	@Query("FROM Udn_Destinations_Entity a WHERE a.active=true GROUP BY countryCode order by countryName")
-	//public List<Udn_Destinations_Entity> findDistinctActiveDestinations();
-	public List<Udn_Destinations_Entity> findDistinctRecordsByCountryCode();
+
+    @Query("SELECT a FROM Udn_Destinations_Entity a " +
+            "WHERE a.destinationId IN (" +
+            "   SELECT MIN(b.destinationId) FROM Udn_Destinations_Entity b " +
+            "   WHERE b.active = true GROUP BY b.countryCode" +
+            ") " +
+            "ORDER BY a.countryName")
+    public List<Udn_Destinations_Entity> findDistinctRecordsByCountryCode();
 	
 	//public String findDistinctByCountryCode(String countryCode);
 	
 	boolean existsByCityNameAndCountryCodeIgnoreCase(String cityName, String countryCode);
+	
+	public List<Udn_Destinations_Entity> findByCityNameIgnoreCase(String cityName);
+
 }

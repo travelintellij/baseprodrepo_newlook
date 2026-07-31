@@ -234,14 +234,14 @@
                             </div>
                         </div>
 
-                        <div class="edit_lead_wrapper_data_l1_rem" style="margin-top: 10px;">
-                            <div class="edit_lead_wrapper_data_l1_rem1">
+                        <div class="edit_lead_wrapper_data_l1_rem" style="margin-top: 10px; display: flex;">
+                            <div class="edit_lead_wrapper_data_l1_rem1" style="flex: 1;">
                                 <label for="" style="font-weight:800">Client Remarks</label> <br>
-                                <form:textarea path="clientRemarks" name="" id="" cols="68" rows="5" />
+                                <form:textarea path="clientRemarks" style="width: 100%; box-sizing: border-box;" rows="5" />
                             </div>
-                            <div class="edit_lead_wrapper_data_l1_rem2" style="margin-left: 17px;">
+                            <div class="edit_lead_wrapper_data_l1_rem2" style="flex: 1; margin-left: 17px;">
                                 <label for="" style="font-weight:800">Internal Remarks</label> <br>
-                                <form:textarea path="internalRemarks" name="" id="" cols="66" rows="5" />
+                                <form:textarea path="internalRemarks" style="width: 100%; box-sizing: border-box;" rows="5" />
                             </div>
                         </div>
 
@@ -275,12 +275,16 @@
                     <div class="info-client_3" style="margin-top: 10px;">
                     <div class=" sub_info-client" >
                         <form:checkbox class="ch_c" path="leadCreationClientInformed" disabled="true"  style="width:18px;height:18px"/>
-                        <label for="">Client Informed Earlier</label>
+                        <label for="">Email Sent Earlier</label>
                         <form:hidden  path="leadCreationClientInformed"/>
                     </div>
                     <div class="sub_info-client" style="margin-left: 10px;">
                         <form:checkbox path="notifyAgain" style="width:18px;height:18px"/>
-                        <label for="">Send Registration email again</label>
+                        <label for="">Resend Email</label>
+                    </div>
+                    <div class=" sub_info-client" style="margin-left: 10px;">
+                        <form:checkbox path="whatsappInformed" style="width:18px;height:18px"/>
+                        <label for="">Inform via WhatsApp</label>
                     </div>
                 </div>
                 <div class="due_today_task_data_btns">

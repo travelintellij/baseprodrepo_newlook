@@ -48,7 +48,9 @@ import com.udanchoo.intranet.exception.RecordNotFoundException;
 import com.udanchoo.intranet.model.ClientObj;
 import com.udanchoo.intranet.model.SearchUserObj;
 import com.udanchoo.intranet.model.UserDetailsObj;
-import com.udanchoo.intranet.service.FileStorageService;
+import com.udanchoo.intranet.service.DocumentService;
+import com.udanchoo.intranet.entity.Document;
+import org.springframework.core.io.ByteArrayResource;
 import com.udanchoo.intranet.service.UserDetailsServiceImpl;
 import com.udanchoo.intranet.util.UdanChooConstants;
 import com.udanchoo.intranet.util.UploadFileResponse;
@@ -68,7 +70,7 @@ public class UserController {
     }
     */
 	@Autowired
-	 private FileStorageService fileStorageService;
+	private DocumentService documentService;
 	
 	@Autowired
 	UserDetailsServiceImpl userDetailsService;
@@ -364,12 +366,8 @@ public class UserController {
 		modelView.addObject("userName", userObj.getUsername());
 		modelView.addObject("userId", userObj.getUserId());
 		//modelView.addObject("userRole", userObj.getRoles());
-    	Path directoryPath = Paths.get(fileStorageService.getUserStorageLocation() + "\\" + userId );
-    	
-    	if(Files.exists(directoryPath)) {
-    		Set docsSet = listFilesUsingJavaIO(directoryPath.toString());
-    		modelView.addObject("DOCS_SET", docsSet);
-    	}
+    	List<Document> docsSet = documentService.getDocuments("USER", String.valueOf(userId));
+    	modelView.addObject("DOCS_SET", docsSet);
 		return modelView;
 	}
 	
@@ -385,24 +383,11 @@ public class UserController {
 	@PostMapping("upload_user_docs")
     public ModelAndView upload_user_docs(@RequestParam("file") MultipartFile file,@RequestParam("userId") long userId,final RedirectAttributes redirectAttrib) {
     	ModelAndView mapview = new ModelAndView();
-    	Path directoryPath = Paths.get(fileStorageService.getUserStorageLocation() + "\\" + userId );
-    	boolean pathExists = Files.exists(directoryPath,new LinkOption[]{ LinkOption.NOFOLLOW_LINKS});
-    	UploadFileResponse uploadFileResponse = null;
-    	ResponseEntity< Resource> response =null ;
-    	Path newPath = null;
-    	if(!pathExists) {
-    		try {
-				newPath = Files.createDirectories(directoryPath);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-    	}
-    	else {
-    		newPath=directoryPath;
-    	}
-
-    	String fileName = fileStorageService.storeFile(file,newPath);
+    	try {
+            documentService.saveDocument("USER", String.valueOf(userId), file);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     	redirectAttrib.addFlashAttribute("Success", "File is Uploaded Successfully ! ");
 		mapview.setViewName("redirect:view_view_crud_user_docs?userId=" + userId);
 		return mapview;
@@ -411,22 +396,21 @@ public class UserController {
 	
 	@PostMapping("download_user_doc")
 	public ResponseEntity<Resource>  download_user_doc(@RequestParam("userId") int userId,@RequestParam("fileName") String downloadFilePath) throws IOException {
-		Path downloadPath = Paths.get(downloadFilePath);
-		Resource resource = new UrlResource(downloadPath.toUri());
-		String  contentType = "application/octet-stream";
-		return ResponseEntity.ok().contentType(MediaType.parseMediaType(contentType))
-    	            .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
-    	            .body(resource);
+		Document doc = documentService.getDocument(Long.parseLong(downloadFilePath));
+		ByteArrayResource resource = new ByteArrayResource(doc.getFileData());
+		String contentType = doc.getFileType() != null ? doc.getFileType() : "application/octet-stream";
+		return ResponseEntity.ok()
+				.contentType(MediaType.parseMediaType(contentType))
+    			.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + doc.getFileName() + "\"")
+    			.contentLength(doc.getFileData().length)
+    			.body(resource);
     }
 	
 	@PostMapping("delete_user_doc")
 	public ModelAndView delete_user_doc(@RequestParam("userId") long userId,@RequestParam("fileName") String deleteFileName) throws IOException {
 		ModelAndView mapview = new ModelAndView();
-		Path deleteFilePath = Paths.get(deleteFileName);
-    	if(Files.exists(deleteFilePath)) {
-    		Files.delete(deleteFilePath);
-    		mapview.addObject("Success", "File is deleted Successfully !! ");
-    	}
+		documentService.deleteDocument(Long.parseLong(deleteFileName));
+    	mapview.addObject("Success", "File is deleted Successfully !! ");
     	mapview.setViewName("forward:view_view_crud_user_docs");
     	return mapview;	
 	}

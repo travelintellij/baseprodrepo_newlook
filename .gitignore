@@ -1,0 +1,10 @@
+target/
+.DS_Store
+src/.DS_Store
+*.class
+.settings/
+.project
+.classpath
+.factorypath
+bin/
+src/main/resources/application-dev.properties

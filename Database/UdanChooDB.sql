@@ -110,6 +110,7 @@ CREATE TABLE `tg_b2b_partners` (
   `website` varchar(345) DEFAULT NULL,
   `cityId` bigint NOT NULL,
   PRIMARY KEY (`partnerId`,`active`),
+  UNIQUE KEY `partnerId_UNIQUE` (`partnerId`),
   UNIQUE KEY `partnerShortName_UNIQUE` (`partnerShortName`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='All B2b Agents and partners information is recorded in this table.';
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -240,6 +241,7 @@ CREATE TABLE `tg_quotations_recorder` (
   `createdBy` int DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
+  `itineraryId` bigint DEFAULT NULL,
   PRIMARY KEY (`quotationId`),
   KEY `QTN_LEAD_KEY_idx` (`leadId`),
   KEY `QTN_CRTD-BY_idx` (`createdBy`),

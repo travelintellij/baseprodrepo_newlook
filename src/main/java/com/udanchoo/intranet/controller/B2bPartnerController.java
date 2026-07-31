@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 
+import com.udanchoo.intranet.model.partner.FilterPartnerObj;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
@@ -21,12 +22,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -41,9 +37,10 @@ import com.udanchoo.intranet.model.UserDetailsObj;
 import com.udanchoo.intranet.model.leads.FilterLeadObj;
 import com.udanchoo.intranet.model.leads.TI_Leads_Followup_VO;
 import com.udanchoo.intranet.model.leads.TgLeadsRecorderVO;
-import com.udanchoo.intranet.model.partner.FilterPartnerObj;
 import com.udanchoo.intranet.model.partner.Tg_B2bPartner_Obj;
 import com.udanchoo.intranet.service.FileStorageService;
+import com.udanchoo.intranet.service.DocumentService;
+import com.udanchoo.intranet.entity.Document;
 import com.udanchoo.intranet.service.TgB2bPartnerServicesImpl;
 import com.udanchoo.intranet.service.UdnCommonServicesImpl;
 import com.udanchoo.intranet.service.UserDetailsServiceImpl;
@@ -69,6 +66,9 @@ public class B2bPartnerController {
 	@Autowired
 	 private FileStorageService fileStorageService;
 	
+	@Autowired
+	private DocumentService documentService;
+	
 
 	
 	//@Value("${file.upload-partnerlogodir}")
@@ -90,6 +90,21 @@ public class B2bPartnerController {
 		partnerObj.updateVoFromEntity(partnerEntity); 
 		return partnerObj;
 	}
+
+    @RequestMapping(value = "/getPartnerLogo/{partnerId}", method = RequestMethod.GET)
+    public org.springframework.http.ResponseEntity<byte[]> getPartnerLogo(@PathVariable("partnerId") int partnerId) {
+        try {
+            Tg_B2b_Partner_Entity partner = b2bPartnerService.findPartnerById(partnerId);
+            if (partner != null && partner.getLogoImage() != null && partner.getLogoImage().length > 0) {
+                return org.springframework.http.ResponseEntity.ok()
+                        .contentType(org.springframework.http.MediaType.IMAGE_JPEG)
+                        .body(partner.getLogoImage());
+            }
+            return org.springframework.http.ResponseEntity.notFound().build();
+        } catch (Exception e) {
+            return org.springframework.http.ResponseEntity.notFound().build();
+        }
+    }
 
 	@RequestMapping("form_register_partner")
    	public ModelAndView form_register_partner(@ModelAttribute("PARTNER_OBJ") Tg_B2bPartner_Obj partnerObj,BindingResult result) {
@@ -187,7 +202,7 @@ public class B2bPartnerController {
 
 	
 	@RequestMapping(value="view_filter_partners",method= {RequestMethod.GET,RequestMethod.POST})
-	public ModelAndView view_filter_partners( @RequestParam(defaultValue = "0") String page,@RequestParam(defaultValue = "3") Integer pageSize, @RequestParam(defaultValue = "CreatedAt") String sortBy,@ModelAttribute("FILTER_PARTNER") FilterPartnerObj filterPartnerObj,BindingResult result) {
+	public ModelAndView view_filter_partners(@RequestParam(defaultValue = "0") String page, @RequestParam(defaultValue = "3") Integer pageSize, @RequestParam(defaultValue = "CreatedAt") String sortBy, @ModelAttribute("FILTER_PARTNER") FilterPartnerObj filterPartnerObj, BindingResult result) {
 		pageSize = UdanChooConstants.DEFAULT_PAGE_SIZE;
 		ModelAndView modelView = new ModelAndView("admin/partner/view_filterPartners");
 		//System.out.println(filterObj);
@@ -241,23 +256,11 @@ public class B2bPartnerController {
 		partnerObj.setCityName(commonService.findDestinationById(partnerObj.getCityId()).getCityName());
 		ModelAndView mapview = new ModelAndView("admin/partner/form_edit_partner");
 		
-		
-		String logoFileName = partnerObj.getPartnerShortName() + ".jpg";; 
-        Path logoFilePath = Paths.get(absoluteImageDirectory, logoFileName);
-
-        if (Files.exists(logoFilePath)) {
-        	partnerObj.setLogFilePath("/absolute-images/" + logoFileName);
-        	partnerObj.setLogoFileName(logoFileName);
-        }
-        else {
-        	logoFileName = partnerObj.getPartnerShortName() + ".png"; 
-        	logoFilePath = Paths.get(absoluteImageDirectory, logoFileName);
-        	if (Files.exists(logoFilePath)) {
-        		 //"/partner-images/" + logoFileName);
-        		partnerObj.setLogFilePath("/absolute-images/" + logoFileName);
-        		partnerObj.setLogoFileName(logoFileName);
-        	}
-        	else partnerObj.setLogFilePath(null);
+        if (partnerEntity.getLogoImage() != null && partnerEntity.getLogoImage().length > 0) {
+            partnerObj.setLogFilePath("/getPartnerLogo/" + partnerObj.getPartnerId());
+            partnerObj.setLogoFileName(partnerObj.getPartnerShortName() + "_logo.jpg");
+        } else {
+            partnerObj.setLogFilePath(null);
         }
     	return mapview;
 	}
@@ -269,21 +272,11 @@ public class B2bPartnerController {
 		partnerObj.setCityName(commonService.findDestinationById(partnerObj.getCityId()).getCityName());
 		ModelAndView mapview = new ModelAndView("admin/partner/form_view_partner");
 		mapview.addObject("Success", Success);
-		String logoFileName = partnerObj.getPartnerShortName() + ".jpg";; 
-        Path logoFilePath = Paths.get(absoluteImageDirectory, logoFileName);
-        if (Files.exists(logoFilePath)) {
-        	partnerObj.setLogFilePath("/absolute-images/" + logoFileName);
-        	partnerObj.setLogoFileName(logoFileName);
-        }
-        else {
-        	logoFileName = partnerObj.getPartnerShortName() + ".png"; 
-        	logoFilePath = Paths.get(absoluteImageDirectory, logoFileName);
-        	if (Files.exists(logoFilePath)) {
-        		 //"/partner-images/" + logoFileName);
-        		partnerObj.setLogFilePath("/absolute-images/" + logoFileName);
-        		partnerObj.setLogoFileName(logoFileName);
-        	}
-        	else partnerObj.setLogFilePath(null);
+        if (partnerEntity.getLogoImage() != null && partnerEntity.getLogoImage().length > 0) {
+            partnerObj.setLogFilePath("/getPartnerLogo/" + partnerObj.getPartnerId());
+            partnerObj.setLogoFileName(partnerObj.getPartnerShortName() + "_logo.jpg");
+        } else {
+            partnerObj.setLogFilePath(null);
         }
     	return mapview;
 	}
@@ -298,6 +291,20 @@ public class B2bPartnerController {
 	}
 
 	
+    @RequestMapping(value = "/view_partner_logo", method = RequestMethod.GET)
+    public org.springframework.http.ResponseEntity<org.springframework.core.io.Resource> viewPartnerLogo(@RequestParam("docId") long docId) {
+        try {
+            Document doc = documentService.getDocument(docId);
+            org.springframework.core.io.ByteArrayResource resource = new org.springframework.core.io.ByteArrayResource(doc.getFileData());
+            String contentType = doc.getFileType() != null ? doc.getFileType() : "image/jpeg";
+            return org.springframework.http.ResponseEntity.ok()
+                    .contentType(org.springframework.http.MediaType.parseMediaType(contentType))
+                    .body(resource);
+        } catch (Exception e) {
+            return org.springframework.http.ResponseEntity.notFound().build();
+        }
+    }
+
 	private UserDetailsObj getLoggedInUser() {
     	Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     	String username;

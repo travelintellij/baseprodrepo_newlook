@@ -27,7 +27,15 @@ public class EmailAudienceValidator implements Validator {
 	@Override
 	public void validate(Object target, Errors errors) {
 		EmailMessageVO emailMessageVO = (EmailMessageVO)target;
-		StringTokenizer emailToTokens = new StringTokenizer(emailMessageVO.getEmailToList(),";,");
+        String emailToList = emailMessageVO.getEmailToList();
+
+        if (emailToList == null || emailToList.trim().isEmpty()) {
+            errors.rejectValue("emailMessageVo.emailToList", "invalid.emailToList");
+            return;   // STOP HERE → prevents crash
+        }
+
+        StringTokenizer emailToTokens =
+                new StringTokenizer(emailToList, ";,");
 		ArrayList value = new ArrayList();
 		while(emailToTokens.hasMoreTokens()) {
 			value.add(emailToTokens.nextToken()); 
@@ -48,8 +56,17 @@ public class EmailAudienceValidator implements Validator {
 			emailMessageVO.setEmailToValidatedList(toList);
 		}
 		value.clear();
-		
-		emailToTokens = new StringTokenizer(emailMessageVO.getEmailCcList(),";,");
+
+        String emailCcList = emailMessageVO.getEmailCcList();
+
+        value.clear();
+
+        if (emailCcList != null && !emailCcList.trim().isEmpty()) {
+            emailToTokens = new StringTokenizer(emailCcList, ";,");
+            while (emailToTokens.hasMoreTokens()) {
+                value.add(emailToTokens.nextToken());
+            }
+        }
 		while(emailToTokens.hasMoreTokens()) {
 			value.add(emailToTokens.nextToken());
 		}

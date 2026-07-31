@@ -18,6 +18,7 @@ import javax.persistence.criteria.Root;
 import javax.persistence.criteria.Selection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -60,6 +61,8 @@ public class LeadServiceImpl {
 
 	@Autowired
 	TI_Leads_Followup_Repository leadsFollowUpRepository;
+
+
 	
 	public Tg_Leads_Recorder_Entity saveLead(Tg_Leads_Recorder_Entity leadEntity) {
 		leadRepository.save(leadEntity);
@@ -73,26 +76,76 @@ public class LeadServiceImpl {
 
 	public TgLeadsRecorderVO getLeadVoFromEntity(Tg_Leads_Recorder_Entity tgLeadEntity) {
 		TgLeadsRecorderVO tgLeadVO = new TgLeadsRecorderVO(tgLeadEntity);
-		tgLeadVO.setSourceName(commonService.findDestinationById(tgLeadVO.getSource()).getCityName());
-		tgLeadVO.setDestinationName(commonService.findDestinationById(tgLeadVO.getDestination()).getCityName());
+		// Handle null source/destination for social media imported leads
+		if (tgLeadVO.getSource() != null) {
+			tgLeadVO.setSourceName(commonService.findDestinationById(tgLeadVO.getSource()).getCityName());
+		} else {
+			tgLeadVO.setSourceName("N/A");
+		}
+		if (tgLeadVO.getDestination() != null) {
+			tgLeadVO.setDestinationName(commonService.findDestinationById(tgLeadVO.getDestination()).getCityName());
+		} else {
+			tgLeadVO.setDestinationName("N/A");
+		}
 		tgLeadVO.setContactName(clientService.find_ClientBy_Id(tgLeadVO.getContactId()).getClientName());
+		// Handle null b2bPartner for social media imported leads
 		Tg_B2b_Partner_Entity b2bPartner = b2bPartnerService.findPartnerById(tgLeadVO.getLeadSource());
-		tgLeadVO.setLeadSourceShortName(b2bPartner.getPartnerShortName());
-		tgLeadVO.setLeadSourceName(b2bPartner.getPartnerName());
-		tgLeadVO.setStatusName(commonService.find_DealStatusById(tgLeadVO.getLeadStatus()).getWorkloadStatusName());
-		tgLeadVO.setLeadOwnerName(userService.findUserByID(tgLeadVO.getLeadOwner()).getUsername());
+		if (b2bPartner != null) {
+			tgLeadVO.setLeadSourceShortName(b2bPartner.getPartnerShortName());
+			tgLeadVO.setLeadSourceName(b2bPartner.getPartnerName());
+		} else {
+			tgLeadVO.setLeadSourceShortName("Social Media");
+			tgLeadVO.setLeadSourceName("Social Media Lead");
+		}
+		// Handle null deal status for social media imported leads
+		try {
+			tgLeadVO.setStatusName(commonService.find_DealStatusById(tgLeadVO.getLeadStatus()).getWorkloadStatusName());
+		} catch (Exception e) {
+			tgLeadVO.setStatusName("Open");
+		}
+		// Handle null lead owner
+		try {
+			tgLeadVO.setLeadOwnerName(userService.findUserByID(tgLeadVO.getLeadOwner()).getUsername());
+		} catch (Exception e) {
+			tgLeadVO.setLeadOwnerName("Unassigned");
+		}
 		return tgLeadVO;
 	}
 	
 	public TgLeadsRecorderVO updateLeadVoFromEntity(Tg_Leads_Recorder_Entity tgLeadEntity,TgLeadsRecorderVO tgLeadVO ) {
-		tgLeadVO.setSourceName(commonService.findDestinationById(tgLeadVO.getSource()).getCityName());
-		tgLeadVO.setDestinationName(commonService.findDestinationById(tgLeadVO.getDestination()).getCityName());
+		// Handle null source/destination for social media imported leads
+		if (tgLeadVO.getSource() != null) {
+			tgLeadVO.setSourceName(commonService.findDestinationById(tgLeadVO.getSource()).getCityName());
+		} else {
+			tgLeadVO.setSourceName("N/A");
+		}
+		if (tgLeadVO.getDestination() != null) {
+			tgLeadVO.setDestinationName(commonService.findDestinationById(tgLeadVO.getDestination()).getCityName());
+		} else {
+			tgLeadVO.setDestinationName("N/A");
+		}
 		tgLeadVO.setContactName(clientService.find_ClientBy_Id(tgLeadVO.getContactId()).getClientName());
+		// Handle null b2bPartner for social media imported leads
 		Tg_B2b_Partner_Entity b2bPartner = b2bPartnerService.findPartnerById(tgLeadVO.getLeadSource());
-		tgLeadVO.setLeadSourceShortName(b2bPartner.getPartnerShortName());
-		tgLeadVO.setLeadSourceName(b2bPartner.getPartnerName());
-		tgLeadVO.setStatusName(commonService.find_DealStatusById(tgLeadVO.getLeadStatus()).getWorkloadStatusName());
-		tgLeadVO.setLeadOwnerName(userService.findUserByID(tgLeadVO.getLeadOwner()).getUsername());
+		if (b2bPartner != null) {
+			tgLeadVO.setLeadSourceShortName(b2bPartner.getPartnerShortName());
+			tgLeadVO.setLeadSourceName(b2bPartner.getPartnerName());
+		} else {
+			tgLeadVO.setLeadSourceShortName("Social Media");
+			tgLeadVO.setLeadSourceName("Social Media Lead");
+		}
+		// Handle null deal status for social media imported leads
+		try {
+			tgLeadVO.setStatusName(commonService.find_DealStatusById(tgLeadVO.getLeadStatus()).getWorkloadStatusName());
+		} catch (Exception e) {
+			tgLeadVO.setStatusName("Open");
+		}
+		// Handle null lead owner
+		try {
+			tgLeadVO.setLeadOwnerName(userService.findUserByID(tgLeadVO.getLeadOwner()).getUsername());
+		} catch (Exception e) {
+			tgLeadVO.setLeadOwnerName("Unassigned");
+		}
 		return tgLeadVO;
 	}
 	
@@ -234,4 +287,13 @@ public class LeadServiceImpl {
 		
 		return filteredLeadsFollowUpList;
 		}
+
+	@javax.transaction.Transactional
+	public void deleteLead(long leadId) {
+		Tg_Leads_Recorder_Entity lead = leadRepository.findById(leadId).orElse(null);
+		if (lead != null) {
+			leadRepository.delete(lead);
+			leadRepository.flush();
+		}
 	}
+}

@@ -80,6 +80,7 @@ public class TgLeadsRecorderVO extends Tg_Leads_Recorder_Entity {
 		this.cruise=tgLeadEntity.isCruise();
 		this.others = tgLeadEntity.isOthers();
 		this.leadCreationClientInformed=tgLeadEntity.isLeadCreationClientInformed();
+		this.whatsappInformed=tgLeadEntity.isWhatsappInformed();
 		this.destination=tgLeadEntity.getDestination();
 		this.travelStartDate=tgLeadEntity.getTravelStartDate();
 		this.travelEndDate=tgLeadEntity.getTravelEndDate();
@@ -122,6 +123,7 @@ public class TgLeadsRecorderVO extends Tg_Leads_Recorder_Entity {
 		this.cruise=tgLeadEntity.isCruise();
 		this.others = tgLeadEntity.isOthers();
 		this.leadCreationClientInformed=tgLeadEntity.isLeadCreationClientInformed();
+		this.whatsappInformed=tgLeadEntity.isWhatsappInformed();
 		this.destination=tgLeadEntity.getDestination();
 		this.travelStartDate=tgLeadEntity.getTravelStartDate();
 		this.travelEndDate=tgLeadEntity.getTravelEndDate();

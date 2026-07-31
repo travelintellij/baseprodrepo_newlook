@@ -1,4 +1,69 @@
 
+#######################################################################
+# Feature: Campaign Management + Social Media Lead Sync (Meta/Facebook)
+# Date: April 2026
+# Description: New tables required for the Campaign Management module.
+#              Allows syncing Meta (Facebook/Instagram) Lead Ads into CRM.
+#              Run ALL 3 statements below on udanchoo_new database.
+#######################################################################
+
+-- 1) Stores Meta/Google campaign lead form configurations
+CREATE TABLE IF NOT EXISTS `campaign_form` (
+    `campaignFormId` BIGINT NOT NULL AUTO_INCREMENT,
+    `formName`       VARCHAR(150) NOT NULL,
+    `formType`       VARCHAR(50)  NOT NULL COMMENT 'META or GOOGLE',
+    `formId`         VARCHAR(255) NOT NULL COMMENT 'Actual Meta/Google Form ID',
+    `campaignName`   VARCHAR(255) NULL,
+    `description`    VARCHAR(500) NULL,
+    `active`         TINYINT(1)   NOT NULL DEFAULT 1,
+    `created_at`     TIMESTAMP    NULL DEFAULT CURRENT_TIMESTAMP,
+    `updated_at`     TIMESTAMP    NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (`campaignFormId`)
+);
+
+-- 2) Tracks which Meta Lead IDs have already been imported (deduplication)
+CREATE TABLE IF NOT EXISTS `social_lead_log` (
+    `id`                INT          NOT NULL AUTO_INCREMENT,
+    `meta_lead_id`      VARCHAR(100) NOT NULL,
+    `crm_lead_id`       BIGINT       NULL,
+    `platform`          VARCHAR(20)  NULL COMMENT 'fb or ig',
+    `meta_created_time` VARCHAR(100) NULL,
+    `imported_at`       TIMESTAMP    NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `uk_meta_lead_id` (`meta_lead_id`),
+    INDEX `idx_meta_lead_id` (`meta_lead_id`)
+);
+
+-- 3) Stores Meta API credentials and CRM defaults (single row config)
+CREATE TABLE IF NOT EXISTS `udn_central_config` (
+    `id`                   BIGINT       NOT NULL AUTO_INCREMENT,
+    `metaPageAccessToken`  TEXT         NULL COMMENT 'Permanent (never-expiring) Meta Page Access Token',
+    `metaAppId`            VARCHAR(255) NULL,
+    `metaAppSecret`        VARCHAR(255) NULL,
+    `metaLeadFormId`       VARCHAR(255) NULL COMMENT 'Used for connection testing',
+    `metaGraphApiVersion`  VARCHAR(20)  NULL DEFAULT 'v19.0',
+    `defaultLeadOwnerId`   INT          NULL DEFAULT 1 COMMENT 'User ID to assign auto-imported leads',
+    `created_at`           DATETIME     NULL,
+    `updated_at`           DATETIME     NULL,
+    PRIMARY KEY (`id`)
+);
+
+-- 4) Stores Google Ads API credentials for lead sync
+CREATE TABLE IF NOT EXISTS `google_ads_config` (
+    `id`                 BIGINT       NOT NULL AUTO_INCREMENT,
+    `developerToken`     VARCHAR(255) NULL COMMENT 'From Google Ads API Center',
+    `clientId`           VARCHAR(255) NULL COMMENT 'OAuth2 Client ID',
+    `clientSecret`       VARCHAR(255) NULL COMMENT 'OAuth2 Client Secret',
+    `refreshToken`       TEXT         NULL COMMENT 'Long-lived OAuth2 Refresh Token',
+    `customerId`         VARCHAR(50)  NULL COMMENT 'Format: 123-456-7890',
+    `defaultLeadOwnerId` INT          NULL DEFAULT 1,
+    `created_at`         DATETIME     NULL,
+    `updated_at`         DATETIME     NULL,
+    PRIMARY KEY (`id`)
+);
+
+#######################################################################
+
 1) 
 ALTER TABLE `udanchoodb`.`udnincentive` 
 ADD COLUMN `verified` TINYINT NULL DEFAULT 0 AFTER `updated_at`,
@@ -108,3 +173,37 @@ CREATE TABLE employee_target_mapping (
 
 ALTER TABLE `udanchoodb`.`udnincentive` 
 ADD COLUMN `claimOption` ENUM('INCENTIVE', 'TARGET') NOT NULL AFTER `updated_at`;
+
+
+ALTER TABLE tts_lead_reminder_recorder_service
+ADD COLUMN whatsapp_sent BOOLEAN DEFAULT FALSE;
+
+ALTER TABLE tg_leads_recorder
+ADD COLUMN whatsappInformed TINYINT(1) DEFAULT 0
+AFTER leadCreationClientInformed;
+
+
+ALTER TABLE campaign_form ADD COLUMN destination VARCHAR(100) DEFAULT NULL;
+
+ALTER TABLE campaign_form
+ADD COLUMN tentativeCost INT DEFAULT 0;
+
+
+ALTER TABLE campaign_form
+ADD COLUMN defaultService VARCHAR(50) DEFAULT NULL;
+
+#######################################################################
+# Document Storage Refactoring (Files to DB BLOBs)
+#######################################################################
+CREATE TABLE IF NOT EXISTS `document` (
+    `id`            BIGINT       NOT NULL AUTO_INCREMENT,
+    `entity_type`   VARCHAR(100) NOT NULL,
+    `entity_id`     VARCHAR(255) NOT NULL,
+    `file_name`     VARCHAR(255) NOT NULL,
+    `file_type`     VARCHAR(255) NULL,
+    `file_size`     BIGINT       NULL,
+    `uploaded_date` DATETIME     NULL,
+    `file_data`     LONGBLOB     NOT NULL,
+    PRIMARY KEY (`id`),
+    INDEX `idx_entity_type_id` (`entity_type`, `entity_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

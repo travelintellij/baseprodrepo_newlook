@@ -1,26 +1,16 @@
 package com.udanchoo.intranet.controller;
 
-import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.nio.file.Files;
-import java.nio.file.LinkOption;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
-import org.springframework.core.io.UrlResource;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -40,6 +30,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.udanchoo.intranet.entity.Document;
 import com.udanchoo.intranet.entity.UdnClientEntity;
 import com.udanchoo.intranet.exception.RecordNotFoundException;
 import com.udanchoo.intranet.model.ClientObj;
@@ -47,11 +38,10 @@ import com.udanchoo.intranet.model.SearchClientObj;
 import com.udanchoo.intranet.model.Tag;
 import com.udanchoo.intranet.model.UserDetailsObj;
 import com.udanchoo.intranet.service.ClientServiceImpl;
-import com.udanchoo.intranet.service.FileStorageService;
+import com.udanchoo.intranet.service.DocumentService;
 import com.udanchoo.intranet.service.UdnCommonServicesImpl;
 import com.udanchoo.intranet.service.UserDetailsServiceImpl;
 import com.udanchoo.intranet.util.UdanChooConstants;
-import com.udanchoo.intranet.util.UploadFileResponse;
 import com.udanchoo.intranet.validator.ClientValidator;
 
 
@@ -59,7 +49,7 @@ import com.udanchoo.intranet.validator.ClientValidator;
 public class ClientController {
 
 	 @Autowired
-	 private FileStorageService fileStorageService;
+	 private DocumentService documentService;
 	    
 	@Autowired
 	UserDetailsServiceImpl userDetailsService;
@@ -320,97 +310,54 @@ public class ClientController {
 		modelView.addObject("userName", userObj.getUsername());
 		modelView.addObject("Id", userObj.getUserId());
 		//modelView.addObject("userRole", userObj.getRoles());
-    	Path directoryPath = Paths.get(fileStorageService.getClientStorageLocation() + "\\" + clientId );
-    	
-    	if(Files.exists(directoryPath)) {
-    		Set docsSet = listFilesUsingJavaIO(directoryPath.toString());
-    		modelView.addObject("DOCS_SET", docsSet);
-    	}
+    	List<Document> docsSet = documentService.getDocuments("CLIENT", String.valueOf(clientId));
+    	modelView.addObject("DOCS_SET", docsSet);
 		return modelView;
 	}
-	
-	private Set<File> listFilesUsingJavaIO(String dir) {
-	        return Stream.of(new File(dir).listFiles())
-	          .filter(file -> !file.isDirectory())
-	          .map(File::getAbsoluteFile)
-	          .collect(Collectors.toSet());
-	    }
 	    
 	
 	@PostMapping("upload_client_docs")
     public ModelAndView upload_client_docs(@RequestParam("file") MultipartFile file,@RequestParam("clientId") long clientId,final RedirectAttributes redirectAttrib) {
     	ModelAndView mapview = new ModelAndView();
-    	Path directoryPath = Paths.get(fileStorageService.getClientStorageLocation() + "\\" + clientId );
-    	boolean pathExists = Files.exists(directoryPath,new LinkOption[]{ LinkOption.NOFOLLOW_LINKS});
-    	UploadFileResponse uploadFileResponse = null;
-    	ResponseEntity< Resource> response =null ;
-    	Path newPath = null;
-    	if(!pathExists) {
-    		try {
-				newPath = Files.createDirectories(directoryPath);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-    	}
-    	else {
-    		newPath=directoryPath;
-    	}
-
-    	String fileName = fileStorageService.storeFile(file,newPath);
+    	try {
+            documentService.saveDocument("CLIENT", String.valueOf(clientId), file);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     	redirectAttrib.addFlashAttribute("Success", "File is Uploaded Successfully ! ");
 		mapview.setViewName("redirect:view_view_crud_client_docs?clientId=" + clientId);
 		return mapview;
-    
     }
 
 	@PostMapping("download_client_doc")
-	public ResponseEntity<Resource>  download_client_doc(@RequestParam("clientId") long clientId,@RequestParam("fileName") String downloadFilePath) throws IOException {
-		Path downloadPath = Paths.get(downloadFilePath);
-		Resource resource = new UrlResource(downloadPath.toUri());
-		String  contentType = "application/octet-stream";
-		return ResponseEntity.ok().contentType(MediaType.parseMediaType(contentType))
-    	            .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
-    	            .body(resource);
+	public ResponseEntity<Resource>  download_client_doc(@RequestParam("clientId") long clientId,@RequestParam("fileName") String fileName) throws IOException {
+		Document doc = documentService.getDocument(Long.parseLong(fileName));
+		ByteArrayResource resource = new ByteArrayResource(doc.getFileData());
+		String contentType = doc.getFileType() != null ? doc.getFileType() : "application/octet-stream";
+		return ResponseEntity.ok()
+				.contentType(MediaType.parseMediaType(contentType))
+    			.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + doc.getFileName() + "\"")
+    			.contentLength(doc.getFileData().length)
+    			.body(resource);
     }
 	
 	@PostMapping("view_client_doc")
-	public ResponseEntity<Resource>  view_client_doc(@RequestParam("clientId") long clientId,@RequestParam("fileName") String downloadFilePath) throws IOException {
-		Path downloadPath = Paths.get(downloadFilePath);
-		Resource resource = new UrlResource(downloadPath.toUri());
-		//String  contentType = "application/octet-stream";
-		String  contentType = determineContentType(resource);
-		
-		return ResponseEntity.ok().contentType(MediaType.parseMediaType(contentType))
-    	            .header(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=\"" + resource.getFilename() + "\"")
-    	            .body(resource);
+	public ResponseEntity<Resource>  view_client_doc(@RequestParam("clientId") long clientId,@RequestParam("fileName") String fileName) throws IOException {
+		Document doc = documentService.getDocument(Long.parseLong(fileName));
+		ByteArrayResource resource = new ByteArrayResource(doc.getFileData());
+		String contentType = doc.getFileType() != null ? doc.getFileType() : "application/octet-stream";
+		return ResponseEntity.ok()
+				.contentType(MediaType.parseMediaType(contentType))
+    			.header(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=\"" + doc.getFileName() + "\"")
+    			.contentLength(doc.getFileData().length)
+    			.body(resource);
     }
-	
-	private final ServletContext servletContext;
-	 public ClientController(ServletContext servletContext) {
-	        this.servletContext = servletContext;
-	    }
-	private String determineContentType(Resource resource) throws IOException {
-	        // Try to determine the content type
-	        String contentType = servletContext.getMimeType(resource.getFile().getAbsolutePath());
-
-	        // Fallback to octet-stream if type could not be determined
-	        if (contentType == null) {
-	            contentType = "application/octet-stream";
-	        }
-
-	        return contentType;
-	}
 	
 	@PostMapping("delete_client_doc")
 	public ModelAndView delete_client_doc(@RequestParam("clientId") long clientId,@RequestParam("fileName") String deleteFileName) throws IOException {
 		ModelAndView mapview = new ModelAndView();
-		//Path deleteFilePath = Paths.get(fileStorageService.getFileStorageLocation() + "\\" + dealConfirmationId +"\\" + fileType +"\\" + deleteFileName);
-		Path deleteFilePath = Paths.get(deleteFileName);
-    	if(Files.exists(deleteFilePath)) {
-    		Files.delete(deleteFilePath);
-    		mapview.addObject("Success", "File is deleted Successfully !! ");
-    	}
+		documentService.deleteDocument(Long.parseLong(deleteFileName));
+    	mapview.addObject("Success", "File is deleted Successfully !! ");
     	mapview.setViewName("forward:view_view_crud_client_docs");
     	return mapview;	
 	}

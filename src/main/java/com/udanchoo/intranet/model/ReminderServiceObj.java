@@ -12,6 +12,7 @@ public class ReminderServiceObj {
 	public boolean bothSmsAndEmailReminder;
 	public TgQuotationRecorderVO quotationRecorderObj;
 	public SMS smsVo;
+    private boolean whatsappReminder;
 	
 	public TgLeadsRecorderVO getLeadsRecorderObj() {
 		return leadsRecorderObj;
@@ -55,6 +56,15 @@ public class ReminderServiceObj {
 	public void setSmsVo(SMS smsVo) {
 		this.smsVo = smsVo;
 	}
+
+
+    public boolean isWhatsappReminder() {
+        return whatsappReminder;
+    }
+
+    public void setWhatsappReminder(boolean whatsappReminder) {
+        this.whatsappReminder = whatsappReminder;
+    }
 	@Override
 	public String toString() {
 		return "ReminderServiceObj [leadsRecorderObj=" + leadsRecorderObj + ", emailMessageVo=" + emailMessageVo

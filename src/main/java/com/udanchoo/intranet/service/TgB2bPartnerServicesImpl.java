@@ -41,6 +41,8 @@ import com.udanchoo.intranet.model.leads.TgLeadsRecorderVO;
 import com.udanchoo.intranet.model.partner.FilterPartnerObj;
 import com.udanchoo.intranet.model.partner.Tg_B2bPartner_Obj;
 import com.udanchoo.intranet.repository.TgB2bPartnersRepository;
+import com.udanchoo.intranet.service.DocumentService;
+import com.udanchoo.intranet.entity.Document;
 import com.udanchoo.intranet.util.UdanChooConstants;
 
 
@@ -55,7 +57,7 @@ public class TgB2bPartnerServicesImpl {
 	TgB2bPartnersRepository b2bPartnerRepository;
 	
 	@Autowired
-	 private FileStorageService fileStorageService;
+	 private DocumentService documentService;
 	
 	
 	public Tg_B2b_Partner_Entity findPartnerById(int partnerId) {
@@ -87,25 +89,30 @@ public class TgB2bPartnerServicesImpl {
 	
     @Transactional(rollbackFor = Exception.class)
     public void savePartnerAndFile(Tg_B2bPartner_Obj partnerObj) throws IOException {
-    	Path directoryPath = Paths.get(fileStorageService.getPartnerLogoLocation().toString());
     	Tg_B2b_Partner_Entity b2bPartnerEntity = new Tg_B2b_Partner_Entity(partnerObj);
-    	b2bPartnerRepository.save(b2bPartnerEntity);
-        // Upload file
+        
+        if (partnerObj.getPartnerId() > 0) {
+            Tg_B2b_Partner_Entity existing = findPartnerById(partnerObj.getPartnerId());
+            if (existing != null) {
+                b2bPartnerEntity.setLogoImage(existing.getLogoImage());
+            }
+        }
+
     	if (partnerObj.getLogoFile() != null && !partnerObj.getLogoFile().isEmpty()) {
-    		fileStorageService.storePartnerLogo(partnerObj.getLogoFile(),directoryPath,partnerObj.getPartnerShortName().trim());
+            b2bPartnerEntity.setLogoImage(partnerObj.getLogoFile().getBytes());
     	}
-    		
+        
+    	b2bPartnerEntity = b2bPartnerRepository.save(b2bPartnerEntity);
+    	partnerObj.setPartnerId(b2bPartnerEntity.getPartnerId());
     }
     
    public boolean deleteLogoIfExists(Tg_B2bPartner_Obj partnerObj) {
-    	Path directoryPath = Paths.get(fileStorageService.getPartnerLogoLocation().toString());
-    	Path targetLocation = directoryPath.resolve(partnerObj.getLogoFileName());
-        try {
-            return Files.deleteIfExists(targetLocation);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
+        Tg_B2b_Partner_Entity entity = findPartnerById(partnerObj.getPartnerId());
+        if (entity != null) {
+            entity.setLogoImage(null);
+            b2bPartnerRepository.save(entity);
         }
+        return true;
     }
     
    
@@ -115,13 +122,8 @@ public class TgB2bPartnerServicesImpl {
     
     
     public boolean checkPartnerLogoExists(Tg_B2bPartner_Obj partnerObj) {
-    	Path directoryPath = Paths.get(fileStorageService.getPartnerLogoLocation().toString());
-    	Path jpgFilePath = Paths.get(directoryPath.toString(), partnerObj.getPartnerShortName() + ".jpg");
-        Path pngFilePath = Paths.get(directoryPath.toString(), partnerObj.getPartnerShortName() + ".png");
-        
-        System.out.println(" Absolute PAth is " + jpgFilePath.getParent().toAbsolutePath().toString());
-        return Files.exists(jpgFilePath) || Files.exists(pngFilePath);
-    	
+        Tg_B2b_Partner_Entity entity = findPartnerById(partnerObj.getPartnerId());
+        return entity != null && entity.getLogoImage() != null && entity.getLogoImage().length > 0;
     }
     
 	public Page<Tg_B2b_Partner_Entity>  filterPartners(int pageNo, int pageSize,String sorting,FilterPartnerObj filterPartnerObj,boolean isAdmin ) {

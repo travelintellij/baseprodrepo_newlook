@@ -271,12 +271,60 @@
     
              <!-- ############## start of lower part ############# -->
             <div class="lowerPart bs" style="padding-bottom:50px">
-            
-           
-            
-            
-                <table border="1" style="color:black">
+                
+                <sec:authorize access="hasRole('ADMIN')">
+                    <c:if test="${not empty SUCCESS_MESSAGE}">
+                        <div style="background: #d4edda; color: #155724; padding: 12px 20px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #c3e6cb; font-weight: 600; display: flex; align-items: center; gap: 10px;">
+                            <i class="fa fa-check-circle" style="font-size: 20px;"></i> ${SUCCESS_MESSAGE}
+                        </div>
+                    </c:if>
+                    <c:if test="${not empty ERROR_MESSAGE}">
+                        <div style="background: #f8d7da; color: #721c24; padding: 12px 20px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #f5c6cb; font-weight: 600; display: flex; align-items: center; gap: 10px;">
+                            <i class="fa fa-exclamation-circle" style="font-size: 20px;"></i> ${ERROR_MESSAGE}
+                        </div>
+                    </c:if>
+
+                    <div style="margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center;">
+                        <h2 style="color: #6082B6; margin: 0;">Lead Records</h2>
+                        <button type="button" id="deleteBtn" onclick="confirmBulkDelete()" style="background: #dc3545; color: white; border: none; padding: 8px 16px; border-radius: 4px; font-weight: bold; cursor: pointer; display: none;">
+                            <i class="fa fa-trash"></i> Delete Selected (<span id="selectedCount">0</span>)
+                        </button>
+                    </div>
+
+                    <form id="bulkDeleteForm" action="${pageContext.request.contextPath}/bulk_delete_leads" method="POST" style="display:none">
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                        <div id="hiddenIdInputs"></div>
+                    </form>
+
+                    <!-- Delete Confirmation Modal -->
+                    <div id="deleteConfirmModal" class="modal" style="display:none; z-index: 10001;">
+                        <div class="modal-content" style="width: 450px; padding: 0; border-radius: 12px; overflow: hidden; border: none; box-shadow: 0 10px 25px rgba(0,0,0,0.2);">
+                            <div style="background: #dc3545; color: white; padding: 15px 20px; font-size: 18px; font-weight: bold; display: flex; align-items: center; gap: 10px;">
+                                <i class="fa fa-exclamation-triangle"></i> Confirm Deletion
+                            </div>
+                            <div style="padding: 25px 20px; color: #333;">
+                                <p style="font-size: 16px; margin-bottom: 10px;">Are you sure you want to delete <b><span id="modalSelectedCount">0</span></b> selected lead(s)?</p>
+                                <p style="color: #666; font-size: 13px; line-height: 1.5;">All associated follow-ups and quotations will be removed. This action <b>cannot be undone</b>.</p>
+                            </div>
+                            <div style="background: #f8f9fa; padding: 15px 20px; display: flex; justify-content: flex-end; gap: 12px;">
+                                <button type="button" onclick="closeDeleteModal()" style="padding: 10px 20px; border-radius: 6px; border: 1px solid #ddd; background: white; cursor: pointer; font-weight: 600; color: #555;">Cancel</button>
+                                <button type="button" onclick="executeBulkDelete()" style="padding: 10px 20px; border-radius: 6px; border: none; background: #dc3545; color: white; cursor: pointer; font-weight: 700; box-shadow: 0 2px 4px rgba(220,53,69,0.3);">Yes, Delete Permanently</button>
+                            </div>
+                        </div>
+                    </div>
+                </sec:authorize>
+
+                <sec:authorize access="!hasRole('ADMIN')">
+                    <div style="margin-bottom: 15px;">
+                        <h2 style="color: #6082B6; margin: 0;">Lead Records</h2>
+                    </div>
+                </sec:authorize>
+
+                <table border="1" style="color:black; width: 100%;">
                     <thead style="background:#6082B6;height:50px">
+                        <sec:authorize access="hasRole('ADMIN')">
+                            <th style="width:40px;color:black"><input type="checkbox" id="selectAllLeads" onclick="toggleSelectAll(this)" style="width: 25px; height: 25px; cursor: pointer;"></th>
+                        </sec:authorize>
                         <th style="color:black" >Lead id</th>
                         <th style="width:3%;color:black">F</th>
                         <th style="width:3%;color:black">Q</th>
@@ -292,6 +340,11 @@
                     <tbody>
                   	<c:forEach items="${FILTERED_LEADS_RECORDS}" var="filteredLeads">
 						<tr>
+                            <sec:authorize access="hasRole('ADMIN')">
+                                <td style="border-bottom:2px solid black;border-right:2px solid black; text-align:center; vertical-align: middle;">
+                                    <input type="checkbox" name="selectedLeads" value="${filteredLeads.leadId}" class="leadCheckbox" style="width: 25px; height: 25px; cursor: pointer;">
+                                </td>
+                            </sec:authorize>
 							<td class="leadId" style="border-bottom:2px solid black;border-right:2px solid black;border-left:2px solid black"">
 								<a style="cursor: pointer;" id="myBtn[${filteredLeads.leadId}]" onclick="myLeadDisplay(this)" data-load-url="view_lead_details_modal?leadId=${filteredLeads.leadId}" data-toggle="modal" data-target="#myModal" >
 									Q-${String.format("%04d",filteredLeads.leadId)}-${filteredLeads.leadSourceShortName }
@@ -516,6 +569,66 @@ window.onclick = function(event) {
 }
 </script>
 
+	<script>
+        function toggleSelectAll(source) {
+            var checkboxes = document.querySelectorAll('.leadCheckbox');
+            for (var i = 0; i < checkboxes.length; i++) {
+                checkboxes[i].checked = source.checked;
+            }
+            updateSelectedCount();
+        }
+
+        document.addEventListener('change', function(e) {
+            if (e.target.classList.contains('leadCheckbox')) {
+                updateSelectedCount();
+            }
+        });
+
+        function updateSelectedCount() {
+            var selected = document.querySelectorAll('.leadCheckbox:checked').length;
+            document.getElementById('selectedCount').innerText = selected;
+            document.getElementById('deleteBtn').style.display = selected > 0 ? 'block' : 'none';
+        }
+
+        function confirmBulkDelete() {
+            var selected = document.querySelectorAll('.leadCheckbox:checked');
+            if (selected.length === 0) {
+                alert("Please select at least one lead to delete.");
+                return;
+            }
+            
+            document.getElementById('modalSelectedCount').innerText = selected.length;
+            document.getElementById('deleteConfirmModal').style.display = 'block';
+        }
+
+        function closeDeleteModal() {
+            document.getElementById('deleteConfirmModal').style.display = 'none';
+        }
+
+        function executeBulkDelete() {
+            var selected = document.querySelectorAll('.leadCheckbox:checked');
+            var hiddenContainer = document.getElementById('hiddenIdInputs');
+            hiddenContainer.innerHTML = '';
+            
+            selected.forEach(function(checkbox) {
+                var input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'leadIds';
+                input.value = checkbox.value;
+                hiddenContainer.appendChild(input);
+            });
+
+            document.getElementById('bulkDeleteForm').submit();
+        }
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            var deleteModal = document.getElementById('deleteConfirmModal');
+            if (event.target == deleteModal) {
+                closeDeleteModal();
+            }
+        });
+    </script>
 </body>
 
 </html>

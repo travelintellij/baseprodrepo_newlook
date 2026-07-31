@@ -54,7 +54,7 @@ public class Tg_Leads_Recorder_Entity extends AuditModel {
 	protected String clientRemarks;
 	protected String internalRemarks;
 	protected String childrenAgeInfo;
-	protected int source;
+	protected Integer source;
 	
 	protected boolean landPackage;
 	//protected boolean packageWithFlight;
@@ -68,9 +68,10 @@ public class Tg_Leads_Recorder_Entity extends AuditModel {
 	protected boolean cruise;
 	protected boolean others;
 	protected boolean leadCreationClientInformed;
+	protected boolean whatsappInformed;
  
 	
-	@ManyToMany(targetEntity = UdnTeam.class,fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToMany(targetEntity = UdnTeam.class,fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "ti_leads_team_map",
             joinColumns = {@JoinColumn(name="leadId")},
             inverseJoinColumns = {@JoinColumn(name="userId")})
@@ -99,14 +100,14 @@ public class Tg_Leads_Recorder_Entity extends AuditModel {
 	}
 	
 	
-	public int getSource() {
+	public Integer getSource() {
 		return source;
 	}
-	public void setSource(int source) {
+	public void setSource(Integer source) {
 		this.source = source;
 	}
 
-	protected int destination;
+	protected Integer destination;
 	protected Date travelStartDate;
 	protected Date travelEndDate;
 	protected int leadStatus;
@@ -153,10 +154,10 @@ public class Tg_Leads_Recorder_Entity extends AuditModel {
 		this.tentativeCost = tentativeCost;
 	}
 
-	public int getDestination() {
+	public Integer getDestination() {
 		return destination;
 	}
-	public void setDestination(int destination) {
+	public void setDestination(Integer destination) {
 		this.destination = destination;
 	}
 	public Date getTravelStartDate() {
@@ -231,6 +232,7 @@ public class Tg_Leads_Recorder_Entity extends AuditModel {
 		this.cruise=leadsRecorderVo.isCruise();
 		this.others=leadsRecorderVo.isOthers();
 		this.leadCreationClientInformed=leadsRecorderVo.isLeadCreationClientInformed();
+		this.whatsappInformed=leadsRecorderVo.isWhatsappInformed();
 		this.destination=leadsRecorderVo.getDestination();
 		this.travelStartDate=leadsRecorderVo.getTravelStartDate();
 		this.travelEndDate=leadsRecorderVo.getTravelEndDate();
@@ -331,6 +333,13 @@ public class Tg_Leads_Recorder_Entity extends AuditModel {
 	}
 	public void setLeadCreationClientInformed(boolean leadCreationClientInformed) {
 		this.leadCreationClientInformed = leadCreationClientInformed;
+	}
+	
+	public boolean isWhatsappInformed() {
+		return whatsappInformed;
+	}
+	public void setWhatsappInformed(boolean whatsappInformed) {
+		this.whatsappInformed = whatsappInformed;
 	}
 	
 	public String getChildrenAgeInfo() {

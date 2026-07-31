@@ -38,7 +38,7 @@ import com.udanchoo.intranet.model.vouchers.HotelVoucherVO;
 import com.udanchoo.intranet.service.ClientServiceImpl;
 import com.udanchoo.intranet.service.DealServiceImpl;
 import com.udanchoo.intranet.service.DealServiceLineImpl;
-import com.udanchoo.intranet.service.FileStorageService;
+import com.udanchoo.intranet.service.DocumentService;
 import com.udanchoo.intranet.service.HotelServiceImpl;
 import com.udanchoo.intranet.service.TgB2bPartnerServicesImpl;
 import com.udanchoo.intranet.service.UdnCommonServicesImpl;
@@ -56,7 +56,7 @@ public class VouchersController {
 	UserDetailsServiceImpl userDetailsService;
 
 	@Autowired
-    private FileStorageService fileStorageService;
+    private DocumentService documentService;
 	
 	@InitBinder
 	public void initBinder(WebDataBinder webDataBinder) {
@@ -198,31 +198,44 @@ public class VouchersController {
 				e1.printStackTrace();
 			}
     		voucherInputDataMap.put("hotelMasterEntity",hotelMasterEntity);
-    		String logoFileName=b2bPartnersDTO.getPartnerShortName()+".jpg";
-    		voucherInputDataMap.put("LOGO_FILE_NAME",logoFileName);
-        	String uploadType="Hotel";
-        	//String voucherFileName="HTL_VOUCHER_"+ hotelVoucherVO.getHtlVoucherId()+".pdf";
-        	String voucherFileName="HTL_VOUCHER_"+ hotelVoucherVO.getHtlServiceId()+".pdf";
-    		Path directoryPath = Paths.get(fileStorageService.getFileStorageLocation() + "\\" + hotelVoucherVO.getDealConfirmationId() +"\\" + uploadType);
-        	boolean pathExists = Files.exists(directoryPath,new LinkOption[]{ LinkOption.NOFOLLOW_LINKS});
-        	Path quotationFilePath = null;
-        	if(!pathExists) {
-        		try {
-        			quotationFilePath = Files.createDirectories(directoryPath);
-    			} catch (IOException e) {
-    				// TODO Auto-generated catch block
-    				e.printStackTrace();
-    			}
-        	}
-        	else {
-        		quotationFilePath=directoryPath;
-        	}
+    		Path tempLogoPath = null;
     		try {
-				voucherServiceLine.generatePdfFile("Hotel-Voucher-Templates/HotelVoucher", voucherInputDataMap, quotationFilePath.toFile().getPath(), voucherFileName, b2bPartnersDTO.getPartnerBrandName());
-			} catch (DocumentException e) {
-				// TODO Auto-generated catch block
+                String tempDir = System.getProperty("java.io.tmpdir");
+                Path tempPath = Paths.get(tempDir, "vouchers_temp");
+                if (!Files.exists(tempPath)) Files.createDirectories(tempPath);
+
+                String logoUrl = null;
+                if (b2bPartnersDTO != null && b2bPartnersDTO.getLogoImage() != null && b2bPartnersDTO.getLogoImage().length > 0) {
+                    tempLogoPath = tempPath.resolve("logo_" + b2bPartnersDTO.getPartnerId() + "_" + System.currentTimeMillis() + ".jpg");
+                    Files.write(tempLogoPath, b2bPartnersDTO.getLogoImage());
+                    logoUrl = tempLogoPath.toUri().toString();
+                }
+                voucherInputDataMap.put("LOGO_URL", logoUrl);
+
+                String uploadType="Hotel";
+                String voucherFileName="HTL_VOUCHER_"+ hotelVoucherVO.getHtlServiceId()+".pdf";
+
+                String partnerBrand = (b2bPartnersDTO != null) ? b2bPartnersDTO.getPartnerBrandName() : "UdanChoo";
+				voucherServiceLine.generatePdfFile("Hotel-Voucher-Templates/HotelVoucher", voucherInputDataMap, tempPath.toString(), voucherFileName, partnerBrand);
+                
+                Path generatedPdfPath = tempPath.resolve(voucherFileName);
+                byte[] pdfBytes = Files.readAllBytes(generatedPdfPath);
+                
+                documentService.saveDocument("DEAL_Hotel", String.valueOf(hotelVoucherVO.getDealConfirmationId()), voucherFileName, "application/pdf", pdfBytes);
+
+                Files.deleteIfExists(generatedPdfPath);
+			} catch (Exception e) {
 				e.printStackTrace();
-			}
+                isSuccess=false;
+			} finally {
+                if (tempLogoPath != null) {
+                    try {
+                        Files.deleteIfExists(tempLogoPath);
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            }
     		isSuccess=true;
     	}
     	else {
@@ -243,13 +256,13 @@ public class VouchersController {
     @PostMapping(value="/deleteVoucher")
     public ModelAndView deleteVoucher(@RequestParam("dealConfirmationId") long dealConfirmationId,@RequestParam("htlServiceId") long htlServiceLineId,@RequestParam("fileName") String deleteFileName,@RequestParam("fileType") String fileType,final RedirectAttributes redirectAttrib) throws IOException {
 		ModelAndView mapview = new ModelAndView();
-		//Path deleteFilePath = Paths.get(fileStorageService.getFileStorageLocation() + "\\" + dealConfirmationId +"\\" + fileType +"\\" + deleteFileName);
 		voucherServiceLine.delete_HotelVoucher_By_HotelServiceId(htlServiceLineId);
-		Path deleteFilePath = Paths.get(deleteFileName);
-    	if(Files.exists(deleteFilePath)) {
-    		Files.delete(deleteFilePath);
+        try {
+            documentService.deleteDocument(Long.parseLong(deleteFileName));
     		redirectAttrib.addFlashAttribute("Success", "Voucher is deleted Successfully ! ");
-    	}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 		mapview.setViewName("redirect:view_workload_HTL?dealConfirmationId="+dealConfirmationId);
     	return mapview;	
     }

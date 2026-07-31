@@ -34,9 +34,14 @@ body::before {
             opacity: 0.5; /* Adjust the opacity value as needed (0.0 to 1.0) */
             z-index: -1;
         }
+.follow-up {
+    margin-top: 130px; /* Clear the fixed top header */
+}
+.quick-lead-view {
+    top: 160px !important;
+}
 </style>
 <body>
-	
 	<form:form modelAttribute="LEAD_FOLLOWUP_OBJ" action="create_create_lead_followup">
 	<input type="hidden" name= "leadId" value="${LEAD_OBJ.leadId}"/>
 	<div class="follow-up">

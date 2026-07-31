@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import com.udanchoo.intranet.service.DocumentService;
+import com.udanchoo.intranet.entity.Document;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
@@ -155,8 +157,10 @@ VoucherServiceImpl voucherServiceLine;
 	@Autowired
 	HotelQuotationValidator hotelValidator;
 	
+
+
    @Autowired
-    private FileStorageService fileStorageService;
+    private DocumentService documentService;
 	
 	
 	@Value("${email.client.valid}")
@@ -607,25 +611,11 @@ VoucherServiceImpl voucherServiceLine;
     }
     
     private Map loadVoucherDetails(long dealConfirmationId) {
-    	//Path directoryPath = Paths.get(fileStorageService.getFileStorageLocation() + "\\" + dealConfirmationId +"\\" + "Hotel");
-    	File directoryPath = new File(fileStorageService.getFileStorageLocation() + "\\" + dealConfirmationId +"\\" + "Hotel");
-    	Map<Object, Object> voucherMAP = new HashMap();
-    	if(directoryPath.exists()) {
-    		File[] files = directoryPath.listFiles();
-            for (File file : files) {
-                if (file.isFile()) {
-                    String fileName = file.getName();
-                    String absolutePath = file.getAbsolutePath();
-                    voucherMAP.put(fileName, absolutePath);
-                }
-    		
-            }
-    	}
-    	/*if(Files.exists(directoryPath)) {
-    		voucherMAP =  Stream.of(new File(directoryPath.toString()).listFiles())
-    	          .filter(file -> file.isDirectory()) 
-    	          .collect(Collectors.toMap(map -> map.getName(), map -> listFilesUsingJavaIO(map.getPath())));
-    	}*/
+        List<Document> docs = documentService.getDocuments("DEAL_Hotel", String.valueOf(dealConfirmationId));
+        Map<Object, Object> voucherMAP = new HashMap();
+        for (Document doc : docs) {
+            voucherMAP.put(doc.getFileName(), String.valueOf(doc.getId()));
+        }
     	return voucherMAP;
     }
     
@@ -836,18 +826,7 @@ VoucherServiceImpl voucherServiceLine;
       		dealServiceLine.deleteHotelServiceLine(htlServiceId);
       		
     		String voucherFileName="HTL_VOUCHER_"+ htlServiceId+".pdf";
-    		Path deleteFilePath = Paths.get(fileStorageService.getFileStorageLocation() + "\\" + dealConfirmationId +"\\" + uploadType+ "\\" + voucherFileName);
-    		//Path deleteFilePath = Paths.get(voucherFileName);
-        	
-    		System.out.println("File to delete is " + deleteFilePath);
-    		if(Files.exists(deleteFilePath)) {
-        		try {
-					Files.delete(deleteFilePath);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-        	}
+            documentService.deleteDocument("DEAL_Hotel", String.valueOf(dealConfirmationId), voucherFileName);
       		isSuccess=true;
   		} catch (RecordNotFoundException e) {
   			isSuccess = false;

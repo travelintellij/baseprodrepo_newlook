@@ -2,7 +2,6 @@ package com.udanchoo.intranet;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.PropertySource;
@@ -19,9 +18,7 @@ import com.udanchoo.intranet.util.FileStorageProperties;
     FileStorageProperties.class
 })
 @ComponentScan
-//@PropertySource(value = { "classpath:services-discovery-prod.properties" })
-@PropertySource(value = { "classpath:services-discovery.properties" })
-public class SpringBootApp extends WebMvcAutoConfiguration  
+public class SpringBootApp
 {
       /*
 	@Autowired

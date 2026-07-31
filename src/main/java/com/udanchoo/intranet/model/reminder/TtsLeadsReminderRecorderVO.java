@@ -18,6 +18,7 @@ public class TtsLeadsReminderRecorderVO extends Tts_Lead_Reminder_Recorder_Entit
 		this.leadId=ttsLeadsReminderRecorderEntity.getLeadId();
 		this.smsSent=ttsLeadsReminderRecorderEntity.isSmsSent();
 		this.emailSent=ttsLeadsReminderRecorderEntity.isEmailSent();
+		this.setWhatsappSent(ttsLeadsReminderRecorderEntity.isWhatsappSent());
 	}
  	
 	public TtsLeadsReminderRecorderVO(Tts_Lead_Reminder_Recorder_Entity ttsLeadsReminderRecorderEntity) {
@@ -25,6 +26,7 @@ public class TtsLeadsReminderRecorderVO extends Tts_Lead_Reminder_Recorder_Entit
 		this.leadId=ttsLeadsReminderRecorderEntity.getLeadId();
 		this.smsSent=ttsLeadsReminderRecorderEntity.isSmsSent();
 		this.emailSent=ttsLeadsReminderRecorderEntity.isEmailSent();
+		this.setWhatsappSent(ttsLeadsReminderRecorderEntity.isWhatsappSent());
 		this.setCreatedAt(ttsLeadsReminderRecorderEntity.getCreatedAt());
 
 	}

@@ -41,6 +41,9 @@ import com.udanchoo.intranet.model.EmailMessageVO;
 import com.udanchoo.intranet.model.Mail;
 import com.udanchoo.intranet.util.EmailConfig;
 import com.udanchoo.intranet.util.FileStorageProperties;
+import com.udanchoo.intranet.service.DocumentService;
+import com.udanchoo.intranet.entity.Document;
+import org.springframework.core.io.ByteArrayResource;
 
 import freemarker.cache.WebappTemplateLoader;
 import freemarker.core.Configurable;
@@ -53,12 +56,15 @@ import freemarker.template.TemplateException;
 @Service
 public class EmailServiceImpl {
 
-	
+
 	@Autowired
 	private JavaMailSender mailSender;
 
 	@Autowired
 	private EmailConfig emailConfig;
+
+	@Autowired
+	private DocumentService documentService;
 
 	
 	/*@Autowired
@@ -86,6 +92,9 @@ public class EmailServiceImpl {
 
 	@Value("${email.internal.valid}")
 	private boolean internalEmailNotifyActive;
+
+    @Value("${followup.email.notify}")
+    private String followupNotificationEmail;
 	
 	 
     /**
@@ -99,6 +108,12 @@ public class EmailServiceImpl {
     		message.setTo(to);
     		message.setSubject(subject);
     		message.setText(body);
+            if (mailSender instanceof JavaMailSenderImpl) {
+                JavaMailSenderImpl impl = (JavaMailSenderImpl) mailSender;
+                System.out.println("MAIL HOST: " + impl.getHost());
+                System.out.println("MAIL PORT: " + impl.getPort());
+                System.out.println("MAIL USER: " + impl.getUsername());
+            }
     		mailSender.send(message);
     	}
     }
@@ -156,9 +171,18 @@ public class EmailServiceImpl {
 	                //attachFiles(filtToAttach,helper );
 	                
 	                for (Object aName : filtToAttach) {
-	    				File file = new File((String)aName);
-	                	FileSystemResource fr = new FileSystemResource(file);
-	    				helper.addAttachment(file.getName(), fr);
+                        try {
+                            Long docId = Long.parseLong((String) aName);
+                            Document doc = documentService.getDocument(docId);
+                            if (doc != null) {
+                                ByteArrayResource br = new ByteArrayResource(doc.getFileData());
+                                helper.addAttachment(doc.getFileName(), br);
+                            }
+                        } catch (NumberFormatException e) {
+	    				    File file = new File((String)aName);
+	                	    FileSystemResource fr = new FileSystemResource(file);
+	    				    helper.addAttachment(file.getName(), fr);
+                        }
 	    			}
 	                helper.setText(emailMessageVo.getEmailMessage());
 	            }
@@ -235,7 +259,16 @@ public class EmailServiceImpl {
 	        helper.setSubject(mail.getSubject());
 	        helper.setFrom(mail.getFrom());
 
-	       mailSender.send(message);
+            if (mailSender instanceof JavaMailSenderImpl) {
+                JavaMailSenderImpl impl = (JavaMailSenderImpl) mailSender;
+
+                System.out.println("DEFAULT HOST = " + impl.getHost());
+                System.out.println("DEFAULT PORT = " + impl.getPort());
+                System.out.println("DEFAULT USER = " + impl.getUsername());
+            }
+
+
+            mailSender.send(message);
 	    }
 	    
 	    
@@ -298,6 +331,7 @@ public class EmailServiceImpl {
 	        helper.setSubject(mail.getSubject());
 	        helper.setFrom(b2BEmailFrom);
 	        //mailSender.send(message);
+
 	        emailConfig.getB2bJavaMailSender().send(message);
 	    }
 	    
@@ -348,7 +382,16 @@ public class EmailServiceImpl {
 	    		Session session = emailConfig.getNotification1EmailSessionSender();
 	    		MimeMessage message = new MimeMessage(session);
 	    		message.setFrom(new InternetAddress(emailFrom));
-	    		message.setRecipients(Message.RecipientType.TO, mail.getToList());
+                // First: send to original recipients (owner + teammates)
+                message.setRecipients(
+                        Message.RecipientType.TO,
+                        mail.getToList()
+                );
+
+                message.addRecipients(
+                        Message.RecipientType.TO,
+                        InternetAddress.parse(followupNotificationEmail)
+                );
 	    		if(emailNotifyBcc!=null && emailNotifyBcc.trim().length()>0) {
 		    		message.setRecipients(Message.RecipientType.BCC, emailNotifyBcc);
 	    		}

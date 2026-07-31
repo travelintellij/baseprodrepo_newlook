@@ -256,6 +256,8 @@
                                     
                                       <a href="form_convert_new_deal?leadId=${LEAD_OBJ.leadId }&quotationId=${leadquotations.quotationId }" style=";padding:2px 5px; border-radius:3px;background:#32cd32;color:white"
                                             aria-disabled="true">Lock-And-Convert</a>
+                                      <a href="send_whatsapp_quotation?leadId=${LEAD_OBJ.leadId }&quotationId=${leadquotations.quotationId }" style=";padding:2px 5px; border-radius:3px;background:#25D366;color:white"
+                                            title="Share via WhatsApp"><i class="fa fa-whatsapp"></i> WhatsApp</a>
                                    
                                      
                                     </td>

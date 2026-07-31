@@ -2,10 +2,7 @@ package com.udanchoo.intranet.controller.quotation;
 
 
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -38,6 +35,7 @@ import com.udanchoo.intranet.model.FileUploaderListVO;
 import com.udanchoo.intranet.model.UserDetailsObj;
 import com.udanchoo.intranet.model.leads.TgLeadsRecorderVO;
 import com.udanchoo.intranet.model.quotation.ConfigurationQuotationVO;
+import com.udanchoo.intranet.model.quotation.Itinerary;
 import com.udanchoo.intranet.model.quotation.TgQuotationRecorderVO;
 import com.udanchoo.intranet.service.ClientServiceImpl;
 import com.udanchoo.intranet.service.EmailServiceImpl;
@@ -47,6 +45,7 @@ import com.udanchoo.intranet.service.QuotationServiceImpl;
 import com.udanchoo.intranet.service.TgB2bPartnerServicesImpl;
 import com.udanchoo.intranet.service.UdnCommonServicesImpl;
 import com.udanchoo.intranet.service.UserDetailsServiceImpl;
+import com.udanchoo.intranet.service.WhatsAppServiceImpl;
 import com.udanchoo.intranet.util.UdanChooConstants;
 import com.udanchoo.intranet.validator.ConfigurationQuotationValidator;
 import com.udanchoo.intranet.validator.EmailAudienceValidator;
@@ -108,10 +107,25 @@ public class ConfigurationQuotationController {
 	@Value("${SRVC_SEND_EMAIL_QTN_URL}")
 	private String SRVC_SEND_EMAIL_QTN_URL;
 	
+	@Value("${ITINERARY_SERVICE_URL}")
+	private String ITINERARY_SERVICE_URL;
+	
 	
 	
 	@Autowired
     private EmailAudienceValidator emailValidator;
+	
+	@Autowired
+	private WhatsAppServiceImpl whatsappService;
+
+	@Value("${whatsapp.notify.active:false}")
+	private boolean whatsappNotifyActive;
+
+    @Value("${whatsapp.template.lead.registered}")
+    private String whatsappTemplateId;
+	
+	@Value("${BASE_QUOTATION_URL:http://yourshms.com/view/}")
+	private String baseQuotationUrl;
 	
 	
 
@@ -169,7 +183,19 @@ public class ConfigurationQuotationController {
 			mapview.setViewName("quotation/configuration/form_view_add_configuration_manual_quotation");
 			mapview.addObject("B2B_PARTNERS_MAP", b2bPartnerService.find_All_B2bPartners_Map());
 		}
+		mapview.addObject("ITINERARIES", fetchItinerariesForLead(leadRecorderObj.getLeadId()));
 		return mapview;
+	}
+
+	private List<Itinerary> fetchItinerariesForLead(long leadId) {
+		try {
+			String url = ITINERARY_SERVICE_URL + "/get_itineraries_by_lead?leadId=" + leadId;
+			Itinerary[] itineraries = restTemplate.getForObject(url, Itinerary[].class);
+			return itineraries != null ? java.util.Arrays.asList(itineraries) : new ArrayList<>();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ArrayList<>();
+		}
 	}
 
 	/*private void updateManualConfigurationAdditionalFields(TgQuotationRecorderVO qtnRecorderObj) {
@@ -252,6 +278,12 @@ public class ConfigurationQuotationController {
 				Udn_Configuration_Manual_Quotation_Entity configQtnEntity = new Udn_Configuration_Manual_Quotation_Entity(configurationQtnVO);
 				configQtnEntity.setQuotationEntity(quotationEntity);
 				quotationEntity.setConfigurationQuotationEntity(configQtnEntity);
+				
+				// Update Itinerary ID if changed in this screen
+				if (qtnRecorderObj.getItineraryId() != null) {
+					quotationEntity.setItineraryId(qtnRecorderObj.getItineraryId());
+				}
+				
 				quotationService.saveLead(quotationEntity);
 				redirectAttrib.addFlashAttribute("Success","Quotation Configuration is updated Successfully!!");
 				modelView.setViewName("redirect:form_view_configure_quotation_details?leadId="+quotationEntity.getLeadEntity().getLeadId() + "&quotationId="+quotationId);
@@ -376,6 +408,16 @@ public class ConfigurationQuotationController {
 		}
 		modelView.addObject("B2B_PARTNER", partnerEntity);
 		modelView.addObject("localDateTimeFormat", DateTimeFormatter.ofPattern("dd/MMM/yyyy HH:mm"));
+
+		if (qtnRecorderObj.getItineraryId() != null) {
+			try {
+				String url = ITINERARY_SERVICE_URL + "/get_itinerary?itineraryId=" + qtnRecorderObj.getItineraryId();
+				Itinerary linkedItinerary = restTemplate.getForObject(url, Itinerary.class);
+				modelView.addObject("LINKED_ITINERARY", linkedItinerary);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 
 		modelView.setViewName("quotation/configuration/view_final_quotation");
 		return modelView; 
@@ -520,7 +562,73 @@ public class ConfigurationQuotationController {
 		return modelView;
 		
 	}
-		
-	
+
+    @RequestMapping("/send_whatsapp_quotation")
+    public ModelAndView send_whatsapp_quotation(
+            @RequestParam long quotationId,
+            @ModelAttribute("QTN_OBJ") TgQuotationRecorderVO quotationVO,
+            @ModelAttribute("LEAD_OBJ") TgLeadsRecorderVO leadRecorderObj,
+            final RedirectAttributes redirectAttrib) {
+
+        Tg_Quotation_Recorder_Entity quotationEntity =
+                quotationService.findQuotationRecordById(quotationId);
+
+        ClientObj client = clientService.find_ClientBy_Id(leadRecorderObj.getContactId());
+        UserDetailsObj userObj = getLoggedInUser();
+
+        // ✅ Validate mobile first
+        if (client.getMobile() == null || client.getMobile().toString().trim().isEmpty()) {
+            redirectAttrib.addFlashAttribute("Error", "Client mobile number not available.");
+            return new ModelAndView("redirect:form_view_configure_quotation_details?leadId="
+                    + leadRecorderObj.getLeadId() + "&quotationId=" + quotationId);
+        }
+
+        // ✅ Check WhatsApp toggle
+        if (!whatsappNotifyActive) {
+            redirectAttrib.addFlashAttribute("Error", "WhatsApp service is disabled.");
+            return new ModelAndView("redirect:form_view_configure_quotation_details?leadId="
+                    + leadRecorderObj.getLeadId() + "&quotationId=" + quotationId);
+        }
+
+        // ✅ Format mobile properly
+        String mobile = String.valueOf(client.getMobile()).replaceAll("\\s+", "");
+        mobile = mobile.replaceAll("[^0-9]", "");
+
+
+        // ✅ Prepare template params
+        Map<Integer, String> params = new HashMap<>();
+        params.put(1, client.getClientName());                        // {{1}} Customer Name
+        params.put(2, String.valueOf(leadRecorderObj.getLeadId()));   // {{2}} Query ID
+        params.put(3, userObj.getName());                             // {{3}} Representative Name
+        params.put(4, mobile);                                        // {{4}} Mobile
+        params.put(5, client.getEmail());                             // {{5}} Email
+
+        boolean sent = false;
+
+        try {
+            // ✅ Send WhatsApp message
+            sent = whatsappService.sendTemplateMessage(
+                    mobile,
+                    whatsappTemplateId,   // <-- from application.properties
+                    params
+            );
+        } catch (Exception e) {
+            e.printStackTrace();
+            redirectAttrib.addFlashAttribute("Error", "WhatsApp sending failed due to exception.");
+            return new ModelAndView("redirect:form_view_configure_quotation_details?leadId="
+                    + leadRecorderObj.getLeadId() + "&quotationId=" + quotationId);
+        }
+
+        // ✅ Handle response
+        if (sent) {
+            redirectAttrib.addFlashAttribute("Success", "Quotation shared via WhatsApp successfully!");
+        } else {
+            redirectAttrib.addFlashAttribute("Error", "Failed to share via WhatsApp. Please check configuration.");
+        }
+
+        return new ModelAndView("redirect:form_view_configure_quotation_details?leadId="
+                + leadRecorderObj.getLeadId() + "&quotationId=" + quotationId);
+    }
+
 }
 

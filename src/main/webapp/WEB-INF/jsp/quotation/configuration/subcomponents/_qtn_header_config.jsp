@@ -20,7 +20,7 @@ background-color:lightgray;
 		<c:if test="${MANUAL_CNF.logoHeader eq true && MANUAL_CNF.completeAddress eq true}">
 		<tr>
 		<td style="width:30%;text-align:center;">
-			<img src="${pageContext.request.contextPath}/resources/images/partner/${MANUAL_CNF.partnerId}.jpg"  height="250" width="250"/>
+			<img src="${pageContext.request.contextPath}/getPartnerLogo/${MANUAL_CNF.partnerId}"  height="250" width="250" alt="Logo"/>
 		</td>
 		<td style="width:70%;text-align:center;" >
 			<table style="width:100%;border:none; border-collapse: collapse;">
@@ -44,7 +44,7 @@ background-color:lightgray;
 		<c:if test="${MANUAL_CNF.logoHeader eq true && MANUAL_CNF.completeAddress eq false}">
 		<tr>
 		<td style="width:30%;" align="center">
-			<img src="${pageContext.request.contextPath}/resources/images/partner/${MANUAL_CNF.partnerId}.jpg"  height="250" width="250"/>
+			<img src="${pageContext.request.contextPath}/getPartnerLogo/${MANUAL_CNF.partnerId}"  height="250" width="250" alt="Logo"/>
 		</td>
 		<td style="width:70%;text-align:center;" >
 			<table style="width:100%;border:none; border-collapse: collapse;">

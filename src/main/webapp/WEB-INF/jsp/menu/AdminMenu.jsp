@@ -109,97 +109,97 @@
         </div>
     </header>
 
-    <!-- Extra privilege role starts from here. -->
     <!-- ############### bottom top header ############### -->
     <div class="bottomHeader">
         <div class="insideBottomHeader container">
             <ul class="bottomSectionHeader">
-                <!-- empolyee section -->
 
-                <!-- client section -->
                 <li class="bottomHeaderLinks">
                     <p>Lead Management</p>
                     <ul class="bottomSectionHeaderSubMenu">
-                        <li><a href="form_register_newlead" class="hoverOnLink">New Lead</a></li>
-                        <li><a href="view_filter_leads" class="hoverOnLink">Manage Leads</a></li>
+                        <li><a href="${pageContext.request.contextPath}/form_register_newlead" class="hoverOnLink">New Lead</a></li>
+                        <li><a href="${pageContext.request.contextPath}/view_filter_leads" class="hoverOnLink">Manage Leads</a></li>
                     </ul>
                 </li>
-
 
                 <li class="bottomHeaderLinks">
                     <p>Incentive</p>
                     <ul class="bottomSectionHeaderSubMenu">
-                        <li><a href="newincentive" class="hoverOnLink">New Claim</a></li>
-                        <li><a href="view_default_incentives_report" class="hoverOnLink">Claim Reports</a>
-                         <li><a href="view_filter_employee_target" class="hoverOnLink">Manage Targets</a></li>
-                        </li>
+                        <li><a href="${pageContext.request.contextPath}/newincentive" class="hoverOnLink">New Claim</a></li>
+                        <li><a href="${pageContext.request.contextPath}/view_default_incentives_report" class="hoverOnLink">Claim Reports</a></li>
+                        <li><a href="${pageContext.request.contextPath}/view_filter_employee_target" class="hoverOnLink">Manage Targets</a></li>
                     </ul>
                 </li>
-
 
                 <li class="bottomHeaderLinks">
                     <p>My-Deals</p>
                     <ul class="bottomSectionHeaderSubMenu">
-                        <li><a href="view_workload_createNewDealForm" class="hoverOnLink">New Win</a></li>
-                        <li><a href="view_deal_searchDealForm" class="hoverOnLink">Search Deal</a></li>
+                        <li><a href="${pageContext.request.contextPath}/view_workload_createNewDealForm" class="hoverOnLink">New Win</a></li>
+                        <li><a href="${pageContext.request.contextPath}/view_deal_searchDealForm" class="hoverOnLink">Search Deal</a></li>
                     </ul>
                 </li>
 
                 <li class="bottomHeaderLinks">
                     <p>My-Tasks</p>
                     <ul class="bottomSectionHeaderSubMenu">
-                        <li><a href="view_create_task_form_user" class="hoverOnLink">New Task</a></li>
-                        <li><a href="view_open_task_form_user" class="hoverOnLink">View Tasks</a></li>
+                        <li><a href="${pageContext.request.contextPath}/view_create_task_form_user" class="hoverOnLink">New Task</a></li>
+                        <li><a href="${pageContext.request.contextPath}/view_open_task_form_user" class="hoverOnLink">View Tasks</a></li>
                     </ul>
                 </li>
 
                 <li class="bottomHeaderLinks">
                     <p>My-Tickets</p>
                     <ul class="bottomSectionHeaderSubMenu">
-                        <li><a href="view_create_ticket_form_user" class="hoverOnLink">New Ticket</a></li>
-                        <li><a href="view_open_ticket_form_user" class="hoverOnLink">View Ticket</a></li>
+                        <li><a href="${pageContext.request.contextPath}/view_create_ticket_form_user" class="hoverOnLink">New Ticket</a></li>
+                        <li><a href="${pageContext.request.contextPath}/view_open_ticket_form_user" class="hoverOnLink">View Ticket</a></li>
                     </ul>
                 </li>
-
 
                 <li class="bottomHeaderLinks">
                     <p>Service Line Queue</p>
                     <ul class="bottomSectionHeaderSubMenu">
-                        <li><a href="get_deals_service_line_queue_user" class="hoverOnLink">Deals</a></li>
-                        <li><a href="get_flight_service_line_queue_user" class="hoverOnLink">Flight</a></li>
-                        <li><a href="get_hotel_service_line_queue_user" class="hoverOnLink">Hotel</a></li>
-                        <li><a href="get_insurance_service_line_queue_user" class="hoverOnLink">Insurance</a></li>
-                        <li><a href="get_landpackage_service_line_queue_user" class="hoverOnLink">LandPackage</a></li>
-                        <li><a href="get_sightseeing_service_line_queue_user" class="hoverOnLink">SightSeeing</a></li>
-                        <li><a href="get_transfers_service_line_queue_user" class="hoverOnLink">Transfers</a></li>
-                        <li><a href="get_visa_service_line_queue_user" class="hoverOnLink">Visa</a></li>
-                        <li><a href="get_other_service_line_queue_user" class="hoverOnLink">Others</a></li>
+                        <li><a href="${pageContext.request.contextPath}/get_deals_service_line_queue_user" class="hoverOnLink">Deals</a></li>
+                        <li><a href="${pageContext.request.contextPath}/get_flight_service_line_queue_user" class="hoverOnLink">Flight</a></li>
+                        <li><a href="${pageContext.request.contextPath}/get_hotel_service_line_queue_user" class="hoverOnLink">Hotel</a></li>
+                        <li><a href="${pageContext.request.contextPath}/get_insurance_service_line_queue_user" class="hoverOnLink">Insurance</a></li>
+                        <li><a href="${pageContext.request.contextPath}/get_landpackage_service_line_queue_user" class="hoverOnLink">LandPackage</a></li>
+                        <li><a href="${pageContext.request.contextPath}/get_sightseeing_service_line_queue_user" class="hoverOnLink">SightSeeing</a></li>
+                        <li><a href="${pageContext.request.contextPath}/get_transfers_service_line_queue_user" class="hoverOnLink">Transfers</a></li>
+                        <li><a href="${pageContext.request.contextPath}/get_visa_service_line_queue_user" class="hoverOnLink">Visa</a></li>
+                        <li><a href="${pageContext.request.contextPath}/get_other_service_line_queue_user" class="hoverOnLink">Others</a></li>
                     </ul>
                 </li>
-                
+
+                <sec:authorize access="hasRole('MANAGE_CAMPAIGN')">
                 <li class="bottomHeaderLinks">
-                            <p class="lastOp">Others</p>
-                            <ul class="bottomSectionHeaderSubMenu">
-                                <li><a href="view_add_city_form" class="hoverOnLink">Add City</a>
-                                </li>
-                                <li><a href="view_search_city_form" class="hoverOnLink">Manage City</a></li>
-                                <li><a href="view_manage_multiple_status" class="hoverOnLink">Status Management</a></li>
-                                <li><a href="view_check_email_working" class="hoverOnLink">Check Email Working</a></li>
-                            </ul>
-                        </li>
-                
+                    <p>Campaigns</p>
+                    <ul class="bottomSectionHeaderSubMenu">
+                        <li><a href="${pageContext.request.contextPath}/campaign/list" class="hoverOnLink">Manage Campaigns</a></li>
+                        <li><a href="${pageContext.request.contextPath}/campaign/add" class="hoverOnLink">Add Campaign Form</a></li>
+                        <li><a href="${pageContext.request.contextPath}/campaign/central-config" class="hoverOnLink">Meta API Settings</a></li>
+                    </ul>
+                </li>
+                </sec:authorize>
+
+                <li class="bottomHeaderLinks">
+                    <p class="lastOp">Others</p>
+                    <ul class="bottomSectionHeaderSubMenu">
+                        <li><a href="${pageContext.request.contextPath}/view_add_city_form" class="hoverOnLink">Add City</a></li>
+                        <li><a href="${pageContext.request.contextPath}/view_search_city_form" class="hoverOnLink">Manage City</a></li>
+                        <li><a href="${pageContext.request.contextPath}/view_manage_multiple_status" class="hoverOnLink">Status Management</a></li>
+                        <li><a href="${pageContext.request.contextPath}/view_check_email_working" class="hoverOnLink">Check Email Working</a></li>
+                    </ul>
+                </li>
+
                 <li><a href="${pageContext.request.contextPath}/logout" class="adminSignOut">Sign Out</a></li>
-                <a class="settingIcon" href="view_form_my_profile">
+                <a class="settingIcon" href="${pageContext.request.contextPath}/view_form_my_profile">
                     <i class="fa-solid fa-gear fa-2xl" id="gear-icon"></i>
                 </a>
             </ul>
         </div>
     </div>
 
-    <!-- ########################## home page styling ###################### -->
 
-
-   
 
 
 </body>
