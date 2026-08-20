@@ -12,3 +12,4 @@ bin/
 src/main/resources/application-dev.properties
 .idea/amazonq.xml
 .idea/misc.xml
+.vscode/
