@@ -2,6 +2,7 @@ package com.udanchoo.intranet.controller;
 
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -38,6 +39,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.tts.communication.mode.vo.SMS;
 import com.udanchoo.intranet.entity.Tg_B2b_Partner_Entity;
 import com.udanchoo.intranet.entity.UdnTeam;
+import com.udanchoo.intranet.entity.Udn_Destinations_Entity;
 import com.udanchoo.intranet.entity.leads.TI_Leads_Followup_Entity;
 import com.udanchoo.intranet.entity.leads.Tg_Leads_Recorder_Entity;
 import com.udanchoo.intranet.model.ClientObj;
@@ -325,40 +327,76 @@ public class LeadsController {
 	
 	private void notifyLeadCreationTargetAudience(TgLeadsRecorderVO leadRecorderObj, String templateName,boolean isCreated,boolean markClient) {
 		if(emailClientNotifyActive) {
-			
+			if (leadRecorderObj != null) {
+				if (leadRecorderObj.getSourceName() == null || leadRecorderObj.getSourceName().trim().isEmpty() || "Unknown".equalsIgnoreCase(leadRecorderObj.getSourceName())) {
+					if (leadRecorderObj.getSource() != null && leadRecorderObj.getSource() != 0) {
+						try {
+							Udn_Destinations_Entity srcDest = commonService.findDestinationById(leadRecorderObj.getSource());
+							if (srcDest != null && srcDest.getCityName() != null) {
+								leadRecorderObj.setSourceName(srcDest.getCityName());
+							}
+						} catch (Exception e) {}
+					}
+				}
+				if (leadRecorderObj.getSourceName() == null || leadRecorderObj.getSourceName().trim().isEmpty()) {
+					leadRecorderObj.setSourceName("N/A");
+				}
+
+				if (leadRecorderObj.getDestinationName() == null || leadRecorderObj.getDestinationName().trim().isEmpty() || "Unknown".equalsIgnoreCase(leadRecorderObj.getDestinationName())) {
+					if (leadRecorderObj.getDestination() != null && leadRecorderObj.getDestination() != 0) {
+						try {
+							Udn_Destinations_Entity dstDest = commonService.findDestinationById(leadRecorderObj.getDestination());
+							if (dstDest != null && dstDest.getCityName() != null) {
+								leadRecorderObj.setDestinationName(dstDest.getCityName());
+							}
+						} catch (Exception e) {}
+					}
+				}
+				if (leadRecorderObj.getDestinationName() == null || leadRecorderObj.getDestinationName().trim().isEmpty()) {
+					leadRecorderObj.setDestinationName("N/A");
+				}
+			}
+
 			Mail mail = new Mail();
 			String leadReferenceNumber = generateLeadReferenceNumber(leadRecorderObj);
 			String guestDetails = constructGuestDetails(leadRecorderObj);
 			String emailSubject = generateSubject(leadRecorderObj,guestDetails,leadReferenceNumber,isCreated);
 			String servicesList = getServicesOptedList(leadRecorderObj);
 			mail.setSubject(emailSubject);
-			ClientObj client = clientService.find_ClientBy_Id(leadRecorderObj.getContactId());
-			UdnTeam userObj = userService.findUserByID(leadRecorderObj.getLeadOwner());
-			if(markClient) {
+			ClientObj client = leadRecorderObj != null ? clientService.find_ClientBy_Id(leadRecorderObj.getContactId()) : null;
+			UdnTeam userObj = leadRecorderObj != null ? userService.findUserByID(leadRecorderObj.getLeadOwner()) : null;
+			
+			if (markClient && client != null && client.getEmail() != null && !client.getEmail().trim().isEmpty()) {
 				mail.setTo(client.getEmail());
-				mail.setCc(userObj.getEmail());
-			}else {
+				if (userObj != null && userObj.getEmail() != null && !userObj.getEmail().trim().isEmpty()) {
+					mail.setCc(userObj.getEmail());
+				}
+			} else if (userObj != null && userObj.getEmail() != null && !userObj.getEmail().trim().isEmpty()) {
 				mail.setTo(userObj.getEmail());
 			}
-			mail.setCc(getLoggedInUser().getEmail());
+
+			if (getLoggedInUser() != null && getLoggedInUser().getEmail() != null) {
+				mail.setCc(getLoggedInUser().getEmail());
+			}
+
 			try {
 		        Map<String, Object> model = new HashMap<String, Object>();
-		        model.put("leadConfirmationNumber", leadReferenceNumber);
-		        model.put("contactName",client.getClientName());
-		        model.put("guestDetails", guestDetails);
+		        model.put("leadConfirmationNumber", leadReferenceNumber != null ? leadReferenceNumber : "");
+		        model.put("contactName", (client != null && client.getClientName() != null) ? client.getClientName() : "Valued Client");
+		        model.put("guestDetails", guestDetails != null ? guestDetails : "");
 		        
-		        model.put("travelStartDate", leadRecorderObj.getTravelStartDate());
-		        model.put("travelEndDate", leadRecorderObj.getTravelEndDate());
-		        model.put("sourceName", leadRecorderObj.getSourceName());
-		        model.put("destinationName", leadRecorderObj.getDestinationName());
-		        model.put("Services", servicesList);
-		        model.put("clientRemarks", leadRecorderObj.getClientRemarks());
-		        model.put("serviceAdvisor", userObj.getName());
-		        model.put("contactNumber", userObj.getMobile());
+		        SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy");
+		        model.put("travelStartDate", (leadRecorderObj != null && leadRecorderObj.getTravelStartDate() != null) ? sdf.format(leadRecorderObj.getTravelStartDate()) : "N/A");
+		        model.put("travelEndDate", (leadRecorderObj != null && leadRecorderObj.getTravelEndDate() != null) ? sdf.format(leadRecorderObj.getTravelEndDate()) : "N/A");
+		        model.put("sourceName", (leadRecorderObj != null && leadRecorderObj.getSourceName() != null) ? leadRecorderObj.getSourceName() : "N/A");
+		        model.put("destinationName", (leadRecorderObj != null && leadRecorderObj.getDestinationName() != null) ? leadRecorderObj.getDestinationName() : "N/A");
+		        model.put("Services", servicesList != null ? servicesList : "");
+		        model.put("clientRemarks", (leadRecorderObj != null && leadRecorderObj.getClientRemarks() != null) ? leadRecorderObj.getClientRemarks() : "");
+		        model.put("serviceAdvisor", (userObj != null && userObj.getName() != null) ? userObj.getName() : "Service Representative");
+		        model.put("contactNumber", (userObj != null && userObj.getMobile() > 0) ? String.valueOf(userObj.getMobile()) : "");
 		        mail.setModel(model);
 				emailService.sendEmailMessageUsingTemplate(mail,templateName);
 			} catch (MessagingException | IOException | TemplateException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -373,42 +411,54 @@ public class LeadsController {
 		String leadRef = generateLeadReferenceNumber(leadRecorderObj);
 		
 		Map<Integer, String> parameters = new HashMap<>();
-		parameters.put(1, client.getClientName());
+		parameters.put(1, client != null && client.getClientName() != null ? client.getClientName() : "Client");
 		parameters.put(2, leadRef);
-		parameters.put(3, representative.getName());
-		parameters.put(4, String.valueOf(representative.getMobile()));
-		parameters.put(5, representative.getEmail());
+		parameters.put(3, representative != null && representative.getName() != null ? representative.getName() : "Representative");
+		parameters.put(4, representative != null ? String.valueOf(representative.getMobile()) : "");
+		parameters.put(5, representative != null && representative.getEmail() != null ? representative.getEmail() : "");
 		
-		return whatsappService.sendTemplateMessage(String.valueOf(client.getMobile()), "udanchoo_lead_registered_msg", parameters);
+		return whatsappService.sendTemplateMessage(String.valueOf(client != null ? client.getMobile() : ""), "udanchoo_lead_registered_msg", parameters);
 	}
 	private String constructGuestDetails(TgLeadsRecorderVO leadRecorderObj){
 		String guestDetails ="";
-		if(leadRecorderObj.getAdults()>0) {
-			guestDetails = guestDetails + leadRecorderObj.getAdults() + " Adults ";
-		}
-		if(leadRecorderObj.getChildren()>0) {
-			guestDetails = guestDetails + leadRecorderObj.getChildren() + " Children " ;
-			if(leadRecorderObj.getChildrenAgeInfo()!=null && leadRecorderObj.getChildrenAgeInfo().trim().length()>0) {
-				if(leadRecorderObj.getChildrenAgeInfo().trim().length()>15) {
-					guestDetails=guestDetails+"("+leadRecorderObj.getChildrenAgeInfo().trim().substring(0, 4) + "..)";
-				}
-				else {
-					guestDetails =guestDetails + "("+leadRecorderObj.getChildrenAgeInfo().trim() +")";
+		if (leadRecorderObj != null) {
+			if(leadRecorderObj.getAdults()>0) {
+				guestDetails = guestDetails + leadRecorderObj.getAdults() + " Adults ";
+			}
+			if(leadRecorderObj.getChildren()>0) {
+				guestDetails = guestDetails + leadRecorderObj.getChildren() + " Children " ;
+				if(leadRecorderObj.getChildrenAgeInfo()!=null && leadRecorderObj.getChildrenAgeInfo().trim().length()>0) {
+					if(leadRecorderObj.getChildrenAgeInfo().trim().length()>15) {
+						guestDetails=guestDetails+"("+leadRecorderObj.getChildrenAgeInfo().trim().substring(0, 4) + "..)";
+					}
+					else {
+						guestDetails =guestDetails + "("+leadRecorderObj.getChildrenAgeInfo().trim() +")";
+					}
 				}
 			}
 		}
-		
-	return guestDetails;
+		return guestDetails;
 	}	
 	private String generateSubject(TgLeadsRecorderVO leadRecorderObj,String guestDetails,String leadReferenceNumber,boolean isCreated) {
-		String emailSubject; 
+		String dest = (leadRecorderObj != null && leadRecorderObj.getDestinationName() != null && !leadRecorderObj.getDestinationName().trim().isEmpty()) 
+				? leadRecorderObj.getDestinationName() : "N/A";
+		String dateStr = "N/A";
+		if (leadRecorderObj != null && leadRecorderObj.getTravelStartDate() != null) {
+			try {
+				dateStr = UdanChooUtil.getMonth(leadRecorderObj.getTravelStartDate().getMonth()) + "-" + (leadRecorderObj.getTravelStartDate().getYear() + 1900);
+			} catch (Exception e) {
+				dateStr = "N/A";
+			}
+		}
+		String refNum = leadReferenceNumber != null ? leadReferenceNumber : "";
+		String gDetails = guestDetails != null ? guestDetails : "";
+
 		if(isCreated) {
-			emailSubject = "Query Created with Query Id: " +leadReferenceNumber +" | "+ leadRecorderObj.getDestinationName() + " | " + guestDetails + " | " +  UdanChooUtil.getMonth(leadRecorderObj.getTravelStartDate().getMonth()) + "-" + (leadRecorderObj.getTravelStartDate().getYear()+1900)   ;
+			return "Query Created with Query Id: " + refNum + " | " + dest + " | " + gDetails + " | " + dateStr;
 		}
 		else {
-			emailSubject = "Query Updated having Query Id: " +leadReferenceNumber +" | "+ leadRecorderObj.getDestinationName() + " | " + guestDetails + " | " +  UdanChooUtil.getMonth(leadRecorderObj.getTravelStartDate().getMonth()) + "-" + (leadRecorderObj.getTravelStartDate().getYear()+1900)   ;
+			return "Query Updated having Query Id: " + refNum + " | " + dest + " | " + gDetails + " | " + dateStr;
 		}
-		return emailSubject;
 	}
 	
 	private String generateLeadReferenceNumber(TgLeadsRecorderVO leadRecorderObj) {

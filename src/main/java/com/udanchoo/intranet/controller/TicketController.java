@@ -388,7 +388,10 @@ public class TicketController {
 	    		return mapview; 
 	    }
 		try {
-			ticketRecorderObj.setTicketCreator(getLoggedInUser().getUserId());
+			Optional<Udn_Ticket_Recorder_Entity> existingTicketOpt = ticketService.find_ticket_ById(ticketRecorderObj.getTicketId());
+			if(existingTicketOpt.isPresent()) {
+				ticketRecorderObj.setTicketCreator(existingTicketOpt.get().getTicketCreator());
+			}
 			Udn_Ticket_Recorder_Entity ticketEntity = new Udn_Ticket_Recorder_Entity(ticketRecorderObj);
 			ticketService.saveTicket(ticketEntity);
 			if(ticketRecorderObj.isNotifyTicketOwner()) {

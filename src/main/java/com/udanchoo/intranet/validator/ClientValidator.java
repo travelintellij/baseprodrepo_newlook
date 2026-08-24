@@ -11,11 +11,14 @@ import org.springframework.validation.Validator;
 
 import com.udanchoo.intranet.model.ClientObj;
 import com.udanchoo.intranet.model.UserDetailsObj;
+import com.udanchoo.intranet.repository.ClientRepository;
 
 
 @Component
 public class ClientValidator implements Validator {
     
+	@Autowired
+	private ClientRepository clientRepository;
 
     @Override
     public boolean supports(Class<?> aClass) {
@@ -36,7 +39,25 @@ public class ClientValidator implements Validator {
     		clientObj.setCityId("0");
     	}
     	if(clientObj.getCountryName()==null || clientObj.getCountryName().trim().length()==0) {
-    		clientObj.setCountryId("0");;
+    		clientObj.setCountryId("0");
+    	}
+    	
+    	// Mobile Validation & Duplicate Mobile Number Check
+    	Long mobileObj = clientObj.getMobile();
+    	if (mobileObj == null || mobileObj <= 0) {
+    		errors.rejectValue("mobile", "mobile.required", "Client mobile number is required!");
+    	} else {
+    		long mobile = mobileObj;
+    		Long clientIdObj = clientObj.getClientId();
+    		boolean isDuplicate = false;
+    		if (clientIdObj == null || clientIdObj <= 0L) {
+    			isDuplicate = clientRepository.existsByMobile(mobile);
+    		} else {
+    			isDuplicate = clientRepository.existsByMobileAndClientIdNot(mobile, clientIdObj);
+    		}
+    		if (isDuplicate) {
+    			errors.rejectValue("mobile", "mobile.duplicate", "Mobile number (" + mobile + ") already exists in the system!");
+    		}
     	}
     	
         /*

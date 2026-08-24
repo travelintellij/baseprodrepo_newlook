@@ -353,7 +353,10 @@ public class TaskController {
 		return mapview;
 		*/
 		UserDetailsObj userObj = getLoggedInUser();
-		taskRecorderObj.setTaskCreator(userObj.getUserId());
+		Optional<Udn_Task_Recorder_Entity> existingTaskOpt = taskService.find_task_ById(taskRecorderObj.getTaskId());
+		if(existingTaskOpt.isPresent()) {
+			taskRecorderObj.setTaskCreator(existingTaskOpt.get().getTaskCreator());
+		}
 		if(taskRecorderObj.getDealName()==null || taskRecorderObj.getDealName().trim().length()==0) {
 			taskRecorderObj.setDealConfirmationId(0l);
 		}

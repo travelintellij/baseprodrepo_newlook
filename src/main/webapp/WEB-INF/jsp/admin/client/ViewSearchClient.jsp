@@ -58,6 +58,11 @@
             <h1 class="search-clients">Search Client</h1>
             <font color="green"> ${Success} </font>
             <font color="red"> ${Error}</font>
+            <c:if test="${hasErrorLog}">
+                <br/><a href="download_client_import_error_log" style="color: #0056b3; font-weight: bold; text-decoration: underline; margin-top: 5px; display: inline-block;">
+                    <i class="fa-solid fa-download"></i> Click here to Download Failed Records Log Excel
+                </a>
+            </c:if>
             <div class="search-client-form">
                 <form:form modelAttribute="SEARCH_CLIENTS" action="search_search_filtered_clients">
                 <div class="sc-first-li">
@@ -116,6 +121,10 @@
                      <div class="sc-first-li-d1 due_today_task_data_btnss" style="margin-top:10px">
                             <input style="background-color:#32cd32;" type="submit" value="Apply Filter" />
                             <a href="view_form_admin_search_client"><input type="button" value="Clear Filter" /></a>
+                            <sec:authorize access="hasAnyRole('ADMIN','CLIENT_CREATE','ROLE_CLIENT_CREATE')">
+                                <input type="button" value="Import Client" id="openImportModalBtn" style="background-color:#007bff; color:white; font-weight:600; cursor:pointer; margin-left:10px;" onclick="openImportModal()" />
+                                <input type="button" value="&#x25BC; Export Client" id="openExportModalBtn" style="background-color:#17a2b8; color:white; font-weight:600; cursor:pointer; margin-left:8px;" onclick="openExportModal()" />
+                            </sec:authorize>
                         </div>
                 </div>
                 </form:form>
@@ -123,6 +132,180 @@
         </div>
   
          </div>
+
+<!-- Client Import Modal Popup -->
+<sec:authorize access="hasAnyRole('ADMIN','CLIENT_CREATE','ROLE_CLIENT_CREATE')">
+<div id="importClientModal" class="custom-modal" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; background-color:rgba(0,0,0,0.6);">
+    <div style="background-color:#fff; margin:10% auto; padding:25px; border-radius:8px; width:450px; box-shadow:0 4px 15px rgba(0,0,0,0.3); position:relative; font-family:sans-serif;">
+        <span onclick="closeImportModal()" style="position:absolute; right:15px; top:10px; font-size:24px; font-weight:bold; cursor:pointer; color:#888;">&times;</span>
+        <h2 style="margin-top:0; color:#333; font-size:20px; border-bottom:2px solid #007bff; padding-bottom:8px;">Import Client Data</h2>
+        
+        <div style="margin-top:15px; background-color:#eef6ff; padding:12px; border-radius:5px; font-size:13px; color:#333;">
+            <p style="margin:0 0 8px 0; font-weight:bold;">Step 1: Download Template</p>
+            <a href="download_client_import_template" style="display:inline-block; padding:6px 12px; background-color:#28a745; color:white; text-decoration:none; border-radius:4px; font-size:12px; font-weight:bold;">
+                <i class="fa-solid fa-file-excel"></i> Download Excel Template
+            </a>
+        </div>
+
+        <form action="import_clients" method="post" enctype="multipart/form-data" style="margin-top:20px;">
+            <div style="font-size:13px; font-weight:bold; margin-bottom:6px; color:#333;">Step 2: Upload Populated Excel File (.xlsx / .xls)</div>
+            <input type="file" name="file" accept=".xlsx, .xls" required style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px; box-sizing:border-box; margin-bottom:15px;" />
+            
+            <div style="text-align:right; margin-top:15px;">
+                <input type="button" value="Cancel" onclick="closeImportModal()" style="padding:8px 16px; background-color:#6c757d; color:white; border:none; border-radius:4px; cursor:pointer; margin-right:8px;" />
+                <input type="submit" value="Upload & Import" style="padding:8px 16px; background-color:#007bff; color:white; border:none; border-radius:4px; cursor:pointer; font-weight:bold;" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    function openImportModal() {
+        document.getElementById('importClientModal').style.display = 'block';
+    }
+    function closeImportModal() {
+        document.getElementById('importClientModal').style.display = 'none';
+    }
+    window.onclick = function(event) {
+        var modal = document.getElementById('importClientModal');
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+</script>
+</sec:authorize>
+
+<!-- ===== Client Export Modal ===== -->
+<sec:authorize access="hasAnyRole('ADMIN','CLIENT_CREATE','ROLE_CLIENT_CREATE')">
+<div id="exportClientModal" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; background-color:rgba(0,0,0,0.6);">
+    <div style="background-color:#fff; margin:5% auto; padding:28px 30px; border-radius:10px; width:520px; max-width:95%; box-shadow:0 6px 25px rgba(0,0,0,0.35); position:relative; font-family:sans-serif;">
+        <span onclick="closeExportModal()" style="position:absolute; right:15px; top:10px; font-size:24px; font-weight:bold; cursor:pointer; color:#888;">&times;</span>
+        <h2 style="margin-top:0; color:#17a2b8; font-size:20px; border-bottom:2px solid #17a2b8; padding-bottom:8px;">&#x25BC; Export Client Data</h2>
+
+        <!-- Last Export Info Banner -->
+        <div style="background:#f0f9fb; border-left:4px solid #17a2b8; padding:10px 14px; border-radius:4px; font-size:12.5px; color:#333; margin-bottom:18px;">
+            <c:choose>
+                <c:when test="${not empty LAST_EXPORT_DATE}">
+                    <span style="font-weight:bold; color:#17a2b8;">&#128197; Last Exported On:</span>
+                    <span style="margin-left:4px;">${LAST_EXPORT_DATE}</span>
+                    &nbsp;&nbsp;
+                    <span style="font-weight:bold; color:#17a2b8;">&#128196; Purpose:</span>
+                    <span style="margin-left:4px;">${LAST_EXPORT_PURPOSE}</span>
+                </c:when>
+                <c:otherwise>
+                    <span style="color:#6c757d;">&#8505; No previous export recorded for this session.</span>
+                </c:otherwise>
+            </c:choose>
+        </div>
+
+        <form id="exportClientForm" action="export_clients" method="get">
+
+            <!-- Purpose of Export -->
+            <div style="margin-bottom:14px;">
+                <label for="exportPurpose" style="font-size:13px; font-weight:bold; color:#333; display:block; margin-bottom:4px;">Purpose of Export <span style="color:red;">*</span></label>
+                <input type="text" id="exportPurpose" name="exportPurpose" placeholder="e.g. Marketing Campaign, Monthly Audit, Follow-up"
+                       style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px; box-sizing:border-box; font-size:13px;" required />
+            </div>
+
+            <!-- City Filter -->
+            <div style="margin-bottom:14px;">
+                <label for="exportCityName" style="font-size:13px; font-weight:bold; color:#333; display:block; margin-bottom:4px;">Filter by City (optional)</label>
+                <input type="text" id="exportCityName" name="cityName" placeholder="Start typing city name..."
+                       style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px; box-sizing:border-box; font-size:13px;" autocomplete="off" />
+                <input type="hidden" id="exportCityId" name="cityId" value="0" />
+            </div>
+
+            <!-- Date Filter Type -->
+            <div style="margin-bottom:14px;">
+                <label for="exportDateFilterType" style="font-size:13px; font-weight:bold; color:#333; display:block; margin-bottom:4px;">Filter by Creation Date</label>
+                <select id="exportDateFilterType" name="dateFilterType" onchange="toggleExportDateFields()"
+                        style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px; box-sizing:border-box; font-size:13px;">
+                    <option value="ALL">All Dates</option>
+                    <option value="TODAY">Created Today</option>
+                    <option value="AFTER">Created After</option>
+                    <option value="RANGE">Date Range</option>
+                </select>
+            </div>
+
+            <!-- Created After Date -->
+            <div id="exportAfterDateDiv" style="display:none; margin-bottom:14px;">
+                <label for="exportCreatedAfterDate" style="font-size:13px; font-weight:bold; color:#333; display:block; margin-bottom:4px;">Created After Date</label>
+                <input type="date" id="exportCreatedAfterDate" name="createdAfterDate"
+                       style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px; box-sizing:border-box; font-size:13px;" />
+            </div>
+
+            <!-- Date Range -->
+            <div id="exportDateRangeDiv" style="display:none; margin-bottom:14px;">
+                <div style="display:flex; gap:12px;">
+                    <div style="flex:1;">
+                        <label for="exportStartDate" style="font-size:13px; font-weight:bold; color:#333; display:block; margin-bottom:4px;">From Date</label>
+                        <input type="date" id="exportStartDate" name="startDate"
+                               style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px; box-sizing:border-box; font-size:13px;" />
+                    </div>
+                    <div style="flex:1;">
+                        <label for="exportEndDate" style="font-size:13px; font-weight:bold; color:#333; display:block; margin-bottom:4px;">To Date</label>
+                        <input type="date" id="exportEndDate" name="endDate"
+                               style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px; box-sizing:border-box; font-size:13px;" />
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reference Filter -->
+            <div style="margin-bottom:18px;">
+                <label for="exportReference" style="font-size:13px; font-weight:bold; color:#333; display:block; margin-bottom:4px;">Filter by Reference (optional)</label>
+                <input type="text" id="exportReference" name="reference" placeholder="e.g. Agent Name, Source"
+                       style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px; box-sizing:border-box; font-size:13px;" />
+            </div>
+
+            <!-- Actions -->
+            <div style="text-align:right;">
+                <input type="button" value="Cancel" onclick="closeExportModal()" style="padding:8px 16px; background-color:#6c757d; color:white; border:none; border-radius:4px; cursor:pointer; margin-right:8px; font-size:13px;" />
+                <input type="submit" value="&#x25BC; Download Export Excel" style="padding:8px 16px; background-color:#17a2b8; color:white; border:none; border-radius:4px; cursor:pointer; font-weight:bold; font-size:13px;" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    function openExportModal() {
+        document.getElementById('exportClientModal').style.display = 'block';
+    }
+    function closeExportModal() {
+        document.getElementById('exportClientModal').style.display = 'none';
+        // reset date fields
+        document.getElementById('exportAfterDateDiv').style.display = 'none';
+        document.getElementById('exportDateRangeDiv').style.display = 'none';
+        document.getElementById('exportDateFilterType').value = 'ALL';
+    }
+    function toggleExportDateFields() {
+        var val = document.getElementById('exportDateFilterType').value;
+        document.getElementById('exportAfterDateDiv').style.display  = (val === 'AFTER') ? 'block' : 'none';
+        document.getElementById('exportDateRangeDiv').style.display  = (val === 'RANGE') ? 'block' : 'none';
+    }
+    // Close on backdrop click
+    document.getElementById('exportClientModal').addEventListener('click', function(e) {
+        if (e.target === this) closeExportModal();
+    });
+    // City autocomplete for export modal
+    $(function() {
+        $('#exportCityName').autocomplete({
+            serviceUrl: '${pageContext.request.contextPath}/getCityList',
+            paramName: "cityName",
+            delimiter: ",",
+            onSelect: function (suggestion) {
+                $('#exportCityId').val(suggestion.data);
+            },
+            transformResult: function (response) {
+                return {
+                    suggestions: $.map($.parseJSON(response), function (item) {
+                        return { value: item.cityName, data: item.destinationId };
+                    })
+                };
+            }
+        });
+    });
+</script>
+</sec:authorize>
         
         
            <div class="search-clients-sec bs">

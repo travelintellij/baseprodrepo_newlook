@@ -38,7 +38,7 @@
 <body>
     <!-- ############# side menu bar ################## -->
     <div class="cnt_options">
-        <a href="#">Create Task</a>
+        <a href="view_create_task_form_user">Create Task</a>
         <a href="view_open_task_form_user" style="color:white;background:black"> Open Tasks</a>
         <a href="view_open_task_form_user_filter_due_today">Due Today</a>
         <a href="view_open_over_due_task_form_user">Over Due</a>

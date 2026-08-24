@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.udanchoo.intranet.entity.UdnClientEntity;
 
 @Repository
-public interface ClientRepository extends JpaRepository<UdnClientEntity,Long>,JpaSpecificationExecutor{
+public interface ClientRepository extends JpaRepository<UdnClientEntity,Long>,JpaSpecificationExecutor<UdnClientEntity>{
 
 	@Query("FROM UdnClientEntity a join Udn_Deals_Recorder_Entity b on a.clientId=b.clientId AND b.dealConfirmationId=?1")
 	UdnClientEntity find_ClientByDealConfirmationId(Long dealConfirmationId);
@@ -18,5 +18,10 @@ public interface ClientRepository extends JpaRepository<UdnClientEntity,Long>,Jp
 	java.util.List<UdnClientEntity> findByEmail(String email);
 
 	java.util.List<UdnClientEntity> findByMobile(long mobile);
+
+	boolean existsByMobile(long mobile);
+
+	@Query("SELECT COUNT(c) > 0 FROM UdnClientEntity c WHERE c.mobile = ?1 AND c.clientId <> ?2")
+	boolean existsByMobileAndClientIdNot(long mobile, long clientId);
 }
  

@@ -30,6 +30,7 @@ import com.udanchoo.intranet.entity.Udn_Deals_Recorder_Entity;
 import com.udanchoo.intranet.entity.Udn_Destinations_Entity;
 import com.udanchoo.intranet.exception.RecordNotFoundException;
 import com.udanchoo.intranet.model.ClientObj;
+import com.udanchoo.intranet.model.ExportClientFilterObj;
 import com.udanchoo.intranet.model.FilterServiceLineObj;
 import com.udanchoo.intranet.model.SearchClientObj;
 import com.udanchoo.intranet.repository.ClientRepository;
@@ -102,12 +103,18 @@ public class ClientServiceImpl {
 		   ClientObj clientObj = null;
 		   if(clientEntity!=null) {
 			   clientObj = new ClientObj(clientEntity);
-			   if(clientObj.getCityId()!=0) {
-				   clientObj.setCityName(commonService.findDestinationById(clientObj.getCityId()).getCityName());
+			   if(clientObj.getCityId()!=null && clientObj.getCityId()!=0) {
+				   Udn_Destinations_Entity dest = commonService.findDestinationById(clientObj.getCityId());
+				   if(dest != null) {
+					   clientObj.setCityName(dest.getCityName());
+				   }
 			   }
 			   
 			   if(clientObj.getCountryId()!=0) {
-				   clientObj.setCountryName(commonService.findDestinationById(clientObj.getCountryId()).getCityName());
+				   Udn_Destinations_Entity countryDest = commonService.findDestinationById(clientObj.getCountryId());
+				   if(countryDest != null) {
+					   clientObj.setCountryName(countryDest.getCountryName() != null && !countryDest.getCountryName().trim().isEmpty() ? countryDest.getCountryName() : countryDest.getCityName());
+				   }
 			   }
 		   }
 		   return clientObj;
@@ -186,6 +193,10 @@ public class ClientServiceImpl {
 			return clientRepository.existsByclientIdAndClientName(clientId, clientName);
 		}
 		
+		public boolean existsByMobile(long mobile) {
+			return clientRepository.existsByMobile(mobile);
+		}
+		
 	   
 	/*
 		public List<UdnIncentiveEntity> listAll() throws RecordNotFoundException  {
@@ -254,4 +265,111 @@ public class ClientServiceImpl {
 		 return incentiveEntityList;
 	   }
 	   */
+
+	public List<UdnClientEntity> exportClients(ExportClientFilterObj filter) {
+		try {
+			Specification<UdnClientEntity> spec = new Specification<UdnClientEntity>() {
+				@Override
+				public Predicate toPredicate(Root<UdnClientEntity> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+					List<Predicate> predicates = new ArrayList<>();
+
+					if (filter != null) {
+						// 1. City Filter
+						if (filter.getCityId() > 0) {
+							predicates.add(cb.equal(root.get("cityId"), filter.getCityId()));
+						}
+
+						// 2. Reference Filter
+						if (filter.getReference() != null && !filter.getReference().trim().isEmpty()) {
+							predicates.add(cb.like(cb.lower(root.get("referredBy")), "%" + filter.getReference().trim().toLowerCase() + "%"));
+						}
+
+						// 3. Date Filter
+						SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+						String dateType = filter.getDateFilterType() != null ? filter.getDateFilterType().toUpperCase() : "ALL";
+
+						if ("TODAY".equals(dateType)) {
+							Calendar cal = Calendar.getInstance();
+							cal.set(Calendar.HOUR_OF_DAY, 0);
+							cal.set(Calendar.MINUTE, 0);
+							cal.set(Calendar.SECOND, 0);
+							cal.set(Calendar.MILLISECOND, 0);
+							Date startOfDay = cal.getTime();
+
+							cal.set(Calendar.HOUR_OF_DAY, 23);
+							cal.set(Calendar.MINUTE, 59);
+							cal.set(Calendar.SECOND, 59);
+							cal.set(Calendar.MILLISECOND, 999);
+							Date endOfDay = cal.getTime();
+
+							predicates.add(cb.between(root.get("createdAt"), startOfDay, endOfDay));
+
+						} else if ("AFTER".equals(dateType)) {
+							if (filter.getCreatedAfterDate() != null && !filter.getCreatedAfterDate().trim().isEmpty()) {
+								try {
+									Date afterDate = sdf.parse(filter.getCreatedAfterDate().trim());
+									Calendar cal = Calendar.getInstance();
+									cal.setTime(afterDate);
+									cal.set(Calendar.HOUR_OF_DAY, 0);
+									cal.set(Calendar.MINUTE, 0);
+									cal.set(Calendar.SECOND, 0);
+									cal.set(Calendar.MILLISECOND, 0);
+									predicates.add(cb.greaterThanOrEqualTo(root.get("createdAt"), cal.getTime()));
+								} catch (Exception e) {
+									// ignore invalid date parse
+								}
+							}
+
+						} else if ("RANGE".equals(dateType)) {
+							Date startDate = null;
+							Date endDate = null;
+							if (filter.getStartDate() != null && !filter.getStartDate().trim().isEmpty()) {
+								try {
+									startDate = sdf.parse(filter.getStartDate().trim());
+									Calendar cal = Calendar.getInstance();
+									cal.setTime(startDate);
+									cal.set(Calendar.HOUR_OF_DAY, 0);
+									cal.set(Calendar.MINUTE, 0);
+									cal.set(Calendar.SECOND, 0);
+									cal.set(Calendar.MILLISECOND, 0);
+									startDate = cal.getTime();
+								} catch (Exception e) {
+									startDate = null;
+								}
+							}
+							if (filter.getEndDate() != null && !filter.getEndDate().trim().isEmpty()) {
+								try {
+									endDate = sdf.parse(filter.getEndDate().trim());
+									Calendar cal = Calendar.getInstance();
+									cal.setTime(endDate);
+									cal.set(Calendar.HOUR_OF_DAY, 23);
+									cal.set(Calendar.MINUTE, 59);
+									cal.set(Calendar.SECOND, 59);
+									cal.set(Calendar.MILLISECOND, 999);
+									endDate = cal.getTime();
+								} catch (Exception e) {
+									endDate = null;
+								}
+							}
+
+							if (startDate != null && endDate != null) {
+								predicates.add(cb.between(root.get("createdAt"), startDate, endDate));
+							} else if (startDate != null) {
+								predicates.add(cb.greaterThanOrEqualTo(root.get("createdAt"), startDate));
+							} else if (endDate != null) {
+								predicates.add(cb.lessThanOrEqualTo(root.get("createdAt"), endDate));
+							}
+						}
+					}
+
+					return cb.and(predicates.toArray(new Predicate[0]));
+				}
+			};
+
+			return clientRepository.findAll(spec, Sort.by(Sort.Direction.DESC, "clientId"));
+		} catch (Exception e) {
+			e.printStackTrace();
+			return clientRepository.findAll();
+		}
+	}
 }
