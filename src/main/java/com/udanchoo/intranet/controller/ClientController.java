@@ -451,11 +451,19 @@ public class ClientController {
 		List<Tag> result = new ArrayList<Tag>();
 
 		List<UdnClientEntity> entityList = clientService.findAllClients();
+		String searchKeyword = tagName != null ? tagName.trim().toLowerCase() : "";
 
 		// iterate a list and filter by tagName
 		for (UdnClientEntity entity : entityList) {
-			if (entity.getClientName().toLowerCase().contains(tagName.toLowerCase())) {
-				Tag tag = new Tag(entity.getClientId(), entity.getClientName());
+			if (entity.getClientName() == null) {
+				continue;
+			}
+			String clientName = entity.getClientName().trim();
+			String mobileStr = entity.getMobile() > 0 ? String.valueOf(entity.getMobile()) : "";
+			String displayName = !mobileStr.isEmpty() ? clientName + " -- " + mobileStr : clientName;
+
+			if (displayName.toLowerCase().contains(searchKeyword)) {
+				Tag tag = new Tag(entity.getClientId(), displayName);
 				result.add(tag);
 			}
 		}

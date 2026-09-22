@@ -184,8 +184,13 @@ public class LeadsController {
     	} else {
     		leadRecorderVO.setDestinationName("Unknown");
     	}
-    	leadRecorderVO.setContactName(clientService.find_ClientBy_Id(leadRecorderVO.getContactId()).getClientName());
-    	Tg_B2b_Partner_Entity b2bPartner =b2bPartnerService.findPartnerById(leadRecorderVO.getLeadSource()); 
+    	ClientObj clientObj = clientService.find_ClientBy_Id(leadRecorderVO.getContactId());
+    	if (clientObj != null) {
+    		String cName = clientObj.getClientName() != null ? clientObj.getClientName().trim() : "";
+    		String cMobile = (clientObj.getMobile() != null && clientObj.getMobile() > 0) ? String.valueOf(clientObj.getMobile()) : "";
+    		leadRecorderVO.setContactName(!cMobile.isEmpty() ? cName + " -- " + cMobile : cName);
+    	}
+    	Tg_B2b_Partner_Entity b2bPartner = b2bPartnerService.findPartnerById(leadRecorderVO.getLeadSource()); 
     	if (b2bPartner != null) {
     	    leadRecorderVO.setLeadSourceShortName(b2bPartner.getPartnerShortName());
     	    leadRecorderVO.setLeadSourceName(b2bPartner.getPartnerName());

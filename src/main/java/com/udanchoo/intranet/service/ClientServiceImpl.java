@@ -190,7 +190,21 @@ public class ClientServiceImpl {
 
 		
 		public boolean existsByClientIdAndClientName(long clientId, String clientName) {
-			return clientRepository.existsByclientIdAndClientName(clientId, clientName);
+			if (clientName != null && clientName.contains("--")) {
+				clientName = clientName.substring(0, clientName.lastIndexOf("--")).trim();
+			}
+			if (clientRepository.existsByclientIdAndClientName(clientId, clientName)) {
+				return true;
+			}
+			try {
+				java.util.Optional<UdnClientEntity> clientOpt = clientRepository.findById(clientId);
+				if (clientOpt.isPresent() && clientName != null) {
+					return clientOpt.get().getClientName().trim().equalsIgnoreCase(clientName.trim());
+				}
+			} catch (Exception e) {
+				// ignore
+			}
+			return false;
 		}
 		
 		public boolean existsByMobile(long mobile) {
